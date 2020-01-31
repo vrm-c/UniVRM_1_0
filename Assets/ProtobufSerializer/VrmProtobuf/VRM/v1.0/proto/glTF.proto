@@ -1,0 +1,328 @@
+// : VSCode formatter settings :
+// "clang-format.language.proto.style": "{ IndentWidth: 2 }",
+// "[proto3]": {
+//   "editor.defaultFormatter": "xaver.clang-format"
+// }
+syntax = "proto3";
+//
+// JsonSchemaとの非互換について
+//
+// Use google.protobuf.Int32Value, FloatValue, BoolValue for int, float, bool
+// that is not required property. string, repeated, message is
+// already nullable in C#.
+//
+// 上記だけでは不十分で、required であっても 0値 がエクスポート時に
+// 省略される問題がある(0値がintのデフォルト値でデフォルト値を省略する挙動のため)。
+// オプションでデフォルト値省略をすべて止めると、今度は値を指定していない値や空の配列が出力されてしまう。
+// index として使用する int 値(0でも省略してはいけない)はすべて required の有無にかかわらずに、
+// google.protobuf.Int32Value にすること。
+//
+import "google/protobuf/wrappers.proto";
+package VrmProtobuf;
+
+import "VRMC_materials_mtoon.proto";
+import "glTF_extensions.proto";
+
+// [START GLTF]
+// https://github.com/KhronosGroup/glTF/blob/master/specification/2.0/schema/glTF.schema.json
+message glTF {
+  repeated string extensionsUsed = 1;
+  repeated string extensionsRequired = 2;
+  repeated Accessor accessors = 3;
+  repeated Animation animations = 4;
+  Asset asset = 5;
+  repeated Buffer buffers = 6;
+  repeated BufferView bufferViews = 7;
+  repeated Image images = 8;
+  repeated Material materials = 9;
+  repeated Mesh meshes = 10;
+  repeated Node nodes = 11;
+  repeated Sampler samplers = 12;
+  google.protobuf.Int32Value scene = 13;
+  repeated Scene scenes = 14;
+  repeated Skin skins = 15;
+  repeated Texture textures = 16;
+  Extensions extensions = 17;
+}
+
+// https://github.com/KhronosGroup/glTF/blob/master/specification/2.0/schema/accessor.schema.json
+// "required": [ "componentType", "count", "type" ]
+message Accessor {
+  google.protobuf.Int32Value bufferView = 1;
+  google.protobuf.Int32Value byteOffset = 2;
+  // enum ComponentType {
+  //   COMPONENTTYPE_UNKNOWN = 0;
+  //   BYTE = 5120;
+  //   UNSIGNED_BYTE = 5121;
+  //   SHORT = 5122;
+  //   UNSIGNED_SHORT = 5123;
+  //   UNSIGNED_INT = 5125;
+  //   FLOAT = 5126;
+  // }
+  int32 componentType = 3;
+  google.protobuf.BoolValue normalized = 4;
+  int32 count = 5;
+  //  "SCALAR", "VEC2", "VEC3", "VEC4", "MAT2", "MAT3", "MAT4"
+  string type = 6;
+  repeated float max = 7;
+  repeated float min = 8;
+  AccessorSparse sparse = 9;
+  string name = 10;
+}
+
+// https://github.com/KhronosGroup/glTF/blob/master/specification/2.0/schema/accessor.sparse.indices.schema.json
+// "required": [ "bufferView", "componentType" ]
+message AccessorSparseIndices {
+  google.protobuf.Int32Value bufferView = 1;
+  google.protobuf.Int32Value byteOffset = 2;
+  // enum ComponentType {
+  //   UNKNOWN = 0;
+  //   UNSIGNED_BYTE = 5121;
+  //   UNSIGNED_SHORT = 5123;
+  //   UNSIGNED_INT = 5125;
+  // }
+  int32 componentType = 3;
+}
+
+// https://github.com/KhronosGroup/glTF/blob/master/specification/2.0/schema/accessor.sparse.schema.json
+// "required": [ "count", "indices", "values" ]
+message AccessorSparse {
+  int32 count = 1;
+  AccessorSparseIndices indices = 2;
+  AccessorSparseValues values = 3;
+}
+
+// https://github.com/KhronosGroup/glTF/blob/master/specification/2.0/schema/accessor.sparse.values.schema.json
+// "required": [ "bufferView" ]
+message AccessorSparseValues {
+  google.protobuf.Int32Value bufferView = 1;
+  google.protobuf.Int32Value byteOffset = 2;
+}
+
+// https://github.com/KhronosGroup/glTF/blob/master/specification/2.0/schema/animation.channel.schema.json
+// "required": [ "sampler", "target" ]
+message AnimationChannel {
+  google.protobuf.Int32Value sampler = 1;
+  google.protobuf.Int32Value target = 2;
+}
+
+// https://github.com/KhronosGroup/glTF/blob/master/specification/2.0/schema/animation.channel.target.schema.json
+// "required": [ "path" ]
+message AnimationChannelTarget {
+  google.protobuf.Int32Value node = 1;
+  string path = 2;
+}
+
+// https://github.com/KhronosGroup/glTF/blob/master/specification/2.0/schema/animation.sampler.schema.json
+// "required": [ "input", "output" ]
+message AnimationSampler {
+  google.protobuf.Int32Value input = 1;
+  string interpolation = 2;
+  google.protobuf.Int32Value output = 3;
+}
+
+// https://github.com/KhronosGroup/glTF/blob/master/specification/2.0/schema/animation.schema.json
+// "required": [ "channels", "samplers" ]
+message Animation {
+  repeated AnimationChannel channels = 1;
+  repeated AnimationSampler samplers = 2;
+  string name = 3;
+}
+
+// https://github.com/KhronosGroup/glTF/blob/master/specification/2.0/schema/asset.schema.json
+// "required": [ "version" ]
+message Asset {
+  string copyright = 1;
+  string generator = 2;
+  string version = 3;
+  string minVersion = 4;
+}
+
+// https://github.com/KhronosGroup/glTF/blob/master/specification/2.0/schema/buffer.schema.json
+// "required": [ "byteLength" ]
+message Buffer {
+  string uri = 1;
+  int32 byteLength = 2;
+  string name = 3;
+}
+
+// https://github.com/KhronosGroup/glTF/blob/master/specification/2.0/schema/bufferView.schema.json
+// "required": [ "buffer", "byteLength" ]
+message BufferView {
+  google.protobuf.Int32Value buffer = 1;
+  google.protobuf.Int32Value byteOffset = 2;
+  int32 byteLength = 3;
+  google.protobuf.Int32Value byteStride = 4;
+  // target
+  string name = 5;
+}
+
+// https://github.com/KhronosGroup/glTF/blob/master/specification/2.0/schema/camera.orthographic.schema.json
+// https://github.com/KhronosGroup/glTF/blob/master/specification/2.0/schema/camera.perspective.schema.json
+// https://github.com/KhronosGroup/glTF/blob/master/specification/2.0/schema/camera.schema.json
+
+// https://github.com/KhronosGroup/glTF/blob/master/specification/2.0/schema/image.schema.json
+// "oneOf": [
+//   { "required": [ "uri" ] },
+//   { "required": [ "bufferView" ] }
+// ]
+message Image {
+  string uri = 1;
+  // "image/jpeg", "image/png"
+  string mimeType = 2;
+  google.protobuf.Int32Value bufferView = 3;
+  string name = 4;
+}
+
+// https://github.com/KhronosGroup/glTF/blob/master/specification/2.0/schema/material.normalTextureInfo.schema.json
+// "required": [ "index" ]
+message MaterialNormalTextureInfo {
+  google.protobuf.Int32Value index = 1;
+  google.protobuf.Int32Value texCoord = 2;
+  google.protobuf.FloatValue scale = 3;
+}
+
+// https://github.com/KhronosGroup/glTF/blob/master/specification/2.0/schema/material.occlusionTextureInfo.schema.json
+// "required": [ "index" ]
+message MaterialOcclusionTextureInfo {
+  google.protobuf.Int32Value index = 1;
+  google.protobuf.Int32Value texCoord = 2;
+  google.protobuf.FloatValue strength = 3;
+}
+
+// https://github.com/KhronosGroup/glTF/blob/master/specification/2.0/schema/material.pbrMetallicRoughness.schema.json
+message MaterialPbrMetallicRoughness {
+  // RGBA
+  repeated float baseColorFactor = 1;
+  TextureInfo baseColorTexture = 2;
+  google.protobuf.FloatValue metallicFactor = 3;
+  google.protobuf.FloatValue roughnessFactor = 4;
+  TextureInfo metallicRoughnessTexture = 5;
+}
+
+message KHR_materials_unlit {}
+
+// https://github.com/KhronosGroup/glTF/blob/master/specification/2.0/schema/material.schema.json
+message Material {
+  string name = 1;
+  MaterialPbrMetallicRoughness pbrMetallicRoughness = 2;
+  MaterialNormalTextureInfo normalTexture = 3;
+  MaterialOcclusionTextureInfo occlusionTexture = 4;
+  TextureInfo emissiveTexture = 5;
+  // RGB
+  repeated float emissiveFactor = 6;
+  // "OPAQUE", "MASK", "BLEND"
+  string alphaMode = 7;
+  google.protobuf.FloatValue alphaCutoff = 8;
+  google.protobuf.BoolValue doubleSided = 9;
+  message Extensions {
+    // unlit
+    KHR_materials_unlit KHR_materials_unlit = 1;
+    // MToon extension
+    VrmProtobuf.VRMC_materials_mtoon VRMC_materials_mtoon = 2;
+  }
+  Extensions extensions = 10;
+}
+
+// https://github.com/KhronosGroup/glTF/blob/master/specification/2.0/schema/mesh.primitive.schema.json
+// "required": [ "attributes" ]
+message MeshPrimitive {
+  map<string, int32> attributes = 1;
+  google.protobuf.Int32Value indices = 2;
+  google.protobuf.Int32Value material = 3;
+  // enum Mode {
+  //   POINTS = 0;
+  //   LINES = 1;
+  //   LINE_LOOP = 2;
+  //   LINE_STRIP = 3;
+  //   TRIANGLES = 4;
+  //   TRIANGLE_STRIP = 5;
+  //   TRIANGLE_FAN = 6;
+  // }
+  google.protobuf.Int32Value mode = 4;
+  message Target {
+    google.protobuf.Int32Value POSITION = 1;
+    google.protobuf.Int32Value NORMAL = 2;
+    google.protobuf.Int32Value TANGENT = 3;
+  }
+  repeated Target targets = 5;
+  message Extras {
+    // https://github.com/KhronosGroup/glTF/issues/1036
+    repeated string targetNames = 1;
+  }
+  Extras extras = 6;
+}
+
+// https://github.com/KhronosGroup/glTF/blob/master/specification/2.0/schema/mesh.schema.json
+message Mesh {
+  repeated MeshPrimitive primitives = 2;
+  // weights
+  string name = 1;
+}
+
+// https://github.com/KhronosGroup/glTF/blob/master/specification/2.0/schema/node.schema.json
+message Node {
+  string name = 1;
+  repeated int32 children = 2;
+  // float[16]
+  repeated float matrix = 3;
+  // float[4]
+  repeated float rotation = 4;
+  // float[3]
+  repeated float scale = 5;
+  // float[3]
+  repeated float translation = 6;
+  google.protobuf.Int32Value mesh = 7;
+  google.protobuf.Int32Value skin = 8;
+}
+
+// https://github.com/KhronosGroup/glTF/blob/master/specification/2.0/schema/sampler.schema.json
+message Sampler {
+  // enum FilterType {
+  //   FILTER_UNKNOWN = 0;
+  //   NEAREST = 9728;
+  //   LINEAR = 9729;
+  //   NEAREST_MIPMAP_NEAREST = 9984;
+  //   LINEAR_MIPMAP_NEAREST = 9985;
+  //   NEAREST_MIPMAP_LINEAR = 9986;
+  //   LINEAR_MIPMAP_LINEAR = 9987;
+  // }
+  google.protobuf.Int32Value magFilter = 1;
+  google.protobuf.Int32Value minFilter = 2;
+  // enum WrapType {
+  //   WRAP_UNKNWON = 0;
+  //   CLAMP_TO_EDGE = 33071;
+  //   MIRRORED_REPEAT = 33648;
+  //   REPEAT = 10497;
+  // }
+  google.protobuf.Int32Value wrapS = 3;
+  google.protobuf.Int32Value wrapT = 4;
+}
+
+// https://github.com/KhronosGroup/glTF/blob/master/specification/2.0/schema/scene.schema.json
+message Scene { repeated int32 nodes = 1; }
+
+// https://github.com/KhronosGroup/glTF/blob/master/specification/2.0/schema/skin.schema.json
+// "required": [ "joints" ]
+message Skin {
+  google.protobuf.Int32Value inverseBindMatrices = 1;
+  google.protobuf.Int32Value skeleton = 2;
+  repeated int32 joints = 3;
+  string name = 4;
+}
+
+// https://github.com/KhronosGroup/glTF/blob/master/specification/2.0/schema/texture.schema.json
+message Texture {
+  google.protobuf.Int32Value sampler = 1;
+  google.protobuf.Int32Value source = 2;
+  string name = 3;
+}
+
+// https://github.com/KhronosGroup/glTF/blob/master/specification/2.0/schema/textureInfo.schema.json
+// "required": [ "index" ]
+message TextureInfo {
+  google.protobuf.Int32Value index = 1;
+  google.protobuf.Int32Value texCoord = 2;
+}
+
+// [END GLTF]

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<UXML
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="UnityEngine.UIElements"
+    xmlns:editor="UnityEditor.UIElements"
+    xsi:noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd"
+>
+    <editor:ObjectField name="RootNode" />
+    <Label name="Validation" text="Validation" />
+
+    <VisualElement name="Meta" class="meta" />
+
+    <Button name="ExportButton" text="Export" />
+    <Label name="Log" text="Log" />
+</UXML>

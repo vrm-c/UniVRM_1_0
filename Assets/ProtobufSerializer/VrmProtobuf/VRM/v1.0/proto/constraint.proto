@@ -1,0 +1,8 @@
+syntax = "proto3";
+package VrmProtobuf;
+
+// Specification undecided in draft state
+message Constraint
+{
+
+}

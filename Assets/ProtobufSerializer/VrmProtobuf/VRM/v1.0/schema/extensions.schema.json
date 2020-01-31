@@ -1,0 +1,13 @@
+{
+  "title": "Extensions",
+  "type": "object",
+  "description": "",
+  "properties": {
+    "VRMC_vrm": {
+      "title": "VRMCVrm",
+      "type": "object",
+      "description": "",
+      "$ref": "extensions.VRMC_vrm.schema.json"
+    }
+  }
+}

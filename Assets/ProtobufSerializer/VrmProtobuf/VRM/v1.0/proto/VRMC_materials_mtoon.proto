@@ -1,0 +1,85 @@
+syntax = "proto3";
+import "google/protobuf/wrappers.proto";
+package VrmProtobuf;
+
+message VRMC_materials_mtoon {
+  // Meta
+  string version = 2;
+
+  // Rendering
+  enum RenderMode {
+    opaque = 0;
+    cutout = 1;
+    transparent = 2;
+    transparentWithZWrite = 3;
+  }
+  RenderMode renderMode = 3;
+  enum CullMode {
+    off = 0;
+    front = 1;
+    back = 2;
+  }
+  CullMode cullMode = 4;
+  int32 renderQueueOffsetNumber = 5;
+
+  // Color
+  repeated float litFactor = 6;
+  google.protobuf.Int32Value litMultiplyTexture = 7;
+  repeated float shadeFactor = 8;
+  google.protobuf.Int32Value shadeMultiplyTexture = 9;
+  float cutoutThresholdFactor = 10;
+
+  // Lighting
+  float shadingShiftFactor = 11;
+  float shadingToonyFactor = 12;
+  float shadowReceiveMultiplierFactor = 13;
+  google.protobuf.Int32Value shadowReceiveMultiplierMultiplyTexture = 14;
+  float litAndShadeMixingMultiplierFactor = 16;
+  google.protobuf.Int32Value litAndShadeMixingMultiplierMultiplyTexture = 17;
+  float lightColorAttenuationFactor = 18;
+  float giIntensityFactor = 19;
+
+  // Normal
+  google.protobuf.Int32Value normalTexture = 20;
+  float normalScaleFactor = 21;
+
+  // Emission
+  repeated float emissionFactor = 22;
+  google.protobuf.Int32Value emissionMultiplyTexture = 23;
+
+  // MatCap
+  google.protobuf.Int32Value additiveTexture = 24;
+
+  // Rim
+  repeated float rimFactor = 25;
+  google.protobuf.Int32Value rimMultiplyTexture = 26;
+  float rimLightingMixFactor = 27;
+  float rimFresnelPowerFactor = 28;
+  float rimLiftFactor = 29;
+
+  // Outline
+  enum OutlineWidthMode {
+    none = 0;
+    worldCoordinates = 1;
+    screenCoordinates = 2;
+  }
+  OutlineWidthMode outlineWidthMode = 30;
+  float outlineWidthFactor = 31;
+  google.protobuf.Int32Value outlineWidthMultiplyTexture = 32;
+  float outlineScaledMaxDistanceFactor = 33;
+  enum OutlineColorMode {
+    fixedColor = 0;
+    mixedLighting = 1;
+  }
+  OutlineColorMode outlineColorMode = 34;
+  repeated float outlineFactor = 35;
+  float outlineLightingMixFactor = 36;
+
+  // TextureUvCoords
+  repeated float mainTextureLeftBottomOriginScale = 37;
+  repeated float mainTextureLeftBottomOriginOffset = 38;
+  google.protobuf.Int32Value uvAnimationMaskTexture = 39;
+  float uvAnimationScrollXSpeedFactor = 40;
+  float uvAnimationScrollYSpeedFactor = 41;
+  float uvAnimationRotationSpeedFactor = 42;
+}

@@ -1,0 +1,103 @@
+using System.Collections.Generic;
+using System.Linq;
+using System.Numerics;
+
+
+namespace VrmLib
+{
+    public static class ModelExtensionsForNode
+    {
+        class NodeUsage
+        {
+            public bool HasMesh;
+            public int WeightUsed;
+            public HumanoidBones? HumanBone;
+
+            public bool SpringUse;
+
+            public override string ToString()
+            {
+                if (HumanBone.HasValue)
+                {
+                    return $"{HumanBone.Value}";
+                }
+                else
+                {
+                    return $"{Used}";
+                }
+            }
+
+            public bool Used
+            {
+                get
+                {
+                    if (HasMesh) return true;
+                    if (WeightUsed > 0) return true;
+                    if (HumanBone.HasValue && HumanBone.Value != HumanoidBones.unknown) return true;
+                    if (SpringUse) return true;
+                    return false;
+                }
+            }
+        }
+
+        public static IEnumerable<Node> GetRemoveNodes(this Model model)
+        {
+            var nodeUsage = model.Nodes.Select(x =>
+                new NodeUsage
+                {
+                    HasMesh = x.MeshGroup != null,
+                    HumanBone = x.HumanoidBone,
+                })
+                .ToArray();
+
+            var bones = model.Nodes.Where(x => x.HumanoidBone.HasValue).ToArray();
+
+            // joint use
+            foreach (var meshGroup in model.MeshGroups)
+            {
+                var skin = meshGroup.Skin;
+                if (skin != null)
+                {
+                    foreach (var mesh in meshGroup.Meshes)
+                    {
+                        var joints = mesh.VertexBuffer.Joints;
+                        var weights = mesh.VertexBuffer.Weights;
+                        if (joints != null && weights != null)
+                        {
+                            var jointsSpan = joints.GetSpan<SkinJoints>();
+                            var weightsSpan = weights.GetSpan<Vector4>();
+                            for (int i = 0; i < jointsSpan.Length; ++i)
+                            {
+                                var w = weightsSpan[i];
+                                var j = jointsSpan[i];
+                                if (w.X > 0) nodeUsage[model.Nodes.IndexOf(skin.Joints[j.Joint0])].WeightUsed++;
+                                if (w.Y > 0) nodeUsage[model.Nodes.IndexOf(skin.Joints[j.Joint1])].WeightUsed++;
+                                if (w.Z > 0) nodeUsage[model.Nodes.IndexOf(skin.Joints[j.Joint2])].WeightUsed++;
+                                if (w.W > 0) nodeUsage[model.Nodes.IndexOf(skin.Joints[j.Joint3])].WeightUsed++;
+                            }
+                        }
+                    }
+                }
+            }
+
+            var spring = model.Vrm?.SpringBone;
+            if (spring != null)
+            {
+                foreach (var x in spring.Springs)
+                {
+                    foreach (var y in x.Bones)
+                    {
+                        nodeUsage[model.Nodes.IndexOf(y)].SpringUse = true;
+                    }
+                }
+                foreach (var x in spring.Colliders)
+                {
+                    nodeUsage[model.Nodes.IndexOf(x.Node)].SpringUse = true;
+                }
+            }
+
+            var nodes = nodeUsage.Select((x, i) => System.ValueTuple.Create(i, x)).Where(x => !x.Item2.Used).Select(x => model.Nodes[x.Item1]).ToArray();
+            return nodes;
+        }
+    }
+}

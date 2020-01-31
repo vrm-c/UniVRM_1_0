@@ -1,0 +1,8 @@
+{
+    "name": "dotnet.system.memory",
+    "version": "0.0.1",
+    "displayName": "DotNet.System.Memory",
+    "unity": "2019.1",
+    "description": "from https://www.nuget.org/packages/System.Memory/",
+    "dependencies": {}
+}

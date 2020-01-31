@@ -1,0 +1,16 @@
+{
+    "name": "ProtobufSerializer",
+    "references": [
+        "GUID:2ef84b520212e174a94668c7a0862d3b",
+        "GUID:c17744d85d4c1a84cb0885f2fdfe6091"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

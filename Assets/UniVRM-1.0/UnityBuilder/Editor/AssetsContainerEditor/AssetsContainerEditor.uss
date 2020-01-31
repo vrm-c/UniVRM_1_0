@@ -1,0 +1,26 @@
+.title {
+    font-size: 20px;
+    -unity-font-style: bold;
+    color: rgb(68, 138, 255);
+}
+
+.header {
+    -unity-font-style: bold;
+    color: white;
+    background-color: black;
+    width: 100%;
+    text-align: center;
+}
+
+.horizontal {
+    flex-direction: row;
+}
+
+.image-size {
+    width: 60px;
+    height: 60px;
+}
+
+.grow {
+    flex-grow: 1;
+}

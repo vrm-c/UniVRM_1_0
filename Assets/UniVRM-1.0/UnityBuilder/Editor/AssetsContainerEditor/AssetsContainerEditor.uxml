@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:engine="UnityEngine.UIElements" 
+    xmlns:editor="UnityEditor.UIElements" xsi:noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd">
+
+    <engine:Label class="title" text="VRM Asset"/>
+
+    <engine:Foldout name="RootNodeFoldout" text="RootNode">
+      <editor:ObjectField name="RootNode" />
+    </engine:Foldout>
+  
+    <engine:Foldout name="AvatarFoldout" text="Avatar">
+      <editor:ObjectField name="Avatar" />
+    </engine:Foldout>
+
+    <!-- <engine:Label class="header" text="Textures"/> -->
+    <engine:Foldout name="TextureList" text="Textures"/>
+
+    <!-- <engine:Label class="header" text="Materials"/> -->
+    <engine:Foldout name="MaterialList" text="Materials"/>
+
+    <!-- <engine:Label class="header" text="Meshes"/> -->
+    <engine:Foldout name="MeshList" text="Meshes"/>
+</engine:UXML>
