@@ -7,6 +7,33 @@ namespace VrmLib
     {
         public Vector4 RGBA;
 
+        public float[] ToLinearFloat4()
+        {
+            return new float[]{
+                RGBA.X,
+                RGBA.Y,
+                RGBA.Z,
+                RGBA.W,
+            };
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (obj is LinearColor color)
+            {
+                return Equals(color);
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public override int GetHashCode()
+        {
+            return RGBA.GetHashCode();
+        }
+
         public static bool operator ==(LinearColor lhs, LinearColor rhs)
         {
             return lhs.Equals(rhs);

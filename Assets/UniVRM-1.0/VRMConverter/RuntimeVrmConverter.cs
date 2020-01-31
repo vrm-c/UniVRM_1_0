@@ -70,18 +70,18 @@ namespace UniVRM10
             if (!Textures.TryGetValue(texture, out VrmLib.TextureInfo info))
             {
                 Material normalConvertMaterial = null;
-                if(textureType == VrmLib.Texture.TextureTypes.NormalMap)
+                if (textureType == VrmLib.Texture.TextureTypes.NormalMap)
                 {
                     normalConvertMaterial = GetNormalMapConvertUnityToGltf();
                 }
 
                 var (bytes, mime) = GetImageEncodedBytes(
-                    texture, 
-                    (colorSpace == VrmLib.Texture.ColorSpaceTypes.Linear)?RenderTextureReadWrite.Linear:RenderTextureReadWrite.sRGB,
+                    texture,
+                    (colorSpace == VrmLib.Texture.ColorSpaceTypes.Linear) ? RenderTextureReadWrite.Linear : RenderTextureReadWrite.sRGB,
                     normalConvertMaterial
                     );
 
-                if(normalConvertMaterial != null)
+                if (normalConvertMaterial != null)
                 {
                     UnityEngine.Object.DestroyImmediate(normalConvertMaterial);
                 }
@@ -110,24 +110,35 @@ namespace UniVRM10
         public VrmLib.Model ToModelFrom10(GameObject root, VRMMetaObject metaObject)
         {
             Model = new VrmLib.Model(root.name, VrmLib.Coordinates.Unity);
-            
+
             var meta = new VrmLib.Meta();
             if (metaObject != null)
             {
-                meta.Title = metaObject.Title;
+                meta.Name = metaObject.Name;
                 meta.Version = metaObject.Version;
-                meta.Author = metaObject.Author;
+                meta.Copyrights = metaObject.Copyrights;
+                meta.Authors.AddRange(metaObject.Authors);
                 meta.ContactInformation = metaObject.ContactInformation;
                 meta.Reference = metaObject.Reference;
                 meta.Thumbnail = metaObject.Thumbnail.ToPngImage(VrmLib.ImageUsage.None);
 
-                meta.AllowedUser = metaObject.AllowedUser;
-                meta.IsAllowedViolentUsage = metaObject.ViolentUssage;
-                meta.IsAllowedSexualUsage = metaObject.SexualUssage;
-                meta.IsAllowedCommercialUsage = metaObject.CommercialUssage;
-                meta.OtherPermissionUrl = metaObject.OtherPermissionUrl;
-                meta.License = metaObject.LicenseType;
-                meta.OtherLicenseUrl = metaObject.OtherLicenseUrl;
+                meta.AvatarPermission = new VrmLib.AvatarPermission
+                {
+                    AvatarUsage = metaObject.AllowedUser,
+                    IsAllowedViolentUsage = metaObject.ViolentUsage,
+                    IsAllowedSexualUsage = metaObject.SexualUsage,
+                    CommercialUsage = metaObject.CommercialUsage,
+                    IsAllowedGameUsage = metaObject.GameUsage,
+                    IsAllowedPoliticalOrReligiousUsage = metaObject.PoliticalOrReligiousUsage,
+                    OtherPermissionUrl = metaObject.OtherPermissionUrl,
+                };
+                meta.RedistributionLicense = new VrmLib.RedistributionLicense
+                {
+                    CreditNotation = metaObject.CreditNotation,
+                    IsAllowRedistribution = metaObject.Redistribution,
+                    ModificationLicense = metaObject.ModificationLicense,
+                    OtherLicenseUrl = metaObject.OtherLicenseUrl,
+                };
             }
             else
             {
@@ -141,7 +152,7 @@ namespace UniVRM10
                 CreateNodes(root.transform, Model.Root, Nodes);
                 Model.Nodes = Nodes
                 .Where(x => x.Value != Model.Root)
-                .Select(x => x.Value).ToList();
+                            .Select(x => x.Value).ToList();
             }
 
             // humanoid

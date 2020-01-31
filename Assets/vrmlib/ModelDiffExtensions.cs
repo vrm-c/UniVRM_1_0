@@ -374,19 +374,25 @@ namespace VrmLib.Diff
 
         static void VrmMeta(ModelDiffContext context, Meta lhs, Meta rhs)
         {
-            context.Enter(nameof(lhs.Title)).Push(lhs.Title, rhs.Title);
+            context.Enter(nameof(lhs.Name)).Push(lhs.Name, rhs.Name);
             context.Enter(nameof(lhs.Version)).Push(lhs.Version, rhs.Version);
+            context.Enter(nameof(lhs.Copyrights)).Push(lhs.Copyrights, rhs.Copyrights);
             context.Enter(nameof(lhs.Author)).Push(lhs.Author, rhs.Author);
             context.Enter(nameof(lhs.ContactInformation)).Push(lhs.ContactInformation, rhs.ContactInformation);
             context.Enter(nameof(lhs.Reference)).Push(lhs.Reference, rhs.Reference);
             context.Enter(nameof(lhs.Thumbnail)).Push(lhs.Thumbnail, rhs.Thumbnail, ImageBytesEquals);
-            context.Enter(nameof(lhs.AllowedUser)).Push(lhs.AllowedUser, rhs.AllowedUser);
-            context.Enter(nameof(lhs.IsAllowedViolentUsage)).Push(lhs.IsAllowedViolentUsage, rhs.IsAllowedViolentUsage);
-            context.Enter(nameof(lhs.IsAllowedSexualUsage)).Push(lhs.IsAllowedSexualUsage, rhs.IsAllowedSexualUsage);
-            context.Enter(nameof(lhs.IsAllowedCommercialUsage)).Push(lhs.IsAllowedCommercialUsage, rhs.IsAllowedCommercialUsage);
-            context.Enter(nameof(lhs.OtherPermissionUrl)).Push(lhs.OtherPermissionUrl, rhs.OtherPermissionUrl);
-            context.Enter(nameof(lhs.License)).Push(lhs.License, rhs.License);
-            context.Enter(nameof(lhs.OtherLicenseUrl)).Push(lhs.OtherLicenseUrl, rhs.OtherLicenseUrl);
+            // AvatarPermission
+            context.Enter(nameof(lhs.AvatarPermission.AvatarUsage)).Push(lhs.AvatarPermission.AvatarUsage, rhs.AvatarPermission.AvatarUsage);
+            context.Enter(nameof(lhs.AvatarPermission.IsAllowedViolentUsage)).Push(lhs.AvatarPermission.IsAllowedViolentUsage, rhs.AvatarPermission.IsAllowedViolentUsage);
+            context.Enter(nameof(lhs.AvatarPermission.IsAllowedSexualUsage)).Push(lhs.AvatarPermission.IsAllowedSexualUsage, rhs.AvatarPermission.IsAllowedSexualUsage);
+            context.Enter(nameof(lhs.AvatarPermission.IsAllowedCommercialUsage)).Push(lhs.AvatarPermission.IsAllowedCommercialUsage, rhs.AvatarPermission.IsAllowedCommercialUsage);
+            context.Enter(nameof(lhs.AvatarPermission.CommercialUsage)).Push(lhs.AvatarPermission.CommercialUsage, rhs.AvatarPermission.CommercialUsage);
+            context.Enter(nameof(lhs.AvatarPermission.IsAllowedCommercialUsage)).Push(lhs.AvatarPermission.IsAllowedCommercialUsage, rhs.AvatarPermission.IsAllowedCommercialUsage);
+            context.Enter(nameof(lhs.AvatarPermission.IsAllowedCommercialUsage)).Push(lhs.AvatarPermission.IsAllowedCommercialUsage, rhs.AvatarPermission.IsAllowedCommercialUsage);
+            context.Enter(nameof(lhs.AvatarPermission.OtherPermissionUrl)).Push(lhs.AvatarPermission.OtherPermissionUrl, rhs.AvatarPermission.OtherPermissionUrl);
+            // RedistributionLicense
+            context.Enter(nameof(lhs.RedistributionLicense.License)).Push(lhs.RedistributionLicense.License, rhs.RedistributionLicense.License);
+            context.Enter(nameof(lhs.RedistributionLicense.OtherLicenseUrl)).Push(lhs.RedistributionLicense.OtherLicenseUrl, rhs.RedistributionLicense.OtherLicenseUrl);
         }
 
         static bool VrmBlendShapeEquals(ModelDiffContext context, BlendShape lhs, BlendShape rhs)
