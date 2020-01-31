@@ -79,38 +79,38 @@ UnityBuilder               VRMBuilder
 #### File IO
 - [x] spec1.0形式のRuntime&Editorエクスポート
 - [x] spec1.0形式のRuntime&Editorインポート
-- [] spec0.XのImport
+- [ ] spec0.XのImport
 - [x] Editorインポート時はScriptedImporterを使用する
 - [X] Export時に強制で正規化をかける
-- [] TPoseになっているかチェックする機能 
+- [ ] TPoseになっているかチェックする機能 
 #### Material
 - [X] MToonMaterialのインポート、エクスポート
 - [X] UnlitMaterialのインポート、エクスポート
-- [] PbrMaterialのインポート、エクスポート
+- [ ] PbrMaterialのインポート、エクスポート
 - [X] ColorPropertyをLinearに統一
 - [X] MapTextureをLinearて取り扱うように修正
-- [] jpegテクスチャ対応
-- [] 入出力テストの追加
+- [ ] jpegテクスチャ対応
+- [ ] 入出力テストの追加
 ### BlendShape
 - [X] Blink, LookAt, Mouthの排他設定を追加
 - [X] LookAtの対象はHead決め打ちに変更
 - [X] LookAtの座標系を右手系で出力するように修正
-- [] MaterialBindの仕様を整理する
-- [] FirstParsonのMesh指定をNodeIndexに変更する
-- [] BlendShapeBindの指定をNodeIndexに変更する
+- [ ] MaterialBindの仕様を整理する
+- [ ] FirstParsonのMesh指定をNodeIndexに変更する
+- [ ] BlendShapeBindの指定をNodeIndexに変更する
 ### SpringBone
 - [X] 座標系を右手系で出力するように修正
-- [] SpringBoneにカプセルコライダを追加する
-- [] 単独の拡張に移動させる(VRMC_springBone)
+- [ ] SpringBoneにカプセルコライダを追加する
+- [ ] 単独の拡張に移動させる(VRMC_springBone)
 ### Constraint
-- [] Constraintの追加
+- [ ] Constraintの追加
 ### Schema 
-- [] metaの内容変更に対応する
+- [ ] metaの内容変更に対応する
 ### Gltf拡張対応
 - [X] KHR_materials_unlit
-- [] KHR_texture_transform
-- [] KHR_materials_pbrSpecularGlossiness
-- [] MSFT_lod
-- [] KHR_compressed_texture_transmission?
+- [ ] KHR_texture_transform
+- [ ] KHR_materials_pbrSpecularGlossiness
+- [ ] MSFT_lod
+- [ ] KHR_compressed_texture_transmission?
 ### Other
-- [] IL2CPPのサポート、AOTの動作確認
+- [ ] IL2CPPのサポート、AOTの動作確認
