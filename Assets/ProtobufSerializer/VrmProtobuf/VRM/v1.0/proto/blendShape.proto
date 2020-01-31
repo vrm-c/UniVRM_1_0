@@ -1,0 +1,70 @@
+
+syntax = "proto3";
+package VrmProtobuf;
+
+import "google/protobuf/wrappers.proto";
+
+// Create animation (morph target & material color & texture offset)
+message BlendShape { repeated BlendShapeGroup blendShapeGroups = 1; }
+
+// Group morph target & material color & texture offset
+message BlendShapeGroup {
+  string name = 1;
+
+  // Functions of BlendShapeGroup
+  enum BlendShapePreset {
+    custom = 0;
+    aa = 1;
+    ih = 2;
+    ou = 3;
+    ee = 4;
+    oh = 5;
+    blink = 6;
+    joy = 7;
+    angry = 8;
+    sorrow = 9;
+    fun = 10;
+    lookUp = 11;
+    lookDown = 12;
+    lookLeft = 13;
+    lookRight = 14;
+    blinkLeft = 15;
+    blinkRight = 16;
+    neutral = 17;
+  }
+  BlendShapePreset preset = 2;
+
+  // Specify a morph target. "required": [ "mesh", "index", "weight" ]
+  message BlendShapeBind {
+    int32 mesh = 1;
+    int32 index = 2;
+    float weight = 3;
+  }
+  repeated BlendShapeBind binds = 3;
+
+  enum MaterialValueTypes {
+    color = 0;
+    uvScale = 1;
+    uvOffset = 2;
+  }
+
+  // Material animation references. "required": [ "material", "type", "targetValue" ]
+  message MaterialValue {
+    int32 material = 1;
+    MaterialValueTypes type = 2;
+    repeated float targetValue = 3;
+  }
+  repeated MaterialValue materialValues = 4;
+
+  // Interpret non-zero values ​​as 1
+  google.protobuf.BoolValue isBinary = 7;
+
+  // Disable Blink when this BlendShapeGroup is enabled
+  google.protobuf.BoolValue ignoreBlink = 8;
+
+  // Disable LookAt when this BlendShapeGroup is enabled
+  google.protobuf.BoolValue ignoreLookAt = 9;
+
+  // Disable Mouth when this BlendShapeGroup is enabled
+  google.protobuf.BoolValue ignoreMouth = 10;
+}

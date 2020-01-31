@@ -1,0 +1,380 @@
+syntax = "proto3";
+package VrmProtobuf;
+
+// [START csharp_declaration]
+option csharp_namespace = "VrmProtobuf";
+// [END csharp_declaration]
+
+// [START GLTF]
+message GLTF
+{
+  Asset asset = 1;
+  repeated Buffer buffers = 2;
+  repeated BufferView bufferViews = 3;
+  repeated Accessor accessors = 4;
+  repeated Texture textures = 5;
+  repeated Sampler samplers = 6;
+  repeated Image images = 7;
+  repeated Material materials = 8;
+  repeated Mesh meshes = 9;
+  repeated Node nodes = 10;
+  repeated Skin skins = 11;
+  uint32 scene = 12;
+  repeated Scene scenes = 13;
+
+  Extensions extensions = 20;
+  repeated string extensionsUsed = 21;
+}
+
+message Asset
+{
+  string generator = 1;
+  string version = 2;
+}
+
+message Buffer
+{
+  string uri = 1;
+  uint32 byteLength = 2;
+}
+
+message BufferView
+{
+  uint32 buffer = 1;
+  uint32 byteOffset = 2;
+  uint32 byteLength = 3;
+  uint32 target = 4;
+}
+
+message Accessor
+{
+  uint32 bufferView = 1;
+  uint32 byteOffset = 2;
+  string type = 3;
+  uint32 componentType = 4;
+  uint32 count = 5;
+  repeated float max = 6;
+  repeated float min = 7;
+  bool normalized = 8;
+}
+
+message Texture
+{
+  uint32 sampler = 1;
+  uint32 source = 2;
+}
+
+message Sampler
+{
+  uint32 magFilter = 1;
+  uint32 minFilter = 2;
+  uint32 wrapS = 3;
+  uint32 wrapT = 4;
+}
+
+message Image
+{
+  string name = 1;
+  string uri = 2;
+  uint32 bufferView = 3;
+  string mimeType = 4;
+}
+
+message Material
+{
+  string name = 1;
+  message PbrMetallicRoughness
+  {
+    message BaseColorTexture
+    {
+      uint32 index = 1;
+      uint32 texCoord = 2;
+    }
+    BaseColorTexture baseColorTexture = 1;
+    repeated float baseColorFactor = 2;
+    float metallicFactor = 3;
+    float roughnessFactor = 4;
+  }
+  PbrMetallicRoughness pbrMetallicRoughness = 2;
+  repeated float emissiveFactor = 3;
+  string alphaMode = 4;
+  float alphaCutoff = 5;
+  bool doubleSided = 6;
+
+  message KHR_materials_unlit
+  {
+  }
+
+  message Extensions
+  {
+    oneof KHR_materials_unlit_optional
+    {
+      KHR_materials_unlit KHR_materials_unlit = 1;
+    }
+  }
+  Extensions extensions = 7;
+}
+
+message Mesh
+{
+  string name = 1;
+  message Primitive
+  {
+    uint32 mode = 1;
+    uint32 indices = 2;
+    map<string, uint32> attributes = 3;
+    uint32 material = 4;
+  }
+  repeated Primitive primitives = 2;
+
+  message Target
+  {
+    uint32 POSITION = 1;
+    uint32 NORMAL = 2;
+    uint32 TANGENT = 3;
+  }
+  repeated Target targets = 3;
+
+  message Extras
+  {
+    repeated string targetNames = 1;
+  }
+  Extras extras = 4;
+}
+
+message Node
+{
+  string name = 1;
+  repeated uint32 children = 2;
+  repeated float translation = 3;
+  repeated float rotation = 4;
+  repeated float scale = 5;
+  uint32 mesh = 6;
+  uint32 skin = 7;
+}
+
+message Skin
+{
+  uint32 inverseBindMatrices = 1;
+  repeated uint32 joints = 2;
+  uint32 skeleton = 3;
+}
+
+message Scene
+{
+  repeated uint32 nodes = 1; 
+}
+
+message Extensions
+{
+  Vrm VRM = 1;
+}
+// [END GLTF]
+
+// [START VRM Extension]
+message Vrm
+{
+  string exporterVersion = 1;
+  string specVersion = 2;
+
+  Meta meta = 3;
+  Humanoid humanoid = 4;
+  FirstPerson firstPerson = 5;
+  BlendShapeMaster blendShapeMaster = 6;
+  SecondaryAnimation secondaryAnimation = 7;
+  repeated MaterialProperty materialProperties = 8;
+}
+
+message Meta
+{
+  string title = 1;
+  string version = 2;
+  string author = 3;
+  string contactInformation = 4;
+  string reference = 5;
+  uint32 texture = 6;
+  string allowedUserName = 7;
+  string violentUssageName = 8;
+  string sexualUssageName = 9;
+  string commercialUssageName = 10;
+  string otherPermissionUrl = 11;
+  string licenseName = 12;
+  string otherLicenseUrl = 13;
+}
+
+message Vector3
+{
+  float x = 1;
+  float y = 2;
+  float z = 3;
+}
+
+message Humanoid
+{
+  message HumanBone
+  {
+    string bone = 1;
+    int32 node = 2;
+    bool useDefaultValues = 3;
+
+    Vector3 min = 4;
+    Vector3 max = 5;
+    Vector3 center = 6;
+    
+    int32 axisLength = 7;
+  }
+  repeated HumanBone humanBones = 1;
+  float armStretch = 2;
+  float legStretch = 3;
+  float upperArmTwist = 4;
+  float lowerArmTwist = 5;
+  float upperLegTwist = 6;
+  float lowerLegTwist = 7;
+  float feetSpacing = 8;
+  bool hasTranslationDoF = 9;
+}
+
+message FirstPerson
+{
+  int32 firstPersonBone = 1;
+  Vector3 firstPersonBoneOffset = 2;
+
+  message MeshAnnotation{
+    int32 mesh = 1;
+    enum FirstPersonFlag
+    {
+      UNKNOWN = 0;
+      Auto = 1;
+      Both = 2;
+      ThirdPersonOnly = 3;
+      FirstPersonOnly = 4;
+    }
+    FirstPersonFlag firstPersonFlag = 2;
+  }
+  repeated MeshAnnotation meshAnnotations = 3;
+
+  enum LookAtType{
+    UNKNOWN = 0;
+    Bone = 1;
+    BlendShape = 2;
+  }
+  LookAtType lookAtTypeName = 4;
+
+  message LookAt
+  {
+    repeated float curve = 1;
+    float xRange = 2;
+    float yRange = 3;
+  }
+  LookAt lookAtHorizontalInner = 5;
+  LookAt lookAtHorizontalOuter = 6;
+  LookAt lookAtVerticalDown = 7;
+  LookAt lookAtVerticalUp = 8;
+}
+
+message BlendShapeMaster
+{
+  repeated BlendShapeGroup blendShapeGroups = 1;
+}
+
+message BlendShapeGroup
+{
+  string name = 1;
+  enum BlendShapePreset
+  {
+    unknown = 0;
+    neutral = 1;
+    a = 2;
+    i = 3;
+    u = 4;
+    e = 5;
+    o = 6;
+    blink = 7;
+    joy = 8;
+    angry = 9;
+    sorrow = 10;
+    fun = 11;
+    lookup = 12;
+    lookdown = 13;
+    lookleft = 14;
+    lookright = 15;
+    blink_l = 16;
+    blink_r = 17;
+  }
+  BlendShapePreset presetName = 2;
+
+  message BlendShapeBind
+  {
+    int32 mesh = 1;
+    int32 index = 2;
+    float weight = 3;
+  }
+  repeated BlendShapeBind binds = 3;
+
+  message MaterialValueBind
+  {
+    string materialName = 1;
+    string propertyName = 2;
+    repeated float targetValue = 3;
+  }
+  repeated MaterialValueBind materialValues = 4;
+  bool isBinary = 5;
+}
+
+message SecondaryAnimation
+{
+  message BoneGroup
+  {
+    string comment = 1;
+    float stiffiness = 2;
+    float gravityPower = 3;
+    Vector3 gravityDir = 4;
+    float dragForce = 5;
+    int32 center = 6;
+    float hitRadius = 7;
+    repeated uint32 bones = 8;
+    repeated uint32 colliderGroups = 9;
+  }
+  repeated BoneGroup boneGroups = 1;
+
+  message ColliderGroup
+  {
+    int32 node = 1;
+    message Collider
+    {
+      Vector3 offset = 1;
+      float radius = 2;
+    }
+    repeated Collider colliders = 2;
+  }
+  repeated ColliderGroup colliderGroups = 2;
+}
+
+message MaterialProperty
+{
+  string name = 1;
+  string shader = 2;
+  int32 renderQueue = 3;
+  map<string, float> floatProperties = 4;
+
+  message VectorProperty
+  {
+    repeated float _Color = 1;
+    repeated float _ShadeColor = 2;
+    repeated float _MainTex = 3;
+    repeated float _ShadeTexture = 4;
+    repeated float _BumpMap = 5;
+    repeated float _ReceiveShadowTexture = 6;
+    repeated float _ShadingGradeTexture = 7;
+    repeated float _SphereAdd = 8;
+    repeated float _EmissionColor = 9;
+    repeated float _EmissionMap = 10;
+    repeated float _OutlineWidthTexture = 11;
+    repeated float _OutlineColor = 12;
+  }
+  VectorProperty vectorProperties = 5;
+  map<string, uint32> textureProperties = 6;
+  map<string, bool> keywordMap = 7;
+  map<string, string> tagMap = 8;
+}
+// [END VRM Extension]

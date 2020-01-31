@@ -1,0 +1,27 @@
+
+syntax = "proto3";
+package VrmProtobuf;
+
+import "google/protobuf/wrappers.proto";
+
+// First-person perspective settings
+message FirstPerson
+{
+  // Mesh rendering annotation for cameras. "required": [ "mesh", "firstPersonType" ]
+  message MeshAnnotation{
+    // Specify mesh
+    int32 mesh = 1;
+    
+    enum FirstPersonType
+    {
+      auto = 0;
+      both = 1;
+      thirdPersonOnly = 2;
+      firstPersonOnly = 3;
+    }
+
+    // Mesh rendering mode
+    FirstPersonType firstPersonType = 2;
+  }
+  repeated MeshAnnotation meshAnnotations = 1;
+}

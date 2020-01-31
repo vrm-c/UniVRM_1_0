@@ -1,0 +1,21 @@
+
+syntax = "proto3";
+package VrmProtobuf;
+
+import "google/protobuf/wrappers.proto";
+
+// Correspondence between nodes and human bones
+message Humanoid
+{
+  // A human bone.
+  // "required": [ "node" ].
+  message humanBone
+  {
+    // Specify a node.
+    int32 node = 1;
+  }
+  // Human bone, node map.
+  // Human bone is enum.
+  // Must include required bones.
+  map<string, humanBone> humanBones = 1;
+}

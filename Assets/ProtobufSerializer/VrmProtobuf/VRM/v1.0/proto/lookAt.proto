@@ -1,0 +1,38 @@
+
+syntax = "proto3";
+package VrmProtobuf;
+
+// Input the range and scale the output. "required": [ "inputMaxValue", "outputScale" ]
+message LookAtRangeMap
+{
+  // Yaw and pitch angles (degrees) between the head bone forward vector and the eye gaze LookAt vector
+  float inputMaxValue = 1;
+
+  // Degree for LookAtType.bone, Weight for LookAtType.blendShape
+  float outputScale = 2;
+}
+
+// Eye gaze control
+message LookAt
+{
+  // The origin of LookAt. Position offset from the head bone
+  repeated float offsetFromHeadBone = 1;
+
+  enum LookAtType{
+    bone = 0;
+    blendShape = 1;
+  }
+  LookAtType lookAtType = 2;
+
+  // Horizontal inward movement. The left eye moves right. The right eye moves left.
+  LookAtRangeMap lookAtHorizontalInner = 3;
+
+  // Horizontal outward movement. The left eye moves left. The right eye moves right.
+  LookAtRangeMap lookAtHorizontalOuter = 4;
+
+  // Vertical downward movement. Both eyes move upwards 
+  LookAtRangeMap lookAtVerticalDown = 5;
+
+  // Vertical upward movement. Both eyes move downwards
+  LookAtRangeMap lookAtVerticalUp = 6;
+}
