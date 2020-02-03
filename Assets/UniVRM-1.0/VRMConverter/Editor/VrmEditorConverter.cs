@@ -111,7 +111,7 @@ namespace UniVRM10
                 {
                     return;
                 }
-                GetOrCreateEditor(GetVRMMetaObject()).DrawDefaultInspector();
+                GetOrCreateEditor(GetVRMMetaObject())?.DrawDefaultInspector();
             }
 
             public VisualElement CreateVisualElement()
