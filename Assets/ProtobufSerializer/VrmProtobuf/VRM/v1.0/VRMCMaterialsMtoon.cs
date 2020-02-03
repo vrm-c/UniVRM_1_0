@@ -25,7 +25,7 @@ namespace VrmProtobuf {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChpWUk1DX21hdGVyaWFsc19tdG9vbi5wcm90bxILVnJtUHJvdG9idWYaHmdv",
-            "b2dsZS9wcm90b2J1Zi93cmFwcGVycy5wcm90byLHDwoUVlJNQ19tYXRlcmlh",
+            "b2dsZS9wcm90b2J1Zi93cmFwcGVycy5wcm90byLXDQoUVlJNQ19tYXRlcmlh",
             "bHNfbXRvb24SDwoHdmVyc2lvbhgCIAEoCRJACgpyZW5kZXJNb2RlGAMgASgO",
             "MiwuVnJtUHJvdG9idWYuVlJNQ19tYXRlcmlhbHNfbXRvb24uUmVuZGVyTW9k",
             "ZRI8CghjdWxsTW9kZRgEIAEoDjIqLlZybVByb3RvYnVmLlZSTUNfbWF0ZXJp",
@@ -35,46 +35,40 @@ namespace VrmProtobuf {
             "ZUZhY3RvchgIIAMoAhI5ChRzaGFkZU11bHRpcGx5VGV4dHVyZRgJIAEoCzIb",
             "Lmdvb2dsZS5wcm90b2J1Zi5JbnQzMlZhbHVlEh0KFWN1dG91dFRocmVzaG9s",
             "ZEZhY3RvchgKIAEoAhIaChJzaGFkaW5nU2hpZnRGYWN0b3IYCyABKAISGgoS",
-            "c2hhZGluZ1Rvb255RmFjdG9yGAwgASgCEiUKHXNoYWRvd1JlY2VpdmVNdWx0",
-            "aXBsaWVyRmFjdG9yGA0gASgCEksKJnNoYWRvd1JlY2VpdmVNdWx0aXBsaWVy",
-            "TXVsdGlwbHlUZXh0dXJlGA4gASgLMhsuZ29vZ2xlLnByb3RvYnVmLkludDMy",
-            "VmFsdWUSKQohbGl0QW5kU2hhZGVNaXhpbmdNdWx0aXBsaWVyRmFjdG9yGBAg",
-            "ASgCEk8KKmxpdEFuZFNoYWRlTWl4aW5nTXVsdGlwbGllck11bHRpcGx5VGV4",
-            "dHVyZRgRIAEoCzIbLmdvb2dsZS5wcm90b2J1Zi5JbnQzMlZhbHVlEiMKG2xp",
-            "Z2h0Q29sb3JBdHRlbnVhdGlvbkZhY3RvchgSIAEoAhIZChFnaUludGVuc2l0",
-            "eUZhY3RvchgTIAEoAhIyCg1ub3JtYWxUZXh0dXJlGBQgASgLMhsuZ29vZ2xl",
-            "LnByb3RvYnVmLkludDMyVmFsdWUSGQoRbm9ybWFsU2NhbGVGYWN0b3IYFSAB",
-            "KAISFgoOZW1pc3Npb25GYWN0b3IYFiADKAISPAoXZW1pc3Npb25NdWx0aXBs",
-            "eVRleHR1cmUYFyABKAsyGy5nb29nbGUucHJvdG9idWYuSW50MzJWYWx1ZRI0",
-            "Cg9hZGRpdGl2ZVRleHR1cmUYGCABKAsyGy5nb29nbGUucHJvdG9idWYuSW50",
-            "MzJWYWx1ZRIRCglyaW1GYWN0b3IYGSADKAISNwoScmltTXVsdGlwbHlUZXh0",
-            "dXJlGBogASgLMhsuZ29vZ2xlLnByb3RvYnVmLkludDMyVmFsdWUSHAoUcmlt",
-            "TGlnaHRpbmdNaXhGYWN0b3IYGyABKAISHQoVcmltRnJlc25lbFBvd2VyRmFj",
-            "dG9yGBwgASgCEhUKDXJpbUxpZnRGYWN0b3IYHSABKAISTAoQb3V0bGluZVdp",
-            "ZHRoTW9kZRgeIAEoDjIyLlZybVByb3RvYnVmLlZSTUNfbWF0ZXJpYWxzX210",
-            "b29uLk91dGxpbmVXaWR0aE1vZGUSGgoSb3V0bGluZVdpZHRoRmFjdG9yGB8g",
-            "ASgCEkAKG291dGxpbmVXaWR0aE11bHRpcGx5VGV4dHVyZRggIAEoCzIbLmdv",
-            "b2dsZS5wcm90b2J1Zi5JbnQzMlZhbHVlEiYKHm91dGxpbmVTY2FsZWRNYXhE",
-            "aXN0YW5jZUZhY3RvchghIAEoAhJMChBvdXRsaW5lQ29sb3JNb2RlGCIgASgO",
-            "MjIuVnJtUHJvdG9idWYuVlJNQ19tYXRlcmlhbHNfbXRvb24uT3V0bGluZUNv",
-            "bG9yTW9kZRIVCg1vdXRsaW5lRmFjdG9yGCMgAygCEiAKGG91dGxpbmVMaWdo",
-            "dGluZ01peEZhY3RvchgkIAEoAhIoCiBtYWluVGV4dHVyZUxlZnRCb3R0b21P",
-            "cmlnaW5TY2FsZRglIAMoAhIpCiFtYWluVGV4dHVyZUxlZnRCb3R0b21Pcmln",
-            "aW5PZmZzZXQYJiADKAISOwoWdXZBbmltYXRpb25NYXNrVGV4dHVyZRgnIAEo",
-            "CzIbLmdvb2dsZS5wcm90b2J1Zi5JbnQzMlZhbHVlEiUKHXV2QW5pbWF0aW9u",
-            "U2Nyb2xsWFNwZWVkRmFjdG9yGCggASgCEiUKHXV2QW5pbWF0aW9uU2Nyb2xs",
-            "WVNwZWVkRmFjdG9yGCkgASgCEiYKHnV2QW5pbWF0aW9uUm90YXRpb25TcGVl",
-            "ZEZhY3RvchgqIAEoAiJQCgpSZW5kZXJNb2RlEgoKBm9wYXF1ZRAAEgoKBmN1",
-            "dG91dBABEg8KC3RyYW5zcGFyZW50EAISGQoVdHJhbnNwYXJlbnRXaXRoWldy",
-            "aXRlEAMiKAoIQ3VsbE1vZGUSBwoDb2ZmEAASCQoFZnJvbnQQARIICgRiYWNr",
-            "EAIiSQoQT3V0bGluZVdpZHRoTW9kZRIICgRub25lEAASFAoQd29ybGRDb29y",
-            "ZGluYXRlcxABEhUKEXNjcmVlbkNvb3JkaW5hdGVzEAIiNQoQT3V0bGluZUNv",
-            "bG9yTW9kZRIOCgpmaXhlZENvbG9yEAASEQoNbWl4ZWRMaWdodGluZxABYgZw",
-            "cm90bzM="));
+            "c2hhZGluZ1Rvb255RmFjdG9yGAwgASgCEiMKG2xpZ2h0Q29sb3JBdHRlbnVh",
+            "dGlvbkZhY3RvchgSIAEoAhIZChFnaUludGVuc2l0eUZhY3RvchgTIAEoAhIy",
+            "Cg1ub3JtYWxUZXh0dXJlGBQgASgLMhsuZ29vZ2xlLnByb3RvYnVmLkludDMy",
+            "VmFsdWUSGQoRbm9ybWFsU2NhbGVGYWN0b3IYFSABKAISFgoOZW1pc3Npb25G",
+            "YWN0b3IYFiADKAISPAoXZW1pc3Npb25NdWx0aXBseVRleHR1cmUYFyABKAsy",
+            "Gy5nb29nbGUucHJvdG9idWYuSW50MzJWYWx1ZRI0Cg9hZGRpdGl2ZVRleHR1",
+            "cmUYGCABKAsyGy5nb29nbGUucHJvdG9idWYuSW50MzJWYWx1ZRIRCglyaW1G",
+            "YWN0b3IYGSADKAISNwoScmltTXVsdGlwbHlUZXh0dXJlGBogASgLMhsuZ29v",
+            "Z2xlLnByb3RvYnVmLkludDMyVmFsdWUSHAoUcmltTGlnaHRpbmdNaXhGYWN0",
+            "b3IYGyABKAISHQoVcmltRnJlc25lbFBvd2VyRmFjdG9yGBwgASgCEhUKDXJp",
+            "bUxpZnRGYWN0b3IYHSABKAISTAoQb3V0bGluZVdpZHRoTW9kZRgeIAEoDjIy",
+            "LlZybVByb3RvYnVmLlZSTUNfbWF0ZXJpYWxzX210b29uLk91dGxpbmVXaWR0",
+            "aE1vZGUSGgoSb3V0bGluZVdpZHRoRmFjdG9yGB8gASgCEkAKG291dGxpbmVX",
+            "aWR0aE11bHRpcGx5VGV4dHVyZRggIAEoCzIbLmdvb2dsZS5wcm90b2J1Zi5J",
+            "bnQzMlZhbHVlEiYKHm91dGxpbmVTY2FsZWRNYXhEaXN0YW5jZUZhY3Rvchgh",
+            "IAEoAhJMChBvdXRsaW5lQ29sb3JNb2RlGCIgASgOMjIuVnJtUHJvdG9idWYu",
+            "VlJNQ19tYXRlcmlhbHNfbXRvb24uT3V0bGluZUNvbG9yTW9kZRIVCg1vdXRs",
+            "aW5lRmFjdG9yGCMgAygCEiAKGG91dGxpbmVMaWdodGluZ01peEZhY3Rvchgk",
+            "IAEoAhIoCiBtYWluVGV4dHVyZUxlZnRCb3R0b21PcmlnaW5TY2FsZRglIAMo",
+            "AhIpCiFtYWluVGV4dHVyZUxlZnRCb3R0b21PcmlnaW5PZmZzZXQYJiADKAIS",
+            "OwoWdXZBbmltYXRpb25NYXNrVGV4dHVyZRgnIAEoCzIbLmdvb2dsZS5wcm90",
+            "b2J1Zi5JbnQzMlZhbHVlEiUKHXV2QW5pbWF0aW9uU2Nyb2xsWFNwZWVkRmFj",
+            "dG9yGCggASgCEiUKHXV2QW5pbWF0aW9uU2Nyb2xsWVNwZWVkRmFjdG9yGCkg",
+            "ASgCEiYKHnV2QW5pbWF0aW9uUm90YXRpb25TcGVlZEZhY3RvchgqIAEoAiJQ",
+            "CgpSZW5kZXJNb2RlEgoKBm9wYXF1ZRAAEgoKBmN1dG91dBABEg8KC3RyYW5z",
+            "cGFyZW50EAISGQoVdHJhbnNwYXJlbnRXaXRoWldyaXRlEAMiKAoIQ3VsbE1v",
+            "ZGUSBwoDb2ZmEAASCQoFZnJvbnQQARIICgRiYWNrEAIiSQoQT3V0bGluZVdp",
+            "ZHRoTW9kZRIICgRub25lEAASFAoQd29ybGRDb29yZGluYXRlcxABEhUKEXNj",
+            "cmVlbkNvb3JkaW5hdGVzEAIiNQoQT3V0bGluZUNvbG9yTW9kZRIOCgpmaXhl",
+            "ZENvbG9yEAASEQoNbWl4ZWRMaWdodGluZxABYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Google.Protobuf.WellKnownTypes.WrappersReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.VRMC_materials_mtoon), global::VrmProtobuf.VRMC_materials_mtoon.Parser, new[]{ "Version", "RenderMode", "CullMode", "RenderQueueOffsetNumber", "LitFactor", "LitMultiplyTexture", "ShadeFactor", "ShadeMultiplyTexture", "CutoutThresholdFactor", "ShadingShiftFactor", "ShadingToonyFactor", "ShadowReceiveMultiplierFactor", "ShadowReceiveMultiplierMultiplyTexture", "LitAndShadeMixingMultiplierFactor", "LitAndShadeMixingMultiplierMultiplyTexture", "LightColorAttenuationFactor", "GiIntensityFactor", "NormalTexture", "NormalScaleFactor", "EmissionFactor", "EmissionMultiplyTexture", "AdditiveTexture", "RimFactor", "RimMultiplyTexture", "RimLightingMixFactor", "RimFresnelPowerFactor", "RimLiftFactor", "OutlineWidthMode", "OutlineWidthFactor", "OutlineWidthMultiplyTexture", "OutlineScaledMaxDistanceFactor", "OutlineColorMode", "OutlineFactor", "OutlineLightingMixFactor", "MainTextureLeftBottomOriginScale", "MainTextureLeftBottomOriginOffset", "UvAnimationMaskTexture", "UvAnimationScrollXSpeedFactor", "UvAnimationScrollYSpeedFactor", "UvAnimationRotationSpeedFactor" }, null, new[]{ typeof(global::VrmProtobuf.VRMC_materials_mtoon.Types.RenderMode), typeof(global::VrmProtobuf.VRMC_materials_mtoon.Types.CullMode), typeof(global::VrmProtobuf.VRMC_materials_mtoon.Types.OutlineWidthMode), typeof(global::VrmProtobuf.VRMC_materials_mtoon.Types.OutlineColorMode) }, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.VRMC_materials_mtoon), global::VrmProtobuf.VRMC_materials_mtoon.Parser, new[]{ "Version", "RenderMode", "CullMode", "RenderQueueOffsetNumber", "LitFactor", "LitMultiplyTexture", "ShadeFactor", "ShadeMultiplyTexture", "CutoutThresholdFactor", "ShadingShiftFactor", "ShadingToonyFactor", "LightColorAttenuationFactor", "GiIntensityFactor", "NormalTexture", "NormalScaleFactor", "EmissionFactor", "EmissionMultiplyTexture", "AdditiveTexture", "RimFactor", "RimMultiplyTexture", "RimLightingMixFactor", "RimFresnelPowerFactor", "RimLiftFactor", "OutlineWidthMode", "OutlineWidthFactor", "OutlineWidthMultiplyTexture", "OutlineScaledMaxDistanceFactor", "OutlineColorMode", "OutlineFactor", "OutlineLightingMixFactor", "MainTextureLeftBottomOriginScale", "MainTextureLeftBottomOriginOffset", "UvAnimationMaskTexture", "UvAnimationScrollXSpeedFactor", "UvAnimationScrollYSpeedFactor", "UvAnimationRotationSpeedFactor" }, null, new[]{ typeof(global::VrmProtobuf.VRMC_materials_mtoon.Types.RenderMode), typeof(global::VrmProtobuf.VRMC_materials_mtoon.Types.CullMode), typeof(global::VrmProtobuf.VRMC_materials_mtoon.Types.OutlineWidthMode), typeof(global::VrmProtobuf.VRMC_materials_mtoon.Types.OutlineColorMode) }, null, null)
           }));
     }
     #endregion
@@ -117,10 +111,6 @@ namespace VrmProtobuf {
       cutoutThresholdFactor_ = other.cutoutThresholdFactor_;
       shadingShiftFactor_ = other.shadingShiftFactor_;
       shadingToonyFactor_ = other.shadingToonyFactor_;
-      shadowReceiveMultiplierFactor_ = other.shadowReceiveMultiplierFactor_;
-      ShadowReceiveMultiplierMultiplyTexture = other.ShadowReceiveMultiplierMultiplyTexture;
-      litAndShadeMixingMultiplierFactor_ = other.litAndShadeMixingMultiplierFactor_;
-      LitAndShadeMixingMultiplierMultiplyTexture = other.LitAndShadeMixingMultiplierMultiplyTexture;
       lightColorAttenuationFactor_ = other.lightColorAttenuationFactor_;
       giIntensityFactor_ = other.giIntensityFactor_;
       NormalTexture = other.NormalTexture;
@@ -286,57 +276,15 @@ namespace VrmProtobuf {
       }
     }
 
-    /// <summary>Field number for the "shadowReceiveMultiplierFactor" field.</summary>
-    public const int ShadowReceiveMultiplierFactorFieldNumber = 13;
-    private float shadowReceiveMultiplierFactor_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public float ShadowReceiveMultiplierFactor {
-      get { return shadowReceiveMultiplierFactor_; }
-      set {
-        shadowReceiveMultiplierFactor_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "shadowReceiveMultiplierMultiplyTexture" field.</summary>
-    public const int ShadowReceiveMultiplierMultiplyTextureFieldNumber = 14;
-    private static readonly pb::FieldCodec<int?> _single_shadowReceiveMultiplierMultiplyTexture_codec = pb::FieldCodec.ForStructWrapper<int>(114);
-    private int? shadowReceiveMultiplierMultiplyTexture_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int? ShadowReceiveMultiplierMultiplyTexture {
-      get { return shadowReceiveMultiplierMultiplyTexture_; }
-      set {
-        shadowReceiveMultiplierMultiplyTexture_ = value;
-      }
-    }
-
-
-    /// <summary>Field number for the "litAndShadeMixingMultiplierFactor" field.</summary>
-    public const int LitAndShadeMixingMultiplierFactorFieldNumber = 16;
-    private float litAndShadeMixingMultiplierFactor_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public float LitAndShadeMixingMultiplierFactor {
-      get { return litAndShadeMixingMultiplierFactor_; }
-      set {
-        litAndShadeMixingMultiplierFactor_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "litAndShadeMixingMultiplierMultiplyTexture" field.</summary>
-    public const int LitAndShadeMixingMultiplierMultiplyTextureFieldNumber = 17;
-    private static readonly pb::FieldCodec<int?> _single_litAndShadeMixingMultiplierMultiplyTexture_codec = pb::FieldCodec.ForStructWrapper<int>(138);
-    private int? litAndShadeMixingMultiplierMultiplyTexture_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int? LitAndShadeMixingMultiplierMultiplyTexture {
-      get { return litAndShadeMixingMultiplierMultiplyTexture_; }
-      set {
-        litAndShadeMixingMultiplierMultiplyTexture_ = value;
-      }
-    }
-
-
     /// <summary>Field number for the "lightColorAttenuationFactor" field.</summary>
     public const int LightColorAttenuationFactorFieldNumber = 18;
     private float lightColorAttenuationFactor_;
+    /// <summary>
+    /// float shadowReceiveMultiplierFactor = 13;
+    /// google.protobuf.Int32Value shadowReceiveMultiplierMultiplyTexture = 14;
+    /// float litAndShadeMixingMultiplierFactor = 16;
+    /// google.protobuf.Int32Value litAndShadeMixingMultiplierMultiplyTexture = 17;
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public float LightColorAttenuationFactor {
       get { return lightColorAttenuationFactor_; }
@@ -655,10 +603,6 @@ namespace VrmProtobuf {
       if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(CutoutThresholdFactor, other.CutoutThresholdFactor)) return false;
       if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(ShadingShiftFactor, other.ShadingShiftFactor)) return false;
       if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(ShadingToonyFactor, other.ShadingToonyFactor)) return false;
-      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(ShadowReceiveMultiplierFactor, other.ShadowReceiveMultiplierFactor)) return false;
-      if (ShadowReceiveMultiplierMultiplyTexture != other.ShadowReceiveMultiplierMultiplyTexture) return false;
-      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(LitAndShadeMixingMultiplierFactor, other.LitAndShadeMixingMultiplierFactor)) return false;
-      if (LitAndShadeMixingMultiplierMultiplyTexture != other.LitAndShadeMixingMultiplierMultiplyTexture) return false;
       if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(LightColorAttenuationFactor, other.LightColorAttenuationFactor)) return false;
       if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(GiIntensityFactor, other.GiIntensityFactor)) return false;
       if (NormalTexture != other.NormalTexture) return false;
@@ -701,10 +645,6 @@ namespace VrmProtobuf {
       if (CutoutThresholdFactor != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(CutoutThresholdFactor);
       if (ShadingShiftFactor != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(ShadingShiftFactor);
       if (ShadingToonyFactor != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(ShadingToonyFactor);
-      if (ShadowReceiveMultiplierFactor != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(ShadowReceiveMultiplierFactor);
-      if (shadowReceiveMultiplierMultiplyTexture_ != null) hash ^= ShadowReceiveMultiplierMultiplyTexture.GetHashCode();
-      if (LitAndShadeMixingMultiplierFactor != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(LitAndShadeMixingMultiplierFactor);
-      if (litAndShadeMixingMultiplierMultiplyTexture_ != null) hash ^= LitAndShadeMixingMultiplierMultiplyTexture.GetHashCode();
       if (LightColorAttenuationFactor != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(LightColorAttenuationFactor);
       if (GiIntensityFactor != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(GiIntensityFactor);
       if (normalTexture_ != null) hash ^= NormalTexture.GetHashCode();
@@ -778,20 +718,6 @@ namespace VrmProtobuf {
       if (ShadingToonyFactor != 0F) {
         output.WriteRawTag(101);
         output.WriteFloat(ShadingToonyFactor);
-      }
-      if (ShadowReceiveMultiplierFactor != 0F) {
-        output.WriteRawTag(109);
-        output.WriteFloat(ShadowReceiveMultiplierFactor);
-      }
-      if (shadowReceiveMultiplierMultiplyTexture_ != null) {
-        _single_shadowReceiveMultiplierMultiplyTexture_codec.WriteTagAndValue(output, ShadowReceiveMultiplierMultiplyTexture);
-      }
-      if (LitAndShadeMixingMultiplierFactor != 0F) {
-        output.WriteRawTag(133, 1);
-        output.WriteFloat(LitAndShadeMixingMultiplierFactor);
-      }
-      if (litAndShadeMixingMultiplierMultiplyTexture_ != null) {
-        _single_litAndShadeMixingMultiplierMultiplyTexture_codec.WriteTagAndValue(output, LitAndShadeMixingMultiplierMultiplyTexture);
       }
       if (LightColorAttenuationFactor != 0F) {
         output.WriteRawTag(149, 1);
@@ -909,18 +835,6 @@ namespace VrmProtobuf {
       if (ShadingToonyFactor != 0F) {
         size += 1 + 4;
       }
-      if (ShadowReceiveMultiplierFactor != 0F) {
-        size += 1 + 4;
-      }
-      if (shadowReceiveMultiplierMultiplyTexture_ != null) {
-        size += _single_shadowReceiveMultiplierMultiplyTexture_codec.CalculateSizeWithTag(ShadowReceiveMultiplierMultiplyTexture);
-      }
-      if (LitAndShadeMixingMultiplierFactor != 0F) {
-        size += 2 + 4;
-      }
-      if (litAndShadeMixingMultiplierMultiplyTexture_ != null) {
-        size += _single_litAndShadeMixingMultiplierMultiplyTexture_codec.CalculateSizeWithTag(LitAndShadeMixingMultiplierMultiplyTexture);
-      }
       if (LightColorAttenuationFactor != 0F) {
         size += 2 + 4;
       }
@@ -1029,22 +943,6 @@ namespace VrmProtobuf {
       }
       if (other.ShadingToonyFactor != 0F) {
         ShadingToonyFactor = other.ShadingToonyFactor;
-      }
-      if (other.ShadowReceiveMultiplierFactor != 0F) {
-        ShadowReceiveMultiplierFactor = other.ShadowReceiveMultiplierFactor;
-      }
-      if (other.shadowReceiveMultiplierMultiplyTexture_ != null) {
-        if (shadowReceiveMultiplierMultiplyTexture_ == null || other.ShadowReceiveMultiplierMultiplyTexture != 0) {
-          ShadowReceiveMultiplierMultiplyTexture = other.ShadowReceiveMultiplierMultiplyTexture;
-        }
-      }
-      if (other.LitAndShadeMixingMultiplierFactor != 0F) {
-        LitAndShadeMixingMultiplierFactor = other.LitAndShadeMixingMultiplierFactor;
-      }
-      if (other.litAndShadeMixingMultiplierMultiplyTexture_ != null) {
-        if (litAndShadeMixingMultiplierMultiplyTexture_ == null || other.LitAndShadeMixingMultiplierMultiplyTexture != 0) {
-          LitAndShadeMixingMultiplierMultiplyTexture = other.LitAndShadeMixingMultiplierMultiplyTexture;
-        }
       }
       if (other.LightColorAttenuationFactor != 0F) {
         LightColorAttenuationFactor = other.LightColorAttenuationFactor;
@@ -1184,28 +1082,6 @@ namespace VrmProtobuf {
           }
           case 101: {
             ShadingToonyFactor = input.ReadFloat();
-            break;
-          }
-          case 109: {
-            ShadowReceiveMultiplierFactor = input.ReadFloat();
-            break;
-          }
-          case 114: {
-            int? value = _single_shadowReceiveMultiplierMultiplyTexture_codec.Read(input);
-            if (shadowReceiveMultiplierMultiplyTexture_ == null || value != 0) {
-              ShadowReceiveMultiplierMultiplyTexture = value;
-            }
-            break;
-          }
-          case 133: {
-            LitAndShadeMixingMultiplierFactor = input.ReadFloat();
-            break;
-          }
-          case 138: {
-            int? value = _single_litAndShadeMixingMultiplierMultiplyTexture_codec.Read(input);
-            if (litAndShadeMixingMultiplierMultiplyTexture_ == null || value != 0) {
-              LitAndShadeMixingMultiplierMultiplyTexture = value;
-            }
             break;
           }
           case 149: {

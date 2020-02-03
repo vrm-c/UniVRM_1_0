@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 
@@ -11,13 +12,16 @@ namespace UniVRM10
 
         #region Info
         [SerializeField]
-        public string Title;
+        public string Name;
 
         [SerializeField]
         public string Version;
 
         [SerializeField]
-        public string Author;
+        public string Copyrights;
+
+        [SerializeField]
+        public string[] Authors;
 
         [SerializeField]
         public string ContactInformation;
@@ -29,18 +33,24 @@ namespace UniVRM10
         public Texture2D Thumbnail;
         #endregion
 
-        #region Permission
+        #region AvatarPermission
         [SerializeField, Tooltip("A person who can perform with this avatar")]
-        public VrmLib.MetaAllowedUser AllowedUser;
+        public VrmLib.AvatarUsageType AllowedUser;
 
         [SerializeField, Tooltip("Violent acts using this avatar")]
-        public bool ViolentUssage;
+        public bool ViolentUsage;
 
         [SerializeField, Tooltip("Sexuality acts using this avatar")]
-        public bool SexualUssage;
+        public bool SexualUsage;
 
         [SerializeField, Tooltip("For commercial use")]
-        public bool CommercialUssage;
+        public VrmLib.CommercialUsageType CommercialUsage;
+
+        [SerializeField]
+        public bool GameUsage;
+
+        [SerializeField]
+        public bool PoliticalOrReligiousUsage;
 
         [SerializeField, Tooltip("Other License Url")]
         public string OtherPermissionUrl;
@@ -48,7 +58,13 @@ namespace UniVRM10
 
         #region Distribution License
         [SerializeField]
-        public VrmLib.MetaLicenseType LicenseType;
+        public VrmLib.CreditNotationType CreditNotation;
+
+        [SerializeField]
+        public bool Redistribution;
+
+        [SerializeField]
+        public VrmLib.ModificationLicenseType ModificationLicense;
 
         [SerializeField]
         public string OtherLicenseUrl;
@@ -56,17 +72,17 @@ namespace UniVRM10
 
         public IEnumerable<string> Validate()
         {
-            if (string.IsNullOrEmpty(Title))
+            if (string.IsNullOrEmpty(Name))
             {
-                yield return $"require Title";
+                yield return $"require Name";
             }
             if (string.IsNullOrEmpty(Version))
             {
                 yield return $"require Version";
             }
-            if (string.IsNullOrEmpty(Author))
+            if (Authors == null || Authors.All(x => string.IsNullOrEmpty(x)))
             {
-                yield return $"require Author";
+                yield return $"require Authors";
             }
         }
     }

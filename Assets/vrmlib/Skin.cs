@@ -23,7 +23,6 @@ namespace VrmLib
 
         public Skin()
         {
-            var a = 0;
         }
 
         /// <summary>
@@ -111,11 +110,6 @@ namespace VrmLib
             if (!dstNormal.IsEmpty)
             {
                 useNormal = vertexBuffer.Normals != null && dstNormal.Length == dstPosition.Length;
-            }
-
-            if (joints.Length < position.Length || weights.Length < position.Length)
-            {
-                var a = 0;
             }
 
             for (int i = 0; i < position.Length; ++i)

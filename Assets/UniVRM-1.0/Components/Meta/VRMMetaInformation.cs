@@ -29,7 +29,7 @@ namespace UniVRM10
 
         #region License
         [SerializeField, Header("License")]
-        public VrmLib.MetaLicenseType LicenseType;
+        public VrmLib.DistributionLicenseType LicenseType;
 
         [SerializeField]
         public string OtherLicenseUrl;

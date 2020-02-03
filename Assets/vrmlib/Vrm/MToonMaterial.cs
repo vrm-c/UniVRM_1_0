@@ -54,7 +54,7 @@ namespace VrmLib
         {
         }
 
-        public const string ExtensionName = "VRMC_materials_mtoon";
+        public new const string ExtensionName = "VRMC_materials_mtoon";
 
         public override string ToString()
         {

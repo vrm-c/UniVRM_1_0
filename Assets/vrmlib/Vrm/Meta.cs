@@ -1,32 +1,33 @@
+using System.Collections.Generic;
+using System.Linq;
+
 namespace VrmLib
 {
-    public enum MetaAllowedUser
-    {
-        OnlyAuthor,
-        ExplicitlyLicensedPerson,
-        Everyone,
-    }
-
-    public enum MetaLicenseType
-    {
-        Redistribution_Prohibited,
-        CC0,
-        CC_BY,
-        CC_BY_NC,
-        CC_BY_SA,
-        CC_BY_NC_SA,
-        CC_BY_ND,
-        CC_BY_NC_ND,
-        Other
-    }
-
     public class Meta
     {
-        public string Title = "";
+        public string Name = "";
 
         public string Version = "";
 
-        public string Author = "";
+        // 1.0 added
+        public string Copyrights = "";
+
+        // 1.0 added
+        public List<string> Authors = new List<string>();
+
+        // backward compatibility
+        public string Author
+        {
+            get => Authors.FirstOrDefault();
+            set
+            {
+                Authors.Clear();
+                if (!string.IsNullOrEmpty(value))
+                {
+                    Authors.Add(value);
+                }
+            }
+        }
 
         public string ContactInformation = "";
 
@@ -34,22 +35,8 @@ namespace VrmLib
 
         public Image Thumbnail;
 
-        #region Ussage Permission
-        public MetaAllowedUser AllowedUser;
+        public IAvatarPermission AvatarPermission;
 
-        public bool IsAllowedViolentUsage;
-
-        public bool IsAllowedSexualUsage;
-
-        public bool IsAllowedCommercialUsage;
-
-        public string OtherPermissionUrl = "";
-        #endregion
-
-        #region Distribution License
-        public MetaLicenseType License;
-
-        public string OtherLicenseUrl = "";
-        #endregion
+        public IRedistributionLicense RedistributionLicense;
     }
 }

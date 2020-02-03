@@ -102,21 +102,24 @@ namespace VrmLib.MToon
     {
         public float ShadingShiftValue;
         public float ShadingToonyValue;
-        // ToDo: Delete at 1.0 
-        //public float ShadowReceiveMultiplierValue;
-        //public TextureInfo ShadowReceiveMultiplierMultiplyTexture;
-        //public float LitAndShadeMixingMultiplierValue;
-        //public TextureInfo LitAndShadeMixingMultiplierMultiplyTexture;
+
+        #region TODO: Delete at 1.0。0.XXでは引き続き維持
+        public float ShadowReceiveMultiplierValue;
+        public TextureInfo ShadowReceiveMultiplierMultiplyTexture;
+        public float LitAndShadeMixingMultiplierValue;
+        public TextureInfo LitAndShadeMixingMultiplierMultiplyTexture;
+        #endregion
 
         public bool Equals(LitAndShadeMixingDefinition other)
         {
             return other != null &&
                    ShadingShiftValue == other.ShadingShiftValue &&
-                   ShadingToonyValue == other.ShadingToonyValue;
-                   //ShadowReceiveMultiplierValue == other.ShadowReceiveMultiplierValue &&
-                   //EqualityComparer<TextureInfo>.Default.Equals(ShadowReceiveMultiplierMultiplyTexture, other.ShadowReceiveMultiplierMultiplyTexture) &&
-                   //LitAndShadeMixingMultiplierValue == other.LitAndShadeMixingMultiplierValue &&
-                   //EqualityComparer<TextureInfo>.Default.Equals(LitAndShadeMixingMultiplierMultiplyTexture, other.LitAndShadeMixingMultiplierMultiplyTexture);
+                   ShadingToonyValue == other.ShadingToonyValue
+            && ShadowReceiveMultiplierValue == other.ShadowReceiveMultiplierValue
+            && EqualityComparer<TextureInfo>.Default.Equals(ShadowReceiveMultiplierMultiplyTexture, other.ShadowReceiveMultiplierMultiplyTexture)
+            && LitAndShadeMixingMultiplierValue == other.LitAndShadeMixingMultiplierValue
+            && EqualityComparer<TextureInfo>.Default.Equals(LitAndShadeMixingMultiplierMultiplyTexture, other.LitAndShadeMixingMultiplierMultiplyTexture)
+            ;
         }
     }
 

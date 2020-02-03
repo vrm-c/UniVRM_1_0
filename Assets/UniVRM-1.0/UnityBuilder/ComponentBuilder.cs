@@ -93,9 +93,10 @@ namespace UniVRM10
                 var meta = model.Vrm.Meta;
                 var metaComponent = asset.Root.AddComponent<UniVRM10.VRMMeta>();
                 metaComponent.Meta = ScriptableObject.CreateInstance<UniVRM10.VRMMetaObject>();
-                metaComponent.Meta.Title = meta.Title;
+                metaComponent.Meta.Name = meta.Name;
                 metaComponent.Meta.Version = meta.Version;
-                metaComponent.Meta.Author = meta.Author;
+                metaComponent.Meta.Copyrights = meta.Copyrights;
+                metaComponent.Meta.Authors = meta.Authors.ToArray();
                 metaComponent.Meta.ContactInformation = meta.ContactInformation;
                 metaComponent.Meta.Reference = meta.Reference;
                 var thumbnailImages = asset.Map.Textures.Where(x => ((VrmLib.ImageTexture)x.Key).Image == meta.Thumbnail);
@@ -111,13 +112,21 @@ namespace UniVRM10
                     metaComponent.Meta.Thumbnail = thumbnail;
                     asset.Textures.Add(thumbnail);
                 }
-                metaComponent.Meta.AllowedUser = meta.AllowedUser;
-                metaComponent.Meta.ViolentUssage = meta.IsAllowedViolentUsage;
-                metaComponent.Meta.SexualUssage = meta.IsAllowedSexualUsage;
-                metaComponent.Meta.CommercialUssage = meta.IsAllowedCommercialUsage;
-                metaComponent.Meta.OtherPermissionUrl = meta.OtherPermissionUrl;
-                metaComponent.Meta.LicenseType = meta.License;
-                metaComponent.Meta.OtherLicenseUrl = meta.OtherLicenseUrl;
+                // avatar permission
+                metaComponent.Meta.AllowedUser = meta.AvatarPermission.AvatarUsage;
+                metaComponent.Meta.ViolentUsage = meta.AvatarPermission.IsAllowedViolentUsage;
+                metaComponent.Meta.SexualUsage = meta.AvatarPermission.IsAllowedSexualUsage;
+                metaComponent.Meta.CommercialUsage = meta.AvatarPermission.CommercialUsage;
+                metaComponent.Meta.GameUsage = meta.AvatarPermission.IsAllowedGameUsage;
+                metaComponent.Meta.PoliticalOrReligiousUsage = meta.AvatarPermission.IsAllowedPoliticalOrReligiousUsage;
+                metaComponent.Meta.OtherPermissionUrl = meta.AvatarPermission.OtherPermissionUrl;
+
+                // redistribution license
+                metaComponent.Meta.CreditNotation = meta.RedistributionLicense.CreditNotation;
+                metaComponent.Meta.ModificationLicense = meta.RedistributionLicense.ModificationLicense;
+                metaComponent.Meta.Redistribution = meta.RedistributionLicense.IsAllowRedistribution;
+                metaComponent.Meta.OtherLicenseUrl = meta.RedistributionLicense.OtherLicenseUrl;
+
                 asset.ScriptableObjects.Add(metaComponent.Meta);
             }
 
