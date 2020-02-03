@@ -28,7 +28,7 @@ ColorSpaceSetting: Linear
 +-------------------+
 |VrmLib.Model       |
 +-------------------+
- ^                 |  [import]
+ ^                 |
  | VrmLib          |
  |[import]         v[export]
 +-------------------+
