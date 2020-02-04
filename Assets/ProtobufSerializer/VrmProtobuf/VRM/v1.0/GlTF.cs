@@ -127,15 +127,16 @@ namespace VrmProtobuf {
             "YWx1ZRIuCgltaW5GaWx0ZXIYAiABKAsyGy5nb29nbGUucHJvdG9idWYuSW50",
             "MzJWYWx1ZRIqCgV3cmFwUxgDIAEoCzIbLmdvb2dsZS5wcm90b2J1Zi5JbnQz",
             "MlZhbHVlEioKBXdyYXBUGAQgASgLMhsuZ29vZ2xlLnByb3RvYnVmLkludDMy",
-            "VmFsdWUiFgoFU2NlbmUSDQoFbm9kZXMYASADKAUijQEKBFNraW4SOAoTaW52",
-            "ZXJzZUJpbmRNYXRyaWNlcxgBIAEoCzIbLmdvb2dsZS5wcm90b2J1Zi5JbnQz",
-            "MlZhbHVlEi0KCHNrZWxldG9uGAIgASgLMhsuZ29vZ2xlLnByb3RvYnVmLklu",
-            "dDMyVmFsdWUSDgoGam9pbnRzGAMgAygFEgwKBG5hbWUYBCABKAkicgoHVGV4",
-            "dHVyZRIsCgdzYW1wbGVyGAEgASgLMhsuZ29vZ2xlLnByb3RvYnVmLkludDMy",
-            "VmFsdWUSKwoGc291cmNlGAIgASgLMhsuZ29vZ2xlLnByb3RvYnVmLkludDMy",
-            "VmFsdWUSDAoEbmFtZRgDIAEoCSJoCgtUZXh0dXJlSW5mbxIqCgVpbmRleBgB",
-            "IAEoCzIbLmdvb2dsZS5wcm90b2J1Zi5JbnQzMlZhbHVlEi0KCHRleENvb3Jk",
-            "GAIgASgLMhsuZ29vZ2xlLnByb3RvYnVmLkludDMyVmFsdWViBnByb3RvMw=="));
+            "VmFsdWUiJAoFU2NlbmUSDQoFbm9kZXMYASADKAUSDAoEbmFtZRgCIAEoCSKN",
+            "AQoEU2tpbhI4ChNpbnZlcnNlQmluZE1hdHJpY2VzGAEgASgLMhsuZ29vZ2xl",
+            "LnByb3RvYnVmLkludDMyVmFsdWUSLQoIc2tlbGV0b24YAiABKAsyGy5nb29n",
+            "bGUucHJvdG9idWYuSW50MzJWYWx1ZRIOCgZqb2ludHMYAyADKAUSDAoEbmFt",
+            "ZRgEIAEoCSJyCgdUZXh0dXJlEiwKB3NhbXBsZXIYASABKAsyGy5nb29nbGUu",
+            "cHJvdG9idWYuSW50MzJWYWx1ZRIrCgZzb3VyY2UYAiABKAsyGy5nb29nbGUu",
+            "cHJvdG9idWYuSW50MzJWYWx1ZRIMCgRuYW1lGAMgASgJImgKC1RleHR1cmVJ",
+            "bmZvEioKBWluZGV4GAEgASgLMhsuZ29vZ2xlLnByb3RvYnVmLkludDMyVmFs",
+            "dWUSLQoIdGV4Q29vcmQYAiABKAsyGy5nb29nbGUucHJvdG9idWYuSW50MzJW",
+            "YWx1ZWIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Google.Protobuf.WellKnownTypes.WrappersReflection.Descriptor, global::VrmProtobuf.VRMCMaterialsMtoonReflection.Descriptor, global::VrmProtobuf.GlTFExtensionsReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
@@ -162,7 +163,7 @@ namespace VrmProtobuf {
             new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.Mesh), global::VrmProtobuf.Mesh.Parser, new[]{ "Primitives", "Name" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.Node), global::VrmProtobuf.Node.Parser, new[]{ "Name", "Children", "Matrix", "Rotation", "Scale", "Translation", "Mesh", "Skin" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.Sampler), global::VrmProtobuf.Sampler.Parser, new[]{ "MagFilter", "MinFilter", "WrapS", "WrapT" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.Scene), global::VrmProtobuf.Scene.Parser, new[]{ "Nodes" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.Scene), global::VrmProtobuf.Scene.Parser, new[]{ "Nodes", "Name" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.Skin), global::VrmProtobuf.Skin.Parser, new[]{ "InverseBindMatrices", "Skeleton", "Joints", "Name" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.Texture), global::VrmProtobuf.Texture.Parser, new[]{ "Sampler", "Source", "Name" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.TextureInfo), global::VrmProtobuf.TextureInfo.Parser, new[]{ "Index", "TexCoord" }, null, null, null, null)
@@ -6063,6 +6064,7 @@ namespace VrmProtobuf {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public Scene(Scene other) : this() {
       nodes_ = other.nodes_.Clone();
+      name_ = other.name_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -6081,6 +6083,17 @@ namespace VrmProtobuf {
       get { return nodes_; }
     }
 
+    /// <summary>Field number for the "name" field.</summary>
+    public const int NameFieldNumber = 2;
+    private string name_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Name {
+      get { return name_; }
+      set {
+        name_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
       return Equals(other as Scene);
@@ -6095,6 +6108,7 @@ namespace VrmProtobuf {
         return true;
       }
       if(!nodes_.Equals(other.nodes_)) return false;
+      if (Name != other.Name) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -6102,6 +6116,7 @@ namespace VrmProtobuf {
     public override int GetHashCode() {
       int hash = 1;
       hash ^= nodes_.GetHashCode();
+      if (Name.Length != 0) hash ^= Name.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -6116,6 +6131,10 @@ namespace VrmProtobuf {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
       nodes_.WriteTo(output, _repeated_nodes_codec);
+      if (Name.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(Name);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -6125,6 +6144,9 @@ namespace VrmProtobuf {
     public int CalculateSize() {
       int size = 0;
       size += nodes_.CalculateSize(_repeated_nodes_codec);
+      if (Name.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Name);
+      }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -6137,6 +6159,9 @@ namespace VrmProtobuf {
         return;
       }
       nodes_.Add(other.nodes_);
+      if (other.Name.Length != 0) {
+        Name = other.Name;
+      }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -6151,6 +6176,10 @@ namespace VrmProtobuf {
           case 10:
           case 8: {
             nodes_.AddEntriesFrom(input, _repeated_nodes_codec);
+            break;
+          }
+          case 18: {
+            Name = input.ReadString();
             break;
           }
         }
