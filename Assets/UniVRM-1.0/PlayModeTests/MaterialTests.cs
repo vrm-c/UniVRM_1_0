@@ -5,6 +5,7 @@ using System.Linq;
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.TestTools;
+using Vrm10;
 using VrmLib;
 using VrmLib.Diff;
 
@@ -66,7 +67,7 @@ namespace UniVRM10.Test
             var model = exporter.ToModelFrom10(root, root.GetComponent<VRMMeta>().Meta);
 
             model.ConvertCoordinate(VrmLib.Coordinates.Gltf, ignoreVrm: false);
-            return ExportDebugUtil.GetGlb(model);
+            return model.ToGlb();
         }
 
         private Model ToVrmModel(GameObject root)
@@ -134,7 +135,7 @@ namespace UniVRM10.Test
                 RGBA = srclinerColor
             };
 
-            var bytes = ExportDebugUtil.GetGlb(model);
+            var bytes = model.ToGlb();
 
             var dstAssets = ToUnity(bytes);
             var dstMaterial = dstAssets.Map.Materials.First(x => x.Value.name == key.Name);
@@ -192,7 +193,7 @@ namespace UniVRM10.Test
             gltfMaterial.Definition.Emission.EmissionColor = new LinearColor { RGBA = srclinerColor };
             gltfMaterial.Definition.Rim.RimColor = new LinearColor { RGBA = srclinerColor };
 
-            var bytes = ExportDebugUtil.GetGlb(model);
+            var bytes = model.ToGlb();
 
             var dstAssets = ToUnity(bytes);
             var dstMaterial = dstAssets.Map.Materials.First(x => x.Value.name == key.Name).Value;
