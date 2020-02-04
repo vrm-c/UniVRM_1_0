@@ -17,10 +17,10 @@ namespace Vrm10
         {
             return new TextureSampler
             {
-                WrapS = (TextureWrapType)sampler.WrapS,
-                WrapT = (TextureWrapType)sampler.WrapT,
-                MinFilter = (TextureMinFilterType)sampler.MinFilter,
-                MagFilter = (TextureMagFilterType)sampler.MagFilter,
+                WrapS = (TextureWrapType)sampler.WrapS.GetValueOrDefault(),
+                WrapT = (TextureWrapType)sampler.WrapT.GetValueOrDefault(),
+                MinFilter = (TextureMinFilterType)sampler.MinFilter.GetValueOrDefault(),
+                MagFilter = (TextureMagFilterType)sampler.MagFilter.GetValueOrDefault(),
             };
         }
 
