@@ -5,7 +5,7 @@ namespace VrmLib
 {
     public static class ModelLoader
     {
-        public static Model Load(IVrmStorage storage)
+        public static Model Load(IVrmStorage storage, bool estimateHumanoid = false)
         {
             if (storage == null)
             {
@@ -80,7 +80,7 @@ namespace VrmLib
             model.Animations.AddRange(Enumerable.Range(0, storage.AnimationCount).Select(x => storage.CreateAnimation(x, model.Nodes)));
 
             // VRM
-            if (!LoadVrm(model, storage))
+            if (!LoadVrm(model, storage) && estimateHumanoid)
             {
                 // VRMでないときにボーン推定する
                 model.HumanoidBoneEstimate();
