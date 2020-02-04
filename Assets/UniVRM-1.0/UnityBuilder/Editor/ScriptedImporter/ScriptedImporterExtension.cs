@@ -3,6 +3,8 @@ using System.IO;
 using System.Linq;
 using UnityEditor.Experimental.AssetImporters;
 using UnityEditor;
+using System;
+using UnityEngine;
 
 namespace UniVRM10
 {
@@ -81,6 +83,85 @@ namespace UniVRM10
             {
                 ExtractFromAsset(asset, string.Format("{0}/{1}{2}", path, asset.name, extension), false);
             }
+        }
+
+
+        public static void ExtractTextures(this ScriptedImporter importer, string dirName, Func<string, VrmLib.Model> CreateModel, Action onComplited = null)
+        {
+            if (string.IsNullOrEmpty(importer.assetPath))
+                return;
+
+            var subAssets = importer.GetSubAssets<UnityEngine.Texture2D>(importer.assetPath);
+
+            var path = string.Format("{0}/{1}.{2}",
+                Path.GetDirectoryName(importer.assetPath),
+                Path.GetFileNameWithoutExtension(importer.assetPath),
+                dirName
+                );
+
+            importer.SafeCreateDirectory(path);
+
+            Dictionary<VrmLib.ImageTexture, string> targetPaths = new Dictionary<VrmLib.ImageTexture, string>();
+
+            // Reload Model
+            var model = CreateModel(importer.assetPath);
+            var mimeTypeReg = new System.Text.RegularExpressions.Regex("image/(?<mime>.*)$");
+            int count = 0;
+            foreach (var texture in model.Textures)
+            {
+                var imageTexture = texture as VrmLib.ImageTexture;
+                if (imageTexture == null) continue;
+
+                var mimeType = mimeTypeReg.Match(imageTexture.Image.MimeType);
+                var assetName = !string.IsNullOrEmpty(imageTexture.Name) ? imageTexture.Name : string.Format("{0}_img{1}", model.Name, count);
+                var targetPath = string.Format("{0}/{1}.{2}",
+                    path,
+                    assetName,
+                    mimeType.Groups["mime"].Value);
+                imageTexture.Name = assetName;
+
+                if (imageTexture.TextureType == VrmLib.Texture.TextureTypes.MetallicRoughness
+                    || imageTexture.TextureType == VrmLib.Texture.TextureTypes.Occlusion)
+                {
+                    var subAssetTexture = subAssets.Where(x => x.name == imageTexture.Name).FirstOrDefault();
+                    File.WriteAllBytes(targetPath, subAssetTexture.EncodeToPNG());
+                }
+                else
+                {
+                    File.WriteAllBytes(targetPath, imageTexture.Image.Bytes.ToArray());
+                }
+
+                AssetDatabase.ImportAsset(targetPath);
+                targetPaths.Add(imageTexture, targetPath);
+
+                count++;
+            }
+
+            EditorApplication.delayCall += () =>
+            {
+                foreach (var targetPath in targetPaths)
+                {
+                    var imageTexture = targetPath.Key;
+                    var targetTextureImporter = AssetImporter.GetAtPath(targetPath.Value) as TextureImporter;
+                    targetTextureImporter.sRGBTexture = (imageTexture.ColorSpace == VrmLib.Texture.ColorSpaceTypes.Srgb);
+                    if (imageTexture.TextureType == VrmLib.Texture.TextureTypes.NormalMap)
+                    {
+                        targetTextureImporter.textureType = TextureImporterType.NormalMap;
+                    }
+                    targetTextureImporter.SaveAndReimport();
+
+                    var externalObject = AssetDatabase.LoadAssetAtPath(targetPath.Value, typeof(UnityEngine.Texture2D));
+                    importer.AddRemap(new AssetImporter.SourceAssetIdentifier(typeof(UnityEngine.Texture2D), imageTexture.Name), externalObject);
+                }
+
+                //AssetDatabase.WriteImportSettingsIfDirty(assetPath);
+                AssetDatabase.ImportAsset(importer.assetPath, ImportAssetOptions.ForceUpdate);
+
+                if (onComplited != null)
+                {
+                    onComplited();
+                }
+            };
         }
 
         public static DirectoryInfo SafeCreateDirectory(this ScriptedImporter importer, string path)

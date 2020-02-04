@@ -101,7 +101,7 @@ namespace UniVRM10
 
         public void ExtractTextures()
         {
-            ExtractTextures(TextureDirName);
+            this.ExtractTextures(TextureDirName, (path) => { return CreateGlbModel(path); });
             AssetDatabase.ImportAsset(assetPath, ImportAssetOptions.ForceUpdate);
         }
 
@@ -113,78 +113,11 @@ namespace UniVRM10
 
         public void ExtractMaterialsAndTextures()
         {
-            ExtractTextures(TextureDirName, () => { this.ExtractAssets<UnityEngine.Material>(MaterialDirName, ".mat"); });
+            this.ExtractTextures(TextureDirName, (path) => { return CreateGlbModel(path); }, () => { this.ExtractAssets<UnityEngine.Material>(MaterialDirName, ".mat"); });
             AssetDatabase.ImportAsset(assetPath, ImportAssetOptions.ForceUpdate);
         }
 
-        private void ExtractTextures(string dirName, Action onComplited = null)
-        {
-            if (string.IsNullOrEmpty(assetPath))
-                return;
 
-            var subAssets = this.GetSubAssets<UnityEngine.Texture2D>(assetPath);
-
-            var path = string.Format("{0}/{1}.{2}",
-                Path.GetDirectoryName(assetPath),
-                Path.GetFileNameWithoutExtension(assetPath),
-                dirName
-                );
-
-            this.SafeCreateDirectory(path);
-
-            Dictionary<VrmLib.ImageTexture, string> targetPaths = new Dictionary<VrmLib.ImageTexture, string>();
-
-            // Reload Model
-            var model = CreateGlbModel(assetPath);
-            var mimeTypeReg = new System.Text.RegularExpressions.Regex("image/(?<mime>.*)$");
-            int count = 0;
-            foreach (var texture in model.Textures)
-            {
-                var imageTexture = texture as VrmLib.ImageTexture;
-                if (imageTexture == null) continue;
-
-                var mimeType = mimeTypeReg.Match(imageTexture.Image.MimeType);
-                var targetPath = string.Format("{0}/{1}.{2}", 
-                    path, 
-                    !string.IsNullOrEmpty(imageTexture.Name)? imageTexture.Name:string.Format("{0}_img{1}", model.Name, count) , 
-                    mimeType.Groups["mime"].Value);
-                File.WriteAllBytes(targetPath, imageTexture.Image.Bytes.ToArray());
-                AssetDatabase.ImportAsset(targetPath);
-                targetPaths.Add(imageTexture, targetPath);
-
-                count++;
-            }
-
-            EditorApplication.delayCall += () =>
-            {
-                foreach (var targetPath in targetPaths)
-                {
-                    var imageTexture = targetPath.Key;
-                    if(string.IsNullOrEmpty(imageTexture.Name))
-                    {
-                        imageTexture.Name = Path.GetFileNameWithoutExtension(targetPath.Value);
-                    }
-                    var targetTextureImporter = AssetImporter.GetAtPath(targetPath.Value) as TextureImporter;
-                    targetTextureImporter.sRGBTexture = (imageTexture.ColorSpace == VrmLib.Texture.ColorSpaceTypes.Srgb);
-                    if (imageTexture.TextureType == VrmLib.Texture.TextureTypes.NormalMap)
-                    {
-                        targetTextureImporter.textureType = TextureImporterType.NormalMap;
-                    }
-                    targetTextureImporter.SaveAndReimport();
-
-                    var externalObject = AssetDatabase.LoadAssetAtPath(targetPath.Value, typeof(UnityEngine.Texture2D));
-                    AddRemap(new AssetImporter.SourceAssetIdentifier(typeof(UnityEngine.Texture2D), imageTexture.Name), externalObject);
-                }
-
-                //AssetDatabase.WriteImportSettingsIfDirty(assetPath);
-                AssetDatabase.ImportAsset(assetPath, ImportAssetOptions.ForceUpdate);
-
-                if (onComplited != null)
-                {
-                    onComplited();
-                }
-            };
-        }
 
 
         public Dictionary<string, T> GetExternalUnityObjects<T>() where T : UnityEngine.Object
