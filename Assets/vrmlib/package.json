@@ -1,0 +1,8 @@
+{
+    "name": "com.vrmc.vrmlib",
+    "displayName": "VrmLib",
+    "version": "0.0.1",
+    "unity": "2019.3",
+    "description": "vrm utility",
+    "dependencies": {}
+}

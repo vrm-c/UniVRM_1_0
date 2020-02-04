@@ -1,0 +1,8 @@
+{
+    "name": "com.vrmc.protobufserializer",
+    "displayName": "ProtobufSerializer",
+    "version": "0.0.1",
+    "unity": "2019.3",
+    "description": "vrm unity utility",
+    "dependencies": {}
+}
