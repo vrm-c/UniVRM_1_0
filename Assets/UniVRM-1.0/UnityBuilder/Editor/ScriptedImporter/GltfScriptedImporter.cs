@@ -1,25 +1,21 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.Serialization.Json;
 using System.IO;
 using System.Linq;
-using UnityEngine;
-using UnityEngine.Assertions;
-using UnityEditor.Experimental.AssetImporters;
 using UnityEditor;
+using UnityEditor.Experimental.AssetImporters;
+using UnityEngine;
 using VrmLib;
 
 namespace UniVRM10
 {
 
-    [ScriptedImporter(1, "vrm")]
-    public class VrmScriptedImporter : ScriptedImporter, IExternalUnityObject
+    [ScriptedImporter(1, "glb")]
+    public class GltfScriptedImporter : ScriptedImporter, IExternalUnityObject
     {
         const string TextureDirName = "Textures";
         const string MaterialDirName = "Materials";
-        const string MetaDirName = "MetaObjects";
-        const string BlendShapeDirName = "BlendShapes";
 
         public override void OnImportAsset(AssetImportContext ctx)
         {
@@ -27,14 +23,13 @@ namespace UniVRM10
 
             try
             {
-                // Create Vrm Model
-                VrmLib.Model model = CreateVrmModel(ctx.assetPath);
+                // Create model
+                VrmLib.Model model = CreateGlbModel(ctx.assetPath);
                 Debug.Log($"ModelLoader.Load: {model}");
 
                 // Build Unity Model
                 var builder = new UniVRM10.EditorUnityBuilder();
                 var assets = builder.ToUnityAsset(model, assetPath, this);
-                ComponentBuilder.Build10(model, builder, assets);
 
                 // Texture
                 var externalTextures = this.GetExternalUnityObjects<UnityEngine.Texture2D>();
@@ -75,73 +70,6 @@ namespace UniVRM10
                     ctx.AddObjectToAsset(mesh.name, mesh);
                 }
 
-                //// ScriptableObject
-                // avatar
-                ctx.AddObjectToAsset("avatar", assets.HumanoidAvatar);
-
-                // meta
-                {
-                    var external = this.GetExternalUnityObjects<UniVRM10.VRMMetaObject>().FirstOrDefault();
-                    if (external.Value != null)
-                    {
-                        var metaComponent = assets.Root.GetComponent<VRMMeta>();
-                        if (metaComponent != null)
-                        {
-                            metaComponent.Meta = external.Value;
-                        }
-                    }
-                    else
-                    {
-                        var meta = assets.ScriptableObjects
-                            .FirstOrDefault(x => x.GetType() == typeof(UniVRM10.VRMMetaObject)) as UniVRM10.VRMMetaObject;
-                        if (meta != null)
-                        {
-                            meta.name = "meta";
-                            ctx.AddObjectToAsset(meta.name, meta);
-                        }
-                    }
-                }
-
-                // blendShape
-                {
-                    var external = this.GetExternalUnityObjects<UniVRM10.BlendShapeClip>();
-                    if (external.Any())
-                    {
-                    }
-                    else
-                    {
-                        var blendShapeClips = assets.ScriptableObjects
-                            .Where(x => x.GetType() == typeof(UniVRM10.BlendShapeClip))
-                            .Select(x => x as UniVRM10.BlendShapeClip);
-                        foreach (var clip in blendShapeClips)
-                        {
-                            clip.name = clip.BlendShapeName;
-                            ctx.AddObjectToAsset(clip.BlendShapeName, clip);
-                        }
-                    }
-                }
-                {
-                    var external = this.GetExternalUnityObjects<UniVRM10.BlendShapeAvatar>().FirstOrDefault();
-                    if (external.Value != null)
-                    {
-                        var blendShapeComponent = assets.Root.GetComponent<VRMBlendShapeProxy>();
-                        if (blendShapeComponent != null)
-                        {
-                            blendShapeComponent.BlendShapeAvatar = external.Value;
-                        }
-                    }
-                    else
-                    {
-                        var blendShapeAvatar = assets.ScriptableObjects
-                            .FirstOrDefault(x => x.GetType() == typeof(UniVRM10.BlendShapeAvatar)) as UniVRM10.BlendShapeAvatar;
-                        if (blendShapeAvatar != null)
-                        {
-                            blendShapeAvatar.name = "blendShapeAvatar";
-                            ctx.AddObjectToAsset(blendShapeAvatar.name, blendShapeAvatar);
-                        }
-                    }
-                }
-
                 // Root
                 ctx.AddObjectToAsset(assets.Root.name, assets.Root);
                 ctx.SetMainObject(assets.Root);
@@ -153,7 +81,7 @@ namespace UniVRM10
             }
         }
 
-        private VrmLib.Model CreateVrmModel(string path)
+        private Model CreateGlbModel(string path)
         {
             var fileInfo = new FileInfo(path);
             var bytes = File.ReadAllBytes(path);
@@ -162,24 +90,14 @@ namespace UniVRM10
                 throw ex;
             }
 
-            // version check
             VrmLib.Model model = null;
             VrmLib.IVrmStorage storage;
-            if (VRMVersionCheck.IsVrm10(glb.Json.Bytes.ToArray()))
-            {
-                storage = new Vrm10.Vrm10Storage(fileInfo, glb.Json.Bytes, glb.Binary.Bytes);
-                model = VrmLib.ModelLoader.Load(storage);
-                model.ConvertCoordinate(VrmLib.Coordinates.Unity, ignoreVrm: true);
-            }
-            else
-            {
-                throw new NotImplementedException();
-            }
+            storage = new Vrm10.Vrm10Storage(fileInfo, glb.Json.Bytes, glb.Binary.Bytes);
+            model = VrmLib.ModelLoader.Load(storage);
+            model.ConvertCoordinate(VrmLib.Coordinates.Unity, ignoreVrm: true);
 
             return model;
         }
-
-
 
         public void ExtractTextures()
         {
@@ -196,38 +114,6 @@ namespace UniVRM10
         public void ExtractMaterialsAndTextures()
         {
             ExtractTextures(TextureDirName, () => { this.ExtractAssets<UnityEngine.Material>(MaterialDirName, ".mat"); });
-            AssetDatabase.ImportAsset(assetPath, ImportAssetOptions.ForceUpdate);
-        }
-
-        public void ExtractMeta()
-        {
-            this.ExtractAssets<UniVRM10.VRMMetaObject>(MetaDirName, ".asset");
-            var metaObject = this.GetExternalUnityObjects<UniVRM10.VRMMetaObject>().FirstOrDefault();
-            var metaObjectPath = AssetDatabase.GetAssetPath(metaObject.Value);
-            if (!string.IsNullOrEmpty(metaObjectPath))
-            {
-                EditorUtility.SetDirty(metaObject.Value);
-                AssetDatabase.WriteImportSettingsIfDirty(metaObjectPath);
-            }
-            AssetDatabase.ImportAsset(assetPath, ImportAssetOptions.ForceUpdate);
-        }
-
-        public void ExtractBlendShapes()
-        {
-            this.ExtractAssets<UniVRM10.BlendShapeAvatar>(BlendShapeDirName, ".asset");
-            this.ExtractAssets<UniVRM10.BlendShapeClip>(BlendShapeDirName, ".asset");
-
-            var blendShapeAvatar = this.GetExternalUnityObjects<UniVRM10.BlendShapeAvatar>().FirstOrDefault();
-            var blendShapeClips = this.GetExternalUnityObjects<UniVRM10.BlendShapeClip>();
-
-            blendShapeAvatar.Value.Clips = blendShapeClips.Select(x => x.Value).ToList();
-            var avatarPath = AssetDatabase.GetAssetPath(blendShapeAvatar.Value);
-            if (!string.IsNullOrEmpty(avatarPath))
-            {
-                EditorUtility.SetDirty(blendShapeAvatar.Value);
-                AssetDatabase.WriteImportSettingsIfDirty(avatarPath);
-            }
-
             AssetDatabase.ImportAsset(assetPath, ImportAssetOptions.ForceUpdate);
         }
 
@@ -249,18 +135,24 @@ namespace UniVRM10
             Dictionary<VrmLib.ImageTexture, string> targetPaths = new Dictionary<VrmLib.ImageTexture, string>();
 
             // Reload Model
-            var model = CreateVrmModel(assetPath);
+            var model = CreateGlbModel(assetPath);
             var mimeTypeReg = new System.Text.RegularExpressions.Regex("image/(?<mime>.*)$");
+            int count = 0;
             foreach (var texture in model.Textures)
             {
                 var imageTexture = texture as VrmLib.ImageTexture;
                 if (imageTexture == null) continue;
 
                 var mimeType = mimeTypeReg.Match(imageTexture.Image.MimeType);
-                var targetPath = string.Format("{0}/{1}.{2}", path, imageTexture.Name, mimeType.Groups["mime"].Value);
+                var targetPath = string.Format("{0}/{1}.{2}", 
+                    path, 
+                    !string.IsNullOrEmpty(imageTexture.Name)? imageTexture.Name:string.Format("{0}_img{1}", model.Name, count) , 
+                    mimeType.Groups["mime"].Value);
                 File.WriteAllBytes(targetPath, imageTexture.Image.Bytes.ToArray());
                 AssetDatabase.ImportAsset(targetPath);
                 targetPaths.Add(imageTexture, targetPath);
+
+                count++;
             }
 
             EditorApplication.delayCall += () =>
@@ -268,6 +160,10 @@ namespace UniVRM10
                 foreach (var targetPath in targetPaths)
                 {
                     var imageTexture = targetPath.Key;
+                    if(string.IsNullOrEmpty(imageTexture.Name))
+                    {
+                        imageTexture.Name = Path.GetFileNameWithoutExtension(targetPath.Value);
+                    }
                     var targetTextureImporter = AssetImporter.GetAtPath(targetPath.Value) as TextureImporter;
                     targetTextureImporter.sRGBTexture = (imageTexture.ColorSpace == VrmLib.Texture.ColorSpaceTypes.Srgb);
                     if (imageTexture.TextureType == VrmLib.Texture.TextureTypes.NormalMap)
@@ -290,6 +186,7 @@ namespace UniVRM10
             };
         }
 
+
         public Dictionary<string, T> GetExternalUnityObjects<T>() where T : UnityEngine.Object
         {
             return this.GetExternalObjectMap().Where(x => x.Key.type == typeof(T)).ToDictionary(x => x.Key.name, x => (T)x.Value);
@@ -303,3 +200,5 @@ namespace UniVRM10
         }
     }
 }
+
+

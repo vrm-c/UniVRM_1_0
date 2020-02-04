@@ -8,7 +8,7 @@ namespace UniVRM10
     /// <summary>
     /// VrmLib.Model から UnityPrefab を構築する
     /// </summary>
-    public class RuntimeUnityBuilder : IUnityBuilder
+    public partial class RuntimeUnityBuilder : IUnityBuilder
     {
         private readonly Dictionary<VrmLib.Texture, Texture2D> Textures = new Dictionary<VrmLib.Texture, Texture2D>();
         private readonly Dictionary<VrmLib.Material, Material> Materials = new Dictionary<VrmLib.Material, Material>();
@@ -25,19 +25,13 @@ namespace UniVRM10
         Dictionary<VrmLib.MeshGroup, Renderer> IUnityBuilder.Renderers => Renderers;
         GameObject IUnityBuilder.Root => Root;
 
-        // GLTF data to Unity texture
-        // ConvertToNormalValueFromRawColorWhenCompressionIsRequired
-        public static Material GetNormalMapConvertGltfToUnity()
-        {
-            return new Material(Shader.Find("UniVRM/NormalMapEncoder"));
-        }
 
-        public ModelAsset ToUnityAsset(VrmLib.Model model, string assetPath = "")
+        public ModelAsset ToUnityAsset(VrmLib.Model model)
         {
             var modelAsset = new ModelAsset();
             CreateTextureAsset(model, modelAsset);
             CreateMaterialAssets(model, modelAsset);
-            CreateMeshAsset(model, modelAsset);
+            CreateMeshAsset(model, modelAsset, Meshes);
 
             // node
             CreateNodes(model.Root, null, Nodes);
@@ -73,7 +67,7 @@ namespace UniVRM10
             return modelAsset;
         }
 
-        private void CreateMeshAsset(VrmLib.Model model, ModelAsset modelAsset)
+        public static void CreateMeshAsset(VrmLib.Model model, ModelAsset modelAsset, Dictionary<VrmLib.MeshGroup, UnityEngine.Mesh> dstMeshes)
         {
             // mesh
             for (int i = 0; i < model.MeshGroups.Count; ++i)
@@ -85,7 +79,7 @@ namespace UniVRM10
                     var mesh = new Mesh();
                     mesh.name = src.Name;
                     mesh.LoadMesh(src.Meshes[0], src.Skin);
-                    Meshes.Add(src, mesh);
+                    dstMeshes.Add(src, mesh);
                     modelAsset.Meshes.Add(mesh);
                 }
                 else
@@ -96,219 +90,12 @@ namespace UniVRM10
             }
         }
 
-        static UnityEngine.Material CreateUnlitMaterial(VrmLib.UnlitMaterial src, bool hasVertexColor, Dictionary<VrmLib.Texture, Texture2D> textures)
-        {
-            var material = new Material(Shader.Find(UniUnlit.Utils.ShaderName));
-
-            // texture
-            if (src.BaseColorTexture != null)
-            {
-                material.mainTexture = textures[src.BaseColorTexture.Texture];
-            }
-
-            // color
-            material.color = src.BaseColorFactor.ToUnitySRGB();
-
-            //renderMode
-            switch (src.AlphaMode)
-            {
-                case VrmLib.AlphaModeType.OPAQUE:
-                    UniUnlit.Utils.SetRenderMode(material, UniUnlit.UniUnlitRenderMode.Opaque);
-                    break;
-
-                case VrmLib.AlphaModeType.BLEND:
-                    UniUnlit.Utils.SetRenderMode(material, UniUnlit.UniUnlitRenderMode.Transparent);
-                    break;
-
-                case VrmLib.AlphaModeType.MASK:
-                    UniUnlit.Utils.SetRenderMode(material, UniUnlit.UniUnlitRenderMode.Cutout);
-                    break;
-
-                default:
-                    UniUnlit.Utils.SetRenderMode(material, UniUnlit.UniUnlitRenderMode.Opaque);
-                    break;
-            }
-
-            // culling
-            if (src.DoubleSided)
-            {
-                UniUnlit.Utils.SetCullMode(material, UniUnlit.UniUnlitCullMode.Off);
-            }
-            else
-            {
-                UniUnlit.Utils.SetCullMode(material, UniUnlit.UniUnlitCullMode.Back);
-            }
-
-            // VColor
-            if (hasVertexColor)
-            {
-                UniUnlit.Utils.SetVColBlendMode(material, UniUnlit.UniUnlitVertexColorBlendOp.Multiply);
-            }
-
-            UniUnlit.Utils.ValidateProperties(material, true);
-
-            return material;
-        }
-
-        // https://forum.unity.com/threads/standard-material-shader-ignoring-setfloat-property-_mode.344557/#post-2229980
-        internal enum BlendMode
-        {
-            Opaque,
-            Cutout,
-            Fade,        // Old school alpha-blending mode, fresnel does not affect amount of transparency
-            Transparent // Physically plausible transparency mode, implemented as alpha pre-multiply
-        }
-
-        static UnityEngine.Material CreateStandardMaterial(VrmLib.PBRMaterial x, Dictionary<VrmLib.Texture, Texture2D> textures)
-        {
-            var material = new Material(Shader.Find("Standard"));
-
-            material.color = x.BaseColorFactor.ToUnitySRGB();
-
-            if (x.BaseColorTexture != null)
-            {
-                material.mainTexture = textures[x.BaseColorTexture.Texture];
-            }
-
-            if (x.MetallicRoughnessTexture != null)
-            {
-                material.EnableKeyword("_METALLICGLOSSMAP");
-                var texture = textures[x.MetallicRoughnessTexture];
-                if (texture != null)
-                {
-                    var prop = "_MetallicGlossMap";
-                    // TODO: Bake roughnessFactor values into a texture.
-                    // material.SetTexture(prop, texture.ConvertTexture(prop, x.pbrMetallicRoughness.roughnessFactor));
-                }
-
-                material.SetFloat("_Metallic", 1.0f);
-                // Set 1.0f as hard-coded. See: https://github.com/dwango/UniVRM/issues/212.
-                material.SetFloat("_GlossMapScale", 1.0f);
-            }
-            else
-            {
-                material.SetFloat("_Metallic", x.MetallicFactor);
-                material.SetFloat("_Glossiness", 1.0f - x.RoughnessFactor);
-            }
-
-            if (x.NormalTexture != null)
-            {
-                material.EnableKeyword("_NORMALMAP");
-                var texture = textures[x.NormalTexture];
-                if (texture != null)
-                {
-                    var prop = "_BumpMap";
-                    // TODO
-                    // material.SetTexture(prop, texture.ConvertTexture(prop));
-                    material.SetFloat("_BumpScale", x.NormalTextureScale);
-                }
-            }
-
-            if (x.OcclusionTexture != null)
-            {
-                var texture = textures[x.OcclusionTexture];
-                if (texture != null)
-                {
-                    var prop = "_OcclusionMap";
-                    // TODO
-                    // material.SetTexture(prop, texture.ConvertTexture(prop));
-                    material.SetFloat("_OcclusionStrength", x.OcclusionTextureStrength);
-                }
-            }
-
-            if (x.EmissiveFactor != System.Numerics.Vector3.Zero || x.EmissiveTexture != null)
-            {
-                material.EnableKeyword("_EMISSION");
-                material.globalIlluminationFlags &= ~MaterialGlobalIlluminationFlags.EmissiveIsBlack;
-
-                material.SetColor("_EmissionColor", x.EmissiveFactor.ToUnityColor());
-
-                if (x.EmissiveTexture != null)
-                {
-                    var texture = textures[x.EmissiveTexture];
-                    if (texture != null)
-                    {
-                        material.SetTexture("_EmissionMap", texture);
-                    }
-                }
-            }
-
-            BlendMode blendMode = BlendMode.Opaque;
-            // https://forum.unity.com/threads/standard-material-shader-ignoring-setfloat-property-_mode.344557/#post-2229980
-            switch (x.AlphaMode)
-            {
-                case VrmLib.AlphaModeType.BLEND:
-                    blendMode = BlendMode.Fade;
-                    material.SetOverrideTag("RenderType", "Transparent");
-                    material.SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.SrcAlpha);
-                    material.SetInt("_DstBlend", (int)UnityEngine.Rendering.BlendMode.OneMinusSrcAlpha);
-                    material.SetInt("_ZWrite", 0);
-                    material.DisableKeyword("_ALPHATEST_ON");
-                    material.EnableKeyword("_ALPHABLEND_ON");
-                    material.DisableKeyword("_ALPHAPREMULTIPLY_ON");
-                    material.renderQueue = 3000;
-                    break;
-
-                case VrmLib.AlphaModeType.MASK:
-                    blendMode = BlendMode.Cutout;
-                    material.SetOverrideTag("RenderType", "TransparentCutout");
-                    material.SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.One);
-                    material.SetInt("_DstBlend", (int)UnityEngine.Rendering.BlendMode.Zero);
-                    material.SetInt("_ZWrite", 1);
-                    material.SetFloat("_Cutoff", x.AlphaCutoff);
-                    material.EnableKeyword("_ALPHATEST_ON");
-                    material.DisableKeyword("_ALPHABLEND_ON");
-                    material.DisableKeyword("_ALPHAPREMULTIPLY_ON");
-                    material.renderQueue = 2450;
-
-                    break;
-
-                default: // OPAQUE
-                    blendMode = BlendMode.Opaque;
-                    material.SetOverrideTag("RenderType", "");
-                    material.SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.One);
-                    material.SetInt("_DstBlend", (int)UnityEngine.Rendering.BlendMode.Zero);
-                    material.SetInt("_ZWrite", 1);
-                    material.DisableKeyword("_ALPHATEST_ON");
-                    material.DisableKeyword("_ALPHABLEND_ON");
-                    material.DisableKeyword("_ALPHAPREMULTIPLY_ON");
-                    material.renderQueue = -1;
-                    break;
-            }
-
-            material.SetFloat("_Mode", (float)blendMode);
-            return material;
-        }
-
-        public static UnityEngine.Material CreateMaterialAsset(VrmLib.Material src, bool hasVertexColor, Dictionary<VrmLib.Texture, Texture2D> textures)
-        {
-            if (src is VrmLib.MToonMaterial mtoonSrc)
-            {
-                // MTOON
-                var material = new Material(Shader.Find(MToon.Utils.ShaderName));
-                MToon.Utils.SetMToonParametersToMaterial(material, mtoonSrc.Definition.ToUnity(textures));
-                return material;
-            }
-
-            if (src is VrmLib.UnlitMaterial unlitSrc)
-            {
-                return CreateUnlitMaterial(unlitSrc, hasVertexColor, textures);
-            }
-
-            if (src is VrmLib.PBRMaterial pbrSrc)
-            {
-                return CreateStandardMaterial(pbrSrc, textures);
-            }
-
-            throw new NotImplementedException($"unknown material: {src}");
-        }
-
         private void CreateMaterialAssets(VrmLib.Model model, ModelAsset modelAsset)
         {
             foreach (var src in model.Materials)
             {
                 // TODO: material has VertexColor
-                var material = CreateMaterialAsset(src, hasVertexColor: false, Textures);
+                var material = RuntimeUnityMaterialBuilder.CreateMaterialAsset(src, hasVertexColor: false, Textures);
                 material.name = src.Name;
                 Materials.Add(src, material);
                 modelAsset.Materials.Add(material);
@@ -322,30 +109,11 @@ namespace UniVRM10
             {
                 if (model.Textures[i] is VrmLib.ImageTexture imageTexture)
                 {
-                    var texture = new Texture2D(2, 2, TextureFormat.ARGB32, false, imageTexture.ColorSpace == VrmLib.Texture.ColorSpaceTypes.Linear);
-                    texture.name = !string.IsNullOrEmpty(imageTexture.Name)
+                    var name = !string.IsNullOrEmpty(imageTexture.Name)
                         ? imageTexture.Name
-                        : imageTexture.Image.Name
-                        ;
-                    texture.LoadImage(imageTexture.Image.Bytes.ToArray());
-                    if(imageTexture.TextureType == VrmLib.Texture.TextureTypes.NormalMap)
-                    {
-                        var convertMaterial = GetNormalMapConvertGltfToUnity();
-                        var dstTexture = UnityTextureUtil.CopyTexture(
-                            texture, 
-                            (imageTexture.ColorSpace == VrmLib.Texture.ColorSpaceTypes.Linear)? RenderTextureReadWrite.Linear:RenderTextureReadWrite.sRGB,
-                            convertMaterial);
-                        if(convertMaterial != null)
-                        {
-                            UnityEngine.Object.DestroyImmediate(convertMaterial);
-                        }
-                        if(texture != null)
-                        {
-                            UnityEngine.Object.DestroyImmediate(texture);
-                        }
-                        
-                        texture = dstTexture;
-                    }
+                        : string.Format("{0}_img{1}", model.Root.Name, i);
+
+                    var texture = CreateTexture(name, imageTexture);
 
                     Textures.Add(imageTexture, texture);
                     modelAsset.Textures.Add(texture);
@@ -357,7 +125,65 @@ namespace UniVRM10
             }
         }
 
-        static void CreateNodes(VrmLib.Node node, GameObject parent, Dictionary<VrmLib.Node, GameObject> nodes)
+        private static RenderTextureReadWrite GetRenderTextureReadWrite(VrmLib.Texture.ColorSpaceTypes type)
+        {
+            return (type == VrmLib.Texture.ColorSpaceTypes.Linear) ? RenderTextureReadWrite.Linear : RenderTextureReadWrite.sRGB;
+        }
+
+        public static Texture2D CreateTexture(string name, VrmLib.ImageTexture imageTexture)
+        {
+            Texture2D dstTexture = null;
+            Material convertMaterial = null;
+            var texture = new Texture2D(2, 2, TextureFormat.ARGB32, false, imageTexture.ColorSpace == VrmLib.Texture.ColorSpaceTypes.Linear);
+            texture.name = name;
+            texture.LoadImage(imageTexture.Image.Bytes.ToArray());
+
+            // Convert Texture Gltf to Unity
+            if (imageTexture.TextureType == VrmLib.Texture.TextureTypes.NormalMap)
+            {
+                convertMaterial = TextureConvertMaterial.GetNormalMapConvertGltfToUnity();
+                dstTexture = UnityTextureUtil.CopyTexture(
+                    texture,
+                    GetRenderTextureReadWrite(imageTexture.ColorSpace),
+                    convertMaterial);
+            }
+            else if (imageTexture.TextureType == VrmLib.Texture.TextureTypes.MetallicRoughness)
+            {
+                var metallicRoughnessImage = imageTexture as VrmLib.MetallicRoughnessImageTexture;
+                convertMaterial = TextureConvertMaterial.GetMetallicRoughnessGltfToUnity(metallicRoughnessImage.RoughnessFactor);
+                dstTexture = UnityTextureUtil.CopyTexture(
+                    texture,
+                    GetRenderTextureReadWrite(imageTexture.ColorSpace),
+                    convertMaterial);
+            }
+            else if (imageTexture.TextureType == VrmLib.Texture.TextureTypes.Occlusion)
+            {
+                convertMaterial = TextureConvertMaterial.GetOcclusionGltfToUnity();
+                dstTexture = UnityTextureUtil.CopyTexture(
+                    texture,
+                    GetRenderTextureReadWrite(imageTexture.ColorSpace),
+                    convertMaterial);
+            }
+
+            if (dstTexture != null)
+            {
+                if (texture != null)
+                {
+                    UnityEngine.Object.DestroyImmediate(texture);
+                }
+                texture = dstTexture;
+            }
+
+            if (convertMaterial != null)
+            {
+                UnityEngine.Object.DestroyImmediate(convertMaterial);
+            }
+
+            return texture;
+        }
+
+
+        public static void CreateNodes(VrmLib.Node node, GameObject parent, Dictionary<VrmLib.Node, GameObject> nodes)
         {
             GameObject go = new GameObject(node.Name);
             go.transform.SetPositionAndRotation(node.Translation.ToUnityVector3(), node.Rotation.ToUnityQuaternion());
