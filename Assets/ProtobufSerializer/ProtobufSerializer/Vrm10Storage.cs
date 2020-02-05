@@ -12,8 +12,6 @@ namespace Vrm10
 {
     public class Vrm10Storage : IVrmStorage
     {
-        FileInfo m_file;
-
         public VrmProtobuf.glTF Gltf
         {
             get;
@@ -31,9 +29,8 @@ namespace Vrm10
             };
         }
 
-        public Vrm10Storage(FileInfo path, ArraySegment<byte> json, Memory<byte> bin)
+        public Vrm10Storage(ArraySegment<byte> json, Memory<byte> bin)
         {
-            m_file = path;
             var parserSettings = Google.Protobuf.JsonParser.Settings.Default;
             var jsonString = Encoding.UTF8.GetString(json.Array, json.Offset, json.Count);
             var deserialized = new Google.Protobuf.JsonParser(parserSettings).Parse<VrmProtobuf.glTF>(jsonString);
@@ -336,8 +333,6 @@ namespace Vrm10
                 (AccessorValueType)accessor.ComponentType, vectorType, accessor.Count);
         }
 
-        public string Name => m_file.Name;
-
         public string AssetVersion => Gltf.Asset.Version;
 
         public string AssetMinVersion => Gltf.Asset.MinVersion;
@@ -432,9 +427,9 @@ namespace Vrm10
 
         private Texture.ColorSpaceTypes GetTextureColorSpaceType(int textureIndex)
         {
-            foreach(var material in Gltf.Materials)
+            foreach (var material in Gltf.Materials)
             {
-                if(material.Extensions != null && material.Extensions.VRMCMaterialsMtoon != null)
+                if (material.Extensions != null && material.Extensions.VRMCMaterialsMtoon != null)
                 {
                     var mtoon = material.Extensions.VRMCMaterialsMtoon;
                     if (mtoon.LitMultiplyTexture == textureIndex) return Texture.ColorSpaceTypes.Srgb;
