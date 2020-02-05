@@ -113,7 +113,7 @@ namespace UniVRM10
                 if (imageTexture == null) continue;
 
                 var mimeType = mimeTypeReg.Match(imageTexture.Image.MimeType);
-                var assetName = !string.IsNullOrEmpty(imageTexture.Name) ? imageTexture.Name : string.Format("{0}_img{1}", model.Name, count);
+                var assetName = !string.IsNullOrEmpty(imageTexture.Name) ? imageTexture.Name : string.Format("{0}_img{1}", model.Root.Name, count);
                 var targetPath = string.Format("{0}/{1}.{2}",
                     path,
                     assetName,

@@ -84,7 +84,7 @@ namespace UniVRM10
                 {  
                     if(string.IsNullOrEmpty(model.Textures[i].Name))
                     {
-                        model.Textures[i].Name = string.Format("{0}_img{1}", model.Name, i);
+                        model.Textures[i].Name = string.Format("{0}_img{1}", model.Root.Name, i);
                     }
                     if (externalObjects.ContainsKey(model.Textures[i].Name))
                     {
