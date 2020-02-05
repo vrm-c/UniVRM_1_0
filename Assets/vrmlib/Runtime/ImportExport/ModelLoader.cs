@@ -5,14 +5,14 @@ namespace VrmLib
 {
     public static class ModelLoader
     {
-        public static Model Load(IVrmStorage storage, bool estimateHumanoid = false)
+        public static Model Load(IVrmStorage storage, string rootName, bool estimateHumanoid = false)
         {
             if (storage == null)
             {
                 return null;
             }
 
-            var model = new Model(storage.Name, Coordinates.Gltf)
+            var model = new Model(Coordinates.Gltf)
             {
                 AssetVersion = storage.AssetVersion,
                 AssetGenerator = storage.AssetGenerator,
@@ -21,7 +21,7 @@ namespace VrmLib
             };
 
             // node
-            model.Root = new Node(storage.Name);
+            model.Root = new Node(rootName);
             for (var i = 0; i < storage.NodeCount; ++i)
             {
                 var node = storage.CreateNode(i);

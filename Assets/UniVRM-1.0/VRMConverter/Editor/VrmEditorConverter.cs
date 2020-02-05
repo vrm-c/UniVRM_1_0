@@ -320,7 +320,7 @@ namespace UniVRM10
                 // 右手系に変換
                 m_logLabel.text += $"convert to right handed coordinate...\n";
                 model.ConvertCoordinate(VrmLib.Coordinates.Gltf, ignoreVrm: false);
-                var exportedBytes = ExportDebugUtil.GetGlb(model);
+                var exportedBytes = GetGlb(model);
 
                 m_logLabel.text += $"write to {path}...\n";
                 File.WriteAllBytes(path, exportedBytes);
@@ -338,6 +338,19 @@ namespace UniVRM10
                 // rethrow
                 throw;
             }
+        }
+
+        static byte[] GetGlb(VrmLib.Model model)
+        {
+            // export vrm-1.0
+            var exporter10 = new Vrm10.Vrm10Exporter();
+            var option = new VrmLib.ExportArgs
+            {
+                // vrm = false
+            };
+            var glbBytes10 = exporter10.Export(model, option);
+            var glb10 = VrmLib.Glb.Parse(glbBytes10);
+            return glb10.ToBytes();
         }
 
         static string ToAssetPath(string path)

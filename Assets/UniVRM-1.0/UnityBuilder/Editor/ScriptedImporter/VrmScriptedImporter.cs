@@ -155,7 +155,6 @@ namespace UniVRM10
 
         private VrmLib.Model CreateVrmModel(string path)
         {
-            var fileInfo = new FileInfo(path);
             var bytes = File.ReadAllBytes(path);
             if (!VrmLib.Glb.TryParse(bytes, out VrmLib.Glb glb, out Exception ex))
             {
@@ -167,8 +166,8 @@ namespace UniVRM10
             VrmLib.IVrmStorage storage;
             if (VRMVersionCheck.IsVrm10(glb.Json.Bytes.ToArray()))
             {
-                storage = new Vrm10.Vrm10Storage(fileInfo, glb.Json.Bytes, glb.Binary.Bytes);
-                model = VrmLib.ModelLoader.Load(storage);
+                storage = new Vrm10.Vrm10Storage(glb.Json.Bytes, glb.Binary.Bytes);
+                model = VrmLib.ModelLoader.Load(storage, Path.GetFileName(path));
                 model.ConvertCoordinate(VrmLib.Coordinates.Unity, ignoreVrm: true);
             }
             else
