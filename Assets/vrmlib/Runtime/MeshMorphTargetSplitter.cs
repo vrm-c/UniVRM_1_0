@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 
 namespace VrmLib
 {
-    class MeshMorphTargetSplitter
+    class MeshSplitter
     {
         public static ValueTuple<
             List<ValueTuple<int, Triangle>>,
@@ -55,6 +55,67 @@ namespace VrmLib
             }
 
             return (withTriangles, withoutTriangles);
+        }
+
+        public static ValueTuple<
+           List<ValueTuple<int, Triangle>>,
+           List<ValueTuple<int, Triangle>>> SplitTrianglesByBoneIndices(Mesh src, HashSet<int> targetBoneIndices)
+        {
+            var triangles = src.Triangles.ToArray();
+            var isBodyMeshTriangle = new bool[triangles.Length];
+
+            var skinJointsSpan = src.VertexBuffer.Joints.GetSpan<SkinJoints>();
+            var boneWeightSpan = src.VertexBuffer.Weights.GetSpan<Vector4>();
+
+            for (int i = 0; i < triangles.Length; ++i)
+            {
+                ref var triangle = ref triangles[i];
+
+                var skinJoints0 = skinJointsSpan[triangle.Item2.Vertex0];
+                var boneWeights0 = boneWeightSpan[triangle.Item2.Vertex0];
+
+                if (boneWeights0.X > 0 && targetBoneIndices.Contains(skinJoints0.Joint0)) continue;
+                if (boneWeights0.Y > 0 && targetBoneIndices.Contains(skinJoints0.Joint1)) continue;
+                if (boneWeights0.Z > 0 && targetBoneIndices.Contains(skinJoints0.Joint2)) continue;
+                if (boneWeights0.W > 0 && targetBoneIndices.Contains(skinJoints0.Joint3)) continue;
+
+                var skinJoints1 = skinJointsSpan[triangle.Item2.Vertex1];
+                var boneWeights1 = boneWeightSpan[triangle.Item2.Vertex1];
+
+                if (boneWeights1.X > 0 && targetBoneIndices.Contains(skinJoints1.Joint0)) continue;
+                if (boneWeights1.Y > 0 && targetBoneIndices.Contains(skinJoints1.Joint1)) continue;
+                if (boneWeights1.Z > 0 && targetBoneIndices.Contains(skinJoints1.Joint2)) continue;
+                if (boneWeights1.W > 0 && targetBoneIndices.Contains(skinJoints1.Joint3)) continue;
+
+                var skinJoints2 = skinJointsSpan[triangle.Item2.Vertex2];
+                var boneWeights2 = boneWeightSpan[triangle.Item2.Vertex2];
+
+                if (boneWeights2.X > 0 && targetBoneIndices.Contains(skinJoints2.Joint0)) continue;
+                if (boneWeights2.Y > 0 && targetBoneIndices.Contains(skinJoints2.Joint1)) continue;
+                if (boneWeights2.Z > 0 && targetBoneIndices.Contains(skinJoints2.Joint2)) continue;
+                if (boneWeights2.W > 0 && targetBoneIndices.Contains(skinJoints2.Joint3)) continue;
+
+                isBodyMeshTriangle[i] = true;
+            }
+
+            var bodyTriangles = new List<ValueTuple<int, Triangle>>();
+            var headTriangles = new List<ValueTuple<int, Triangle>>();
+
+            for (int i = 0; i < triangles.Length; ++i)
+            {
+                if (isBodyMeshTriangle[i])
+                {
+                    //　胴体メッシュ
+                    bodyTriangles.Add(triangles[i]);
+                }
+                else
+                {
+                    // 頭メッシュ
+                    headTriangles.Add(triangles[i]);
+                }
+            }
+
+            return (headTriangles, bodyTriangles);
         }
 
         class VertexReorderMapper

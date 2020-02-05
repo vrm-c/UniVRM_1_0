@@ -13,11 +13,8 @@ namespace VrmLib
     /// </summary>
     public class Model
     {
-        public string Name;
-
-        public Model(string name, Coordinates coordinates)
+        public Model(Coordinates coordinates)
         {
-            Name = name;
             Coordinates = coordinates;
         }
 

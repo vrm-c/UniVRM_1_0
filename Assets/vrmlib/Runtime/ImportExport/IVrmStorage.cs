@@ -5,7 +5,6 @@ namespace VrmLib
     public interface IVrmStorage
     {
         #region glTF import
-        string Name { get; }
         string AssetVersion { get; }
         string AssetMinVersion { get; }
         string AssetGenerator { get; }

@@ -44,8 +44,8 @@ namespace UniVRM10.Test
             }
 
             // Vrm => Model
-            var storage = new Vrm10.Vrm10Storage(new FileInfo("test"), glb.Json.Bytes, glb.Binary.Bytes);
-            var model = ModelLoader.Load(storage);
+            var storage = new Vrm10.Vrm10Storage(glb.Json.Bytes, glb.Binary.Bytes);
+            var model = ModelLoader.Load(storage, "test");
             model.ConvertCoordinate(Coordinates.Unity);
             model.RemoveSecondary();
 

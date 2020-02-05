@@ -98,6 +98,32 @@ namespace VrmLib
             }
         }
 
+        public static void SepareteByHeadBone(this ModelModifier modifier, MeshGroup mesh, HashSet<int> boneIndices)
+        {
+            var (with, without) = mesh.SepareteByHeadBone(boneIndices);
+            var list = new List<MeshGroup>();
+            if (with != null) list.Add(with);
+            if (without != null) list.Add(without);
+
+            // 分割モデルで置き換え
+            if (list.Any())
+            {
+                modifier.MeshReplace(mesh, list[0]);
+                // rename node
+                modifier.Model.Nodes.Find(x => x.MeshGroup == list[0]).Name = list[0].Name;
+            }
+
+            if (list.Count > 1)
+            {
+                // 頭と胴体で分割後2つ以上ある場合、2つ目を追加する
+                modifier.MeshReplace(null, list[1]);
+                modifier.NodeReplace(null, new Node(list[1].Name)
+                {
+                    MeshGroup = list[1]
+                });
+            }
+        }
+
         public static string NodeReduce(this ModelModifier modifier)
         {
             var count = modifier.Model.Nodes.Count;

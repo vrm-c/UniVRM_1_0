@@ -36,7 +36,7 @@ namespace VrmLib
         public static Model CreateFromBvh(BvhNode node)
         {
             // add nodes
-            var model = new Model("bvh", Coordinates.Gltf)
+            var model = new Model(Coordinates.Gltf)
             {
                 Root = new Node("__bvh_root__"),
             };

@@ -109,7 +109,7 @@ namespace UniVRM10
         /// </summary>
         public VrmLib.Model ToModelFrom10(GameObject root, VRMMetaObject metaObject = null)
         {
-            Model = new VrmLib.Model(root.name, VrmLib.Coordinates.Unity);
+            Model = new VrmLib.Model(VrmLib.Coordinates.Unity);
 
             if (metaObject is null)
             {
