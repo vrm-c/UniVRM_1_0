@@ -14,7 +14,6 @@ namespace VrmLib.Diff
         public static List<ModelDiff> Diff(this Model lhs, Model rhs)
         {
             var context = ModelDiffContext.Create();
-            context.Enter(nameof(lhs.Name)).Push(lhs.Name, rhs.Name, StringEquals);
             context.Enter(nameof(lhs.AssetGenerator)).Push(lhs.AssetGenerator, rhs.AssetGenerator, StringEquals);
             context.Enter(nameof(lhs.AssetVersion)).Push(lhs.AssetVersion, rhs.AssetVersion, StringEquals);
             context.Enter(nameof(lhs.AssetMinVersion)).Push(lhs.AssetMinVersion, rhs.AssetMinVersion, StringEquals);

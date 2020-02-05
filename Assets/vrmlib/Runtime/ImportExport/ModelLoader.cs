@@ -12,7 +12,7 @@ namespace VrmLib
                 return null;
             }
 
-            var model = new Model(storage.Name, Coordinates.Gltf)
+            var model = new Model(Coordinates.Gltf)
             {
                 AssetVersion = storage.AssetVersion,
                 AssetGenerator = storage.AssetGenerator,
