@@ -26,14 +26,16 @@ namespace UniVRM10
         public static Material GetMetallicRoughnessGltfToUnity(float roughnessFactor)
         {
             var material = new Material(Shader.Find("UniVRM/MetallicRoughnessGltfToUnity"));
-            material.SetFloat("_SmoothnessOrRoughness", roughnessFactor);
+            material.SetFloat("_Roughness", roughnessFactor);
             return material;
         }
 
         // Unity texture to GLTF data
-        public static Material GetMetallicRoughnessUnityToGltf()
+        public static Material GetMetallicRoughnessUnityToGltf(float smoothness)
         {
-            return new Material(Shader.Find("UniVRM/MetallicRoughnessUnityToGltf"));
+            var material = new Material(Shader.Find("UniVRM/MetallicRoughnessUnityToGltf"));
+            material.SetFloat("_Smoothness", smoothness);
+            return material;
         }
         #endregion
 

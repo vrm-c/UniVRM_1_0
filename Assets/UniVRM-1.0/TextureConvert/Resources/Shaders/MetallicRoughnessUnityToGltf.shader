@@ -3,7 +3,7 @@
 	Properties
 	{
 		_MainTex ("Texture", 2D) = "white" {}
-		_SmoothnessOrRoughness("SmoothnessOrRoughness", Float) = 1.0
+		_Smoothness("Smoothness", Float) = 1.0
 	}
 	SubShader
 	{
@@ -39,15 +39,15 @@
 			}
 			
 			sampler2D _MainTex;
-			float _SmoothnessOrRoughness;
+			float _Smoothness;
 
-			fixed4 frag (v2f i) : SV_Target
+			float4 frag (v2f i) : SV_Target
 			{
-				half4 col = tex2D(_MainTex, i.uv);
-				float pixelSmoothness = (col.a * _SmoothnessOrRoughness);
+				float4 col = tex2D(_MainTex, i.uv);
+				float pixelSmoothness = (col.a * _Smoothness);
 				float pixelRoughnessFactorSqrt = (1.0f - pixelSmoothness);
 				float pixelRoughnessFactor = pixelRoughnessFactorSqrt * pixelRoughnessFactorSqrt;
-				return half4(0, clamp(pixelRoughnessFactor, 0, 1.0), col.r, 1);
+				return float4(0, clamp(pixelRoughnessFactor, 0, 1.0), col.r, 1);
 			}
 			ENDCG
 		}
