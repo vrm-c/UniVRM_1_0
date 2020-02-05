@@ -105,45 +105,48 @@ namespace UniVRM10
 
         #region Export 1.0
         /// <summary>
-        /// metaObject はまだmetaが無いmodelの時に Editor から Meta情報を渡す口
+        /// metaObject が null のときは、root から取得する
         /// </summary>
-        public VrmLib.Model ToModelFrom10(GameObject root, VRMMetaObject metaObject)
+        public VrmLib.Model ToModelFrom10(GameObject root, VRMMetaObject metaObject = null)
         {
             Model = new VrmLib.Model(root.name, VrmLib.Coordinates.Unity);
 
-            var meta = new VrmLib.Meta();
-            if (metaObject != null)
+            if (metaObject is null)
             {
-                meta.Name = metaObject.Name;
-                meta.Version = metaObject.Version;
-                meta.Copyrights = metaObject.Copyrights;
-                meta.Authors.AddRange(metaObject.Authors);
-                meta.ContactInformation = metaObject.ContactInformation;
-                meta.Reference = metaObject.Reference;
-                meta.Thumbnail = metaObject.Thumbnail.ToPngImage(VrmLib.ImageUsage.None);
+                var vrmMeta = root.GetComponent<VRMMeta>();
+                if (vrmMeta is null || vrmMeta.Meta is null)
+                {
+                    throw new NullReferenceException("metaObject is null");
+                }
+                metaObject = vrmMeta.Meta;
+            }
 
-                meta.AvatarPermission = new VrmLib.AvatarPermission
-                {
-                    AvatarUsage = metaObject.AllowedUser,
-                    IsAllowedViolentUsage = metaObject.ViolentUsage,
-                    IsAllowedSexualUsage = metaObject.SexualUsage,
-                    CommercialUsage = metaObject.CommercialUsage,
-                    IsAllowedGameUsage = metaObject.GameUsage,
-                    IsAllowedPoliticalOrReligiousUsage = metaObject.PoliticalOrReligiousUsage,
-                    OtherPermissionUrl = metaObject.OtherPermissionUrl,
-                };
-                meta.RedistributionLicense = new VrmLib.RedistributionLicense
-                {
-                    CreditNotation = metaObject.CreditNotation,
-                    IsAllowRedistribution = metaObject.Redistribution,
-                    ModificationLicense = metaObject.ModificationLicense,
-                    OtherLicenseUrl = metaObject.OtherLicenseUrl,
-                };
-            }
-            else
+            var meta = new VrmLib.Meta();
+            meta.Name = metaObject.Name;
+            meta.Version = metaObject.Version;
+            meta.Copyrights = metaObject.Copyrights;
+            meta.Authors.AddRange(metaObject.Authors);
+            meta.ContactInformation = metaObject.ContactInformation;
+            meta.Reference = metaObject.Reference;
+            meta.Thumbnail = metaObject.Thumbnail.ToPngImage(VrmLib.ImageUsage.None);
+
+            meta.AvatarPermission = new VrmLib.AvatarPermission
             {
-                throw new NullReferenceException("metaObject is null");
-            }
+                AvatarUsage = metaObject.AllowedUser,
+                IsAllowedViolentUsage = metaObject.ViolentUsage,
+                IsAllowedSexualUsage = metaObject.SexualUsage,
+                CommercialUsage = metaObject.CommercialUsage,
+                IsAllowedGameUsage = metaObject.GameUsage,
+                IsAllowedPoliticalOrReligiousUsage = metaObject.PoliticalOrReligiousUsage,
+                OtherPermissionUrl = metaObject.OtherPermissionUrl,
+            };
+            meta.RedistributionLicense = new VrmLib.RedistributionLicense
+            {
+                CreditNotation = metaObject.CreditNotation,
+                IsAllowRedistribution = metaObject.Redistribution,
+                ModificationLicense = metaObject.ModificationLicense,
+                OtherLicenseUrl = metaObject.OtherLicenseUrl,
+            };
             Model.Vrm = new VrmLib.Vrm(meta, UniVRM10.VRMVersion.VERSION, UniVRM10.VRMSpecVersion.Version);
 
             // node
