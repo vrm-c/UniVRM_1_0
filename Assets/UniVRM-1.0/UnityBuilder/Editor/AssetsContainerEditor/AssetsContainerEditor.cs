@@ -11,7 +11,33 @@ namespace UniVRM10
     [CustomEditor(typeof(AssetsContainer))]
     public class AssetsContainerEditor : Editor
     {
-        const string AssetPath = "Assets/UniVRM-1.0/UnityBuilder/Editor/AssetsContainerEditor";
+        const string AssetPath = "UnityBuilder/Editor/AssetsContainerEditor";
+
+        static VisualTreeAsset Uxml
+        {
+            get
+            {
+                var uxml = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>($"Assets/UniVRM-1.0/{AssetPath}/AssetsContainerEditor.uxml");
+                if (uxml)
+                {
+                    return uxml;
+                }
+                return AssetDatabase.LoadAssetAtPath<VisualTreeAsset>($"Packages/com.vrmc.univrm/{AssetPath}/AssetsContainerEditor.uxml");
+            }
+        }
+
+        static StyleSheet StyleSheet
+        {
+            get
+            {
+                var stylesheet = AssetDatabase.LoadAssetAtPath<StyleSheet>($"Assets/UniVRM-1.0/{AssetPath}/AssetsContainerEditor.uss");
+                if (stylesheet)
+                {
+                    return stylesheet;
+                }
+                return AssetDatabase.LoadAssetAtPath<StyleSheet>($"Packages/com.vrmc.univrm/{AssetPath}/AssetsContainerEditor.uss");
+            }
+        }
 
         Dictionary<UnityEngine.Object, Editor> m_editors = new Dictionary<UnityEngine.Object, Editor>();
 
@@ -23,13 +49,10 @@ namespace UniVRM10
         {
             // Hierarchy
             m_rootElement = new VisualElement();
-            m_visualTree =
-                AssetDatabase.LoadAssetAtPath<VisualTreeAsset>($"{AssetPath}/AssetsContainerEditor.uxml");
+            m_visualTree = Uxml;
 
             // Styles
-            var stylesheet =
-                AssetDatabase.LoadAssetAtPath<StyleSheet>($"{AssetPath}/AssetsContainerEditor.uss");
-            m_rootElement.styleSheets.Add(stylesheet);
+            m_rootElement.styleSheets.Add(StyleSheet);
         }
 
         public void OnDisable()
@@ -91,7 +114,7 @@ namespace UniVRM10
             }
 
             var horizontal = new VisualElement();
-            
+
 
             horizontal.AddToClassList("horizontal");
 
@@ -178,7 +201,7 @@ namespace UniVRM10
                 var materials = assetsContainer.Assets.Materials;
                 for (int i = 0; i < materials.Count; ++i)
                 {
-                    if(materials[i] != null) materialList.Add(CreateMaterialVisual(i, materials[i], 60));
+                    if (materials[i] != null) materialList.Add(CreateMaterialVisual(i, materials[i], 60));
                 }
             }
 
