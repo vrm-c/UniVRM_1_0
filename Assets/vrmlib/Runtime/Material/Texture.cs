@@ -42,6 +42,9 @@ namespace VrmLib
         {
             Default,
             NormalMap,
+            MetallicRoughness,
+            Emissive,
+            Occlusion
         };
 
         public enum ColorSpaceTypes
@@ -102,6 +105,18 @@ namespace VrmLib
             // if (Scaling != other.Scaling) return false;
             if (!Image.Bytes.Equals(other.Image.Bytes)) return false;
             return true;
+        }
+    }
+
+    public class MetallicRoughnessImageTexture : ImageTexture
+    {
+        public float RoughnessFactor;
+
+        public MetallicRoughnessImageTexture(string name, TextureSampler sampler, Image image, float roughnessFactor, ColorSpaceTypes colorSpace, TextureTypes textureType = TextureTypes.Default)
+            : base(name, sampler, image, colorSpace, textureType)
+        {
+            Image = image;
+            RoughnessFactor = roughnessFactor;
         }
     }
 

@@ -121,7 +121,7 @@ namespace Vrm10
                     var buffer = Buffers[bufferIndex];
                     var bin = buffer.Bytes;
                     var byteSize = ((AccessorValueType)accessor.ComponentType).ByteSize() * accessor.Type.TypeCount() * accessor.Count;
-                    bytes = bin.Slice(view.ByteOffset.GetValueOrDefault(), view.ByteLength).Slice(accessor.ByteOffset.Value, byteSize);
+                    bytes = bin.Slice(view.ByteOffset.GetValueOrDefault(), view.ByteLength).Slice(accessor.ByteOffset.GetValueOrDefault(), byteSize);
                 }
             }
 
@@ -407,29 +407,37 @@ namespace Vrm10
         {
             return Gltf.Images[index].FromGltf(this);
         }
-        private Texture.TextureTypes GetTextureType(int textureIndex)
+        private (Texture.TextureTypes, VrmProtobuf.Material) GetTextureType(int textureIndex)
         {
             foreach (var material in Gltf.Materials)
             {
                 if (material.Extensions != null && material.Extensions.VRMCMaterialsMtoon != null)
                 {
                     var mtoon = material.Extensions.VRMCMaterialsMtoon;
-                    if (mtoon.NormalTexture == textureIndex) return Texture.TextureTypes.NormalMap;
+                    if (mtoon.NormalTexture == textureIndex) return (Texture.TextureTypes.NormalMap, material);
+                }
+                else if (material.Extensions != null && material.Extensions.KHRMaterialsUnlit != null)
+                {
                 }
                 else
                 {
-                    if (material.NormalTexture?.Index == textureIndex) return Texture.TextureTypes.NormalMap;
+                    if (material.PbrMetallicRoughness?.BaseColorTexture?.Index == textureIndex) return (Texture.TextureTypes.Default, material);
+                    if (material.PbrMetallicRoughness?.MetallicRoughnessTexture?.Index == textureIndex) return (Texture.TextureTypes.MetallicRoughness, material);
+                    if (material.OcclusionTexture?.Index == textureIndex) return (Texture.TextureTypes.Occlusion, material);
+                    if (material.EmissiveTexture?.Index == textureIndex) return (Texture.TextureTypes.Emissive, material);
+                    if (material.NormalTexture?.Index == textureIndex) return (Texture.TextureTypes.NormalMap, material);
                 }
             }
 
-            return Texture.TextureTypes.Default;
+            return (Texture.TextureTypes.Default, null);
         }
 
         private Texture.ColorSpaceTypes GetTextureColorSpaceType(int textureIndex)
         {
-            foreach (var material in Gltf.Materials)
+            foreach(var material in Gltf.Materials)
             {
-                if (material.Extensions != null && material.Extensions.VRMCMaterialsMtoon != null)
+                // mtoon
+                if(material.Extensions != null && material.Extensions.VRMCMaterialsMtoon != null)
                 {
                     var mtoon = material.Extensions.VRMCMaterialsMtoon;
                     if (mtoon.LitMultiplyTexture == textureIndex) return Texture.ColorSpaceTypes.Srgb;
@@ -443,9 +451,19 @@ namespace Vrm10
 
                     if (mtoon.NormalTexture == textureIndex) return Texture.ColorSpaceTypes.Linear;
                 }
+                // unlit
+                else if(material.Extensions != null && material.Extensions.KHRMaterialsUnlit != null)
+                {
+                    if (material.PbrMetallicRoughness.BaseColorTexture.Index == textureIndex) return Texture.ColorSpaceTypes.Srgb;
+                }
+                // Pbr
                 else
                 {
-                    // ToDo: Standerd and Unlit
+                    if (material.PbrMetallicRoughness?.BaseColorTexture?.Index == textureIndex) return Texture.ColorSpaceTypes.Srgb;
+                    if (material.PbrMetallicRoughness?.MetallicRoughnessTexture?.Index == textureIndex) return Texture.ColorSpaceTypes.Linear;
+                    if (material.OcclusionTexture?.Index == textureIndex) return Texture.ColorSpaceTypes.Linear;
+                    if (material.EmissiveTexture?.Index == textureIndex) return Texture.ColorSpaceTypes.Srgb;
+                    if (material.NormalTexture?.Index == textureIndex) return Texture.ColorSpaceTypes.Linear;
                 }
             }
 
@@ -454,15 +472,31 @@ namespace Vrm10
 
         public Texture CreateTexture(int index, List<Image> images)
         {
-            var x = Gltf.Textures[index];
+            var texture = Gltf.Textures[index];
             var textureType = GetTextureType(index);
             var colorSpace = GetTextureColorSpaceType(index);
 
-            var sampler = (x.Sampler.HasValue)
-            ? Gltf.Samplers[x.Sampler.Value]
+            var sampler = (texture.Sampler.HasValue)
+            ? Gltf.Samplers[texture.Sampler.Value]
             : new VrmProtobuf.Sampler()
             ;
-            return x.FromGltf(sampler, images, colorSpace, textureType);
+            
+            if (textureType.Item1 == Texture.TextureTypes.MetallicRoughness && textureType.Item2.PbrMetallicRoughness != null)
+            {
+                var roughnessFactor = textureType.Item2.PbrMetallicRoughness.RoughnessFactor;
+                var name = !string.IsNullOrEmpty(texture.Name) ? texture.Name : images[texture.Source.Value].Name;
+                return new MetallicRoughnessImageTexture(
+                    name,
+                    sampler.FromGltf(),
+                    images[texture.Source.Value],
+                    roughnessFactor.GetValueOrDefault(1.0f),
+                    colorSpace,
+                    textureType.Item1);
+            }
+            else
+            {
+                return texture.FromGltf(sampler, images, colorSpace, textureType.Item1);
+            }
         }
 
         public Material CreateMaterial(int index, List<Texture> textures)

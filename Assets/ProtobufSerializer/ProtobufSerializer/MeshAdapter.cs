@@ -50,7 +50,7 @@ namespace Vrm10
 
         static Mesh FromGltf(Vrm10Storage storage, VrmProtobuf.Mesh x, VrmProtobuf.MeshPrimitive primitive, bool isShared)
         {
-            var mesh = new Mesh((TopologyType)primitive.Mode)
+            var mesh = new Mesh((TopologyType)primitive.Mode.GetValueOrDefault())
             {
                 VertexBuffer = primitive.Attributes.FromGltf(storage)
             };

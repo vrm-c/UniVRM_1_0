@@ -30,13 +30,6 @@ namespace UniVRM10
             return null;
         }
 
-        // Unity texture to GLTF data
-        // ConvertToRawColorWhenNormalValueIsCompressed
-        private Material GetNormalMapConvertUnityToGltf()
-        {
-            return new Material(Shader.Find("UniVRM/NormalMapDecoder"));
-        }
-
         /// <summary>
         /// return (bytes, mime string)
         /// </summary>
@@ -72,7 +65,7 @@ namespace UniVRM10
                 Material normalConvertMaterial = null;
                 if (textureType == VrmLib.Texture.TextureTypes.NormalMap)
                 {
-                    normalConvertMaterial = GetNormalMapConvertUnityToGltf();
+                    normalConvertMaterial = TextureConvertMaterial.GetNormalMapConvertUnityToGltf();
                 }
 
                 var (bytes, mime) = GetImageEncodedBytes(

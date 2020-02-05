@@ -8,12 +8,12 @@ namespace Vrm10
     {
         public static Material FromGltf(this VrmProtobuf.Material x, List<Texture> textures)
         {
-            if (x.Extensions.VRMCMaterialsMtoon != null)
+            if (x.Extensions != null && x.Extensions.VRMCMaterialsMtoon != null)
             {
                 // MToon
                 return MToonAdapter.MToonFromGltf(x, textures);
             }
-            else if (x.Extensions.KHRMaterialsUnlit != null)
+            else if (x.Extensions != null && x.Extensions.KHRMaterialsUnlit != null)
             {
                 // unlit
                 return UnlitFromGltf(x, textures);

@@ -1,4 +1,4 @@
-﻿Shader "UniVRM/NormalMapDecoder"
+﻿Shader "UniVRM/NormalMapUnityToGltf"
 {
 	Properties
 	{

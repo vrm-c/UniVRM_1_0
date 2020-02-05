@@ -12,8 +12,9 @@ using VrmLib;
 
 namespace UniVRM10
 {
+
     [ScriptedImporter(1, "vrm")]
-    public class VrmScriptedImporter : ScriptedImporter
+    public class VrmScriptedImporter : ScriptedImporter, IExternalUnityObject
     {
         const string TextureDirName = "Textures";
         const string MaterialDirName = "Materials";
@@ -177,44 +178,29 @@ namespace UniVRM10
             return model;
         }
 
-        public static void ExtractFromAsset(UnityEngine.Object subAsset, string destinationPath, bool isForceUpdate)
-        {
-            string assetPath = AssetDatabase.GetAssetPath(subAsset);
 
-            var clone = UnityEngine.Object.Instantiate(subAsset);
-            AssetDatabase.CreateAsset(clone, destinationPath);
-
-            var assetImporter = AssetImporter.GetAtPath(assetPath);
-            assetImporter.AddRemap(new AssetImporter.SourceAssetIdentifier(subAsset), clone);
-
-            if (isForceUpdate)
-            {
-                AssetDatabase.WriteImportSettingsIfDirty(assetPath);
-                AssetDatabase.ImportAsset(assetPath, ImportAssetOptions.ForceUpdate);
-            }
-        }
 
         public void ExtractTextures()
         {
-            ExtractTextures(TextureDirName);
+            this.ExtractTextures(TextureDirName, (path) => { return CreateVrmModel(path); });
             AssetDatabase.ImportAsset(assetPath, ImportAssetOptions.ForceUpdate);
         }
 
         public void ExtractMaterials()
         {
-            ExtractAssets<UnityEngine.Material>(MaterialDirName, ".mat");
+            this.ExtractAssets<UnityEngine.Material>(MaterialDirName, ".mat");
             AssetDatabase.ImportAsset(assetPath, ImportAssetOptions.ForceUpdate);
         }
 
         public void ExtractMaterialsAndTextures()
         {
-            ExtractTextures(TextureDirName, () => { ExtractAssets<UnityEngine.Material>(MaterialDirName, ".mat"); });
+            this.ExtractTextures(TextureDirName, (path) => { return CreateVrmModel(path); } ,() => { this.ExtractAssets<UnityEngine.Material>(MaterialDirName, ".mat"); });
             AssetDatabase.ImportAsset(assetPath, ImportAssetOptions.ForceUpdate);
         }
 
         public void ExtractMeta()
         {
-            ExtractAssets<UniVRM10.VRMMetaObject>(MetaDirName, ".asset");
+            this.ExtractAssets<UniVRM10.VRMMetaObject>(MetaDirName, ".asset");
             var metaObject = this.GetExternalUnityObjects<UniVRM10.VRMMetaObject>().FirstOrDefault();
             var metaObjectPath = AssetDatabase.GetAssetPath(metaObject.Value);
             if (!string.IsNullOrEmpty(metaObjectPath))
@@ -227,8 +213,8 @@ namespace UniVRM10
 
         public void ExtractBlendShapes()
         {
-            ExtractAssets<UniVRM10.BlendShapeAvatar>(BlendShapeDirName, ".asset");
-            ExtractAssets<UniVRM10.BlendShapeClip>(BlendShapeDirName, ".asset");
+            this.ExtractAssets<UniVRM10.BlendShapeAvatar>(BlendShapeDirName, ".asset");
+            this.ExtractAssets<UniVRM10.BlendShapeClip>(BlendShapeDirName, ".asset");
 
             var blendShapeAvatar = this.GetExternalUnityObjects<UniVRM10.BlendShapeAvatar>().FirstOrDefault();
             var blendShapeClips = this.GetExternalUnityObjects<UniVRM10.BlendShapeClip>();
@@ -244,130 +230,16 @@ namespace UniVRM10
             AssetDatabase.ImportAsset(assetPath, ImportAssetOptions.ForceUpdate);
         }
 
-        public void ClearExtarnalObjects<T>() where T : UnityEngine.Object
+        public Dictionary<string, T> GetExternalUnityObjects<T>() where T : UnityEngine.Object
         {
-            foreach (var extarnalObject in this.GetExternalObjectMap().Where(x => x.Key.type == typeof(T)))
-            {
-                RemoveRemap(extarnalObject.Key);
-            }
-
-            AssetDatabase.WriteImportSettingsIfDirty(assetPath);
-            AssetDatabase.ImportAsset(assetPath, ImportAssetOptions.ForceUpdate);
+            return this.GetExternalObjectMap().Where(x => x.Key.type == typeof(T)).ToDictionary(x => x.Key.name, x => (T)x.Value);
         }
 
-        public void ClearExtarnalObjects()
+        public void SetExternalUnityObject<T>(UnityEditor.AssetImporter.SourceAssetIdentifier sourceAssetIdentifier, T obj) where T : UnityEngine.Object
         {
-            foreach (var extarnalObject in GetExternalObjectMap())
-            {
-                RemoveRemap(extarnalObject.Key);
-            }
-
-            AssetDatabase.WriteImportSettingsIfDirty(assetPath);
-            AssetDatabase.ImportAsset(assetPath, ImportAssetOptions.ForceUpdate);
-        }
-
-        private T GetSubAsset<T>() where T : UnityEngine.Object
-        {
-            return GetSubAssets<T>()
-                .FirstOrDefault();
-        }
-
-        private IEnumerable<T> GetSubAssets<T>() where T : UnityEngine.Object
-        {
-            return AssetDatabase
-                .LoadAllAssetsAtPath(assetPath)
-                .Where(x => AssetDatabase.IsSubAsset(x))
-                .Where(x => x is T)
-                .Select(x => x as T);
-        }
-
-        private void ExtractAssets<T>(string dirName, string extension) where T : UnityEngine.Object
-        {
-            if (string.IsNullOrEmpty(assetPath))
-                return;
-
-            var subAssets = GetSubAssets<T>();
-
-            var path = string.Format("{0}/{1}.{2}",
-                Path.GetDirectoryName(assetPath),
-                Path.GetFileNameWithoutExtension(assetPath),
-                dirName
-                );
-
-            var info = SafeCreateDirectory(path);
-
-            foreach (var asset in subAssets)
-            {
-                ExtractFromAsset(asset, string.Format("{0}/{1}{2}", path, asset.name, extension), false);
-            }
-        }
-
-        private void ExtractTextures(string dirName, Action onComplited = null)
-        {
-            if (string.IsNullOrEmpty(assetPath))
-                return;
-
-            var subAssets = GetSubAssets<UnityEngine.Texture2D>();
-
-            var path = string.Format("{0}/{1}.{2}",
-                Path.GetDirectoryName(assetPath),
-                Path.GetFileNameWithoutExtension(assetPath),
-                dirName
-                );
-
-            SafeCreateDirectory(path);
-
-            Dictionary<VrmLib.ImageTexture, string> targetPaths = new Dictionary<VrmLib.ImageTexture, string>();
-
-            // Reload Model
-            var model = CreateVrmModel(assetPath);
-            var mimeTypeReg = new System.Text.RegularExpressions.Regex("image/(?<mime>.*)$");
-            foreach (var texture in model.Textures)
-            {
-                var imageTexture = texture as VrmLib.ImageTexture;
-                if (imageTexture == null) continue;
-
-                var mimeType = mimeTypeReg.Match(imageTexture.Image.MimeType);
-                var targetPath = string.Format("{0}/{1}.{2}", path, imageTexture.Name, mimeType.Groups["mime"].Value);
-                File.WriteAllBytes(targetPath, imageTexture.Image.Bytes.ToArray());
-                AssetDatabase.ImportAsset(targetPath);
-                targetPaths.Add(imageTexture, targetPath);
-            }
-
-            EditorApplication.delayCall += () =>
-            {
-                foreach (var targetPath in targetPaths)
-                {
-                    var imageTexture = targetPath.Key;
-                    var targetTextureImporter = AssetImporter.GetAtPath(targetPath.Value) as TextureImporter;
-                    targetTextureImporter.sRGBTexture = (imageTexture.ColorSpace == VrmLib.Texture.ColorSpaceTypes.Srgb);
-                    if (imageTexture.TextureType == VrmLib.Texture.TextureTypes.NormalMap)
-                    {
-                        targetTextureImporter.textureType = TextureImporterType.NormalMap;
-                    }
-                    targetTextureImporter.SaveAndReimport();
-
-                    var externalObject = AssetDatabase.LoadAssetAtPath(targetPath.Value, typeof(UnityEngine.Texture2D));
-                    AddRemap(new AssetImporter.SourceAssetIdentifier(typeof(UnityEngine.Texture2D), imageTexture.Name), externalObject);
-                }
-
-                //AssetDatabase.WriteImportSettingsIfDirty(assetPath);
-                AssetDatabase.ImportAsset(assetPath, ImportAssetOptions.ForceUpdate);
-
-                if (onComplited != null)
-                {
-                    onComplited();
-                }
-            };
-        }
-
-        private static DirectoryInfo SafeCreateDirectory(string path)
-        {
-            if (Directory.Exists(path))
-            {
-                return null;
-            }
-            return Directory.CreateDirectory(path);
+            this.AddRemap(sourceAssetIdentifier, obj);
+            AssetDatabase.WriteImportSettingsIfDirty(this.assetPath);
+            AssetDatabase.ImportAsset(this.assetPath, ImportAssetOptions.ForceUpdate);
         }
     }
 }
