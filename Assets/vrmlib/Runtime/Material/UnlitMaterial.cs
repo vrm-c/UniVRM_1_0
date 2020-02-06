@@ -20,15 +20,6 @@ namespace VrmLib
             return sb.ToString();
         }
 
-        public void AssignUnlitData(Material src)
-        {
-            // copy
-            BaseColorFactor = src.BaseColorFactor;
-            BaseColorTexture = src.BaseColorTexture;
-            AlphaMode = src.AlphaMode;
-            AlphaCutoff = src.AlphaCutoff;
-        }
-
         public UnlitMaterial(string name) : base(name)
         {
         }
