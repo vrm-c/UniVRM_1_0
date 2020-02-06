@@ -87,13 +87,13 @@ namespace Vrm10
 
         public void ExportMaterialPBR(Material src, PBRMaterial pbr, List<Texture> textures)
         {
-            var material = pbr.PBRToGltf(src.Name, textures);
+            var material = pbr.PBRToGltf(textures);
             Gltf.Materials.Add(material);
         }
 
         public void ExportMaterialUnlit(Material src, UnlitMaterial unlit, List<Texture> textures)
         {
-            var material = unlit.UnlitToGltf(src.Name, textures);
+            var material = unlit.UnlitToGltf(textures);
             Gltf.Materials.Add(material);
             if (!Gltf.ExtensionsUsed.Contains(UnlitMaterial.ExtensionName))
             {
@@ -108,7 +108,7 @@ namespace Vrm10
                 Gltf.ExtensionsUsed.Add(UnlitMaterial.ExtensionName);
             }
 
-            var material = mtoon.MToonToGltf(src.Name, textures);
+            var material = mtoon.MToonToGltf(textures);
             Gltf.Materials.Add(material);
             if (!Gltf.ExtensionsUsed.Contains(MToonMaterial.ExtensionName))
             {

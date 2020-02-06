@@ -95,9 +95,9 @@ namespace Vrm10
             return mtoon;
         }
 
-        public static VrmProtobuf.Material MToonToGltf(this MToonMaterial mtoon, string name, List<Texture> textures)
+        public static VrmProtobuf.Material MToonToGltf(this MToonMaterial mtoon, List<Texture> textures)
         {
-            var material = mtoon.UnlitToGltf(name, textures);
+            var material = mtoon.UnlitToGltf(textures);
 
             // Unlitも有効にする
             // material.Extensions.KHRMaterialsUnlit = null;

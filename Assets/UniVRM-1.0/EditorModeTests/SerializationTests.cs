@@ -78,19 +78,19 @@ namespace Vrm10
             if (vrmLibMaterial is VrmLib.MToonMaterial mtoon)
             {
                 // MToon
-                var protobufMaterial = Vrm10.MToonAdapter.MToonToGltf(mtoon, mtoon.Name, textures);
+                var protobufMaterial = Vrm10.MToonAdapter.MToonToGltf(mtoon, textures);
                 ProtobufMaterialTest(protobufMaterial, textures, true);
             }
             else if (vrmLibMaterial is VrmLib.UnlitMaterial unlit)
             {
                 // Unlit
-                var protobufMaterial = Vrm10.MaterialAdapter.UnlitToGltf(unlit, unlit.Name, textures);
+                var protobufMaterial = Vrm10.MaterialAdapter.UnlitToGltf(unlit, textures);
                 ProtobufMaterialTest(protobufMaterial, textures, true);
             }
             else if (vrmLibMaterial is VrmLib.PBRMaterial pbr)
             {
                 // PBR
-                var protobufMaterial = Vrm10.MaterialAdapter.PBRToGltf(pbr, pbr.Name, textures);
+                var protobufMaterial = Vrm10.MaterialAdapter.PBRToGltf(pbr, textures);
                 ProtobufMaterialTest(protobufMaterial, textures, false);
             }
             else
