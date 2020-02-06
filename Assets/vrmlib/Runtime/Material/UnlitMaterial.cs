@@ -12,7 +12,7 @@ namespace VrmLib
         public override string ToString()
         {
             var sb = new System.Text.StringBuilder();
-            sb.Append("[Unlit]");
+            sb.Append($"[Unlit]{Name}");
             if (BaseColorTexture != null)
             {
                 sb.Append($" => {BaseColorTexture}");

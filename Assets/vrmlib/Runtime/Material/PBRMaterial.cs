@@ -12,7 +12,7 @@ namespace VrmLib
         public override string ToString()
         {
             var sb = new System.Text.StringBuilder();
-            sb.Append("[PBR]");
+            sb.Append($"[PBR]{Name}");
             if (BaseColorTexture != null)
             {
                 sb.Append(" ColorTex");

@@ -269,7 +269,7 @@ namespace VrmLib.Diff
             return BaseMaterialEquals(context, lhs, rhs);
         }
 
-        static bool MaterialEquals(ModelDiffContext context, Material l, Material r)
+        public static bool MaterialEquals(ModelDiffContext context, Material l, Material r)
         {
             var equals = true;
             if (!context.Enter("Name").Push(l.Name, r.Name, StringEquals))

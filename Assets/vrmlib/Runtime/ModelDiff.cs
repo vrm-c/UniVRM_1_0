@@ -29,7 +29,7 @@ namespace VrmLib.Diff
         }
     }
 
-    struct ModelDiffContext
+    public struct ModelDiffContext
     {
         public readonly string Path;
 
