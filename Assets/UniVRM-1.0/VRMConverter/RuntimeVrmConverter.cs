@@ -407,7 +407,7 @@ namespace UniVRM10
         }
         #endregion
 
-        VrmLib.Material Export10(Material m, Func<Texture, VrmLib.Texture.ColorSpaceTypes, VrmLib.Texture.TextureTypes, VrmLib.TextureInfo> map)
+        public VrmLib.Material Export10(Material m, Func<Texture, VrmLib.Texture.ColorSpaceTypes, VrmLib.Texture.TextureTypes, VrmLib.TextureInfo> map)
         {
             switch (m.shader.name)
             {
@@ -427,20 +427,20 @@ namespace UniVRM10
                     };
 
                 case "Unlit/Texture":
-                    return new VrmLib.Material(m.name)
+                    return new VrmLib.UnlitMaterial(m.name)
                     {
                         BaseColorTexture = map(m.mainTexture as Texture2D, VrmLib.Texture.ColorSpaceTypes.Srgb, VrmLib.Texture.TextureTypes.Default),
                     };
 
                 case "Unlit/Transparent":
-                    return new VrmLib.Material(m.name)
+                    return new VrmLib.UnlitMaterial(m.name)
                     {
                         BaseColorTexture = map(m.mainTexture as Texture2D, VrmLib.Texture.ColorSpaceTypes.Srgb, VrmLib.Texture.TextureTypes.Default),
                         AlphaMode = VrmLib.AlphaModeType.BLEND,
                     };
 
                 case "Unlit/Transparent Cutout":
-                    return new VrmLib.Material(m.name)
+                    return new VrmLib.UnlitMaterial(m.name)
                     {
                         BaseColorTexture = map(m.mainTexture as Texture2D, VrmLib.Texture.ColorSpaceTypes.Srgb, VrmLib.Texture.TextureTypes.Default),
                         AlphaMode = VrmLib.AlphaModeType.MASK,
@@ -448,8 +448,9 @@ namespace UniVRM10
                     };
 
                 case "UniGLTF/UniUnlit":
+                case "VRM/UniUnlit":
                     {
-                        var material = new VrmLib.Material(m.name)
+                        var material = new VrmLib.UnlitMaterial(m.name)
                         {
                             BaseColorFactor = m.color.FromUnitySrgbToLinear(),
                             BaseColorTexture = map(m.mainTexture as Texture2D, VrmLib.Texture.ColorSpaceTypes.Srgb, VrmLib.Texture.TextureTypes.Default),

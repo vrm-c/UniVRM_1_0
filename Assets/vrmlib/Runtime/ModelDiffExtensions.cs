@@ -95,6 +95,21 @@ namespace VrmLib.Diff
 
         static bool ImageBytesEquals(ModelDiffContext context, Image lhs, Image rhs)
         {
+            if (lhs is null)
+            {
+                if (rhs is null)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            if (rhs is null)
+            {
+                return false;
+            }
             return lhs.Bytes.Span.SequenceEqual(rhs.Bytes.Span);
         }
 
@@ -447,7 +462,7 @@ namespace VrmLib.Diff
         static bool VrmMaterialBindValueEquals(ModelDiffContext context, MaterialBindValue lhs, MaterialBindValue rhs)
         {
             var equals = true;
-            if (!context.Enter("Material").Push(lhs.Material, rhs.Material)) equals = false;
+            if (!context.Enter("Material.Name").Push(lhs.Material.Name, rhs.Material.Name)) equals = false;
             if (!context.Enter("Property").Push(lhs.Property, rhs.Property)) equals = false;
             if (!context.Enter("Value").Push(lhs.Value, rhs.Value)) equals = false;
             if (!context.Enter("BindType").Push(lhs.BindType, rhs.BindType)) equals = false;

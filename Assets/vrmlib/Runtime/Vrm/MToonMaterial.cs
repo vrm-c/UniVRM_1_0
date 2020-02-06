@@ -58,7 +58,7 @@ namespace VrmLib
 
         public override string ToString()
         {
-            return "[MTOON]";
+            return $"[MTOON]{Name}";
         }
 
         public float _DebugMode;
@@ -66,7 +66,6 @@ namespace VrmLib
         public float _DstBlend;
         public float _ZWrite;
 
-        public Dictionary<string, bool> KeyWords = new Dictionary<string, bool>();
 
         bool? MTOON_OUTLINE_COLORED;
         bool? MTOON_OUTLINE_COLOR_MIXED;
@@ -93,6 +92,5 @@ namespace VrmLib
         }
 
         public const string MToonShaderName = "VRM/MToon";
-
     }
 }

@@ -129,10 +129,6 @@ namespace Vrm10
             var material = new VrmProtobuf.Material
             {
                 Name = name,
-                Extensions = new VrmProtobuf.Material.Types.Extensions
-                {
-                    KHRMaterialsUnlit = new VrmProtobuf.KHR_materials_unlit(),
-                },
                 PbrMetallicRoughness = new VrmProtobuf.MaterialPbrMetallicRoughness
                 {
 
@@ -162,6 +158,10 @@ namespace Vrm10
         public static VrmProtobuf.Material UnlitToGltf(this UnlitMaterial unlit, string name, List<Texture> textures)
         {
             var material = unlit.ToGltf(name, textures);
+            material.Extensions = new VrmProtobuf.Material.Types.Extensions
+            {
+                KHRMaterialsUnlit = new VrmProtobuf.KHR_materials_unlit(),
+            };
             material.PbrMetallicRoughness.RoughnessFactor = 0.9f;
             material.PbrMetallicRoughness.MetallicFactor = 0.0f;
 
