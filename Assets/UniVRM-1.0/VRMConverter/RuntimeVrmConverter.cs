@@ -407,7 +407,7 @@ namespace UniVRM10
         }
         #endregion
 
-        VrmLib.Material Export10(Material m, Func<Texture, VrmLib.Texture.ColorSpaceTypes, VrmLib.Texture.TextureTypes, VrmLib.TextureInfo> map)
+        public VrmLib.Material Export10(Material m, Func<Texture, VrmLib.Texture.ColorSpaceTypes, VrmLib.Texture.TextureTypes, VrmLib.TextureInfo> map)
         {
             switch (m.shader.name)
             {

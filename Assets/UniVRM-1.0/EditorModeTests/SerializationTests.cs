@@ -1,4 +1,7 @@
+using System;
+using System.Collections.Generic;
 using NUnit.Framework;
+using UnityEngine;
 
 namespace Vrm10
 {
@@ -52,6 +55,51 @@ namespace Vrm10
                 var json = new Google.Protobuf.JsonFormatter(settings).Format(data);
                 // Assert.Equal($"{{ {q}name{q}: {q}Some{q} }}", json);
             }
+        }
+
+        static VrmProtobuf.Material ToProtobuf(VrmLib.Material vrmLibMaterial, List<VrmLib.Texture> textures)
+        {
+            if (vrmLibMaterial is VrmLib.PBRMaterial pbr)
+            {
+                return Vrm10.MaterialAdapter.PBRToGltf(pbr, pbr.Name, textures);
+            }
+            else if (vrmLibMaterial is VrmLib.UnlitMaterial unlit)
+            {
+                return Vrm10.MaterialAdapter.UnlitToGltf(unlit, unlit.Name, textures);
+            }
+            else if (vrmLibMaterial is VrmLib.MToonMaterial mtoon)
+            {
+                return Vrm10.MToonAdapter.MToonToGltf(mtoon, mtoon.Name, textures);
+            }
+            else
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        /// Unity material を export => import して元の material と一致するか
+        [Test]
+        [TestCase("TestMToon")]
+        [TestCase("TestUniUnlit")]
+        [TestCase("TestStandard")]
+        [TestCase("TestUnlitColor")]
+        [TestCase("TestUnlitTexture")]
+        [TestCase("TestUnlitTransparent")]
+        [TestCase("TestUnlitCutout")]
+        public void UnityMaterialTest(string materialName)
+        {
+            var src = Resources.Load<Material>(materialName);
+            var converter = new UniVRM10.RuntimeVrmConverter();
+            var vrmLibMaterial = converter.Export10(src, (a, b, c) => null);
+            Debug.Log($"{src} => {vrmLibMaterial}");
+            var textures = new List<VrmLib.Texture>();
+
+            var protobufMaterial = ToProtobuf(vrmLibMaterial, textures);
+            Assert.Null(protobufMaterial?.Extensions?.KHRMaterialsUnlit);
+            var settings = Google.Protobuf.JsonFormatter.Settings.Default.WithPreserveProtoFieldNames(true);
+            var jsonMaterial = new Google.Protobuf.JsonFormatter(settings).Format(protobufMaterial);
+
+            Debug.Log(jsonMaterial);
         }
     }
 }
