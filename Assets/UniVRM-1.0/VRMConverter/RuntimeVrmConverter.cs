@@ -114,6 +114,9 @@ namespace UniVRM10
                 metaObject = vrmMeta.Meta;
             }
 
+            ToGlbModel(root);
+
+            // meta
             var meta = new VrmLib.Meta();
             meta.Name = metaObject.Name;
             meta.Version = metaObject.Version;
@@ -142,15 +145,6 @@ namespace UniVRM10
             };
             Model.Vrm = new VrmLib.Vrm(meta, UniVRM10.VRMVersion.VERSION, UniVRM10.VRMSpecVersion.Version);
 
-            // node
-            {
-                Model.Root = new VrmLib.Node(root.name);
-                CreateNodes(root.transform, Model.Root, Nodes);
-                Model.Nodes = Nodes
-                .Where(x => x.Value != Model.Root)
-                            .Select(x => x.Value).ToList();
-            }
-
             // humanoid
             {
                 var animator = root.GetComponent<Animator>();
@@ -170,60 +164,6 @@ namespace UniVRM10
                 }
             }
 
-            // material and textures
-            var rendererComponents = root.GetComponentsInChildren<Renderer>();
-            {
-                foreach (var renderer in rendererComponents)
-                {
-                    var materials = renderer.sharedMaterials; // avoid copy
-                    foreach (var material in materials)
-                    {
-                        if (Materials.ContainsKey(material))
-                        {
-                            continue;
-                        }
-
-                        var vrmMaterial = Export10(material, GetOrCreateTexture);
-                        Model.Materials.Add(vrmMaterial);
-                        Materials.Add(material, vrmMaterial);
-                    }
-                }
-            }
-
-            // mesh
-            {
-                foreach (var renderer in rendererComponents)
-                {
-                    if (renderer is SkinnedMeshRenderer skinnedMeshRenderer)
-                    {
-                        if (skinnedMeshRenderer.sharedMesh != null)
-                        {
-                            var mesh = CreateMesh(skinnedMeshRenderer.sharedMesh, skinnedMeshRenderer, Materials);
-                            var skin = CreateSkin(skinnedMeshRenderer, Nodes, root);
-                            if (skin != null)
-                            {
-                                // blendshape only で skinning が無いやつがある
-                                mesh.Skin = skin;
-                                Model.Skins.Add(mesh.Skin);
-                            }
-                            Model.MeshGroups.Add(mesh);
-                            Nodes[renderer.gameObject].MeshGroup = mesh;
-                            Meshes.Add(skinnedMeshRenderer.sharedMesh, mesh);
-                        }
-                    }
-                    else if (renderer is MeshRenderer meshRenderer)
-                    {
-                        var filter = meshRenderer.gameObject.GetComponent<MeshFilter>();
-                        if (filter != null && filter.sharedMesh != null)
-                        {
-                            var mesh = CreateMesh(filter.sharedMesh, meshRenderer, Materials);
-                            Model.MeshGroups.Add(mesh);
-                            Nodes[renderer.gameObject].MeshGroup = mesh;
-                            Meshes.Add(filter.sharedMesh, mesh);
-                        }
-                    }
-                }
-            }
 
             // blendShape
             {
@@ -399,6 +339,80 @@ namespace UniVRM10
                         }
 
                         Model.Vrm.SpringBone.Springs.Add(vrmSpringBone);
+                    }
+                }
+            }
+
+            return Model;
+        }
+
+        public VrmLib.Model ToGlbModel(GameObject root)
+        {
+            if(Model == null)
+            {
+                Model = new VrmLib.Model(VrmLib.Coordinates.Unity);
+            }
+
+            // node
+            {
+                Model.Root = new VrmLib.Node(root.name);
+                CreateNodes(root.transform, Model.Root, Nodes);
+                Model.Nodes = Nodes
+                .Where(x => x.Value != Model.Root)
+                            .Select(x => x.Value).ToList();
+            }
+
+            // material and textures
+            var rendererComponents = root.GetComponentsInChildren<Renderer>();
+            {
+                foreach (var renderer in rendererComponents)
+                {
+                    var materials = renderer.sharedMaterials; // avoid copy
+                    foreach (var material in materials)
+                    {
+                        if (Materials.ContainsKey(material))
+                        {
+                            continue;
+                        }
+
+                        var vrmMaterial = Export10(material, GetOrCreateTexture);
+                        Model.Materials.Add(vrmMaterial);
+                        Materials.Add(material, vrmMaterial);
+                    }
+                }
+            }
+
+            // mesh
+            {
+                foreach (var renderer in rendererComponents)
+                {
+                    if (renderer is SkinnedMeshRenderer skinnedMeshRenderer)
+                    {
+                        if (skinnedMeshRenderer.sharedMesh != null)
+                        {
+                            var mesh = CreateMesh(skinnedMeshRenderer.sharedMesh, skinnedMeshRenderer, Materials);
+                            var skin = CreateSkin(skinnedMeshRenderer, Nodes, root);
+                            if (skin != null)
+                            {
+                                // blendshape only で skinning が無いやつがある
+                                mesh.Skin = skin;
+                                Model.Skins.Add(mesh.Skin);
+                            }
+                            Model.MeshGroups.Add(mesh);
+                            Nodes[renderer.gameObject].MeshGroup = mesh;
+                            Meshes.Add(skinnedMeshRenderer.sharedMesh, mesh);
+                        }
+                    }
+                    else if (renderer is MeshRenderer meshRenderer)
+                    {
+                        var filter = meshRenderer.gameObject.GetComponent<MeshFilter>();
+                        if (filter != null && filter.sharedMesh != null)
+                        {
+                            var mesh = CreateMesh(filter.sharedMesh, meshRenderer, Materials);
+                            Model.MeshGroups.Add(mesh);
+                            Nodes[renderer.gameObject].MeshGroup = mesh;
+                            Meshes.Add(filter.sharedMesh, mesh);
+                        }
                     }
                 }
             }

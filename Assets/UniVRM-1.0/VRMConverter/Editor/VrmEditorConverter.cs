@@ -10,6 +10,7 @@ using System;
 
 namespace UniVRM10
 {
+
     public class VrmEditorConverter : EditorWindow
     {
         const string EXTENSION = ".vrm";
@@ -35,8 +36,8 @@ namespace UniVRM10
         #endregion
 
         [MenuItem("VRM/UniVRM-" + UniVRM10.VRMVersion.VERSION + "/VRMEditorExporter")]
-        [MenuItem("GameObject/UniVRM-" + UniVRM10.VRMVersion.VERSION + "/Export", false, 20)]
-        public static void ShowExample()
+        [MenuItem("GameObject/UniVRM-" + UniVRM10.VRMVersion.VERSION + "/Export VRM", false, 20)]
+        public static void ShowEditorWindow()
         {
             VrmEditorConverter wnd = GetWindow<VrmEditorConverter>();
             wnd.titleContent = new GUIContent("VRMEditorExporter");
