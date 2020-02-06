@@ -78,26 +78,33 @@ namespace Vrm10
             if (vrmLibMaterial is VrmLib.MToonMaterial mtoon)
             {
                 // MToon
-                Vrm10.MToonAdapter.MToonToGltf(mtoon, mtoon.Name, textures);
+                var protobufMaterial = Vrm10.MToonAdapter.MToonToGltf(mtoon, mtoon.Name, textures);
+                ProtobufMaterialTest(protobufMaterial, textures, true);
             }
             else if (vrmLibMaterial is VrmLib.UnlitMaterial unlit)
             {
                 // Unlit
-                Vrm10.MaterialAdapter.UnlitToGltf(unlit, unlit.Name, textures);
+                var protobufMaterial = Vrm10.MaterialAdapter.UnlitToGltf(unlit, unlit.Name, textures);
+                ProtobufMaterialTest(protobufMaterial, textures, true);
             }
             else if (vrmLibMaterial is VrmLib.PBRMaterial pbr)
             {
                 // PBR
-                Vrm10.MaterialAdapter.PBRToGltf(pbr, pbr.Name, textures);
+                var protobufMaterial = Vrm10.MaterialAdapter.PBRToGltf(pbr, pbr.Name, textures);
+                ProtobufMaterialTest(protobufMaterial, textures, false);
             }
             else
             {
                 throw new NotImplementedException();
             }
 
-            // var protobufMaterial = ToProtobuf(vrmLibMaterial, textures);
-            // var settings = Google.Protobuf.JsonFormatter.Settings.Default.WithPreserveProtoFieldNames(true);
-            // var jsonMaterial = new Google.Protobuf.JsonFormatter(settings).Format(protobufMaterial);
+        }
+
+        static void ProtobufMaterialTest(VrmProtobuf.Material protobufMaterial, List<VrmLib.Texture> textures, bool hasKhrUnlit)
+        {
+            Assert.AreEqual(hasKhrUnlit, protobufMaterial.Extensions?.KHRMaterialsUnlit != null);
+            var settings = Google.Protobuf.JsonFormatter.Settings.Default.WithPreserveProtoFieldNames(true);
+            var jsonMaterial = new Google.Protobuf.JsonFormatter(settings).Format(protobufMaterial);
         }
     }
 }
