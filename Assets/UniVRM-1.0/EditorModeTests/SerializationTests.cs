@@ -57,47 +57,47 @@ namespace Vrm10
             }
         }
 
-        static VrmProtobuf.Material ToProtobuf(VrmLib.Material vrmLibMaterial, List<VrmLib.Texture> textures)
-        {
-            if (vrmLibMaterial is VrmLib.PBRMaterial pbr)
-            {
-                return Vrm10.MaterialAdapter.PBRToGltf(pbr, pbr.Name, textures);
-            }
-            else if (vrmLibMaterial is VrmLib.UnlitMaterial unlit)
-            {
-                return Vrm10.MaterialAdapter.UnlitToGltf(unlit, unlit.Name, textures);
-            }
-            else if (vrmLibMaterial is VrmLib.MToonMaterial mtoon)
-            {
-                return Vrm10.MToonAdapter.MToonToGltf(mtoon, mtoon.Name, textures);
-            }
-            else
-            {
-                throw new NotImplementedException();
-            }
-        }
-
         /// Unity material を export => import して元の material と一致するか
         [Test]
-        [TestCase("TestMToon", true)]
-        [TestCase("TestUniUnlit", true)]
-        [TestCase("TestStandard", false)]
-        [TestCase("TestUnlitColor", true)]
-        [TestCase("TestUnlitTexture", true)]
-        [TestCase("TestUnlitTransparent", true)]
-        [TestCase("TestUnlitCutout", true)]
-        public void UnityMaterialTest(string materialName, bool hasKhrUnlit)
+        [TestCase("TestMToon", typeof(VrmLib.MToonMaterial))]
+        [TestCase("TestUniUnlit", typeof(VrmLib.UnlitMaterial))]
+        [TestCase("TestStandard", typeof(VrmLib.PBRMaterial))]
+        [TestCase("TestUnlitColor", typeof(VrmLib.UnlitMaterial))]
+        [TestCase("TestUnlitTexture", typeof(VrmLib.UnlitMaterial))]
+        [TestCase("TestUnlitTransparent", typeof(VrmLib.UnlitMaterial))]
+        [TestCase("TestUnlitCutout", typeof(VrmLib.UnlitMaterial))]
+        public void UnityMaterialTest(string materialName, Type vrmLibMaterialType)
         {
             var src = Resources.Load<Material>(materialName);
             var converter = new UniVRM10.RuntimeVrmConverter();
             var vrmLibMaterial = converter.Export10(src, (a, b, c) => null);
             Debug.Log($"{src.shader.name} => {vrmLibMaterial}");
-            var textures = new List<VrmLib.Texture>();
+            Assert.AreEqual(vrmLibMaterialType, vrmLibMaterial.GetType());
 
-            var protobufMaterial = ToProtobuf(vrmLibMaterial, textures);
-            Assert.AreEqual(hasKhrUnlit, protobufMaterial?.Extensions?.KHRMaterialsUnlit != null);
-            var settings = Google.Protobuf.JsonFormatter.Settings.Default.WithPreserveProtoFieldNames(true);
-            var jsonMaterial = new Google.Protobuf.JsonFormatter(settings).Format(protobufMaterial);
+            var textures = new List<VrmLib.Texture>();
+            if (vrmLibMaterial is VrmLib.MToonMaterial mtoon)
+            {
+                // MToon
+                Vrm10.MToonAdapter.MToonToGltf(mtoon, mtoon.Name, textures);
+            }
+            else if (vrmLibMaterial is VrmLib.UnlitMaterial unlit)
+            {
+                // Unlit
+                Vrm10.MaterialAdapter.UnlitToGltf(unlit, unlit.Name, textures);
+            }
+            else if (vrmLibMaterial is VrmLib.PBRMaterial pbr)
+            {
+                // PBR
+                Vrm10.MaterialAdapter.PBRToGltf(pbr, pbr.Name, textures);
+            }
+            else
+            {
+                throw new NotImplementedException();
+            }
+
+            // var protobufMaterial = ToProtobuf(vrmLibMaterial, textures);
+            // var settings = Google.Protobuf.JsonFormatter.Settings.Default.WithPreserveProtoFieldNames(true);
+            // var jsonMaterial = new Google.Protobuf.JsonFormatter(settings).Format(protobufMaterial);
         }
     }
 }
