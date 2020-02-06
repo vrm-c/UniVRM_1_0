@@ -79,27 +79,25 @@ namespace Vrm10
 
         /// Unity material を export => import して元の material と一致するか
         [Test]
-        [TestCase("TestMToon")]
-        [TestCase("TestUniUnlit")]
-        [TestCase("TestStandard")]
-        [TestCase("TestUnlitColor")]
-        [TestCase("TestUnlitTexture")]
-        [TestCase("TestUnlitTransparent")]
-        [TestCase("TestUnlitCutout")]
-        public void UnityMaterialTest(string materialName)
+        [TestCase("TestMToon", true)]
+        [TestCase("TestUniUnlit", true)]
+        [TestCase("TestStandard", false)]
+        [TestCase("TestUnlitColor", true)]
+        [TestCase("TestUnlitTexture", true)]
+        [TestCase("TestUnlitTransparent", true)]
+        [TestCase("TestUnlitCutout", true)]
+        public void UnityMaterialTest(string materialName, bool hasKhrUnlit)
         {
             var src = Resources.Load<Material>(materialName);
             var converter = new UniVRM10.RuntimeVrmConverter();
             var vrmLibMaterial = converter.Export10(src, (a, b, c) => null);
-            Debug.Log($"{src} => {vrmLibMaterial}");
+            Debug.Log($"{src.shader.name} => {vrmLibMaterial}");
             var textures = new List<VrmLib.Texture>();
 
             var protobufMaterial = ToProtobuf(vrmLibMaterial, textures);
-            Assert.Null(protobufMaterial?.Extensions?.KHRMaterialsUnlit);
+            Assert.AreEqual(hasKhrUnlit, protobufMaterial?.Extensions?.KHRMaterialsUnlit != null);
             var settings = Google.Protobuf.JsonFormatter.Settings.Default.WithPreserveProtoFieldNames(true);
             var jsonMaterial = new Google.Protobuf.JsonFormatter(settings).Format(protobufMaterial);
-
-            Debug.Log(jsonMaterial);
         }
     }
 }
