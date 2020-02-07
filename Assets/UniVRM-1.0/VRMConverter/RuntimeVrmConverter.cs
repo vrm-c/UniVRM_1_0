@@ -561,7 +561,8 @@ namespace UniVRM10
                     material.RoughnessFactor = 1.0f;
                 }
             }
-            else
+
+            if(material.MetallicRoughnessTexture == null)
             {
                 if (src.HasProperty("_Metallic"))
                 {
