@@ -70,7 +70,7 @@ namespace Vrm10
         {
             var src = Resources.Load<Material>(materialName);
             var converter = new UniVRM10.RuntimeVrmConverter();
-            var vrmLibMaterial = converter.Export10(src, (a, b, c) => null);
+            var vrmLibMaterial = converter.Export10(src, (a, b, c, d) => null);
             Debug.Log($"{src.shader.name} => {vrmLibMaterial}");
             Assert.AreEqual(vrmLibMaterialType, vrmLibMaterial.GetType());
 
