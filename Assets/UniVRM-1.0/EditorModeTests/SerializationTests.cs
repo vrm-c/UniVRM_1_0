@@ -159,6 +159,7 @@ namespace Vrm10
             "_ReceiveShadowRate",
             "_ShadingGradeRate",
             "_MToonVersion",
+            "_Glossiness", // Gloss is burned into the texture and changed to the default value (1.0)
         };
 
         /// Unity material を export => import して元の material と一致するか
