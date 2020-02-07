@@ -172,7 +172,8 @@ namespace Vrm10
         [TestCase("TestUnlitCutout", typeof(VrmLib.UnlitMaterial), false)]
         public void UnityMaterialTest(string materialName, Type vrmLibMaterialType, bool sameShader = true)
         {
-            var src = Resources.Load<Material>(materialName);
+            // cerate copy avoid modify asset
+            var src = new Material(Resources.Load<Material>(materialName));
 
             // => vrmlib
             var converter = new UniVRM10.RuntimeVrmConverter();
