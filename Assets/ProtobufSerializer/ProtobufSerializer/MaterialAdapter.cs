@@ -124,11 +124,11 @@ namespace Vrm10
             return unlit;
         }
 
-        static VrmProtobuf.Material ToGltf(this VrmLib.Material src, string name, List<Texture> textures)
+        static VrmProtobuf.Material ToGltf(this VrmLib.Material src, List<Texture> textures)
         {
             var material = new VrmProtobuf.Material
             {
-                Name = name,
+                Name = src.Name,
                 PbrMetallicRoughness = new VrmProtobuf.MaterialPbrMetallicRoughness
                 {
 
@@ -148,9 +148,9 @@ namespace Vrm10
             return material;
         }
 
-        public static VrmProtobuf.Material PBRToGltf(this PBRMaterial pbr, string name, List<Texture> textures)
+        public static VrmProtobuf.Material PBRToGltf(this PBRMaterial pbr, List<Texture> textures)
         {
-            var material = pbr.ToGltf(name, textures);
+            var material = pbr.ToGltf(textures);
 
             // MetallicRoughness
             material.PbrMetallicRoughness.BaseColorFactor.Add(pbr.BaseColorFactor.ToFloat4());
@@ -215,9 +215,9 @@ namespace Vrm10
             return material;
         }
 
-        public static VrmProtobuf.Material UnlitToGltf(this UnlitMaterial unlit, string name, List<Texture> textures)
+        public static VrmProtobuf.Material UnlitToGltf(this UnlitMaterial unlit, List<Texture> textures)
         {
-            var material = unlit.ToGltf(name, textures);
+            var material = unlit.ToGltf(textures);
             material.Extensions = new VrmProtobuf.Material.Types.Extensions
             {
                 KHRMaterialsUnlit = new VrmProtobuf.KHR_materials_unlit(),
