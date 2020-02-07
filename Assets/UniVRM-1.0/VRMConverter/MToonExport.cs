@@ -57,7 +57,8 @@ namespace UniVRM10
         /// MToon.MToonDefinition(Unity) を VrmLib.MToon.MToonDefinition に変換する
         /// <summary>
         public static VrmLib.MToon.MToonDefinition ToVrmLib(this global::MToon.MToonDefinition unity,
-            Func<Texture2D, VrmLib.Texture.ColorSpaceTypes, VrmLib.Texture.TextureTypes, VrmLib.TextureInfo> getOrCreateTexture)
+            Material material,
+            GetOrCreateTextureDelegate getOrCreateTexture)
         {
             return new VrmLib.MToon.MToonDefinition
             {
@@ -65,14 +66,14 @@ namespace UniVRM10
                 {
                     CutoutThresholdValue = unity.Color.CutoutThresholdValue,
                     LitColor = unity.Color.LitColor.FromUnitySrgbToLinear(),
-                    LitMultiplyTexture = unity.Color.LitMultiplyTexture.ToVrmLib(getOrCreateTexture, VrmLib.Texture.ColorSpaceTypes.Srgb),
+                    LitMultiplyTexture = unity.Color.LitMultiplyTexture.ToVrmLib(getOrCreateTexture, material, VrmLib.Texture.ColorSpaceTypes.Srgb),
                     ShadeColor = unity.Color.ShadeColor.FromUnitySrgbToLinear(),
-                    ShadeMultiplyTexture = unity.Color.ShadeMultiplyTexture.ToVrmLib(getOrCreateTexture, VrmLib.Texture.ColorSpaceTypes.Srgb),
+                    ShadeMultiplyTexture = unity.Color.ShadeMultiplyTexture.ToVrmLib(getOrCreateTexture, material, VrmLib.Texture.ColorSpaceTypes.Srgb),
                 },
                 Emission = new VrmLib.MToon.EmissionDefinition
                 {
                     EmissionColor = unity.Emission.EmissionColor.FromUnityLinear(),
-                    EmissionMultiplyTexture = unity.Emission.EmissionMultiplyTexture.ToVrmLib(getOrCreateTexture, VrmLib.Texture.ColorSpaceTypes.Srgb),
+                    EmissionMultiplyTexture = unity.Emission.EmissionMultiplyTexture.ToVrmLib(getOrCreateTexture, material, VrmLib.Texture.ColorSpaceTypes.Srgb),
                 },
                 Lighting = new VrmLib.MToon.LightingDefinition
                 {
@@ -89,12 +90,12 @@ namespace UniVRM10
                     Normal = new VrmLib.MToon.NormalDefinition
                     {
                         NormalScaleValue = unity.Lighting.Normal.NormalScaleValue,
-                        NormalTexture = unity.Lighting.Normal.NormalTexture.ToVrmLib(getOrCreateTexture, VrmLib.Texture.ColorSpaceTypes.Linear, VrmLib.Texture.TextureTypes.NormalMap),
+                        NormalTexture = unity.Lighting.Normal.NormalTexture.ToVrmLib(getOrCreateTexture, material, VrmLib.Texture.ColorSpaceTypes.Linear, VrmLib.Texture.TextureTypes.NormalMap),
                     },
                 },
                 MatCap = new VrmLib.MToon.MatCapDefinition
                 {
-                    AdditiveTexture = unity.MatCap.AdditiveTexture.ToVrmLib(getOrCreateTexture, VrmLib.Texture.ColorSpaceTypes.Srgb),
+                    AdditiveTexture = unity.MatCap.AdditiveTexture.ToVrmLib(getOrCreateTexture, material, VrmLib.Texture.ColorSpaceTypes.Srgb),
                 },
                 Meta = new VrmLib.MToon.MetaDefinition
                 {
@@ -108,7 +109,7 @@ namespace UniVRM10
                     OutlineLightingMixValue = unity.Outline.OutlineLightingMixValue,
                     OutlineScaledMaxDistanceValue = unity.Outline.OutlineScaledMaxDistanceValue,
                     OutlineWidthMode = (VrmLib.MToon.OutlineWidthMode)unity.Outline.OutlineWidthMode,
-                    OutlineWidthMultiplyTexture = unity.Outline.OutlineWidthMultiplyTexture.ToVrmLib(getOrCreateTexture, VrmLib.Texture.ColorSpaceTypes.Linear),
+                    OutlineWidthMultiplyTexture = unity.Outline.OutlineWidthMultiplyTexture.ToVrmLib(getOrCreateTexture, material, VrmLib.Texture.ColorSpaceTypes.Linear),
                     OutlineWidthValue = unity.Outline.OutlineWidthValue,
                 },
                 Rendering = new VrmLib.MToon.RenderingDefinition
@@ -123,13 +124,13 @@ namespace UniVRM10
                     RimFresnelPowerValue = unity.Rim.RimFresnelPowerValue,
                     RimLiftValue = unity.Rim.RimLiftValue,
                     RimLightingMixValue = unity.Rim.RimLightingMixValue,
-                    RimMultiplyTexture = unity.Rim.RimMultiplyTexture.ToVrmLib(getOrCreateTexture, VrmLib.Texture.ColorSpaceTypes.Srgb),
+                    RimMultiplyTexture = unity.Rim.RimMultiplyTexture.ToVrmLib(getOrCreateTexture, material, VrmLib.Texture.ColorSpaceTypes.Srgb),
                 },
                 TextureOption = new VrmLib.MToon.TextureUvCoordsDefinition
                 {
                     MainTextureLeftBottomOriginOffset = unity.TextureOption.MainTextureLeftBottomOriginOffset.ToNumericsVector2(),
                     MainTextureLeftBottomOriginScale = unity.TextureOption.MainTextureLeftBottomOriginScale.ToNumericsVector2(),
-                    UvAnimationMaskTexture = unity.TextureOption.UvAnimationMaskTexture.ToVrmLib(getOrCreateTexture, VrmLib.Texture.ColorSpaceTypes.Linear),
+                    UvAnimationMaskTexture = unity.TextureOption.UvAnimationMaskTexture.ToVrmLib(getOrCreateTexture, material, VrmLib.Texture.ColorSpaceTypes.Linear),
                     UvAnimationRotationSpeedValue = unity.TextureOption.UvAnimationRotationSpeedValue,
                     UvAnimationScrollXSpeedValue = unity.TextureOption.UvAnimationScrollXSpeedValue,
                     UvAnimationScrollYSpeedValue = unity.TextureOption.UvAnimationScrollYSpeedValue,
@@ -137,9 +138,9 @@ namespace UniVRM10
             };
         }
 
-        static VrmLib.TextureInfo ToVrmLib(this Texture2D src, Func<Texture2D, VrmLib.Texture.ColorSpaceTypes, VrmLib.Texture.TextureTypes, VrmLib.TextureInfo> map, VrmLib.Texture.ColorSpaceTypes colorSpace, VrmLib.Texture.TextureTypes textureType = VrmLib.Texture.TextureTypes.Default)
+        static VrmLib.TextureInfo ToVrmLib(this Texture2D src, GetOrCreateTextureDelegate map, Material material, VrmLib.Texture.ColorSpaceTypes colorSpace, VrmLib.Texture.TextureTypes textureType = VrmLib.Texture.TextureTypes.Default)
         {
-            return map(src, colorSpace, textureType);
+            return map(material, src, colorSpace, textureType);
         }
     }
 }

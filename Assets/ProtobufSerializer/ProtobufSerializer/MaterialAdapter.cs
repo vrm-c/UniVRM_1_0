@@ -151,7 +151,67 @@ namespace Vrm10
         public static VrmProtobuf.Material PBRToGltf(this PBRMaterial pbr, string name, List<Texture> textures)
         {
             var material = pbr.ToGltf(name, textures);
-            // TODO: PBR params
+
+            // MetallicRoughness
+            material.PbrMetallicRoughness.BaseColorFactor.Add(pbr.BaseColorFactor.ToFloat4());
+            if (pbr.BaseColorTexture != null)
+            {
+                material.PbrMetallicRoughness.BaseColorTexture = new VrmProtobuf.TextureInfo
+                {
+                    Index = textures.IndexOfNullable(pbr.BaseColorTexture.Texture),
+                };
+            }
+            material.PbrMetallicRoughness.MetallicFactor = pbr.MetallicFactor;
+            material.PbrMetallicRoughness.RoughnessFactor = pbr.RoughnessFactor;
+            if (pbr.MetallicRoughnessTexture != null)
+            {
+                material.PbrMetallicRoughness.MetallicRoughnessTexture = new VrmProtobuf.TextureInfo
+                {
+                    Index = textures.IndexOfNullable(pbr.MetallicRoughnessTexture),
+                };
+            }
+
+            // Normal
+            if (pbr.NormalTexture != null)
+            {
+                material.NormalTexture = new VrmProtobuf.MaterialNormalTextureInfo
+                {
+                    Index = textures.IndexOfNullable(pbr.NormalTexture),
+                    Scale = pbr.NormalTextureScale
+                };
+            }
+
+            // Occlusion
+            if (pbr.OcclusionTexture != null)
+            {
+                material.OcclusionTexture = new VrmProtobuf.MaterialOcclusionTextureInfo
+                {
+                    Index = textures.IndexOfNullable(pbr.OcclusionTexture),
+                    Strength = pbr.OcclusionTextureStrength,
+                };
+            }
+
+            // Emissive
+            if (pbr.EmissiveTexture != null)
+            {
+                material.EmissiveTexture = new VrmProtobuf.TextureInfo
+                {
+                    Index = textures.IndexOfNullable(pbr.EmissiveTexture),
+                };
+            }
+            material.EmissiveFactor.Add(pbr.EmissiveFactor.X);
+            material.EmissiveFactor.Add(pbr.EmissiveFactor.Y);
+            material.EmissiveFactor.Add(pbr.EmissiveFactor.Z);
+
+            // AlphaMode
+            material.AlphaMode = ((pbr.AlphaMode == AlphaModeType.BLEND_ZWRITE)?AlphaModeType.BLEND: pbr.AlphaMode).ToString();
+
+            // AlphaCutoff
+            material.AlphaCutoff = pbr.AlphaCutoff;
+
+            // DoubleSided
+            material.DoubleSided = pbr.DoubleSided;
+
             return material;
         }
 

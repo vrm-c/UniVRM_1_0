@@ -7,7 +7,7 @@ namespace VrmLib
     {
         public Vector4 RGBA;
 
-        public float[] ToLinearFloat4()
+        public float[] ToFloat4()
         {
             return new float[]{
                 RGBA.X,

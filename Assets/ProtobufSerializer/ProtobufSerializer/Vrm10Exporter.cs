@@ -42,7 +42,7 @@ namespace Vrm10
             if (!string.IsNullOrEmpty(model.AssetMinVersion)) Gltf.Asset.MinVersion = model.AssetMinVersion;
 
             if (!string.IsNullOrEmpty(model.AssetGenerator)) Gltf.Asset.Generator = model.AssetGenerator;
-            if (!string.IsNullOrEmpty(model.Vrm.ExporterVersion))
+            if (model.Vrm != null && !string.IsNullOrEmpty(model.Vrm.ExporterVersion))
             {
                 Gltf.Asset.Generator = model.Vrm.ExporterVersion;
             }
