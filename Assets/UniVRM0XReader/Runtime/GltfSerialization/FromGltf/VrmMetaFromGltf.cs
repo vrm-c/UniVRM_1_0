@@ -32,9 +32,9 @@ namespace GltfSerializationAdapter
                 }
             }
 
-            public bool IsAllowedPoliticalOrReligiousUsage => throw new NotImplementedException();
+            public bool IsAllowedPoliticalOrReligiousUsage => false;
 
-            public bool IsAllowedGameUsage => throw new NotImplementedException();
+            public bool IsAllowedGameUsage => false;
 
             public string OtherPermissionUrl { get; set; }
 
@@ -55,11 +55,11 @@ namespace GltfSerializationAdapter
         {
             public DistributionLicenseType License { get; set; }
 
-            public CreditNotationType CreditNotation => throw new NotImplementedException();
+            public CreditNotationType CreditNotation => CreditNotationType.Required;
 
-            public bool IsAllowRedistribution => throw new NotImplementedException();
+            public bool IsAllowRedistribution => false;
 
-            public ModificationLicenseType ModificationLicense => throw new NotImplementedException();
+            public ModificationLicenseType ModificationLicense => ModificationLicenseType.Prohibited;
 
             public string OtherLicenseUrl { get; set; }
 
