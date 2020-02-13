@@ -1,14 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Json;
-using System.Text;
-using System.Threading.Tasks;
+using UnityEngine;
 
 namespace UniVRM10
 {
+    [Flags]
+    public enum VRMExtensionFlags
+    {
+        None = 0,
+        Vrm0X = 0x1,
+        Vrm10 = 0x2,
+    }
+
     public class VRMVersionCheck
     {
         [DataContract]
@@ -41,26 +46,26 @@ namespace UniVRM10
             public Extensions extensions;
         }
 
-        public static bool IsVrm10(byte[] jsonBytes)
+        public static VRMExtensionFlags GetVRMExtensionFlag(ArraySegment<byte> jsonBytes)
         {
-            using (var ms = new MemoryStream(jsonBytes))
+            using (var ms = new MemoryStream(jsonBytes.Array, jsonBytes.Offset, jsonBytes.Count))
             {
                 var serializer = new DataContractJsonSerializer(typeof(VrmVersionCheck));
                 var deserialized = (VrmVersionCheck)serializer.ReadObject(ms);
+                var flag = VRMExtensionFlags.None;
                 if (deserialized.extensions.VRMC_vrm != null)
                 {
-                    UnityEngine.Debug.Log("specVersion " + deserialized.extensions.VRMC_vrm.specVersion);
-                    return true;
+                    Debug.Log("specVersion " + deserialized.extensions.VRMC_vrm.specVersion);
+                    flag |= VRMExtensionFlags.Vrm10;
                 }
-                else if (deserialized.extensions.VRM != null)
+
+                if (deserialized.extensions.VRM != null)
                 {
-                    UnityEngine.Debug.Log("specVersion " + deserialized.extensions.VRM.specVersion);
-                    return false;
+                    Debug.Log("specVersion " + deserialized.extensions.VRM.specVersion);
+                    flag |= VRMExtensionFlags.Vrm0X;
                 }
-                else
-                {
-                    throw new Exception("vrm extensions is not found.");
-                }
+
+                return flag;
             }
         }
     }

@@ -93,7 +93,7 @@ namespace UniVRM10
             VrmLib.IVrmStorage storage;
             storage = new Vrm10.Vrm10Storage(glb.Json.Bytes, glb.Binary.Bytes);
             model = VrmLib.ModelLoader.Load(storage, Path.GetFileNameWithoutExtension(path));
-            model.ConvertCoordinate(VrmLib.Coordinates.Unity, ignoreVrm: true);
+            model.ConvertCoordinate(VrmLib.Coordinates.Unity);
 
             return model;
         }
