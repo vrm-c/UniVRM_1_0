@@ -67,11 +67,41 @@ namespace UniVRM10
             if (m_sliders != null)
             {
                 var sliders = m_sliders.Select(x => x.Slider());
-                foreach(var slider in sliders)
+                foreach (var slider in sliders)
                 {
                     m_blendShapeKeyWeights[slider.Key] = slider.Value;
                 }
                 m_target.SetValues(m_blendShapeKeyWeights.Select(x => new KeyValuePair<BlendShapeKey, float>(x.Key, x.Value)));
+            }
+        }
+
+        const string GUI_LABEL = "OffsetFromHead";
+        void OnSceneGUI()
+        {
+            var component = target as VRMBlendShapeProxy;
+            if(!component.DrawGizmo)
+            {
+                return;
+            }
+
+            var head = component.Head;
+            if (head == null)
+            {
+                return;
+            }
+
+            EditorGUI.BeginChangeCheck();
+
+            var worldOffset = head.localToWorldMatrix.MultiplyPoint(component.OffsetFromHead);
+            worldOffset = Handles.PositionHandle(worldOffset, head.rotation);
+
+            Handles.Label(worldOffset, GUI_LABEL);
+
+            if (EditorGUI.EndChangeCheck())
+            {
+                Undo.RecordObject(component, "Changed FirstPerson");
+
+                component.OffsetFromHead = head.worldToLocalMatrix.MultiplyPoint(worldOffset);
             }
         }
     }

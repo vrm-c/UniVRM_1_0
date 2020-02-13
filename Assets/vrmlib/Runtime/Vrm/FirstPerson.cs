@@ -27,7 +27,7 @@ namespace VrmLib
     public class FirstPerson
     {
         // obsolete
-        public Node m_fp;
+        // public Node m_fp;
 
         // Move to LookAt Offset
         // public Vector3 m_offset;

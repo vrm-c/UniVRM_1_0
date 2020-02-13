@@ -74,7 +74,7 @@ namespace UniVRM10
                     {
                         smoothness = material.GetFloat("_GlossMapScale");
                     }
-                     
+
                     converter = TextureConvertMaterial.GetMetallicRoughnessUnityToGltf(smoothness);
                 }
                 else if (textureType == VrmLib.Texture.TextureTypes.Occlusion)
@@ -243,7 +243,6 @@ namespace UniVRM10
                 var firstPersonComponent = root.GetComponent<UniVRM10.VRMFirstPerson>();
                 if (firstPersonComponent != null)
                 {
-                    firstPerson.m_fp = Nodes[firstPersonComponent.FirstPersonBone.gameObject];
                     foreach (var renderer in firstPersonComponent.Renderers)
                     {
                         firstPerson.Annotations.Add(
@@ -257,56 +256,55 @@ namespace UniVRM10
 
             // lookAt
             {
+                var blendShapeProxy = root.GetComponent<UniVRM10.VRMBlendShapeProxy>();
                 var lookAt = new VrmLib.LookAt();
-                var lookAtBlendShape = root.GetComponent<UniVRM10.VRMLookAtBlendShapeApplier>();
-                var lookAtBone = root.GetComponent<UniVRM10.VRMLookAtBoneApplier>();
+                var lookAtBlendShape = blendShapeProxy;
+                var lookAtBone = blendShapeProxy;
                 if (lookAtBlendShape != null)
                 {
-                    lookAt.HorizontalInner = new VrmLib.LookAtRangeMap();
-                    lookAt.HorizontalOuter = new VrmLib.LookAtRangeMap()
+                    if (lookAtBlendShape.LookAtType == VRMBlendShapeProxy.LookAtTypes.BlendShape)
                     {
-                        InputMaxValue = lookAtBlendShape.HorizontalOuter.CurveXRangeDegree,
-                        OutputScaling = lookAtBlendShape.HorizontalOuter.CurveYRangeDegree
-                    };
-                    lookAt.VerticalUp = new VrmLib.LookAtRangeMap()
+                        lookAt.HorizontalInner = new VrmLib.LookAtRangeMap();
+                        lookAt.HorizontalOuter = new VrmLib.LookAtRangeMap()
+                        {
+                            InputMaxValue = lookAtBlendShape.HorizontalOuter.CurveXRangeDegree,
+                            OutputScaling = lookAtBlendShape.HorizontalOuter.CurveYRangeDegree
+                        };
+                        lookAt.VerticalUp = new VrmLib.LookAtRangeMap()
+                        {
+                            InputMaxValue = lookAtBlendShape.VerticalUp.CurveXRangeDegree,
+                            OutputScaling = lookAtBlendShape.VerticalUp.CurveYRangeDegree,
+                        };
+                        lookAt.VerticalDown = new VrmLib.LookAtRangeMap()
+                        {
+                            InputMaxValue = lookAtBlendShape.VerticalDown.CurveXRangeDegree,
+                            OutputScaling = lookAtBlendShape.VerticalDown.CurveYRangeDegree,
+                        };
+                    }
+                    else if (lookAtBlendShape.LookAtType == VRMBlendShapeProxy.LookAtTypes.Bone)
                     {
-                        InputMaxValue = lookAtBlendShape.VerticalUp.CurveXRangeDegree,
-                        OutputScaling = lookAtBlendShape.VerticalUp.CurveYRangeDegree,
-                    };
-                    lookAt.VerticalDown = new VrmLib.LookAtRangeMap()
-                    {
-                        InputMaxValue = lookAtBlendShape.VerticalDown.CurveXRangeDegree,
-                        OutputScaling = lookAtBlendShape.VerticalDown.CurveYRangeDegree,
-                    };
-                }
-                else if (lookAtBone != null)
-                {
-                    lookAt.HorizontalInner = new VrmLib.LookAtRangeMap()
-                    {
-                        InputMaxValue = lookAtBone.HorizontalInner.CurveXRangeDegree,
-                        OutputScaling = lookAtBone.HorizontalInner.CurveYRangeDegree
-                    };
-                    lookAt.HorizontalOuter = new VrmLib.LookAtRangeMap()
-                    {
-                        InputMaxValue = lookAtBone.HorizontalOuter.CurveXRangeDegree,
-                        OutputScaling = lookAtBone.HorizontalOuter.CurveYRangeDegree
-                    };
-                    lookAt.VerticalUp = new VrmLib.LookAtRangeMap()
-                    {
-                        InputMaxValue = lookAtBone.VerticalUp.CurveXRangeDegree,
-                        OutputScaling = lookAtBone.VerticalUp.CurveYRangeDegree,
-                    };
-                    lookAt.VerticalDown = new VrmLib.LookAtRangeMap()
-                    {
-                        InputMaxValue = lookAtBone.VerticalDown.CurveXRangeDegree,
-                        OutputScaling = lookAtBone.VerticalDown.CurveYRangeDegree,
-                    };
-                }
-
-                var firstPersonComponent = root.GetComponent<UniVRM10.VRMFirstPerson>();
-                if (firstPersonComponent != null)
-                {
-                    lookAt.OffsetFromHeadBone = firstPersonComponent.FirstPersonOffset.ToNumericsVector3();
+                        lookAt.HorizontalInner = new VrmLib.LookAtRangeMap()
+                        {
+                            InputMaxValue = lookAtBone.HorizontalInner.CurveXRangeDegree,
+                            OutputScaling = lookAtBone.HorizontalInner.CurveYRangeDegree
+                        };
+                        lookAt.HorizontalOuter = new VrmLib.LookAtRangeMap()
+                        {
+                            InputMaxValue = lookAtBone.HorizontalOuter.CurveXRangeDegree,
+                            OutputScaling = lookAtBone.HorizontalOuter.CurveYRangeDegree
+                        };
+                        lookAt.VerticalUp = new VrmLib.LookAtRangeMap()
+                        {
+                            InputMaxValue = lookAtBone.VerticalUp.CurveXRangeDegree,
+                            OutputScaling = lookAtBone.VerticalUp.CurveYRangeDegree,
+                        };
+                        lookAt.VerticalDown = new VrmLib.LookAtRangeMap()
+                        {
+                            InputMaxValue = lookAtBone.VerticalDown.CurveXRangeDegree,
+                            OutputScaling = lookAtBone.VerticalDown.CurveYRangeDegree,
+                        };
+                    }
+                    lookAt.OffsetFromHeadBone = blendShapeProxy.OffsetFromHead.ToNumericsVector3();
                 }
                 Model.Vrm.LookAt = lookAt;
             }
@@ -362,7 +360,7 @@ namespace UniVRM10
 
         public VrmLib.Model ToGlbModel(GameObject root)
         {
-            if(Model == null)
+            if (Model == null)
             {
                 Model = new VrmLib.Model(VrmLib.Coordinates.Unity);
             }
@@ -548,10 +546,10 @@ namespace UniVRM10
                 // {
                 //     smoothness = m.GetFloat("_GlossMapScale");
                 // }
-               
+
                 material.MetallicRoughnessTexture = map(
                     src,
-                    src.GetTexture("_MetallicGlossMap"), 
+                    src.GetTexture("_MetallicGlossMap"),
                     VrmLib.Texture.ColorSpaceTypes.Linear,
                     VrmLib.Texture.TextureTypes.MetallicRoughness)?.Texture;
                 if (material.MetallicRoughnessTexture != null)
@@ -562,7 +560,7 @@ namespace UniVRM10
                 }
             }
 
-            if(material.MetallicRoughnessTexture == null)
+            if (material.MetallicRoughnessTexture == null)
             {
                 if (src.HasProperty("_Metallic"))
                 {
