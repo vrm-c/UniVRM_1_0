@@ -29,7 +29,7 @@ namespace UniVRM10
             {
                 // Create Vrm Model
                 VrmLib.Model model = VrmLoader.CreateVrmModel(ctx.assetPath);
-                Debug.Log($"ModelLoader.Load: {model}");
+                Debug.Log($"VrmLoader.CreateVrmModel: {model}");
 
                 // Build Unity Model
                 var builder = new UniVRM10.EditorUnityBuilder();

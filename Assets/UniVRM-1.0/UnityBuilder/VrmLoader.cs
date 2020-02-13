@@ -15,6 +15,11 @@ namespace UniVRM10
         public static Model CreateVrmModel(string path)
         {
             var bytes = File.ReadAllBytes(path);
+            return CreateVrmModel(bytes, new FileInfo(path));
+        }
+
+        public static Model CreateVrmModel(byte[] bytes, FileInfo path)
+        {
             if (!Glb.TryParse(bytes, out Glb glb, out Exception ex))
             {
                 throw ex;
@@ -25,15 +30,15 @@ namespace UniVRM10
             if (flag.HasFlag(VRMExtensionFlags.Vrm10))
             {
                 var storage = new Vrm10.Vrm10Storage(glb.Json.Bytes, glb.Binary.Bytes);
-                var model = ModelLoader.Load(storage, Path.GetFileName(path));
+                var model = ModelLoader.Load(storage, path.Name);
                 model.ConvertCoordinate(Coordinates.Unity);
                 return model;
             }
 
             if (flag.HasFlag(VRMExtensionFlags.Vrm0X))
             {
-                var storage = new GltfSerialization.GltfStorage(new FileInfo(path), glb.Json.Bytes, glb.Binary.Bytes);
-                var model = ModelLoader.Load(storage, Path.GetFileName(path));
+                var storage = new GltfSerialization.GltfStorage(path, glb.Json.Bytes, glb.Binary.Bytes);
+                var model = ModelLoader.Load(storage, path.Name);
 
                 // TODO: conversion from VRMMeta0x to VRMMeta10 
 

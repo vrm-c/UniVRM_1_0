@@ -38,15 +38,8 @@ namespace UniVRM10.Test
 
         private ModelAsset ToUnity(byte[] bytes)
         {
-            if (!Glb.TryParse(bytes, out Glb glb, out Exception ex))
-            {
-                throw ex;
-            }
-
             // Vrm => Model
-            var storage = new Vrm10.Vrm10Storage(glb.Json.Bytes, glb.Binary.Bytes);
-            var model = ModelLoader.Load(storage, "test");
-            model.ConvertCoordinate(Coordinates.Unity);
+            var model = VrmLoader.CreateVrmModel(bytes, new FileInfo("tmp.vrm"));
             model.RemoveSecondary();
 
             return ToUnity(model);
@@ -59,15 +52,6 @@ namespace UniVRM10.Test
             var assets = importer.ToUnityAsset(model);
             UniVRM10.ComponentBuilder.Build10(model, importer, assets);
             return assets;
-        }
-
-        private byte[] ToVrm(GameObject root)
-        {
-            var exporter = new UniVRM10.RuntimeVrmConverter();
-            var model = exporter.ToModelFrom10(root, root.GetComponent<VRMMeta>().Meta);
-
-            model.ConvertCoordinate(VrmLib.Coordinates.Gltf, ignoreVrm: false);
-            return model.ToGlb();
         }
 
         private Model ToVrmModel(GameObject root)

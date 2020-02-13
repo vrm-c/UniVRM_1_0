@@ -17,16 +17,12 @@ namespace UniVRM10.Test
                 return null;
             }
 
-            var storage = new Vrm10.Vrm10Storage(glb.Json.Bytes, glb.Binary.Bytes);
-            var model = VrmLib.ModelLoader.Load(storage, path);
+            var model = UniVRM10.VrmLoader.CreateVrmModel(path);
             return model;
         }
 
         GameObject BuildGameObject(VrmLib.Model model)
         {
-            // convert Coordinate from Gltf to Unity
-            VrmLib.ModelExtensionsForCoordinates.ConvertCoordinate(model, VrmLib.Coordinates.Unity);
-
             var importer = new UniVRM10.RuntimeUnityBuilder();
             var assets = importer.ToUnityAsset(model);
             UniVRM10.ComponentBuilder.Build10(model, importer, assets);
