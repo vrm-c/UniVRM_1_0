@@ -1,11 +1,9 @@
 {
-    "name": "UniVRM-1.0",
+    "name": "UniVRM0XReader",
     "references": [
-        "GUID:c17744d85d4c1a84cb0885f2fdfe6091",
         "GUID:2ef84b520212e174a94668c7a0862d3b",
         "GUID:a9bc101fb0471f94a8f99fd242fdd934",
-        "GUID:18b7cb4dfdd12754c8f333d7b10c301c",
-        "GUID:f218308778956b5439219310b4351df4"
+        "GUID:c17744d85d4c1a84cb0885f2fdfe6091"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
@@ -15,5 +13,5 @@
     "autoReferenced": true,
     "defineConstraints": [],
     "versionDefines": [],
-    "noEngineReferences": false
+    "noEngineReferences": true
 }
