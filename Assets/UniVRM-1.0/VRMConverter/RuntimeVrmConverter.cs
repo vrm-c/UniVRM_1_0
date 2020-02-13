@@ -483,7 +483,7 @@ namespace UniVRM10
                             BaseColorFactor = src.color.FromUnitySrgbToLinear(),
                             BaseColorTexture = map(src, src.mainTexture as Texture2D, VrmLib.Texture.ColorSpaceTypes.Srgb, VrmLib.Texture.TextureTypes.Default),
                             AlphaMode = GetAlphaMode(src),
-                            DoubleSided = UniUnlit.Utils.GetCullMode(src) == UniUnlit.UniUnlitCullMode.Off,
+                            DoubleSided = UniGLTF.UniUnlit.Utils.GetCullMode(src) == UniGLTF.UniUnlit.UniUnlitCullMode.Off,
                         };
                         if (material.AlphaMode == VrmLib.AlphaModeType.MASK)
                         {
@@ -500,11 +500,11 @@ namespace UniVRM10
 
         static VrmLib.AlphaModeType GetAlphaMode(Material m)
         {
-            switch (UniUnlit.Utils.GetRenderMode(m))
+            switch (UniGLTF.UniUnlit.Utils.GetRenderMode(m))
             {
-                case UniUnlit.UniUnlitRenderMode.Opaque: return VrmLib.AlphaModeType.OPAQUE;
-                case UniUnlit.UniUnlitRenderMode.Cutout: return VrmLib.AlphaModeType.MASK;
-                case UniUnlit.UniUnlitRenderMode.Transparent: return VrmLib.AlphaModeType.BLEND;
+                case UniGLTF.UniUnlit.UniUnlitRenderMode.Opaque: return VrmLib.AlphaModeType.OPAQUE;
+                case UniGLTF.UniUnlit.UniUnlitRenderMode.Cutout: return VrmLib.AlphaModeType.MASK;
+                case UniGLTF.UniUnlit.UniUnlitRenderMode.Transparent: return VrmLib.AlphaModeType.BLEND;
             }
             throw new NotImplementedException();
         }

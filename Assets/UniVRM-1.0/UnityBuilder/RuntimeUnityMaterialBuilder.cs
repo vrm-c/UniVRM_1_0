@@ -31,7 +31,7 @@ namespace UniVRM10
 
         static UnityEngine.Material CreateUnlitMaterial(VrmLib.UnlitMaterial src, bool hasVertexColor, Dictionary<VrmLib.Texture, Texture2D> textures)
         {
-            var material = new Material(Shader.Find(UniUnlit.Utils.ShaderName));
+            var material = new Material(Shader.Find(UniGLTF.UniUnlit.Utils.ShaderName));
 
             // texture
             if (src.BaseColorTexture != null)
@@ -46,39 +46,39 @@ namespace UniVRM10
             switch (src.AlphaMode)
             {
                 case VrmLib.AlphaModeType.OPAQUE:
-                    UniUnlit.Utils.SetRenderMode(material, UniUnlit.UniUnlitRenderMode.Opaque);
+                    UniGLTF.UniUnlit.Utils.SetRenderMode(material, UniGLTF.UniUnlit.UniUnlitRenderMode.Opaque);
                     break;
 
                 case VrmLib.AlphaModeType.BLEND:
-                    UniUnlit.Utils.SetRenderMode(material, UniUnlit.UniUnlitRenderMode.Transparent);
+                    UniGLTF.UniUnlit.Utils.SetRenderMode(material, UniGLTF.UniUnlit.UniUnlitRenderMode.Transparent);
                     break;
 
                 case VrmLib.AlphaModeType.MASK:
-                    UniUnlit.Utils.SetRenderMode(material, UniUnlit.UniUnlitRenderMode.Cutout);
+                    UniGLTF.UniUnlit.Utils.SetRenderMode(material, UniGLTF.UniUnlit.UniUnlitRenderMode.Cutout);
                     break;
 
                 default:
-                    UniUnlit.Utils.SetRenderMode(material, UniUnlit.UniUnlitRenderMode.Opaque);
+                    UniGLTF.UniUnlit.Utils.SetRenderMode(material, UniGLTF.UniUnlit.UniUnlitRenderMode.Opaque);
                     break;
             }
 
             // culling
             if (src.DoubleSided)
             {
-                UniUnlit.Utils.SetCullMode(material, UniUnlit.UniUnlitCullMode.Off);
+                UniGLTF.UniUnlit.Utils.SetCullMode(material, UniGLTF.UniUnlit.UniUnlitCullMode.Off);
             }
             else
             {
-                UniUnlit.Utils.SetCullMode(material, UniUnlit.UniUnlitCullMode.Back);
+                UniGLTF.UniUnlit.Utils.SetCullMode(material, UniGLTF.UniUnlit.UniUnlitCullMode.Back);
             }
 
             // VColor
             if (hasVertexColor)
             {
-                UniUnlit.Utils.SetVColBlendMode(material, UniUnlit.UniUnlitVertexColorBlendOp.Multiply);
+                UniGLTF.UniUnlit.Utils.SetVColBlendMode(material, UniGLTF.UniUnlit.UniUnlitVertexColorBlendOp.Multiply);
             }
 
-            UniUnlit.Utils.ValidateProperties(material, true);
+            UniGLTF.UniUnlit.Utils.ValidateProperties(material, true);
 
             return material;
         }
