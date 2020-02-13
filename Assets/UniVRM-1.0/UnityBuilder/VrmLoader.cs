@@ -9,6 +9,9 @@ namespace UniVRM10
     /// </summary>
     public static class VrmLoader
     {
+        // TODO:
+        const string VRM0X_LICENSE_URL = "https://vrm-consortium.org/";
+
         /// <summary>
         /// Load VRM10 or VRM0x from path
         /// </summary>
@@ -40,7 +43,23 @@ namespace UniVRM10
                 var storage = new GltfSerialization.GltfStorage(path, glb.Json.Bytes, glb.Binary.Bytes);
                 var model = ModelLoader.Load(storage, path.Name);
 
-                // TODO: conversion from VRMMeta0x to VRMMeta10 
+                // convert meta frm 0x to 10
+                var meta0x = model.Vrm.Meta.AvatarPermission;
+                model.Vrm.Meta.AvatarPermission = new AvatarPermission
+                {
+                    AvatarUsage = meta0x.AvatarUsage,
+                    CommercialUsage = meta0x.CommercialUsage,
+                    IsAllowedGameUsage = meta0x.IsAllowedGameUsage,
+                    IsAllowedPoliticalOrReligiousUsage = meta0x.IsAllowedPoliticalOrReligiousUsage,
+                    IsAllowedSexualUsage = meta0x.IsAllowedSexualUsage,
+                    IsAllowedViolentUsage = meta0x.IsAllowedViolentUsage,
+                    OtherPermissionUrl = meta0x.OtherPermissionUrl,
+                };
+                model.Vrm.Meta.RedistributionLicense = new RedistributionLicense
+                {
+                    OtherLicenseUrl = VRM0X_LICENSE_URL,
+                };
+                UnityEngine.Debug.LogWarning($"convert {model.Vrm.ExporterVersion} to 1.0. please update meta information");
 
                 model.ConvertCoordinate(Coordinates.Unity, ignoreVrm: true);
                 return model;
