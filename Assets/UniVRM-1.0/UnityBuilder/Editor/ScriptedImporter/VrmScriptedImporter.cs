@@ -28,7 +28,7 @@ namespace UniVRM10
             try
             {
                 // Create Vrm Model
-                VrmLib.Model model = CreateVrmModel(ctx.assetPath);
+                VrmLib.Model model = VrmLoader.CreateVrmModel(ctx.assetPath);
                 Debug.Log($"ModelLoader.Load: {model}");
 
                 // Build Unity Model
@@ -153,41 +153,11 @@ namespace UniVRM10
             }
         }
 
-        private VrmLib.Model CreateVrmModel(string path)
-        {
-            var bytes = File.ReadAllBytes(path);
-            if (!VrmLib.Glb.TryParse(bytes, out VrmLib.Glb glb, out Exception ex))
-            {
-                throw ex;
-            }
 
-            var flag = VRMVersionCheck.GetVRMExtensionFlag(glb.Json.Bytes.ToArray());
-
-            if (flag.HasFlag(VRMExtensionFlags.Vrm10))
-            {
-                var storage = new Vrm10.Vrm10Storage(glb.Json.Bytes, glb.Binary.Bytes);
-                var model = VrmLib.ModelLoader.Load(storage, Path.GetFileName(path));
-                model.ConvertCoordinate(VrmLib.Coordinates.Unity);
-                return model;
-            }
-
-            if(flag.HasFlag(VRMExtensionFlags.Vrm0X))
-            {
-                var storage = new GltfSerialization.GltfStorage(new FileInfo(path), glb.Json.Bytes, glb.Binary.Bytes);
-                var model = VrmLib.ModelLoader.Load(storage, Path.GetFileName(path));
-
-                // TODO: conversion from VRMMeta0x to VRMMeta10 
-
-                model.ConvertCoordinate(VrmLib.Coordinates.Unity, ignoreVrm: true);
-                return model;
-            }
-
-            throw new NotImplementedException();
-        }
 
         public void ExtractTextures()
         {
-            this.ExtractTextures(TextureDirName, (path) => { return CreateVrmModel(path); });
+            this.ExtractTextures(TextureDirName, (path) => { return VrmLoader.CreateVrmModel(path); });
             AssetDatabase.ImportAsset(assetPath, ImportAssetOptions.ForceUpdate);
         }
 
@@ -199,7 +169,7 @@ namespace UniVRM10
 
         public void ExtractMaterialsAndTextures()
         {
-            this.ExtractTextures(TextureDirName, (path) => { return CreateVrmModel(path); } ,() => { this.ExtractAssets<UnityEngine.Material>(MaterialDirName, ".mat"); });
+            this.ExtractTextures(TextureDirName, (path) => { return VrmLoader.CreateVrmModel(path); }, () => { this.ExtractAssets<UnityEngine.Material>(MaterialDirName, ".mat"); });
             AssetDatabase.ImportAsset(assetPath, ImportAssetOptions.ForceUpdate);
         }
 

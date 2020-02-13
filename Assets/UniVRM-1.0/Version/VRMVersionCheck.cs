@@ -46,9 +46,9 @@ namespace UniVRM10
             public Extensions extensions;
         }
 
-        public static VRMExtensionFlags GetVRMExtensionFlag(byte[] jsonBytes)
+        public static VRMExtensionFlags GetVRMExtensionFlag(ArraySegment<byte> jsonBytes)
         {
-            using (var ms = new MemoryStream(jsonBytes))
+            using (var ms = new MemoryStream(jsonBytes.Array, jsonBytes.Offset, jsonBytes.Count))
             {
                 var serializer = new DataContractJsonSerializer(typeof(VrmVersionCheck));
                 var deserialized = (VrmVersionCheck)serializer.ReadObject(ms);
