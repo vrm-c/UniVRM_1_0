@@ -161,24 +161,29 @@ namespace UniVRM10
                 throw ex;
             }
 
-            // version check
-            VrmLib.Model model = null;
-            VrmLib.IVrmStorage storage;
-            if (VRMVersionCheck.IsVrm10(glb.Json.Bytes.ToArray()))
+            var flag = VRMVersionCheck.GetVRMExtensionFlag(glb.Json.Bytes.ToArray());
+
+            if (flag.HasFlag(VRMExtensionFlags.Vrm10))
             {
-                storage = new Vrm10.Vrm10Storage(glb.Json.Bytes, glb.Binary.Bytes);
-                model = VrmLib.ModelLoader.Load(storage, Path.GetFileName(path));
+                var storage = new Vrm10.Vrm10Storage(glb.Json.Bytes, glb.Binary.Bytes);
+                var model = VrmLib.ModelLoader.Load(storage, Path.GetFileName(path));
+                model.ConvertCoordinate(VrmLib.Coordinates.Unity);
+                return model;
+            }
+
+            if(flag.HasFlag(VRMExtensionFlags.Vrm0X))
+            {
+                var storage = new GltfSerialization.GltfStorage(new FileInfo(path), glb.Json.Bytes, glb.Binary.Bytes);
+                var model = VrmLib.ModelLoader.Load(storage, Path.GetFileName(path));
+
+                // TODO: conversion from VRMMeta0x to VRMMeta10 
+
                 model.ConvertCoordinate(VrmLib.Coordinates.Unity, ignoreVrm: true);
-            }
-            else
-            {
-                throw new NotImplementedException();
+                return model;
             }
 
-            return model;
+            throw new NotImplementedException();
         }
-
-
 
         public void ExtractTextures()
         {
