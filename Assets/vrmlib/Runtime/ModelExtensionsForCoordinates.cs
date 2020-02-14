@@ -92,6 +92,20 @@ namespace VrmLib
                             throw new NotImplementedException();
                     }
 
+                    foreach (var mt in m.MorphTargets)
+                    {
+                        foreach (var (k, v) in mt.VertexBuffer)
+                        {
+                            if (k == VertexBuffer.PositionKey || k == VertexBuffer.NormalKey)
+                            {
+                                ReverseZ(v);
+                            }
+                            if (k == VertexBuffer.TangentKey)
+                            {
+                                // I don't know
+                            }
+                        }
+                    }
                 }
             }
 
