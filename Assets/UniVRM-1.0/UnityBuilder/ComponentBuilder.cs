@@ -131,8 +131,8 @@ namespace UniVRM10
             }
 
             // blendShape
+            var blendShapeProxy = asset.Root.AddComponent<UniVRM10.VRMBlendShapeProxy>();
             {
-                var blendShapeProxy = asset.Root.AddComponent<UniVRM10.VRMBlendShapeProxy>();
                 blendShapeProxy.BlendShapeAvatar = ScriptableObject.CreateInstance<UniVRM10.BlendShapeAvatar>();
                 asset.ScriptableObjects.Add(blendShapeProxy.BlendShapeAvatar);
                 if (model.Vrm.BlendShape != null)
@@ -163,8 +163,6 @@ namespace UniVRM10
             {
                 // VRMFirstPerson
                 var firstPerson = asset.Root.AddComponent<UniVRM10.VRMFirstPerson>();
-                firstPerson.FirstPersonBone = asset.Animator.GetBoneTransform(HumanBodyBones.Head);
-                firstPerson.FirstPersonOffset = model.Vrm.LookAt.OffsetFromHeadBone.ToUnityVector3();
                 firstPerson.Renderers = model.Vrm.FirstPerson.Annotations.Select(x =>
                     new UniVRM10.VRMFirstPerson.RendererFirstPersonFlags()
                     {
@@ -174,9 +172,11 @@ namespace UniVRM10
                     ).ToList();
 
                 // VRMLookAtApplyer
+                blendShapeProxy.OffsetFromHead = model.Vrm.LookAt.OffsetFromHeadBone.ToUnityVector3();
                 if (model.Vrm.LookAt.LookAtType == VrmLib.LookAtType.BlendShape)
                 {
-                    var lookAtApplyer = asset.Root.AddComponent<UniVRM10.VRMLookAtBlendShapeApplier>();
+                    var lookAtApplyer = blendShapeProxy;
+                    lookAtApplyer.LookAtType = VRMBlendShapeProxy.LookAtTypes.BlendShape;
                     lookAtApplyer.HorizontalOuter = new UniVRM10.CurveMapper(
                         model.Vrm.LookAt.HorizontalOuter.InputMaxValue,
                         model.Vrm.LookAt.HorizontalOuter.OutputScaling);
@@ -189,17 +189,10 @@ namespace UniVRM10
                 }
                 else if (model.Vrm.LookAt.LookAtType == VrmLib.LookAtType.Bone)
                 {
-                    var lookAtBoneApplyer = asset.Root.AddComponent<UniVRM10.VRMLookAtBoneApplier>();
-                    var animator = asset.Root.GetComponent<Animator>();
-                    if (animator != null)
-                    {
-                        lookAtBoneApplyer.LeftEye = UniVRM10.OffsetOnTransform.Create(animator.GetBoneTransform(HumanBodyBones.LeftEye));
-                        lookAtBoneApplyer.RightEye = UniVRM10.OffsetOnTransform.Create(animator.GetBoneTransform(HumanBodyBones.RightEye));
-                    }
-
+                    var lookAtBoneApplyer = blendShapeProxy;
                     lookAtBoneApplyer.HorizontalInner = new UniVRM10.CurveMapper(
-                        model.Vrm.LookAt.HorizontalInner.InputMaxValue,
-                        model.Vrm.LookAt.HorizontalInner.OutputScaling);
+                         model.Vrm.LookAt.HorizontalInner.InputMaxValue,
+                         model.Vrm.LookAt.HorizontalInner.OutputScaling);
                     lookAtBoneApplyer.HorizontalOuter = new UniVRM10.CurveMapper(
                         model.Vrm.LookAt.HorizontalOuter.InputMaxValue,
                         model.Vrm.LookAt.HorizontalOuter.OutputScaling);

@@ -16,6 +16,14 @@ namespace UniVRM10
             LateUpdate,
         }
 
+        public enum LookAtTypes
+        {
+            // Gaze control by bone (leftEye, rightEye)
+            Bone,
+            // Gaze control by blend shape (lookUp, lookDown, lookLeft, lookRight)
+            BlendShape,
+        }
+
         [SerializeField, Header("UpdateSetting")]
         private UpdateTypes m_updateType = UpdateTypes.Update;
         public UpdateTypes UpdateType => m_updateType;
@@ -31,9 +39,6 @@ namespace UniVRM10
         public bool IgnoreLookAt => m_ignoreLookAt;
         public bool IgnoreMouth => m_ignoreMouth;
 
-        [SerializeField, Header("LookAt")]
-        private VRMLookAtHead LookAtHead;
-
         [SerializeField, Header("BlendShape")]
         public BlendShapeAvatar BlendShapeAvatar;
 
@@ -45,6 +50,164 @@ namespace UniVRM10
 
         BlendShapeMerger m_merger;
 
+        #region LookAt
+        [SerializeField, Header("LookAt")]
+        public bool DrawGizmo = true;
+
+        [SerializeField]
+        public Vector3 OffsetFromHead = new Vector3(0, 0.06f, 0);
+
+        [SerializeField]
+        public LookAtTypes LookAtType;
+
+        [SerializeField]
+        public CurveMapper HorizontalOuter = new CurveMapper(90.0f, 10.0f);
+
+        [SerializeField]
+        public CurveMapper HorizontalInner = new CurveMapper(90.0f, 10.0f);
+
+        [SerializeField]
+        public CurveMapper VerticalDown = new CurveMapper(90.0f, 10.0f);
+
+        [SerializeField]
+        public CurveMapper VerticalUp = new CurveMapper(90.0f, 10.0f);
+
+        [SerializeField]
+        Transform m_head;
+        public Transform Head
+        {
+            get
+            {
+                if (m_head == null)
+                {
+                    m_head = GetComponent<Animator>().GetBoneTransform(HumanBodyBones.Head);
+                }
+                return m_head;
+            }
+        }
+
+        [SerializeField]
+        public Transform Gaze;
+        OffsetOnTransform m_leftEye;
+        OffsetOnTransform m_rightEye;
+
+        /// <summary>
+        /// Headローカルの注視点からYaw, Pitch角を計算する
+        /// </summary>
+        (float, float) CalcYawPitch(Vector3 targetWorldPosition)
+        {
+            var localPosition = m_head.worldToLocalMatrix.MultiplyPoint(targetWorldPosition);
+            float yaw, pitch;
+            Matrix4x4.identity.CalcYawPitch(localPosition, out yaw, out pitch);
+            return (yaw, pitch);
+        }
+
+        /// <summary>
+        /// LeftEyeボーンとRightEyeボーンに回転を適用する
+        /// </summary>
+        void LookAtBone(float yaw, float pitch)
+        {
+            // horizontal
+            float leftYaw, rightYaw;
+            if (yaw < 0)
+            {
+                leftYaw = -HorizontalOuter.Map(-yaw);
+                rightYaw = -HorizontalInner.Map(-yaw);
+            }
+            else
+            {
+                rightYaw = HorizontalOuter.Map(yaw);
+                leftYaw = HorizontalInner.Map(yaw);
+            }
+
+            // vertical
+            if (pitch < 0)
+            {
+                pitch = -VerticalDown.Map(-pitch);
+            }
+            else
+            {
+                pitch = VerticalUp.Map(pitch);
+            }
+
+            // Apply
+            if (m_leftEye.Transform != null && m_rightEye.Transform != null)
+            {
+                // 目に値を適用する
+                m_leftEye.Transform.rotation = m_leftEye.InitialWorldMatrix.ExtractRotation() * Matrix4x4.identity.YawPitchRotation(leftYaw, pitch);
+                m_rightEye.Transform.rotation = m_rightEye.InitialWorldMatrix.ExtractRotation() * Matrix4x4.identity.YawPitchRotation(rightYaw, pitch);
+            }
+        }
+
+        void m_lookAtBlendShape(float yaw, float pitch)
+        {
+            if (yaw < 0)
+            {
+                // Left
+                this.SetValue(VrmLib.BlendShapePreset.LookRight, 0); // clear first
+                this.SetValue(VrmLib.BlendShapePreset.LookLeft, Mathf.Clamp(HorizontalOuter.Map(-yaw), 0, 1.0f));
+            }
+            else
+            {
+                // Right
+                this.SetValue(VrmLib.BlendShapePreset.LookLeft, 0); // clear first
+                this.SetValue(VrmLib.BlendShapePreset.LookRight, Mathf.Clamp(HorizontalOuter.Map(yaw), 0, 1.0f));
+            }
+
+            if (pitch < 0)
+            {
+                // Down
+                this.SetValue(VrmLib.BlendShapePreset.LookUp, 0); // clear first
+                this.SetValue(VrmLib.BlendShapePreset.LookDown, Mathf.Clamp(VerticalDown.Map(-pitch), 0, 1.0f));
+            }
+            else
+            {
+                // Up
+                this.SetValue(VrmLib.BlendShapePreset.LookDown, 0); // clear first
+                this.SetValue(VrmLib.BlendShapePreset.LookUp, Mathf.Clamp(VerticalUp.Map(pitch), 0, 1.0f));
+            }
+        }
+        #endregion
+        #region Gizmo
+        static void DrawMatrix(Matrix4x4 m, float size)
+        {
+            Gizmos.matrix = m;
+            Gizmos.color = Color.red;
+            Gizmos.DrawLine(Vector3.zero, Vector3.right * size);
+            Gizmos.color = Color.green;
+            Gizmos.DrawLine(Vector3.zero, Vector3.up * size);
+            Gizmos.color = Color.blue;
+            Gizmos.DrawLine(Vector3.zero, Vector3.forward * size);
+        }
+
+        const float LOOKAT_GIZMO_SIZE = 0.5f;
+
+        private void OnDrawGizmos()
+        {
+            if (DrawGizmo)
+            {
+                if (m_leftEye.Transform != null & m_rightEye.Transform != null)
+                {
+                    DrawMatrix(m_leftEye.WorldMatrix, LOOKAT_GIZMO_SIZE);
+                    DrawMatrix(m_rightEye.WorldMatrix, LOOKAT_GIZMO_SIZE);
+                }
+            }
+        }
+        #endregion
+
+        void Reset()
+        {
+            var animator = GetComponent<Animator>();
+            m_head = animator.GetBoneTransform(HumanBodyBones.Head);
+        }
+
+        private void OnValidate()
+        {
+            HorizontalInner.OnValidate();
+            HorizontalOuter.OnValidate();
+            VerticalUp.OnValidate();
+            VerticalDown.OnValidate();
+        }
 
         private void OnDestroy()
         {
@@ -64,17 +227,21 @@ namespace UniVRM10
                 }
             }
 
+            // get lookat origin
             var animator = GetComponent<Animator>();
-            if(animator != null)
+            if (animator != null)
             {
-                LookAtHead = new VRMLookAtHead(animator);
-                var lookAtApplier = GetComponent<ILookAtApplier>();
-                if (lookAtApplier != null)
+                m_head = animator.GetBoneTransform(HumanBodyBones.Head);
+                m_leftEye = OffsetOnTransform.Create(animator.GetBoneTransform(HumanBodyBones.LeftEye));
+                m_rightEye = OffsetOnTransform.Create(animator.GetBoneTransform(HumanBodyBones.RightEye));
+                if (Gaze == null)
                 {
-                    LookAtHead.YawPitchChanged += (float y, float p) => { lookAtApplier.ApplyRotations(this, y, p); };
+                    Gaze = new GameObject().transform;
+                    Gaze.name = "__LOOKAT_GAZE__";
+                    Gaze.SetParent(m_head);
+                    Gaze.localPosition = Vector3.forward;
                 }
             }
-
             BlendShapeKeyWeights = m_merger.BlendShapeKeys.ToDictionary(x => x, x => 0.0f);
 
             m_blinkBlendShapeKeys.Add(m_merger.BlendShapeKeys.FirstOrDefault(x => x.Preset == VrmLib.BlendShapePreset.Blink));
@@ -130,9 +297,9 @@ namespace UniVRM10
         /// <param name="values"></param>
         public void SetValues(IEnumerable<KeyValuePair<BlendShapeKey, float>> values)
         {
-            foreach(var keyValue in values)
+            foreach (var keyValue in values)
             {
-                if(BlendShapeKeyWeights.ContainsKey(keyValue.Key))
+                if (BlendShapeKeyWeights.ContainsKey(keyValue.Key))
                 {
                     BlendShapeKeyWeights[keyValue.Key] = keyValue.Value;
                 }
@@ -158,20 +325,26 @@ namespace UniVRM10
                 m_blinkBlendShapeKeys.ForEach(x => BlendShapeKeyWeights[x] = 0.0f);
             }
 
-            if(validateState.ignoreLookAt)
+            // gaze control
+            var (yaw, pitch) = (validateState.ignoreLookAt)
+                ? (0.0f, 0.0f)
+                : CalcYawPitch(Gaze.position)
+                ;
+            switch (LookAtType)
             {
-                LookAtHead.RaiseYawPitchChanged(0.0f, 0.0f);
-            }
-            else
-            {
-                LookAtHead.Update();
+                case LookAtTypes.Bone:
+                    LookAtBone(yaw, pitch);
+                    break;
+
+                case LookAtTypes.BlendShape:
+                    m_lookAtBlendShape(yaw, pitch);
+                    break;
             }
 
             if (validateState.ignoreMouth)
             {
                 m_mouthBlendShapeKeys.ForEach(x => BlendShapeKeyWeights[x] = 0.0f);
             }
-
             m_merger.SetValues(BlendShapeKeyWeights.Select(x => new KeyValuePair<BlendShapeKey, float>(x.Key, x.Value)));
             m_merger.Apply();
         }
@@ -211,7 +384,7 @@ namespace UniVRM10
 
         private void Update()
         {
-            if(m_updateType == UpdateTypes.Update)
+            if (m_updateType == UpdateTypes.Update)
             {
                 Apply();
             }

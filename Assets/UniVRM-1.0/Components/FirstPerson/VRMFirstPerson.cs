@@ -14,12 +14,6 @@ namespace UniVRM10
         public static int FIRSTPERSON_ONLY_LAYER = 9;
         public static int THIRDPERSON_ONLY_LAYER = 10;
 
-        [SerializeField]
-        public Transform FirstPersonBone;
-
-        [SerializeField]
-        public Vector3 FirstPersonOffset;
-
         [Serializable]
         public struct RendererFirstPersonFlags
         {
@@ -65,8 +59,6 @@ namespace UniVRM10
         public void CopyTo(GameObject _dst, Dictionary<Transform, Transform> map)
         {
             var dst = _dst.AddComponent<VRMFirstPerson>();
-            dst.FirstPersonBone = map[FirstPersonBone];
-            dst.FirstPersonOffset = FirstPersonOffset;
             dst.Renderers = Renderers.Select(x =>
             {
                 var renderer = map[x.Renderer.transform].GetComponent<Renderer>();
@@ -76,22 +68,6 @@ namespace UniVRM10
                     FirstPersonFlag = x.FirstPersonFlag,
                 };
             }).ToList();
-        }
-
-        public void SetDefault()
-        {
-            FirstPersonOffset = new Vector3(0, 0.06f, 0);
-            var animator = GetComponent<Animator>();
-            if (animator != null)
-            {
-                FirstPersonBone = animator.GetBoneTransform(HumanBodyBones.Head);
-            }
-        }
-
-        private void Reset()
-        {
-            SetDefault();
-            // TraverseRenderers();
         }
 
         //public void TraverseRenderers(VRMImporterContext context = null)
@@ -242,6 +218,8 @@ namespace UniVRM10
             SetupLayers();
             if (m_done) return;
             m_done = true;
+
+            var FirstPersonBone=GetComponent<Animator>().GetBoneTransform(HumanBodyBones.Head);
             foreach (var x in Renderers)
             {
                 switch (x.FirstPersonFlag)
