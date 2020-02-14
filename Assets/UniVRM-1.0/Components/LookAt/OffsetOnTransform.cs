@@ -47,7 +47,8 @@ namespace UniVRM10
         {
             var coordinate = new OffsetOnTransform
             {
-                Transform = transform
+                Transform = transform,
+                m_initialLocalMatrix = Matrix4x4.identity,
             };
 
             if (transform != null)
