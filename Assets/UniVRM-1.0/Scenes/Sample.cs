@@ -9,14 +9,20 @@ public class Sample : MonoBehaviour
     [SerializeField]
     string m_vrmPath = "Tests/Models/Alicia_vrm-0.51/AliciaSolid_vrm-0.51.vrm";
 
-
     static UniVRM10.ModelAsset Import(byte[] bytes, FileInfo path)
     {
         var model = UniVRM10.VrmLoader.CreateVrmModel(bytes, path);
 
         // UniVRM-0.XXのコンポーネントを構築する
         var importer = new UniVRM10.RuntimeUnityBuilder();
-        var assets = importer.ToUnityAsset(model);
+        var assets = importer.ToUnityAsset(model, showMesh: false);
+
+        // showRenderer = false のときに後で表示する例
+        foreach(var renderer in assets.Renderers)
+        {
+            renderer.enabled = true;
+        }
+
         UniVRM10.ComponentBuilder.Build10(model, importer, assets);
 
         return assets;
