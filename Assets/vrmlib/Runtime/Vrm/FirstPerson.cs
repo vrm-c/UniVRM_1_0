@@ -26,12 +26,6 @@ namespace VrmLib
 
     public class FirstPerson
     {
-        // obsolete
-        // public Node m_fp;
-
-        // Move to LookAt Offset
-        // public Vector3 m_offset;
-
         public readonly List<FirstPersonMeshAnnotation> Annotations = new List<FirstPersonMeshAnnotation>();
     }
 }
