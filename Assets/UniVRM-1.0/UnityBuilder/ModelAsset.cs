@@ -16,6 +16,7 @@ namespace UniVRM10
         public List<Texture2D> Textures = new List<Texture2D>();
         public List<Material> Materials = new List<Material>();
         public List<Mesh> Meshes = new List<Mesh>();
+        public List<Renderer> Renderers = new List<Renderer>();
 
         public ModelMap Map;
         public List<ScriptableObject> ScriptableObjects = new List<ScriptableObject>();

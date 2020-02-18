@@ -26,7 +26,7 @@ namespace UniVRM10
         GameObject IUnityBuilder.Root => Root;
 
 
-        public ModelAsset ToUnityAsset(VrmLib.Model model)
+        public ModelAsset ToUnityAsset(VrmLib.Model model, bool showMesh = true)
         {
             var modelAsset = new ModelAsset();
             CreateTextureAsset(model, modelAsset);
@@ -41,7 +41,9 @@ namespace UniVRM10
             // renderer
             foreach (var (mesh, renderer) in CreateRendererAsset(Nodes, Meshes, Materials))
             {
+                renderer.enabled = showMesh;
                 Renderers.Add(mesh, renderer);
+                modelAsset.Renderers.Add(renderer);
             }
 
             // humanoid
