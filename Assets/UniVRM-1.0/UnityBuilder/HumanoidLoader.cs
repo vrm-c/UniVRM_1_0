@@ -13,13 +13,25 @@ namespace UniVRM10
             {
                 skeleton = root.Traverse()
                     .Select(x => x.ToSkeletonBone()).ToArray(),
-                human = root.Traverse()
-                    .Where(x => boneMap.ContainsKey(x))
+                human = boneMap
                     .Select(x => new HumanBone
                     {
-                        boneName = x.name,
-                        humanName = s_humanTranitBoneNameMap[boneMap[x]],
+                        boneName = x.Key.name,
+                        humanName = s_humanTranitBoneNameMap[x.Value],
+                        limit = new HumanLimit
+                        {
+                            useDefaultValues = true,
+                        }
                     }).ToArray(),
+
+                armStretch = 0.05f,
+                legStretch = 0.05f,
+                upperArmTwist = 0.5f,
+                lowerArmTwist = 0.5f,
+                upperLegTwist = 0.5f,
+                lowerLegTwist = 0.5f,
+                feetSpacing = 0,
+                hasTranslationDoF = false,
             };
 
             return AvatarBuilder.BuildHumanAvatar(root.gameObject, description);
