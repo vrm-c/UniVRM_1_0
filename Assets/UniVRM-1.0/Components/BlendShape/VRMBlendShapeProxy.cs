@@ -397,16 +397,14 @@ namespace UniVRM10
                 Apply();
             }
         }
-    }
 
-    public static class VRMBlendShapeProxyExtensions
-    {
-        public static float GetValue(this VRMBlendShapeProxy proxy, VrmLib.BlendShapePreset key)
+        // Setter and Getter
+        public float GetValue(VrmLib.BlendShapePreset key)
         {
             var blendShapeKey = new BlendShapeKey(key);
-            if (proxy.BlendShapeKeyWeights.ContainsKey(blendShapeKey))
+            if (this.BlendShapeKeyWeights.ContainsKey(blendShapeKey))
             {
-                return proxy.BlendShapeKeyWeights[blendShapeKey];
+                return this.BlendShapeKeyWeights[blendShapeKey];
             }
             else
             {
@@ -414,12 +412,12 @@ namespace UniVRM10
             }
         }
 
-        public static float GetValue(this VRMBlendShapeProxy proxy, String key)
+        public float GetValue(String key)
         {
             var blendShapeKey = new BlendShapeKey(key);
-            if (proxy.BlendShapeKeyWeights.ContainsKey(blendShapeKey))
+            if (this.BlendShapeKeyWeights.ContainsKey(blendShapeKey))
             {
-                return proxy.BlendShapeKeyWeights[blendShapeKey];
+                return this.BlendShapeKeyWeights[blendShapeKey];
             }
             else
             {
@@ -427,21 +425,21 @@ namespace UniVRM10
             }
         }
 
-        public static void SetValue(this VRMBlendShapeProxy proxy, VrmLib.BlendShapePreset key, float value)
+        public void SetValue(VrmLib.BlendShapePreset key, float value)
         {
             var blendShapeKey = new BlendShapeKey(key);
-            if (proxy.BlendShapeKeyWeights.ContainsKey(blendShapeKey))
+            if (this.BlendShapeKeyWeights.ContainsKey(blendShapeKey))
             {
-                proxy.BlendShapeKeyWeights[blendShapeKey] = value;
+                this.BlendShapeKeyWeights[blendShapeKey] = value;
             }
         }
 
-        public static void SetValue(this VRMBlendShapeProxy proxy, String key, float value)
+        public void SetValue(String key, float value)
         {
             var blendShapeKey = new BlendShapeKey(key);
-            if (proxy.BlendShapeKeyWeights.ContainsKey(blendShapeKey))
+            if (this.BlendShapeKeyWeights.ContainsKey(blendShapeKey))
             {
-                proxy.BlendShapeKeyWeights[blendShapeKey] = value;
+                this.BlendShapeKeyWeights[blendShapeKey] = value;
             }
         }
     }
