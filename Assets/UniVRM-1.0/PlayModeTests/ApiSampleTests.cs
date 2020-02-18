@@ -21,12 +21,12 @@ namespace UniVRM10.Test
             return model;
         }
 
-        GameObject BuildGameObject(VrmLib.Model model)
+        ModelAsset BuildGameObject(VrmLib.Model model)
         {
             var importer = new UniVRM10.RuntimeUnityBuilder();
-            var assets = importer.ToUnityAsset(model);
+            var assets = importer.ToUnityAsset(model, showMesh: false);
             UniVRM10.ComponentBuilder.Build10(model, importer, assets);
-            return assets.Root;
+            return assets;
         }
 
         VrmLib.Model ToModel(UnityEngine.GameObject target)
@@ -47,16 +47,25 @@ namespace UniVRM10.Test
         [UnityTest]
         public bool Sample()
         {
-            var path="Tests/Models/Alicia_vrm-1.00/AliciaSolid_vrm-1.00.vrm";
+            var path = "Tests/Models/Alicia_vrm-1.00/AliciaSolid_vrm-1.00.vrm";
             Debug.Log($"load: {path}");
 
+            // import
             var srcModel = ReadModel(path);
             Debug.Log(srcModel);
 
-            var go = BuildGameObject(srcModel);
-            Debug.Log(go);
+            var asset = BuildGameObject(srcModel);
+            Debug.Log(asset);
 
-            var dstModel = ToModel(go);
+            foreach (var render in asset.Renderers)
+            {
+                // show mesh
+                // when RuntimeUnityBuilder.ToUnity(showMesh = false)
+                render.enabled = true;
+            }
+
+            // export
+            var dstModel = ToModel(asset.Root);
             Debug.Log(dstModel);
 
             var vrmBytes = ToVrm10(dstModel);
