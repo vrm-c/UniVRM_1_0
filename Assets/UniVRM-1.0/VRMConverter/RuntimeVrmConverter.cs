@@ -103,8 +103,12 @@ namespace UniVRM10
                 var image = new VrmLib.Image(texture.name, mime, VrmLib.ImageUsage.None, bytes);
                 info = new VrmLib.TextureInfo(new VrmLib.ImageTexture(texture.name, sampler, image, colorSpace, textureType));
                 Textures.Add(texture, info);
-                Model.Images.Add(image);
-                Model.Textures.Add(info.Texture);
+
+                if(Model != null)
+                {
+                    Model.Images.Add(image);
+                    Model.Textures.Add(info.Texture);
+                }
             }
 
             return info;
