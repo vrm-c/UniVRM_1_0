@@ -21,10 +21,10 @@ namespace UniVRM10.Test
             return model;
         }
 
-        ModelAsset BuildGameObject(VrmLib.Model model)
+        ModelAsset BuildGameObject(VrmLib.Model model, bool showMesh)
         {
             var importer = new UniVRM10.RuntimeUnityBuilder();
-            var assets = importer.ToUnityAsset(model, showMesh: false);
+            var assets = importer.ToUnityAsset(model, showMesh);
             UniVRM10.ComponentBuilder.Build10(model, importer, assets);
             return assets;
         }
@@ -54,7 +54,7 @@ namespace UniVRM10.Test
             var srcModel = ReadModel(path);
             Debug.Log(srcModel);
 
-            var asset = BuildGameObject(srcModel);
+            var asset = BuildGameObject(srcModel, false);
             Debug.Log(asset);
 
             // renderer setting
