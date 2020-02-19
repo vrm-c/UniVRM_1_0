@@ -180,6 +180,7 @@ namespace VrmLib.Diff
             if (!context.Enter(nameof(lhs.AlphaMode)).Push(lhs.AlphaMode, rhs.AlphaMode)) equals = false;
             if (!context.Enter(nameof(lhs.BaseColorFactor)).Push(lhs.BaseColorFactor, rhs.BaseColorFactor)) equals = false;
             if (!context.Enter(nameof(lhs.BaseColorTexture)).Push(lhs.BaseColorTexture?.Texture, rhs.BaseColorTexture?.Texture, TextureEquals)) equals = false;
+            if (!context.Enter(nameof(lhs.DoubleSided)).Push(lhs.DoubleSided, rhs.DoubleSided)) equals = false;
             return equals;
         }
 
