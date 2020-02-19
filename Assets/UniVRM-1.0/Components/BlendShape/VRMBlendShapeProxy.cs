@@ -25,8 +25,7 @@ namespace UniVRM10
         }
 
         [SerializeField, Header("UpdateSetting")]
-        private UpdateTypes m_updateType = UpdateTypes.Update;
-        public UpdateTypes UpdateType => m_updateType;
+        public UpdateTypes UpdateType = UpdateTypes.LateUpdate;
 
         [SerializeField, ReadOnlyAttribute, Header("IgnoreStatus")]
         public bool m_ignoreBlink;
@@ -384,7 +383,7 @@ namespace UniVRM10
 
         private void Update()
         {
-            if (m_updateType == UpdateTypes.Update)
+            if (UpdateType == UpdateTypes.Update)
             {
                 Apply();
             }
@@ -392,7 +391,7 @@ namespace UniVRM10
 
         private void LateUpdate()
         {
-            if (m_updateType == UpdateTypes.LateUpdate)
+            if (UpdateType == UpdateTypes.LateUpdate)
             {
                 Apply();
             }
