@@ -195,10 +195,10 @@ namespace UniVRM10.Test
 
         #region Texture
 
-        Texture2D CreateMonoTexture(float mono, bool isLinear)
+        Texture2D CreateMonoTexture(float mono, float alpha, bool isLinear)
         {
-            Texture2D texture = new Texture2D(128, 128, TextureFormat.ARGB32, isLinear);
-            Color col = new Color(mono, mono, mono, mono);
+            Texture2D texture = new Texture2D(128, 128, TextureFormat.ARGB32, mipChain: false, linear: isLinear);
+            Color col = new Color(mono, mono, mono, alpha);
             for (int y = 0; y < texture.height; y++)
             {
                 for (int x = 0; x < texture.width; x++)
@@ -210,11 +210,11 @@ namespace UniVRM10.Test
             return texture;
         }
 
-        void EqualTextureColor(Texture2D texture, VrmLib.ImageTexture imageTexture)
+        void EqualTextureColor(Texture2D texture, VrmLib.ImageTexture imageTexture, bool isLinear)
         {
             var srcColor = texture.GetPixel(0, 0);
 
-            var dstTexture = new Texture2D(2, 2, TextureFormat.ARGB32, false, false);
+            var dstTexture = new Texture2D(2, 2, TextureFormat.ARGB32, mipChain: false, linear: isLinear);
             dstTexture.LoadImage(imageTexture.Image.Bytes.ToArray());
             var dstColor = dstTexture.GetPixel(0, 0);
 
@@ -228,7 +228,7 @@ namespace UniVRM10.Test
             var assets = ToUnity(_vrmPath);
             var srcMaterial = assets.Map.Materials.First();
             var key = srcMaterial.Key;
-            var srcSrgbTexture = CreateMonoTexture(0.5f, false);
+            var srcSrgbTexture = CreateMonoTexture(0.5f, 0.5f, false);
 
             srcMaterial.Value.SetTexture(VrmLib.MToon.MToonUtils.PropMainTex, srcSrgbTexture);
 
@@ -236,7 +236,7 @@ namespace UniVRM10.Test
             var dstMaterial = model.Materials.First(x => x.Name == key.Name) as VrmLib.MToonMaterial;
 
             var imageTexture = dstMaterial.Definition.Color.LitMultiplyTexture.Texture as VrmLib.ImageTexture;
-            EqualTextureColor(srcSrgbTexture, imageTexture);
+            EqualTextureColor(srcSrgbTexture, imageTexture, false);
 
             yield return null;
         }
@@ -247,15 +247,40 @@ namespace UniVRM10.Test
             var assets = ToUnity(_vrmPath);
             var srcMaterial = assets.Map.Materials.First();
             var key = srcMaterial.Key;
-            var srcSrgbTexture = CreateMonoTexture(0.5f, true);
+            var srcLinearTexture = CreateMonoTexture(0.5f, 0.5f, true);
 
-            srcMaterial.Value.SetTexture(VrmLib.MToon.MToonUtils.PropOutlineWidthTexture, srcSrgbTexture);
+            srcMaterial.Value.SetTexture(VrmLib.MToon.MToonUtils.PropOutlineWidthTexture, srcLinearTexture);
 
             var model = ToVrmModel(assets.Root);
             var dstMaterial = model.Materials.First(x => x.Name == key.Name) as VrmLib.MToonMaterial;
 
             var imageTexture = dstMaterial.Definition.Outline.OutlineWidthMultiplyTexture.Texture as VrmLib.ImageTexture;
-            EqualTextureColor(srcSrgbTexture, imageTexture);
+            EqualTextureColor(srcLinearTexture, imageTexture, true);
+
+            yield return null;
+        }
+
+        [UnityTest]
+        public IEnumerator GetOrCreateTextureTest()
+        {
+            var converter = new RuntimeVrmConverter();
+            var material = new UnityEngine.Material(Shader.Find("VRM/MToon"));
+            var srcLinearTexture = CreateMonoTexture(0.5f, 1.0f, true);
+            var srcSRGBTexture = CreateMonoTexture(0.5f, 1.0f, false);
+
+            {
+                material.SetTexture(VrmLib.MToon.MToonUtils.PropOutlineWidthTexture, srcSRGBTexture);
+                var textureInfo = converter.GetOrCreateTexture(material, srcSRGBTexture, VrmLib.Texture.ColorSpaceTypes.Srgb, VrmLib.Texture.TextureTypes.Default);
+                var imageTexture = textureInfo.Texture as VrmLib.ImageTexture;
+                EqualTextureColor(srcSRGBTexture, imageTexture, false);
+            }
+
+            {
+                material.SetTexture(VrmLib.MToon.MToonUtils.PropOutlineWidthTexture, srcLinearTexture);
+                var textureInfo = converter.GetOrCreateTexture(material, srcLinearTexture, VrmLib.Texture.ColorSpaceTypes.Linear, VrmLib.Texture.TextureTypes.Default);
+                var imageTexture = textureInfo.Texture as VrmLib.ImageTexture;
+                EqualTextureColor(srcLinearTexture, imageTexture, true);
+            }
 
             yield return null;
         }
