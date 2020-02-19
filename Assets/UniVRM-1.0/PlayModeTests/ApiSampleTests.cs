@@ -57,11 +57,16 @@ namespace UniVRM10.Test
             var asset = BuildGameObject(srcModel);
             Debug.Log(asset);
 
+            // renderer setting
             foreach (var render in asset.Renderers)
             {
-                // show mesh
-                // when RuntimeUnityBuilder.ToUnity(showMesh = false)
+                // show when RuntimeUnityBuilder.ToUnity(showMesh = false)
                 render.enabled = true;
+                // avoid culling
+                if (render is SkinnedMeshRenderer skinned)
+                {
+                    skinned.updateWhenOffscreen = true;
+                }
             }
 
             // export
