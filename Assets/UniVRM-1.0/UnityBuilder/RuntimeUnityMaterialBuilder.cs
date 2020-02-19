@@ -46,19 +46,19 @@ namespace UniVRM10
             switch (src.AlphaMode)
             {
                 case VrmLib.AlphaModeType.OPAQUE:
-                    UniGLTF.UniUnlit.Utils.SetRenderMode(material, UniGLTF.UniUnlit.UniUnlitRenderMode.Opaque);
+                    UniGLTF.UniUnlit.Utils.SetRenderMode(material, UniGLTF.UniUnlit.UniUnlitRenderMode.Opaque, default);
                     break;
 
                 case VrmLib.AlphaModeType.BLEND:
-                    UniGLTF.UniUnlit.Utils.SetRenderMode(material, UniGLTF.UniUnlit.UniUnlitRenderMode.Transparent);
+                    UniGLTF.UniUnlit.Utils.SetRenderMode(material, UniGLTF.UniUnlit.UniUnlitRenderMode.Transparent, default);
                     break;
 
                 case VrmLib.AlphaModeType.MASK:
-                    UniGLTF.UniUnlit.Utils.SetRenderMode(material, UniGLTF.UniUnlit.UniUnlitRenderMode.Cutout);
+                    UniGLTF.UniUnlit.Utils.SetRenderMode(material, UniGLTF.UniUnlit.UniUnlitRenderMode.Cutout, src.AlphaCutoff);
                     break;
 
                 default:
-                    UniGLTF.UniUnlit.Utils.SetRenderMode(material, UniGLTF.UniUnlit.UniUnlitRenderMode.Opaque);
+                    UniGLTF.UniUnlit.Utils.SetRenderMode(material, UniGLTF.UniUnlit.UniUnlitRenderMode.Opaque, default);
                     break;
             }
 

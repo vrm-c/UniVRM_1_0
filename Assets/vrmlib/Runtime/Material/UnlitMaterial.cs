@@ -37,6 +37,7 @@ namespace VrmLib
             if (BaseColorTexture != rhs.BaseColorTexture) return false;
             if (AlphaMode != rhs.AlphaMode) return false;
             if (AlphaCutoff != rhs.AlphaCutoff) return false;
+            if (DoubleSided != rhs.DoubleSided) return false;
 
             return true;
         }

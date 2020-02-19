@@ -38,6 +38,7 @@ namespace GltfSerializationAdapter
 
             self.AlphaMode = (VrmLib.AlphaModeType)material.alphaMode;
             self.AlphaCutoff = material.alphaCutoff;
+            self.DoubleSided = material.doubleSided;
         }
 
         public static PBRMaterial PBRFromGltf(GltfMaterial material, List<Texture> textures)

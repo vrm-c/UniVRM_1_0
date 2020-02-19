@@ -14,7 +14,7 @@ namespace UniGLTF.UniUnlit
     public enum UniUnlitCullMode
     {
         Off = 0,
-//        Front = 1,
+        //        Front = 1,
         Back = 2,
     }
 
@@ -23,7 +23,7 @@ namespace UniGLTF.UniUnlit
         None = 0,
         Multiply = 1,
     }
-    
+
     public static class Utils
     {
         public const string ShaderName = "UniGLTF/UniUnlit";
@@ -51,14 +51,18 @@ namespace UniGLTF.UniUnlit
         public const string TagRenderTypeValueTransparentCutout = "TransparentCutout";
         public const string TagRenderTypeValueTransparent = "Transparent";
 
-        public static void SetRenderMode(Material material, UniUnlitRenderMode mode)
+        public static void SetRenderMode(Material material, UniUnlitRenderMode mode, float? cuttOff)
         {
             material.SetInt(PropNameBlendMode, (int)mode);
+            if (mode == UniUnlitRenderMode.Cutout && cuttOff.HasValue)
+            {
+                material.SetFloat(PropNameCutoff, cuttOff.Value);
+            }
         }
 
         public static void SetCullMode(Material material, UniUnlitCullMode mode)
         {
-            material.SetInt(PropNameCullMode, (int) mode);
+            material.SetInt(PropNameCullMode, (int)mode);
         }
 
         public static void SetVColBlendMode(Material material, UniUnlitVertexColorBlendOp mode)
