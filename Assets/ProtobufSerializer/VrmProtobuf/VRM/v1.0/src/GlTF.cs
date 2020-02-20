@@ -76,67 +76,89 @@ namespace VrmProtobuf {
             "MhsuZ29vZ2xlLnByb3RvYnVmLkludDMyVmFsdWUSDAoEbmFtZRgFIAEoCRIO",
             "CgZ0YXJnZXQYBiABKAUiZQoFSW1hZ2USCwoDdXJpGAEgASgJEhAKCG1pbWVU",
             "eXBlGAIgASgJEi8KCmJ1ZmZlclZpZXcYAyABKAsyGy5nb29nbGUucHJvdG9i",
-            "dWYuSW50MzJWYWx1ZRIMCgRuYW1lGAQgASgJIqIBChlNYXRlcmlhbE5vcm1h",
+            "dWYuSW50MzJWYWx1ZRIMCgRuYW1lGAQgASgJIsECChlNYXRlcmlhbE5vcm1h",
             "bFRleHR1cmVJbmZvEioKBWluZGV4GAEgASgLMhsuZ29vZ2xlLnByb3RvYnVm",
             "LkludDMyVmFsdWUSLQoIdGV4Q29vcmQYAiABKAsyGy5nb29nbGUucHJvdG9i",
             "dWYuSW50MzJWYWx1ZRIqCgVzY2FsZRgDIAEoCzIbLmdvb2dsZS5wcm90b2J1",
-            "Zi5GbG9hdFZhbHVlIqgBChxNYXRlcmlhbE9jY2x1c2lvblRleHR1cmVJbmZv",
-            "EioKBWluZGV4GAEgASgLMhsuZ29vZ2xlLnByb3RvYnVmLkludDMyVmFsdWUS",
-            "LQoIdGV4Q29vcmQYAiABKAsyGy5nb29nbGUucHJvdG9idWYuSW50MzJWYWx1",
-            "ZRItCghzdHJlbmd0aBgDIAEoCzIbLmdvb2dsZS5wcm90b2J1Zi5GbG9hdFZh",
-            "bHVlIpICChxNYXRlcmlhbFBick1ldGFsbGljUm91Z2huZXNzEhcKD2Jhc2VD",
-            "b2xvckZhY3RvchgBIAMoAhIyChBiYXNlQ29sb3JUZXh0dXJlGAIgASgLMhgu",
-            "VnJtUHJvdG9idWYuVGV4dHVyZUluZm8SMwoObWV0YWxsaWNGYWN0b3IYAyAB",
-            "KAsyGy5nb29nbGUucHJvdG9idWYuRmxvYXRWYWx1ZRI0Cg9yb3VnaG5lc3NG",
-            "YWN0b3IYBCABKAsyGy5nb29nbGUucHJvdG9idWYuRmxvYXRWYWx1ZRI6Chht",
-            "ZXRhbGxpY1JvdWdobmVzc1RleHR1cmUYBSABKAsyGC5Wcm1Qcm90b2J1Zi5U",
-            "ZXh0dXJlSW5mbyIVChNLSFJfbWF0ZXJpYWxzX3VubGl0IusECghNYXRlcmlh",
-            "bBIMCgRuYW1lGAEgASgJEkcKFHBick1ldGFsbGljUm91Z2huZXNzGAIgASgL",
-            "MikuVnJtUHJvdG9idWYuTWF0ZXJpYWxQYnJNZXRhbGxpY1JvdWdobmVzcxI9",
-            "Cg1ub3JtYWxUZXh0dXJlGAMgASgLMiYuVnJtUHJvdG9idWYuTWF0ZXJpYWxO",
-            "b3JtYWxUZXh0dXJlSW5mbxJDChBvY2NsdXNpb25UZXh0dXJlGAQgASgLMiku",
-            "VnJtUHJvdG9idWYuTWF0ZXJpYWxPY2NsdXNpb25UZXh0dXJlSW5mbxIxCg9l",
-            "bWlzc2l2ZVRleHR1cmUYBSABKAsyGC5Wcm1Qcm90b2J1Zi5UZXh0dXJlSW5m",
-            "bxIWCg5lbWlzc2l2ZUZhY3RvchgGIAMoAhIRCglhbHBoYU1vZGUYByABKAkS",
-            "MAoLYWxwaGFDdXRvZmYYCCABKAsyGy5nb29nbGUucHJvdG9idWYuRmxvYXRW",
-            "YWx1ZRIvCgtkb3VibGVTaWRlZBgJIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5C",
-            "b29sVmFsdWUSNAoKZXh0ZW5zaW9ucxgKIAEoCzIgLlZybVByb3RvYnVmLk1h",
-            "dGVyaWFsLkV4dGVuc2lvbnMajAEKCkV4dGVuc2lvbnMSPQoTS0hSX21hdGVy",
-            "aWFsc191bmxpdBgBIAEoCzIgLlZybVByb3RvYnVmLktIUl9tYXRlcmlhbHNf",
-            "dW5saXQSPwoUVlJNQ19tYXRlcmlhbHNfbXRvb24YAiABKAsyIS5Wcm1Qcm90",
-            "b2J1Zi5WUk1DX21hdGVyaWFsc19tdG9vbiKlBAoNTWVzaFByaW1pdGl2ZRI+",
-            "CgphdHRyaWJ1dGVzGAEgAygLMiouVnJtUHJvdG9idWYuTWVzaFByaW1pdGl2",
-            "ZS5BdHRyaWJ1dGVzRW50cnkSLAoHaW5kaWNlcxgCIAEoCzIbLmdvb2dsZS5w",
-            "cm90b2J1Zi5JbnQzMlZhbHVlEi0KCG1hdGVyaWFsGAMgASgLMhsuZ29vZ2xl",
-            "LnByb3RvYnVmLkludDMyVmFsdWUSKQoEbW9kZRgEIAEoCzIbLmdvb2dsZS5w",
-            "cm90b2J1Zi5JbnQzMlZhbHVlEjIKB3RhcmdldHMYBSADKAsyIS5Wcm1Qcm90",
-            "b2J1Zi5NZXNoUHJpbWl0aXZlLlRhcmdldBIxCgZleHRyYXMYBiABKAsyIS5W",
-            "cm1Qcm90b2J1Zi5NZXNoUHJpbWl0aXZlLkV4dHJhcxoxCg9BdHRyaWJ1dGVz",
-            "RW50cnkSCwoDa2V5GAEgASgJEg0KBXZhbHVlGAIgASgFOgI4ARqSAQoGVGFy",
-            "Z2V0Ei0KCFBPU0lUSU9OGAEgASgLMhsuZ29vZ2xlLnByb3RvYnVmLkludDMy",
-            "VmFsdWUSKwoGTk9STUFMGAIgASgLMhsuZ29vZ2xlLnByb3RvYnVmLkludDMy",
-            "VmFsdWUSLAoHVEFOR0VOVBgDIAEoCzIbLmdvb2dsZS5wcm90b2J1Zi5JbnQz",
-            "MlZhbHVlGh0KBkV4dHJhcxITCgt0YXJnZXROYW1lcxgBIAMoCSJECgRNZXNo",
-            "Ei4KCnByaW1pdGl2ZXMYAiADKAsyGi5Wcm1Qcm90b2J1Zi5NZXNoUHJpbWl0",
-            "aXZlEgwKBG5hbWUYASABKAkiwgEKBE5vZGUSDAoEbmFtZRgBIAEoCRIQCghj",
-            "aGlsZHJlbhgCIAMoBRIOCgZtYXRyaXgYAyADKAISEAoIcm90YXRpb24YBCAD",
-            "KAISDQoFc2NhbGUYBSADKAISEwoLdHJhbnNsYXRpb24YBiADKAISKQoEbWVz",
-            "aBgHIAEoCzIbLmdvb2dsZS5wcm90b2J1Zi5JbnQzMlZhbHVlEikKBHNraW4Y",
-            "CCABKAsyGy5nb29nbGUucHJvdG9idWYuSW50MzJWYWx1ZSLBAQoHU2FtcGxl",
-            "chIuCgltYWdGaWx0ZXIYASABKAsyGy5nb29nbGUucHJvdG9idWYuSW50MzJW",
-            "YWx1ZRIuCgltaW5GaWx0ZXIYAiABKAsyGy5nb29nbGUucHJvdG9idWYuSW50",
-            "MzJWYWx1ZRIqCgV3cmFwUxgDIAEoCzIbLmdvb2dsZS5wcm90b2J1Zi5JbnQz",
-            "MlZhbHVlEioKBXdyYXBUGAQgASgLMhsuZ29vZ2xlLnByb3RvYnVmLkludDMy",
-            "VmFsdWUiJAoFU2NlbmUSDQoFbm9kZXMYASADKAUSDAoEbmFtZRgCIAEoCSKN",
-            "AQoEU2tpbhI4ChNpbnZlcnNlQmluZE1hdHJpY2VzGAEgASgLMhsuZ29vZ2xl",
-            "LnByb3RvYnVmLkludDMyVmFsdWUSLQoIc2tlbGV0b24YAiABKAsyGy5nb29n",
-            "bGUucHJvdG9idWYuSW50MzJWYWx1ZRIOCgZqb2ludHMYAyADKAUSDAoEbmFt",
-            "ZRgEIAEoCSJyCgdUZXh0dXJlEiwKB3NhbXBsZXIYASABKAsyGy5nb29nbGUu",
-            "cHJvdG9idWYuSW50MzJWYWx1ZRIrCgZzb3VyY2UYAiABKAsyGy5nb29nbGUu",
-            "cHJvdG9idWYuSW50MzJWYWx1ZRIMCgRuYW1lGAMgASgJImgKC1RleHR1cmVJ",
-            "bmZvEioKBWluZGV4GAEgASgLMhsuZ29vZ2xlLnByb3RvYnVmLkludDMyVmFs",
-            "dWUSLQoIdGV4Q29vcmQYAiABKAsyGy5nb29nbGUucHJvdG9idWYuSW50MzJW",
-            "YWx1ZWIGcHJvdG8z"));
+            "Zi5GbG9hdFZhbHVlEkUKCmV4dGVuc2lvbnMYBCABKAsyMS5Wcm1Qcm90b2J1",
+            "Zi5NYXRlcmlhbE5vcm1hbFRleHR1cmVJbmZvLkV4dGVuc2lvbnMaVgoKRXh0",
+            "ZW5zaW9ucxJIChVLSFJfdGV4dHVyZV90cmFuc2Zvcm0YASABKAsyKS5Wcm1Q",
+            "cm90b2J1Zi5LSFJUZXh0dXJlVHJhbnNmb3JtRXh0ZW5zaW9uIsoCChxNYXRl",
+            "cmlhbE9jY2x1c2lvblRleHR1cmVJbmZvEioKBWluZGV4GAEgASgLMhsuZ29v",
+            "Z2xlLnByb3RvYnVmLkludDMyVmFsdWUSLQoIdGV4Q29vcmQYAiABKAsyGy5n",
+            "b29nbGUucHJvdG9idWYuSW50MzJWYWx1ZRItCghzdHJlbmd0aBgDIAEoCzIb",
+            "Lmdvb2dsZS5wcm90b2J1Zi5GbG9hdFZhbHVlEkgKCmV4dGVuc2lvbnMYBCAB",
+            "KAsyNC5Wcm1Qcm90b2J1Zi5NYXRlcmlhbE9jY2x1c2lvblRleHR1cmVJbmZv",
+            "LkV4dGVuc2lvbnMaVgoKRXh0ZW5zaW9ucxJIChVLSFJfdGV4dHVyZV90cmFu",
+            "c2Zvcm0YASABKAsyKS5Wcm1Qcm90b2J1Zi5LSFJUZXh0dXJlVHJhbnNmb3Jt",
+            "RXh0ZW5zaW9uIpICChxNYXRlcmlhbFBick1ldGFsbGljUm91Z2huZXNzEhcK",
+            "D2Jhc2VDb2xvckZhY3RvchgBIAMoAhIyChBiYXNlQ29sb3JUZXh0dXJlGAIg",
+            "ASgLMhguVnJtUHJvdG9idWYuVGV4dHVyZUluZm8SMwoObWV0YWxsaWNGYWN0",
+            "b3IYAyABKAsyGy5nb29nbGUucHJvdG9idWYuRmxvYXRWYWx1ZRI0Cg9yb3Vn",
+            "aG5lc3NGYWN0b3IYBCABKAsyGy5nb29nbGUucHJvdG9idWYuRmxvYXRWYWx1",
+            "ZRI6ChhtZXRhbGxpY1JvdWdobmVzc1RleHR1cmUYBSABKAsyGC5Wcm1Qcm90",
+            "b2J1Zi5UZXh0dXJlSW5mbyIVChNLSFJfbWF0ZXJpYWxzX3VubGl0ItEFCghN",
+            "YXRlcmlhbBIMCgRuYW1lGAEgASgJEkcKFHBick1ldGFsbGljUm91Z2huZXNz",
+            "GAIgASgLMikuVnJtUHJvdG9idWYuTWF0ZXJpYWxQYnJNZXRhbGxpY1JvdWdo",
+            "bmVzcxI9Cg1ub3JtYWxUZXh0dXJlGAMgASgLMiYuVnJtUHJvdG9idWYuTWF0",
+            "ZXJpYWxOb3JtYWxUZXh0dXJlSW5mbxJDChBvY2NsdXNpb25UZXh0dXJlGAQg",
+            "ASgLMikuVnJtUHJvdG9idWYuTWF0ZXJpYWxPY2NsdXNpb25UZXh0dXJlSW5m",
+            "bxIxCg9lbWlzc2l2ZVRleHR1cmUYBSABKAsyGC5Wcm1Qcm90b2J1Zi5UZXh0",
+            "dXJlSW5mbxIWCg5lbWlzc2l2ZUZhY3RvchgGIAMoAhIRCglhbHBoYU1vZGUY",
+            "ByABKAkSMAoLYWxwaGFDdXRvZmYYCCABKAsyGy5nb29nbGUucHJvdG9idWYu",
+            "RmxvYXRWYWx1ZRIvCgtkb3VibGVTaWRlZBgJIAEoCzIaLmdvb2dsZS5wcm90",
+            "b2J1Zi5Cb29sVmFsdWUSNAoKZXh0ZW5zaW9ucxgKIAEoCzIgLlZybVByb3Rv",
+            "YnVmLk1hdGVyaWFsLkV4dGVuc2lvbnMa8gEKCkV4dGVuc2lvbnMSPQoTS0hS",
+            "X21hdGVyaWFsc191bmxpdBgBIAEoCzIgLlZybVByb3RvYnVmLktIUl9tYXRl",
+            "cmlhbHNfdW5saXQSPwoUVlJNQ19tYXRlcmlhbHNfbXRvb24YAiABKAsyIS5W",
+            "cm1Qcm90b2J1Zi5WUk1DX21hdGVyaWFsc19tdG9vbhJkCiNLSFJfbWF0ZXJp",
+            "YWxzX3BiclNwZWN1bGFyR2xvc3NpbmVzcxgDIAEoCzI3LlZybVByb3RvYnVm",
+            "LktIUk1hdGVyaWFsc1BiclNwZWN1bGFyR2xvc3NpbmVzc0V4dGVuc2lvbiKl",
+            "BAoNTWVzaFByaW1pdGl2ZRI+CgphdHRyaWJ1dGVzGAEgAygLMiouVnJtUHJv",
+            "dG9idWYuTWVzaFByaW1pdGl2ZS5BdHRyaWJ1dGVzRW50cnkSLAoHaW5kaWNl",
+            "cxgCIAEoCzIbLmdvb2dsZS5wcm90b2J1Zi5JbnQzMlZhbHVlEi0KCG1hdGVy",
+            "aWFsGAMgASgLMhsuZ29vZ2xlLnByb3RvYnVmLkludDMyVmFsdWUSKQoEbW9k",
+            "ZRgEIAEoCzIbLmdvb2dsZS5wcm90b2J1Zi5JbnQzMlZhbHVlEjIKB3Rhcmdl",
+            "dHMYBSADKAsyIS5Wcm1Qcm90b2J1Zi5NZXNoUHJpbWl0aXZlLlRhcmdldBIx",
+            "CgZleHRyYXMYBiABKAsyIS5Wcm1Qcm90b2J1Zi5NZXNoUHJpbWl0aXZlLkV4",
+            "dHJhcxoxCg9BdHRyaWJ1dGVzRW50cnkSCwoDa2V5GAEgASgJEg0KBXZhbHVl",
+            "GAIgASgFOgI4ARqSAQoGVGFyZ2V0Ei0KCFBPU0lUSU9OGAEgASgLMhsuZ29v",
+            "Z2xlLnByb3RvYnVmLkludDMyVmFsdWUSKwoGTk9STUFMGAIgASgLMhsuZ29v",
+            "Z2xlLnByb3RvYnVmLkludDMyVmFsdWUSLAoHVEFOR0VOVBgDIAEoCzIbLmdv",
+            "b2dsZS5wcm90b2J1Zi5JbnQzMlZhbHVlGh0KBkV4dHJhcxITCgt0YXJnZXRO",
+            "YW1lcxgBIAMoCSJECgRNZXNoEi4KCnByaW1pdGl2ZXMYAiADKAsyGi5Wcm1Q",
+            "cm90b2J1Zi5NZXNoUHJpbWl0aXZlEgwKBG5hbWUYASABKAkiwgEKBE5vZGUS",
+            "DAoEbmFtZRgBIAEoCRIQCghjaGlsZHJlbhgCIAMoBRIOCgZtYXRyaXgYAyAD",
+            "KAISEAoIcm90YXRpb24YBCADKAISDQoFc2NhbGUYBSADKAISEwoLdHJhbnNs",
+            "YXRpb24YBiADKAISKQoEbWVzaBgHIAEoCzIbLmdvb2dsZS5wcm90b2J1Zi5J",
+            "bnQzMlZhbHVlEikKBHNraW4YCCABKAsyGy5nb29nbGUucHJvdG9idWYuSW50",
+            "MzJWYWx1ZSLBAQoHU2FtcGxlchIuCgltYWdGaWx0ZXIYASABKAsyGy5nb29n",
+            "bGUucHJvdG9idWYuSW50MzJWYWx1ZRIuCgltaW5GaWx0ZXIYAiABKAsyGy5n",
+            "b29nbGUucHJvdG9idWYuSW50MzJWYWx1ZRIqCgV3cmFwUxgDIAEoCzIbLmdv",
+            "b2dsZS5wcm90b2J1Zi5JbnQzMlZhbHVlEioKBXdyYXBUGAQgASgLMhsuZ29v",
+            "Z2xlLnByb3RvYnVmLkludDMyVmFsdWUiJAoFU2NlbmUSDQoFbm9kZXMYASAD",
+            "KAUSDAoEbmFtZRgCIAEoCSKNAQoEU2tpbhI4ChNpbnZlcnNlQmluZE1hdHJp",
+            "Y2VzGAEgASgLMhsuZ29vZ2xlLnByb3RvYnVmLkludDMyVmFsdWUSLQoIc2tl",
+            "bGV0b24YAiABKAsyGy5nb29nbGUucHJvdG9idWYuSW50MzJWYWx1ZRIOCgZq",
+            "b2ludHMYAyADKAUSDAoEbmFtZRgEIAEoCSJyCgdUZXh0dXJlEiwKB3NhbXBs",
+            "ZXIYASABKAsyGy5nb29nbGUucHJvdG9idWYuSW50MzJWYWx1ZRIrCgZzb3Vy",
+            "Y2UYAiABKAsyGy5nb29nbGUucHJvdG9idWYuSW50MzJWYWx1ZRIMCgRuYW1l",
+            "GAMgASgJIvkBCgtUZXh0dXJlSW5mbxIqCgVpbmRleBgBIAEoCzIbLmdvb2ds",
+            "ZS5wcm90b2J1Zi5JbnQzMlZhbHVlEi0KCHRleENvb3JkGAIgASgLMhsuZ29v",
+            "Z2xlLnByb3RvYnVmLkludDMyVmFsdWUSNwoKZXh0ZW5zaW9ucxgDIAEoCzIj",
+            "LlZybVByb3RvYnVmLlRleHR1cmVJbmZvLkV4dGVuc2lvbnMaVgoKRXh0ZW5z",
+            "aW9ucxJIChVLSFJfdGV4dHVyZV90cmFuc2Zvcm0YASABKAsyKS5Wcm1Qcm90",
+            "b2J1Zi5LSFJUZXh0dXJlVHJhbnNmb3JtRXh0ZW5zaW9uIpsBChxLSFJUZXh0",
+            "dXJlVHJhbnNmb3JtRXh0ZW5zaW9uEg4KBm9mZnNldBgBIAMoAhItCghyb3Rh",
+            "dGlvbhgCIAEoCzIbLmdvb2dsZS5wcm90b2J1Zi5GbG9hdFZhbHVlEg0KBXNj",
+            "YWxlGAMgAygCEi0KCHRleENvb3JkGAQgASgLMhsuZ29vZ2xlLnByb3RvYnVm",
+            "LkludDMyVmFsdWUigQIKKktIUk1hdGVyaWFsc1BiclNwZWN1bGFyR2xvc3Np",
+            "bmVzc0V4dGVuc2lvbhIVCg1kaWZmdXNlRmFjdG9yGAEgAygCEjAKDmRpZmZ1",
+            "c2VUZXh0dXJlGAIgASgLMhguVnJtUHJvdG9idWYuVGV4dHVyZUluZm8SFgoO",
+            "c3BlY3VsYXJGYWN0b3IYAyADKAISNQoQZ2xvc3NpbmVzc0ZhY3RvchgEIAEo",
+            "CzIbLmdvb2dsZS5wcm90b2J1Zi5GbG9hdFZhbHVlEjsKGXNwZWN1bGFyR2xv",
+            "c3NpbmVzc1RleHR1cmUYBSABKAsyGC5Wcm1Qcm90b2J1Zi5UZXh0dXJlSW5m",
+            "b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Google.Protobuf.WellKnownTypes.WrappersReflection.Descriptor, global::VrmProtobuf.VRMCMaterialsMtoonReflection.Descriptor, global::VrmProtobuf.GlTFExtensionsReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
@@ -153,11 +175,11 @@ namespace VrmProtobuf {
             new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.Buffer), global::VrmProtobuf.Buffer.Parser, new[]{ "Uri", "ByteLength", "Name" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.BufferView), global::VrmProtobuf.BufferView.Parser, new[]{ "Buffer", "ByteOffset", "ByteLength", "ByteStride", "Name", "Target" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.Image), global::VrmProtobuf.Image.Parser, new[]{ "Uri", "MimeType", "BufferView", "Name" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.MaterialNormalTextureInfo), global::VrmProtobuf.MaterialNormalTextureInfo.Parser, new[]{ "Index", "TexCoord", "Scale" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.MaterialOcclusionTextureInfo), global::VrmProtobuf.MaterialOcclusionTextureInfo.Parser, new[]{ "Index", "TexCoord", "Strength" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.MaterialNormalTextureInfo), global::VrmProtobuf.MaterialNormalTextureInfo.Parser, new[]{ "Index", "TexCoord", "Scale", "Extensions" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.MaterialNormalTextureInfo.Types.Extensions), global::VrmProtobuf.MaterialNormalTextureInfo.Types.Extensions.Parser, new[]{ "KHRTextureTransform" }, null, null, null, null)}),
+            new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.MaterialOcclusionTextureInfo), global::VrmProtobuf.MaterialOcclusionTextureInfo.Parser, new[]{ "Index", "TexCoord", "Strength", "Extensions" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.MaterialOcclusionTextureInfo.Types.Extensions), global::VrmProtobuf.MaterialOcclusionTextureInfo.Types.Extensions.Parser, new[]{ "KHRTextureTransform" }, null, null, null, null)}),
             new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.MaterialPbrMetallicRoughness), global::VrmProtobuf.MaterialPbrMetallicRoughness.Parser, new[]{ "BaseColorFactor", "BaseColorTexture", "MetallicFactor", "RoughnessFactor", "MetallicRoughnessTexture" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.KHR_materials_unlit), global::VrmProtobuf.KHR_materials_unlit.Parser, null, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.Material), global::VrmProtobuf.Material.Parser, new[]{ "Name", "PbrMetallicRoughness", "NormalTexture", "OcclusionTexture", "EmissiveTexture", "EmissiveFactor", "AlphaMode", "AlphaCutoff", "DoubleSided", "Extensions" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.Material.Types.Extensions), global::VrmProtobuf.Material.Types.Extensions.Parser, new[]{ "KHRMaterialsUnlit", "VRMCMaterialsMtoon" }, null, null, null, null)}),
+            new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.Material), global::VrmProtobuf.Material.Parser, new[]{ "Name", "PbrMetallicRoughness", "NormalTexture", "OcclusionTexture", "EmissiveTexture", "EmissiveFactor", "AlphaMode", "AlphaCutoff", "DoubleSided", "Extensions" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.Material.Types.Extensions), global::VrmProtobuf.Material.Types.Extensions.Parser, new[]{ "KHRMaterialsUnlit", "VRMCMaterialsMtoon", "KHRMaterialsPbrSpecularGlossiness" }, null, null, null, null)}),
             new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.MeshPrimitive), global::VrmProtobuf.MeshPrimitive.Parser, new[]{ "Attributes", "Indices", "Material", "Mode", "Targets", "Extras" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.MeshPrimitive.Types.Target), global::VrmProtobuf.MeshPrimitive.Types.Target.Parser, new[]{ "POSITION", "NORMAL", "TANGENT" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.MeshPrimitive.Types.Extras), global::VrmProtobuf.MeshPrimitive.Types.Extras.Parser, new[]{ "TargetNames" }, null, null, null, null)}),
             new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.Mesh), global::VrmProtobuf.Mesh.Parser, new[]{ "Primitives", "Name" }, null, null, null, null),
@@ -166,7 +188,9 @@ namespace VrmProtobuf {
             new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.Scene), global::VrmProtobuf.Scene.Parser, new[]{ "Nodes", "Name" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.Skin), global::VrmProtobuf.Skin.Parser, new[]{ "InverseBindMatrices", "Skeleton", "Joints", "Name" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.Texture), global::VrmProtobuf.Texture.Parser, new[]{ "Sampler", "Source", "Name" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.TextureInfo), global::VrmProtobuf.TextureInfo.Parser, new[]{ "Index", "TexCoord" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.TextureInfo), global::VrmProtobuf.TextureInfo.Parser, new[]{ "Index", "TexCoord", "Extensions" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.TextureInfo.Types.Extensions), global::VrmProtobuf.TextureInfo.Types.Extensions.Parser, new[]{ "KHRTextureTransform" }, null, null, null, null)}),
+            new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.KHRTextureTransformExtension), global::VrmProtobuf.KHRTextureTransformExtension.Parser, new[]{ "Offset", "Rotation", "Scale", "TexCoord" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.KHRMaterialsPbrSpecularGlossinessExtension), global::VrmProtobuf.KHRMaterialsPbrSpecularGlossinessExtension.Parser, new[]{ "DiffuseFactor", "DiffuseTexture", "SpecularFactor", "GlossinessFactor", "SpecularGlossinessTexture" }, null, null, null, null)
           }));
     }
     #endregion
@@ -3324,6 +3348,7 @@ namespace VrmProtobuf {
       Index = other.Index;
       TexCoord = other.TexCoord;
       Scale = other.Scale;
+      extensions_ = other.extensions_ != null ? other.extensions_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -3371,6 +3396,17 @@ namespace VrmProtobuf {
     }
 
 
+    /// <summary>Field number for the "extensions" field.</summary>
+    public const int ExtensionsFieldNumber = 4;
+    private global::VrmProtobuf.MaterialNormalTextureInfo.Types.Extensions extensions_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::VrmProtobuf.MaterialNormalTextureInfo.Types.Extensions Extensions {
+      get { return extensions_; }
+      set {
+        extensions_ = value;
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
       return Equals(other as MaterialNormalTextureInfo);
@@ -3387,6 +3423,7 @@ namespace VrmProtobuf {
       if (Index != other.Index) return false;
       if (TexCoord != other.TexCoord) return false;
       if (!pbc::ProtobufEqualityComparers.BitwiseNullableSingleEqualityComparer.Equals(Scale, other.Scale)) return false;
+      if (!object.Equals(Extensions, other.Extensions)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -3396,6 +3433,7 @@ namespace VrmProtobuf {
       if (index_ != null) hash ^= Index.GetHashCode();
       if (texCoord_ != null) hash ^= TexCoord.GetHashCode();
       if (scale_ != null) hash ^= pbc::ProtobufEqualityComparers.BitwiseNullableSingleEqualityComparer.GetHashCode(Scale);
+      if (extensions_ != null) hash ^= Extensions.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -3418,6 +3456,10 @@ namespace VrmProtobuf {
       if (scale_ != null) {
         _single_scale_codec.WriteTagAndValue(output, Scale);
       }
+      if (extensions_ != null) {
+        output.WriteRawTag(34);
+        output.WriteMessage(Extensions);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -3434,6 +3476,9 @@ namespace VrmProtobuf {
       }
       if (scale_ != null) {
         size += _single_scale_codec.CalculateSizeWithTag(Scale);
+      }
+      if (extensions_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Extensions);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -3460,6 +3505,12 @@ namespace VrmProtobuf {
         if (scale_ == null || other.Scale != 0F) {
           Scale = other.Scale;
         }
+      }
+      if (other.extensions_ != null) {
+        if (extensions_ == null) {
+          Extensions = new global::VrmProtobuf.MaterialNormalTextureInfo.Types.Extensions();
+        }
+        Extensions.MergeFrom(other.Extensions);
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -3493,9 +3544,161 @@ namespace VrmProtobuf {
             }
             break;
           }
+          case 34: {
+            if (extensions_ == null) {
+              Extensions = new global::VrmProtobuf.MaterialNormalTextureInfo.Types.Extensions();
+            }
+            input.ReadMessage(Extensions);
+            break;
+          }
         }
       }
     }
+
+    #region Nested types
+    /// <summary>Container for nested types declared in the MaterialNormalTextureInfo message type.</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static partial class Types {
+      public sealed partial class Extensions : pb::IMessage<Extensions> {
+        private static readonly pb::MessageParser<Extensions> _parser = new pb::MessageParser<Extensions>(() => new Extensions());
+        private pb::UnknownFieldSet _unknownFields;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pb::MessageParser<Extensions> Parser { get { return _parser; } }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pbr::MessageDescriptor Descriptor {
+          get { return global::VrmProtobuf.MaterialNormalTextureInfo.Descriptor.NestedTypes[0]; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        pbr::MessageDescriptor pb::IMessage.Descriptor {
+          get { return Descriptor; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extensions() {
+          OnConstruction();
+        }
+
+        partial void OnConstruction();
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extensions(Extensions other) : this() {
+          kHRTextureTransform_ = other.kHRTextureTransform_ != null ? other.kHRTextureTransform_.Clone() : null;
+          _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extensions Clone() {
+          return new Extensions(this);
+        }
+
+        /// <summary>Field number for the "KHR_texture_transform" field.</summary>
+        public const int KHRTextureTransformFieldNumber = 1;
+        private global::VrmProtobuf.KHRTextureTransformExtension kHRTextureTransform_;
+        /// <summary>
+        /// KHR_texture_transform
+        /// </summary>
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public global::VrmProtobuf.KHRTextureTransformExtension KHRTextureTransform {
+          get { return kHRTextureTransform_; }
+          set {
+            kHRTextureTransform_ = value;
+          }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override bool Equals(object other) {
+          return Equals(other as Extensions);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public bool Equals(Extensions other) {
+          if (ReferenceEquals(other, null)) {
+            return false;
+          }
+          if (ReferenceEquals(other, this)) {
+            return true;
+          }
+          if (!object.Equals(KHRTextureTransform, other.KHRTextureTransform)) return false;
+          return Equals(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override int GetHashCode() {
+          int hash = 1;
+          if (kHRTextureTransform_ != null) hash ^= KHRTextureTransform.GetHashCode();
+          if (_unknownFields != null) {
+            hash ^= _unknownFields.GetHashCode();
+          }
+          return hash;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override string ToString() {
+          return pb::JsonFormatter.ToDiagnosticString(this);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void WriteTo(pb::CodedOutputStream output) {
+          if (kHRTextureTransform_ != null) {
+            output.WriteRawTag(10);
+            output.WriteMessage(KHRTextureTransform);
+          }
+          if (_unknownFields != null) {
+            _unknownFields.WriteTo(output);
+          }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public int CalculateSize() {
+          int size = 0;
+          if (kHRTextureTransform_ != null) {
+            size += 1 + pb::CodedOutputStream.ComputeMessageSize(KHRTextureTransform);
+          }
+          if (_unknownFields != null) {
+            size += _unknownFields.CalculateSize();
+          }
+          return size;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(Extensions other) {
+          if (other == null) {
+            return;
+          }
+          if (other.kHRTextureTransform_ != null) {
+            if (kHRTextureTransform_ == null) {
+              KHRTextureTransform = new global::VrmProtobuf.KHRTextureTransformExtension();
+            }
+            KHRTextureTransform.MergeFrom(other.KHRTextureTransform);
+          }
+          _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(pb::CodedInputStream input) {
+          uint tag;
+          while ((tag = input.ReadTag()) != 0) {
+            switch(tag) {
+              default:
+                _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+                break;
+              case 10: {
+                if (kHRTextureTransform_ == null) {
+                  KHRTextureTransform = new global::VrmProtobuf.KHRTextureTransformExtension();
+                }
+                input.ReadMessage(KHRTextureTransform);
+                break;
+              }
+            }
+          }
+        }
+
+      }
+
+    }
+    #endregion
 
   }
 
@@ -3531,6 +3734,7 @@ namespace VrmProtobuf {
       Index = other.Index;
       TexCoord = other.TexCoord;
       Strength = other.Strength;
+      extensions_ = other.extensions_ != null ? other.extensions_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -3578,6 +3782,17 @@ namespace VrmProtobuf {
     }
 
 
+    /// <summary>Field number for the "extensions" field.</summary>
+    public const int ExtensionsFieldNumber = 4;
+    private global::VrmProtobuf.MaterialOcclusionTextureInfo.Types.Extensions extensions_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::VrmProtobuf.MaterialOcclusionTextureInfo.Types.Extensions Extensions {
+      get { return extensions_; }
+      set {
+        extensions_ = value;
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
       return Equals(other as MaterialOcclusionTextureInfo);
@@ -3594,6 +3809,7 @@ namespace VrmProtobuf {
       if (Index != other.Index) return false;
       if (TexCoord != other.TexCoord) return false;
       if (!pbc::ProtobufEqualityComparers.BitwiseNullableSingleEqualityComparer.Equals(Strength, other.Strength)) return false;
+      if (!object.Equals(Extensions, other.Extensions)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -3603,6 +3819,7 @@ namespace VrmProtobuf {
       if (index_ != null) hash ^= Index.GetHashCode();
       if (texCoord_ != null) hash ^= TexCoord.GetHashCode();
       if (strength_ != null) hash ^= pbc::ProtobufEqualityComparers.BitwiseNullableSingleEqualityComparer.GetHashCode(Strength);
+      if (extensions_ != null) hash ^= Extensions.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -3625,6 +3842,10 @@ namespace VrmProtobuf {
       if (strength_ != null) {
         _single_strength_codec.WriteTagAndValue(output, Strength);
       }
+      if (extensions_ != null) {
+        output.WriteRawTag(34);
+        output.WriteMessage(Extensions);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -3641,6 +3862,9 @@ namespace VrmProtobuf {
       }
       if (strength_ != null) {
         size += _single_strength_codec.CalculateSizeWithTag(Strength);
+      }
+      if (extensions_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Extensions);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -3667,6 +3891,12 @@ namespace VrmProtobuf {
         if (strength_ == null || other.Strength != 0F) {
           Strength = other.Strength;
         }
+      }
+      if (other.extensions_ != null) {
+        if (extensions_ == null) {
+          Extensions = new global::VrmProtobuf.MaterialOcclusionTextureInfo.Types.Extensions();
+        }
+        Extensions.MergeFrom(other.Extensions);
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -3700,9 +3930,161 @@ namespace VrmProtobuf {
             }
             break;
           }
+          case 34: {
+            if (extensions_ == null) {
+              Extensions = new global::VrmProtobuf.MaterialOcclusionTextureInfo.Types.Extensions();
+            }
+            input.ReadMessage(Extensions);
+            break;
+          }
         }
       }
     }
+
+    #region Nested types
+    /// <summary>Container for nested types declared in the MaterialOcclusionTextureInfo message type.</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static partial class Types {
+      public sealed partial class Extensions : pb::IMessage<Extensions> {
+        private static readonly pb::MessageParser<Extensions> _parser = new pb::MessageParser<Extensions>(() => new Extensions());
+        private pb::UnknownFieldSet _unknownFields;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pb::MessageParser<Extensions> Parser { get { return _parser; } }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pbr::MessageDescriptor Descriptor {
+          get { return global::VrmProtobuf.MaterialOcclusionTextureInfo.Descriptor.NestedTypes[0]; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        pbr::MessageDescriptor pb::IMessage.Descriptor {
+          get { return Descriptor; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extensions() {
+          OnConstruction();
+        }
+
+        partial void OnConstruction();
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extensions(Extensions other) : this() {
+          kHRTextureTransform_ = other.kHRTextureTransform_ != null ? other.kHRTextureTransform_.Clone() : null;
+          _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extensions Clone() {
+          return new Extensions(this);
+        }
+
+        /// <summary>Field number for the "KHR_texture_transform" field.</summary>
+        public const int KHRTextureTransformFieldNumber = 1;
+        private global::VrmProtobuf.KHRTextureTransformExtension kHRTextureTransform_;
+        /// <summary>
+        /// KHR_texture_transform
+        /// </summary>
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public global::VrmProtobuf.KHRTextureTransformExtension KHRTextureTransform {
+          get { return kHRTextureTransform_; }
+          set {
+            kHRTextureTransform_ = value;
+          }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override bool Equals(object other) {
+          return Equals(other as Extensions);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public bool Equals(Extensions other) {
+          if (ReferenceEquals(other, null)) {
+            return false;
+          }
+          if (ReferenceEquals(other, this)) {
+            return true;
+          }
+          if (!object.Equals(KHRTextureTransform, other.KHRTextureTransform)) return false;
+          return Equals(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override int GetHashCode() {
+          int hash = 1;
+          if (kHRTextureTransform_ != null) hash ^= KHRTextureTransform.GetHashCode();
+          if (_unknownFields != null) {
+            hash ^= _unknownFields.GetHashCode();
+          }
+          return hash;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override string ToString() {
+          return pb::JsonFormatter.ToDiagnosticString(this);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void WriteTo(pb::CodedOutputStream output) {
+          if (kHRTextureTransform_ != null) {
+            output.WriteRawTag(10);
+            output.WriteMessage(KHRTextureTransform);
+          }
+          if (_unknownFields != null) {
+            _unknownFields.WriteTo(output);
+          }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public int CalculateSize() {
+          int size = 0;
+          if (kHRTextureTransform_ != null) {
+            size += 1 + pb::CodedOutputStream.ComputeMessageSize(KHRTextureTransform);
+          }
+          if (_unknownFields != null) {
+            size += _unknownFields.CalculateSize();
+          }
+          return size;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(Extensions other) {
+          if (other == null) {
+            return;
+          }
+          if (other.kHRTextureTransform_ != null) {
+            if (kHRTextureTransform_ == null) {
+              KHRTextureTransform = new global::VrmProtobuf.KHRTextureTransformExtension();
+            }
+            KHRTextureTransform.MergeFrom(other.KHRTextureTransform);
+          }
+          _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(pb::CodedInputStream input) {
+          uint tag;
+          while ((tag = input.ReadTag()) != 0) {
+            switch(tag) {
+              default:
+                _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+                break;
+              case 10: {
+                if (kHRTextureTransform_ == null) {
+                  KHRTextureTransform = new global::VrmProtobuf.KHRTextureTransformExtension();
+                }
+                input.ReadMessage(KHRTextureTransform);
+                break;
+              }
+            }
+          }
+        }
+
+      }
+
+    }
+    #endregion
 
   }
 
@@ -4525,6 +4907,7 @@ namespace VrmProtobuf {
         public Extensions(Extensions other) : this() {
           kHRMaterialsUnlit_ = other.kHRMaterialsUnlit_ != null ? other.kHRMaterialsUnlit_.Clone() : null;
           vRMCMaterialsMtoon_ = other.vRMCMaterialsMtoon_ != null ? other.vRMCMaterialsMtoon_.Clone() : null;
+          kHRMaterialsPbrSpecularGlossiness_ = other.kHRMaterialsPbrSpecularGlossiness_ != null ? other.kHRMaterialsPbrSpecularGlossiness_.Clone() : null;
           _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
         }
 
@@ -4561,6 +4944,20 @@ namespace VrmProtobuf {
           }
         }
 
+        /// <summary>Field number for the "KHR_materials_pbrSpecularGlossiness" field.</summary>
+        public const int KHRMaterialsPbrSpecularGlossinessFieldNumber = 3;
+        private global::VrmProtobuf.KHRMaterialsPbrSpecularGlossinessExtension kHRMaterialsPbrSpecularGlossiness_;
+        /// <summary>
+        /// This extension defines the specular-glossiness material model from Physically-Based Rendering (PBR).
+        /// </summary>
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public global::VrmProtobuf.KHRMaterialsPbrSpecularGlossinessExtension KHRMaterialsPbrSpecularGlossiness {
+          get { return kHRMaterialsPbrSpecularGlossiness_; }
+          set {
+            kHRMaterialsPbrSpecularGlossiness_ = value;
+          }
+        }
+
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public override bool Equals(object other) {
           return Equals(other as Extensions);
@@ -4576,6 +4973,7 @@ namespace VrmProtobuf {
           }
           if (!object.Equals(KHRMaterialsUnlit, other.KHRMaterialsUnlit)) return false;
           if (!object.Equals(VRMCMaterialsMtoon, other.VRMCMaterialsMtoon)) return false;
+          if (!object.Equals(KHRMaterialsPbrSpecularGlossiness, other.KHRMaterialsPbrSpecularGlossiness)) return false;
           return Equals(_unknownFields, other._unknownFields);
         }
 
@@ -4584,6 +4982,7 @@ namespace VrmProtobuf {
           int hash = 1;
           if (kHRMaterialsUnlit_ != null) hash ^= KHRMaterialsUnlit.GetHashCode();
           if (vRMCMaterialsMtoon_ != null) hash ^= VRMCMaterialsMtoon.GetHashCode();
+          if (kHRMaterialsPbrSpecularGlossiness_ != null) hash ^= KHRMaterialsPbrSpecularGlossiness.GetHashCode();
           if (_unknownFields != null) {
             hash ^= _unknownFields.GetHashCode();
           }
@@ -4605,6 +5004,10 @@ namespace VrmProtobuf {
             output.WriteRawTag(18);
             output.WriteMessage(VRMCMaterialsMtoon);
           }
+          if (kHRMaterialsPbrSpecularGlossiness_ != null) {
+            output.WriteRawTag(26);
+            output.WriteMessage(KHRMaterialsPbrSpecularGlossiness);
+          }
           if (_unknownFields != null) {
             _unknownFields.WriteTo(output);
           }
@@ -4618,6 +5021,9 @@ namespace VrmProtobuf {
           }
           if (vRMCMaterialsMtoon_ != null) {
             size += 1 + pb::CodedOutputStream.ComputeMessageSize(VRMCMaterialsMtoon);
+          }
+          if (kHRMaterialsPbrSpecularGlossiness_ != null) {
+            size += 1 + pb::CodedOutputStream.ComputeMessageSize(KHRMaterialsPbrSpecularGlossiness);
           }
           if (_unknownFields != null) {
             size += _unknownFields.CalculateSize();
@@ -4642,6 +5048,12 @@ namespace VrmProtobuf {
             }
             VRMCMaterialsMtoon.MergeFrom(other.VRMCMaterialsMtoon);
           }
+          if (other.kHRMaterialsPbrSpecularGlossiness_ != null) {
+            if (kHRMaterialsPbrSpecularGlossiness_ == null) {
+              KHRMaterialsPbrSpecularGlossiness = new global::VrmProtobuf.KHRMaterialsPbrSpecularGlossinessExtension();
+            }
+            KHRMaterialsPbrSpecularGlossiness.MergeFrom(other.KHRMaterialsPbrSpecularGlossiness);
+          }
           _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
         }
 
@@ -4665,6 +5077,13 @@ namespace VrmProtobuf {
                   VRMCMaterialsMtoon = new global::VrmProtobuf.VRMC_materials_mtoon();
                 }
                 input.ReadMessage(VRMCMaterialsMtoon);
+                break;
+              }
+              case 26: {
+                if (kHRMaterialsPbrSpecularGlossiness_ == null) {
+                  KHRMaterialsPbrSpecularGlossiness = new global::VrmProtobuf.KHRMaterialsPbrSpecularGlossinessExtension();
+                }
+                input.ReadMessage(KHRMaterialsPbrSpecularGlossiness);
                 break;
               }
             }
@@ -6641,6 +7060,7 @@ namespace VrmProtobuf {
     public TextureInfo(TextureInfo other) : this() {
       Index = other.Index;
       TexCoord = other.TexCoord;
+      extensions_ = other.extensions_ != null ? other.extensions_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -6675,6 +7095,17 @@ namespace VrmProtobuf {
     }
 
 
+    /// <summary>Field number for the "extensions" field.</summary>
+    public const int ExtensionsFieldNumber = 3;
+    private global::VrmProtobuf.TextureInfo.Types.Extensions extensions_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::VrmProtobuf.TextureInfo.Types.Extensions Extensions {
+      get { return extensions_; }
+      set {
+        extensions_ = value;
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
       return Equals(other as TextureInfo);
@@ -6690,6 +7121,7 @@ namespace VrmProtobuf {
       }
       if (Index != other.Index) return false;
       if (TexCoord != other.TexCoord) return false;
+      if (!object.Equals(Extensions, other.Extensions)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -6698,6 +7130,7 @@ namespace VrmProtobuf {
       int hash = 1;
       if (index_ != null) hash ^= Index.GetHashCode();
       if (texCoord_ != null) hash ^= TexCoord.GetHashCode();
+      if (extensions_ != null) hash ^= Extensions.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -6717,6 +7150,10 @@ namespace VrmProtobuf {
       if (texCoord_ != null) {
         _single_texCoord_codec.WriteTagAndValue(output, TexCoord);
       }
+      if (extensions_ != null) {
+        output.WriteRawTag(26);
+        output.WriteMessage(Extensions);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -6730,6 +7167,9 @@ namespace VrmProtobuf {
       }
       if (texCoord_ != null) {
         size += _single_texCoord_codec.CalculateSizeWithTag(TexCoord);
+      }
+      if (extensions_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Extensions);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -6751,6 +7191,12 @@ namespace VrmProtobuf {
         if (texCoord_ == null || other.TexCoord != 0) {
           TexCoord = other.TexCoord;
         }
+      }
+      if (other.extensions_ != null) {
+        if (extensions_ == null) {
+          Extensions = new global::VrmProtobuf.TextureInfo.Types.Extensions();
+        }
+        Extensions.MergeFrom(other.Extensions);
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -6775,6 +7221,644 @@ namespace VrmProtobuf {
             if (texCoord_ == null || value != 0) {
               TexCoord = value;
             }
+            break;
+          }
+          case 26: {
+            if (extensions_ == null) {
+              Extensions = new global::VrmProtobuf.TextureInfo.Types.Extensions();
+            }
+            input.ReadMessage(Extensions);
+            break;
+          }
+        }
+      }
+    }
+
+    #region Nested types
+    /// <summary>Container for nested types declared in the TextureInfo message type.</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static partial class Types {
+      public sealed partial class Extensions : pb::IMessage<Extensions> {
+        private static readonly pb::MessageParser<Extensions> _parser = new pb::MessageParser<Extensions>(() => new Extensions());
+        private pb::UnknownFieldSet _unknownFields;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pb::MessageParser<Extensions> Parser { get { return _parser; } }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pbr::MessageDescriptor Descriptor {
+          get { return global::VrmProtobuf.TextureInfo.Descriptor.NestedTypes[0]; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        pbr::MessageDescriptor pb::IMessage.Descriptor {
+          get { return Descriptor; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extensions() {
+          OnConstruction();
+        }
+
+        partial void OnConstruction();
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extensions(Extensions other) : this() {
+          kHRTextureTransform_ = other.kHRTextureTransform_ != null ? other.kHRTextureTransform_.Clone() : null;
+          _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extensions Clone() {
+          return new Extensions(this);
+        }
+
+        /// <summary>Field number for the "KHR_texture_transform" field.</summary>
+        public const int KHRTextureTransformFieldNumber = 1;
+        private global::VrmProtobuf.KHRTextureTransformExtension kHRTextureTransform_;
+        /// <summary>
+        /// KHR_texture_transform
+        /// </summary>
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public global::VrmProtobuf.KHRTextureTransformExtension KHRTextureTransform {
+          get { return kHRTextureTransform_; }
+          set {
+            kHRTextureTransform_ = value;
+          }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override bool Equals(object other) {
+          return Equals(other as Extensions);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public bool Equals(Extensions other) {
+          if (ReferenceEquals(other, null)) {
+            return false;
+          }
+          if (ReferenceEquals(other, this)) {
+            return true;
+          }
+          if (!object.Equals(KHRTextureTransform, other.KHRTextureTransform)) return false;
+          return Equals(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override int GetHashCode() {
+          int hash = 1;
+          if (kHRTextureTransform_ != null) hash ^= KHRTextureTransform.GetHashCode();
+          if (_unknownFields != null) {
+            hash ^= _unknownFields.GetHashCode();
+          }
+          return hash;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override string ToString() {
+          return pb::JsonFormatter.ToDiagnosticString(this);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void WriteTo(pb::CodedOutputStream output) {
+          if (kHRTextureTransform_ != null) {
+            output.WriteRawTag(10);
+            output.WriteMessage(KHRTextureTransform);
+          }
+          if (_unknownFields != null) {
+            _unknownFields.WriteTo(output);
+          }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public int CalculateSize() {
+          int size = 0;
+          if (kHRTextureTransform_ != null) {
+            size += 1 + pb::CodedOutputStream.ComputeMessageSize(KHRTextureTransform);
+          }
+          if (_unknownFields != null) {
+            size += _unknownFields.CalculateSize();
+          }
+          return size;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(Extensions other) {
+          if (other == null) {
+            return;
+          }
+          if (other.kHRTextureTransform_ != null) {
+            if (kHRTextureTransform_ == null) {
+              KHRTextureTransform = new global::VrmProtobuf.KHRTextureTransformExtension();
+            }
+            KHRTextureTransform.MergeFrom(other.KHRTextureTransform);
+          }
+          _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(pb::CodedInputStream input) {
+          uint tag;
+          while ((tag = input.ReadTag()) != 0) {
+            switch(tag) {
+              default:
+                _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+                break;
+              case 10: {
+                if (kHRTextureTransform_ == null) {
+                  KHRTextureTransform = new global::VrmProtobuf.KHRTextureTransformExtension();
+                }
+                input.ReadMessage(KHRTextureTransform);
+                break;
+              }
+            }
+          }
+        }
+
+      }
+
+    }
+    #endregion
+
+  }
+
+  /// <summary>
+  /// https://github.com/KhronosGroup/glTF/blob/master/extensions/2.0/Khronos/KHR_texture_transform/schema/KHR_texture_transform.textureInfo.schema.json
+  /// </summary>
+  public sealed partial class KHRTextureTransformExtension : pb::IMessage<KHRTextureTransformExtension> {
+    private static readonly pb::MessageParser<KHRTextureTransformExtension> _parser = new pb::MessageParser<KHRTextureTransformExtension>(() => new KHRTextureTransformExtension());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<KHRTextureTransformExtension> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::VrmProtobuf.GlTFReflection.Descriptor.MessageTypes[26]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public KHRTextureTransformExtension() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public KHRTextureTransformExtension(KHRTextureTransformExtension other) : this() {
+      offset_ = other.offset_.Clone();
+      Rotation = other.Rotation;
+      scale_ = other.scale_.Clone();
+      TexCoord = other.TexCoord;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public KHRTextureTransformExtension Clone() {
+      return new KHRTextureTransformExtension(this);
+    }
+
+    /// <summary>Field number for the "offset" field.</summary>
+    public const int OffsetFieldNumber = 1;
+    private static readonly pb::FieldCodec<float> _repeated_offset_codec
+        = pb::FieldCodec.ForFloat(10);
+    private readonly pbc::RepeatedField<float> offset_ = new pbc::RepeatedField<float>();
+    /// <summary>
+    /// float[2]
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::RepeatedField<float> Offset {
+      get { return offset_; }
+    }
+
+    /// <summary>Field number for the "rotation" field.</summary>
+    public const int RotationFieldNumber = 2;
+    private static readonly pb::FieldCodec<float?> _single_rotation_codec = pb::FieldCodec.ForStructWrapper<float>(18);
+    private float? rotation_;
+    /// <summary>
+    /// Rotate the UVs by this many radians counter-clockwise around the origin
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public float? Rotation {
+      get { return rotation_; }
+      set {
+        rotation_ = value;
+      }
+    }
+
+
+    /// <summary>Field number for the "scale" field.</summary>
+    public const int ScaleFieldNumber = 3;
+    private static readonly pb::FieldCodec<float> _repeated_scale_codec
+        = pb::FieldCodec.ForFloat(26);
+    private readonly pbc::RepeatedField<float> scale_ = new pbc::RepeatedField<float>();
+    /// <summary>
+    /// float[2]
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::RepeatedField<float> Scale {
+      get { return scale_; }
+    }
+
+    /// <summary>Field number for the "texCoord" field.</summary>
+    public const int TexCoordFieldNumber = 4;
+    private static readonly pb::FieldCodec<int?> _single_texCoord_codec = pb::FieldCodec.ForStructWrapper<int>(34);
+    private int? texCoord_;
+    /// <summary>
+    /// Overrides the textureInfo texCoord value if supplied, and if this extension is supported.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int? TexCoord {
+      get { return texCoord_; }
+      set {
+        texCoord_ = value;
+      }
+    }
+
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as KHRTextureTransformExtension);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(KHRTextureTransformExtension other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if(!offset_.Equals(other.offset_)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseNullableSingleEqualityComparer.Equals(Rotation, other.Rotation)) return false;
+      if(!scale_.Equals(other.scale_)) return false;
+      if (TexCoord != other.TexCoord) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      hash ^= offset_.GetHashCode();
+      if (rotation_ != null) hash ^= pbc::ProtobufEqualityComparers.BitwiseNullableSingleEqualityComparer.GetHashCode(Rotation);
+      hash ^= scale_.GetHashCode();
+      if (texCoord_ != null) hash ^= TexCoord.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      offset_.WriteTo(output, _repeated_offset_codec);
+      if (rotation_ != null) {
+        _single_rotation_codec.WriteTagAndValue(output, Rotation);
+      }
+      scale_.WriteTo(output, _repeated_scale_codec);
+      if (texCoord_ != null) {
+        _single_texCoord_codec.WriteTagAndValue(output, TexCoord);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      size += offset_.CalculateSize(_repeated_offset_codec);
+      if (rotation_ != null) {
+        size += _single_rotation_codec.CalculateSizeWithTag(Rotation);
+      }
+      size += scale_.CalculateSize(_repeated_scale_codec);
+      if (texCoord_ != null) {
+        size += _single_texCoord_codec.CalculateSizeWithTag(TexCoord);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(KHRTextureTransformExtension other) {
+      if (other == null) {
+        return;
+      }
+      offset_.Add(other.offset_);
+      if (other.rotation_ != null) {
+        if (rotation_ == null || other.Rotation != 0F) {
+          Rotation = other.Rotation;
+        }
+      }
+      scale_.Add(other.scale_);
+      if (other.texCoord_ != null) {
+        if (texCoord_ == null || other.TexCoord != 0) {
+          TexCoord = other.TexCoord;
+        }
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10:
+          case 13: {
+            offset_.AddEntriesFrom(input, _repeated_offset_codec);
+            break;
+          }
+          case 18: {
+            float? value = _single_rotation_codec.Read(input);
+            if (rotation_ == null || value != 0F) {
+              Rotation = value;
+            }
+            break;
+          }
+          case 26:
+          case 29: {
+            scale_.AddEntriesFrom(input, _repeated_scale_codec);
+            break;
+          }
+          case 34: {
+            int? value = _single_texCoord_codec.Read(input);
+            if (texCoord_ == null || value != 0) {
+              TexCoord = value;
+            }
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  /// <summary>
+  /// https://github.com/KhronosGroup/glTF/blob/master/extensions/2.0/Khronos/KHR_materials_pbrSpecularGlossiness/schema/glTF.KHR_materials_pbrSpecularGlossiness.schema.json
+  /// </summary>
+  public sealed partial class KHRMaterialsPbrSpecularGlossinessExtension : pb::IMessage<KHRMaterialsPbrSpecularGlossinessExtension> {
+    private static readonly pb::MessageParser<KHRMaterialsPbrSpecularGlossinessExtension> _parser = new pb::MessageParser<KHRMaterialsPbrSpecularGlossinessExtension>(() => new KHRMaterialsPbrSpecularGlossinessExtension());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<KHRMaterialsPbrSpecularGlossinessExtension> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::VrmProtobuf.GlTFReflection.Descriptor.MessageTypes[27]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public KHRMaterialsPbrSpecularGlossinessExtension() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public KHRMaterialsPbrSpecularGlossinessExtension(KHRMaterialsPbrSpecularGlossinessExtension other) : this() {
+      diffuseFactor_ = other.diffuseFactor_.Clone();
+      diffuseTexture_ = other.diffuseTexture_ != null ? other.diffuseTexture_.Clone() : null;
+      specularFactor_ = other.specularFactor_.Clone();
+      GlossinessFactor = other.GlossinessFactor;
+      specularGlossinessTexture_ = other.specularGlossinessTexture_ != null ? other.specularGlossinessTexture_.Clone() : null;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public KHRMaterialsPbrSpecularGlossinessExtension Clone() {
+      return new KHRMaterialsPbrSpecularGlossinessExtension(this);
+    }
+
+    /// <summary>Field number for the "diffuseFactor" field.</summary>
+    public const int DiffuseFactorFieldNumber = 1;
+    private static readonly pb::FieldCodec<float> _repeated_diffuseFactor_codec
+        = pb::FieldCodec.ForFloat(10);
+    private readonly pbc::RepeatedField<float> diffuseFactor_ = new pbc::RepeatedField<float>();
+    /// <summary>
+    /// float[4], default[1.0,1.0,1.0,1.0]
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::RepeatedField<float> DiffuseFactor {
+      get { return diffuseFactor_; }
+    }
+
+    /// <summary>Field number for the "diffuseTexture" field.</summary>
+    public const int DiffuseTextureFieldNumber = 2;
+    private global::VrmProtobuf.TextureInfo diffuseTexture_;
+    /// <summary>
+    /// 
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::VrmProtobuf.TextureInfo DiffuseTexture {
+      get { return diffuseTexture_; }
+      set {
+        diffuseTexture_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "specularFactor" field.</summary>
+    public const int SpecularFactorFieldNumber = 3;
+    private static readonly pb::FieldCodec<float> _repeated_specularFactor_codec
+        = pb::FieldCodec.ForFloat(26);
+    private readonly pbc::RepeatedField<float> specularFactor_ = new pbc::RepeatedField<float>();
+    /// <summary>
+    /// float[3], default[1.0,1.0,1.0]
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::RepeatedField<float> SpecularFactor {
+      get { return specularFactor_; }
+    }
+
+    /// <summary>Field number for the "glossinessFactor" field.</summary>
+    public const int GlossinessFactorFieldNumber = 4;
+    private static readonly pb::FieldCodec<float?> _single_glossinessFactor_codec = pb::FieldCodec.ForStructWrapper<float>(34);
+    private float? glossinessFactor_;
+    /// <summary>
+    /// 
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public float? GlossinessFactor {
+      get { return glossinessFactor_; }
+      set {
+        glossinessFactor_ = value;
+      }
+    }
+
+
+    /// <summary>Field number for the "specularGlossinessTexture" field.</summary>
+    public const int SpecularGlossinessTextureFieldNumber = 5;
+    private global::VrmProtobuf.TextureInfo specularGlossinessTexture_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::VrmProtobuf.TextureInfo SpecularGlossinessTexture {
+      get { return specularGlossinessTexture_; }
+      set {
+        specularGlossinessTexture_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as KHRMaterialsPbrSpecularGlossinessExtension);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(KHRMaterialsPbrSpecularGlossinessExtension other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if(!diffuseFactor_.Equals(other.diffuseFactor_)) return false;
+      if (!object.Equals(DiffuseTexture, other.DiffuseTexture)) return false;
+      if(!specularFactor_.Equals(other.specularFactor_)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseNullableSingleEqualityComparer.Equals(GlossinessFactor, other.GlossinessFactor)) return false;
+      if (!object.Equals(SpecularGlossinessTexture, other.SpecularGlossinessTexture)) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      hash ^= diffuseFactor_.GetHashCode();
+      if (diffuseTexture_ != null) hash ^= DiffuseTexture.GetHashCode();
+      hash ^= specularFactor_.GetHashCode();
+      if (glossinessFactor_ != null) hash ^= pbc::ProtobufEqualityComparers.BitwiseNullableSingleEqualityComparer.GetHashCode(GlossinessFactor);
+      if (specularGlossinessTexture_ != null) hash ^= SpecularGlossinessTexture.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      diffuseFactor_.WriteTo(output, _repeated_diffuseFactor_codec);
+      if (diffuseTexture_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(DiffuseTexture);
+      }
+      specularFactor_.WriteTo(output, _repeated_specularFactor_codec);
+      if (glossinessFactor_ != null) {
+        _single_glossinessFactor_codec.WriteTagAndValue(output, GlossinessFactor);
+      }
+      if (specularGlossinessTexture_ != null) {
+        output.WriteRawTag(42);
+        output.WriteMessage(SpecularGlossinessTexture);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      size += diffuseFactor_.CalculateSize(_repeated_diffuseFactor_codec);
+      if (diffuseTexture_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(DiffuseTexture);
+      }
+      size += specularFactor_.CalculateSize(_repeated_specularFactor_codec);
+      if (glossinessFactor_ != null) {
+        size += _single_glossinessFactor_codec.CalculateSizeWithTag(GlossinessFactor);
+      }
+      if (specularGlossinessTexture_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(SpecularGlossinessTexture);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(KHRMaterialsPbrSpecularGlossinessExtension other) {
+      if (other == null) {
+        return;
+      }
+      diffuseFactor_.Add(other.diffuseFactor_);
+      if (other.diffuseTexture_ != null) {
+        if (diffuseTexture_ == null) {
+          DiffuseTexture = new global::VrmProtobuf.TextureInfo();
+        }
+        DiffuseTexture.MergeFrom(other.DiffuseTexture);
+      }
+      specularFactor_.Add(other.specularFactor_);
+      if (other.glossinessFactor_ != null) {
+        if (glossinessFactor_ == null || other.GlossinessFactor != 0F) {
+          GlossinessFactor = other.GlossinessFactor;
+        }
+      }
+      if (other.specularGlossinessTexture_ != null) {
+        if (specularGlossinessTexture_ == null) {
+          SpecularGlossinessTexture = new global::VrmProtobuf.TextureInfo();
+        }
+        SpecularGlossinessTexture.MergeFrom(other.SpecularGlossinessTexture);
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10:
+          case 13: {
+            diffuseFactor_.AddEntriesFrom(input, _repeated_diffuseFactor_codec);
+            break;
+          }
+          case 18: {
+            if (diffuseTexture_ == null) {
+              DiffuseTexture = new global::VrmProtobuf.TextureInfo();
+            }
+            input.ReadMessage(DiffuseTexture);
+            break;
+          }
+          case 26:
+          case 29: {
+            specularFactor_.AddEntriesFrom(input, _repeated_specularFactor_codec);
+            break;
+          }
+          case 34: {
+            float? value = _single_glossinessFactor_codec.Read(input);
+            if (glossinessFactor_ == null || value != 0F) {
+              GlossinessFactor = value;
+            }
+            break;
+          }
+          case 42: {
+            if (specularGlossinessTexture_ == null) {
+              SpecularGlossinessTexture = new global::VrmProtobuf.TextureInfo();
+            }
+            input.ReadMessage(SpecularGlossinessTexture);
             break;
           }
         }

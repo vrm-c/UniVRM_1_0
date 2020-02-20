@@ -592,8 +592,8 @@ namespace Vrm10
 
         public SpringBoneManager CreateVrmSpringBone(List<Node> nodes)
         {
-            var gltfVrm = Gltf.Extensions.VRMCVrm;
-            if ((gltfVrm.SpringBone is null))
+            var gltfVrm = Gltf.Extensions.VRMCSpringBone;
+            if ((gltfVrm is null))
             {
                 return null;
             }
@@ -602,7 +602,7 @@ namespace Vrm10
 
             // colliders
             springBone.Colliders.AddRange(
-                gltfVrm.SpringBone.ColliderGroups.Select(y =>
+                gltfVrm.ColliderGroups.Select(y =>
                 new SpringBoneColliderGroup(
                     nodes[y.Node],
                     y.Colliders.Select(z => new VrmSpringBoneColliderSphere(z.Offset.ToVector3(), z.Radius))
@@ -610,7 +610,7 @@ namespace Vrm10
             ));
 
             // springs
-            springBone.Springs.AddRange(gltfVrm.SpringBone.BoneGroups.Select(x =>
+            springBone.Springs.AddRange(gltfVrm.BoneGroups.Select(x =>
             {
                 var sb = new SpringBone();
                 sb.Bones.AddRange(x.Bones.Select(y => nodes[y]));

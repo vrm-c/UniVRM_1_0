@@ -17,6 +17,7 @@ namespace Vrm10
         public Vrm10Exporter()
         {
             Gltf.ExtensionsUsed.Add(UnlitMaterial.ExtensionName);
+            Gltf.ExtensionsUsed.Add(SpringBone.ExtensionName);
             Gltf.Buffers.Add(new VrmProtobuf.Buffer
             {
 
@@ -235,7 +236,7 @@ namespace Vrm10
 
         public void ExportVrmSpringBone(SpringBoneManager springBone, List<Node> nodes)
         {
-            Gltf.Extensions.VRMCVrm.SpringBone = springBone.ToGltf(nodes);
+            Gltf.Extensions.VRMCSpringBone = springBone.ToGltf(nodes);
         }
 
         public void ExportVrmFirstPersonAndLookAt(FirstPerson firstPerson, LookAt lookat, List<MeshGroup> meshes, List<Node> nodes)

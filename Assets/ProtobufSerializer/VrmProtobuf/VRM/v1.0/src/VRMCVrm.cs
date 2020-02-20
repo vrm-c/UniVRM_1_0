@@ -26,19 +26,16 @@ namespace VrmProtobuf {
           string.Concat(
             "Cg5WUk1DX3ZybS5wcm90bxILVnJtUHJvdG9idWYaCm1ldGEucHJvdG8aDmh1",
             "bWFub2lkLnByb3RvGhFmaXJzdFBlcnNvbi5wcm90bxoMbG9va0F0LnByb3Rv",
-            "GhBibGVuZFNoYXBlLnByb3RvGhBzcHJpbmdCb25lLnByb3RvGhBjb25zdHJh",
-            "aW50LnByb3RvIsMCCgdWUk1DVnJtEhMKC3NwZWNWZXJzaW9uGAEgASgJEh8K",
-            "BG1ldGEYAiABKAsyES5Wcm1Qcm90b2J1Zi5NZXRhEicKCGh1bWFub2lkGAMg",
-            "ASgLMhUuVnJtUHJvdG9idWYuSHVtYW5vaWQSLQoLZmlyc3RQZXJzb24YBCAB",
-            "KAsyGC5Wcm1Qcm90b2J1Zi5GaXJzdFBlcnNvbhIjCgZsb29rQXQYBSABKAsy",
-            "Ey5Wcm1Qcm90b2J1Zi5Mb29rQXQSKwoKYmxlbmRTaGFwZRgGIAEoCzIXLlZy",
-            "bVByb3RvYnVmLkJsZW5kU2hhcGUSKwoKc3ByaW5nQm9uZRgHIAEoCzIXLlZy",
-            "bVByb3RvYnVmLlNwcmluZ0JvbmUSKwoKY29uc3RyYWludBgIIAEoCzIXLlZy",
-            "bVByb3RvYnVmLkNvbnN0cmFpbnRiBnByb3RvMw=="));
+            "GhBibGVuZFNoYXBlLnByb3RvIukBCgdWUk1DVnJtEhMKC3NwZWNWZXJzaW9u",
+            "GAEgASgJEh8KBG1ldGEYAiABKAsyES5Wcm1Qcm90b2J1Zi5NZXRhEicKCGh1",
+            "bWFub2lkGAMgASgLMhUuVnJtUHJvdG9idWYuSHVtYW5vaWQSLQoLZmlyc3RQ",
+            "ZXJzb24YBCABKAsyGC5Wcm1Qcm90b2J1Zi5GaXJzdFBlcnNvbhIjCgZsb29r",
+            "QXQYBSABKAsyEy5Wcm1Qcm90b2J1Zi5Mb29rQXQSKwoKYmxlbmRTaGFwZRgG",
+            "IAEoCzIXLlZybVByb3RvYnVmLkJsZW5kU2hhcGViBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::VrmProtobuf.MetaReflection.Descriptor, global::VrmProtobuf.HumanoidReflection.Descriptor, global::VrmProtobuf.FirstPersonReflection.Descriptor, global::VrmProtobuf.LookAtReflection.Descriptor, global::VrmProtobuf.BlendShapeReflection.Descriptor, global::VrmProtobuf.SpringBoneReflection.Descriptor, global::VrmProtobuf.ConstraintReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::VrmProtobuf.MetaReflection.Descriptor, global::VrmProtobuf.HumanoidReflection.Descriptor, global::VrmProtobuf.FirstPersonReflection.Descriptor, global::VrmProtobuf.LookAtReflection.Descriptor, global::VrmProtobuf.BlendShapeReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.VRMCVrm), global::VrmProtobuf.VRMCVrm.Parser, new[]{ "SpecVersion", "Meta", "Humanoid", "FirstPerson", "LookAt", "BlendShape", "SpringBone", "Constraint" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.VRMCVrm), global::VrmProtobuf.VRMCVrm.Parser, new[]{ "SpecVersion", "Meta", "Humanoid", "FirstPerson", "LookAt", "BlendShape" }, null, null, null, null)
           }));
     }
     #endregion
@@ -76,8 +73,6 @@ namespace VrmProtobuf {
       firstPerson_ = other.firstPerson_ != null ? other.firstPerson_.Clone() : null;
       lookAt_ = other.lookAt_ != null ? other.lookAt_.Clone() : null;
       blendShape_ = other.blendShape_ != null ? other.blendShape_.Clone() : null;
-      springBone_ = other.springBone_ != null ? other.springBone_.Clone() : null;
-      constraint_ = other.constraint_ != null ? other.constraint_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -152,28 +147,6 @@ namespace VrmProtobuf {
       }
     }
 
-    /// <summary>Field number for the "springBone" field.</summary>
-    public const int SpringBoneFieldNumber = 7;
-    private global::VrmProtobuf.SpringBone springBone_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::VrmProtobuf.SpringBone SpringBone {
-      get { return springBone_; }
-      set {
-        springBone_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "constraint" field.</summary>
-    public const int ConstraintFieldNumber = 8;
-    private global::VrmProtobuf.Constraint constraint_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::VrmProtobuf.Constraint Constraint {
-      get { return constraint_; }
-      set {
-        constraint_ = value;
-      }
-    }
-
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
       return Equals(other as VRMCVrm);
@@ -193,8 +166,6 @@ namespace VrmProtobuf {
       if (!object.Equals(FirstPerson, other.FirstPerson)) return false;
       if (!object.Equals(LookAt, other.LookAt)) return false;
       if (!object.Equals(BlendShape, other.BlendShape)) return false;
-      if (!object.Equals(SpringBone, other.SpringBone)) return false;
-      if (!object.Equals(Constraint, other.Constraint)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -207,8 +178,6 @@ namespace VrmProtobuf {
       if (firstPerson_ != null) hash ^= FirstPerson.GetHashCode();
       if (lookAt_ != null) hash ^= LookAt.GetHashCode();
       if (blendShape_ != null) hash ^= BlendShape.GetHashCode();
-      if (springBone_ != null) hash ^= SpringBone.GetHashCode();
-      if (constraint_ != null) hash ^= Constraint.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -246,14 +215,6 @@ namespace VrmProtobuf {
         output.WriteRawTag(50);
         output.WriteMessage(BlendShape);
       }
-      if (springBone_ != null) {
-        output.WriteRawTag(58);
-        output.WriteMessage(SpringBone);
-      }
-      if (constraint_ != null) {
-        output.WriteRawTag(66);
-        output.WriteMessage(Constraint);
-      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -279,12 +240,6 @@ namespace VrmProtobuf {
       }
       if (blendShape_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(BlendShape);
-      }
-      if (springBone_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(SpringBone);
-      }
-      if (constraint_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Constraint);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -329,18 +284,6 @@ namespace VrmProtobuf {
           BlendShape = new global::VrmProtobuf.BlendShape();
         }
         BlendShape.MergeFrom(other.BlendShape);
-      }
-      if (other.springBone_ != null) {
-        if (springBone_ == null) {
-          SpringBone = new global::VrmProtobuf.SpringBone();
-        }
-        SpringBone.MergeFrom(other.SpringBone);
-      }
-      if (other.constraint_ != null) {
-        if (constraint_ == null) {
-          Constraint = new global::VrmProtobuf.Constraint();
-        }
-        Constraint.MergeFrom(other.Constraint);
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -390,20 +333,6 @@ namespace VrmProtobuf {
               BlendShape = new global::VrmProtobuf.BlendShape();
             }
             input.ReadMessage(BlendShape);
-            break;
-          }
-          case 58: {
-            if (springBone_ == null) {
-              SpringBone = new global::VrmProtobuf.SpringBone();
-            }
-            input.ReadMessage(SpringBone);
-            break;
-          }
-          case 66: {
-            if (constraint_ == null) {
-              Constraint = new global::VrmProtobuf.Constraint();
-            }
-            input.ReadMessage(Constraint);
             break;
           }
         }
