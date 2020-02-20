@@ -9,7 +9,7 @@ namespace VrmLib
         /// <summary>
         /// 対象のMesh(Renderer)
         /// </summary>
-        public MeshGroup Mesh;
+        public Node Node;
 
         /// <summary>
         /// BlendShapeのIndex
@@ -21,9 +21,9 @@ namespace VrmLib
         /// </summary>
         public readonly float Value;
 
-        public BlendShapeBindValue(MeshGroup mesh, string name, float value)
+        public BlendShapeBindValue(Node node, string name, float value)
         {
-            Mesh = mesh;
+            Node = node;
             Name = name;
             Value = value;
         }

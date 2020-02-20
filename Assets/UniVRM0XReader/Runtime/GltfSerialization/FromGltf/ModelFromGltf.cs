@@ -39,7 +39,7 @@ namespace GltfSerializationAdapter
                 && gltfVrm.blendShapeMaster.blendShapeGroups != null
                 && gltfVrm.blendShapeMaster.blendShapeGroups.Any())
             {
-                Vrm.BlendShape = gltfVrm.blendShapeMaster.FromGltf(self.MeshGroups, self.Materials);
+                Vrm.BlendShape = gltfVrm.blendShapeMaster.FromGltf(self.MeshGroups, self.Materials, self.Nodes);
             }
 
             // secondary

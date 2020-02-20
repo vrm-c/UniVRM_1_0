@@ -11,7 +11,12 @@ namespace GltfSerializationAdapter
         {
             var self = new FirstPerson();
             self.Annotations.AddRange(fp.meshAnnotations
-                 .Select(x => new FirstPersonMeshAnnotation(meshes[x.mesh], (FirstPersonMeshType)x.firstPersonFlag)));
+                 .Select(x =>
+                 {
+                     var meshGroup = meshes[x.mesh];
+                     var node = nodes.First(y => y.MeshGroup == meshGroup);
+                     return new FirstPersonMeshAnnotation(node, (FirstPersonMeshType)x.firstPersonFlag);
+                 }));
             return self;
         }
     }

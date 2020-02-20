@@ -33,7 +33,7 @@ namespace VrmLib
         string VrmExporterVersion { get; }
         string VrmSpecVersion { get; }
         void LoadVrmHumanoid(List<Node> nodes);
-        BlendShapeManager CreateVrmBlendShape(List<MeshGroup> meshGroups, List<Material> materials);
+        BlendShapeManager CreateVrmBlendShape(List<MeshGroup> meshGroups, List<Material> materials, List<Node> nodes);
         SpringBoneManager CreateVrmSpringBone(List<Node> nodes);
         FirstPerson CreateVrmFirstPerson(List<Node> nodes, List<MeshGroup> meshGroups);
         LookAt CreateVrmLookAt();

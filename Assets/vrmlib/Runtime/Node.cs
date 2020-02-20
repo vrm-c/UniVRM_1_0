@@ -27,7 +27,7 @@ namespace VrmLib
 
         public Node(string name)
         {
-            UniqueID = s_nextUniqueId ++;
+            UniqueID = s_nextUniqueId++;
             Name = name;
         }
 
@@ -284,7 +284,11 @@ namespace VrmLib
         }
         #endregion
 
+
         public MeshGroup MeshGroup;
+
+        // VRMでは、Meshes.Count==1
+        public Mesh Mesh => MeshGroup?.Meshes?[0];
 
         HumanoidBones? m_bone;
         public HumanoidBones? HumanoidBone

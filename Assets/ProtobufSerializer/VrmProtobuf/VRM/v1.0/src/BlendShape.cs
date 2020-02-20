@@ -36,7 +36,7 @@ namespace VrmProtobuf {
             "LwoLaWdub3JlQmxpbmsYCCABKAsyGi5nb29nbGUucHJvdG9idWYuQm9vbFZh",
             "bHVlEjAKDGlnbm9yZUxvb2tBdBgJIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5C",
             "b29sVmFsdWUSLwoLaWdub3JlTW91dGgYCiABKAsyGi5nb29nbGUucHJvdG9i",
-            "dWYuQm9vbFZhbHVlGj0KDkJsZW5kU2hhcGVCaW5kEgwKBG1lc2gYASABKAUS",
+            "dWYuQm9vbFZhbHVlGj0KDkJsZW5kU2hhcGVCaW5kEgwKBG5vZGUYASABKAUS",
             "DQoFaW5kZXgYAiABKAUSDgoGd2VpZ2h0GAMgASgCGnUKDU1hdGVyaWFsVmFs",
             "dWUSEAoIbWF0ZXJpYWwYASABKAUSPQoEdHlwZRgCIAEoDjIvLlZybVByb3Rv",
             "YnVmLkJsZW5kU2hhcGVHcm91cC5NYXRlcmlhbFZhbHVlVHlwZXMSEwoLdGFy",
@@ -51,7 +51,7 @@ namespace VrmProtobuf {
           new pbr::FileDescriptor[] { global::Google.Protobuf.WellKnownTypes.WrappersReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.BlendShape), global::VrmProtobuf.BlendShape.Parser, new[]{ "BlendShapeGroups" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.BlendShapeGroup), global::VrmProtobuf.BlendShapeGroup.Parser, new[]{ "Name", "Preset", "Binds", "MaterialValues", "IsBinary", "IgnoreBlink", "IgnoreLookAt", "IgnoreMouth" }, null, new[]{ typeof(global::VrmProtobuf.BlendShapeGroup.Types.BlendShapePreset), typeof(global::VrmProtobuf.BlendShapeGroup.Types.MaterialValueTypes) }, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.BlendShapeGroup.Types.BlendShapeBind), global::VrmProtobuf.BlendShapeGroup.Types.BlendShapeBind.Parser, new[]{ "Mesh", "Index", "Weight" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.BlendShapeGroup), global::VrmProtobuf.BlendShapeGroup.Parser, new[]{ "Name", "Preset", "Binds", "MaterialValues", "IsBinary", "IgnoreBlink", "IgnoreLookAt", "IgnoreMouth" }, null, new[]{ typeof(global::VrmProtobuf.BlendShapeGroup.Types.BlendShapePreset), typeof(global::VrmProtobuf.BlendShapeGroup.Types.MaterialValueTypes) }, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.BlendShapeGroup.Types.BlendShapeBind), global::VrmProtobuf.BlendShapeGroup.Types.BlendShapeBind.Parser, new[]{ "Node", "Index", "Weight" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.BlendShapeGroup.Types.MaterialValue), global::VrmProtobuf.BlendShapeGroup.Types.MaterialValue.Parser, new[]{ "Material", "Type", "TargetValue" }, null, null, null, null)})
           }));
     }
@@ -591,7 +591,7 @@ namespace VrmProtobuf {
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public BlendShapeBind(BlendShapeBind other) : this() {
-          mesh_ = other.mesh_;
+          node_ = other.node_;
           index_ = other.index_;
           weight_ = other.weight_;
           _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
@@ -602,14 +602,14 @@ namespace VrmProtobuf {
           return new BlendShapeBind(this);
         }
 
-        /// <summary>Field number for the "mesh" field.</summary>
-        public const int MeshFieldNumber = 1;
-        private int mesh_;
+        /// <summary>Field number for the "node" field.</summary>
+        public const int NodeFieldNumber = 1;
+        private int node_;
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public int Mesh {
-          get { return mesh_; }
+        public int Node {
+          get { return node_; }
           set {
-            mesh_ = value;
+            node_ = value;
           }
         }
 
@@ -648,7 +648,7 @@ namespace VrmProtobuf {
           if (ReferenceEquals(other, this)) {
             return true;
           }
-          if (Mesh != other.Mesh) return false;
+          if (Node != other.Node) return false;
           if (Index != other.Index) return false;
           if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(Weight, other.Weight)) return false;
           return Equals(_unknownFields, other._unknownFields);
@@ -657,7 +657,7 @@ namespace VrmProtobuf {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public override int GetHashCode() {
           int hash = 1;
-          if (Mesh != 0) hash ^= Mesh.GetHashCode();
+          if (Node != 0) hash ^= Node.GetHashCode();
           if (Index != 0) hash ^= Index.GetHashCode();
           if (Weight != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(Weight);
           if (_unknownFields != null) {
@@ -673,9 +673,9 @@ namespace VrmProtobuf {
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public void WriteTo(pb::CodedOutputStream output) {
-          if (Mesh != 0) {
+          if (Node != 0) {
             output.WriteRawTag(8);
-            output.WriteInt32(Mesh);
+            output.WriteInt32(Node);
           }
           if (Index != 0) {
             output.WriteRawTag(16);
@@ -693,8 +693,8 @@ namespace VrmProtobuf {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public int CalculateSize() {
           int size = 0;
-          if (Mesh != 0) {
-            size += 1 + pb::CodedOutputStream.ComputeInt32Size(Mesh);
+          if (Node != 0) {
+            size += 1 + pb::CodedOutputStream.ComputeInt32Size(Node);
           }
           if (Index != 0) {
             size += 1 + pb::CodedOutputStream.ComputeInt32Size(Index);
@@ -713,8 +713,8 @@ namespace VrmProtobuf {
           if (other == null) {
             return;
           }
-          if (other.Mesh != 0) {
-            Mesh = other.Mesh;
+          if (other.Node != 0) {
+            Node = other.Node;
           }
           if (other.Index != 0) {
             Index = other.Index;
@@ -734,7 +734,7 @@ namespace VrmProtobuf {
                 _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
                 break;
               case 8: {
-                Mesh = input.ReadInt32();
+                Node = input.ReadInt32();
                 break;
               }
               case 16: {

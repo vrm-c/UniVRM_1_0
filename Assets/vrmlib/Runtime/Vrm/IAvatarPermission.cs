@@ -47,7 +47,19 @@ namespace VrmLib
 
         public bool IsAllowedSexualUsage { get; set; }
 
-        public bool IsAllowedCommercialUsage { get => throw new System.NotImplementedException(); }
+        public bool IsAllowedCommercialUsage
+        {
+            get
+            {
+                switch (CommercialUsage)
+                {
+                    case CommercialUsageType.Corporation:
+                    case CommercialUsageType.PersonalCommercial:
+                        return true;
+                }
+                return false;
+            }
+        }
 
         public CommercialUsageType CommercialUsage { get; set; }
 

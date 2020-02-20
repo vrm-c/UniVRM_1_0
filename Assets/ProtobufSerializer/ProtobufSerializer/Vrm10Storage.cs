@@ -434,10 +434,10 @@ namespace Vrm10
 
         private Texture.ColorSpaceTypes GetTextureColorSpaceType(int textureIndex)
         {
-            foreach(var material in Gltf.Materials)
+            foreach (var material in Gltf.Materials)
             {
                 // mtoon
-                if(material.Extensions != null && material.Extensions.VRMCMaterialsMtoon != null)
+                if (material.Extensions != null && material.Extensions.VRMCMaterialsMtoon != null)
                 {
                     var mtoon = material.Extensions.VRMCMaterialsMtoon;
                     if (mtoon.LitMultiplyTexture == textureIndex) return Texture.ColorSpaceTypes.Srgb;
@@ -452,7 +452,7 @@ namespace Vrm10
                     if (mtoon.NormalTexture == textureIndex) return Texture.ColorSpaceTypes.Linear;
                 }
                 // unlit
-                else if(material.Extensions != null && material.Extensions.KHRMaterialsUnlit != null)
+                else if (material.Extensions != null && material.Extensions.KHRMaterialsUnlit != null)
                 {
                     if (material.PbrMetallicRoughness.BaseColorTexture.Index == textureIndex) return Texture.ColorSpaceTypes.Srgb;
                 }
@@ -480,7 +480,7 @@ namespace Vrm10
             ? Gltf.Samplers[texture.Sampler.Value]
             : new VrmProtobuf.Sampler()
             ;
-            
+
             if (textureType.Item1 == Texture.TextureTypes.MetallicRoughness && textureType.Item2.PbrMetallicRoughness != null)
             {
                 var roughnessFactor = textureType.Item2.PbrMetallicRoughness.RoughnessFactor;
@@ -577,14 +577,14 @@ namespace Vrm10
             }
         }
 
-        public BlendShapeManager CreateVrmBlendShape(List<MeshGroup> meshGroups, List<Material> materials)
+        public BlendShapeManager CreateVrmBlendShape(List<MeshGroup> _, List<Material> materials, List<Node> nodes)
         {
             var gltfVrm = Gltf.Extensions.VRMCVrm;
             if (gltfVrm.BlendShape != null
                 && gltfVrm.BlendShape.BlendShapeGroups != null
                 && gltfVrm.BlendShape.BlendShapeGroups.Any())
             {
-                return gltfVrm.BlendShape.FromGltf(meshGroups, materials);
+                return gltfVrm.BlendShape.FromGltf(nodes, materials);
             }
 
             return null;
@@ -638,7 +638,7 @@ namespace Vrm10
             {
                 return null;
             }
-            return gltfVrm.FirstPerson.FromGltf(nodes, meshGroups);
+            return gltfVrm.FirstPerson.FromGltf(nodes);
         }
 
         public LookAt CreateVrmLookAt()
