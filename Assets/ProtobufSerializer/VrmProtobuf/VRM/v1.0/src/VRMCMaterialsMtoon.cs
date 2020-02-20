@@ -279,12 +279,6 @@ namespace VrmProtobuf {
     /// <summary>Field number for the "lightColorAttenuationFactor" field.</summary>
     public const int LightColorAttenuationFactorFieldNumber = 18;
     private float lightColorAttenuationFactor_;
-    /// <summary>
-    /// float shadowReceiveMultiplierFactor = 13;
-    /// google.protobuf.Int32Value shadowReceiveMultiplierMultiplyTexture = 14;
-    /// float litAndShadeMixingMultiplierFactor = 16;
-    /// google.protobuf.Int32Value litAndShadeMixingMultiplierMultiplyTexture = 17;
-    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public float LightColorAttenuationFactor {
       get { return lightColorAttenuationFactor_; }

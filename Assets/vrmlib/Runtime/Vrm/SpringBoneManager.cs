@@ -31,6 +31,7 @@ namespace VrmLib
 
     public class SpringBone
     {
+        public const string ExtensionName = "VRMC_springBone";
         public readonly List<Node> Bones = new List<Node>();
         public Node Origin;
 

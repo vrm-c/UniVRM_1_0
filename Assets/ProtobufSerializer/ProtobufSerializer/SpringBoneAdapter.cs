@@ -5,16 +5,16 @@ namespace Vrm10
 {
     public static class SpringBoneAdapter
     {
-        public static VrmProtobuf.SpringBone.Types.ColliderGroup ToGltf(this SpringBoneColliderGroup x, List<Node> nodes)
+        public static VrmProtobuf.VRMCSpringBone.Types.ColliderGroup ToGltf(this SpringBoneColliderGroup x, List<Node> nodes)
         {
             var node = nodes.IndexOfThrow(x.Node);
-            var colliderGroup = new VrmProtobuf.SpringBone.Types.ColliderGroup
+            var colliderGroup = new VrmProtobuf.VRMCSpringBone.Types.ColliderGroup
             {
                 Node = node,
             };
             foreach (var y in x.Colliders)
             {
-                var collider = new VrmProtobuf.SpringBone.Types.ColliderGroup.Types.Collider
+                var collider = new VrmProtobuf.VRMCSpringBone.Types.ColliderGroup.Types.Collider
                 {
                     Radius = y.Radius,
                 };
@@ -28,9 +28,9 @@ namespace Vrm10
 
         // boneGroups = springBone.Springs.Select(x => x.ToGltf(nodes, springBone.Colliders)).ToList(),
 
-        public static VrmProtobuf.SpringBone.Types.BoneGroup ToGltf(this SpringBone self, List<Node> nodes, List<SpringBoneColliderGroup> colliders)
+        public static VrmProtobuf.VRMCSpringBone.Types.BoneGroup ToGltf(this SpringBone self, List<Node> nodes, List<SpringBoneColliderGroup> colliders)
         {
-            var boneGroup = new VrmProtobuf.SpringBone.Types.BoneGroup
+            var boneGroup = new VrmProtobuf.VRMCSpringBone.Types.BoneGroup
             {
                 Name = self.Comment,
                 Center = nodes.IndexOfNullable(self.Origin),
@@ -53,14 +53,14 @@ namespace Vrm10
             return boneGroup;
         }
 
-        public static VrmProtobuf.SpringBone ToGltf(this SpringBoneManager self, List<Node> nodes)
+        public static VrmProtobuf.VRMCSpringBone ToGltf(this SpringBoneManager self, List<Node> nodes)
         {
             if (self == null)
             {
                 return null;
             }
 
-            var springBone = new VrmProtobuf.SpringBone();
+            var springBone = new VrmProtobuf.VRMCSpringBone();
 
             foreach (var x in self.Colliders)
             {
