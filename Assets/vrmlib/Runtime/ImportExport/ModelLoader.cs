@@ -106,7 +106,7 @@ namespace VrmLib
                 throw new Exception("CheckVrmHumanoid");
             }
 
-            Vrm.BlendShape = storage.CreateVrmBlendShape(model.MeshGroups, model.Materials);
+            Vrm.BlendShape = storage.CreateVrmBlendShape(model.MeshGroups, model.Materials, model.Nodes);
 
             Vrm.SpringBone = storage.CreateVrmSpringBone(model.Nodes);
 

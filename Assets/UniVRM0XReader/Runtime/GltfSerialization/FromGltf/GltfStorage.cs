@@ -639,7 +639,7 @@ namespace GltfSerialization
             {
                 sampler = Gltf.samplers[x.sampler];
             }
-            return new ImageTexture(x.name, sampler.FromGltf(), images[x.source], Texture.ColorSpaceTypes.Srgb);
+            return new ImageTexture(x.name ?? "", sampler.FromGltf(), images[x.source], Texture.ColorSpaceTypes.Srgb);
         }
 
         public int MaterialCount => Gltf.materials.Count;
@@ -726,14 +726,14 @@ namespace GltfSerialization
             }
         }
 
-        public BlendShapeManager CreateVrmBlendShape(List<MeshGroup> meshGroups, List<Material> materials)
+        public BlendShapeManager CreateVrmBlendShape(List<MeshGroup> meshGroups, List<Material> materials, List<Node> nodes)
         {
             var gltfVrm = Gltf.extensions.VRM;
             if (gltfVrm.blendShapeMaster != null
                 && gltfVrm.blendShapeMaster.blendShapeGroups != null
                 && gltfVrm.blendShapeMaster.blendShapeGroups.Any())
             {
-                return gltfVrm.blendShapeMaster.FromGltf(meshGroups, materials);
+                return gltfVrm.blendShapeMaster.FromGltf(meshGroups, materials, nodes);
             }
 
             return null;

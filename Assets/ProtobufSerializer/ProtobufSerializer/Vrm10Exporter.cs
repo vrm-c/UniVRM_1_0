@@ -229,9 +229,9 @@ namespace Vrm10
             }
         }
 
-        public void ExportVrmBlendShape(BlendShapeManager src, List<MeshGroup> meshes, List<Material> materials)
+        public void ExportVrmBlendShape(BlendShapeManager src, List<MeshGroup> _, List<Material> materials, List<Node> nodes)
         {
-            Gltf.Extensions.VRMCVrm.BlendShape = src.ToGltf(meshes, materials);
+            Gltf.Extensions.VRMCVrm.BlendShape = src.ToGltf(nodes, materials);
         }
 
         public void ExportVrmSpringBone(SpringBoneManager springBone, List<Node> nodes)
@@ -241,7 +241,7 @@ namespace Vrm10
 
         public void ExportVrmFirstPersonAndLookAt(FirstPerson firstPerson, LookAt lookat, List<MeshGroup> meshes, List<Node> nodes)
         {
-            Gltf.Extensions.VRMCVrm.FirstPerson = firstPerson.ToGltf(nodes, meshes);
+            Gltf.Extensions.VRMCVrm.FirstPerson = firstPerson.ToGltf(nodes);
             Gltf.Extensions.VRMCVrm.LookAt = lookat.ToGltf();
         }
 

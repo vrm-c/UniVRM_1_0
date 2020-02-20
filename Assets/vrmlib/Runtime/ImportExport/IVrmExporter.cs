@@ -23,7 +23,7 @@ namespace VrmLib
         void ExportVrmMeta(Vrm src, List<Texture> textures);
         void ExportVrmHumanoid(Dictionary<VrmLib.HumanoidBones, Node> map, List<Node> nodes);
         void ExportVrmMaterialProperties(List<Material> materials, List<Texture> textures);
-        void ExportVrmBlendShape(BlendShapeManager expression, List<MeshGroup> meshes, List<Material> materials);
+        void ExportVrmBlendShape(BlendShapeManager expression, List<MeshGroup> meshes, List<Material> materials, List<Node> nodes);
         void ExportVrmSpringBone(SpringBoneManager springBone, List<Node> nodes);
         void ExportVrmFirstPersonAndLookAt(FirstPerson firstPerson, LookAt lookat, List<MeshGroup> meshes, List<Node> nodes);
         #endregion
@@ -123,7 +123,7 @@ namespace VrmLib
 
             exporter.ExportVrmMaterialProperties(m.Materials, m.Textures);
 
-            exporter.ExportVrmBlendShape(m.Vrm.BlendShape, m.MeshGroups, m.Materials);
+            exporter.ExportVrmBlendShape(m.Vrm.BlendShape, m.MeshGroups, m.Materials, m.Nodes);
 
             exporter.ExportVrmSpringBone(m.Vrm.SpringBone, m.Nodes);
 

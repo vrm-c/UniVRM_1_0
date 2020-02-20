@@ -27,7 +27,7 @@ namespace VrmProtobuf {
             "ChFmaXJzdFBlcnNvbi5wcm90bxILVnJtUHJvdG9idWYaHmdvb2dsZS9wcm90",
             "b2J1Zi93cmFwcGVycy5wcm90byKTAgoLRmlyc3RQZXJzb24SQAoPbWVzaEFu",
             "bm90YXRpb25zGAEgAygLMicuVnJtUHJvdG9idWYuRmlyc3RQZXJzb24uTWVz",
-            "aEFubm90YXRpb24awQEKDk1lc2hBbm5vdGF0aW9uEgwKBG1lc2gYASABKAUS",
+            "aEFubm90YXRpb24awQEKDk1lc2hBbm5vdGF0aW9uEgwKBG5vZGUYASABKAUS",
             "UAoPZmlyc3RQZXJzb25UeXBlGAIgASgOMjcuVnJtUHJvdG9idWYuRmlyc3RQ",
             "ZXJzb24uTWVzaEFubm90YXRpb24uRmlyc3RQZXJzb25UeXBlIk8KD0ZpcnN0",
             "UGVyc29uVHlwZRIICgRhdXRvEAASCAoEYm90aBABEhMKD3RoaXJkUGVyc29u",
@@ -35,7 +35,7 @@ namespace VrmProtobuf {
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Google.Protobuf.WellKnownTypes.WrappersReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.FirstPerson), global::VrmProtobuf.FirstPerson.Parser, new[]{ "MeshAnnotations" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.FirstPerson.Types.MeshAnnotation), global::VrmProtobuf.FirstPerson.Types.MeshAnnotation.Parser, new[]{ "Mesh", "FirstPersonType" }, null, new[]{ typeof(global::VrmProtobuf.FirstPerson.Types.MeshAnnotation.Types.FirstPersonType) }, null, null)})
+            new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.FirstPerson), global::VrmProtobuf.FirstPerson.Parser, new[]{ "MeshAnnotations" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.FirstPerson.Types.MeshAnnotation), global::VrmProtobuf.FirstPerson.Types.MeshAnnotation.Parser, new[]{ "Node", "FirstPersonType" }, null, new[]{ typeof(global::VrmProtobuf.FirstPerson.Types.MeshAnnotation.Types.FirstPersonType) }, null, null)})
           }));
     }
     #endregion
@@ -196,7 +196,7 @@ namespace VrmProtobuf {
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public MeshAnnotation(MeshAnnotation other) : this() {
-          mesh_ = other.mesh_;
+          node_ = other.node_;
           firstPersonType_ = other.firstPersonType_;
           _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
         }
@@ -206,17 +206,17 @@ namespace VrmProtobuf {
           return new MeshAnnotation(this);
         }
 
-        /// <summary>Field number for the "mesh" field.</summary>
-        public const int MeshFieldNumber = 1;
-        private int mesh_;
+        /// <summary>Field number for the "node" field.</summary>
+        public const int NodeFieldNumber = 1;
+        private int node_;
         /// <summary>
         /// Specify mesh
         /// </summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public int Mesh {
-          get { return mesh_; }
+        public int Node {
+          get { return node_; }
           set {
-            mesh_ = value;
+            node_ = value;
           }
         }
 
@@ -247,7 +247,7 @@ namespace VrmProtobuf {
           if (ReferenceEquals(other, this)) {
             return true;
           }
-          if (Mesh != other.Mesh) return false;
+          if (Node != other.Node) return false;
           if (FirstPersonType != other.FirstPersonType) return false;
           return Equals(_unknownFields, other._unknownFields);
         }
@@ -255,7 +255,7 @@ namespace VrmProtobuf {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public override int GetHashCode() {
           int hash = 1;
-          if (Mesh != 0) hash ^= Mesh.GetHashCode();
+          if (Node != 0) hash ^= Node.GetHashCode();
           if (FirstPersonType != global::VrmProtobuf.FirstPerson.Types.MeshAnnotation.Types.FirstPersonType.Auto) hash ^= FirstPersonType.GetHashCode();
           if (_unknownFields != null) {
             hash ^= _unknownFields.GetHashCode();
@@ -270,9 +270,9 @@ namespace VrmProtobuf {
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public void WriteTo(pb::CodedOutputStream output) {
-          if (Mesh != 0) {
+          if (Node != 0) {
             output.WriteRawTag(8);
-            output.WriteInt32(Mesh);
+            output.WriteInt32(Node);
           }
           if (FirstPersonType != global::VrmProtobuf.FirstPerson.Types.MeshAnnotation.Types.FirstPersonType.Auto) {
             output.WriteRawTag(16);
@@ -286,8 +286,8 @@ namespace VrmProtobuf {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public int CalculateSize() {
           int size = 0;
-          if (Mesh != 0) {
-            size += 1 + pb::CodedOutputStream.ComputeInt32Size(Mesh);
+          if (Node != 0) {
+            size += 1 + pb::CodedOutputStream.ComputeInt32Size(Node);
           }
           if (FirstPersonType != global::VrmProtobuf.FirstPerson.Types.MeshAnnotation.Types.FirstPersonType.Auto) {
             size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) FirstPersonType);
@@ -303,8 +303,8 @@ namespace VrmProtobuf {
           if (other == null) {
             return;
           }
-          if (other.Mesh != 0) {
-            Mesh = other.Mesh;
+          if (other.Node != 0) {
+            Node = other.Node;
           }
           if (other.FirstPersonType != global::VrmProtobuf.FirstPerson.Types.MeshAnnotation.Types.FirstPersonType.Auto) {
             FirstPersonType = other.FirstPersonType;
@@ -321,7 +321,7 @@ namespace VrmProtobuf {
                 _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
                 break;
               case 8: {
-                Mesh = input.ReadInt32();
+                Node = input.ReadInt32();
                 break;
               }
               case 16: {

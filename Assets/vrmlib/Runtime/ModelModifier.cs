@@ -46,37 +46,6 @@ namespace VrmLib
                     node.MeshGroup = dst;
                 }
             }
-
-            // fix VRM
-            if (Model.Vrm != null)
-            {
-                // replace: VrmBlendShape.Mesh
-                if (Model.Vrm.BlendShape != null)
-                {
-                    foreach (var x in Model.Vrm.BlendShape.BlendShapeList)
-                    {
-                        for (int i = 0; i < x.BlendShapeValues.Count; ++i)
-                        {
-                            var v = x.BlendShapeValues[i];
-                            if (src != null && src == v.Mesh)
-                            {
-                                v.Mesh = dst;
-                            }
-                        }
-                    }
-                }
-
-                // replace: VrmFirstPerson.MeshAnnotations
-                if (src != null)
-                {
-                    Model.Vrm.FirstPerson.Annotations.RemoveAll(x => x.Mesh == src);
-                }
-                if (dst != null && !Model.Vrm.FirstPerson.Annotations.Any(x => x.Mesh == dst))
-                {
-                    Model.Vrm.FirstPerson.Annotations.Add(
-                        new FirstPersonMeshAnnotation(dst, FirstPersonMeshType.Auto));
-                }
-            }
         }
 
         /// <summary>
@@ -151,7 +120,36 @@ namespace VrmLib
                 Model.Nodes.Add(dst);
             }
 
-            // TODO: fix VRM
+            // fix VRM
+            if (Model.Vrm != null)
+            {
+                // replace: VrmBlendShape.Mesh
+                if (Model.Vrm.BlendShape != null)
+                {
+                    foreach (var x in Model.Vrm.BlendShape.BlendShapeList)
+                    {
+                        for (int i = 0; i < x.BlendShapeValues.Count; ++i)
+                        {
+                            var v = x.BlendShapeValues[i];
+                            if (src != null && src == v.Node)
+                            {
+                                v.Node = dst;
+                            }
+                        }
+                    }
+                }
+
+                // replace: VrmFirstPerson.MeshAnnotations
+                if (src != null)
+                {
+                    Model.Vrm.FirstPerson.Annotations.RemoveAll(x => x.Node == src);
+                }
+                if (dst != null && !Model.Vrm.FirstPerson.Annotations.Any(x => x.Node == dst))
+                {
+                    Model.Vrm.FirstPerson.Annotations.Add(
+                        new FirstPersonMeshAnnotation(dst, FirstPersonMeshType.Auto));
+                }
+            }            // TODO: fix VRM
             if (Model.Vrm != null)
             {
 

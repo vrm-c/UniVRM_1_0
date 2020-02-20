@@ -20,15 +20,15 @@ namespace Vrm10
             throw new NotImplementedException();
         }
 
-        public static FirstPerson FromGltf(this VrmProtobuf.FirstPerson fp, List<Node> nodes, List<MeshGroup> meshes)
+        public static FirstPerson FromGltf(this VrmProtobuf.FirstPerson fp, List<Node> nodes)
         {
             var self = new FirstPerson();
             // self.m_offset = fp.FirstPersonBoneOffset.ToVector3();
             self.Annotations.AddRange(fp.MeshAnnotations
-                .Select(x => new FirstPersonMeshAnnotation(meshes[x.Mesh], x.FirstPersonType.FromGltf())));
+                .Select(x => new FirstPersonMeshAnnotation(nodes[x.Node], x.FirstPersonType.FromGltf())));
             return self;
         }
-        public static VrmProtobuf.FirstPerson ToGltf(this FirstPerson self, List<Node> nodes, List<MeshGroup> meshes)
+        public static VrmProtobuf.FirstPerson ToGltf(this FirstPerson self, List<Node> nodes)
         {
             if (self == null)
             {
@@ -44,7 +44,7 @@ namespace Vrm10
             {
                 firstPerson.MeshAnnotations.Add(new VrmProtobuf.FirstPerson.Types.MeshAnnotation
                 {
-                    Mesh = meshes.IndexOfThrow(x.Mesh),
+                    Node = nodes.IndexOfThrow(x.Node),
                     FirstPersonType = (VrmProtobuf.FirstPerson.Types.MeshAnnotation.Types.FirstPersonType)x.FirstPersonFlag,
                 });
             }

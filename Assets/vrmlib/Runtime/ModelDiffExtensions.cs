@@ -454,7 +454,7 @@ namespace VrmLib.Diff
         static bool VrmBlendShapeBindValueEquals(ModelDiffContext context, BlendShapeBindValue lhs, BlendShapeBindValue rhs)
         {
             var equals = true;
-            if (!context.Enter("Mesh").Push(lhs.Mesh, rhs.Mesh, MeshGroupEquals)) equals = false;
+            if (!context.Enter("Node").Push(lhs.Node, rhs.Node, NodeEquals)) equals = false;
             if (!context.Enter("Name").Push(lhs.Name, rhs.Name)) equals = false;
             if (!context.Enter("Value").Push(lhs.Value, rhs.Value)) equals = false;
             return equals;
@@ -473,7 +473,7 @@ namespace VrmLib.Diff
         static bool FirstPersonMeshAnnotationEquals(ModelDiffContext context, FirstPersonMeshAnnotation lhs, FirstPersonMeshAnnotation rhs)
         {
             var equals = true;
-            if (!context.Enter("Mesh").Push(lhs.Mesh, rhs.Mesh, MeshGroupEquals)) equals = false;
+            if (!context.Enter("Node").Push(lhs.Node, rhs.Node, NodeEquals)) equals = false;
             if (!context.Enter("Flag").Push(lhs.FirstPersonFlag, rhs.FirstPersonFlag)) equals = false;
             return equals;
         }

@@ -13,13 +13,13 @@ namespace VrmLib
 
     public class FirstPersonMeshAnnotation
     {
-        public readonly MeshGroup Mesh;
+        public readonly Node Node;
 
         public readonly FirstPersonMeshType FirstPersonFlag;
 
-        public FirstPersonMeshAnnotation(MeshGroup mesh, FirstPersonMeshType flag)
+        public FirstPersonMeshAnnotation(Node node, FirstPersonMeshType flag)
         {
-            Mesh = mesh;
+            Node = node;
             FirstPersonFlag = flag;
         }
     }

@@ -37,7 +37,7 @@ namespace GltfSerializationAdapter
             throw new NotImplementedException();
         }
 
-        public static BlendShapeManager FromGltf(this VrmBlendShapeMaster master, List<MeshGroup> meshes, List<Material> materials)
+        public static BlendShapeManager FromGltf(this VrmBlendShapeMaster master, List<MeshGroup> meshes, List<Material> materials, List<Node> nodes)
         {
             var manager = new BlendShapeManager();
             manager.BlendShapeList.AddRange(master.blendShapeGroups.Select(x =>
@@ -47,8 +47,9 @@ namespace GltfSerializationAdapter
                     x.binds.Select(y =>
                     {
                         var group = meshes[y.mesh];
+                        var node = nodes.First(z => z.MeshGroup == group);
                         var blendShapeName = group.Meshes[0].MorphTargets[y.index].Name;
-                        var value = new BlendShapeBindValue(group, blendShapeName, y.weight);
+                        var value = new BlendShapeBindValue(node, blendShapeName, y.weight);
                         return value;
                     }));
                 expression.MaterialValues.AddRange(

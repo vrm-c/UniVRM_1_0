@@ -60,6 +60,10 @@ namespace VrmLib
 
         protected Texture(string name, TextureSampler sampler, ColorSpaceTypes colorSpace, TextureTypes textureType)
         {
+            if (name == null)
+            {
+                throw new ArgumentNullException("name");
+            }
             Name = name;
             Sampler = sampler;
             ColorSpace = colorSpace;

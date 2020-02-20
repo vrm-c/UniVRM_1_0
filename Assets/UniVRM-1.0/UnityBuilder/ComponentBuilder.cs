@@ -30,12 +30,14 @@ namespace UniVRM10
 
         static UniVRM10.BlendShapeBinding Build10(this VrmLib.BlendShapeBindValue bind, IUnityBuilder loader)
         {
-            var mesh = loader.Meshes[bind.Mesh];
-            var transformMeshTable = loader.Root.transform.Traverse()
-                .Select(GetTransformAndMesh)
-                .Where(x => x.Item2 != null)
-                .ToDictionary(x => x.Item2, x => x.Item1);
-            var node = transformMeshTable[mesh];
+            var node = loader.Nodes[bind.Node].transform;
+            var mesh = loader.Meshes[bind.Node.MeshGroup];
+            // var transformMeshTable = loader.Root.transform.Traverse()
+            //     .Select(GetTransformAndMesh)
+            //     .Where(x => x.Item2 != null)
+            //     .ToDictionary(x => x.Item2, x => x.Item1);
+            // var node = transformMeshTable[mesh];
+            // var transform = loader.Nodes[node].transform;
             var relativePath = node.RelativePathFrom(loader.Root.transform);
 
             var names = new List<string>();
@@ -166,7 +168,7 @@ namespace UniVRM10
                 firstPerson.Renderers = model.Vrm.FirstPerson.Annotations.Select(x =>
                     new UniVRM10.VRMFirstPerson.RendererFirstPersonFlags()
                     {
-                        Renderer = asset.Map.Renderers[x.Mesh],
+                        Renderer = asset.Map.Renderers[x.Node.MeshGroup],
                         FirstPersonFlag = x.FirstPersonFlag
                     }
                     ).ToList();

@@ -46,7 +46,7 @@ namespace VrmLib
     {
         public DistributionLicenseType License
         {
-            get => throw new NotImplementedException();
+            get => DistributionLicenseType.Redistribution_Prohibited;
         }
 
         public CreditNotationType CreditNotation { get; set; }

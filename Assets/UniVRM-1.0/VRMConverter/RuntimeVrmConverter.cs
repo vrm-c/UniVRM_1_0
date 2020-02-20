@@ -104,7 +104,7 @@ namespace UniVRM10
                 info = new VrmLib.TextureInfo(new VrmLib.ImageTexture(texture.name, sampler, image, colorSpace, textureType));
                 Textures.Add(texture, info);
 
-                if(Model != null)
+                if (Model != null)
                 {
                     Model.Images.Add(image);
                     Model.Textures.Add(info.Texture);
@@ -214,8 +214,9 @@ namespace UniVRM10
                                 names.Add(mesh.GetBlendShapeName(i));
                             }
 
+                            var node = Nodes[transform.gameObject];
                             var blendShapeValue = new VrmLib.BlendShapeBindValue(
-                                Meshes[mesh],
+                                node,
                                 names[value.Index],
                                 value.Weight
                                 );
@@ -247,11 +248,11 @@ namespace UniVRM10
                 var firstPersonComponent = root.GetComponent<UniVRM10.VRMFirstPerson>();
                 if (firstPersonComponent != null)
                 {
-                    foreach (var renderer in firstPersonComponent.Renderers)
+                    foreach (var annotation in firstPersonComponent.Renderers)
                     {
                         firstPerson.Annotations.Add(
-                            new VrmLib.FirstPersonMeshAnnotation(Meshes[renderer.SharedMesh],
-                            renderer.FirstPersonFlag)
+                            new VrmLib.FirstPersonMeshAnnotation(Nodes[annotation.Renderer.gameObject],
+                            annotation.FirstPersonFlag)
                             );
                     }
                     Model.Vrm.FirstPerson = firstPerson;
