@@ -48,14 +48,67 @@ namespace VrmLib
             }
         }
 
-        /// <summary>
-        /// NodeのMesh参照を削除する
-        /// </summary>
-        public void NodeMeshClear()
+        #region Node
+        public void NodeAdd(Node node, Node parent = null)
+        {
+            if (parent is null)
+            {
+                parent = Model.Root;
+            }
+            parent.Add(node);
+            if (Model.Nodes.Contains(node))
+            {
+                throw new ArgumentException($"Nodes contain {node}");
+            }
+            Model.Nodes.Add(node);
+        }
+
+        public void NodeRemove(Node remove)
         {
             foreach (var node in Model.Nodes)
             {
-                node.MeshGroup = null;
+                if (node.Parent == remove)
+                {
+                    remove.Remove(node);
+                }
+                if (remove.Parent == node)
+                {
+                    node.Remove(remove);
+                }
+            }
+            if (Model.Root.Children.Contains(remove))
+            {
+                Model.Root.Remove(remove);
+            }
+
+            Model.Nodes.Remove(remove);
+
+            if (Model.Vrm != null)
+            {
+                if (Model.Vrm.BlendShape != null)
+                {
+                    foreach (var b in Model.Vrm.BlendShape.BlendShapeList)
+                    {
+                        foreach (var v in b.BlendShapeValues)
+                        {
+                            if (v.Node == remove)
+                            {
+                                throw new NotImplementedException("referenced from blendShape");
+                            }
+                        }
+                    }
+                }
+
+                if (Model.Vrm.FirstPerson != null)
+                {
+                    foreach (var a in Model.Vrm.FirstPerson.Annotations)
+                    {
+                        if (a.Node == remove)
+                        {
+                            throw new NotImplementedException("referenced from firstPerson");
+                        }
+                    }
+                }
             }
         }
 
@@ -66,59 +119,47 @@ namespace VrmLib
         {
             if (src == null)
             {
-                // new node. add to root
-                Model.Root.Add(dst);
+                throw new ArgumentNullException();
             }
-            else
+            if (dst == null)
             {
-                // add dst same parent
-                if (dst != null)
-                {
-                    src.Parent.Add(dst, ChildMatrixMode.KeepWorld);
-                }
-
-                // remove all child
-                foreach (var child in src.Children.ToArray())
-                {
-                    if (dst != null)
-                    {
-                        dst.Add(child, ChildMatrixMode.KeepWorld);
-                    }
-                    else
-                    {
-                        src.Parent.Add(child, ChildMatrixMode.KeepWorld);
-                    }
-                }
-
-                // remove from parent
-                src.Parent.Remove(src);
-                Model.Nodes.Remove(src);
-
-                // remove from skinning
-                foreach (var skin in Model.Skins)
-                {
-                    skin.Replace(src, dst);
-                }
-
-                // fix animation reference
-                foreach (var animation in Model.Animations)
-                {
-                    if (animation.NodeMap.TryGetValue(src, out NodeAnimation nodeAnimation))
-                    {
-                        animation.NodeMap.Remove(src);
-                        animation.NodeMap.Add(dst, nodeAnimation);
-                    }
-                }
+                throw new ArgumentNullException();
             }
 
-            if (dst != null)
+            // add dst same parent
+            src.Parent.Add(dst, ChildMatrixMode.KeepWorld);
+
+            // remove all child
+            foreach (var child in src.Children.ToArray())
             {
-                if (Model.Nodes.Contains(dst))
-                {
-                    throw new Exception("already exists");
-                }
-                Model.Nodes.Add(dst);
+                dst.Add(child, ChildMatrixMode.KeepWorld);
             }
+
+            // remove from parent
+            src.Parent.Remove(src);
+            Model.Nodes.Remove(src);
+
+            // remove from skinning
+            foreach (var skin in Model.Skins)
+            {
+                skin.Replace(src, dst);
+            }
+
+            // fix animation reference
+            foreach (var animation in Model.Animations)
+            {
+                if (animation.NodeMap.TryGetValue(src, out NodeAnimation nodeAnimation))
+                {
+                    animation.NodeMap.Remove(src);
+                    animation.NodeMap.Add(dst, nodeAnimation);
+                }
+            }
+
+            if (Model.Nodes.Contains(dst))
+            {
+                throw new Exception("already exists");
+            }
+            Model.Nodes.Add(dst);
 
             // fix VRM
             if (Model.Vrm != null)
@@ -131,7 +172,7 @@ namespace VrmLib
                         for (int i = 0; i < x.BlendShapeValues.Count; ++i)
                         {
                             var v = x.BlendShapeValues[i];
-                            if (src != null && src == v.Node)
+                            if (src == v.Node)
                             {
                                 v.Node = dst;
                             }
@@ -140,23 +181,17 @@ namespace VrmLib
                 }
 
                 // replace: VrmFirstPerson.MeshAnnotations
-                if (src != null)
-                {
-                    Model.Vrm.FirstPerson.Annotations.RemoveAll(x => x.Node == src);
-                }
-                if (dst != null && !Model.Vrm.FirstPerson.Annotations.Any(x => x.Node == dst))
+                Model.Vrm.FirstPerson.Annotations.RemoveAll(x => x.Node == src);
+                if (!Model.Vrm.FirstPerson.Annotations.Any(x => x.Node == dst))
                 {
                     Model.Vrm.FirstPerson.Annotations.Add(
                         new FirstPersonMeshAnnotation(dst, FirstPersonMeshType.Auto));
                 }
-            }            // TODO: fix VRM
-            if (Model.Vrm != null)
-            {
-
-                // spring
-
             }
+
+            // TODO: SpringBone
         }
+        #endregion
 
         public void MaterialReplace(Material src, Material dst)
         {

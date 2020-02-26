@@ -12,6 +12,7 @@ namespace VrmLib
             public bool HasMesh;
             public int WeightUsed;
             public HumanoidBones? HumanBone;
+            public bool TreeHasHumanBone;
 
             public bool SpringUse;
 
@@ -35,6 +36,7 @@ namespace VrmLib
                     if (WeightUsed > 0) return true;
                     if (HumanBone.HasValue && HumanBone.Value != HumanoidBones.unknown) return true;
                     if (SpringUse) return true;
+                    if (TreeHasHumanBone) return true;
                     return false;
                 }
             }
@@ -47,6 +49,7 @@ namespace VrmLib
                 {
                     HasMesh = x.MeshGroup != null,
                     HumanBone = x.HumanoidBone,
+                    TreeHasHumanBone = x.Traverse().Any(y => y.HumanoidBone.HasValue),
                 })
                 .ToArray();
 
@@ -96,7 +99,10 @@ namespace VrmLib
                 }
             }
 
-            var nodes = nodeUsage.Select((x, i) => System.ValueTuple.Create(i, x)).Where(x => !x.Item2.Used).Select(x => model.Nodes[x.Item1]).ToArray();
+            var nodes = nodeUsage.Select((x, i) => (i, x))
+                .Where(x => !x.Item2.Used)
+                .Select(x => model.Nodes[x.Item1])
+                .ToArray();
             return nodes;
         }
     }

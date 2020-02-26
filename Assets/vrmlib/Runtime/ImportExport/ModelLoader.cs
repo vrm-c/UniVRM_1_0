@@ -21,7 +21,7 @@ namespace VrmLib
             };
 
             // node
-            model.Root = new Node(rootName);
+            model.Root.Name = rootName;
             for (var i = 0; i < storage.NodeCount; ++i)
             {
                 var node = storage.CreateNode(i);

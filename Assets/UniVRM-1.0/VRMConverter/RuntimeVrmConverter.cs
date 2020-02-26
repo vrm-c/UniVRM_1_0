@@ -372,7 +372,7 @@ namespace UniVRM10
 
             // node
             {
-                Model.Root = new VrmLib.Node(root.name);
+                Model.Root.Name = root.name;
                 CreateNodes(root.transform, Model.Root, Nodes);
                 Model.Nodes = Nodes
                 .Where(x => x.Value != Model.Root)

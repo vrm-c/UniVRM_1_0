@@ -34,7 +34,22 @@ namespace VrmLib
         public readonly List<MeshGroup> MeshGroups = new List<MeshGroup>();
 
         // gltf の nodes に含まれない。sceneに相当
-        public Node Root;
+        Node m_root = new Node("__root__");
+        public Node Root
+        {
+            get => m_root;
+            private set
+            {
+
+            }
+        }
+        public void SetRoot(Node root)
+        {
+            m_root = root;
+
+            Nodes.Clear();
+            Nodes.AddRange(root.Traverse().Skip(1));
+        }
 
         // gltf nodes と index が一致する
         public List<Node> Nodes = new List<Node>();
