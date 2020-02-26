@@ -29,6 +29,41 @@ namespace VrmLib
             }
         }
 
+        /// BlendShape
+        /// FirstPersonの置き換え
+        public static void MeshNodeReplace(this ModelModifier modifier, Node src, Node dst)
+        {
+            var vrm = modifier.Model.Vrm;
+            if (vrm is null)
+            {
+                return;
+            }
+
+            if (vrm.BlendShape != null)
+            {
+                foreach (var b in vrm.BlendShape.BlendShapeList)
+                {
+                    foreach (var v in b.BlendShapeValues)
+                    {
+                        if (v.Node == src)
+                        {
+                            v.Node = dst;
+                        }
+                    }
+                }
+            }
+            if (vrm.FirstPerson != null)
+            {
+                foreach (var a in vrm.FirstPerson.Annotations)
+                {
+                    if (a.Node == src)
+                    {
+                        a.Node = dst;
+                    }
+                }
+            }
+        }
+
         public static string SingleMesh(this ModelModifier modifier, string name)
         {
             var count = modifier.Model.MeshGroups.Sum(x => x.Meshes.Count);
@@ -64,8 +99,16 @@ namespace VrmLib
             {
                 modifier.MeshReplace(x, mesh);
             }
-            modifier.NodeMeshClear();
-            modifier.NodeReplace(null, meshNode);
+            foreach (var node in modifier.Model.Nodes)
+            {
+                if (node.MeshGroup != null)
+                {
+                    node.MeshGroup = null;
+                    modifier.MeshNodeReplace(node, meshNode);
+                }
+
+            }
+            modifier.NodeAdd(meshNode);
 
             var names = string.Join("", meshes);
             // return $"SingleMesh: {names}";
@@ -91,7 +134,7 @@ namespace VrmLib
             {
                 // morph無しと有り両方存在する場合に2つ目を追加する
                 modifier.MeshReplace(null, list[1]);
-                modifier.NodeReplace(null, new Node(list[1].Name)
+                modifier.NodeAdd(new Node(list[1].Name)
                 {
                     MeshGroup = list[1]
                 });
@@ -132,7 +175,7 @@ namespace VrmLib
             // ノードを削除する
             foreach (var node in modifier.Model.GetRemoveNodes())
             {
-                modifier.NodeReplace(node, null);
+                modifier.NodeRemove(node);
                 removeNames.Add($"[{node.Name}]");
             }
 

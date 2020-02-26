@@ -13,7 +13,7 @@ namespace VrmLib
 
     public class FirstPersonMeshAnnotation
     {
-        public readonly Node Node;
+        public Node Node;
 
         public readonly FirstPersonMeshType FirstPersonFlag;
 

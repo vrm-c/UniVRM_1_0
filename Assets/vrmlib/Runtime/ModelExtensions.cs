@@ -39,7 +39,7 @@ namespace VrmLib
             if (secondary != null)
             {
                 var mod = new ModelModifier(model);
-                mod.NodeReplace(secondary, null);
+                mod.NodeRemove(secondary);
             }
         }
     }

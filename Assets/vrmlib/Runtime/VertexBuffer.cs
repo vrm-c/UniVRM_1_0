@@ -9,7 +9,7 @@ namespace VrmLib
 {
     public class VertexBuffer : IEnumerable<KeyValuePair<string, BufferAccessor>>
     {
-        Dictionary<string, BufferAccessor> VertexBuffers = new Dictionary<string, BufferAccessor>();
+        public Dictionary<string, BufferAccessor> VertexBuffers = new Dictionary<string, BufferAccessor>();
 
         public bool ContainsKey(string key)
         {
