@@ -241,7 +241,7 @@ namespace VrmLib
         }
     }
 
-    public class MeshGroup
+    public class MeshGroup: GltfId
     {
         public readonly string Name;
 

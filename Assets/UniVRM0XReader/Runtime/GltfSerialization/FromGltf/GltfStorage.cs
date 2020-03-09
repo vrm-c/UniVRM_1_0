@@ -16,6 +16,8 @@ namespace GltfSerialization
 {
     public class GltfStorage : IVrmStorage
     {
+        public ArraySegment<byte> OriginalJson { get; private set; }
+
         public FileInfo Path;
 
         public int FileByteSize;
@@ -57,6 +59,7 @@ namespace GltfSerialization
         /// Glb interface. bin is binary chunk
         public GltfStorage(FileInfo path, ArraySegment<byte> json, Memory<byte> bin)
         {
+            OriginalJson = json;
             Gltf = Generated.GltfDeserializer.Deserialize(json.ParseAsJson());
 
             Path = path;
@@ -588,7 +591,10 @@ namespace GltfSerialization
         public Node CreateNode(int index)
         {
             var x = Gltf.nodes[index];
-            var node = new Node(x.name);
+            var node = new Node(x.name)
+            {
+                GltfIndex = index,
+            };
             if (x.matrix != null)
             {
                 if (x.translation != null) throw new Exception("matrix with translation");
@@ -627,7 +633,9 @@ namespace GltfSerialization
         public int ImageCount => Gltf.images.Count;
         public Image CreateImage(int index)
         {
-            return Gltf.images[index].FromGltf(this);
+            var image = Gltf.images[index].FromGltf(this);
+            image.GltfIndex = index;
+            return image;
         }
 
         public int TextureCount => Gltf.textures.Count;
@@ -639,7 +647,10 @@ namespace GltfSerialization
             {
                 sampler = Gltf.samplers[x.sampler];
             }
-            return new ImageTexture(x.name ?? "", sampler.FromGltf(), images[x.source], Texture.ColorSpaceTypes.Srgb);
+            return new ImageTexture(x.name ?? "", sampler.FromGltf(), images[x.source], Texture.ColorSpaceTypes.Srgb)
+            {
+                GltfIndex = index,
+            };
         }
 
         public int MaterialCount => Gltf.materials.Count;
@@ -654,13 +665,16 @@ namespace GltfSerialization
                 // is mtoon
                 var mp = gltfVrm.materialProperties[index];
                 var mtoon = MToonMaterialFromGltf.Load(mp, textures);
+                mtoon.GltfIndex = index;
                 return mtoon;
             }
             else
             {
                 // not mtoon, as gltf
                 var x = Gltf.materials[index];
-                return x.FromGltf(textures);
+                var material = x.FromGltf(textures);
+                material.GltfIndex = index;
+                return material;
             }
         }
 
@@ -671,6 +685,7 @@ namespace GltfSerialization
             var x = Gltf.skins[index];
             var skin = new Skin
             {
+                GltfIndex = index,
                 InverseMatrices = this.AccessorFromGltf(x.inverseBindMatrices),
                 Joints = x.joints.Select(y => nodes[y]).ToList(),
             };
@@ -687,6 +702,7 @@ namespace GltfSerialization
         {
             var x = Gltf.meshes[index];
             var group = x.FromGltf(this, materials);
+            group.GltfIndex = index;
             return group;
         }
 

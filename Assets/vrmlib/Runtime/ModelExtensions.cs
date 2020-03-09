@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
@@ -41,6 +42,39 @@ namespace VrmLib
                 var mod = new ModelModifier(model);
                 mod.NodeRemove(secondary);
             }
+        }
+
+        static void CheckIndex<T>(List<T> list, string name) where T : GltfId
+        {
+            for (int i = 0; i < list.Count; ++i)
+            {
+                if (list[i].GltfIndex.HasValue)
+                {
+                    if (list[i].GltfIndex.Value == i)
+                    {
+                        Console.WriteLine($"{name}[{i}] => OK");
+                    }
+                    else
+                    {
+                        Console.WriteLine($"{name}[{i}] => {list[i].GltfIndex}");
+                    }
+                }
+                else
+                {
+                    Console.WriteLine($"{name}[{i}] => null");
+                }
+            }
+        }
+
+        public static void CheckIndex(this Model model)
+        {
+            CheckIndex(model.Images, nameof(model.Images));
+            CheckIndex(model.Textures, nameof(model.Textures));
+            CheckIndex(model.Materials, nameof(model.Materials));
+            CheckIndex(model.Nodes, nameof(model.Nodes));
+            CheckIndex(model.Skins, nameof(model.Skins));
+            CheckIndex(model.MeshGroups, nameof(model.MeshGroups));
+            CheckIndex(model.Animations, nameof(model.Animations));
         }
     }
 }

@@ -18,6 +18,7 @@ namespace VrmLib
                 AssetGenerator = storage.AssetGenerator,
                 AssetCopyright = storage.AssetCopyright,
                 AssetMinVersion = storage.AssetMinVersion,
+                OriginalJson = storage.OriginalJson,
             };
 
             // node

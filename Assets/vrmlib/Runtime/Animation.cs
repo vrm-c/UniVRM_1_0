@@ -10,7 +10,7 @@ namespace VrmLib
     /// ひと塊のアニメーション。
     /// UnityのAnimationClip, Gltfのanimationに相当する
     /// </summary>
-    public class Animation
+    public class Animation: GltfId
     {
         public string Name;
 

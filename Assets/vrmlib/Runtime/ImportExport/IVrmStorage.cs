@@ -1,9 +1,12 @@
+using System;
 using System.Collections.Generic;
 
 namespace VrmLib
 {
     public interface IVrmStorage
     {
+        ArraySegment<byte> OriginalJson { get; }
+
         #region glTF import
         string AssetVersion { get; }
         string AssetMinVersion { get; }
