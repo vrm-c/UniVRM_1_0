@@ -28,8 +28,7 @@ namespace UniVRM10
                 Debug.Log($"ModelLoader.Load: {model}");
 
                 // Build Unity Model
-                var builder = new UniVRM10.EditorUnityBuilder();
-                var assets = builder.ToUnityAsset(model, assetPath, this);
+                var assets = EditorUnityBuilder.ToUnityAsset(model, assetPath, this);
 
                 // Texture
                 var externalTextures = this.GetExternalUnityObjects<UnityEngine.Texture2D>();
