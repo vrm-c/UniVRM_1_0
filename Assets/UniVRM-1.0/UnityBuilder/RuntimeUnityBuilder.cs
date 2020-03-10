@@ -8,69 +8,45 @@ namespace UniVRM10
     /// <summary>
     /// VrmLib.Model から UnityPrefab を構築する
     /// </summary>
-    public partial class RuntimeUnityBuilder : IUnityBuilder
+    public static class RuntimeUnityBuilder
     {
-        private readonly Dictionary<VrmLib.Texture, Texture2D> Textures = new Dictionary<VrmLib.Texture, Texture2D>();
-        private readonly Dictionary<VrmLib.Material, Material> Materials = new Dictionary<VrmLib.Material, Material>();
-        private readonly Dictionary<VrmLib.MeshGroup, Mesh> Meshes = new Dictionary<VrmLib.MeshGroup, Mesh>();
-        private readonly Dictionary<VrmLib.Node, GameObject> Nodes = new Dictionary<VrmLib.Node, GameObject>();
-        private readonly Dictionary<VrmLib.MeshGroup, Renderer> Renderers = new Dictionary<VrmLib.MeshGroup, Renderer>();
-
-        private GameObject Root;
-
-        Dictionary<VrmLib.Texture, Texture2D> IUnityBuilder.Textures => Textures;
-        Dictionary<VrmLib.Material, UnityEngine.Material> IUnityBuilder.Materials => Materials;
-        Dictionary<VrmLib.MeshGroup, UnityEngine.Mesh> IUnityBuilder.Meshes => Meshes;
-        Dictionary<VrmLib.Node, GameObject> IUnityBuilder.Nodes => Nodes;
-        Dictionary<VrmLib.MeshGroup, Renderer> IUnityBuilder.Renderers => Renderers;
-        GameObject IUnityBuilder.Root => Root;
-
-
-        public ModelAsset ToUnityAsset(VrmLib.Model model, bool showMesh = true)
+        /// <summary>
+        /// モデル(Transform + Renderer)を構築する。
+        /// <summary>
+        public static ModelAsset ToUnityAsset(VrmLib.Model model, bool showMesh = true)
         {
             var modelAsset = new ModelAsset();
-            CreateTextureAsset(model, modelAsset);
-            CreateMaterialAssets(model, modelAsset);
-            CreateMeshAsset(model, modelAsset, Meshes);
 
-            // node
-            CreateNodes(model.Root, null, Nodes);
-            modelAsset.Root = Nodes[model.Root];
-            Root = modelAsset.Root;
-
-            // renderer
-            foreach (var (mesh, renderer) in CreateRendererAsset(Nodes, Meshes, Materials))
+            // texture
+            for (int i = 0; i < model.Textures.Count; ++i)
             {
-                renderer.enabled = showMesh;
-                Renderers.Add(mesh, renderer);
-                modelAsset.Renderers.Add(renderer);
+                var src = model.Textures[i];
+                var name = !string.IsNullOrEmpty(src.Name)
+                    ? src.Name
+                    : string.Format("{0}_img{1}", model.Root.Name, i);
+                if (src is VrmLib.ImageTexture imageTexture)
+                {
+                    var texture = CreateTexture(imageTexture);
+                    texture.name = name;
+                    modelAsset.Map.Textures.Add(src, texture);
+                    modelAsset.Textures.Add(texture);
+                }
+                else
+                {
+                    Debug.LogWarning($"{name} not ImageTexture");
+                }
             }
 
-            // humanoid
-            var boneMap = Nodes
-            .Where(x => x.Key.HumanoidBone.GetValueOrDefault() != VrmLib.HumanoidBones.unknown)
-            .Select(x => (x.Value.transform, x.Key.HumanoidBone.Value))
-            .ToDictionary(x => x.transform, x => x.Item2);
-            modelAsset.HumanoidAvatar = HumanoidLoader.LoadHumanoidAvatar(modelAsset.Root.transform, boneMap);
-            modelAsset.HumanoidAvatar.name = "VRM";
-
-            var animator = modelAsset.Root.AddComponent<Animator>();
-            animator.avatar = modelAsset.HumanoidAvatar;
-
-            modelAsset.Map = new ModelMap
+            // material
+            foreach (var src in model.Materials)
             {
-                Nodes = Nodes,
-                Textures = Textures,
-                Materials = Materials,
-                Meshes = Meshes,
-                Renderers = Renderers,
-            };
+                // TODO: material has VertexColor
+                var material = RuntimeUnityMaterialBuilder.CreateMaterialAsset(src, hasVertexColor: false, modelAsset.Map.Textures);
+                material.name = src.Name;
+                modelAsset.Map.Materials.Add(src, material);
+                modelAsset.Materials.Add(material);
+            }
 
-            return modelAsset;
-        }
-
-        public static void CreateMeshAsset(VrmLib.Model model, ModelAsset modelAsset, Dictionary<VrmLib.MeshGroup, UnityEngine.Mesh> dstMeshes)
-        {
             // mesh
             for (int i = 0; i < model.MeshGroups.Count; ++i)
             {
@@ -81,7 +57,7 @@ namespace UniVRM10
                     var mesh = new Mesh();
                     mesh.name = src.Name;
                     mesh.LoadMesh(src.Meshes[0], src.Skin);
-                    dstMeshes.Add(src, mesh);
+                    modelAsset.Map.Meshes.Add(src, mesh);
                     modelAsset.Meshes.Add(mesh);
                 }
                 else
@@ -90,41 +66,46 @@ namespace UniVRM10
                     throw new NotImplementedException();
                 }
             }
-        }
 
-        private void CreateMaterialAssets(VrmLib.Model model, ModelAsset modelAsset)
-        {
-            foreach (var src in model.Materials)
+            // node: recursive
+            CreateNodes(model.Root, null, modelAsset.Map.Nodes);
+            modelAsset.Root = modelAsset.Map.Nodes[model.Root];
+
+            // renderer
+            var map = modelAsset.Map;
+            foreach (var (node, go) in map.Nodes)
             {
-                // TODO: material has VertexColor
-                var material = RuntimeUnityMaterialBuilder.CreateMaterialAsset(src, hasVertexColor: false, Textures);
-                material.name = src.Name;
-                Materials.Add(src, material);
-                modelAsset.Materials.Add(material);
-            }
-        }
-
-        private void CreateTextureAsset(VrmLib.Model model, ModelAsset modelAsset)
-        {
-            // textures
-            for (int i = 0; i < model.Textures.Count; ++i)
-            {
-                if (model.Textures[i] is VrmLib.ImageTexture imageTexture)
+                if (node.MeshGroup is null)
                 {
-                    var name = !string.IsNullOrEmpty(imageTexture.Name)
-                        ? imageTexture.Name
-                        : string.Format("{0}_img{1}", model.Root.Name, i);
-
-                    var texture = CreateTexture(name, imageTexture);
-
-                    Textures.Add(imageTexture, texture);
-                    modelAsset.Textures.Add(texture);
+                    continue;
                 }
-                else
+
+                if (node.MeshGroup.Meshes.Count > 1)
                 {
-                    Debug.LogWarning($"{i} not ImageTexture");
+                    throw new NotImplementedException("invalid isolated vertexbuffer");
                 }
+
+                var renderer = CreateRenderer(node, go, map);
+                if (!showMesh)
+                {
+                    renderer.enabled = false;
+                }
+                map.Renderers.Add(node, renderer);
+                modelAsset.Renderers.Add(renderer);
             }
+
+            // humanoid
+            var boneMap = map.Nodes
+            .Where(x => x.Key.HumanoidBone.GetValueOrDefault() != VrmLib.HumanoidBones.unknown)
+            .Select(x => (x.Value.transform, x.Key.HumanoidBone.Value))
+            .ToDictionary(x => x.transform, x => x.Item2);
+            modelAsset.HumanoidAvatar = HumanoidLoader.LoadHumanoidAvatar(modelAsset.Root.transform, boneMap);
+            modelAsset.HumanoidAvatar.name = "VRM";
+
+            var animator = modelAsset.Root.AddComponent<Animator>();
+            animator.avatar = modelAsset.HumanoidAvatar;
+
+            return modelAsset;
         }
 
         private static RenderTextureReadWrite GetRenderTextureReadWrite(VrmLib.Texture.ColorSpaceTypes type)
@@ -132,12 +113,14 @@ namespace UniVRM10
             return (type == VrmLib.Texture.ColorSpaceTypes.Linear) ? RenderTextureReadWrite.Linear : RenderTextureReadWrite.sRGB;
         }
 
-        public static Texture2D CreateTexture(string name, VrmLib.ImageTexture imageTexture)
+        /// <summary>
+        /// 画像のバイト列からテクスチャを作成する
+        /// <summary>
+        public static Texture2D CreateTexture(VrmLib.ImageTexture imageTexture)
         {
             Texture2D dstTexture = null;
             Material convertMaterial = null;
             var texture = new Texture2D(2, 2, TextureFormat.ARGB32, false, imageTexture.ColorSpace == VrmLib.Texture.ColorSpaceTypes.Linear);
-            texture.name = name;
             texture.LoadImage(imageTexture.Image.Bytes.ToArray());
 
             // Convert Texture Gltf to Unity
@@ -184,7 +167,9 @@ namespace UniVRM10
             return texture;
         }
 
-
+        /// <summary>
+        /// ヒエラルキーを再帰的に構築する
+        /// <summary>
         public static void CreateNodes(VrmLib.Node node, GameObject parent, Dictionary<VrmLib.Node, GameObject> nodes)
         {
             GameObject go = new GameObject(node.Name);
@@ -204,52 +189,39 @@ namespace UniVRM10
             }
         }
 
-        public static IEnumerable<(VrmLib.MeshGroup, Renderer)> CreateRendererAsset(
-            Dictionary<VrmLib.Node, GameObject> Nodes,
-            Dictionary<VrmLib.MeshGroup, Mesh> Meshes,
-            Dictionary<VrmLib.Material, Material> Materials)
+        /// <summary>
+        /// MeshFilter + MeshRenderer もしくは SkinnedMeshRenderer を構築する
+        /// </summary>
+        public static Renderer CreateRenderer(VrmLib.Node node, GameObject go, ModelMap map)
         {
-            // renderer
-            foreach (var (node, go) in Nodes)
+            var mesh = node.MeshGroup.Meshes[0];
+
+            Renderer renderer = null;
+            var hasBlendShape = mesh.MorphTargets.Any();
+            if (node.MeshGroup.Skin != null || hasBlendShape)
             {
-                if (node.MeshGroup is null)
+                var skinnedMeshRenderer = go.AddComponent<SkinnedMeshRenderer>();
+                renderer = skinnedMeshRenderer;
+                skinnedMeshRenderer.sharedMesh = map.Meshes[node.MeshGroup];
+                if (node.MeshGroup.Skin != null)
                 {
-                    continue;
-                }
-
-                if (node.MeshGroup.Meshes.Count > 1)
-                {
-                    throw new NotImplementedException("invalid isolated vertexbuffer");
-                }
-                var mesh = node.MeshGroup.Meshes[0];
-
-                Renderer renderer = null;
-                var hasBlendShape = mesh.MorphTargets.Any();
-                if (node.MeshGroup.Skin != null || hasBlendShape)
-                {
-                    var skinnedMeshRenderer = go.AddComponent<SkinnedMeshRenderer>();
-                    renderer = skinnedMeshRenderer;
-                    skinnedMeshRenderer.sharedMesh = Meshes[node.MeshGroup];
-                    if (node.MeshGroup.Skin != null)
+                    skinnedMeshRenderer.bones = node.MeshGroup.Skin.Joints.Select(x => map.Nodes[x].transform).ToArray();
+                    if (node.MeshGroup.Skin.Root != null)
                     {
-                        skinnedMeshRenderer.bones = node.MeshGroup.Skin.Joints.Select(x => Nodes[x].transform).ToArray();
-                        if (node.MeshGroup.Skin.Root != null)
-                        {
-                            skinnedMeshRenderer.rootBone = Nodes[node.MeshGroup.Skin.Root].transform;
-                        }
+                        skinnedMeshRenderer.rootBone = map.Nodes[node.MeshGroup.Skin.Root].transform;
                     }
                 }
-                else
-                {
-                    var meshFilter = go.AddComponent<MeshFilter>();
-                    renderer = go.AddComponent<MeshRenderer>();
-                    meshFilter.sharedMesh = Meshes[node.MeshGroup];
-                }
-                var materials = mesh.Submeshes.Select(x => Materials[x.Material]).ToArray();
-                renderer.sharedMaterials = materials;
-
-                yield return (node.MeshGroup, renderer);
             }
+            else
+            {
+                var meshFilter = go.AddComponent<MeshFilter>();
+                renderer = go.AddComponent<MeshRenderer>();
+                meshFilter.sharedMesh = map.Meshes[node.MeshGroup];
+            }
+            var materials = mesh.Submeshes.Select(x => map.Materials[x.Material]).ToArray();
+            renderer.sharedMaterials = materials;
+
+            return renderer;
         }
     }
 }

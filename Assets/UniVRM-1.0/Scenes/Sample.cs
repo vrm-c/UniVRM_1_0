@@ -14,16 +14,15 @@ public class Sample : MonoBehaviour
         var model = UniVRM10.VrmLoader.CreateVrmModel(bytes, path);
 
         // UniVRM-0.XXのコンポーネントを構築する
-        var importer = new UniVRM10.RuntimeUnityBuilder();
-        var assets = importer.ToUnityAsset(model, showMesh: false);
+        var assets = UniVRM10.RuntimeUnityBuilder.ToUnityAsset(model, showMesh: false);
 
         // showRenderer = false のときに後で表示する例
-        foreach(var renderer in assets.Renderers)
+        foreach (var renderer in assets.Renderers)
         {
             renderer.enabled = true;
         }
 
-        UniVRM10.ComponentBuilder.Build10(model, importer, assets);
+        UniVRM10.ComponentBuilder.Build10(model, assets);
 
         return assets;
     }

@@ -7,7 +7,7 @@
         {
             "name": "Unity Editor",
             "type": "unity",
-            "path": "/c:/Users/ousttrue/work/_vc/UniVRM-1.0/Library/EditorInstance.json",
+            "path": "${workspaceFolder}/Library/EditorInstance.json",
             "request": "launch"
         },
         {
