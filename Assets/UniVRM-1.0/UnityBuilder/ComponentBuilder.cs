@@ -28,7 +28,7 @@ namespace UniVRM10
 
         #region Build10
 
-        static UniVRM10.BlendShapeBinding Build10(this VrmLib.BlendShapeBindValue bind, IUnityBuilder loader)
+        static UniVRM10.BlendShapeBinding Build10(this VrmLib.BlendShapeBindValue bind, GameObject root, ModelMap loader)
         {
             var node = loader.Nodes[bind.Node].transform;
             var mesh = loader.Meshes[bind.Node.MeshGroup];
@@ -38,7 +38,7 @@ namespace UniVRM10
             //     .ToDictionary(x => x.Item2, x => x.Item1);
             // var node = transformMeshTable[mesh];
             // var transform = loader.Nodes[node].transform;
-            var relativePath = node.RelativePathFrom(loader.Root.transform);
+            var relativePath = node.RelativePathFrom(root.transform);
 
             var names = new List<string>();
             for (int i = 0; i < mesh.blendShapeCount; ++i)
@@ -54,7 +54,7 @@ namespace UniVRM10
             };
         }
 
-        static UniVRM10.MaterialValueBinding? Build10(this VrmLib.MaterialBindValue bind, IUnityBuilder loader)
+        static UniVRM10.MaterialValueBinding? Build10(this VrmLib.MaterialBindValue bind, ModelMap loader)
         {
             var value = bind.Value.ToUnityVector4();
             var material = loader.Materials[bind.Material];
@@ -88,7 +88,7 @@ namespace UniVRM10
             return binding;
         }
 
-        public static void Build10(VrmLib.Model model, IUnityBuilder loader, ModelAsset asset)
+        public static void Build10(VrmLib.Model model, ModelAsset asset)
         {
             // meta
             {
@@ -149,9 +149,9 @@ namespace UniVRM10
                         clip.IgnoreLookAt = blendShape.IgnoreLookAt;
                         clip.IgnoreMouth = blendShape.IgnoreMouth;
 
-                        clip.Values = blendShape.BlendShapeValues.Select(x => x.Build10(loader))
+                        clip.Values = blendShape.BlendShapeValues.Select(x => x.Build10(asset.Root, asset.Map))
                             .ToArray();
-                        clip.MaterialValues = blendShape.MaterialValues.Select(x => x.Build10(loader))
+                        clip.MaterialValues = blendShape.MaterialValues.Select(x => x.Build10(asset.Map))
                             .Where(x => x.HasValue)
                             .Select(x => x.Value)
                             .ToArray();
@@ -168,7 +168,7 @@ namespace UniVRM10
                 firstPerson.Renderers = model.Vrm.FirstPerson.Annotations.Select(x =>
                     new UniVRM10.VRMFirstPerson.RendererFirstPersonFlags()
                     {
-                        Renderer = asset.Map.Renderers[x.Node.MeshGroup],
+                        Renderer = asset.Map.Renderers[x.Node],
                         FirstPersonFlag = x.FirstPersonFlag
                     }
                     ).ToList();

@@ -23,9 +23,8 @@ namespace UniVRM10.Test
 
         ModelAsset BuildGameObject(VrmLib.Model model, bool showMesh)
         {
-            var importer = new UniVRM10.RuntimeUnityBuilder();
-            var assets = importer.ToUnityAsset(model, showMesh);
-            UniVRM10.ComponentBuilder.Build10(model, importer, assets);
+            var assets = RuntimeUnityBuilder.ToUnityAsset(model, showMesh);
+            UniVRM10.ComponentBuilder.Build10(model, assets);
             return assets;
         }
 

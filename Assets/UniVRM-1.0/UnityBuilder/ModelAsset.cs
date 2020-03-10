@@ -18,13 +18,15 @@ namespace UniVRM10
         public List<Mesh> Meshes = new List<Mesh>();
         public List<Renderer> Renderers = new List<Renderer>();
 
-        public ModelMap Map;
+        public readonly ModelMap Map = new ModelMap();
         public List<ScriptableObject> ScriptableObjects = new List<ScriptableObject>();
 
         private Animator _animator;
-        public Animator Animator {
-            get {
-                if(_animator == null)
+        public Animator Animator
+        {
+            get
+            {
+                if (_animator == null)
                 {
                     _animator = Root.GetComponent<Animator>();
                 }
@@ -66,7 +68,7 @@ namespace UniVRM10
             {
                 UnityEngine.Object.Destroy(HumanoidAvatar);
             }
-                
+
             foreach (var v in Textures)
             {
                 if (string.IsNullOrEmpty(AssetDatabase.GetAssetPath(v)))

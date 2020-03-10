@@ -48,9 +48,8 @@ namespace UniVRM10.Test
         private ModelAsset ToUnity(Model model)
         {
             // Model => Unity
-            var importer = new UniVRM10.RuntimeUnityBuilder();
-            var assets = importer.ToUnityAsset(model);
-            UniVRM10.ComponentBuilder.Build10(model, importer, assets);
+            var assets = RuntimeUnityBuilder.ToUnityAsset(model);
+            UniVRM10.ComponentBuilder.Build10(model, assets);
             return assets;
         }
 

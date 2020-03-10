@@ -1,55 +1,47 @@
 ﻿using System;
-using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
-using UnityEditor;
-using System.IO;
-using static UnityEditor.AssetImporter;
 
 namespace UniVRM10
 {
-    public class EditorUnityBuilder : IUnityBuilder
+    public static class EditorUnityBuilder
     {
-        private readonly Dictionary<VrmLib.Texture, Texture2D> Textures = new Dictionary<VrmLib.Texture, Texture2D>();
-        private readonly Dictionary<VrmLib.Material, Material> Materials = new Dictionary<VrmLib.Material, Material>();
-        private readonly Dictionary<VrmLib.MeshGroup, Mesh> Meshes = new Dictionary<VrmLib.MeshGroup, Mesh>();
-        private readonly Dictionary<VrmLib.Node, GameObject> Nodes = new Dictionary<VrmLib.Node, GameObject>();
-        private readonly Dictionary<VrmLib.MeshGroup, Renderer> Renderers = new Dictionary<VrmLib.MeshGroup, Renderer>();
-
-        private GameObject Root;
-
-        Dictionary<VrmLib.Texture, Texture2D> IUnityBuilder.Textures => Textures;
-        Dictionary<VrmLib.Material, UnityEngine.Material> IUnityBuilder.Materials => Materials;
-        Dictionary<VrmLib.MeshGroup, UnityEngine.Mesh> IUnityBuilder.Meshes => Meshes;
-        Dictionary<VrmLib.Node, GameObject> IUnityBuilder.Nodes => Nodes;
-        Dictionary<VrmLib.MeshGroup, Renderer> IUnityBuilder.Renderers => Renderers;
-        GameObject IUnityBuilder.Root => Root;
-
-
-        public ModelAsset ToUnityAsset(VrmLib.Model model, string assetPath, IExternalUnityObject scriptedImporter)
+        static public ModelAsset ToUnityAsset(VrmLib.Model model, string assetPath, IExternalUnityObject scriptedImporter)
         {
             var modelAsset = new ModelAsset();
             CreateTextureAsset(model, modelAsset, scriptedImporter);
             CreateMaterialAsset(model, modelAsset, scriptedImporter);
-            RuntimeUnityBuilder.CreateMeshAsset(model, modelAsset, Meshes);
+            CreateMeshAsset(model, modelAsset);
 
             // node
-            RuntimeUnityBuilder.CreateNodes(model.Root, null, Nodes);
-            modelAsset.Root = Nodes[model.Root];
-            Root = modelAsset.Root;
+            RuntimeUnityBuilder.CreateNodes(model.Root, null, modelAsset.Map.Nodes);
+            modelAsset.Root = modelAsset.Map.Nodes[model.Root];
 
             // renderer
-            foreach (var (mesh, renderer) in RuntimeUnityBuilder.CreateRendererAsset(Nodes, Meshes, Materials))
+            var map = modelAsset.Map;
+            foreach (var (node, go) in map.Nodes)
             {
-                Renderers.Add(mesh, renderer);
+                if (node.MeshGroup is null)
+                {
+                    continue;
+                }
+
+                if (node.MeshGroup.Meshes.Count > 1)
+                {
+                    throw new NotImplementedException("invalid isolated vertexbuffer");
+                }
+
+                var renderer = RuntimeUnityBuilder.CreateRenderer(node, go, map);
+                map.Renderers.Add(node, renderer);
+                modelAsset.Renderers.Add(renderer);
             }
 
             // humanoid
-            var boneMap = Nodes
+            var boneMap = modelAsset.Map.Nodes
             .Where(x => x.Key.HumanoidBone.GetValueOrDefault() != VrmLib.HumanoidBones.unknown)
             .Select(x => (x.Value.transform, x.Key.HumanoidBone.Value))
             .ToDictionary(x => x.transform, x => x.Item2);
-            if(boneMap.Any())
+            if (boneMap.Any())
             {
                 modelAsset.HumanoidAvatar = HumanoidLoader.LoadHumanoidAvatar(modelAsset.Root.transform, boneMap);
                 if (modelAsset.HumanoidAvatar != null)
@@ -61,19 +53,10 @@ namespace UniVRM10
             var animator = modelAsset.Root.AddComponent<Animator>();
             animator.avatar = modelAsset.HumanoidAvatar;
 
-            modelAsset.Map = new ModelMap
-            {
-                Nodes = Nodes,
-                Textures = Textures,
-                Materials = Materials,
-                Meshes = Meshes,
-                Renderers = Renderers,
-            };
-
             return modelAsset;
         }
 
-        private void CreateTextureAsset(VrmLib.Model model, ModelAsset modelAsset, IExternalUnityObject scriptedImporter)
+        static private void CreateTextureAsset(VrmLib.Model model, ModelAsset modelAsset, IExternalUnityObject scriptedImporter)
         {
             var externalObjects = scriptedImporter.GetExternalUnityObjects<Texture2D>();
 
@@ -81,14 +64,14 @@ namespace UniVRM10
             for (int i = 0; i < model.Textures.Count; ++i)
             {
                 if (model.Textures[i] is VrmLib.ImageTexture imageTexture)
-                {  
-                    if(string.IsNullOrEmpty(model.Textures[i].Name))
+                {
+                    if (string.IsNullOrEmpty(model.Textures[i].Name))
                     {
                         model.Textures[i].Name = string.Format("{0}_img{1}", model.Root.Name, i);
                     }
                     if (externalObjects.ContainsKey(model.Textures[i].Name))
                     {
-                        Textures.Add(imageTexture, externalObjects[model.Textures[i].Name]);
+                        modelAsset.Map.Textures.Add(imageTexture, externalObjects[model.Textures[i].Name]);
                         modelAsset.Textures.Add(externalObjects[model.Textures[i].Name]);
                     }
                     else
@@ -97,9 +80,10 @@ namespace UniVRM10
                             ? imageTexture.Name
                             : string.Format("{0}_img{1}", model.Root.Name, i);
 
-                        var texture = RuntimeUnityBuilder.CreateTexture(name, imageTexture);
+                        var texture = RuntimeUnityBuilder.CreateTexture(imageTexture);
+                        texture.name = name;
 
-                        Textures.Add(imageTexture, texture);
+                        modelAsset.Map.Textures.Add(imageTexture, texture);
                         modelAsset.Textures.Add(texture);
                     }
                 }
@@ -111,7 +95,7 @@ namespace UniVRM10
         }
 
 
-        private void CreateMaterialAsset(VrmLib.Model model, ModelAsset modelAsset, IExternalUnityObject scriptedImporter)
+        static private void CreateMaterialAsset(VrmLib.Model model, ModelAsset modelAsset, IExternalUnityObject scriptedImporter)
         {
             var externalObjects = scriptedImporter.GetExternalUnityObjects<Material>();
 
@@ -119,16 +103,38 @@ namespace UniVRM10
             {
                 if (externalObjects.ContainsKey(src.Name))
                 {
-                    Materials.Add(src, externalObjects[src.Name]);
+                    modelAsset.Map.Materials.Add(src, externalObjects[src.Name]);
                     modelAsset.Materials.Add(externalObjects[src.Name]);
                 }
                 else
                 {
                     // TODO: material has VertexColor
-                    var material = RuntimeUnityMaterialBuilder.CreateMaterialAsset(src, hasVertexColor: false, Textures);
+                    var material = RuntimeUnityMaterialBuilder.CreateMaterialAsset(src, hasVertexColor: false, modelAsset.Map.Textures);
                     material.name = src.Name;
-                    Materials.Add(src, material);
+                    modelAsset.Map.Materials.Add(src, material);
                     modelAsset.Materials.Add(material);
+                }
+            }
+        }
+
+        static private void CreateMeshAsset(VrmLib.Model model, ModelAsset modelAsset)
+        {
+            for (int i = 0; i < model.MeshGroups.Count; ++i)
+            {
+                var src = model.MeshGroups[i];
+                if (src.Meshes.Count == 1)
+                {
+                    // submesh 方式
+                    var mesh = new Mesh();
+                    mesh.name = src.Name;
+                    mesh.LoadMesh(src.Meshes[0], src.Skin);
+                    modelAsset.Map.Meshes.Add(src, mesh);
+                    modelAsset.Meshes.Add(mesh);
+                }
+                else
+                {
+                    // 頂点バッファの連結が必用
+                    throw new NotImplementedException();
                 }
             }
         }

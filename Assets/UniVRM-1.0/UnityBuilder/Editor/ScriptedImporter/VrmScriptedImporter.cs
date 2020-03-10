@@ -32,9 +32,8 @@ namespace UniVRM10
                 Debug.Log($"VrmLoader.CreateVrmModel: {model}");
 
                 // Build Unity Model
-                var builder = new UniVRM10.EditorUnityBuilder();
-                var assets = builder.ToUnityAsset(model, assetPath, this);
-                ComponentBuilder.Build10(model, builder, assets);
+                var assets = EditorUnityBuilder.ToUnityAsset(model, assetPath, this);
+                ComponentBuilder.Build10(model, assets);
 
                 // Texture
                 var externalTextures = this.GetExternalUnityObjects<UnityEngine.Texture2D>();
