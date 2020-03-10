@@ -81,7 +81,7 @@ namespace VrmLib
         }
     }
 
-    public class Image
+    public class Image: GltfId
     {
         public string Name;
         public string MimeType;

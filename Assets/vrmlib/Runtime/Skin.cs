@@ -8,7 +8,7 @@ using System.Text;
 namespace VrmLib
 {
     // Bone skinning
-    public class Skin
+    public class Skin: GltfId
     {
         public BufferAccessor InverseMatrices;
 

@@ -4,7 +4,7 @@ using System.Numerics;
 
 namespace VrmLib
 {
-    public class Material
+    public class Material: GltfId
     {
         public string Name;
 

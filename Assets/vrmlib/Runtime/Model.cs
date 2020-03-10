@@ -18,6 +18,8 @@ namespace VrmLib
             Coordinates = coordinates;
         }
 
+        public ArraySegment<byte> OriginalJson;
+
         public Coordinates Coordinates;
 
         public string AssetVersion = "2.0";
@@ -25,16 +27,24 @@ namespace VrmLib
         public string AssetCopyright;
         public string AssetMinVersion;
 
+        // gltf/images
         public readonly List<Image> Images = new List<Image>();
+
+        // gltf/textures
         public readonly List<Texture> Textures = new List<Texture>();
+
+        // gltf/materials
         public readonly List<Material> Materials = new List<Material>();
 
+        // gltf/skins
         public readonly List<Skin> Skins = new List<Skin>();
 
+        // gltf/meshes
         public readonly List<MeshGroup> MeshGroups = new List<MeshGroup>();
 
         // gltf の nodes に含まれない。sceneに相当
         Node m_root = new Node("__root__");
+
         public Node Root
         {
             get => m_root;
@@ -51,10 +61,15 @@ namespace VrmLib
             Nodes.AddRange(root.Traverse().Skip(1));
         }
 
-        // gltf nodes と index が一致する
+        // gltf/nodes
         public List<Node> Nodes = new List<Node>();
 
+        // gltf/animations
         public List<Animation> Animations = new List<Animation>();
+
+        /// <summary>
+        /// アニメーションに時間を指定するインターフェース
+        /// </summary>
         public void SetTime(int index, TimeSpan elapsed)
         {
             if (index < 0 || index >= Animations.Count)

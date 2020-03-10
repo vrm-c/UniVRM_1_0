@@ -12,6 +12,7 @@ namespace Vrm10
 {
     public class Vrm10Storage : IVrmStorage
     {
+        public ArraySegment<Byte> OriginalJson { get; private set; }
         public VrmProtobuf.glTF Gltf
         {
             get;
@@ -31,6 +32,7 @@ namespace Vrm10
 
         public Vrm10Storage(ArraySegment<byte> json, Memory<byte> bin)
         {
+            OriginalJson = json;
             var parserSettings = Google.Protobuf.JsonParser.Settings.Default;
             var jsonString = Encoding.UTF8.GetString(json.Array, json.Offset, json.Count);
             var deserialized = new Google.Protobuf.JsonParser(parserSettings).Parse<VrmProtobuf.glTF>(jsonString);

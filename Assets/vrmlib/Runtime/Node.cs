@@ -13,7 +13,7 @@ namespace VrmLib
         KeepWorld,
     }
 
-    public class Node : IEnumerable<Node>
+    public class Node : GltfId, IEnumerable<Node>
     {
         static int s_nextUniqueId = 1;
 

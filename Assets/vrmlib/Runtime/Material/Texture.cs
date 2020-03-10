@@ -36,7 +36,7 @@ namespace VrmLib
         public TextureMagFilterType MagFilter;
     }
 
-    public abstract class Texture
+    public abstract class Texture: GltfId
     {
         public enum TextureTypes
         {
