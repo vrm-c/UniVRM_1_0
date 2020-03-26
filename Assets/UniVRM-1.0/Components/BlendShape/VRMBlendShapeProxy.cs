@@ -24,6 +24,12 @@ namespace UniVRM10
             BlendShape,
         }
 
+        public enum LookAtTargetTypes
+        {
+            CalcYawPitchToGaze,
+            SetYawPitch,
+        }
+
         [SerializeField, Header("UpdateSetting")]
         public UpdateTypes UpdateType = UpdateTypes.LateUpdate;
 
@@ -86,7 +92,11 @@ namespace UniVRM10
         }
 
         [SerializeField]
+        public LookAtTargetTypes TargetType;
+
+        [SerializeField]
         public Transform Gaze;
+
         OffsetOnTransform m_leftEye;
         OffsetOnTransform m_rightEye;
 
@@ -99,6 +109,34 @@ namespace UniVRM10
             float yaw, pitch;
             Matrix4x4.identity.CalcYawPitch(localPosition, out yaw, out pitch);
             return (yaw, pitch);
+        }
+
+        float m_yaw;
+        float m_pitch;
+
+        public void SetYawPitch(float yaw, float pitch)
+        {
+            m_yaw = yaw;
+            m_pitch = pitch;
+        }
+
+        /// <summary>
+        /// TargetType に応じて yaw, pitch を得る
+        /// </summary>
+        (float, float) GetYawPitch()
+        {
+            switch (TargetType)
+            {
+                case LookAtTargetTypes.CalcYawPitchToGaze:
+                    // Gaze(Transform)のワールド位置に対して計算する
+                    return CalcYawPitch(Gaze.position);
+
+                case LookAtTargetTypes.SetYawPitch:
+                    // 事前にSetYawPitchした値を使う
+                    return (m_yaw, m_pitch);
+            }
+
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -327,7 +365,7 @@ namespace UniVRM10
             // gaze control
             var (yaw, pitch) = (validateState.ignoreLookAt)
                 ? (0.0f, 0.0f)
-                : CalcYawPitch(Gaze.position)
+                : GetYawPitch()
                 ;
             switch (LookAtType)
             {
