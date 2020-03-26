@@ -92,7 +92,7 @@ namespace UniVRM10
         }
 
         [SerializeField]
-        public LookAtTargetTypes TargetType;
+        public LookAtTargetTypes LookAtTargetType;
 
         [SerializeField]
         public Transform Gaze;
@@ -103,7 +103,7 @@ namespace UniVRM10
         /// <summary>
         /// Headローカルの注視点からYaw, Pitch角を計算する
         /// </summary>
-        (float, float) CalcYawPitch(Vector3 targetWorldPosition)
+        (float, float) CalcLookAtYawPitch(Vector3 targetWorldPosition)
         {
             var localPosition = m_head.worldToLocalMatrix.MultiplyPoint(targetWorldPosition);
             float yaw, pitch;
@@ -114,7 +114,12 @@ namespace UniVRM10
         float m_yaw;
         float m_pitch;
 
-        public void SetYawPitch(float yaw, float pitch)
+        /// <summary>
+        /// 視線の角度を指定する
+        ///
+        /// Headボーンのforwardに対するyaw角とpitch角を、度単位で指定する
+        /// </summary>
+        public void SetLookAtYawPitch(float yaw, float pitch)
         {
             m_yaw = yaw;
             m_pitch = pitch;
@@ -123,13 +128,13 @@ namespace UniVRM10
         /// <summary>
         /// TargetType に応じて yaw, pitch を得る
         /// </summary>
-        (float, float) GetYawPitch()
+        (float, float) GetLookAtYawPitch()
         {
-            switch (TargetType)
+            switch (LookAtTargetType)
             {
                 case LookAtTargetTypes.CalcYawPitchToGaze:
                     // Gaze(Transform)のワールド位置に対して計算する
-                    return CalcYawPitch(Gaze.position);
+                    return CalcLookAtYawPitch(Gaze.position);
 
                 case LookAtTargetTypes.SetYawPitch:
                     // 事前にSetYawPitchした値を使う
@@ -176,7 +181,7 @@ namespace UniVRM10
             }
         }
 
-        void m_lookAtBlendShape(float yaw, float pitch)
+        void LookAtBlendShape(float yaw, float pitch)
         {
             if (yaw < 0)
             {
@@ -365,7 +370,7 @@ namespace UniVRM10
             // gaze control
             var (yaw, pitch) = (validateState.ignoreLookAt)
                 ? (0.0f, 0.0f)
-                : GetYawPitch()
+                : GetLookAtYawPitch()
                 ;
             switch (LookAtType)
             {
@@ -374,7 +379,7 @@ namespace UniVRM10
                     break;
 
                 case LookAtTypes.BlendShape:
-                    m_lookAtBlendShape(yaw, pitch);
+                    LookAtBlendShape(yaw, pitch);
                     break;
             }
 
