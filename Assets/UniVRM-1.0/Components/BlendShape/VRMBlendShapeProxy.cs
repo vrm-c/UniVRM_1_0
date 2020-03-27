@@ -94,11 +94,15 @@ namespace UniVRM10
         [SerializeField]
         public LookAtTargetTypes LookAtTargetType;
 
-        [SerializeField]
-        public Transform Gaze;
-
         OffsetOnTransform m_leftEye;
         OffsetOnTransform m_rightEye;
+
+        #region LookAtTargetTypes.CalcYawPitchToGaze
+        /// <summay>
+        /// LookAtTargetTypes.CalcYawPitchToGaze時の注視点
+        /// </summary>
+        [SerializeField]
+        public Transform Gaze;
 
         /// <summary>
         /// Headローカルの注視点からYaw, Pitch角を計算する
@@ -110,25 +114,29 @@ namespace UniVRM10
             Matrix4x4.identity.CalcYawPitch(localPosition, out yaw, out pitch);
             return (yaw, pitch);
         }
+        #endregion
 
+        #region LookAtTargetTypes.SetYawPitch
         float m_yaw;
         float m_pitch;
 
         /// <summary>
-        /// 視線の角度を指定する
-        ///
-        /// Headボーンのforwardに対するyaw角とpitch角を、度単位で指定する
+        /// LookAtTargetTypes.SetYawPitch時の視線の角度を指定する
         /// </summary>
+        /// <param name="yaw">Headボーンのforwardに対するyaw角(度)</param>
+        /// <param name="pitch">Headボーンのforwardに対するpitch角(度)</param>
         public void SetLookAtYawPitch(float yaw, float pitch)
         {
             m_yaw = yaw;
             m_pitch = pitch;
         }
+        #endregion
 
         /// <summary>
-        /// TargetType に応じて yaw, pitch を得る
+        /// LookAtTargetType に応じた yaw, pitch を得る
         /// </summary>
-        (float, float) GetLookAtYawPitch()
+        /// <returns>Headボーンのforwardに対するyaw角(度), pitch角(度)</returns>
+        public (float, float) GetLookAtYawPitch()
         {
             switch (LookAtTargetType)
             {
