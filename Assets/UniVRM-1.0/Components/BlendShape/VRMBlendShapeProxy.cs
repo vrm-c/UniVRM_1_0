@@ -33,12 +33,15 @@ namespace UniVRM10
         [SerializeField, Header("UpdateSetting")]
         public UpdateTypes UpdateType = UpdateTypes.LateUpdate;
 
-        [SerializeField, ReadOnlyAttribute, Header("IgnoreStatus")]
-        public bool IgnoreBlink;
-        [SerializeField, ReadOnlyAttribute]
-        public bool IgnoreLookAt;
-        [SerializeField, ReadOnlyAttribute]
-        public bool IgnoreMouth;
+        bool m_ignoreBlink;
+        bool m_ignoreLookAt;
+        bool m_ignoreMouth;
+
+        #region for CustomEditor
+        public bool IgnoreBlink => m_ignoreBlink;
+        public bool IgnoreLookAt => m_ignoreLookAt;
+        public bool IgnoreMouth => m_ignoreMouth;
+        #endregion
 
         [SerializeField, Header("BlendShape")]
         public BlendShapeAvatar BlendShapeAvatar;
@@ -363,9 +366,9 @@ namespace UniVRM10
         public void Apply()
         {
             var validateState = GetValidateState();
-            IgnoreBlink = validateState.ignoreBlink;
-            IgnoreLookAt = validateState.ignoreLookAt;
-            IgnoreMouth = validateState.ignoreMouth;
+            m_ignoreBlink = validateState.ignoreBlink;
+            m_ignoreLookAt = validateState.ignoreLookAt;
+            m_ignoreMouth = validateState.ignoreMouth;
             if (validateState.ignoreBlink)
             {
                 m_blinkBlendShapeKeys.ForEach(x => BlendShapeKeyWeights[x] = 0.0f);

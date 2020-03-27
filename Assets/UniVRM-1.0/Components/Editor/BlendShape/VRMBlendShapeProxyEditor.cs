@@ -54,6 +54,14 @@ namespace UniVRM10
         {
             base.OnInspectorGUI();
 
+            EditorGUILayout.Space();
+            EditorGUILayout.LabelField("IgnoreStatus", EditorStyles.boldLabel);
+            EditorGUI.BeginDisabledGroup(true);
+            EditorGUILayout.Toggle("Ignore Blink", m_target.IgnoreBlink);
+            EditorGUILayout.Toggle("Ignore Look At", m_target.IgnoreLookAt);
+            EditorGUILayout.Toggle("Ignore Mouth", m_target.IgnoreMouth);
+            EditorGUI.EndDisabledGroup();
+
             if (!Application.isPlaying)
             {
                 EditorGUILayout.HelpBox("Enable when playing", MessageType.Info);
@@ -79,7 +87,7 @@ namespace UniVRM10
         void OnSceneGUI()
         {
             var component = target as VRMBlendShapeProxy;
-            if(!component.DrawGizmo)
+            if (!component.DrawGizmo)
             {
                 return;
             }
