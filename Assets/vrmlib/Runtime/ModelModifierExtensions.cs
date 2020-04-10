@@ -160,7 +160,7 @@ namespace VrmLib
             {
                 // 頭と胴体で分割後2つ以上ある場合、2つ目を追加する
                 modifier.MeshReplace(null, list[1]);
-                modifier.NodeReplace(null, new Node(list[1].Name)
+                modifier.NodeAdd(new Node(list[1].Name)
                 {
                     MeshGroup = list[1]
                 });
