@@ -76,7 +76,6 @@ namespace UniVRM10
         [SerializeField]
         public CurveMapper VerticalUp = new CurveMapper(90.0f, 10.0f);
 
-        [SerializeField]
         Transform m_head;
         public Transform Head
         {
@@ -103,12 +102,22 @@ namespace UniVRM10
         [SerializeField]
         public Transform Gaze;
 
+        // 座標計算用のempty
+        Transform m_lookAtOrigin;
+
         /// <summary>
         /// Headローカルの注視点からYaw, Pitch角を計算する
         /// </summary>
         (float, float) CalcLookAtYawPitch(Vector3 targetWorldPosition)
         {
-            var localPosition = m_head.worldToLocalMatrix.MultiplyPoint(targetWorldPosition);
+            if(m_lookAtOrigin==null)
+            {
+                m_lookAtOrigin = new GameObject("_lookat_origin_").transform;
+                m_lookAtOrigin.SetParent(Head);
+            }
+            m_lookAtOrigin.localPosition = OffsetFromHead;
+
+            var localPosition = m_lookAtOrigin.worldToLocalMatrix.MultiplyPoint(targetWorldPosition);
             float yaw, pitch;
             Matrix4x4.identity.CalcYawPitch(localPosition, out yaw, out pitch);
             return (yaw, pitch);

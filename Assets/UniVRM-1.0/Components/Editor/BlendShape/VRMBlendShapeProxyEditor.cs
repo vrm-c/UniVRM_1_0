@@ -103,6 +103,8 @@ namespace UniVRM10
             var worldOffset = head.localToWorldMatrix.MultiplyPoint(component.OffsetFromHead);
             worldOffset = Handles.PositionHandle(worldOffset, head.rotation);
 
+            Handles.DrawDottedLine(head.position, worldOffset, 5);
+
             Handles.Label(worldOffset, GUI_LABEL);
 
             if (EditorGUI.EndChangeCheck())
