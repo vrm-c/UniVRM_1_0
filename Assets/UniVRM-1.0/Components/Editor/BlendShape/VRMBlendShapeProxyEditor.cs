@@ -83,8 +83,21 @@ namespace UniVRM10
             }
         }
 
-        const string GUI_LABEL = "OffsetFromHead";
         void OnSceneGUI()
+        {
+            OnSceneGUIOffset();
+            if (!Application.isPlaying)
+            {
+                // offset
+                Handles.Label(m_target.Head.position, $"fromHead: {m_target.OffsetFromHead}");
+            }
+            else
+            {
+                OnSceneGUILookAt();
+            }
+        }
+
+        void OnSceneGUIOffset()
         {
             var component = target as VRMBlendShapeProxy;
             if (!component.DrawGizmo)
@@ -104,8 +117,8 @@ namespace UniVRM10
             worldOffset = Handles.PositionHandle(worldOffset, head.rotation);
 
             Handles.DrawDottedLine(head.position, worldOffset, 5);
-
-            Handles.Label(worldOffset, GUI_LABEL);
+            Handles.SphereCap(0, head.position, Quaternion.identity, 0.01f);
+            Handles.SphereCap(0, worldOffset, Quaternion.identity, 0.01f);
 
             if (EditorGUI.EndChangeCheck())
             {
@@ -113,6 +126,58 @@ namespace UniVRM10
 
                 component.OffsetFromHead = head.worldToLocalMatrix.MultiplyPoint(worldOffset);
             }
+        }
+
+        const float RADIUS = 0.5f;
+
+        void OnSceneGUILookAt()
+        {
+            if (m_target.Head == null) return;
+            if (!m_target.DrawGizmo) return;
+
+            if (m_target.Gaze != null)
+            {
+                {
+                    EditorGUI.BeginChangeCheck();
+                    var newTargetPosition = Handles.PositionHandle(m_target.Gaze.position, Quaternion.identity);
+                    if (EditorGUI.EndChangeCheck())
+                    {
+                        Undo.RecordObject(m_target.Gaze, "Change Look At Target Position");
+                        m_target.Gaze.position = newTargetPosition;
+                    }
+                }
+
+                Handles.color = new Color(1, 1, 1, 0.6f);
+                Handles.DrawDottedLine(m_target.LookAtOrigin.position, m_target.Gaze.position, 4.0f);
+            }
+
+            var (yaw, pitch) = m_target.GetLookAtYawPitch();
+            var lookAtOriginMatrix = m_target.LookAtOrigin.localToWorldMatrix;
+            Handles.matrix = lookAtOriginMatrix;
+            Handles.Label(Vector3.zero, string.Format("FromHead: {2}\nYaw: {0:0.}degree\nPitch: {1:0.}degree",
+                yaw,
+                pitch,
+                m_target.OffsetFromHead));
+
+            Handles.color = new Color(0, 1, 0, 0.2f);
+            Handles.DrawSolidArc(Vector3.zero,
+                    Matrix4x4.identity.GetColumn(1),
+                    Matrix4x4.identity.GetColumn(2),
+                    yaw,
+                    RADIUS);
+
+
+            var yawQ = Quaternion.AngleAxis(yaw, Vector3.up);
+            var yawMatrix = default(Matrix4x4);
+            yawMatrix.SetTRS(Vector3.zero, yawQ, Vector3.one);
+
+            Handles.matrix = lookAtOriginMatrix * yawMatrix;
+            Handles.color = new Color(1, 0, 0, 0.2f);
+            Handles.DrawSolidArc(Vector3.zero,
+                    Matrix4x4.identity.GetColumn(0),
+                    Matrix4x4.identity.GetColumn(2),
+                    -pitch,
+                    RADIUS);
         }
     }
 }

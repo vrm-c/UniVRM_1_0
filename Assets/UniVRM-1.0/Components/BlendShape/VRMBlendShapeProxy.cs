@@ -104,18 +104,29 @@ namespace UniVRM10
 
         // 座標計算用のempty
         Transform m_lookAtOrigin;
+        public Transform LookAtOrigin
+        {
+            get
+            {
+                if(!Application.isPlaying)
+                {
+                    return null;
+                }
+                if (m_lookAtOrigin == null)
+                {
+                    m_lookAtOrigin = new GameObject("_lookat_origin_").transform;
+                    m_lookAtOrigin.SetParent(Head);
+                }
+                return m_lookAtOrigin;
+            }
+        }
 
         /// <summary>
         /// Headローカルの注視点からYaw, Pitch角を計算する
         /// </summary>
         (float, float) CalcLookAtYawPitch(Vector3 targetWorldPosition)
         {
-            if(m_lookAtOrigin==null)
-            {
-                m_lookAtOrigin = new GameObject("_lookat_origin_").transform;
-                m_lookAtOrigin.SetParent(Head);
-            }
-            m_lookAtOrigin.localPosition = OffsetFromHead;
+            LookAtOrigin.localPosition = OffsetFromHead;
 
             var localPosition = m_lookAtOrigin.worldToLocalMatrix.MultiplyPoint(targetWorldPosition);
             float yaw, pitch;
