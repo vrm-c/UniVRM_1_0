@@ -18,11 +18,11 @@ namespace UniVRM10
         /// </summary>
         private static readonly string UnknownPresetPrefix = "Unknown_";
 
-        private string m_name;
+        private string m_customName;
 
         public string Name
         {
-            get { return m_name.ToUpper(); }
+            get { return m_customName.ToUpper(); }
         }
 
         public VrmLib.BlendShapePreset Preset;
@@ -50,7 +50,7 @@ namespace UniVRM10
                     }
                     else
                     {
-                        m_id = UnknownPresetPrefix + m_name;
+                        m_id = UnknownPresetPrefix + m_customName;
                     }
                 }
 
@@ -58,16 +58,11 @@ namespace UniVRM10
             }
         }
 
-        public BlendShapeKey(VrmLib.BlendShapePreset preset) : this(preset.ToString(), preset)
+        public BlendShapeKey(VrmLib.BlendShapePreset preset, string customName = null)
         {
-        }
-
-        public BlendShapeKey(string name, VrmLib.BlendShapePreset preset = VrmLib.BlendShapePreset.Custom)
-        {
-            m_name = name;
             Preset = preset;
+            m_customName = customName;
 
-            // Unknown was deleted
             if (Preset != VrmLib.BlendShapePreset.Custom)
             {
                 if (m_presetNameDictionary.ContainsKey((Preset)))
@@ -82,8 +77,32 @@ namespace UniVRM10
             }
             else
             {
-                m_id = UnknownPresetPrefix + m_name;
+                if (string.IsNullOrEmpty(m_customName))
+                {
+                    throw new ArgumentException("name is required for VrmLib.BlendShapePreset.Custom");
+                }
+                m_id = UnknownPresetPrefix + m_customName;
             }
+        }
+
+        public static BlendShapeKey CreateCustom(String key)
+        {
+            return new BlendShapeKey(VrmLib.BlendShapePreset.Custom, key);
+        }
+
+        public static BlendShapeKey CreateFromPreset(VrmLib.BlendShapePreset preset)
+        {
+            return new BlendShapeKey(preset);
+        }
+
+        public static BlendShapeKey CreateFromClip(BlendShapeClip clip)
+        {
+            if (clip == null)
+            {
+                return default(BlendShapeKey);
+            }
+
+            return new BlendShapeKey(clip.Preset, clip.BlendShapeName);
         }
 
         public override string ToString()
@@ -100,7 +119,7 @@ namespace UniVRM10
         {
             if (obj is BlendShapeKey)
             {
-                return Equals((BlendShapeKey) obj);
+                return Equals((BlendShapeKey)obj);
             }
             else
             {
@@ -113,19 +132,9 @@ namespace UniVRM10
             return ID.GetHashCode();
         }
 
-        public static BlendShapeKey CreateFrom(BlendShapeClip clip)
-        {
-            if (clip == null)
-            {
-                return default(BlendShapeKey);
-            }
-
-            return new BlendShapeKey(clip.BlendShapeName, clip.Preset);
-        }
-
         public bool Match(BlendShapeClip clip)
         {
-            return this.Equals(CreateFrom(clip));
+            return this.Equals(CreateFromClip(clip));
         }
 
         public int CompareTo(BlendShapeKey other)

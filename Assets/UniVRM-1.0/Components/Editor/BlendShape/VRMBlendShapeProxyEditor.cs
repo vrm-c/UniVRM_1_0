@@ -41,10 +41,10 @@ namespace UniVRM10
             m_target = (VRMBlendShapeProxy)target;
             if (m_target.BlendShapeAvatar != null && m_target.BlendShapeAvatar.Clips != null)
             {
-                m_blendShapeKeyWeights = m_target.BlendShapeAvatar.Clips.ToDictionary(x => BlendShapeKey.CreateFrom(x), x => 0.0f);
+                m_blendShapeKeyWeights = m_target.BlendShapeAvatar.Clips.ToDictionary(x => BlendShapeKey.CreateFromClip(x), x => 0.0f);
                 m_sliders = m_target.BlendShapeAvatar.Clips
                     .Where(x => x != null)
-                    .Select(x => new BlendShapeSlider(m_blendShapeKeyWeights, BlendShapeKey.CreateFrom(x)))
+                    .Select(x => new BlendShapeSlider(m_blendShapeKeyWeights, BlendShapeKey.CreateFromClip(x)))
                     .ToList()
                     ;
             }

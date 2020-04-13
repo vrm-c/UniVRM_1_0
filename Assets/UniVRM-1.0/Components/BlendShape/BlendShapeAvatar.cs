@@ -56,7 +56,7 @@ namespace UniVRM10
 
                 Debug.LogFormat("{0}", clip.name);
             }
-            Clips = Clips.OrderBy(x => BlendShapeKey.CreateFrom(x)).ToList();
+            Clips = Clips.OrderBy(x => BlendShapeKey.CreateFromClip(x)).ToList();
         }
 
         static public BlendShapeClip CreateBlendShapeClip(string path)
@@ -88,7 +88,7 @@ namespace UniVRM10
 
         void CreateDefaultPreset(VrmLib.BlendShapePreset preset)
         {
-            var clip = GetClip(preset);
+            var clip = GetClip(new BlendShapeKey(preset));
             if (clip != null) return;
             clip = ScriptableObject.CreateInstance<BlendShapeClip>();
             clip.name = preset.ToString();
@@ -122,16 +122,6 @@ namespace UniVRM10
         {
             if (Clips == null) return null;
             return Clips.FirstOrDefault(x => key.Match(x));
-        }
-
-        public BlendShapeClip GetClip(VrmLib.BlendShapePreset preset)
-        {
-            return GetClip(new BlendShapeKey(preset));
-        }
-
-        public BlendShapeClip GetClip(String name)
-        {
-            return GetClip(new BlendShapeKey(name));
         }
     }
 }
