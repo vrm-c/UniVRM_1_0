@@ -21,7 +21,7 @@ namespace UniVRM10
                 }
                 var weights = src.VertexBuffer.Weights.GetSpan<Vector4>();
                 var joints = src.VertexBuffer.Joints.GetSpan<VrmLib.SkinJoints>();
-                if(skin != null)
+                if (skin != null)
                 {
                     mesh.bindposes = skin.InverseMatrices.GetSpan<Matrix4x4>().ToArray();
                 }
@@ -62,6 +62,10 @@ namespace UniVRM10
 
             foreach (var morphTarget in src.MorphTargets)
             {
+                if (morphTarget.VertexBuffer.Positions == null)
+                {
+                    continue;
+                }
                 var positions = morphTarget.VertexBuffer.Positions.GetSpan<Vector3>().ToArray();
                 mesh.AddBlendShapeFrame(morphTarget.Name, 100.0f, positions, null, null);
             }
