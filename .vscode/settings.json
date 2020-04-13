@@ -65,7 +65,9 @@
         "Serializer",
         "Toon",
         "VRMC",
+        "behaviour",
         "imgui",
+        "mono",
         "mtoon",
         "uxml",
         "vrmlib"

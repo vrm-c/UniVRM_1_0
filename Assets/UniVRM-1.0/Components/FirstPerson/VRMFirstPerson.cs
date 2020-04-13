@@ -43,19 +43,6 @@ namespace UniVRM10
         [SerializeField]
         public List<RendererFirstPersonFlags> Renderers = new List<RendererFirstPersonFlags>();
 
-        static IEnumerable<Transform> Traverse(Transform parent)
-        {
-            yield return parent;
-
-            foreach (Transform child in parent)
-            {
-                foreach (var x in Traverse(child))
-                {
-                    yield return x;
-                }
-            }
-        }
-
         public void CopyTo(GameObject _dst, Dictionary<Transform, Transform> map)
         {
             var dst = _dst.AddComponent<VRMFirstPerson>();
@@ -70,74 +57,10 @@ namespace UniVRM10
             }).ToList();
         }
 
-        //public void TraverseRenderers(VRMImporterContext context = null)
-        //{
-        //    Renderers = Traverse(transform)
-        //        .Select(x => x.GetComponent<Renderer>())
-        //        .Where(x => x != null)
-        //        .Select(x => new RendererFirstPersonFlags
-        //        {
-        //            Renderer = x,
-        //            FirstPersonFlag = context == null
-        //                ? FirstPersonFlag.Auto
-        //                : GetFirstPersonFlag(context, x)
-        //        })
-        //        .ToList()
-        //        ;
-        //}
-
-        static VrmLib.FirstPersonMeshType GetFirstPersonFlag(Dictionary<Mesh, VrmLib.Mesh> meshes, Renderer r)
-        {
-            var mesh = r.transform.GetSharedMesh();
-            if (mesh == null)
-            {
-                return VrmLib.FirstPersonMeshType.Auto;
-            }
-
-            if (!meshes.ContainsKey(mesh))
-            {
-                return VrmLib.FirstPersonMeshType.Auto;
-            }
-
-            // TODO: 必要ない？
-            //foreach(var x in context.GLTF.extensions.VRM.firstPerson.meshAnnotations)
-            //{
-            //    if (x.mesh == index)
-            //    {
-            //        return EnumUtil.TryParseOrDefault<VrmLib.FirstPersonMeshType>(x.firstPersonFlag);
-            //    }
-            //}
-
-            return VrmLib.FirstPersonMeshType.Auto;
-        }
-
-        void CreateHeadlessModel(Renderer _renderer, Transform EraseRoot)
-        {
-            {
-                var renderer = _renderer as SkinnedMeshRenderer;
-                if (renderer != null)
-                {
-                    CreateHeadlessModelForSkinnedMeshRenderer(renderer, EraseRoot);
-                    return;
-                }
-            }
-
-
-            {
-                var renderer = _renderer as MeshRenderer;
-                if (renderer != null)
-                {
-                    CreateHeadlessModelForMeshRenderer(renderer, EraseRoot);
-                    return;
-                }
-            }
-
-            // ここには来ない
-        }
-		
         public static void SetupLayers()
         {
-            if (!TriedSetupLayer) {
+            if (!TriedSetupLayer)
+            {
                 TriedSetupLayer = true;
                 int layer = LayerMask.NameToLayer("VRMFirstPersonOnly");
                 FIRSTPERSON_ONLY_LAYER = (layer == -1) ? FIRSTPERSON_ONLY_LAYER : layer;
@@ -146,67 +69,6 @@ namespace UniVRM10
             }
         }
 
-        private static void CreateHeadlessModelForMeshRenderer(MeshRenderer renderer, Transform eraseRoot)
-        {
-            if (renderer.transform.Ancestors().Any(x => x == eraseRoot))
-            {
-                // 祖先に削除ボーンが居る
-                SetupLayers();
-                renderer.gameObject.layer = THIRDPERSON_ONLY_LAYER;
-            }
-            else
-            {
-                // 特に変更しない => 両方表示
-            }
-        }
-
-        private static void CreateHeadlessModelForSkinnedMeshRenderer(SkinnedMeshRenderer renderer, Transform eraseRoot)
-        {
-            // TODO: 別のコンポーネントに移動したほうがいい？
-
-            //SetupLayers();
-            //renderer.gameObject.layer = THIRDPERSON_ONLY_LAYER;
-
-            //var go = new GameObject("_headless_" + renderer.name);
-            //go.layer = FIRSTPERSON_ONLY_LAYER;
-            //go.transform.SetParent(renderer.transform, false);
-
-            //var m_eraseBones = renderer.bones.Select(x =>
-            //{
-            //    var eb = new BoneMeshEraser.EraseBone
-            //    {
-            //        Bone = x,
-            //    };
-
-            //    if (eraseRoot != null)
-            //    {
-            //        // 首の子孫を消去
-            //        if (eb.Bone.Ancestor().Any(y => y == eraseRoot))
-            //        {
-            //            //Debug.LogFormat("erase {0}", x);
-            //            eb.Erase = true;
-            //        }
-            //    }
-
-            //    return eb;
-            //})
-            //.ToArray();
-
-            //var bones = renderer.bones;
-            //var eraseBones = m_eraseBones
-            //    .Where(x => x.Erase)
-            //    .Select(x => bones.IndexOf(x.Bone))
-            //    .ToArray();
-
-            //var mesh = BoneMeshEraser.CreateErasedMesh(renderer.sharedMesh, eraseBones);
-
-            //var erased = go.AddComponent<SkinnedMeshRenderer>();
-            //erased.sharedMesh = mesh;
-            //erased.sharedMaterials = renderer.sharedMaterials;
-            //erased.bones = renderer.bones;
-            //erased.rootBone = renderer.rootBone;
-            //erased.updateWhenOffscreen = true;
-        }
 
         bool m_done;
 
@@ -219,28 +81,94 @@ namespace UniVRM10
             if (m_done) return;
             m_done = true;
 
-            var FirstPersonBone=GetComponent<Animator>().GetBoneTransform(HumanBodyBones.Head);
+            var FirstPersonBone = GetComponent<Animator>().GetBoneTransform(HumanBodyBones.Head);
             foreach (var x in Renderers)
             {
                 switch (x.FirstPersonFlag)
                 {
                     case VrmLib.FirstPersonMeshType.Auto:
-                        CreateHeadlessModel(x.Renderer, FirstPersonBone);
+                        {
+                            if (x.Renderer is SkinnedMeshRenderer smr)
+                            {
+                                var eraseBones = GetBonesThatHasAncestor(smr, FirstPersonBone);
+                                if (eraseBones.Any())
+                                {
+                                    // オリジナルのモデルを３人称用にする                                
+                                    smr.gameObject.layer = THIRDPERSON_ONLY_LAYER;
+
+                                    // 頭を取り除いた複製モデルを作成し、１人称用にする
+                                    var headless = CreateHeadlessMesh(smr, eraseBones);
+                                    headless.gameObject.layer = FIRSTPERSON_ONLY_LAYER;
+                                    headless.transform.SetParent(smr.transform, false);
+                                }
+                                else
+                                {
+                                    // 削除対象が含まれないので何もしない
+                                }
+                            }
+                            else if (x.Renderer is MeshRenderer mr)
+                            {
+                                if (mr.transform.Ancestors().Any(y => y == FirstPersonBone))
+                                {
+                                    // 頭の子孫なので１人称では非表示に
+                                    mr.gameObject.layer = THIRDPERSON_ONLY_LAYER;
+                                }
+                                else
+                                {
+                                    // 特に変更しない => 両方表示
+                                }
+                            }
+                            else
+                            {
+                                throw new NotImplementedException();
+                            }
+                        }
                         break;
 
                     case VrmLib.FirstPersonMeshType.FirstPersonOnly:
+                        // １人称のカメラでだけ描画されるようにする
                         x.Renderer.gameObject.layer = FIRSTPERSON_ONLY_LAYER;
                         break;
 
                     case VrmLib.FirstPersonMeshType.ThirdPersonOnly:
+                        // ３人称のカメラでだけ描画されるようにする
                         x.Renderer.gameObject.layer = THIRDPERSON_ONLY_LAYER;
                         break;
 
                     case VrmLib.FirstPersonMeshType.Both:
-                        //x.Renderer.gameObject.layer = 0;
+                        // 特に何もしない。すべてのカメラで描画される
                         break;
                 }
             }
+        }
+
+        static int[] GetBonesThatHasAncestor(SkinnedMeshRenderer smr, Transform ancestor)
+        {
+            var eraseBones = smr.bones
+            .Where(x => x.Ancestor().Any(y => y == ancestor))
+            .Select(x => smr.bones.IndexOf(x))
+            .ToArray();
+            return eraseBones;
+        }
+
+        // <summary>
+        // 頭部を取り除いたモデルを複製する
+        // </summary>
+        // <parameter>renderer: 元になるSkinnedMeshRenderer</parameter>
+        // <parameter>eraseBones: 削除対象になるボーンのindex</parameter>
+        private static SkinnedMeshRenderer CreateHeadlessMesh(SkinnedMeshRenderer renderer, int[] eraseBones)
+        {
+            var mesh = BoneMeshEraser.CreateErasedMesh(renderer.sharedMesh, eraseBones);
+
+            var go = new GameObject("_headless_" + renderer.name);
+            var erased = go.AddComponent<SkinnedMeshRenderer>();
+            erased.sharedMesh = mesh;
+            erased.sharedMaterials = renderer.sharedMaterials;
+            erased.bones = renderer.bones;
+            erased.rootBone = renderer.rootBone;
+            erased.updateWhenOffscreen = true;
+
+            return erased;
         }
     }
 }
