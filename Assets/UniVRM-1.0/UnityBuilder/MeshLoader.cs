@@ -62,16 +62,16 @@ namespace UniVRM10
 
             foreach (var morphTarget in src.MorphTargets)
             {
-                if (morphTarget.VertexBuffer.Positions == null)
-                {
-                    continue;
-                }
-                var positions = morphTarget.VertexBuffer.Positions.GetSpan<Vector3>().ToArray();
+                var positions =
+                    morphTarget.VertexBuffer.Positions != null
+                    ? morphTarget.VertexBuffer.Positions.GetSpan<Vector3>().ToArray()
+                    : new Vector3[mesh.vertexCount] // dummy
+                    ;
                 mesh.AddBlendShapeFrame(morphTarget.Name, 100.0f, positions, null, null);
-            }
 
-            mesh.RecalculateBounds();
-            mesh.RecalculateTangents();
+                mesh.RecalculateBounds();
+                mesh.RecalculateTangents();
+            }
         }
     }
 }
