@@ -163,7 +163,7 @@ namespace UniVRM10
 
         public override string GetInfoString()
         {
-            return BlendShapeKey.CreateFrom((BlendShapeClip)target).ToString();
+            return BlendShapeKey.CreateFromClip((BlendShapeClip)target).ToString();
         }
     }
 }

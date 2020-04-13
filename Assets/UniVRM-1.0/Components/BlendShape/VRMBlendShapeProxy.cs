@@ -193,27 +193,27 @@ namespace UniVRM10
             if (yaw < 0)
             {
                 // Left
-                this.SetValue(VrmLib.BlendShapePreset.LookRight, 0); // clear first
-                this.SetValue(VrmLib.BlendShapePreset.LookLeft, Mathf.Clamp(HorizontalOuter.Map(-yaw), 0, 1.0f));
+                this.SetPresetValue(VrmLib.BlendShapePreset.LookRight, 0); // clear first
+                this.SetPresetValue(VrmLib.BlendShapePreset.LookLeft, Mathf.Clamp(HorizontalOuter.Map(-yaw), 0, 1.0f));
             }
             else
             {
                 // Right
-                this.SetValue(VrmLib.BlendShapePreset.LookLeft, 0); // clear first
-                this.SetValue(VrmLib.BlendShapePreset.LookRight, Mathf.Clamp(HorizontalOuter.Map(yaw), 0, 1.0f));
+                this.SetPresetValue(VrmLib.BlendShapePreset.LookLeft, 0); // clear first
+                this.SetPresetValue(VrmLib.BlendShapePreset.LookRight, Mathf.Clamp(HorizontalOuter.Map(yaw), 0, 1.0f));
             }
 
             if (pitch < 0)
             {
                 // Down
-                this.SetValue(VrmLib.BlendShapePreset.LookUp, 0); // clear first
-                this.SetValue(VrmLib.BlendShapePreset.LookDown, Mathf.Clamp(VerticalDown.Map(-pitch), 0, 1.0f));
+                this.SetPresetValue(VrmLib.BlendShapePreset.LookUp, 0); // clear first
+                this.SetPresetValue(VrmLib.BlendShapePreset.LookDown, Mathf.Clamp(VerticalDown.Map(-pitch), 0, 1.0f));
             }
             else
             {
                 // Up
-                this.SetValue(VrmLib.BlendShapePreset.LookDown, 0); // clear first
-                this.SetValue(VrmLib.BlendShapePreset.LookUp, Mathf.Clamp(VerticalUp.Map(pitch), 0, 1.0f));
+                this.SetPresetValue(VrmLib.BlendShapePreset.LookDown, 0); // clear first
+                this.SetPresetValue(VrmLib.BlendShapePreset.LookUp, Mathf.Clamp(VerticalUp.Map(pitch), 0, 1.0f));
             }
         }
         #endregion
@@ -447,8 +447,8 @@ namespace UniVRM10
             }
         }
 
-        // Setter and Getter
-        public float GetValue(VrmLib.BlendShapePreset key)
+        #region Setter and Getter
+        public float GetPresetValue(VrmLib.BlendShapePreset key)
         {
             var blendShapeKey = new BlendShapeKey(key);
             if (this.BlendShapeKeyWeights.ContainsKey(blendShapeKey))
@@ -461,9 +461,9 @@ namespace UniVRM10
             }
         }
 
-        public float GetValue(String key)
+        public float GetCustomValue(String key)
         {
-            var blendShapeKey = new BlendShapeKey(key);
+            var blendShapeKey = BlendShapeKey.CreateCustom(key);
             if (this.BlendShapeKeyWeights.ContainsKey(blendShapeKey))
             {
                 return this.BlendShapeKeyWeights[blendShapeKey];
@@ -474,7 +474,7 @@ namespace UniVRM10
             }
         }
 
-        public void SetValue(VrmLib.BlendShapePreset key, float value)
+        public void SetPresetValue(VrmLib.BlendShapePreset key, float value)
         {
             var blendShapeKey = new BlendShapeKey(key);
             if (this.BlendShapeKeyWeights.ContainsKey(blendShapeKey))
@@ -483,13 +483,15 @@ namespace UniVRM10
             }
         }
 
-        public void SetValue(String key, float value)
+        /// <parameter>key</parameter>    
+        public void SetCustomValue(String key, float value)
         {
-            var blendShapeKey = new BlendShapeKey(key);
+            var blendShapeKey = BlendShapeKey.CreateCustom(key);
             if (this.BlendShapeKeyWeights.ContainsKey(blendShapeKey))
             {
                 this.BlendShapeKeyWeights[blendShapeKey] = value;
             }
         }
+        #endregion
     }
 }
