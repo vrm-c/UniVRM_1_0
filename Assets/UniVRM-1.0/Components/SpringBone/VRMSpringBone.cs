@@ -53,7 +53,7 @@ namespace UniVRM10
             m_processor.ResetSpringBone();
         }
 
-        List<SphereCollider> m_colliderList = new List<SphereCollider>();
+        List<SpringBoneLogic.Collider> m_colliderList = new List<SpringBoneLogic.Collider>();
         void LateUpdate()
         {
             if (RootBones == null)
@@ -71,11 +71,28 @@ namespace UniVRM10
                     {
                         foreach (var collider in group.Colliders)
                         {
-                            m_colliderList.Add(new SphereCollider
+                            switch (collider.ColliderTypes)
                             {
-                                Position = group.transform.TransformPoint(collider.Offset),
-                                Radius = collider.Radius,
-                            });
+                                case SpringBoneColliderTypes.Sphere:
+                                    m_colliderList.Add(new SpringBoneLogic.Collider
+                                    {
+                                        ColliderTypes = SpringBoneColliderTypes.Sphere,
+                                        WorldPosition = group.transform.TransformPoint(collider.Offset),
+                                        Radius = collider.Radius,
+
+                                    });
+                                    break;
+
+                                case SpringBoneColliderTypes.Capsule:
+                                    m_colliderList.Add(new SpringBoneLogic.Collider
+                                    {
+                                        ColliderTypes = SpringBoneColliderTypes.Capsule,
+                                        WorldPosition = group.transform.TransformPoint(collider.Offset),
+                                        Radius = collider.Radius,
+                                        WorldTail = group.transform.TransformPoint(collider.Tail)
+                                    });
+                                    break;
+                            }
                         }
                     }
                 }

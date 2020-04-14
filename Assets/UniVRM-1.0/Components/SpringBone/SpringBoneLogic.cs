@@ -62,9 +62,17 @@ namespace UniVRM10
             }
         }
 
+        public struct Collider
+        {
+            public SpringBoneColliderTypes ColliderTypes;
+            public Vector3 WorldPosition;
+            public float Radius;
+            public Vector3 WorldTail;
+        }
+
         public void Update(Transform center,
             float stiffnessForce, float dragForce, Vector3 external,
-            List<SphereCollider> colliders)
+            List<Collider> colliders)
         {
             var currentTail = center != null
                 ? center.TransformPoint(m_currentTail)
@@ -108,16 +116,16 @@ namespace UniVRM10
                 nextTail - m_transform.position) * rotation;
         }
 
-        protected virtual Vector3 Collision(List<SphereCollider> colliders, Vector3 nextTail)
+        protected virtual Vector3 Collision(List<Collider> colliders, Vector3 nextTail)
         {
             foreach (var collider in colliders)
             {
                 var r = Radius + collider.Radius;
-                if (Vector3.SqrMagnitude(nextTail - collider.Position) <= (r * r))
+                if (Vector3.SqrMagnitude(nextTail - collider.WorldPosition) <= (r * r))
                 {
                     // ヒット。Colliderの半径方向に押し出す
-                    var normal = (nextTail - collider.Position).normalized;
-                    var posFromCollider = collider.Position + normal * (Radius + collider.Radius);
+                    var normal = (nextTail - collider.WorldPosition).normalized;
+                    var posFromCollider = collider.WorldPosition + normal * (Radius + collider.Radius);
                     // 長さをboneLengthに強制
                     nextTail = m_transform.position + (posFromCollider - m_transform.position).normalized * m_length;
                 }

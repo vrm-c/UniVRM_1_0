@@ -77,10 +77,9 @@ namespace UniVRM10
                     SetupRecursive(transform, m_center);
                 }
             }
-
         }
 
-        public void Update(List<Transform> RootBones, List<SphereCollider> m_colliderList,
+        public void Update(List<Transform> RootBones, List<SpringBoneLogic.Collider> m_colliderList,
             float stiffness, float m_dragForce, Vector3 external,
              float m_hitRadius, Transform m_center)
         {

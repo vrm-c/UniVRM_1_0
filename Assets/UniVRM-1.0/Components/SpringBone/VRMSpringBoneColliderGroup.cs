@@ -10,10 +10,10 @@ namespace UniVRM10
     public class VRMSpringBoneColliderGroup : MonoBehaviour
     {
         [SerializeField]
-        public SpringCollider[] Colliders = new SpringCollider[]{
-            new SpringCollider
+        public SpringBoneCollider[] Colliders = new SpringBoneCollider[]{
+            new SpringBoneCollider
             {
-                ColliderTypes = SpringColliderTypes.Capsule,
+                ColliderTypes = SpringBoneColliderTypes.Capsule,
                 Radius=0.1f
             }
         };
@@ -34,11 +34,11 @@ namespace UniVRM10
             {
                 switch (y.ColliderTypes)
                 {
-                    case SpringColliderTypes.Sphere:
+                    case SpringBoneColliderTypes.Sphere:
                         Gizmos.DrawWireSphere(y.Offset, y.Radius);
                         break;
 
-                    case SpringColliderTypes.Capsule:
+                    case SpringBoneColliderTypes.Capsule:
                         Gizmos.DrawWireSphere(y.Offset, y.Radius);
                         Gizmos.DrawWireSphere(y.Tail, y.Radius);
                         Gizmos.DrawLine(y.Offset, y.Tail);
