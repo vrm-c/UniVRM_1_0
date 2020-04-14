@@ -11,7 +11,7 @@ namespace UniVRM10
     /// http://rocketjump.skr.jp/unity3d/109/
     /// 
     /// </summary>
-    public class VRMSpringBoneLogic
+    public class SpringBoneLogic
     {
         Transform m_transform;
         public Transform Head
@@ -37,7 +37,7 @@ namespace UniVRM10
 
         public float Radius { get; set; }
 
-        public VRMSpringBoneLogic(Transform center, Transform transform, Vector3 localChildPosition)
+        public SpringBoneLogic(Transform center, Transform transform, Vector3 localChildPosition)
         {
             m_transform = transform;
             var worldChildPosition = m_transform.TransformPoint(localChildPosition);

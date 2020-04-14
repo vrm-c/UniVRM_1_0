@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 namespace UniVRM10
@@ -8,9 +7,9 @@ namespace UniVRM10
     /// The base algorithm is http://rocketjump.skr.jp/unity3d/109/ of @ricopin416
     /// DefaultExecutionOrder(11000) means calculate springbone after FinalIK( VRIK )
     /// </summary>
-    #if UNITY_5_5_OR_NEWER
+#if UNITY_5_5_OR_NEWER
     [DefaultExecutionOrder(11000)]
-    #endif
+#endif
     public class VRMSpringBone : MonoBehaviour
     {
         [SerializeField]
@@ -39,7 +38,6 @@ namespace UniVRM10
 
         [SerializeField]
         public List<Transform> RootBones = new List<Transform>();
-        Dictionary<Transform, Quaternion> m_initialLocalRotationMap;
 
         [SerializeField, Range(0, 0.5f), Header("Collider")]
         public float m_hitRadius = 0.02f;
@@ -47,96 +45,23 @@ namespace UniVRM10
         [SerializeField]
         public VRMSpringBoneColliderGroup[] ColliderGroups;
 
-        List<VRMSpringBoneLogic> m_verlet = new List<VRMSpringBoneLogic>();
-
-        void Awake()
-        {
-            Setup();
-        }
+        SpringBoneProcessor m_processor = new SpringBoneProcessor();
 
         [ContextMenu("Reset bones")]
-        public void Setup(bool force=false)
+        public void ResetSpringBone()
         {
-            if (RootBones != null)
-            {
-                if (force || m_initialLocalRotationMap == null)
-                {
-                    m_initialLocalRotationMap = new Dictionary<Transform, Quaternion>();
-                }
-                else
-                {
-                    foreach(var kv in m_initialLocalRotationMap)
-                    {
-                        kv.Key.localRotation = kv.Value;
-                    }
-                    m_initialLocalRotationMap.Clear();
-                }
-                m_verlet.Clear();
-
-                foreach (var go in RootBones)
-                {
-                    if (go != null)
-                    {
-                        foreach(var x in go.transform.Traverse())
-                        {
-                            m_initialLocalRotationMap[x] = x.localRotation;
-                        }
-
-                        SetupRecursive(m_center, go);
-                    }
-                }
-            }
-        }
-
-        public void SetLocalRotationsIdentity()
-        {
-            foreach (var verlet in m_verlet)
-            {
-                verlet.Head.localRotation = Quaternion.identity;
-            }
-        }
-
-        void SetupRecursive(Transform center, Transform parent)
-        {
-            if (parent.childCount == 0)
-            {
-                var delta = parent.position - parent.parent.position;
-                var childPosition = parent.position + delta.normalized * 0.07f;
-                m_verlet.Add(new VRMSpringBoneLogic(center, parent, parent.worldToLocalMatrix.MultiplyPoint(childPosition)));
-            }
-            else
-            {
-                var firstChild = parent.GetChild(0);
-                var localPosition = firstChild.localPosition;
-                var scale = firstChild.lossyScale;
-                m_verlet.Add(new VRMSpringBoneLogic(center, parent,
-                    new Vector3(
-                        localPosition.x * scale.x,
-                        localPosition.y * scale.y,
-                        localPosition.z * scale.z
-                        )))
-                    ;
-            }
-
-            foreach (Transform child in parent)
-            {
-                SetupRecursive(center, child);
-            }
+            m_processor.ResetSpringBone();
         }
 
         List<SphereCollider> m_colliderList = new List<SphereCollider>();
         void LateUpdate()
         {
-            if (m_verlet == null || m_verlet.Count == 0)
+            if (RootBones == null)
             {
-                if (RootBones == null)
-                {
-                    return;
-                }
-
-                Setup();
+                return;
             }
 
+            // gather colliders
             m_colliderList.Clear();
             if (ColliderGroups != null)
             {
@@ -159,26 +84,16 @@ namespace UniVRM10
             var stiffness = m_stiffnessForce * Time.deltaTime;
             var external = m_gravityDir * (m_gravityPower * Time.deltaTime);
 
-            foreach (var verlet in m_verlet)
-            {
-                verlet.Radius = m_hitRadius;
-                verlet.Update(m_center,
-                    stiffness,
-                    m_dragForce,
-                    external,
-                    m_colliderList
-                    );
-            }
+            m_processor.Update(RootBones, m_colliderList,
+                        stiffness, m_dragForce, external,
+                        m_hitRadius, m_center);
         }
 
         private void OnDrawGizmos()
         {
             if (m_drawGizmo)
             {
-                foreach (var verlet in m_verlet)
-                {
-                    verlet.DrawGizmo(m_center, m_hitRadius, m_gizmoColor);
-                }
+                m_processor.DrawGizmos(m_center, m_hitRadius, m_gizmoColor);
             }
         }
     }
