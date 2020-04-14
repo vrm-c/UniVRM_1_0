@@ -70,6 +70,7 @@
         "mono",
         "mtoon",
         "uxml",
+        "verlet",
         "vrmlib"
     ]
 }

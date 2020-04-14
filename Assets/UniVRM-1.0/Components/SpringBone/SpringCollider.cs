@@ -23,4 +23,10 @@ namespace UniVRM10
         /// <summary>bone local position</summary>
         public Vector3 Tail;
     }
+
+    public struct SphereCollider
+    {
+        public Vector3 Position;
+        public float Radius;
+    }
 }
