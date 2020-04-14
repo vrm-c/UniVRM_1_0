@@ -4,24 +4,16 @@ using UnityEngine;
 
 namespace UniVRM10
 {
-    #if UNITY_5_5_OR_NEWER
+#if UNITY_5_5_OR_NEWER
     [DefaultExecutionOrder(11001)]
-    #endif
+#endif
     public class VRMSpringBoneColliderGroup : MonoBehaviour
     {
-        [Serializable]
-        public class SphereCollider
-        {
-            public Vector3 Offset;
-
-            [Range(0, 1.0f)]
-            public float Radius;
-        }
-
         [SerializeField]
-        public SphereCollider[] Colliders = new SphereCollider[]{
-            new SphereCollider
+        public SpringCollider[] Colliders = new SpringCollider[]{
+            new SpringCollider
             {
+                ColliderTypes = SpringColliderTypes.Capsule,
                 Radius=0.1f
             }
         };
@@ -40,7 +32,18 @@ namespace UniVRM10
                 ));
             foreach (var y in Colliders)
             {
-                Gizmos.DrawWireSphere(y.Offset, y.Radius);
+                switch (y.ColliderTypes)
+                {
+                    case SpringColliderTypes.Sphere:
+                        Gizmos.DrawWireSphere(y.Offset, y.Radius);
+                        break;
+
+                    case SpringColliderTypes.Capsule:
+                        Gizmos.DrawWireSphere(y.Offset, y.Radius);
+                        Gizmos.DrawWireSphere(y.Tail, y.Radius);
+                        Gizmos.DrawLine(y.Offset, y.Tail);
+                        break;
+                }
             }
         }
     }

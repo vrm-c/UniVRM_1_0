@@ -220,8 +220,9 @@ namespace UniVRM10
                     var springBoneColliderGroup = go.AddComponent<UniVRM10.VRMSpringBoneColliderGroup>();
 
                     springBoneColliderGroup.Colliders = colliderGroup.Colliders.Select(x =>
-                        new UniVRM10.VRMSpringBoneColliderGroup.SphereCollider()
+                        new UniVRM10.SpringCollider()
                         {
+                            ColliderTypes = SpringColliderTypes.Sphere,
                             Offset = x.Offset.ToUnityVector3(),
                             Radius = x.Radius
                         }).ToArray();
