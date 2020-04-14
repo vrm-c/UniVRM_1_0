@@ -53,7 +53,7 @@ namespace UniVRM10
             m_processor.ResetSpringBone();
         }
 
-        List<SpringBoneLogic.Collider> m_colliderList = new List<SpringBoneLogic.Collider>();
+        List<SpringBoneLogic.InternalCollider> m_colliderList = new List<SpringBoneLogic.InternalCollider>();
         void LateUpdate()
         {
             if (RootBones == null)
@@ -74,7 +74,7 @@ namespace UniVRM10
                             switch (collider.ColliderTypes)
                             {
                                 case SpringBoneColliderTypes.Sphere:
-                                    m_colliderList.Add(new SpringBoneLogic.Collider
+                                    m_colliderList.Add(new SpringBoneLogic.InternalCollider
                                     {
                                         ColliderTypes = SpringBoneColliderTypes.Sphere,
                                         WorldPosition = group.transform.TransformPoint(collider.Offset),
@@ -84,7 +84,7 @@ namespace UniVRM10
                                     break;
 
                                 case SpringBoneColliderTypes.Capsule:
-                                    m_colliderList.Add(new SpringBoneLogic.Collider
+                                    m_colliderList.Add(new SpringBoneLogic.InternalCollider
                                     {
                                         ColliderTypes = SpringBoneColliderTypes.Capsule,
                                         WorldPosition = group.transform.TransformPoint(collider.Offset),
