@@ -89,7 +89,8 @@ namespace UniVRM10
             if (!Application.isPlaying)
             {
                 // offset
-                Handles.Label(m_target.Head.position, $"fromHead: {m_target.OffsetFromHead}");
+                var p = m_target.OffsetFromHead;
+                Handles.Label(m_target.Head.position, $"fromHead: [{p.x:0.00}, {p.y:0.00}, {p.z:0.00}]");
             }
             else
             {
@@ -154,10 +155,9 @@ namespace UniVRM10
             var (yaw, pitch) = m_target.GetLookAtYawPitch();
             var lookAtOriginMatrix = m_target.LookAtOrigin.localToWorldMatrix;
             Handles.matrix = lookAtOriginMatrix;
-            Handles.Label(Vector3.zero, string.Format("FromHead: {2}\nYaw: {0:0.}degree\nPitch: {1:0.}degree",
-                yaw,
-                pitch,
-                m_target.OffsetFromHead));
+            var p = m_target.OffsetFromHead;
+            Handles.Label(Vector3.zero,
+            $"FromHead: [{p.x:0.00}, {p.y:0.00}, {p.z:0.00}]\nYaw: {yaw:0.}degree\nPitch: {pitch:0.}degree");
 
             Handles.color = new Color(0, 1, 0, 0.2f);
             Handles.DrawSolidArc(Vector3.zero,
