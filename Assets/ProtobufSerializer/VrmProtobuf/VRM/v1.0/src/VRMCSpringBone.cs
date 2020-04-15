@@ -25,7 +25,7 @@ namespace VrmProtobuf {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChVWUk1DX3NwcmluZ0JvbmUucHJvdG8SC1ZybVByb3RvYnVmGh5nb29nbGUv",
-            "cHJvdG9idWYvd3JhcHBlcnMucHJvdG8i9AMKDlZSTUNTcHJpbmdCb25lEjkK",
+            "cHJvdG9idWYvd3JhcHBlcnMucHJvdG8i8wQKDlZSTUNTcHJpbmdCb25lEjkK",
             "CmJvbmVHcm91cHMYASADKAsyJS5Wcm1Qcm90b2J1Zi5WUk1DU3ByaW5nQm9u",
             "ZS5Cb25lR3JvdXASQQoOY29sbGlkZXJHcm91cHMYAiADKAsyKS5Wcm1Qcm90",
             "b2J1Zi5WUk1DU3ByaW5nQm9uZS5Db2xsaWRlckdyb3VwGtABCglCb25lR3Jv",
@@ -33,15 +33,18 @@ namespace VrmProtobuf {
             "eVBvd2VyGAMgASgCEhIKCmdyYXZpdHlEaXIYBCADKAISEQoJZHJhZ0ZvcmNl",
             "GAUgASgCEisKBmNlbnRlchgGIAEoCzIbLmdvb2dsZS5wcm90b2J1Zi5JbnQz",
             "MlZhbHVlEhEKCWhpdFJhZGl1cxgHIAEoAhINCgVib25lcxgIIAMoBRIWCg5j",
-            "b2xsaWRlckdyb3VwcxgJIAMoBRqQAQoNQ29sbGlkZXJHcm91cBIMCgRub2Rl",
+            "b2xsaWRlckdyb3VwcxgJIAMoBRqPAgoNQ29sbGlkZXJHcm91cBIMCgRub2Rl",
             "GAEgASgFEkUKCWNvbGxpZGVycxgCIAMoCzIyLlZybVByb3RvYnVmLlZSTUNT",
-            "cHJpbmdCb25lLkNvbGxpZGVyR3JvdXAuQ29sbGlkZXIaKgoIQ29sbGlkZXIS",
-            "DgoGb2Zmc2V0GAEgAygCEg4KBnJhZGl1cxgCIAEoAmIGcHJvdG8z"));
+            "cHJpbmdCb25lLkNvbGxpZGVyR3JvdXAuQ29sbGlkZXIafwoIQ29sbGlkZXIS",
+            "RQoEdHlwZRgBIAEoDjI3LlZybVByb3RvYnVmLlZSTUNTcHJpbmdCb25lLkNv",
+            "bGxpZGVyR3JvdXAuQ29sbGlkZXJUeXBlcxIOCgZvZmZzZXQYAiADKAISDgoG",
+            "cmFkaXVzGAMgASgCEgwKBHRhaWwYBCADKAIiKAoNQ29sbGlkZXJUeXBlcxIK",
+            "CgZzcGhlcmUQABILCgdjYXBzdWxlEAFiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Google.Protobuf.WellKnownTypes.WrappersReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.VRMCSpringBone), global::VrmProtobuf.VRMCSpringBone.Parser, new[]{ "BoneGroups", "ColliderGroups" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.VRMCSpringBone.Types.BoneGroup), global::VrmProtobuf.VRMCSpringBone.Types.BoneGroup.Parser, new[]{ "Name", "Stiffness", "GravityPower", "GravityDir", "DragForce", "Center", "HitRadius", "Bones", "ColliderGroups" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.VRMCSpringBone.Types.ColliderGroup), global::VrmProtobuf.VRMCSpringBone.Types.ColliderGroup.Parser, new[]{ "Node", "Colliders" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.VRMCSpringBone.Types.ColliderGroup.Types.Collider), global::VrmProtobuf.VRMCSpringBone.Types.ColliderGroup.Types.Collider.Parser, new[]{ "Offset", "Radius" }, null, null, null, null)})})
+            new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.VRMCSpringBone.Types.ColliderGroup), global::VrmProtobuf.VRMCSpringBone.Types.ColliderGroup.Parser, new[]{ "Node", "Colliders" }, null, new[]{ typeof(global::VrmProtobuf.VRMCSpringBone.Types.ColliderGroup.Types.ColliderTypes) }, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.VRMCSpringBone.Types.ColliderGroup.Types.Collider), global::VrmProtobuf.VRMCSpringBone.Types.ColliderGroup.Types.Collider.Parser, new[]{ "Type", "Offset", "Radius", "Tail" }, null, null, null, null)})})
           }));
     }
     #endregion
@@ -719,7 +722,15 @@ namespace VrmProtobuf {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public static partial class Types {
           /// <summary>
-          /// "required": [ "radius" ]
+          /// collider shape type
+          /// </summary>
+          public enum ColliderTypes {
+            [pbr::OriginalName("sphere")] Sphere = 0,
+            [pbr::OriginalName("capsule")] Capsule = 1,
+          }
+
+          /// <summary>
+          /// "required": [ "type", "radius" ]
           /// </summary>
           public sealed partial class Collider : pb::IMessage<Collider> {
             private static readonly pb::MessageParser<Collider> _parser = new pb::MessageParser<Collider>(() => new Collider());
@@ -746,8 +757,10 @@ namespace VrmProtobuf {
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
             public Collider(Collider other) : this() {
+              type_ = other.type_;
               offset_ = other.offset_.Clone();
               radius_ = other.radius_;
+              tail_ = other.tail_.Clone();
               _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
             }
 
@@ -756,10 +769,21 @@ namespace VrmProtobuf {
               return new Collider(this);
             }
 
+            /// <summary>Field number for the "type" field.</summary>
+            public const int TypeFieldNumber = 1;
+            private global::VrmProtobuf.VRMCSpringBone.Types.ColliderGroup.Types.ColliderTypes type_ = global::VrmProtobuf.VRMCSpringBone.Types.ColliderGroup.Types.ColliderTypes.Sphere;
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public global::VrmProtobuf.VRMCSpringBone.Types.ColliderGroup.Types.ColliderTypes Type {
+              get { return type_; }
+              set {
+                type_ = value;
+              }
+            }
+
             /// <summary>Field number for the "offset" field.</summary>
-            public const int OffsetFieldNumber = 1;
+            public const int OffsetFieldNumber = 2;
             private static readonly pb::FieldCodec<float> _repeated_offset_codec
-                = pb::FieldCodec.ForFloat(10);
+                = pb::FieldCodec.ForFloat(18);
             private readonly pbc::RepeatedField<float> offset_ = new pbc::RepeatedField<float>();
             /// <summary>
             /// The local coordinate from the node of the collider group
@@ -770,7 +794,7 @@ namespace VrmProtobuf {
             }
 
             /// <summary>Field number for the "radius" field.</summary>
-            public const int RadiusFieldNumber = 2;
+            public const int RadiusFieldNumber = 3;
             private float radius_;
             /// <summary>
             /// The radius of the collider
@@ -781,6 +805,19 @@ namespace VrmProtobuf {
               set {
                 radius_ = value;
               }
+            }
+
+            /// <summary>Field number for the "tail" field.</summary>
+            public const int TailFieldNumber = 4;
+            private static readonly pb::FieldCodec<float> _repeated_tail_codec
+                = pb::FieldCodec.ForFloat(34);
+            private readonly pbc::RepeatedField<float> tail_ = new pbc::RepeatedField<float>();
+            /// <summary>
+            /// The local coordinate from the node of the collider group. for capsule tail
+            /// </summary>
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public pbc::RepeatedField<float> Tail {
+              get { return tail_; }
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -796,16 +833,20 @@ namespace VrmProtobuf {
               if (ReferenceEquals(other, this)) {
                 return true;
               }
+              if (Type != other.Type) return false;
               if(!offset_.Equals(other.offset_)) return false;
               if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(Radius, other.Radius)) return false;
+              if(!tail_.Equals(other.tail_)) return false;
               return Equals(_unknownFields, other._unknownFields);
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
             public override int GetHashCode() {
               int hash = 1;
+              if (Type != global::VrmProtobuf.VRMCSpringBone.Types.ColliderGroup.Types.ColliderTypes.Sphere) hash ^= Type.GetHashCode();
               hash ^= offset_.GetHashCode();
               if (Radius != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(Radius);
+              hash ^= tail_.GetHashCode();
               if (_unknownFields != null) {
                 hash ^= _unknownFields.GetHashCode();
               }
@@ -819,11 +860,16 @@ namespace VrmProtobuf {
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
             public void WriteTo(pb::CodedOutputStream output) {
+              if (Type != global::VrmProtobuf.VRMCSpringBone.Types.ColliderGroup.Types.ColliderTypes.Sphere) {
+                output.WriteRawTag(8);
+                output.WriteEnum((int) Type);
+              }
               offset_.WriteTo(output, _repeated_offset_codec);
               if (Radius != 0F) {
-                output.WriteRawTag(21);
+                output.WriteRawTag(29);
                 output.WriteFloat(Radius);
               }
+              tail_.WriteTo(output, _repeated_tail_codec);
               if (_unknownFields != null) {
                 _unknownFields.WriteTo(output);
               }
@@ -832,10 +878,14 @@ namespace VrmProtobuf {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
             public int CalculateSize() {
               int size = 0;
+              if (Type != global::VrmProtobuf.VRMCSpringBone.Types.ColliderGroup.Types.ColliderTypes.Sphere) {
+                size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Type);
+              }
               size += offset_.CalculateSize(_repeated_offset_codec);
               if (Radius != 0F) {
                 size += 1 + 4;
               }
+              size += tail_.CalculateSize(_repeated_tail_codec);
               if (_unknownFields != null) {
                 size += _unknownFields.CalculateSize();
               }
@@ -847,10 +897,14 @@ namespace VrmProtobuf {
               if (other == null) {
                 return;
               }
+              if (other.Type != global::VrmProtobuf.VRMCSpringBone.Types.ColliderGroup.Types.ColliderTypes.Sphere) {
+                Type = other.Type;
+              }
               offset_.Add(other.offset_);
               if (other.Radius != 0F) {
                 Radius = other.Radius;
               }
+              tail_.Add(other.tail_);
               _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
             }
 
@@ -862,13 +916,22 @@ namespace VrmProtobuf {
                   default:
                     _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
                     break;
-                  case 10:
-                  case 13: {
+                  case 8: {
+                    Type = (global::VrmProtobuf.VRMCSpringBone.Types.ColliderGroup.Types.ColliderTypes) input.ReadEnum();
+                    break;
+                  }
+                  case 18:
+                  case 21: {
                     offset_.AddEntriesFrom(input, _repeated_offset_codec);
                     break;
                   }
-                  case 21: {
+                  case 29: {
                     Radius = input.ReadFloat();
+                    break;
+                  }
+                  case 34:
+                  case 37: {
+                    tail_.AddEntriesFrom(input, _repeated_tail_codec);
                     break;
                   }
                 }

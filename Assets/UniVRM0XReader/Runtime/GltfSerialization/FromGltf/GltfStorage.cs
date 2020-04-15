@@ -782,7 +782,7 @@ namespace GltfSerialization
                 gltfVrm.secondaryAnimation.colliderGroups.Select(y =>
                 new SpringBoneColliderGroup(
                     nodes[y.node],
-                    y.colliders.Select(z => new VrmSpringBoneColliderSphere(z.offset, z.radius))
+                    y.colliders.Select(z => VrmSpringBoneCollider.CreateSphere(z.offset, z.radius))
                 )
             ));
 

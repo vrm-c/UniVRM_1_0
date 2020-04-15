@@ -514,7 +514,7 @@ namespace VrmLib.Diff
             return equals;
         }
 
-        static bool VrmSpringBoneColliderEquals(ModelDiffContext context, VrmSpringBoneColliderSphere lhs, VrmSpringBoneColliderSphere rhs)
+        static bool VrmSpringBoneColliderEquals(ModelDiffContext context, VrmSpringBoneCollider lhs, VrmSpringBoneCollider rhs)
         {
             var equals = true;
             if (!context.Enter("Offset").Push(lhs.Offset, rhs.Offset)) equals = false;

@@ -324,7 +324,19 @@ namespace UniVRM10
                     foreach (var colliderGroup in springBoneColliderGroups)
                     {
                         var colliderGroups = colliderGroup.Colliders.Select(x =>
-                            new VrmLib.VrmSpringBoneColliderSphere(x.Offset.ToNumericsVector3(), x.Radius));
+                        {
+                            switch (x.ColliderTypes)
+                            {
+                                case SpringBoneColliderTypes.Sphere:
+                                    return VrmLib.VrmSpringBoneCollider.CreateSphere(x.Offset.ToNumericsVector3(), x.Radius);
+
+                                case SpringBoneColliderTypes.Capsule:
+                                    return VrmLib.VrmSpringBoneCollider.CreateCapsule(x.Offset.ToNumericsVector3(), x.Radius, x.Tail.ToNumericsVector3());
+
+                                default:
+                                    throw new NotImplementedException();
+                            }
+                        });
                         var vrmColliderGroup = new VrmLib.SpringBoneColliderGroup(Nodes[colliderGroup.gameObject], colliderGroups);
                         Model.Vrm.SpringBone.Colliders.Add(vrmColliderGroup);
 
