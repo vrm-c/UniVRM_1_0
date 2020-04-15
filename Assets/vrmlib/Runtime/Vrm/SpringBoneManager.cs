@@ -4,15 +4,35 @@ using System.Numerics;
 
 namespace VrmLib
 {
-    public struct VrmSpringBoneColliderSphere
+    public enum VrmSpringBoneColliderTypes
     {
+        Sphere,
+        Capsule,
+    }
+
+    public struct VrmSpringBoneCollider
+    {
+        public readonly VrmSpringBoneColliderTypes ColliderType;
         public readonly Vector3 Offset;
         public readonly float Radius;
+        public readonly Vector3 CapsuleTail;
 
-        public VrmSpringBoneColliderSphere(Vector3 offset, float radius)
+        VrmSpringBoneCollider(VrmSpringBoneColliderTypes type, Vector3 offset, float radius, Vector3 tail)
         {
+            ColliderType = type;
             Offset = offset;
             Radius = radius;
+            CapsuleTail = tail;
+        }
+
+        public static VrmSpringBoneCollider CreateSphere(Vector3 offset, float radius)
+        {
+            return new VrmSpringBoneCollider(VrmSpringBoneColliderTypes.Sphere, offset, radius, Vector3.Zero);
+        }
+
+        public static VrmSpringBoneCollider CreateCapsule(Vector3 offset, float radius, Vector3 tail)
+        {
+            return new VrmSpringBoneCollider(VrmSpringBoneColliderTypes.Capsule, offset, radius, tail);
         }
     }
 
@@ -20,9 +40,9 @@ namespace VrmLib
     {
         public readonly Node Node;
 
-        public readonly List<VrmSpringBoneColliderSphere> Colliders;
+        public readonly List<VrmSpringBoneCollider> Colliders;
 
-        public SpringBoneColliderGroup(Node node, IEnumerable<VrmSpringBoneColliderSphere> colliders)
+        public SpringBoneColliderGroup(Node node, IEnumerable<VrmSpringBoneCollider> colliders)
         {
             Node = node;
             Colliders = colliders.ToList();

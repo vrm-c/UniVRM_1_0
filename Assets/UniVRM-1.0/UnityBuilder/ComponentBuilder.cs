@@ -220,11 +220,30 @@ namespace UniVRM10
                     var springBoneColliderGroup = go.AddComponent<UniVRM10.VRMSpringBoneColliderGroup>();
 
                     springBoneColliderGroup.Colliders = colliderGroup.Colliders.Select(x =>
-                        new UniVRM10.VRMSpringBoneColliderGroup.SphereCollider()
+                    {
+                        switch (x.ColliderType)
                         {
-                            Offset = x.Offset.ToUnityVector3(),
-                            Radius = x.Radius
-                        }).ToArray();
+                            case VrmLib.VrmSpringBoneColliderTypes.Sphere:
+                                return new UniVRM10.SpringBoneCollider()
+                                {
+                                    ColliderTypes = SpringBoneColliderTypes.Sphere,
+                                    Offset = x.Offset.ToUnityVector3(),
+                                    Radius = x.Radius
+                                };
+
+                            case VrmLib.VrmSpringBoneColliderTypes.Capsule:
+                                return new UniVRM10.SpringBoneCollider()
+                                {
+                                    ColliderTypes = SpringBoneColliderTypes.Capsule,
+                                    Offset = x.Offset.ToUnityVector3(),
+                                    Radius = x.Radius,
+                                    Tail = x.CapsuleTail.ToUnityVector3(),
+                                };
+
+                            default:
+                                throw new NotImplementedException();
+                        }
+                    }).ToArray(); ;
 
                     colliders.Add(colliderGroup, springBoneColliderGroup);
                 }

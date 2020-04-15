@@ -16,11 +16,18 @@ namespace Vrm10
             {
                 var collider = new VrmProtobuf.VRMCSpringBone.Types.ColliderGroup.Types.Collider
                 {
+                    Type = (VrmProtobuf.VRMCSpringBone.Types.ColliderGroup.Types.ColliderTypes)y.ColliderType,
                     Radius = y.Radius,
                 };
                 collider.Offset.Add(y.Offset.X);
                 collider.Offset.Add(y.Offset.Y);
                 collider.Offset.Add(y.Offset.Z);
+                if (y.ColliderType == VrmSpringBoneColliderTypes.Capsule)
+                {
+                    collider.Tail.Add(y.CapsuleTail.X);
+                    collider.Tail.Add(y.CapsuleTail.Y);
+                    collider.Tail.Add(y.CapsuleTail.Z);
+                }
                 colliderGroup.Colliders.Add(collider);
             }
             return colliderGroup;

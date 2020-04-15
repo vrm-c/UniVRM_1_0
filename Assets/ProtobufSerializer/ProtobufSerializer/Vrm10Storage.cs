@@ -592,6 +592,20 @@ namespace Vrm10
             return null;
         }
 
+        static VrmSpringBoneCollider CreateCollider(VrmProtobuf.VRMCSpringBone.Types.ColliderGroup.Types.Collider z)
+        {
+            switch (z.Type)
+            {
+                case VrmProtobuf.VRMCSpringBone.Types.ColliderGroup.Types.ColliderTypes.Sphere:
+                    return VrmSpringBoneCollider.CreateSphere(z.Offset.ToVector3(), z.Radius);
+
+                case VrmProtobuf.VRMCSpringBone.Types.ColliderGroup.Types.ColliderTypes.Capsule:
+                    return VrmSpringBoneCollider.CreateCapsule(z.Offset.ToVector3(), z.Radius, z.Tail.ToVector3());
+            }
+
+            throw new Exception();
+        }
+
         public SpringBoneManager CreateVrmSpringBone(List<Node> nodes)
         {
             var gltfVrm = Gltf.Extensions.VRMCSpringBone;
@@ -607,7 +621,7 @@ namespace Vrm10
                 gltfVrm.ColliderGroups.Select(y =>
                 new SpringBoneColliderGroup(
                     nodes[y.Node],
-                    y.Colliders.Select(z => new VrmSpringBoneColliderSphere(z.Offset.ToVector3(), z.Radius))
+                    y.Colliders.Select(z => CreateCollider(z))
                 )
             ));
 

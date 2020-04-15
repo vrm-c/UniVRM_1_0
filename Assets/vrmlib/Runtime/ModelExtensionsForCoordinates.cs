@@ -151,7 +151,19 @@ namespace VrmLib
                                 for (int i = 0; i < c.Colliders.Count; ++i)
                                 {
                                     var s = c.Colliders[i];
-                                    c.Colliders[i] = new VrmSpringBoneColliderSphere(s.Offset.ReverseZ(), s.Radius);
+                                    switch (s.ColliderType)
+                                    {
+                                        case VrmSpringBoneColliderTypes.Sphere:
+                                            c.Colliders[i] = VrmSpringBoneCollider.CreateSphere(s.Offset.ReverseZ(), s.Radius);
+                                            break;
+
+                                        case VrmSpringBoneColliderTypes.Capsule:
+                                            c.Colliders[i] = VrmSpringBoneCollider.CreateCapsule(s.Offset.ReverseZ(), s.Radius, s.CapsuleTail.ReverseZ());
+                                            break;
+
+                                        default:
+                                            throw new NotImplementedException();
+                                    }
                                 }
                             }
 
