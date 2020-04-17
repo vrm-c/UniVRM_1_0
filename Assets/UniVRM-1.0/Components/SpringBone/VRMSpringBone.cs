@@ -39,7 +39,7 @@ namespace UniVRM10
         [SerializeField]
         public List<Transform> RootBones = new List<Transform>();
 
-        [SerializeField, Range(0, 0.5f), Header("Collider")]
+        [SerializeField, Range(0, 0.5f), Header("Collision")]
         public float m_hitRadius = 0.02f;
 
         [SerializeField]
