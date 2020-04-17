@@ -71,7 +71,7 @@ namespace UniVRM10
                     {
                         foreach (var collider in group.Colliders)
                         {
-                            switch (collider.ColliderTypes)
+                            switch (collider.ColliderType)
                             {
                                 case SpringBoneColliderTypes.Sphere:
                                     m_colliderList.Add(new SpringBoneLogic.InternalCollider

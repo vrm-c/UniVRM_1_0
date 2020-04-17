@@ -325,7 +325,7 @@ namespace UniVRM10
                     {
                         var colliderGroups = colliderGroup.Colliders.Select(x =>
                         {
-                            switch (x.ColliderTypes)
+                            switch (x.ColliderType)
                             {
                                 case SpringBoneColliderTypes.Sphere:
                                     return VrmLib.VrmSpringBoneCollider.CreateSphere(x.Offset.ToNumericsVector3(), x.Radius);

@@ -67,7 +67,7 @@ namespace UniVRM10
                 if (m_treeView.TryGetSpringBone(m_treeViewState.selectedIDs[0], out VRMSpringBone bone))
                 {
                     // Debug.Log(bone);
-                    using (var inspector = new VRMSpringBoneInspector(new SerializedObject(bone)))
+                    using (var inspector = new CustomInspector(new SerializedObject(bone)))
                     {
                         inspector.OnInspectorGUI();
                     }

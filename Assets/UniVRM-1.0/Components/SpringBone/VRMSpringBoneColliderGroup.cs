@@ -13,7 +13,7 @@ namespace UniVRM10
         public SpringBoneCollider[] Colliders = new SpringBoneCollider[]{
             new SpringBoneCollider
             {
-                ColliderTypes = SpringBoneColliderTypes.Capsule,
+                ColliderType = SpringBoneColliderTypes.Capsule,
                 Radius=0.1f
             }
         };
@@ -80,7 +80,7 @@ namespace UniVRM10
                 ));
             foreach (var y in Colliders)
             {
-                switch (y.ColliderTypes)
+                switch (y.ColliderType)
                 {
                     case SpringBoneColliderTypes.Sphere:
                         Gizmos.DrawWireSphere(y.Offset, y.Radius);
