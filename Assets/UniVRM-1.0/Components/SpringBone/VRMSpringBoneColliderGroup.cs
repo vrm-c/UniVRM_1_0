@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace UniVRM10
 {
+    [AddComponentMenu("VRM/VRMSpringBoneColliderGroup")]
 #if UNITY_5_5_OR_NEWER
     [DefaultExecutionOrder(11001)]
 #endif

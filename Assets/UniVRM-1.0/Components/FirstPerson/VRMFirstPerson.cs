@@ -6,6 +6,8 @@ using UnityEngine;
 
 namespace UniVRM10
 {
+    [AddComponentMenu("VRM/VRMFirstPerson")]
+    [DisallowMultipleComponent]
     public class VRMFirstPerson : MonoBehaviour
     {
         // If no layer names are set, use the default layer IDs.

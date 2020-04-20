@@ -6,6 +6,7 @@ using UnityEngine;
 
 namespace UniVRM10
 {
+    [AddComponentMenu("VRM/VRMBlendShapeProxy")]
     [DisallowMultipleComponent]
     public class VRMBlendShapeProxy : MonoBehaviour
     {
@@ -108,7 +109,7 @@ namespace UniVRM10
         {
             get
             {
-                if(!Application.isPlaying)
+                if (!Application.isPlaying)
                 {
                     return null;
                 }
