@@ -12,7 +12,7 @@ namespace UniVRM10
     [Serializable]
     public class SpringBoneCollider
     {
-        public SpringBoneColliderTypes ColliderTypes;
+        public SpringBoneColliderTypes ColliderType;
 
         /// <summary>bone local position</summary>
         public Vector3 Offset;

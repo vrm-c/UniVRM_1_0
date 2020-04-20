@@ -226,7 +226,7 @@ namespace UniVRM10
                             case VrmLib.VrmSpringBoneColliderTypes.Sphere:
                                 return new UniVRM10.SpringBoneCollider()
                                 {
-                                    ColliderTypes = SpringBoneColliderTypes.Sphere,
+                                    ColliderType = SpringBoneColliderTypes.Sphere,
                                     Offset = x.Offset.ToUnityVector3(),
                                     Radius = x.Radius
                                 };
@@ -234,7 +234,7 @@ namespace UniVRM10
                             case VrmLib.VrmSpringBoneColliderTypes.Capsule:
                                 return new UniVRM10.SpringBoneCollider()
                                 {
-                                    ColliderTypes = SpringBoneColliderTypes.Capsule,
+                                    ColliderType = SpringBoneColliderTypes.Capsule,
                                     Offset = x.Offset.ToUnityVector3(),
                                     Radius = x.Radius,
                                     Tail = x.CapsuleTail.ToUnityVector3(),

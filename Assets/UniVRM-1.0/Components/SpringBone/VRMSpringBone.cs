@@ -39,7 +39,7 @@ namespace UniVRM10
         [SerializeField]
         public List<Transform> RootBones = new List<Transform>();
 
-        [SerializeField, Range(0, 0.5f), Header("Collider")]
+        [SerializeField, Range(0, 0.5f), Header("Collision")]
         public float m_hitRadius = 0.02f;
 
         [SerializeField]
@@ -71,7 +71,7 @@ namespace UniVRM10
                     {
                         foreach (var collider in group.Colliders)
                         {
-                            switch (collider.ColliderTypes)
+                            switch (collider.ColliderType)
                             {
                                 case SpringBoneColliderTypes.Sphere:
                                     m_colliderList.Add(new SpringBoneLogic.InternalCollider
