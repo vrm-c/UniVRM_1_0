@@ -14,6 +14,11 @@ namespace VrmLib
             public HumanoidBones? HumanBone;
             public bool TreeHasHumanBone;
 
+            /// <summary>
+            /// 子階層に消さずに残すBoneが含まれるか
+            /// </summary>
+            public bool TreeHasUsedBone;
+
             public bool SpringUse;
 
             public override string ToString()
@@ -37,6 +42,7 @@ namespace VrmLib
                     if (HumanBone.HasValue && HumanBone.Value != HumanoidBones.unknown) return true;
                     if (SpringUse) return true;
                     if (TreeHasHumanBone) return true;
+                    if (TreeHasUsedBone) return true;
                     return false;
                 }
             }
@@ -82,6 +88,17 @@ namespace VrmLib
                     }
                 }
             }
+
+            // 削除されるNodeのうち、子階層に1つでも残るNodeがあればそのNodeも残す
+            for (int i = 0; i < nodeUsage.Length; i++)
+            {
+                if (nodeUsage[i].Used) continue;
+
+                var children = model.Nodes[i].Traverse();
+
+                nodeUsage[i].TreeHasUsedBone = children.Where(x => nodeUsage[model.Nodes.IndexOf(x)].Used).Any();
+            }
+
 
             var spring = model.Vrm?.SpringBone;
             if (spring != null)

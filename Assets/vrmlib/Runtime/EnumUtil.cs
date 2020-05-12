@@ -13,5 +13,15 @@ namespace VrmLib
 
             return (T)Enum.Parse(typeof(T), src, ignoreCase);
         }
+
+        public static T Cast<T>(object src, bool ignoreCase = true) where T : struct
+        {
+            if (src is null)
+            {
+                throw new ArgumentNullException();
+            }
+
+            return (T)Enum.Parse(typeof(T), src.ToString(), ignoreCase);
+        }
     }
 }
