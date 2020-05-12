@@ -1,13 +1,11 @@
 using System;
-using System.Collections.Generic;
-using System.Numerics;
 
 namespace VrmLib
 {
     public class MToonMaterial : UnlitMaterial
     {
         public override LinearColor BaseColorFactor
-       {
+        {
             get => Definition.Color.LitColor;
             set => Definition.Color.LitColor = value;
         }
@@ -65,16 +63,6 @@ namespace VrmLib
         public float _SrcBlend;
         public float _DstBlend;
         public float _ZWrite;
-
-
-        bool? MTOON_OUTLINE_COLORED;
-        bool? MTOON_OUTLINE_COLOR_MIXED;
-        bool? MTOON_OUTLINE_WIDTH_WORLD;
-        bool? _ALPHABLEND_ON;
-
-        string RenderType;
-
-        MToon.CullMode _OutlineCullMode;
 
         public MToon.MToonDefinition Definition;
 

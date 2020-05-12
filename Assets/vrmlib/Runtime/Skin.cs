@@ -274,6 +274,9 @@ namespace VrmLib
             }
         }
 
+        /// <summary>
+        /// nullになったjointを除去して、boneweightを前に詰める
+        /// </summary>
         public void FixBoneWeight(BufferAccessor jointsAccessor, BufferAccessor weightsAccessor)
         {
             var map = Joints.Select((x, i) => ValueTuple.Create(i, x)).Where(x => x.Item2 != null).ToArray();

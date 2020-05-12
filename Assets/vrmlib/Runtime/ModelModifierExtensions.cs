@@ -177,6 +177,15 @@ namespace VrmLib
             {
                 modifier.NodeRemove(node);
                 removeNames.Add($"[{node.Name}]");
+                foreach (var skin in modifier.Model.Skins)
+                {
+                    var index = skin.Joints.IndexOf(node);
+                    if (index != -1)
+                    {
+                        // remove
+                        skin.Joints[index] = null;
+                    }
+                }
             }
 
             // 削除されたノードを参照する頂点バッファを修正する

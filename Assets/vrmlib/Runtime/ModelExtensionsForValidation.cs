@@ -5,13 +5,30 @@ namespace VrmLib
 {
     public static class ModelExtensionsForValidation
     {
+        public static void Validate(this Model model, Node node, string message)
+        {
+            if (node is null)
+            {
+                throw new ArgumentNullException(message);
+            }
+            if (!model.Nodes.Contains(node))
+            {
+                throw new ArgumentException($"{message}: node found in nodes");
+            }
+        }
+
         public static void Validate(this Model model)
         {
             foreach (var node in model.Root.Traverse().Skip(1))
             {
-                if (!model.Nodes.Contains(node))
+                model.Validate(node, "nodes must Contains node");
+            }
+
+            foreach (var skin in model.Skins)
+            {
+                foreach (var joint in skin.Joints)
                 {
-                    throw new Exception("nodes must Contains node");
+                    model.Validate(joint, "nodes must Contatins joint");
                 }
             }
 
@@ -23,10 +40,7 @@ namespace VrmLib
                     {
                         foreach (var v in b.BlendShapeValues)
                         {
-                            if (v.Node is null)
-                            {
-                                throw new ArgumentNullException("BlendShapeBindValue.Node is null");
-                            }
+                            model.Validate(v.Node, "BlendShapeBindValue.Node is null");
                         }
                     }
                 }
@@ -35,10 +49,7 @@ namespace VrmLib
                 {
                     foreach (var a in model.Vrm.FirstPerson.Annotations)
                     {
-                        if (a.Node is null)
-                        {
-                            throw new ArgumentNullException("FirstPersonMeshAnnotation.Node is null");
-                        }
+                        model.Validate(a.Node, "FirstPersonMeshAnnotation.Node is null");
                     }
                 }
 

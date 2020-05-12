@@ -33,7 +33,7 @@ namespace Vrm10
                         if (y.TargetValue.Count > 1) target.Y = y.TargetValue[1];
                         if (y.TargetValue.Count > 2) target.Z = y.TargetValue[2];
                         if (y.TargetValue.Count > 3) target.W = y.TargetValue[3];
-                        var value = new MaterialBindValue(material, EnumUtil.Parse<MaterialBindType>(y.Type.ToString()), target);
+                        var value = new MaterialBindValue(material, EnumUtil.Cast<MaterialBindType>(y.Type), target);
                         return value;
                     }));
                 return expression;
@@ -64,20 +64,12 @@ namespace Vrm10
             var m = new VrmProtobuf.BlendShapeGroup.Types.MaterialValue
             {
                 Material = materials.IndexOfThrow(self.Material),
+                Type = EnumUtil.Cast<VrmProtobuf.BlendShapeGroup.Types.MaterialValueTypes>(self.BindType),
             };
-
-            switch (self.Property)
-            {
-                // Type = self.Property,
-                default:
-                    throw new Exception($"unknown exception: {self.Property}");
-            }
-
             m.TargetValue.Add(self.Value.X);
             m.TargetValue.Add(self.Value.Y);
             m.TargetValue.Add(self.Value.Z);
             m.TargetValue.Add(self.Value.W);
-
             return m;
         }
 
