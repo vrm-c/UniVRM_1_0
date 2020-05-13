@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Numerics;
 
 namespace VrmLib
@@ -13,25 +14,45 @@ namespace VrmLib
         public readonly MaterialBindType BindType;
 
         /// <summary>
-        /// VRM-0.x で使っていた。
-        /// VRM-1.0 では廃止して、MaterialBindType を使う
+        /// Unity仕様の Property名 + Vector4
         /// </summary>       
-        public string Property => BindType.GetProperty(Material);
-
-        public readonly Vector4 Value;
-
-        public MaterialBindValue(Material material, String property, Vector4 value)
+        public KeyValuePair<string, Vector4> Property
         {
-            Material = material;
-            BindType = material.GetBindType(property);
-            Value = value;
+            get
+            {
+                switch (BindType)
+                {
+                    case MaterialBindType.UvScale:
+                        return new KeyValuePair<string, Vector4>(
+                            MaterialBindTypeExtensions.UV_PROPERTY,
+                            new Vector4(m_value.X, m_value.Y, 0, 0)
+                            );
+
+                    case MaterialBindType.UvOffset:
+                        return new KeyValuePair<string, Vector4>(
+                            MaterialBindTypeExtensions.UV_PROPERTY,
+                            new Vector4(1, 1, m_value.X, m_value.Y)
+                            );
+                }
+
+                return new KeyValuePair<string, Vector4>(BindType.GetProperty(Material), m_value);
+            }
         }
+
+        readonly Vector4 m_value;
+
+        // public MaterialBindValue(Material material, String property, Vector4 value)
+        // {
+        //     Material = material;
+        //     BindType = material.GetBindType(property);
+        //     m_value = value;
+        // }
 
         public MaterialBindValue(Material material, MaterialBindType bindType, Vector4 value)
         {
             Material = material;
             BindType = bindType;
-            Value = value;
+            m_value = value;
         }
     }
 }

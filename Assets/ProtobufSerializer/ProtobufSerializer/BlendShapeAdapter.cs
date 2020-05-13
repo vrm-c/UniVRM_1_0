@@ -66,10 +66,11 @@ namespace Vrm10
                 Material = materials.IndexOfThrow(self.Material),
                 Type = EnumUtil.Cast<VrmProtobuf.BlendShapeGroup.Types.MaterialValueTypes>(self.BindType),
             };
-            m.TargetValue.Add(self.Value.X);
-            m.TargetValue.Add(self.Value.Y);
-            m.TargetValue.Add(self.Value.Z);
-            m.TargetValue.Add(self.Value.W);
+            var kv = self.Property;
+            m.TargetValue.Add(kv.Value.X);
+            m.TargetValue.Add(kv.Value.Y);
+            m.TargetValue.Add(kv.Value.Z);
+            m.TargetValue.Add(kv.Value.W);
             return m;
         }
 

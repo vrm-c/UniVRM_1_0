@@ -56,28 +56,21 @@ namespace UniVRM10
 
         static UniVRM10.MaterialValueBinding? Build10(this VrmLib.MaterialBindValue bind, ModelMap loader)
         {
-            var value = bind.Value.ToUnityVector4();
+            var kv = bind.Property;
+            var value = kv.Value.ToUnityVector4();
             var material = loader.Materials[bind.Material];
 
             var binding = default(UniVRM10.MaterialValueBinding?);
-
             if (material != null)
             {
-                var propertyName = bind.Property;
-                if (propertyName.EndsWith("_ST_S")
-                || propertyName.EndsWith("_ST_T"))
-                {
-                    propertyName = propertyName.Substring(0, propertyName.Length - 2);
-                }
-
                 try
                 {
                     binding = new UniVRM10.MaterialValueBinding
                     {
                         MaterialName = bind.Material.Name, // UniVRM-0Xの実装は名前で持っている
-                        ValueName = bind.Property,
+                        ValueName = kv.Key,
                         TargetValue = value,
-                        BaseValue = material.GetColor(propertyName),
+                        BaseValue = material.GetColor(kv.Key),
                     };
                 }
                 catch (Exception)

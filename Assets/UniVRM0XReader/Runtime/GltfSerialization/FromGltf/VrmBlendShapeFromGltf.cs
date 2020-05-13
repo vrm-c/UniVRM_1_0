@@ -37,6 +37,50 @@ namespace GltfSerializationAdapter
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// VRM-0.X の MaterialBindValue を VRM-1.0 仕様に変換する
+        ///
+        /// * Property名 => enum MaterialBindType
+        /// * 特に _MainTex_ST の場合、MaterialBindType.UvScale + MaterialBindType.UvScale ２つになりうる
+        ///
+        /// </summary>
+        static IEnumerable<MaterialBindValue> FromGltf(VrmMaterialValueBind y, List<Material> materials)
+        {
+            var material = materials.First(z => z.Name == y.materialName);
+            var target = new Vector4(y.targetValue[0], y.targetValue[1], y.targetValue[2], y.targetValue[3]);
+
+            if (y.propertyName.EndsWith("_ST")
+            || y.propertyName.EndsWith("_ST_S")
+            || y.propertyName.EndsWith("_ST_T"))
+            {
+                if (target.X == 1.0f && target.Y == 1.0f && target.Z == 0 && target.W == 0)
+                {
+                    // 変化なし。不要
+                }
+                else if (target.X == 1.0f && target.Y == 1.0f)
+                {
+                    // offset only => ZW に格納された値を XY に移動する
+                    yield return new MaterialBindValue(material, MaterialBindType.UvOffset, new Vector4(target.Z, target.W, 0, 0));
+                }
+                else if (target.Z == 0 && target.W == 0)
+                {
+                    // scale only
+                    yield return new MaterialBindValue(material, MaterialBindType.UvScale, target);
+                }
+                else
+                {
+                    // scale と offset ２つになる
+                    yield return new MaterialBindValue(material, MaterialBindType.UvOffset, new Vector4(target.Z, target.W, 0, 0));
+                    yield return new MaterialBindValue(material, MaterialBindType.UvScale, target);
+                }
+            }
+            else
+            {
+                var bindType = material.GetBindType(y.propertyName);
+                yield return new MaterialBindValue(material, bindType, target);
+            }
+        }
+
         public static BlendShapeManager FromGltf(this VrmBlendShapeMaster master, List<MeshGroup> meshes, List<Material> materials, List<Node> nodes)
         {
             var manager = new BlendShapeManager();
@@ -53,13 +97,7 @@ namespace GltfSerializationAdapter
                         return value;
                     }));
                 expression.MaterialValues.AddRange(
-                    x.materialValues.Select(y =>
-                    {
-                        var material = materials.First(z => z.Name == y.materialName);
-                        var target = new Vector4(y.targetValue[0], y.targetValue[1], y.targetValue[2], y.targetValue[3]);
-                        var value = new MaterialBindValue(material, y.propertyName, target);
-                        return value;
-                    }));
+                    x.materialValues.SelectMany(y => FromGltf(y, materials)));
                 return expression;
             }));
             return manager;

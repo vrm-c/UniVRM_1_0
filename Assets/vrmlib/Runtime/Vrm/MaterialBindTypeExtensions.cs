@@ -4,7 +4,7 @@ namespace VrmLib
 {
     public static class MaterialBindTypeExtensions
     {
-        const string UV_PROPERTY = "_MainTex_ST";
+        public const string UV_PROPERTY = "_MainTex_ST";
         const string COLOR_PROPERTY = "_Color";
         const string EMISSION_COLOR_PROPERTY = "_EmissionColor";
         const string RIM_COLOR_PROPERTY = "_RimColor";
@@ -157,6 +157,12 @@ namespace VrmLib
 
         public static MaterialBindType GetBindType(this Material material, string property)
         {
+            if (property.EndsWith("_ST_S")
+            || property.EndsWith("_ST_T"))
+            {
+                property = property.Substring(0, property.Length - 2);
+            }
+
             if (material is UnlitMaterial unlit)
             {
                 return _GetBindType(unlit, property);

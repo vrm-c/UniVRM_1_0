@@ -116,6 +116,67 @@ namespace UniVRM10
 
         #region Export 1.0
         /// <summary>
+        /// VRM-0.X の MaterialBindValue を VRM-1.0 仕様に変換する
+        ///
+        /// * Property名 => enum MaterialBindType
+        /// * 特に _MainTex_ST の場合、MaterialBindType.UvScale + MaterialBindType.UvScale ２つになりうる
+        ///
+        /// </summary>
+        // foreach (var value in clip.MaterialValues)
+        // {
+        //     var materialPair = Materials.FirstOrDefault(x => x.Key.name == value.MaterialName);
+        //     if (materialPair.Equals(default(KeyValuePair<Material, VrmLib.Material>)))
+        //         continue;
+
+        //     var bind = new VrmLib.MaterialBindValue(
+        //         materialPair.Value,
+        //         value.ValueName,
+        //         value.TargetValue.ToNumericsVector4()
+        //         );
+        //     blendShape.MaterialValues.Add(bind);
+        // }
+        IEnumerable<VrmLib.MaterialBindValue> FromGltf(MaterialValueBinding y)
+        {
+            var materialPair = Materials.First(z => z.Key.name == y.MaterialName);
+            if (materialPair.Equals(default(KeyValuePair<Material, VrmLib.Material>)))
+                yield break;
+            var material = materialPair.Value;
+
+            var target = y.TargetValue.ToNumericsVector4();
+
+            if (y.ValueName.EndsWith("_ST")
+            || y.ValueName.EndsWith("_ST_S")
+            || y.ValueName.EndsWith("_ST_T"))
+            {
+                if (target.X == 1.0f && target.Y == 1.0f && target.Z == 0 && target.W == 0)
+                {
+                    // 変化なし。不要
+                }
+                else if (target.X == 1.0f && target.Y == 1.0f)
+                {
+                    // offset only => ZW に格納された値を XY に移動する
+                    yield return new VrmLib.MaterialBindValue(material, VrmLib.MaterialBindType.UvOffset, new System.Numerics.Vector4(target.Z, target.W, 0, 0));
+                }
+                else if (target.Z == 0 && target.W == 0)
+                {
+                    // scale only
+                    yield return new VrmLib.MaterialBindValue(material, VrmLib.MaterialBindType.UvScale, target);
+                }
+                else
+                {
+                    // scale と offset ２つになる
+                    yield return new VrmLib.MaterialBindValue(material, VrmLib.MaterialBindType.UvOffset, new System.Numerics.Vector4(target.Z, target.W, 0, 0));
+                    yield return new VrmLib.MaterialBindValue(material, VrmLib.MaterialBindType.UvScale, target);
+                }
+            }
+            else
+            {
+                var bindType = VrmLib.MaterialBindTypeExtensions.GetBindType(material, y.ValueName);
+                yield return new VrmLib.MaterialBindValue(material, bindType, target);
+            }
+        }
+
+        /// <summary>
         /// metaObject が null のときは、root から取得する
         /// </summary>
         public VrmLib.Model ToModelFrom10(GameObject root, VRMMetaObject metaObject = null)
@@ -223,19 +284,7 @@ namespace UniVRM10
                             blendShape.BlendShapeValues.Add(blendShapeValue);
                         }
 
-                        foreach (var value in clip.MaterialValues)
-                        {
-                            var materialPair = Materials.FirstOrDefault(x => x.Key.name == value.MaterialName);
-                            if (materialPair.Equals(default(KeyValuePair<Material, VrmLib.Material>)))
-                                continue;
-
-                            var bind = new VrmLib.MaterialBindValue(
-                                materialPair.Value,
-                                value.ValueName,
-                                value.TargetValue.ToNumericsVector4()
-                                );
-                            blendShape.MaterialValues.Add(bind);
-                        }
+                        blendShape.MaterialValues.AddRange(clip.MaterialValues.SelectMany(FromGltf));
 
                         Model.Vrm.BlendShape.BlendShapeList.Add(blendShape);
                     }
