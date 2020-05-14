@@ -143,6 +143,22 @@ namespace UniVRM10
             }
         }
 
+        static bool EnumPopup<T>(Rect rect, SerializedProperty prop, out T newValue) where T : Enum
+        {
+            var values = (T[])Enum.GetValues(typeof(T));
+            newValue = (T)EditorGUI.EnumPopup(rect, (Enum)values[prop.enumValueIndex]);
+            var newIndex = Array.IndexOf(values, newValue);
+            if (newIndex != prop.enumValueIndex)
+            {
+                prop.enumValueIndex = newIndex;
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         static bool IntPopup(Rect rect, SerializedProperty prop, string[] options, out int newIndex)
         {
             if (options == null)
