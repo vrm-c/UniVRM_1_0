@@ -165,18 +165,6 @@ namespace UniVRM10
             }
         }
 
-        public void ImmediatelySetValue(BlendShapeClip clip, float value)
-        {
-            foreach (var binding in clip.MaterialValues)
-            {
-                Setter setter;
-                if (m_materialSetterMap.TryGetValue(binding, out setter))
-                {
-                    setter(value, true);
-                }
-            }
-        }
-
         public void AccumulateValue(BlendShapeClip clip, float value)
         {
             foreach (var binding in clip.MaterialValues)
@@ -230,8 +218,8 @@ namespace UniVRM10
             {
                 return new MaterialTarget
                 {
-                    MaterialName=binding.MaterialName,
-                    ValueName=binding.ValueName
+                    MaterialName = binding.MaterialName,
+                    ValueName = binding.ValueName
                 };
             }
         }
@@ -259,7 +247,7 @@ namespace UniVRM10
                         if (valueName.EndsWith("_ST_S"))
                         {
                             valueName = valueName.Substring(0, valueName.Length - 2);
-                            var v=material.GetVector(valueName);
+                            var v = material.GetVector(valueName);
                             value.y = v.y;
                             value.w = v.w;
                         }

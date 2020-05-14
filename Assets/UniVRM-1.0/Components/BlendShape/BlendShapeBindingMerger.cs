@@ -77,18 +77,6 @@ namespace UniVRM10
             }
         }
 
-        public void ImmediatelySetValue(BlendShapeClip clip, float value)
-        {
-            foreach (var binding in clip.Values)
-            {
-                Action<float> setter;
-                if (m_blendShapeSetterMap.TryGetValue(binding, out setter))
-                {
-                    setter(binding.Weight * value);
-                }
-            }
-        }
-
         public void AccumulateValue(BlendShapeClip clip, float value)
         {
             foreach (var binding in clip.Values)
