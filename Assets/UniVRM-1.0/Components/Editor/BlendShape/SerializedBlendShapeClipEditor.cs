@@ -178,11 +178,7 @@ namespace UniVRM10
                 return false;
             }
 
-            bakeValue = new PreviewSceneManager.BakeValue
-            {
-                BlendShapeBindings = m_targetObject.Values,
-                MaterialValueBindings = m_targetObject.MaterialValues,
-            };
+            bakeValue = PreviewSceneManager.BakeValue.Create(m_targetObject);
             return true;
         }
 

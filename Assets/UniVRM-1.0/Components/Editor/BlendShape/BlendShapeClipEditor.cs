@@ -14,11 +14,7 @@ namespace UniVRM10
         BlendShapeClip m_target;
         protected override PreviewSceneManager.BakeValue GetBakeValue()
         {
-            return new PreviewSceneManager.BakeValue
-            {
-                BlendShapeBindings = m_target.Values,
-                MaterialValueBindings = m_target.MaterialValues,
-            };
+            return PreviewSceneManager.BakeValue.Create(m_target);
         }
 
         //SerializedProperty m_thumbnailProp;

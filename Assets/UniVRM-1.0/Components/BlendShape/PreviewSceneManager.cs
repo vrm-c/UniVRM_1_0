@@ -205,6 +205,20 @@ namespace UniVRM10
         {
             public IEnumerable<BlendShapeBinding> BlendShapeBindings;
             public IEnumerable<MaterialValueBinding> MaterialValueBindings;
+
+            public static BakeValue Create(BlendShapeClip clip)
+            {
+                if (clip == null)
+                {
+                    return default;
+                }
+
+                return new BakeValue
+                {
+                    BlendShapeBindings = clip.Values,
+                    MaterialValueBindings = clip.MaterialValues,
+                };
+            }
         }
 
         Bounds m_bounds;

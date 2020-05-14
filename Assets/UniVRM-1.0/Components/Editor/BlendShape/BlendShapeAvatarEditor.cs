@@ -18,14 +18,7 @@ namespace UniVRM10
 
         protected override PreviewSceneManager.BakeValue GetBakeValue()
         {
-            var clip = m_selector.Selected;
-            var value = new PreviewSceneManager.BakeValue();
-            if (clip != null)
-            {
-                value.BlendShapeBindings = clip.Values;
-                value.MaterialValueBindings = clip.MaterialValues;
-            }
-            return value;
+            return PreviewSceneManager.BakeValue.Create(m_selector.Selected);
         }
 
         void OnSelected(BlendShapeClip clip)
@@ -37,16 +30,11 @@ namespace UniVRM10
             else if (clip != null)
             {
                 m_clipEditor = new SerializedBlendShapeEditor(clip, PreviewSceneManager);
-                PreviewSceneManager.Bake(new PreviewSceneManager.BakeValue
-                {
-                    BlendShapeBindings = clip.Values,
-                    MaterialValueBindings = clip.MaterialValues,
-                }, 1.0f);
             }
             else
             {
                 m_clipEditor = null;
-                PreviewSceneManager.Bake(new PreviewSceneManager.BakeValue(), 1.0f);
+                PreviewSceneManager.Bake(default, 1.0f);
             }
         }
 
