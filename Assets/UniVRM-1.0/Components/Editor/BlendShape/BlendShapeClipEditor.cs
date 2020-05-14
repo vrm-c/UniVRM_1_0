@@ -12,9 +12,9 @@ namespace UniVRM10
         SerializedBlendShapeEditor m_serializedEditor;
 
         BlendShapeClip m_target;
-        protected override PreviewSceneManager.BakeValue GetBakeValue()
+        protected override BlendShapeClip GetBakeValue()
         {
-            return PreviewSceneManager.BakeValue.Create(m_target);
+            return m_target;
         }
 
         //SerializedProperty m_thumbnailProp;
@@ -144,7 +144,7 @@ namespace UniVRM10
             Separator();
             EditorGUILayout.Space();
 
-            if (m_serializedEditor.Draw(out PreviewSceneManager.BakeValue bakeValue))
+            if (m_serializedEditor.Draw(out BlendShapeClip bakeValue))
             {
                 changed = true;
             }

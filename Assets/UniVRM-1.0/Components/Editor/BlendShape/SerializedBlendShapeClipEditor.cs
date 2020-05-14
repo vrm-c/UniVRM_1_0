@@ -113,7 +113,7 @@ namespace UniVRM10
             .ToArray();
         }
 
-        public bool Draw(out PreviewSceneManager.BakeValue bakeValue)
+        public bool Draw(out BlendShapeClip bakeValue)
         {
             m_changed = false;
 
@@ -178,7 +178,7 @@ namespace UniVRM10
                 return false;
             }
 
-            bakeValue = PreviewSceneManager.BakeValue.Create(m_targetObject);
+            bakeValue = m_targetObject;
             return true;
         }
 

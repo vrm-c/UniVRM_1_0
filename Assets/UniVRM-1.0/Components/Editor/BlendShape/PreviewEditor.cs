@@ -72,7 +72,7 @@ namespace UniVRM10
             }
         }
 
-        protected abstract PreviewSceneManager.BakeValue GetBakeValue();
+        protected abstract BlendShapeClip GetBakeValue();
 
         /// <summary>
         /// Preview シーンに BlendShape と MaterialValue を適用する

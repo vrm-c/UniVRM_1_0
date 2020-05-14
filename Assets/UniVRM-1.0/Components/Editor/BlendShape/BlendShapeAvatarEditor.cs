@@ -16,9 +16,9 @@ namespace UniVRM10
 
         SerializedBlendShapeEditor m_clipEditor;
 
-        protected override PreviewSceneManager.BakeValue GetBakeValue()
+        protected override BlendShapeClip GetBakeValue()
         {
-            return PreviewSceneManager.BakeValue.Create(m_selector.Selected);
+            return m_selector.Selected;
         }
 
         void OnSelected(BlendShapeClip clip)
@@ -115,7 +115,7 @@ namespace UniVRM10
                     if (m_clipEditor != null)
                     {
                         Separator();
-                        if (m_clipEditor.Draw(out PreviewSceneManager.BakeValue bakeValue))
+                        if (m_clipEditor.Draw(out BlendShapeClip bakeValue))
                         {
                             PreviewSceneManager.Bake(bakeValue, 1.0f);
                         }

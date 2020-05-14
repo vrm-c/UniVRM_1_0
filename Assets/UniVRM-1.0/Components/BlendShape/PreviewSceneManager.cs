@@ -200,29 +200,8 @@ namespace UniVRM10
         }
 
 #if UNITY_EDITOR
-
-        public struct BakeValue
-        {
-            public IEnumerable<BlendShapeBinding> BlendShapeBindings;
-            public IEnumerable<MaterialValueBinding> MaterialValueBindings;
-
-            public static BakeValue Create(BlendShapeClip clip)
-            {
-                if (clip == null)
-                {
-                    return default;
-                }
-
-                return new BakeValue
-                {
-                    BlendShapeBindings = clip.Values,
-                    MaterialValueBindings = clip.MaterialValues,
-                };
-            }
-        }
-
         Bounds m_bounds;
-        public void Bake(BakeValue bake, float weight)
+        public void Bake(BlendShapeClip bake, float weight)
         {
             //
             // Bake BlendShape
@@ -232,7 +211,7 @@ namespace UniVRM10
             {
                 foreach (var x in m_meshes)
                 {
-                    x.Bake(bake.BlendShapeBindings, weight);
+                    x.Bake(bake.Values, weight);
                     m_bounds.Expand(x.Mesh.bounds.size);
                 }
             }
@@ -240,7 +219,7 @@ namespace UniVRM10
             //
             // Update Material
             //
-            if (bake.MaterialValueBindings != null && m_materialMap != null)
+            if (bake.MaterialValues != null && m_materialMap != null)
             {
                 // clear
                 //Debug.LogFormat("clear material");
@@ -252,7 +231,7 @@ namespace UniVRM10
                     }
                 }
 
-                foreach (var x in bake.MaterialValueBindings)
+                foreach (var x in bake.MaterialValues)
                 {
                     MaterialItem item;
                     if (m_materialMap.TryGetValue(x.MaterialName, out item))
