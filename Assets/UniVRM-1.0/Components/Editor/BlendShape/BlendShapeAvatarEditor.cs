@@ -16,6 +16,8 @@ namespace UniVRM10
 
         SerializedBlendShapeEditor m_clipEditor;
 
+        int m_clipEditorMode;
+
         protected override BlendShapeClip GetBakeValue()
         {
             return m_selector.Selected;
@@ -29,7 +31,7 @@ namespace UniVRM10
             }
             else if (clip != null)
             {
-                m_clipEditor = new SerializedBlendShapeEditor(clip, PreviewSceneManager);
+                m_clipEditor = new SerializedBlendShapeEditor(clip, PreviewSceneManager, m_clipEditorMode);
             }
             else
             {
@@ -129,6 +131,7 @@ namespace UniVRM10
             }
 
             serializedObject.ApplyModifiedProperties();
+            m_clipEditorMode = m_clipEditor.Mode;
         }
     }
 }

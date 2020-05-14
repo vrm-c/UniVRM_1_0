@@ -49,23 +49,25 @@ namespace UniVRM10
             "BlendShape List",
             "Material List"
         };
+        public int Mode => m_mode;
 
         MeshPreviewItem[] m_items;
         #endregion
 
         public SerializedBlendShapeEditor(SerializedObject serializedObject,
             PreviewSceneManager previewSceneManager) : this(
-                serializedObject, (BlendShapeClip)serializedObject.targetObject, previewSceneManager)
+                serializedObject, (BlendShapeClip)serializedObject.targetObject, previewSceneManager, 0)
         { }
 
         public SerializedBlendShapeEditor(BlendShapeClip blendShapeClip,
-            PreviewSceneManager previewSceneManager) : this(
-                new SerializedObject(blendShapeClip), blendShapeClip, previewSceneManager)
+            PreviewSceneManager previewSceneManager, int mode) : this(
+                new SerializedObject(blendShapeClip), blendShapeClip, previewSceneManager, mode)
         { }
 
         public SerializedBlendShapeEditor(SerializedObject serializedObject, BlendShapeClip targetObject,
-            PreviewSceneManager previewSceneManager)
+            PreviewSceneManager previewSceneManager, int mode)
         {
+            m_mode = mode;
             this.m_serializedObject = serializedObject;
             this.m_targetObject = targetObject;
 
