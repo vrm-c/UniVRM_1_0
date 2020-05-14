@@ -209,10 +209,13 @@ namespace UniVRM10
             m_bounds = default(Bounds);
             if (m_meshes != null)
             {
-                foreach (var x in m_meshes)
+                if (bake != null)
                 {
-                    x.Bake(bake.Values, weight);
-                    m_bounds.Expand(x.Mesh.bounds.size);
+                    foreach (var x in m_meshes)
+                    {
+                        x.Bake(bake.Values, weight);
+                        m_bounds.Expand(x.Mesh.bounds.size);
+                    }
                 }
             }
 

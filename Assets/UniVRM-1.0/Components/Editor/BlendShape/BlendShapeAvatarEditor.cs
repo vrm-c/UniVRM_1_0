@@ -115,10 +115,8 @@ namespace UniVRM10
                     if (m_clipEditor != null)
                     {
                         Separator();
-                        if (m_clipEditor.Draw(out BlendShapeClip bakeValue))
-                        {
-                            PreviewSceneManager.Bake(bakeValue, 1.0f);
-                        }
+                        m_clipEditor.Draw(out BlendShapeClip bakeValue);
+                        PreviewSceneManager.Bake(bakeValue, 1.0f);
                     }
                     break;
 

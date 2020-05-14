@@ -172,14 +172,8 @@ namespace UniVRM10
 
             m_serializedObject.ApplyModifiedProperties();
 
-            if (!m_changed)
-            {
-                bakeValue = default;
-                return false;
-            }
-
             bakeValue = m_targetObject;
-            return true;
+            return m_changed;
         }
 
         void ClipGUI()

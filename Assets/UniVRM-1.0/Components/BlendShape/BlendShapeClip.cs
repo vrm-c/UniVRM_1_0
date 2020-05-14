@@ -55,18 +55,22 @@ namespace UniVRM10
         public VrmLib.BlendShapePreset Preset;
 
         /// <summary>
-        /// BlendShapeに対する参照(index ベース)
-        /// </summary>
-        /// <value></value>
+        /// 対象メッシュの BlendShape を操作する
+        /// <summary>
         [SerializeField]
         public BlendShapeBinding[] Values = new BlendShapeBinding[] { };
 
         /// <summary>
-        /// マテリアルに対する参照(名前ベース)
-        /// </summary>
-        /// <value></value>
+        /// 対象マテリアルの Color を操作する
+        /// <summary>
         [SerializeField]
         public MaterialValueBinding[] MaterialValues = new MaterialValueBinding[] { };
+
+        /// <summary>
+        /// 対象マテリアルの UVScale+Offset を操作する
+        /// <summary>
+        [SerializeField]
+        public MaterialUVBinding[] MaterialUVBindings = new MaterialUVBinding[] { };
 
         /// <summary>
         /// UniVRM-0.45: trueの場合、このBlendShapeClipは0と1の間の中間値を取らない。四捨五入する
@@ -74,12 +78,21 @@ namespace UniVRM10
         [SerializeField]
         public bool IsBinary;
 
+        /// <summary>
+        /// この BlendShape と Blink(Blink, BlinkLeft, BlinkRight) が同時に有効な場合、Blink の Weight を 0 にする
+        /// </summary>
         [SerializeField]
         public bool IgnoreBlink;
 
+        /// <summary>
+        /// この BlendShape と LookAt(LookUp, LookDown, LookLeft, LookRight) が同時に有効な場合、LookAt の Weight を 0 にする
+        /// </summary>
         [SerializeField]
         public bool IgnoreLookAt;
 
+        /// <summary>
+        /// この BlendShape と Mouth(Aa, Ih, Ou, Ee, Oh) が同時に有効な場合、Mouth の Weight を 0 にする
+        /// </summary>
         [SerializeField]
         public bool IgnoreMouth;
     }
