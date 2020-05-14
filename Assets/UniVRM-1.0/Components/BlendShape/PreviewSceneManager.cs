@@ -205,11 +205,10 @@ namespace UniVRM10
         {
             public IEnumerable<BlendShapeBinding> BlendShapeBindings;
             public IEnumerable<MaterialValueBinding> MaterialValueBindings;
-            public float Weight;
         }
 
         Bounds m_bounds;
-        public void Bake(BakeValue bake)
+        public void Bake(BakeValue bake, float weight)
         {
             //
             // Bake BlendShape
@@ -219,7 +218,7 @@ namespace UniVRM10
             {
                 foreach (var x in m_meshes)
                 {
-                    x.Bake(bake.BlendShapeBindings, bake.Weight);
+                    x.Bake(bake.BlendShapeBindings, weight);
                     m_bounds.Expand(x.Mesh.bounds.size);
                 }
             }
@@ -257,7 +256,7 @@ namespace UniVRM10
 
                             var value = item.Material.GetVector(valueName);
                             //Debug.LogFormat("{0} => {1}", valueName, x.TargetValue);
-                            value += ((x.TargetValue - x.BaseValue) * bake.Weight);
+                            value += ((x.TargetValue - x.BaseValue) * weight);
                             item.Material.SetColor(valueName, value);
                         }
                     }

@@ -18,7 +18,6 @@ namespace UniVRM10
             {
                 BlendShapeBindings = m_target.Values,
                 MaterialValueBindings = m_target.MaterialValues,
-                Weight = 1.0f,
             };
         }
 
@@ -149,15 +148,14 @@ namespace UniVRM10
             Separator();
             EditorGUILayout.Space();
 
-            var result = m_serializedEditor.Draw();
-            if ((changed || result.Changed) && PreviewSceneManager != null)
+            if (m_serializedEditor.Draw(out PreviewSceneManager.BakeValue bakeValue))
             {
-                PreviewSceneManager.Bake(new PreviewSceneManager.BakeValue
-                {
-                    BlendShapeBindings = result.BlendShapeBindings,
-                    MaterialValueBindings = result.MaterialValueBindings,
-                    Weight = m_previewSlider
-                });
+                changed = true;
+            }
+
+            if (changed && PreviewSceneManager != null)
+            {
+                PreviewSceneManager.Bake(bakeValue, m_previewSlider);
             }
         }
 

@@ -82,7 +82,7 @@ namespace UniVRM10
             if (m_scene != null)
             {
                 //Debug.Log("Bake");
-                m_scene.Bake(GetBakeValue());
+                m_scene.Bake(GetBakeValue(), 1.0f);
             }
         }
 
@@ -95,7 +95,7 @@ namespace UniVRM10
             }
 
             var mainObject = AssetDatabase.LoadMainAssetAtPath(assetPath);
-            if(mainObject != null)
+            if (mainObject != null)
             {
                 //return mainObject;
             }

@@ -113,16 +113,7 @@ namespace UniVRM10
             .ToArray();
         }
 
-        public struct DrawResult
-        {
-            public bool Changed;
-
-            public BlendShapeBinding[] BlendShapeBindings;
-
-            public MaterialValueBinding[] MaterialValueBindings;
-        }
-
-        public DrawResult Draw()
+        public bool Draw(out PreviewSceneManager.BakeValue bakeValue)
         {
             m_changed = false;
 
@@ -181,12 +172,18 @@ namespace UniVRM10
 
             m_serializedObject.ApplyModifiedProperties();
 
-            return new DrawResult
+            if (!m_changed)
             {
-                Changed = m_changed,
+                bakeValue = default;
+                return false;
+            }
+
+            bakeValue = new PreviewSceneManager.BakeValue
+            {
                 BlendShapeBindings = m_targetObject.Values,
-                MaterialValueBindings = m_targetObject.MaterialValues
+                MaterialValueBindings = m_targetObject.MaterialValues,
             };
+            return true;
         }
 
         void ClipGUI()
