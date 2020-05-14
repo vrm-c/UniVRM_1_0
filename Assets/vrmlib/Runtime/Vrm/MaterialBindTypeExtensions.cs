@@ -5,11 +5,11 @@ namespace VrmLib
     public static class MaterialBindTypeExtensions
     {
         public const string UV_PROPERTY = "_MainTex_ST";
-        const string COLOR_PROPERTY = "_Color";
-        const string EMISSION_COLOR_PROPERTY = "_EmissionColor";
-        const string RIM_COLOR_PROPERTY = "_RimColor";
-        const string OUTLINE_COLOR_PROPERTY = "_OutlineColor";
-        const string SHADE_COLOR_PROPERTY = "_ShadeColor";
+        public const string COLOR_PROPERTY = "_Color";
+        public const string EMISSION_COLOR_PROPERTY = "_EmissionColor";
+        public const string RIM_COLOR_PROPERTY = "_RimColor";
+        public const string OUTLINE_COLOR_PROPERTY = "_OutlineColor";
+        public const string SHADE_COLOR_PROPERTY = "_ShadeColor";
 
         #region UnlitMaterial
         static string _GetProperty(UnlitMaterial unlit, MaterialBindType bindType)
@@ -176,6 +176,29 @@ namespace VrmLib
             if (material is MToonMaterial mtoon)
             {
                 return _GetBindType(mtoon, property);
+            }
+
+            throw new NotImplementedException();
+        }
+
+        public static MaterialBindType GetBindType(string property)
+        {
+            switch (property)
+            {
+                case COLOR_PROPERTY:
+                    return MaterialBindType.Color;
+
+                case EMISSION_COLOR_PROPERTY:
+                    return MaterialBindType.EmissionColor;
+
+                case RIM_COLOR_PROPERTY:
+                    return MaterialBindType.RimColor;
+
+                case SHADE_COLOR_PROPERTY:
+                    return MaterialBindType.ShadeColor;
+
+                case OUTLINE_COLOR_PROPERTY:
+                    return MaterialBindType.OutlineColor;
             }
 
             throw new NotImplementedException();
