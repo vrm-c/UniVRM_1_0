@@ -14,7 +14,7 @@ namespace UniVRM10
 
         BlendShapeClipSelector m_selector;
 
-        SerializedBlendShapeEditor m_clipEditor;
+        SerializedBlendShapeEditor m_serializedEditor;
 
         int m_clipEditorMode;
 
@@ -27,15 +27,15 @@ namespace UniVRM10
         {
             if (PreviewSceneManager == null)
             {
-                m_clipEditor = null;
+                m_serializedEditor = null;
             }
             else if (clip != null)
             {
-                m_clipEditor = new SerializedBlendShapeEditor(clip, PreviewSceneManager, m_clipEditorMode);
+                m_serializedEditor = new SerializedBlendShapeEditor(clip, PreviewSceneManager, m_clipEditorMode);
             }
             else
             {
-                m_clipEditor = null;
+                m_serializedEditor = null;
                 PreviewSceneManager.Bake(default, 1.0f);
             }
         }
@@ -114,10 +114,10 @@ namespace UniVRM10
             {
                 case 0:
                     m_selector.SelectGUI();
-                    if (m_clipEditor != null)
+                    if (m_serializedEditor != null)
                     {
                         Separator();
-                        m_clipEditor.Draw(out BlendShapeClip bakeValue);
+                        m_serializedEditor.Draw(out BlendShapeClip bakeValue);
                         PreviewSceneManager.Bake(bakeValue, 1.0f);
                     }
                     break;
@@ -131,7 +131,7 @@ namespace UniVRM10
             }
 
             serializedObject.ApplyModifiedProperties();
-            m_clipEditorMode = m_clipEditor.Mode;
+            m_clipEditorMode = m_serializedEditor.Mode;
         }
     }
 }

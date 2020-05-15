@@ -17,9 +17,6 @@ namespace UniVRM10
             return m_target;
         }
 
-        //SerializedProperty m_thumbnailProp;
-        SerializedProperty m_isBinaryProp;
-
         protected override GameObject GetPrefab()
         {
             return m_target.Prefab;
@@ -84,56 +81,23 @@ namespace UniVRM10
             if (m_serializedEditor == null)
             {
                 m_serializedEditor = new SerializedBlendShapeEditor(serializedObject, PreviewSceneManager);
-                //m_thumbnailProp = serializedObject.FindProperty("Thumbnail");
-                m_isBinaryProp = serializedObject.FindProperty("IsBinary");
             }
 
             EditorGUILayout.BeginHorizontal();
-
-            /*
-            int thumbnailSize = 96;
-            var objectReferenceValue = EditorGUILayout.ObjectField(m_thumbnailProp.objectReferenceValue, typeof(Texture), false,
-                GUILayout.Width(thumbnailSize), GUILayout.Height(thumbnailSize));
-            if (m_thumbnailProp.objectReferenceValue != objectReferenceValue)
-            {
-                m_thumbnailProp.objectReferenceValue = objectReferenceValue;
-                serializedObject.ApplyModifiedProperties();
-            }
-            */
 
             var changed = false;
             EditorGUILayout.BeginVertical();
             base.OnInspectorGUI();
             EditorGUILayout.LabelField("Preview Weight");
             var previewSlider = EditorGUILayout.Slider(m_previewSlider, 0, 1.0f);
-            GUI.enabled = PreviewTexture != null;
-            /*
-            if (GUILayout.Button("save thumbnail"))
-            {
-                //var ext = "jpg";
-                var ext = "png";
-                var asset = UnityPath.FromAsset(target);
-                var path = EditorUtility.SaveFilePanel(
-                               "save thumbnail",
-                               asset.Parent.FullPath,
-                               string.Format("{0}.{1}", asset.FileNameWithoutExtension, ext),
-                               ext);
-                if (!string.IsNullOrEmpty(path))
-                {
-                    var thumbnail = SaveResizedImage(PreviewTexture, UnityPath.FromFullpath(path),
-                    BlendShapeClipDrawer.ThumbnailSize);
-                    m_thumbnailProp.objectReferenceValue = thumbnail;
-                    serializedObject.ApplyModifiedProperties();
-                }
-            }
-            */
-            GUI.enabled = true;
+
             EditorGUILayout.EndVertical();
 
-            if (m_isBinaryProp.boolValue)
+            if (m_serializedEditor.IsBinary)
             {
                 previewSlider = Mathf.Round(previewSlider);
             }
+
             if (previewSlider != m_previewSlider)
             {
                 m_previewSlider = previewSlider;

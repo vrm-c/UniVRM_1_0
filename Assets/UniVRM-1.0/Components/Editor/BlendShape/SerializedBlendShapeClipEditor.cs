@@ -19,6 +19,9 @@ namespace UniVRM10
         SerializedProperty m_presetProp;
 
         SerializedProperty m_isBinaryProp;
+
+        public bool IsBinary => m_isBinaryProp.boolValue;
+
         SerializedProperty m_ignoreBlinkProp;
         SerializedProperty m_ignoreLookAtProp;
         SerializedProperty m_ignoreMouthProp;
