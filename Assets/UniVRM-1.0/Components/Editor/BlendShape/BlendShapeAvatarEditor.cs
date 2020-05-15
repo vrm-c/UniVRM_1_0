@@ -1,22 +1,18 @@
 ﻿using System;
-using System.IO;
 using UnityEditor;
-using UnityEditorInternal;
 using UnityEngine;
 
 
 namespace UniVRM10
 {
     [CustomEditor(typeof(BlendShapeAvatar))]
-    public class BlendShapeAvatarEditor : PreviewEditor
+    public class BlendShapeAvatarEditor : BlendShapeClipEditorBase
     {
-        ReorderableList m_clipList;
+        ReorderableBlendShapeClipList m_clipList;
 
         BlendShapeClipSelector m_selector;
 
         SerializedBlendShapeEditor m_serializedEditor;
-
-        int m_clipEditorMode;
 
         protected override BlendShapeClip GetBakeValue()
         {
@@ -25,16 +21,29 @@ namespace UniVRM10
 
         void OnSelected(BlendShapeClip clip)
         {
+            if (m_selector != null)
+            {
+                m_selector.Selected = clip;
+            }
             if (PreviewSceneManager == null)
             {
                 m_serializedEditor = null;
+                return;
             }
-            else if (clip != null)
+
+            if (clip != null)
             {
-                m_serializedEditor = new SerializedBlendShapeEditor(clip, PreviewSceneManager, m_clipEditorMode);
+                // select clip
+                int mode = 0;
+                if (m_serializedEditor != null)
+                {
+                    mode = m_serializedEditor.Mode;
+                }
+                m_serializedEditor = new SerializedBlendShapeEditor(clip, PreviewSceneManager, mode);
             }
             else
             {
+                // clear selection
                 m_serializedEditor = null;
                 PreviewSceneManager.Bake(default, 1.0f);
             }
@@ -45,53 +54,9 @@ namespace UniVRM10
             m_selector = new BlendShapeClipSelector((BlendShapeAvatar)target, OnSelected);
 
             var prop = serializedObject.FindProperty("Clips");
-            m_clipList = new ReorderableList(serializedObject, prop);
+            m_clipList = new ReorderableBlendShapeClipList(serializedObject, prop, target);
+            m_clipList.Selected += OnSelected;
 
-            m_clipList.drawHeaderCallback = (rect) =>
-                                 EditorGUI.LabelField(rect, "BlendShapeClips");
-
-            m_clipList.elementHeight = BlendShapeClipDrawer.Height;
-            m_clipList.drawElementCallback = (rect, index, isActive, isFocused) =>
-            {
-                var element = prop.GetArrayElementAtIndex(index);
-                rect.height -= 4;
-                rect.y += 2;
-                EditorGUI.PropertyField(rect, element);
-            };
-
-            m_clipList.onAddCallback += (list) =>
-            {
-                // Add slot
-                prop.arraySize++;
-                // select last item
-                list.index = prop.arraySize - 1;
-                // get last item
-                var element = prop.GetArrayElementAtIndex(list.index);
-                element.objectReferenceValue = null;
-
-                var dir = Path.GetDirectoryName(AssetDatabase.GetAssetPath(target));
-                var path = EditorUtility.SaveFilePanel(
-                               "Create BlendShapeClip",
-                               dir,
-                               string.Format("BlendShapeClip#{0}.asset", list.count),
-                               "asset");
-                if (!string.IsNullOrEmpty(path))
-                {
-                    var clip = BlendShapeAvatar.CreateBlendShapeClip(path.ToUnityRelativePath());
-                    //clip.Prefab = AssetDatabase.LoadAssetAtPath<GameObject>(AssetDatabase.GetAssetPath(target));
-
-                    element.objectReferenceValue = clip;
-                }
-            };
-
-            m_clipList.onSelectCallback += (list) =>
-            {
-                var a = list.serializedProperty;
-                var selected = a.GetArrayElementAtIndex(list.index);
-                OnSelected((BlendShapeClip)selected.objectReferenceValue);
-            };
-
-            //m_clipList.onCanRemoveCallback += list => true;
             base.OnEnable();
 
             OnSelected(m_selector.Selected);
@@ -123,7 +88,7 @@ namespace UniVRM10
                     break;
 
                 case 1:
-                    m_clipList.DoLayoutList();
+                    m_clipList.GUI();
                     break;
 
                 default:
@@ -131,7 +96,6 @@ namespace UniVRM10
             }
 
             serializedObject.ApplyModifiedProperties();
-            m_clipEditorMode = m_serializedEditor.Mode;
         }
     }
 }

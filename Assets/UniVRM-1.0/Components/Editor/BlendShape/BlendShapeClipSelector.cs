@@ -6,6 +6,9 @@ using System.IO;
 
 namespace UniVRM10
 {
+    /// <summary>
+    /// BlendShapeAvatarEditorの部品
+    /// </summary>
     class BlendShapeClipSelector
     {
         BlendShapeAvatar m_avatar;
@@ -23,6 +26,15 @@ namespace UniVRM10
                     return null;
                 }
                 return m_avatar.Clips[m_selectedIndex];
+            }
+
+            set
+            {
+                m_selectedIndex = m_avatar.Clips.IndexOf(value);
+                if (m_selectedIndex < 0)
+                {
+                    m_selectedIndex = 0;
+                }
             }
         }
 
