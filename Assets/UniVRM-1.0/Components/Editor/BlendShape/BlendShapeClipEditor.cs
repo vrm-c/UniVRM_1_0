@@ -106,7 +106,7 @@ namespace UniVRM10
 
             EditorGUILayout.EndHorizontal();
             Separator();
-            EditorGUILayout.Space();
+            // EditorGUILayout.Space();
 
             if (m_serializedEditor.Draw(out BlendShapeClip bakeValue))
             {

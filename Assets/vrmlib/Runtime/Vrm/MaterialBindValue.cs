@@ -20,20 +20,20 @@ namespace VrmLib
         {
             get
             {
-                switch (BindType)
-                {
-                    case MaterialBindType.UvScale:
-                        return new KeyValuePair<string, Vector4>(
-                            MaterialBindTypeExtensions.UV_PROPERTY,
-                            new Vector4(m_value.X, m_value.Y, 0, 0)
-                            );
+                // switch (BindType)
+                // {
+                //     case MaterialBindType.UvScale:
+                //         return new KeyValuePair<string, Vector4>(
+                //             MaterialBindTypeExtensions.UV_PROPERTY,
+                //             new Vector4(m_value.X, m_value.Y, 0, 0)
+                //             );
 
-                    case MaterialBindType.UvOffset:
-                        return new KeyValuePair<string, Vector4>(
-                            MaterialBindTypeExtensions.UV_PROPERTY,
-                            new Vector4(1, 1, m_value.X, m_value.Y)
-                            );
-                }
+                //     case MaterialBindType.UvOffset:
+                //         return new KeyValuePair<string, Vector4>(
+                //             MaterialBindTypeExtensions.UV_PROPERTY,
+                //             new Vector4(1, 1, m_value.X, m_value.Y)
+                //             );
+                // }
 
                 return new KeyValuePair<string, Vector4>(BindType.GetProperty(Material), m_value);
             }

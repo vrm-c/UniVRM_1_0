@@ -78,6 +78,10 @@ namespace UniVRM10
             Prefab = prefab;
 
             var materialNames = new List<string>();
+
+            // preview シーン用に Material を複製する。
+            // BlendShapeClip のカスタムエディタのマテリアル変更は、
+            // 複製したものに適用される。
             var map = new Dictionary<Material, Material>();
             Func<Material, Material> getOrCreateMaterial = src =>
             {
@@ -230,7 +234,8 @@ namespace UniVRM10
                 {
                     foreach (var _kv in kv.Value.PropMap)
                     {
-                        kv.Value.Material.SetColor(_kv.Key, _kv.Value.DefaultValues);
+                        // var prop = VrmLib.MaterialBindTypeExtensions.GetProperty(_kv.Key);
+                        kv.Value.Material.SetColor(_kv.Value.Name, _kv.Value.DefaultValues);
                     }
                 }
 
@@ -241,19 +246,19 @@ namespace UniVRM10
                     {
                         //Debug.Log("set material");
                         PropItem prop;
-                        if (item.PropMap.TryGetValue(x.ValueName, out prop))
+                        if (item.PropMap.TryGetValue(x.BindType, out prop))
                         {
-                            var valueName = x.ValueName;
-                            if (valueName.EndsWith("_ST_S")
-                            || valueName.EndsWith("_ST_T"))
-                            {
-                                valueName = valueName.Substring(0, valueName.Length - 2);
-                            }
+                            // var valueName = x.ValueName;
+                            // if (valueName.EndsWith("_ST_S")
+                            // || valueName.EndsWith("_ST_T"))
+                            // {
+                            //     valueName = valueName.Substring(0, valueName.Length - 2);
+                            // }
 
-                            var value = item.Material.GetVector(valueName);
+                            var value = item.Material.GetVector(prop.Name);
                             //Debug.LogFormat("{0} => {1}", valueName, x.TargetValue);
-                            value += ((x.TargetValue - x.BaseValue) * weight);
-                            item.Material.SetColor(valueName, value);
+                            value += ((x.TargetValue - prop.DefaultValues) * weight);
+                            item.Material.SetColor(prop.Name, value);
                         }
                     }
                 }

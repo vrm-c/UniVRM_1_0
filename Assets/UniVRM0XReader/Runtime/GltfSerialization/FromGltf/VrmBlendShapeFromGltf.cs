@@ -49,32 +49,32 @@ namespace GltfSerializationAdapter
             var material = materials.First(z => z.Name == y.materialName);
             var target = new Vector4(y.targetValue[0], y.targetValue[1], y.targetValue[2], y.targetValue[3]);
 
-            if (y.propertyName.EndsWith("_ST")
-            || y.propertyName.EndsWith("_ST_S")
-            || y.propertyName.EndsWith("_ST_T"))
-            {
-                if (target.X == 1.0f && target.Y == 1.0f && target.Z == 0 && target.W == 0)
-                {
-                    // 変化なし。不要
-                }
-                else if (target.X == 1.0f && target.Y == 1.0f)
-                {
-                    // offset only => ZW に格納された値を XY に移動する
-                    yield return new MaterialBindValue(material, MaterialBindType.UvOffset, new Vector4(target.Z, target.W, 0, 0));
-                }
-                else if (target.Z == 0 && target.W == 0)
-                {
-                    // scale only
-                    yield return new MaterialBindValue(material, MaterialBindType.UvScale, target);
-                }
-                else
-                {
-                    // scale と offset ２つになる
-                    yield return new MaterialBindValue(material, MaterialBindType.UvOffset, new Vector4(target.Z, target.W, 0, 0));
-                    yield return new MaterialBindValue(material, MaterialBindType.UvScale, target);
-                }
-            }
-            else
+            // if (y.propertyName.EndsWith("_ST")
+            // || y.propertyName.EndsWith("_ST_S")
+            // || y.propertyName.EndsWith("_ST_T"))
+            // {
+            //     if (target.X == 1.0f && target.Y == 1.0f && target.Z == 0 && target.W == 0)
+            //     {
+            //         // 変化なし。不要
+            //     }
+            //     else if (target.X == 1.0f && target.Y == 1.0f)
+            //     {
+            //         // offset only => ZW に格納された値を XY に移動する
+            //         yield return new MaterialBindValue(material, MaterialBindType.UvOffset, new Vector4(target.Z, target.W, 0, 0));
+            //     }
+            //     else if (target.Z == 0 && target.W == 0)
+            //     {
+            //         // scale only
+            //         yield return new MaterialBindValue(material, MaterialBindType.UvScale, target);
+            //     }
+            //     else
+            //     {
+            //         // scale と offset ２つになる
+            //         yield return new MaterialBindValue(material, MaterialBindType.UvOffset, new Vector4(target.Z, target.W, 0, 0));
+            //         yield return new MaterialBindValue(material, MaterialBindType.UvScale, target);
+            //     }
+            // }
+            // else
             {
                 var bindType = material.GetBindType(y.propertyName);
                 yield return new MaterialBindValue(material, bindType, target);

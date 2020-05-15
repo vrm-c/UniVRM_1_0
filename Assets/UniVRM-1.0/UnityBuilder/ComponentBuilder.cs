@@ -68,9 +68,9 @@ namespace UniVRM10
                     binding = new UniVRM10.MaterialValueBinding
                     {
                         MaterialName = bind.Material.Name, // UniVRM-0Xの実装は名前で持っている
-                        ValueName = kv.Key,
+                        BindType = bind.BindType,
                         TargetValue = value,
-                        BaseValue = material.GetColor(kv.Key),
+                        // BaseValue = material.GetColor(kv.Key),
                     };
                 }
                 catch (Exception)

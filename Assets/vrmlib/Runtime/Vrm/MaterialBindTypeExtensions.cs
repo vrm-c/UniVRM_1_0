@@ -16,9 +16,9 @@ namespace VrmLib
         {
             switch (bindType)
             {
-                case MaterialBindType.UvOffset:
-                case MaterialBindType.UvScale:
-                    return UV_PROPERTY;
+                // case MaterialBindType.UvOffset:
+                // case MaterialBindType.UvScale:
+                //     return UV_PROPERTY;
 
                 case MaterialBindType.Color:
                     return COLOR_PROPERTY;
@@ -31,8 +31,8 @@ namespace VrmLib
         {
             switch (property)
             {
-                case UV_PROPERTY:
-                    return MaterialBindType.UvOffset;
+                // case UV_PROPERTY:
+                //     return MaterialBindType.UvOffset;
 
                 case COLOR_PROPERTY:
                     return MaterialBindType.Color;
@@ -47,9 +47,9 @@ namespace VrmLib
         {
             switch (bindType)
             {
-                case MaterialBindType.UvOffset:
-                case MaterialBindType.UvScale:
-                    return UV_PROPERTY;
+                // case MaterialBindType.UvOffset:
+                // case MaterialBindType.UvScale:
+                //     return UV_PROPERTY;
 
                 case MaterialBindType.Color:
                     return COLOR_PROPERTY;
@@ -65,8 +65,8 @@ namespace VrmLib
         {
             switch (property)
             {
-                case UV_PROPERTY:
-                    return MaterialBindType.UvOffset;
+                // case UV_PROPERTY:
+                //     return MaterialBindType.UvOffset;
 
                 case COLOR_PROPERTY:
                     return MaterialBindType.Color;
@@ -84,9 +84,9 @@ namespace VrmLib
         {
             switch (bindType)
             {
-                case MaterialBindType.UvOffset:
-                case MaterialBindType.UvScale:
-                    return UV_PROPERTY;
+                // case MaterialBindType.UvOffset:
+                // case MaterialBindType.UvScale:
+                //     return UV_PROPERTY;
 
                 case MaterialBindType.Color:
                     return COLOR_PROPERTY;
@@ -112,8 +112,8 @@ namespace VrmLib
         {
             switch (property)
             {
-                case UV_PROPERTY:
-                    return MaterialBindType.UvOffset;
+                // case UV_PROPERTY:
+                //     return MaterialBindType.UvOffset;
 
                 case COLOR_PROPERTY:
                     return MaterialBindType.Color;

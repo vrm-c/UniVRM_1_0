@@ -72,22 +72,26 @@ namespace UniVRM10
                         rect = new Rect(position.x, y, position.width, height);
 
                         // プロパティ名のポップアップ
-                        int propIndex;
-                        if (StringPopup(rect, property.FindPropertyRelative("ValueName"), materialItem.PropNames, out propIndex))
+                        var bindTypeProp = property.FindPropertyRelative("BindType");
+                        var bindTypes = (VrmLib.MaterialBindType[])Enum.GetValues(typeof(VrmLib.MaterialBindType));
+                        var bindType = bindTypes[bindTypeProp.enumValueIndex];
+                        var newBindType = EnumPopup(rect, bindType);
+                        if (newBindType != bindType)
                         {
+                            bindTypeProp.enumValueIndex = Array.IndexOf(bindTypes, newBindType);
                             changed = true;
                         }
 
-                        if (propIndex >= 0)
+                        // if (propIndex >= 0)
                         {
                             // 有効なプロパティ名が選択された
-                            var propItem = materialItem.PropMap[materialItem.PropNames[propIndex]];
+                            if (materialItem.PropMap.TryGetValue(newBindType, out PropItem propItem))
                             {
                                 switch (propItem.PropertyType)
                                 {
                                     case ShaderUtil.ShaderPropertyType.Color:
                                         {
-                                            property.FindPropertyRelative("BaseValue").vector4Value = propItem.DefaultValues;
+                                            // property.FindPropertyRelative("BaseValue").vector4Value = propItem.DefaultValues;
 
                                             // max
                                             y += height;
@@ -143,20 +147,9 @@ namespace UniVRM10
             }
         }
 
-        static bool EnumPopup<T>(Rect rect, SerializedProperty prop, out T newValue) where T : Enum
+        static T EnumPopup<T>(Rect rect, T value) where T : Enum
         {
-            var values = (T[])Enum.GetValues(typeof(T));
-            newValue = (T)EditorGUI.EnumPopup(rect, (Enum)values[prop.enumValueIndex]);
-            var newIndex = Array.IndexOf(values, newValue);
-            if (newIndex != prop.enumValueIndex)
-            {
-                prop.enumValueIndex = newIndex;
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return (T)EditorGUI.EnumPopup(rect, (Enum)value);
         }
 
         static bool IntPopup(Rect rect, SerializedProperty prop, string[] options, out int newIndex)

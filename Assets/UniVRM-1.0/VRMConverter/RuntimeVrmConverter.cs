@@ -144,35 +144,35 @@ namespace UniVRM10
 
             var target = y.TargetValue.ToNumericsVector4();
 
-            if (y.ValueName.EndsWith("_ST")
-            || y.ValueName.EndsWith("_ST_S")
-            || y.ValueName.EndsWith("_ST_T"))
+            // if (y.ValueName.EndsWith("_ST")
+            // || y.ValueName.EndsWith("_ST_S")
+            // || y.ValueName.EndsWith("_ST_T"))
+            // {
+            //     if (target.X == 1.0f && target.Y == 1.0f && target.Z == 0 && target.W == 0)
+            //     {
+            //         // 変化なし。不要
+            //     }
+            //     else if (target.X == 1.0f && target.Y == 1.0f)
+            //     {
+            //         // offset only => ZW に格納された値を XY に移動する
+            //         yield return new VrmLib.MaterialBindValue(material, VrmLib.MaterialBindType.UvOffset, new System.Numerics.Vector4(target.Z, target.W, 0, 0));
+            //     }
+            //     else if (target.Z == 0 && target.W == 0)
+            //     {
+            //         // scale only
+            //         yield return new VrmLib.MaterialBindValue(material, VrmLib.MaterialBindType.UvScale, target);
+            //     }
+            //     else
+            //     {
+            //         // scale と offset ２つになる
+            //         yield return new VrmLib.MaterialBindValue(material, VrmLib.MaterialBindType.UvOffset, new System.Numerics.Vector4(target.Z, target.W, 0, 0));
+            //         yield return new VrmLib.MaterialBindValue(material, VrmLib.MaterialBindType.UvScale, target);
+            //     }
+            // }
+            // else
             {
-                if (target.X == 1.0f && target.Y == 1.0f && target.Z == 0 && target.W == 0)
-                {
-                    // 変化なし。不要
-                }
-                else if (target.X == 1.0f && target.Y == 1.0f)
-                {
-                    // offset only => ZW に格納された値を XY に移動する
-                    yield return new VrmLib.MaterialBindValue(material, VrmLib.MaterialBindType.UvOffset, new System.Numerics.Vector4(target.Z, target.W, 0, 0));
-                }
-                else if (target.Z == 0 && target.W == 0)
-                {
-                    // scale only
-                    yield return new VrmLib.MaterialBindValue(material, VrmLib.MaterialBindType.UvScale, target);
-                }
-                else
-                {
-                    // scale と offset ２つになる
-                    yield return new VrmLib.MaterialBindValue(material, VrmLib.MaterialBindType.UvOffset, new System.Numerics.Vector4(target.Z, target.W, 0, 0));
-                    yield return new VrmLib.MaterialBindValue(material, VrmLib.MaterialBindType.UvScale, target);
-                }
-            }
-            else
-            {
-                var bindType = VrmLib.MaterialBindTypeExtensions.GetBindType(material, y.ValueName);
-                yield return new VrmLib.MaterialBindValue(material, bindType, target);
+                // var bindType = VrmLib.MaterialBindTypeExtensions.GetBindType(material, y.ValueName);
+                yield return new VrmLib.MaterialBindValue(material, y.BindType, target);
             }
         }
 

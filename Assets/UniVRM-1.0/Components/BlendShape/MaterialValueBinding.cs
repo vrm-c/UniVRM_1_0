@@ -7,13 +7,12 @@ namespace UniVRM10
     public struct MaterialValueBinding : IEquatable<MaterialValueBinding>
     {
         public String MaterialName;
-        public String ValueName;
+        public VrmLib.MaterialBindType BindType;
         public Vector4 TargetValue;
-        public Vector4 BaseValue;
 
         public bool Equals(MaterialValueBinding other)
         {
-            return string.Equals(MaterialName, other.MaterialName) && string.Equals(ValueName, other.ValueName) && TargetValue.Equals(other.TargetValue) && BaseValue.Equals(other.BaseValue);
+            return string.Equals(MaterialName, other.MaterialName) && BindType.Equals(other.BindType) && TargetValue.Equals(other.TargetValue);
         }
 
         public override bool Equals(object obj)
@@ -27,9 +26,8 @@ namespace UniVRM10
             unchecked
             {
                 var hashCode = (MaterialName != null ? MaterialName.GetHashCode() : 0);
-                hashCode = (hashCode * 397) ^ (ValueName != null ? ValueName.GetHashCode() : 0);
+                hashCode = (hashCode * 397) ^ BindType.GetHashCode();
                 hashCode = (hashCode * 397) ^ TargetValue.GetHashCode();
-                hashCode = (hashCode * 397) ^ BaseValue.GetHashCode();
                 return hashCode;
             }
         }

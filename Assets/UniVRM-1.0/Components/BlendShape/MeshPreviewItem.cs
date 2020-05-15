@@ -13,17 +13,21 @@ namespace UniVRM10
     [Serializable]
     public struct PropItem
     {
+        public string Name;
         public ShaderUtil.ShaderPropertyType PropertyType;
         public Vector4 DefaultValues;
     }
 #endif
 
+    /// <summary>
+    /// Material 一つ分のプロパティを蓄えている
+    /// </summary>
     [Serializable]
     public class MaterialItem
     {
         public Material Material { get; private set; }
 #if UNITY_EDITOR
-        public Dictionary<string, PropItem> PropMap = new Dictionary<string, PropItem>();
+        public Dictionary<VrmLib.MaterialBindType, PropItem> PropMap = new Dictionary<VrmLib.MaterialBindType, PropItem>();
 
         public string[] PropNames
         {
@@ -50,44 +54,48 @@ namespace UniVRM10
                 {
                     case ShaderUtil.ShaderPropertyType.Color:
                         // 色
-                        item.PropMap.Add(name, new PropItem
                         {
-                            PropertyType = propType,
-                            DefaultValues = material.GetColor(name),
-                        });
-                        propNames.Add(name);
+                            var bindType = VrmLib.MaterialBindTypeExtensions.GetBindType(name);
+                            item.PropMap.Add(bindType, new PropItem
+                            {
+                                Name = name,
+                                PropertyType = propType,
+                                DefaultValues = material.GetColor(name),
+                            });
+                            propNames.Add(name);
+                        }
                         break;
 
                     case ShaderUtil.ShaderPropertyType.TexEnv:
                         // テクスチャ
-                        {
-                            name += "_ST";
-                            item.PropMap.Add(name, new PropItem
-                            {
-                                PropertyType = propType,
-                                DefaultValues = material.GetVector(name),
-                            });
-                            propNames.Add(name);
-                        }
-                        // 縦横分離用
-                        {
-                            var st_name = name + "_S";
-                            item.PropMap.Add(st_name, new PropItem
-                            {
-                                PropertyType = propType,
-                                DefaultValues = material.GetVector(name),
-                            });
-                            propNames.Add(st_name);
-                        }
-                        {
-                            var st_name = name + "_T";
-                            item.PropMap.Add(st_name, new PropItem
-                            {
-                                PropertyType = propType,
-                                DefaultValues = material.GetVector(name),
-                            });
-                            propNames.Add(st_name);
-                        }
+                        // {
+                        //     name += "_ST";
+                        //     item.PropMap.Add(name, new PropItem
+                        //     {
+                        //         PropertyType = propType,
+                        //         DefaultValues = material.GetVector(name),
+                        //     });
+                        //     propNames.Add(name);
+                        // }
+                        // // 縦横分離用
+                        // {
+                        //     var st_name = name + "_S";
+                        //     item.PropMap.Add(st_name, new PropItem
+                        //     {
+                        //         PropertyType = propType,
+                        //         DefaultValues = material.GetVector(name),
+                        //     });
+                        //     propNames.Add(st_name);
+                        // }
+                        // {
+                        //     var st_name = name + "_T";
+                        //     item.PropMap.Add(st_name, new PropItem
+                        //     {
+                        //         PropertyType = propType,
+                        //         DefaultValues = material.GetVector(name),
+                        //     });
+                        //     propNames.Add(st_name);
+                        // }
                         break;
                 }
             }
