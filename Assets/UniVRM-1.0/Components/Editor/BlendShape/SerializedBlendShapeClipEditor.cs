@@ -7,6 +7,9 @@ using UnityEngine;
 
 namespace UniVRM10
 {
+    /// <summary>
+    /// BlendShapeClip カスタムエディタの実装
+    /// </summary>
     public class SerializedBlendShapeEditor
     {
         BlendShapeClip m_targetObject;
@@ -42,15 +45,14 @@ namespace UniVRM10
         #endregion
 
         #region  Editor values
-        //float m_previewSlider = 1.0f;
 
         bool m_changed;
 
         int m_mode;
         static string[] MODES = new[]{
             "BlendShape",
-            "BlendShape List",
-            "Material List"
+            "Material Color",
+            "Material UV"
         };
         public int Mode => m_mode;
 
@@ -74,7 +76,6 @@ namespace UniVRM10
             this.m_serializedObject = serializedObject;
             this.m_targetObject = targetObject;
 
-            //m_thumbnail = serializedObject.FindProperty("Thumbnail");
             m_blendShapeNameProp = serializedObject.FindProperty("BlendShapeName");
             m_presetProp = serializedObject.FindProperty("Preset");
             m_isBinaryProp = serializedObject.FindProperty("IsBinary");
@@ -118,6 +119,9 @@ namespace UniVRM10
             .ToArray();
         }
 
+        bool m_blendShapeFoldout = true;
+        bool m_advancedFoldout = false;
+
         public bool Draw(out BlendShapeClip bakeValue)
         {
             m_changed = false;
@@ -133,46 +137,69 @@ namespace UniVRM10
             EditorGUILayout.PropertyField(m_blendShapeNameProp, true);
             EditorGUILayout.PropertyField(m_presetProp, true);
 
-            // v0.45 Added. Binary flag
-            EditorGUILayout.PropertyField(m_isBinaryProp, true);
-
-            // v1.0 Ignore State
-            EditorGUILayout.PropertyField(m_ignoreBlinkProp, true);
-            EditorGUILayout.PropertyField(m_ignoreLookAtProp, true);
-            EditorGUILayout.PropertyField(m_ignoreMouthProp, true);
-
-            EditorGUILayout.Space();
-            //m_mode = EditorGUILayout.Popup("SourceType", m_mode, MODES);
-            m_mode = GUILayout.Toolbar(m_mode, MODES);
-            switch (m_mode)
+            m_blendShapeFoldout = CustomUI.Foldout(m_blendShapeFoldout, "BlendShape");
+            if (m_blendShapeFoldout)
             {
-                case 0:
-                    {
-                        ClipGUI();
-                    }
-                    break;
+                EditorGUI.indentLevel++;
+                ClipGUI();
+                EditorGUI.indentLevel--;
+            }
 
-                case 1:
-                    {
-                        if (GUILayout.Button("Clear"))
-                        {
-                            m_changed = true;
-                            m_valuesProp.arraySize = 0;
-                        }
-                        m_ValuesList.DoLayoutList();
-                    }
-                    break;
+            m_advancedFoldout = CustomUI.Foldout(m_advancedFoldout, "Advanced");
+            if (m_advancedFoldout)
+            {
+                EditorGUI.indentLevel++;
 
-                case 2:
-                    {
-                        if (GUILayout.Button("Clear"))
+                // v0.45 Added. Binary flag
+                EditorGUILayout.PropertyField(m_isBinaryProp, true);
+
+                // v1.0 Ignore State
+                EditorGUILayout.PropertyField(m_ignoreBlinkProp, true);
+                EditorGUILayout.PropertyField(m_ignoreLookAtProp, true);
+                EditorGUILayout.PropertyField(m_ignoreMouthProp, true);
+
+                EditorGUILayout.Space();
+                m_mode = GUILayout.Toolbar(m_mode, MODES);
+                switch (m_mode)
+                {
+                    case 0:
+                        // BlendShape
                         {
-                            m_changed = true;
-                            m_materialsProp.arraySize = 0;
+                            if (GUILayout.Button("Clear BlendShape"))
+                            {
+                                m_changed = true;
+                                m_valuesProp.arraySize = 0;
+                            }
+                            m_ValuesList.DoLayoutList();
                         }
-                        m_MaterialValuesList.DoLayoutList();
-                    }
-                    break;
+                        break;
+
+                    case 1:
+                        // Material
+                        {
+                            if (GUILayout.Button("Clear MaterialColor"))
+                            {
+                                m_changed = true;
+                                m_materialsProp.arraySize = 0;
+                            }
+                            m_MaterialValuesList.DoLayoutList();
+                        }
+                        break;
+
+                    case 2:
+                        // MaterialUV
+                        {
+                            if (GUILayout.Button("Clear MaterialUV"))
+                            {
+                                m_changed = true;
+                                m_materialsProp.arraySize = 0;
+                            }
+                            // m_MaterialValuesList.DoLayoutList();
+                        }
+                        break;
+                }
+
+                EditorGUI.indentLevel--;
             }
 
             m_serializedObject.ApplyModifiedProperties();
@@ -307,6 +334,38 @@ namespace UniVRM10
             ;
             _maxWeightName = maxWeightName;
             return values;
+        }
+    }
+
+    /// http://tips.hecomi.com/entry/2016/10/15/004144
+    public static class CustomUI
+    {
+        public static bool Foldout(bool display, string title)
+        {
+            var style = new GUIStyle("ShurikenModuleTitle");
+            style.font = new GUIStyle(EditorStyles.label).font;
+            style.border = new RectOffset(15, 7, 4, 4);
+            style.fixedHeight = 22;
+            style.contentOffset = new Vector2(20f, -2f);
+
+            var rect = GUILayoutUtility.GetRect(16f, 22f, style);
+            GUI.Box(rect, title, style);
+
+            var e = Event.current;
+
+            var toggleRect = new Rect(rect.x + 4f, rect.y + 2f, 13f, 13f);
+            if (e.type == EventType.Repaint)
+            {
+                EditorStyles.foldout.Draw(toggleRect, false, false, display, false);
+            }
+
+            if (e.type == EventType.MouseDown && rect.Contains(e.mousePosition))
+            {
+                display = !display;
+                e.Use();
+            }
+
+            return display;
         }
     }
 }
