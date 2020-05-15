@@ -68,7 +68,7 @@ namespace UniVRM10
             }
         }
 
-        protected abstract BlendShapeClip GetBakeValue();
+        protected abstract BlendShapeClip CurrentBlendShapeClip();
 
         /// <summary>
         /// Preview シーンに BlendShape と MaterialValue を適用する
@@ -78,7 +78,7 @@ namespace UniVRM10
             if (m_scene != null)
             {
                 //Debug.Log("Bake");
-                m_scene.Bake(GetBakeValue(), 1.0f);
+                m_scene.Bake(CurrentBlendShapeClip(), 1.0f);
             }
         }
 
@@ -272,6 +272,19 @@ namespace UniVRM10
                     // draw the RenderTexture in the ObjectPreview pane
                     GUI.DrawTexture(r, PreviewTexture, ScaleMode.StretchToFill, false);
                 }
+            }
+        }
+
+        public override string GetInfoString()
+        {
+            var key = BlendShapeKey.CreateFromClip(CurrentBlendShapeClip());
+            if (key.Preset != VrmLib.BlendShapePreset.Custom)
+            {
+                return string.Format("Preset: {0}", key.Preset);
+            }
+            else
+            {
+                return string.Format("Custom: {0}", key.Name);
             }
         }
     }

@@ -12,7 +12,7 @@ namespace UniVRM10
         SerializedBlendShapeEditor m_serializedEditor;
 
         BlendShapeClip m_target;
-        protected override BlendShapeClip GetBakeValue()
+        protected override BlendShapeClip CurrentBlendShapeClip()
         {
             return m_target;
         }
@@ -117,11 +117,6 @@ namespace UniVRM10
             {
                 PreviewSceneManager.Bake(bakeValue, m_previewSlider);
             }
-        }
-
-        public override string GetInfoString()
-        {
-            return BlendShapeKey.CreateFromClip((BlendShapeClip)target).ToString();
         }
     }
 }

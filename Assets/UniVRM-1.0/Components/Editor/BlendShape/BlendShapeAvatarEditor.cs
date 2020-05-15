@@ -28,7 +28,7 @@ namespace UniVRM10
         /// </summary>
         SerializedBlendShapeEditor m_serializedEditor;
 
-        protected override BlendShapeClip GetBakeValue()
+        protected override BlendShapeClip CurrentBlendShapeClip()
         {
             return Selector.GetSelected();
         }
