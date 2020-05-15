@@ -96,13 +96,13 @@ namespace UniVRM10
 
                     //Debug.LogFormat("add material {0}", src.name);
                     materialNames.Add(src.name);
-                    m_materialMap.Add(src.name, MaterialItem.Create(dst));
+                    m_materialMap.Add(src.name, PreviewMaterialItem.Create(dst));
                 }
                 return dst;
             };
 
             m_meshes = transform.Traverse()
-                .Select(x => MeshPreviewItem.Create(x, transform, getOrCreateMaterial))
+                .Select(x => PreviewMeshItem.Create(x, transform, getOrCreateMaterial))
                 .Where(x => x != null)
                 .ToArray()
                 ;
@@ -112,8 +112,6 @@ namespace UniVRM10
                 .Where(x => x.SkinnedMeshRenderer != null
                 && x.SkinnedMeshRenderer.sharedMesh.blendShapeCount > 0)
                 .ToArray();
-
-            //Bake(values, materialValues);
 
             m_rendererPathList = m_meshes.Select(x => x.Path).ToArray();
             m_skinnedMeshRendererPathList = m_meshes
@@ -132,9 +130,9 @@ namespace UniVRM10
             }
         }
 
-        MeshPreviewItem[] m_meshes;
-        MeshPreviewItem[] m_blendShapeMeshes;
-        public IEnumerable<MeshPreviewItem> EnumRenderItems
+        PreviewMeshItem[] m_meshes;
+        PreviewMeshItem[] m_blendShapeMeshes;
+        public IEnumerable<PreviewMeshItem> EnumRenderItems
         {
             get
             {
@@ -154,7 +152,7 @@ namespace UniVRM10
             private set;
         }
 
-        Dictionary<string, MaterialItem> m_materialMap = new Dictionary<string, MaterialItem>();
+        Dictionary<string, PreviewMaterialItem> m_materialMap = new Dictionary<string, PreviewMaterialItem>();
 
         string[] m_rendererPathList;
         public string[] RendererPathList
@@ -179,9 +177,9 @@ namespace UniVRM10
             return null;
         }
 
-        public MaterialItem GetMaterialItem(string materialName)
+        public PreviewMaterialItem GetMaterialItem(string materialName)
         {
-            MaterialItem item;
+            PreviewMaterialItem item;
             if (!m_materialMap.TryGetValue(materialName, out item))
             {
                 return null;
@@ -241,7 +239,7 @@ namespace UniVRM10
 
                 foreach (var x in bake.MaterialValues)
                 {
-                    MaterialItem item;
+                    PreviewMaterialItem item;
                     if (m_materialMap.TryGetValue(x.MaterialName, out item))
                     {
                         //Debug.Log("set material");

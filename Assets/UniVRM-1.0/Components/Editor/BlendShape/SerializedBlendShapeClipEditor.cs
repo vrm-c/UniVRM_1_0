@@ -56,7 +56,7 @@ namespace UniVRM10
         };
         public int Mode => m_mode;
 
-        MeshPreviewItem[] m_items;
+        PreviewMeshItem[] m_items;
         #endregion
 
         public SerializedBlendShapeEditor(SerializedObject serializedObject,
