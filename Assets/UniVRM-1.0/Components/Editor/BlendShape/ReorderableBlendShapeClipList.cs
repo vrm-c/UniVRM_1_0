@@ -20,6 +20,11 @@ namespace UniVRM10
             handler(selected);
         }
 
+        public void Select(int index)
+        {
+            m_list.index = index;
+        }
+
         public ReorderableBlendShapeClipList(SerializedObject serializedObject, SerializedProperty prop, UnityEngine.Object target)
         {
             m_list = new ReorderableList(serializedObject, prop);

@@ -1,30 +1,27 @@
-﻿using System;
-using UnityEditor;
-using UnityEngine;
-
+﻿using UnityEditor;
 
 namespace UniVRM10
 {
     [CustomEditor(typeof(BlendShapeAvatar))]
     public class BlendShapeAvatarEditor : BlendShapeClipEditorBase
     {
-        ReorderableBlendShapeClipList m_clipList;
-
+        /// <summary>
+        /// BlendShapeAvatar から 編集対象の BlendShapeClip を選択する
+        /// </summary>
         BlendShapeClipSelector m_selector;
 
+        /// <summary>
+        /// 選択中の BlendShapeClip のエディタ
+        /// </summary>
         SerializedBlendShapeEditor m_serializedEditor;
 
         protected override BlendShapeClip GetBakeValue()
         {
-            return m_selector.Selected;
+            return m_selector.GetSelected();
         }
 
         void OnSelected(BlendShapeClip clip)
         {
-            if (m_selector != null)
-            {
-                m_selector.Selected = clip;
-            }
             if (PreviewSceneManager == null)
             {
                 m_serializedEditor = null;
@@ -51,51 +48,30 @@ namespace UniVRM10
 
         protected override void OnEnable()
         {
-            m_selector = new BlendShapeClipSelector((BlendShapeAvatar)target, OnSelected);
-
-            var prop = serializedObject.FindProperty("Clips");
-            m_clipList = new ReorderableBlendShapeClipList(serializedObject, prop, target);
-            m_clipList.Selected += OnSelected;
-
             base.OnEnable();
 
-            OnSelected(m_selector.Selected);
+            m_selector = new BlendShapeClipSelector((BlendShapeAvatar)target, serializedObject);
+            m_selector.Selected += OnSelected;
+            OnSelected(m_selector.GetSelected());
         }
-
-        int m_mode;
-        static readonly string[] MODES = new string[]{
-            "Editor",
-            "List"
-        };
 
         public override void OnInspectorGUI()
         {
-            serializedObject.Update();
-
             base.OnInspectorGUI();
 
-            m_mode = GUILayout.Toolbar(m_mode, MODES);
-            switch (m_mode)
+            serializedObject.Update();
+
+            // selector
+            m_selector.GUI();
+
+            // editor
+            if (m_serializedEditor != null)
             {
-                case 0:
-                    m_selector.SelectGUI();
-                    if (m_serializedEditor != null)
-                    {
-                        Separator();
-                        m_serializedEditor.Draw(out BlendShapeClip bakeValue);
-                        PreviewSceneManager.Bake(bakeValue, 1.0f);
-                    }
-                    break;
-
-                case 1:
-                    m_clipList.GUI();
-                    break;
-
-                default:
-                    throw new NotImplementedException();
+                Separator();
+                m_serializedEditor.Draw(out BlendShapeClip bakeValue);
+                PreviewSceneManager.Bake(bakeValue, 1.0f);
             }
-
-            serializedObject.ApplyModifiedProperties();
+            // serializedObject.ApplyModifiedProperties();
         }
     }
 }
