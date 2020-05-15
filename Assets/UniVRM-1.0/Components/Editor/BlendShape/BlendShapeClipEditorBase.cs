@@ -1,9 +1,5 @@
 ﻿using UnityEditor;
 using UnityEngine;
-using UnityEditorInternal;
-using System;
-using System.Linq;
-using System.Collections.Generic;
 
 namespace UniVRM10
 {
@@ -13,7 +9,7 @@ namespace UniVRM10
     /// * https://github.com/Unity-Technologies/UnityCsReference/blob/11bcfd801fccd2a52b09bb6fd636c1ddcc9f1705/Editor/Mono/Inspector/ModelInspector.cs
     /// 
     /// </summary>
-    public abstract class PreviewEditor : Editor
+    public abstract class BlendShapeClipEditorBase : Editor
     {
         /// <summary>
         /// PreviewRenderUtilityを管理する。

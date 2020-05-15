@@ -7,7 +7,7 @@ using UnityEngine;
 namespace UniVRM10
 {
     [CustomEditor(typeof(BlendShapeClip))]
-    public class BlendShapeClipEditor : PreviewEditor
+    public class BlendShapeClipEditor : BlendShapeClipEditorBase
     {
         SerializedBlendShapeEditor m_serializedEditor;
 
