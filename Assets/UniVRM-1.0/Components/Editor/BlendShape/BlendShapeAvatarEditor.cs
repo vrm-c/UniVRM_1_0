@@ -9,6 +9,19 @@ namespace UniVRM10
         /// BlendShapeAvatar から 編集対象の BlendShapeClip を選択する
         /// </summary>
         BlendShapeClipSelector m_selector;
+        BlendShapeClipSelector Selector
+        {
+            get
+            {
+                if (m_selector == null)
+                {
+                    m_selector = new BlendShapeClipSelector((BlendShapeAvatar)target, serializedObject);
+                    m_selector.Selected += OnSelected;
+                    OnSelected(m_selector.GetSelected());
+                }
+                return m_selector;
+            }
+        }
 
         /// <summary>
         /// 選択中の BlendShapeClip のエディタ
@@ -17,7 +30,7 @@ namespace UniVRM10
 
         protected override BlendShapeClip GetBakeValue()
         {
-            return m_selector.GetSelected();
+            return Selector.GetSelected();
         }
 
         void OnSelected(BlendShapeClip clip)
@@ -46,23 +59,12 @@ namespace UniVRM10
             }
         }
 
-        protected override void OnEnable()
-        {
-            base.OnEnable();
-
-            m_selector = new BlendShapeClipSelector((BlendShapeAvatar)target, serializedObject);
-            m_selector.Selected += OnSelected;
-            OnSelected(m_selector.GetSelected());
-        }
-
         public override void OnInspectorGUI()
         {
             base.OnInspectorGUI();
 
-            serializedObject.Update();
-
             // selector
-            m_selector.GUI();
+            Selector.GUI();
 
             // editor
             if (m_serializedEditor != null)
@@ -71,7 +73,6 @@ namespace UniVRM10
                 m_serializedEditor.Draw(out BlendShapeClip bakeValue);
                 PreviewSceneManager.Bake(bakeValue, 1.0f);
             }
-            // serializedObject.ApplyModifiedProperties();
         }
     }
 }
