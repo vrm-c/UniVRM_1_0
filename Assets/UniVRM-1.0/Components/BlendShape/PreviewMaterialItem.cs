@@ -25,8 +25,13 @@ namespace UniVRM10
     [Serializable]
     public class PreviewMaterialItem
     {
-        public Material Material { get; private set; }
-#if UNITY_EDITOR
+        public readonly Material Material;
+
+        public PreviewMaterialItem(Material material)
+        {
+            Material = material;
+        }
+
         public Dictionary<VrmLib.MaterialBindType, PropItem> PropMap = new Dictionary<VrmLib.MaterialBindType, PropItem>();
 
         public string[] PropNames
@@ -34,16 +39,12 @@ namespace UniVRM10
             get;
             private set;
         }
-#endif
-
-        public static PreviewMaterialItem Create(Material material)
-        {
-            var item = new PreviewMaterialItem
-            {
-                Material = material
-            };
 
 #if UNITY_EDITOR
+        public static PreviewMaterialItem CreateForPreview(Material material)
+        {
+            var item = new PreviewMaterialItem(material);
+
             var propNames = new List<string>();
             for (int i = 0; i < ShaderUtil.GetPropertyCount(material.shader); ++i)
             {
@@ -100,8 +101,8 @@ namespace UniVRM10
                 }
             }
             item.PropNames = propNames.ToArray();
-#endif
             return item;
         }
+#endif
     }
 }

@@ -181,6 +181,34 @@ namespace VrmLib
             throw new NotImplementedException();
         }
 
+        public static string GetProperty(MaterialBindType bindType)
+        {
+            switch (bindType)
+            {
+                // case MaterialBindType.UvOffset:
+                // case MaterialBindType.UvScale:
+                //     return UV_PROPERTY;
+
+                case MaterialBindType.Color:
+                    return COLOR_PROPERTY;
+
+                case MaterialBindType.EmissionColor:
+                    return EMISSION_COLOR_PROPERTY;
+
+                case MaterialBindType.ShadeColor:
+                    return SHADE_COLOR_PROPERTY;
+
+                case MaterialBindType.RimColor:
+                    return RIM_COLOR_PROPERTY;
+
+                case MaterialBindType.OutlineColor:
+                    return OUTLINE_COLOR_PROPERTY;
+
+            }
+
+            throw new NotImplementedException();
+        }
+
         public static MaterialBindType GetBindType(string property)
         {
             switch (property)
