@@ -40,6 +40,14 @@ namespace UniVRM10
             private set;
         }
 
+        public void RestoreInitialValues()
+        {
+            foreach (var prop in PropMap)
+            {
+                Material.SetColor(prop.Value.Name, prop.Value.DefaultValues);
+            }
+        }
+
 #if UNITY_EDITOR
         public static PreviewMaterialItem CreateForPreview(Material material)
         {

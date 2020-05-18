@@ -283,7 +283,7 @@ namespace UniVRM10
         {
             if (m_merger != null)
             {
-                m_merger.RestoreMaterialInitialValues(BlendShapeAvatar.Clips);
+                m_merger.RestoreMaterialInitialValues();
             }
         }
 

@@ -115,9 +115,9 @@ namespace UniVRM10
             }
         }
 
-        public void RestoreMaterialInitialValues(IEnumerable<BlendShapeClip> clips)
+        public void RestoreMaterialInitialValues()
         {
-            m_materialValueBindingMerger.RestoreMaterialInitialValues(clips);
+            m_materialValueBindingMerger.RestoreMaterialInitialValues();
         }
     }
 }
