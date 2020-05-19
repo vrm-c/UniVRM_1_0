@@ -44,12 +44,12 @@ namespace UniVRM10
             if (clip != null)
             {
                 // select clip
-                int mode = 0;
+                var status = SerializedBlendShapeEditor.EditorStatus.Default;
                 if (m_serializedEditor != null)
                 {
-                    mode = m_serializedEditor.Mode;
+                    status = m_serializedEditor.Status;
                 }
-                m_serializedEditor = new SerializedBlendShapeEditor(clip, PreviewSceneManager, mode);
+                m_serializedEditor = new SerializedBlendShapeEditor(clip, PreviewSceneManager, status);
             }
             else
             {

@@ -35,31 +35,44 @@ namespace UniVRM10
 
         bool m_changed;
 
-        int m_mode;
+        public struct EditorStatus
+        {
+            public int Mode;
+            public bool BlendShapeFoldout;
+            public bool AdvancedFoldout;
+
+            public static EditorStatus Default => new EditorStatus
+            {
+                BlendShapeFoldout = true,
+            };
+        }
+        EditorStatus m_status = EditorStatus.Default;
+
+        public EditorStatus Status => m_status;
+
         static string[] MODES = new[]{
             "BlendShape",
             "Material Color",
             "Material UV"
         };
-        public int Mode => m_mode;
 
         PreviewMeshItem[] m_items;
         #endregion
 
         public SerializedBlendShapeEditor(SerializedObject serializedObject,
             PreviewSceneManager previewSceneManager) : this(
-                serializedObject, (BlendShapeClip)serializedObject.targetObject, previewSceneManager, 0)
+                serializedObject, (BlendShapeClip)serializedObject.targetObject, previewSceneManager, EditorStatus.Default)
         { }
 
         public SerializedBlendShapeEditor(BlendShapeClip blendShapeClip,
-            PreviewSceneManager previewSceneManager, int mode) : this(
-                new SerializedObject(blendShapeClip), blendShapeClip, previewSceneManager, mode)
+            PreviewSceneManager previewSceneManager, EditorStatus status) : this(
+                new SerializedObject(blendShapeClip), blendShapeClip, previewSceneManager, status)
         { }
 
         public SerializedBlendShapeEditor(SerializedObject serializedObject, BlendShapeClip targetObject,
-            PreviewSceneManager previewSceneManager, int mode)
+            PreviewSceneManager previewSceneManager, EditorStatus status)
         {
-            m_mode = mode;
+            m_status = status;
             this.m_serializedObject = serializedObject;
             this.m_targetObject = targetObject;
 
@@ -78,9 +91,6 @@ namespace UniVRM10
             .ToArray();
         }
 
-        bool m_blendShapeFoldout = true;
-        bool m_advancedFoldout = false;
-
         public bool Draw(out BlendShapeClip bakeValue)
         {
             m_changed = false;
@@ -96,8 +106,8 @@ namespace UniVRM10
             EditorGUILayout.PropertyField(m_blendShapeNameProp, true);
             EditorGUILayout.PropertyField(m_presetProp, true);
 
-            m_blendShapeFoldout = CustomUI.Foldout(m_blendShapeFoldout, "BlendShape");
-            if (m_blendShapeFoldout)
+            m_status.BlendShapeFoldout = CustomUI.Foldout(Status.BlendShapeFoldout, "BlendShape");
+            if (Status.BlendShapeFoldout)
             {
                 EditorGUI.indentLevel++;
                 var changed = BlendShapeBindsGUI();
@@ -112,8 +122,8 @@ namespace UniVRM10
                 EditorGUI.indentLevel--;
             }
 
-            m_advancedFoldout = CustomUI.Foldout(m_advancedFoldout, "Advanced");
-            if (m_advancedFoldout)
+            m_status.AdvancedFoldout = CustomUI.Foldout(Status.AdvancedFoldout, "Advanced");
+            if (Status.AdvancedFoldout)
             {
                 EditorGUI.indentLevel++;
 
@@ -126,8 +136,8 @@ namespace UniVRM10
                 EditorGUILayout.PropertyField(m_ignoreMouthProp, true);
 
                 EditorGUILayout.Space();
-                m_mode = GUILayout.Toolbar(m_mode, MODES);
-                switch (m_mode)
+                m_status.Mode = GUILayout.Toolbar(Status.Mode, MODES);
+                switch (Status.Mode)
                 {
                     case 0:
                         // BlendShape
