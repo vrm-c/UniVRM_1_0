@@ -157,12 +157,6 @@ namespace VrmLib
 
         public static MaterialBindType GetBindType(this Material material, string property)
         {
-            if (property.EndsWith("_ST_S")
-            || property.EndsWith("_ST_T"))
-            {
-                property = property.Substring(0, property.Length - 2);
-            }
-
             if (material is UnlitMaterial unlit)
             {
                 return _GetBindType(unlit, property);
