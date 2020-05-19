@@ -1,8 +1,6 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEditor;
-using UnityEditorInternal;
 using UnityEngine;
 
 namespace UniVRM10
@@ -30,19 +28,8 @@ namespace UniVRM10
         SerializedProperty m_ignoreMouthProp;
         #endregion
 
-        #region BlendShapeBind
-        public static int BlendShapeBindingHeight = 60;
-        ReorderableList m_ValuesList;
-
-        SerializedProperty m_valuesProp;
-        #endregion
-
-        #region  MaterialValueBind
-        const int MaterialValueBindingHeight = 90;
-        ReorderableList m_MaterialValuesList;
-
-        SerializedProperty m_materialsProp;
-        #endregion
+        ReorderableBlendShapeBindList m_values;
+        ReorderableMaterialBindList m_materialValues;
 
         #region  Editor values
 
@@ -83,36 +70,8 @@ namespace UniVRM10
             m_ignoreLookAtProp = serializedObject.FindProperty("IgnoreLookAt");
             m_ignoreMouthProp = serializedObject.FindProperty("IgnoreMouth");
 
-            m_valuesProp = serializedObject.FindProperty("Values");
-
-            m_ValuesList = new ReorderableList(serializedObject, m_valuesProp);
-            m_ValuesList.elementHeight = BlendShapeBindingHeight;
-            m_ValuesList.drawElementCallback =
-              (rect, index, isActive, isFocused) =>
-              {
-                  var element = m_valuesProp.GetArrayElementAtIndex(index);
-                  rect.height -= 4;
-                  rect.y += 2;
-                  if (BlendShapeClipEditorHelper.DrawBlendShapeBinding(rect, element, previewSceneManager))
-                  {
-                      m_changed = true;
-                  }
-              };
-
-            m_materialsProp = serializedObject.FindProperty("MaterialValues");
-            m_MaterialValuesList = new ReorderableList(serializedObject, m_materialsProp);
-            m_MaterialValuesList.elementHeight = MaterialValueBindingHeight;
-            m_MaterialValuesList.drawElementCallback =
-              (rect, index, isActive, isFocused) =>
-              {
-                  var element = m_materialsProp.GetArrayElementAtIndex(index);
-                  rect.height -= 4;
-                  rect.y += 2;
-                  if (BlendShapeClipEditorHelper.DrawMaterialValueBinding(rect, element, previewSceneManager))
-                  {
-                      m_changed = true;
-                  }
-              };
+            m_values = new ReorderableBlendShapeBindList(serializedObject, previewSceneManager);
+            m_materialValues = new ReorderableMaterialBindList(serializedObject, previewSceneManager);
 
             m_items = previewSceneManager.EnumRenderItems
             .Where(x => x.SkinnedMeshRenderer != null)
@@ -141,7 +100,15 @@ namespace UniVRM10
             if (m_blendShapeFoldout)
             {
                 EditorGUI.indentLevel++;
-                ClipGUI();
+                var changed = BlendShapeBindsGUI();
+                if (changed)
+                {
+                    string maxWeightName;
+                    var bindings = GetBindings(out maxWeightName);
+                    m_values.SetValues(bindings);
+
+                    m_changed = true;
+                }
                 EditorGUI.indentLevel--;
             }
 
@@ -165,24 +132,20 @@ namespace UniVRM10
                     case 0:
                         // BlendShape
                         {
-                            if (GUILayout.Button("Clear BlendShape"))
+                            if (m_values.Draw())
                             {
                                 m_changed = true;
-                                m_valuesProp.arraySize = 0;
                             }
-                            m_ValuesList.DoLayoutList();
                         }
                         break;
 
                     case 1:
                         // Material
                         {
-                            if (GUILayout.Button("Clear MaterialColor"))
+                            if (m_materialValues.Draw())
                             {
                                 m_changed = true;
-                                m_materialsProp.arraySize = 0;
                             }
-                            m_MaterialValuesList.DoLayoutList();
                         }
                         break;
 
@@ -192,7 +155,7 @@ namespace UniVRM10
                             if (GUILayout.Button("Clear MaterialUV"))
                             {
                                 m_changed = true;
-                                m_materialsProp.arraySize = 0;
+                                // m_materialsProp.arraySize = 0;
                             }
                             // m_MaterialValuesList.DoLayoutList();
                         }
@@ -206,51 +169,6 @@ namespace UniVRM10
 
             bakeValue = m_targetObject;
             return m_changed;
-        }
-
-        void ClipGUI()
-        {
-            var changed = BlendShapeBindsGUI();
-            if (changed)
-            {
-                string maxWeightName;
-                var bindings = GetBindings(out maxWeightName);
-                m_valuesProp.ClearArray();
-                m_valuesProp.arraySize = bindings.Length;
-                for (int i = 0; i < bindings.Length; ++i)
-                {
-                    var item = m_valuesProp.GetArrayElementAtIndex(i);
-
-                    var endProperty = item.GetEndProperty();
-                    while (item.NextVisible(true))
-                    {
-                        if (SerializedProperty.EqualContents(item, endProperty))
-                        {
-                            break;
-                        }
-
-                        switch (item.name)
-                        {
-                            case "RelativePath":
-                                item.stringValue = bindings[i].RelativePath;
-                                break;
-
-                            case "Index":
-                                item.intValue = bindings[i].Index;
-                                break;
-
-                            case "Weight":
-                                item.floatValue = bindings[i].Weight;
-                                break;
-
-                            default:
-                                throw new Exception();
-                        }
-                    }
-                }
-
-                m_changed = true;
-            }
         }
 
         List<bool> m_meshFolds = new List<bool>();
