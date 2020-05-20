@@ -28,7 +28,19 @@ namespace UniVRM10
                       m_changed = true;
                   }
               };
+            m_list.onAddCallback = (m_list) =>
+            {
+                // first add one element                
+                m_serializedProperty.arraySize++;
 
+                // then get that element
+                var newIndex = m_serializedProperty.arraySize - 1;
+                var newElement = m_serializedProperty.GetArrayElementAtIndex(newIndex);
+
+                // now reset all properties like
+                var scaling = newElement.FindPropertyRelative(nameof(MaterialUVBinding.Scaling));
+                scaling.vector2Value = Vector2.one;
+            };
         }
 
         ///

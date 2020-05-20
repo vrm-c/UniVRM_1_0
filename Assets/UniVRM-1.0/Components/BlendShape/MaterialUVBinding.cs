@@ -19,6 +19,8 @@ namespace UniVRM10
         public Vector2 Scaling; // default: Vector2.one
         public Vector2 Offset; // default: Vector2.zero
 
+        public Vector4 ScalingOffset => new Vector4(Scaling.x, Scaling.y, Offset.x, Offset.y);
+
         public bool Equals(MaterialUVBinding other)
         {
             return string.Equals(MaterialName, other.MaterialName) && Scaling.Equals(other.Scaling) && Offset.Equals(other.Offset);

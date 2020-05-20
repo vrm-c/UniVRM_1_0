@@ -224,7 +224,7 @@ namespace UniVRM10
             //
             // Update Material
             //
-            if (bake.MaterialColorBindings != null && m_materialMap != null)
+            if (m_materialMap != null)
             {
                 // clear
                 //Debug.LogFormat("clear material");
@@ -235,16 +235,44 @@ namespace UniVRM10
                         // var prop = VrmLib.MaterialBindTypeExtensions.GetProperty(_kv.Key);
                         kv.Value.Material.SetColor(_kv.Value.Name, _kv.Value.DefaultValues);
                     }
+
+                    // clear UV
+                    kv.Value.Material.SetVector("_MainTex_ST", new Vector4(1, 1, 0, 0));
                 }
 
-                foreach (var x in bake.MaterialColorBindings)
+                if (bake.MaterialColorBindings != null)
                 {
-                    PreviewMaterialItem item;
-                    if (m_materialMap.TryGetValue(x.MaterialName, out item))
+                    foreach (var x in bake.MaterialColorBindings)
                     {
-                        //Debug.Log("set material");
-                        PropItem prop;
-                        if (item.PropMap.TryGetValue(x.BindType, out prop))
+                        PreviewMaterialItem item;
+                        if (m_materialMap.TryGetValue(x.MaterialName, out item))
+                        {
+                            //Debug.Log("set material");
+                            PropItem prop;
+                            if (item.PropMap.TryGetValue(x.BindType, out prop))
+                            {
+                                // var valueName = x.ValueName;
+                                // if (valueName.EndsWith("_ST_S")
+                                // || valueName.EndsWith("_ST_T"))
+                                // {
+                                //     valueName = valueName.Substring(0, valueName.Length - 2);
+                                // }
+
+                                var value = item.Material.GetVector(prop.Name);
+                                //Debug.LogFormat("{0} => {1}", valueName, x.TargetValue);
+                                value += ((x.TargetValue - prop.DefaultValues) * weight);
+                                item.Material.SetColor(prop.Name, value);
+                            }
+                        }
+                    }
+                }
+
+                if (bake.MaterialUVBindings != null)
+                {
+                    foreach (var x in bake.MaterialUVBindings)
+                    {
+                        PreviewMaterialItem item;
+                        if (m_materialMap.TryGetValue(x.MaterialName, out item))
                         {
                             // var valueName = x.ValueName;
                             // if (valueName.EndsWith("_ST_S")
@@ -253,10 +281,10 @@ namespace UniVRM10
                             //     valueName = valueName.Substring(0, valueName.Length - 2);
                             // }
 
-                            var value = item.Material.GetVector(prop.Name);
+                            var value = item.Material.GetVector("_MainTex_ST");
                             //Debug.LogFormat("{0} => {1}", valueName, x.TargetValue);
-                            value += ((x.TargetValue - prop.DefaultValues) * weight);
-                            item.Material.SetColor(prop.Name, value);
+                            value += ((x.ScalingOffset - new Vector4(1, 1, 0, 0)) * weight);
+                            item.Material.SetColor("_MainTex_ST", value);
                         }
                     }
                 }
