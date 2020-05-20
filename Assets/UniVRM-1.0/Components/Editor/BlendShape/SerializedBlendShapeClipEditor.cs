@@ -28,8 +28,8 @@ namespace UniVRM10
         SerializedProperty m_ignoreMouthProp;
         #endregion
 
-        ReorderableBlendShapeBindList m_values;
-        ReorderableMaterialBindList m_materialValues;
+        ReorderableBlendShapeBindingList m_blendShapeBindings;
+        ReorderableMaterialColorBindingList m_materialColorBindings;
 
         #region  Editor values
 
@@ -83,8 +83,8 @@ namespace UniVRM10
             m_ignoreLookAtProp = serializedObject.FindProperty("IgnoreLookAt");
             m_ignoreMouthProp = serializedObject.FindProperty("IgnoreMouth");
 
-            m_values = new ReorderableBlendShapeBindList(serializedObject, previewSceneManager);
-            m_materialValues = new ReorderableMaterialBindList(serializedObject, previewSceneManager);
+            m_blendShapeBindings = new ReorderableBlendShapeBindingList(serializedObject, previewSceneManager);
+            m_materialColorBindings = new ReorderableMaterialColorBindingList(serializedObject, previewSceneManager);
 
             m_items = previewSceneManager.EnumRenderItems
             .Where(x => x.SkinnedMeshRenderer != null)
@@ -115,7 +115,7 @@ namespace UniVRM10
                 {
                     string maxWeightName;
                     var bindings = GetBindings(out maxWeightName);
-                    m_values.SetValues(bindings);
+                    m_blendShapeBindings.SetValues(bindings);
 
                     m_changed = true;
                 }
@@ -142,7 +142,7 @@ namespace UniVRM10
                     case 0:
                         // BlendShape
                         {
-                            if (m_values.Draw())
+                            if (m_blendShapeBindings.Draw())
                             {
                                 m_changed = true;
                             }
@@ -152,7 +152,7 @@ namespace UniVRM10
                     case 1:
                         // Material
                         {
-                            if (m_materialValues.Draw())
+                            if (m_materialColorBindings.Draw())
                             {
                                 m_changed = true;
                             }

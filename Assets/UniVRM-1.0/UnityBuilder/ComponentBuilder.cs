@@ -54,18 +54,18 @@ namespace UniVRM10
             };
         }
 
-        static UniVRM10.MaterialValueBinding? Build10(this VrmLib.MaterialBindValue bind, ModelMap loader)
+        static UniVRM10.MaterialColorBinding? Build10(this VrmLib.MaterialBindValue bind, ModelMap loader)
         {
             var kv = bind.Property;
             var value = kv.Value.ToUnityVector4();
             var material = loader.Materials[bind.Material];
 
-            var binding = default(UniVRM10.MaterialValueBinding?);
+            var binding = default(UniVRM10.MaterialColorBinding?);
             if (material != null)
             {
                 try
                 {
-                    binding = new UniVRM10.MaterialValueBinding
+                    binding = new UniVRM10.MaterialColorBinding
                     {
                         MaterialName = bind.Material.Name, // UniVRM-0Xの実装は名前で持っている
                         BindType = bind.BindType,

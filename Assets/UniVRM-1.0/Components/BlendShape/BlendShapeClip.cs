@@ -64,7 +64,7 @@ namespace UniVRM10
         /// 対象マテリアルの Color を操作する
         /// <summary>
         [SerializeField]
-        public MaterialValueBinding[] MaterialValues = new MaterialValueBinding[] { };
+        public MaterialColorBinding[] MaterialValues = new MaterialColorBinding[] { };
 
         /// <summary>
         /// 対象マテリアルの UVScale+Offset を操作する

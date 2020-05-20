@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace UniVRM10
 {
-    public class ReorderableMaterialBindList
+    public class ReorderableMaterialColorBindingList
     {
 
         const int MaterialValueBindingHeight = 90;
@@ -15,7 +15,7 @@ namespace UniVRM10
         SerializedProperty m_materialsProp;
         bool m_changed;
 
-        public ReorderableMaterialBindList(SerializedObject serializedObject, PreviewSceneManager previewSceneManager)
+        public ReorderableMaterialColorBindingList(SerializedObject serializedObject, PreviewSceneManager previewSceneManager)
         {
             m_materialsProp = serializedObject.FindProperty("MaterialValues");
             m_MaterialValuesList = new ReorderableList(serializedObject, m_materialsProp);

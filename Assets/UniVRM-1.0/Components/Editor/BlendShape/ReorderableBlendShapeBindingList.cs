@@ -8,14 +8,14 @@ using UnityEngine;
 
 namespace UniVRM10
 {
-    public class ReorderableBlendShapeBindList
+    public class ReorderableBlendShapeBindingList
     {
         public const int BlendShapeBindingHeight = 60;
         ReorderableList m_ValuesList;
         SerializedProperty m_valuesProp;
         bool m_changed;
 
-        public ReorderableBlendShapeBindList(SerializedObject serializedObject, PreviewSceneManager previewSceneManager)
+        public ReorderableBlendShapeBindingList(SerializedObject serializedObject, PreviewSceneManager previewSceneManager)
         {
             m_valuesProp = serializedObject.FindProperty("Values");
 

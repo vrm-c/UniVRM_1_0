@@ -135,7 +135,7 @@ namespace UniVRM10
         //         );
         //     blendShape.MaterialValues.Add(bind);
         // }
-        IEnumerable<VrmLib.MaterialBindValue> FromGltf(MaterialValueBinding y)
+        IEnumerable<VrmLib.MaterialBindValue> FromGltf(MaterialColorBinding y)
         {
             var materialPair = Materials.First(z => z.Key.name == y.MaterialName);
             if (materialPair.Equals(default(KeyValuePair<Material, VrmLib.Material>)))

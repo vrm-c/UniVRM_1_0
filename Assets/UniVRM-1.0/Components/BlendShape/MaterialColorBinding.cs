@@ -4,13 +4,13 @@ using UnityEngine;
 namespace UniVRM10
 {
     [Serializable]
-    public struct MaterialValueBinding : IEquatable<MaterialValueBinding>
+    public struct MaterialColorBinding : IEquatable<MaterialColorBinding>
     {
         public String MaterialName;
         public VrmLib.MaterialBindType BindType;
         public Vector4 TargetValue;
 
-        public bool Equals(MaterialValueBinding other)
+        public bool Equals(MaterialColorBinding other)
         {
             return string.Equals(MaterialName, other.MaterialName) && BindType.Equals(other.BindType) && TargetValue.Equals(other.TargetValue);
         }
@@ -18,7 +18,7 @@ namespace UniVRM10
         public override bool Equals(object obj)
         {
             if (ReferenceEquals(null, obj)) return false;
-            return obj is MaterialValueBinding && Equals((MaterialValueBinding)obj);
+            return obj is MaterialColorBinding && Equals((MaterialColorBinding)obj);
         }
 
         public override int GetHashCode()

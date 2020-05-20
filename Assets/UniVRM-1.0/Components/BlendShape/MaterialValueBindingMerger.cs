@@ -28,14 +28,14 @@ namespace UniVRM10
         #endregion
 
         #region Accumulate
-        struct DictionaryKeyMaterialValueBindingComparer : IEqualityComparer<MaterialValueBinding>
+        struct DictionaryKeyMaterialValueBindingComparer : IEqualityComparer<MaterialColorBinding>
         {
-            public bool Equals(MaterialValueBinding x, MaterialValueBinding y)
+            public bool Equals(MaterialColorBinding x, MaterialColorBinding y)
             {
                 return x.TargetValue == y.TargetValue && x.MaterialName == y.MaterialName && x.BindType == y.BindType;
             }
 
-            public int GetHashCode(MaterialValueBinding obj)
+            public int GetHashCode(MaterialColorBinding obj)
             {
                 return obj.GetHashCode();
             }
@@ -49,7 +49,7 @@ namespace UniVRM10
         /// <typeparam name="MaterialValueBinding"></typeparam>
         /// <typeparam name="float"></typeparam>
         /// <returns></returns>
-        Dictionary<MaterialValueBinding, float> m_materialValueMap = new Dictionary<MaterialValueBinding, float>(comparer);
+        Dictionary<MaterialColorBinding, float> m_materialValueMap = new Dictionary<MaterialColorBinding, float>(comparer);
 
         // Dictionary<MaterialValueBinding, Setter> m_materialSetterMap = new Dictionary<MaterialValueBinding, Setter>(comparer);
         public void AccumulateValue(BlendShapeClip clip, float value)
@@ -101,7 +101,7 @@ namespace UniVRM10
                 return MaterialName.GetHashCode() + ValueName.GetHashCode();
             }
 
-            public static MaterialTarget Create(MaterialValueBinding binding)
+            public static MaterialTarget Create(MaterialColorBinding binding)
             {
                 return new MaterialTarget
                 {
