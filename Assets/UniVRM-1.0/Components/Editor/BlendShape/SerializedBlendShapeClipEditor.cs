@@ -84,9 +84,9 @@ namespace UniVRM10
             m_ignoreLookAtProp = serializedObject.FindProperty("IgnoreLookAt");
             m_ignoreMouthProp = serializedObject.FindProperty("IgnoreMouth");
 
-            m_blendShapeBindings = new ReorderableBlendShapeBindingList(serializedObject, previewSceneManager);
-            m_materialColorBindings = new ReorderableMaterialColorBindingList(serializedObject, previewSceneManager);
-            m_materialUVBindings = new ReorderableMaterialUVBindingList(serializedObject, previewSceneManager);
+            m_blendShapeBindings = new ReorderableBlendShapeBindingList(serializedObject, previewSceneManager, 20);
+            m_materialColorBindings = new ReorderableMaterialColorBindingList(serializedObject, previewSceneManager, 20);
+            m_materialUVBindings = new ReorderableMaterialUVBindingList(serializedObject, previewSceneManager, 20);
 
             m_items = previewSceneManager.EnumRenderItems
             .Where(x => x.SkinnedMeshRenderer != null)

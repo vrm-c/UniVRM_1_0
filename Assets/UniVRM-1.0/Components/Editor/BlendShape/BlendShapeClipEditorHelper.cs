@@ -7,126 +7,7 @@ namespace UniVRM10
 {
     public static class BlendShapeClipEditorHelper
     {
-        ///
-        /// BlendShape List のElement描画
-        ///
-        public static bool DrawBlendShapeBinding(Rect position, SerializedProperty property,
-            PreviewSceneManager scene)
-        {
-            bool changed = false;
-            if (scene != null)
-            {
-                var height = 16;
-
-                var y = position.y;
-                var rect = new Rect(position.x, y, position.width, height);
-                int pathIndex;
-                if (StringPopup(rect, property.FindPropertyRelative("RelativePath"), scene.SkinnedMeshRendererPathList, out pathIndex))
-                {
-                    changed = true;
-                }
-
-                y += height;
-                rect = new Rect(position.x, y, position.width, height);
-                int blendShapeIndex;
-                if (IntPopup(rect, property.FindPropertyRelative("Index"), scene.GetBlendShapeNames(pathIndex), out blendShapeIndex))
-                {
-                    changed = true;
-                }
-
-                y += height;
-                rect = new Rect(position.x, y, position.width, height);
-                if (FloatSlider(rect, property.FindPropertyRelative("Weight"), 100))
-                {
-                    changed = true;
-                }
-            }
-            return changed;
-        }
-
-        ///
-        /// Material List のElement描画
-        ///
-        public static bool DrawMaterialValueBinding(Rect position, SerializedProperty property,
-            PreviewSceneManager scene)
-        {
-            bool changed = false;
-            if (scene != null)
-            {
-                var height = 16;
-
-                var y = position.y;
-                var rect = new Rect(position.x, y, position.width, height);
-                int materialIndex;
-                if (StringPopup(rect, property.FindPropertyRelative("MaterialName"), scene.MaterialNames, out materialIndex))
-                {
-                    changed = true;
-                }
-
-                if (materialIndex >= 0)
-                {
-                    var materialItem = scene.GetMaterialItem(scene.MaterialNames[materialIndex]);
-                    if (materialItem != null)
-                    {
-                        y += height;
-                        rect = new Rect(position.x, y, position.width, height);
-
-                        // プロパティ名のポップアップ
-                        var bindTypeProp = property.FindPropertyRelative("BindType");
-                        var bindTypes = (VrmLib.MaterialBindType[])Enum.GetValues(typeof(VrmLib.MaterialBindType));
-                        var bindType = bindTypes[bindTypeProp.enumValueIndex];
-                        var newBindType = EnumPopup(rect, bindType);
-                        if (newBindType != bindType)
-                        {
-                            bindTypeProp.enumValueIndex = Array.IndexOf(bindTypes, newBindType);
-                            changed = true;
-                        }
-
-                        // if (propIndex >= 0)
-                        {
-                            // 有効なプロパティ名が選択された
-                            if (materialItem.PropMap.TryGetValue(newBindType, out PropItem propItem))
-                            {
-                                switch (propItem.PropertyType)
-                                {
-                                    case ShaderUtil.ShaderPropertyType.Color:
-                                        {
-                                            // property.FindPropertyRelative("BaseValue").vector4Value = propItem.DefaultValues;
-
-                                            // max
-                                            y += height;
-                                            rect = new Rect(position.x, y, position.width, height);
-                                            if (ColorProp(rect, property.FindPropertyRelative("TargetValue")))
-                                            {
-                                                changed = true;
-                                            }
-                                        }
-                                        break;
-
-                                    case ShaderUtil.ShaderPropertyType.TexEnv:
-                                        {
-                                            property.FindPropertyRelative("BaseValue").vector4Value = propItem.DefaultValues;
-
-                                            // max
-                                            y += height;
-                                            rect = new Rect(position.x, y, position.width, height);
-                                            if (OffsetProp(rect, property.FindPropertyRelative("TargetValue")))
-                                            {
-                                                changed = true;
-                                            }
-                                        }
-                                        break;
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-            return changed;
-        }
-
-        #region Private
-        static bool StringPopup(Rect rect, SerializedProperty prop, string[] options, out int newIndex)
+        public static bool StringPopup(Rect rect, SerializedProperty prop, string[] options, out int newIndex)
         {
             if (options == null)
             {
@@ -147,12 +28,12 @@ namespace UniVRM10
             }
         }
 
-        static T EnumPopup<T>(Rect rect, T value) where T : Enum
+        public static T EnumPopup<T>(Rect rect, T value) where T : Enum
         {
             return (T)EditorGUI.EnumPopup(rect, (Enum)value);
         }
 
-        static bool IntPopup(Rect rect, SerializedProperty prop, string[] options, out int newIndex)
+        public static bool IntPopup(Rect rect, SerializedProperty prop, string[] options, out int newIndex)
         {
             if (options == null)
             {
@@ -173,7 +54,7 @@ namespace UniVRM10
             }
         }
 
-        static bool FloatSlider(Rect rect, SerializedProperty prop, float maxValue)
+        public static bool FloatSlider(Rect rect, SerializedProperty prop, float maxValue)
         {
             var oldValue = prop.floatValue;
             var newValue = EditorGUI.Slider(rect, prop.floatValue, 0, 100f);
@@ -188,13 +69,28 @@ namespace UniVRM10
             }
         }
 
-        static bool ColorProp(Rect rect, SerializedProperty prop)
+        public static bool ColorProp(Rect rect, SerializedProperty prop)
         {
             var oldValue = (Color)prop.vector4Value;
             var newValue = EditorGUI.ColorField(rect, prop.displayName, oldValue);
             if (newValue != oldValue)
             {
                 prop.vector4Value = newValue;
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public static bool UVProp(Rect rect, SerializedProperty prop)
+        {
+            var oldValue = prop.vector2Value;
+            var newValue = EditorGUI.Vector2Field(rect, prop.displayName, oldValue);
+            if (newValue != oldValue)
+            {
+                prop.vector2Value = newValue;
                 return true;
             }
             else
@@ -271,7 +167,6 @@ namespace UniVRM10
                 return false;
             }
         }
-        #endregion
     }
 
     /// https://gist.github.com/gszauer/7799899

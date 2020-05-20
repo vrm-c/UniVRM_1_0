@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEditor;
 using UnityEditorInternal;
 using UnityEngine;
@@ -10,27 +8,61 @@ namespace UniVRM10
 {
     public class ReorderableBlendShapeBindingList
     {
-        public const int BlendShapeBindingHeight = 60;
         ReorderableList m_ValuesList;
         SerializedProperty m_valuesProp;
         bool m_changed;
 
-        public ReorderableBlendShapeBindingList(SerializedObject serializedObject, PreviewSceneManager previewSceneManager)
+        public ReorderableBlendShapeBindingList(SerializedObject serializedObject, PreviewSceneManager previewSceneManager, int height)
         {
             m_valuesProp = serializedObject.FindProperty(nameof(BlendShapeClip.BlendShapeBindings));
             m_ValuesList = new ReorderableList(serializedObject, m_valuesProp);
-            m_ValuesList.elementHeight = BlendShapeBindingHeight;
+            m_ValuesList.elementHeight = height * 3;
             m_ValuesList.drawElementCallback =
               (rect, index, isActive, isFocused) =>
               {
                   var element = m_valuesProp.GetArrayElementAtIndex(index);
                   rect.height -= 4;
                   rect.y += 2;
-                  if (BlendShapeClipEditorHelper.DrawBlendShapeBinding(rect, element, previewSceneManager))
+                  if (DrawBlendShapeBinding(rect, element, previewSceneManager, height))
                   {
                       m_changed = true;
                   }
               };
+        }
+
+        ///
+        /// BlendShape List のElement描画
+        ///
+        static bool DrawBlendShapeBinding(Rect position, SerializedProperty property,
+            PreviewSceneManager scene, int height)
+        {
+            bool changed = false;
+            if (scene != null)
+            {
+                var y = position.y;
+                var rect = new Rect(position.x, y, position.width, height);
+                int pathIndex;
+                if (BlendShapeClipEditorHelper.StringPopup(rect, property.FindPropertyRelative(nameof(BlendShapeBinding.RelativePath)), scene.SkinnedMeshRendererPathList, out pathIndex))
+                {
+                    changed = true;
+                }
+
+                y += height;
+                rect = new Rect(position.x, y, position.width, height);
+                int blendShapeIndex;
+                if (BlendShapeClipEditorHelper.IntPopup(rect, property.FindPropertyRelative(nameof(BlendShapeBinding.Index)), scene.GetBlendShapeNames(pathIndex), out blendShapeIndex))
+                {
+                    changed = true;
+                }
+
+                y += height;
+                rect = new Rect(position.x, y, position.width, height);
+                if (BlendShapeClipEditorHelper.FloatSlider(rect, property.FindPropertyRelative(nameof(BlendShapeBinding.Weight)), 100))
+                {
+                    changed = true;
+                }
+            }
+            return changed;
         }
 
         public void SetValues(BlendShapeBinding[] bindings)
@@ -51,15 +83,15 @@ namespace UniVRM10
 
                     switch (item.name)
                     {
-                        case "RelativePath":
+                        case nameof(BlendShapeBinding.RelativePath):
                             item.stringValue = bindings[i].RelativePath;
                             break;
 
-                        case "Index":
+                        case nameof(BlendShapeBinding.Index):
                             item.intValue = bindings[i].Index;
                             break;
 
-                        case "Weight":
+                        case nameof(BlendShapeBinding.Weight):
                             item.floatValue = bindings[i].Weight;
                             break;
 
