@@ -81,6 +81,30 @@ namespace UniVRM10
             return binding;
         }
 
+        static UniVRM10.MaterialUVBinding? Build10(this VrmLib.UVScaleOffsetValue bind, ModelMap loader)
+        {
+            var material = loader.Materials[bind.Material];
+
+            var binding = default(UniVRM10.MaterialUVBinding?);
+            if (material != null)
+            {
+                try
+                {
+                    binding = new UniVRM10.MaterialUVBinding
+                    {
+                        MaterialName = bind.Material.Name, // UniVRM-0Xの実装は名前で持っている
+                        Scaling = new Vector2(bind.Scale.X, bind.Scale.Y),
+                        Offset = new Vector2(bind.Offset.X, bind.Offset.Y),
+                    };
+                }
+                catch (Exception)
+                {
+                    // do nothing
+                }
+            }
+            return binding;
+        }
+
         public static void Build10(VrmLib.Model model, ModelAsset asset)
         {
             // meta
@@ -145,6 +169,10 @@ namespace UniVRM10
                         clip.BlendShapeBindings = blendShape.BlendShapeValues.Select(x => x.Build10(asset.Root, asset.Map))
                             .ToArray();
                         clip.MaterialColorBindings = blendShape.MaterialValues.Select(x => x.Build10(asset.Map))
+                            .Where(x => x.HasValue)
+                            .Select(x => x.Value)
+                            .ToArray();
+                        clip.MaterialUVBindings = blendShape.UVScaleOffsetValues.Select(x => x.Build10(asset.Map))
                             .Where(x => x.HasValue)
                             .Select(x => x.Value)
                             .ToArray();

@@ -58,13 +58,23 @@ namespace GltfSerializationAdapter
                 {
                     var material = materials.First(z => z.Name == y.materialName);
 
-                    if (y.propertyName.EndsWith("_ST")
-                    || y.propertyName.EndsWith("_ST_S")
-                    || y.propertyName.EndsWith("_ST_T"))
+                    if (y.propertyName.EndsWith("_ST"))
                     {
                         expression.UVScaleOffsetValues.Add(new UVScaleOffsetValue(material,
                             new Vector2(y.targetValue[0], y.targetValue[1]),
                             new Vector2(y.targetValue[2], y.targetValue[3])));
+                    }
+                    else if (y.propertyName.EndsWith("_ST_S"))
+                    {
+                        expression.UVScaleOffsetValues.Add(new UVScaleOffsetValue(material,
+                            new Vector2(y.targetValue[0], 1),
+                            new Vector2(y.targetValue[2], 0)));
+                    }
+                    else if (y.propertyName.EndsWith("_ST_T"))
+                    {
+                        expression.UVScaleOffsetValues.Add(new UVScaleOffsetValue(material,
+                            new Vector2(1, y.targetValue[1]),
+                            new Vector2(0, y.targetValue[3])));
                     }
                     else
                     {
