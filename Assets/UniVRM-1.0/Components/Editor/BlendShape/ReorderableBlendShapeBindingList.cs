@@ -106,13 +106,13 @@ namespace UniVRM10
         public bool Draw()
         {
             m_changed = false;
+            m_ValuesList.DoLayoutList();
             if (GUILayout.Button("Clear BlendShape"))
             {
                 m_changed = true;
                 m_valuesProp.arraySize = 0;
             }
-            m_ValuesList.DoLayoutList();
-            return true;
+            return m_changed;
         }
     }
 }

@@ -8,21 +8,21 @@ namespace UniVRM10
 {
     public class ReorderableMaterialColorBindingList
     {
-        ReorderableList m_MaterialValuesList;
-        SerializedProperty m_materialsProp;
+        ReorderableList m_list;
+        SerializedProperty m_serializedProperty;
         bool m_changed;
-        public ReorderableMaterialColorBindingList(SerializedObject serializedObject, PreviewSceneManager previewSceneManager, int height)
+        public ReorderableMaterialColorBindingList(SerializedObject serializedObject, string[] materialNames, int height)
         {
-            m_materialsProp = serializedObject.FindProperty(nameof(BlendShapeClip.MaterialColorBindings));
-            m_MaterialValuesList = new ReorderableList(serializedObject, m_materialsProp);
-            m_MaterialValuesList.elementHeight = height * 3;
-            m_MaterialValuesList.drawElementCallback =
+            m_serializedProperty = serializedObject.FindProperty(nameof(BlendShapeClip.MaterialColorBindings));
+            m_list = new ReorderableList(serializedObject, m_serializedProperty);
+            m_list.elementHeight = height * 3;
+            m_list.drawElementCallback =
               (rect, index, isActive, isFocused) =>
               {
-                  var element = m_materialsProp.GetArrayElementAtIndex(index);
+                  var element = m_serializedProperty.GetArrayElementAtIndex(index);
                   rect.height -= 4;
                   rect.y += 2;
-                  if (DrawMaterialValueBinding(rect, element, previewSceneManager, height))
+                  if (DrawMaterialValueBinding(rect, element, materialNames, height))
                   {
                       m_changed = true;
                   }
@@ -33,47 +33,40 @@ namespace UniVRM10
         /// Material List のElement描画
         ///
         static bool DrawMaterialValueBinding(Rect position, SerializedProperty property,
-            PreviewSceneManager scene, int height)
+            string[] materialNames, int height)
         {
             bool changed = false;
-            if (scene != null)
+            if (materialNames != null)
             {
                 // Material を選択する
                 var y = position.y;
                 var rect = new Rect(position.x, y, position.width, height);
                 int materialIndex;
-                if (BlendShapeClipEditorHelper.StringPopup(rect, property.FindPropertyRelative(nameof(MaterialColorBinding.MaterialName)), scene.MaterialNames, out materialIndex))
+                if (BlendShapeClipEditorHelper.StringPopup(rect, property.FindPropertyRelative(nameof(MaterialColorBinding.MaterialName)), materialNames, out materialIndex))
                 {
                     changed = true;
                 }
 
-                // PreviewSceneの複製されたマテリアルを変更する
-                if (materialIndex >= 0)
+                y += height;
+                rect = new Rect(position.x, y, position.width, height);
+
+                // 対象のプロパティを enum から選択する
+                var bindTypeProp = property.FindPropertyRelative("BindType");
+                var bindTypes = (VrmLib.MaterialBindType[])Enum.GetValues(typeof(VrmLib.MaterialBindType));
+                var bindType = bindTypes[bindTypeProp.enumValueIndex];
+                var newBindType = BlendShapeClipEditorHelper.EnumPopup(rect, bindType);
+                if (newBindType != bindType)
                 {
-                    var materialItem = scene.GetMaterialItem(scene.MaterialNames[materialIndex]);
-                    if (materialItem != null)
-                    {
-                        y += height;
-                        rect = new Rect(position.x, y, position.width, height);
+                    bindTypeProp.enumValueIndex = Array.IndexOf(bindTypes, newBindType);
+                    changed = true;
+                }
 
-                        // プロパティ名のポップアップ
-                        var bindTypeProp = property.FindPropertyRelative("BindType");
-                        var bindTypes = (VrmLib.MaterialBindType[])Enum.GetValues(typeof(VrmLib.MaterialBindType));
-                        var bindType = bindTypes[bindTypeProp.enumValueIndex];
-                        var newBindType = BlendShapeClipEditorHelper.EnumPopup(rect, bindType);
-                        if (newBindType != bindType)
-                        {
-                            bindTypeProp.enumValueIndex = Array.IndexOf(bindTypes, newBindType);
-                            changed = true;
-                        }
-
-                        y += height;
-                        rect = new Rect(position.x, y, position.width, height);
-                        if (BlendShapeClipEditorHelper.ColorProp(rect, property.FindPropertyRelative(nameof(MaterialColorBinding.TargetValue))))
-                        {
-                            changed = true;
-                        }
-                    }
+                // 目標の色
+                y += height;
+                rect = new Rect(position.x, y, position.width, height);
+                if (BlendShapeClipEditorHelper.ColorProp(rect, property.FindPropertyRelative(nameof(MaterialColorBinding.TargetValue))))
+                {
+                    changed = true;
                 }
             }
             return changed;
@@ -82,12 +75,12 @@ namespace UniVRM10
         public bool Draw()
         {
             m_changed = false;
+            m_list.DoLayoutList();
             if (GUILayout.Button("Clear MaterialColor"))
             {
                 m_changed = true;
-                m_materialsProp.arraySize = 0;
+                m_serializedProperty.arraySize = 0;
             }
-            m_MaterialValuesList.DoLayoutList();
             return m_changed;
         }
     }

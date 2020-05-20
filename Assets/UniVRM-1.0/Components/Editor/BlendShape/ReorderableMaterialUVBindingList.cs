@@ -12,7 +12,7 @@ namespace UniVRM10
         SerializedProperty m_serializedProperty;
         bool m_changed;
 
-        public ReorderableMaterialUVBindingList(SerializedObject serializedObject, PreviewSceneManager previewSceneManager, int height)
+        public ReorderableMaterialUVBindingList(SerializedObject serializedObject, string[] materialNames, int height)
         {
             m_serializedProperty = serializedObject.FindProperty(nameof(BlendShapeClip.MaterialUVBindings));
             m_list = new ReorderableList(serializedObject, m_serializedProperty);
@@ -23,7 +23,7 @@ namespace UniVRM10
                   var element = m_serializedProperty.GetArrayElementAtIndex(index);
                   rect.height -= 4;
                   rect.y += 2;
-                  if (DrawMaterialUVBinding(rect, element, previewSceneManager, height))
+                  if (DrawMaterialUVBinding(rect, element, materialNames, height))
                   {
                       m_changed = true;
                   }
@@ -35,16 +35,16 @@ namespace UniVRM10
         /// Material List のElement描画
         ///
         static bool DrawMaterialUVBinding(Rect position, SerializedProperty property,
-            PreviewSceneManager scene, int height)
+            string[] materialNames, int height)
         {
             bool changed = false;
-            if (scene != null)
+            if (materialNames != null)
             {
                 // Materialを選択する
                 var y = position.y;
                 var rect = new Rect(position.x, y, position.width, height);
                 int materialIndex;
-                if (BlendShapeClipEditorHelper.StringPopup(rect, property.FindPropertyRelative(nameof(MaterialUVBinding.MaterialName)), scene.MaterialNames, out materialIndex))
+                if (BlendShapeClipEditorHelper.StringPopup(rect, property.FindPropertyRelative(nameof(MaterialUVBinding.MaterialName)), materialNames, out materialIndex))
                 {
                     changed = true;
                 }
@@ -71,12 +71,12 @@ namespace UniVRM10
         public bool Draw()
         {
             m_changed = false;
-            if (GUILayout.Button("Clear MaterialUVBindings"))
+            m_list.DoLayoutList();
+            if (GUILayout.Button("Clear MaterialUV"))
             {
                 m_changed = true;
                 m_serializedProperty.arraySize = 0;
             }
-            m_list.DoLayoutList();
             return m_changed;
         }
     }
