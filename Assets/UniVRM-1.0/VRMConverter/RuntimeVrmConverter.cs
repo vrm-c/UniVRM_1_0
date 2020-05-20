@@ -257,7 +257,7 @@ namespace UniVRM10
                         blendShape.IgnoreLookAt = clip.IgnoreLookAt;
                         blendShape.IgnoreMouth = clip.IgnoreMouth;
 
-                        foreach (var value in clip.Values)
+                        foreach (var value in clip.BlendShapeBindings)
                         {
                             var transform = GetTransformFromRelativePath(root.transform, value.RelativePath);
                             if (transform == null)
@@ -284,7 +284,7 @@ namespace UniVRM10
                             blendShape.BlendShapeValues.Add(blendShapeValue);
                         }
 
-                        blendShape.MaterialValues.AddRange(clip.MaterialValues.SelectMany(FromGltf));
+                        blendShape.MaterialValues.AddRange(clip.MaterialColorBindings.SelectMany(FromGltf));
 
                         Model.Vrm.BlendShape.BlendShapeList.Add(blendShape);
                     }

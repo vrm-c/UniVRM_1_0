@@ -54,7 +54,7 @@ namespace UniVRM10
         // Dictionary<MaterialValueBinding, Setter> m_materialSetterMap = new Dictionary<MaterialValueBinding, Setter>(comparer);
         public void AccumulateValue(BlendShapeClip clip, float value)
         {
-            foreach (var binding in clip.MaterialValues)
+            foreach (var binding in clip.MaterialColorBindings)
             {
                 // 積算
                 float acc;
@@ -166,7 +166,7 @@ namespace UniVRM10
 
             foreach (var kv in clipMap)
             {
-                foreach (var binding in kv.Value.MaterialValues)
+                foreach (var binding in kv.Value.MaterialColorBindings)
                 {
                     PreviewMaterialItem item;
                     if (!m_materialMap.TryGetValue(binding.MaterialName, out item))

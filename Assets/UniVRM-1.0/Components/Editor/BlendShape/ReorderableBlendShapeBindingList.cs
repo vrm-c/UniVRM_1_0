@@ -17,8 +17,7 @@ namespace UniVRM10
 
         public ReorderableBlendShapeBindingList(SerializedObject serializedObject, PreviewSceneManager previewSceneManager)
         {
-            m_valuesProp = serializedObject.FindProperty("Values");
-
+            m_valuesProp = serializedObject.FindProperty(nameof(BlendShapeClip.BlendShapeBindings));
             m_ValuesList = new ReorderableList(serializedObject, m_valuesProp);
             m_ValuesList.elementHeight = BlendShapeBindingHeight;
             m_ValuesList.drawElementCallback =

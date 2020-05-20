@@ -23,9 +23,9 @@ namespace UniVRM10
         {
             m_clip = clip;
 
-            if (m_clip != null && m_clip.Values != null && transform != null)
+            if (m_clip != null && m_clip.BlendShapeBindings != null && transform != null)
             {
-                m_renderers = m_clip.Values.Select(x =>
+                m_renderers = m_clip.BlendShapeBindings.Select(x =>
                 {
                     var target = transform.GetFromPath(x.RelativePath);
                     return target.GetComponent<SkinnedMeshRenderer>();
@@ -47,9 +47,9 @@ namespace UniVRM10
             if (m_clip == null) return;
             if (m_renderers == null) return;
 
-            for (int i = 0; i < m_clip.Values.Length; ++i)
+            for (int i = 0; i < m_clip.BlendShapeBindings.Length; ++i)
             {
-                var binding = m_clip.Values[i];
+                var binding = m_clip.BlendShapeBindings[i];
                 var target = m_renderers[i];
                 if (binding.Index >= 0 && binding.Index < target.sharedMesh.blendShapeCount)
                 {

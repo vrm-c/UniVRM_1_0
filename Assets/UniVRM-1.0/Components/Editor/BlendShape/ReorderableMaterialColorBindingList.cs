@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEditor;
+﻿using UnityEditor;
 using UnityEditorInternal;
 using UnityEngine;
 
@@ -9,15 +7,13 @@ namespace UniVRM10
 {
     public class ReorderableMaterialColorBindingList
     {
-
         const int MaterialValueBindingHeight = 90;
         ReorderableList m_MaterialValuesList;
         SerializedProperty m_materialsProp;
         bool m_changed;
-
         public ReorderableMaterialColorBindingList(SerializedObject serializedObject, PreviewSceneManager previewSceneManager)
         {
-            m_materialsProp = serializedObject.FindProperty("MaterialValues");
+            m_materialsProp = serializedObject.FindProperty(nameof(BlendShapeClip.MaterialColorBindings));
             m_MaterialValuesList = new ReorderableList(serializedObject, m_materialsProp);
             m_MaterialValuesList.elementHeight = MaterialValueBindingHeight;
             m_MaterialValuesList.drawElementCallback =
@@ -31,7 +27,6 @@ namespace UniVRM10
                       m_changed = true;
                   }
               };
-
         }
 
         public bool Draw()

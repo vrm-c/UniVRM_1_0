@@ -58,13 +58,13 @@ namespace UniVRM10
         /// 対象メッシュの BlendShape を操作する
         /// <summary>
         [SerializeField]
-        public BlendShapeBinding[] Values = new BlendShapeBinding[] { };
+        public BlendShapeBinding[] BlendShapeBindings = new BlendShapeBinding[] { };
 
         /// <summary>
         /// 対象マテリアルの Color を操作する
         /// <summary>
         [SerializeField]
-        public MaterialColorBinding[] MaterialValues = new MaterialColorBinding[] { };
+        public MaterialColorBinding[] MaterialColorBindings = new MaterialColorBinding[] { };
 
         /// <summary>
         /// 対象マテリアルの UVScale+Offset を操作する

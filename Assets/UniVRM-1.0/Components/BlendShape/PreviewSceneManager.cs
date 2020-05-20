@@ -215,7 +215,7 @@ namespace UniVRM10
                 {
                     foreach (var x in m_meshes)
                     {
-                        x.Bake(bake.Values, weight);
+                        x.Bake(bake.BlendShapeBindings, weight);
                         m_bounds.Expand(x.Mesh.bounds.size);
                     }
                 }
@@ -224,7 +224,7 @@ namespace UniVRM10
             //
             // Update Material
             //
-            if (bake.MaterialValues != null && m_materialMap != null)
+            if (bake.MaterialColorBindings != null && m_materialMap != null)
             {
                 // clear
                 //Debug.LogFormat("clear material");
@@ -237,7 +237,7 @@ namespace UniVRM10
                     }
                 }
 
-                foreach (var x in bake.MaterialValues)
+                foreach (var x in bake.MaterialColorBindings)
                 {
                     PreviewMaterialItem item;
                     if (m_materialMap.TryGetValue(x.MaterialName, out item))

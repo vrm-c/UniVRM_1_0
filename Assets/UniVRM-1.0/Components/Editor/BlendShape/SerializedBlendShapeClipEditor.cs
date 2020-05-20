@@ -30,6 +30,7 @@ namespace UniVRM10
 
         ReorderableBlendShapeBindingList m_blendShapeBindings;
         ReorderableMaterialColorBindingList m_materialColorBindings;
+        ReorderableMaterialUVBindingList m_materialUVBindings;
 
         #region  Editor values
 
@@ -85,6 +86,7 @@ namespace UniVRM10
 
             m_blendShapeBindings = new ReorderableBlendShapeBindingList(serializedObject, previewSceneManager);
             m_materialColorBindings = new ReorderableMaterialColorBindingList(serializedObject, previewSceneManager);
+            m_materialUVBindings = new ReorderableMaterialUVBindingList(serializedObject, previewSceneManager);
 
             m_items = previewSceneManager.EnumRenderItems
             .Where(x => x.SkinnedMeshRenderer != null)
@@ -162,12 +164,10 @@ namespace UniVRM10
                     case 2:
                         // MaterialUV
                         {
-                            if (GUILayout.Button("Clear MaterialUV"))
+                            if (m_materialUVBindings.Draw())
                             {
                                 m_changed = true;
-                                // m_materialsProp.arraySize = 0;
                             }
-                            // m_MaterialValuesList.DoLayoutList();
                         }
                         break;
                 }

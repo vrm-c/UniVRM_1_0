@@ -43,7 +43,7 @@ namespace UniVRM10
         {
             foreach (var kv in clipMap)
             {
-                foreach (var binding in kv.Value.Values)
+                foreach (var binding in kv.Value.BlendShapeBindings)
                 {
                     if (!m_blendShapeSetterMap.ContainsKey(binding))
                     {
@@ -79,7 +79,7 @@ namespace UniVRM10
 
         public void AccumulateValue(BlendShapeClip clip, float value)
         {
-            foreach (var binding in clip.Values)
+            foreach (var binding in clip.BlendShapeBindings)
             {
                 float acc;
                 if (m_blendShapeValueMap.TryGetValue(binding, out acc))

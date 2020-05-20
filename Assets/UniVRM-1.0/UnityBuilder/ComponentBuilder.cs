@@ -142,9 +142,9 @@ namespace UniVRM10
                         clip.IgnoreLookAt = blendShape.IgnoreLookAt;
                         clip.IgnoreMouth = blendShape.IgnoreMouth;
 
-                        clip.Values = blendShape.BlendShapeValues.Select(x => x.Build10(asset.Root, asset.Map))
+                        clip.BlendShapeBindings = blendShape.BlendShapeValues.Select(x => x.Build10(asset.Root, asset.Map))
                             .ToArray();
-                        clip.MaterialValues = blendShape.MaterialValues.Select(x => x.Build10(asset.Map))
+                        clip.MaterialColorBindings = blendShape.MaterialValues.Select(x => x.Build10(asset.Map))
                             .Where(x => x.HasValue)
                             .Select(x => x.Value)
                             .ToArray();
