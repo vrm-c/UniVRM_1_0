@@ -176,6 +176,45 @@ namespace UniVRM10
             }
         }
 
+        VrmLib.BlendShape ToVrmLib(BlendShapeClip clip, GameObject root)
+        {
+            var blendShape = new VrmLib.BlendShape(clip.Preset, clip.BlendShapeName, clip.IsBinary);
+            blendShape.IgnoreBlink = clip.IgnoreBlink;
+            blendShape.IgnoreLookAt = clip.IgnoreLookAt;
+            blendShape.IgnoreMouth = clip.IgnoreMouth;
+
+            foreach (var value in clip.BlendShapeBindings)
+            {
+                var transform = GetTransformFromRelativePath(root.transform, value.RelativePath);
+                if (transform == null)
+                    continue;
+                var renderer = transform.gameObject.GetComponent<SkinnedMeshRenderer>();
+                if (renderer == null)
+                    continue;
+                var mesh = renderer.sharedMesh;
+                if (mesh == null)
+                    continue;
+
+                var names = new List<string>();
+                for (int i = 0; i < mesh.blendShapeCount; ++i)
+                {
+                    names.Add(mesh.GetBlendShapeName(i));
+                }
+
+                var node = Nodes[transform.gameObject];
+                var blendShapeValue = new VrmLib.BlendShapeBindValue(
+                    node,
+                    names[value.Index],
+                    value.Weight
+                    );
+                blendShape.BlendShapeValues.Add(blendShapeValue);
+            }
+
+            blendShape.MaterialValues.AddRange(clip.MaterialColorBindings.SelectMany(FromGltf));
+
+            return blendShape;
+        }
+
         /// <summary>
         /// metaObject が null のときは、root から取得する
         /// </summary>
@@ -252,41 +291,11 @@ namespace UniVRM10
                 {
                     foreach (var clip in blendShapeProxy.BlendShapeAvatar.Clips)
                     {
-                        var blendShape = new VrmLib.BlendShape(clip.Preset, clip.BlendShapeName, clip.IsBinary);
-                        blendShape.IgnoreBlink = clip.IgnoreBlink;
-                        blendShape.IgnoreLookAt = clip.IgnoreLookAt;
-                        blendShape.IgnoreMouth = clip.IgnoreMouth;
-
-                        foreach (var value in clip.BlendShapeBindings)
+                        var blendShape = ToVrmLib(clip, root);
+                        if (blendShape != null)
                         {
-                            var transform = GetTransformFromRelativePath(root.transform, value.RelativePath);
-                            if (transform == null)
-                                continue;
-                            var renderer = transform.gameObject.GetComponent<SkinnedMeshRenderer>();
-                            if (renderer == null)
-                                continue;
-                            var mesh = renderer.sharedMesh;
-                            if (mesh == null)
-                                continue;
-
-                            var names = new List<string>();
-                            for (int i = 0; i < mesh.blendShapeCount; ++i)
-                            {
-                                names.Add(mesh.GetBlendShapeName(i));
-                            }
-
-                            var node = Nodes[transform.gameObject];
-                            var blendShapeValue = new VrmLib.BlendShapeBindValue(
-                                node,
-                                names[value.Index],
-                                value.Weight
-                                );
-                            blendShape.BlendShapeValues.Add(blendShapeValue);
+                            Model.Vrm.BlendShape.BlendShapeList.Add(blendShape);
                         }
-
-                        blendShape.MaterialValues.AddRange(clip.MaterialColorBindings.SelectMany(FromGltf));
-
-                        Model.Vrm.BlendShape.BlendShapeList.Add(blendShape);
                     }
                 }
             }
