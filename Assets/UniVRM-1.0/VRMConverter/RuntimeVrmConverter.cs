@@ -122,60 +122,6 @@ namespace UniVRM10
         /// * 特に _MainTex_ST の場合、MaterialBindType.UvScale + MaterialBindType.UvScale ２つになりうる
         ///
         /// </summary>
-        // foreach (var value in clip.MaterialValues)
-        // {
-        //     var materialPair = Materials.FirstOrDefault(x => x.Key.name == value.MaterialName);
-        //     if (materialPair.Equals(default(KeyValuePair<Material, VrmLib.Material>)))
-        //         continue;
-
-        //     var bind = new VrmLib.MaterialBindValue(
-        //         materialPair.Value,
-        //         value.ValueName,
-        //         value.TargetValue.ToNumericsVector4()
-        //         );
-        //     blendShape.MaterialValues.Add(bind);
-        // }
-        IEnumerable<VrmLib.MaterialBindValue> FromGltf(MaterialColorBinding y)
-        {
-            var materialPair = Materials.First(z => z.Key.name == y.MaterialName);
-            if (materialPair.Equals(default(KeyValuePair<Material, VrmLib.Material>)))
-                yield break;
-            var material = materialPair.Value;
-
-            var target = y.TargetValue.ToNumericsVector4();
-
-            // if (y.ValueName.EndsWith("_ST")
-            // || y.ValueName.EndsWith("_ST_S")
-            // || y.ValueName.EndsWith("_ST_T"))
-            // {
-            //     if (target.X == 1.0f && target.Y == 1.0f && target.Z == 0 && target.W == 0)
-            //     {
-            //         // 変化なし。不要
-            //     }
-            //     else if (target.X == 1.0f && target.Y == 1.0f)
-            //     {
-            //         // offset only => ZW に格納された値を XY に移動する
-            //         yield return new VrmLib.MaterialBindValue(material, VrmLib.MaterialBindType.UvOffset, new System.Numerics.Vector4(target.Z, target.W, 0, 0));
-            //     }
-            //     else if (target.Z == 0 && target.W == 0)
-            //     {
-            //         // scale only
-            //         yield return new VrmLib.MaterialBindValue(material, VrmLib.MaterialBindType.UvScale, target);
-            //     }
-            //     else
-            //     {
-            //         // scale と offset ２つになる
-            //         yield return new VrmLib.MaterialBindValue(material, VrmLib.MaterialBindType.UvOffset, new System.Numerics.Vector4(target.Z, target.W, 0, 0));
-            //         yield return new VrmLib.MaterialBindValue(material, VrmLib.MaterialBindType.UvScale, target);
-            //     }
-            // }
-            // else
-            {
-                // var bindType = VrmLib.MaterialBindTypeExtensions.GetBindType(material, y.ValueName);
-                yield return new VrmLib.MaterialBindValue(material, y.BindType, target);
-            }
-        }
-
         VrmLib.BlendShape ToVrmLib(BlendShapeClip clip, GameObject root)
         {
             var blendShape = new VrmLib.BlendShape(clip.Preset, clip.BlendShapeName, clip.IsBinary);
@@ -183,9 +129,9 @@ namespace UniVRM10
             blendShape.IgnoreLookAt = clip.IgnoreLookAt;
             blendShape.IgnoreMouth = clip.IgnoreMouth;
 
-            foreach (var value in clip.BlendShapeBindings)
+            foreach (var binding in clip.BlendShapeBindings)
             {
-                var transform = GetTransformFromRelativePath(root.transform, value.RelativePath);
+                var transform = GetTransformFromRelativePath(root.transform, binding.RelativePath);
                 if (transform == null)
                     continue;
                 var renderer = transform.gameObject.GetComponent<SkinnedMeshRenderer>();
@@ -204,13 +150,39 @@ namespace UniVRM10
                 var node = Nodes[transform.gameObject];
                 var blendShapeValue = new VrmLib.BlendShapeBindValue(
                     node,
-                    names[value.Index],
-                    value.Weight
+                    names[binding.Index],
+                    binding.Weight
                     );
                 blendShape.BlendShapeValues.Add(blendShapeValue);
             }
 
-            blendShape.MaterialValues.AddRange(clip.MaterialColorBindings.SelectMany(FromGltf));
+            foreach (var binding in clip.MaterialColorBindings)
+            {
+                var materialPair = Materials.FirstOrDefault(x => x.Key.name == binding.MaterialName);
+                if (materialPair.Value != null)
+                {
+                    var bind = new VrmLib.MaterialBindValue(
+                        materialPair.Value,
+                        binding.BindType,
+                        binding.TargetValue.ToNumericsVector4()
+                        );
+                    blendShape.MaterialValues.Add(bind);
+                }
+            }
+
+            foreach (var binding in clip.MaterialUVBindings)
+            {
+                var materialPair = Materials.FirstOrDefault(x => x.Key.name == binding.MaterialName);
+                if (materialPair.Value != null)
+                {
+                    var bind = new VrmLib.UVScaleOffsetValue(
+                        materialPair.Value,
+                        binding.Scaling.ToNumericsVector2(),
+                        binding.Offset.ToNumericsVector2()
+                    );
+                    blendShape.UVScaleOffsetValues.Add(bind);
+                }
+            }
 
             return blendShape;
         }
