@@ -26,33 +26,38 @@ namespace VrmProtobuf {
           string.Concat(
             "ChBibGVuZFNoYXBlLnByb3RvEgtWcm1Qcm90b2J1ZhoeZ29vZ2xlL3Byb3Rv",
             "YnVmL3dyYXBwZXJzLnByb3RvIkQKCkJsZW5kU2hhcGUSNgoQYmxlbmRTaGFw",
-            "ZUdyb3VwcxgBIAMoCzIcLlZybVByb3RvYnVmLkJsZW5kU2hhcGVHcm91cCLy",
-            "BgoPQmxlbmRTaGFwZUdyb3VwEgwKBG5hbWUYASABKAkSPQoGcHJlc2V0GAIg",
+            "ZUdyb3VwcxgBIAMoCzIcLlZybVByb3RvYnVmLkJsZW5kU2hhcGVHcm91cCKj",
+            "CAoPQmxlbmRTaGFwZUdyb3VwEgwKBG5hbWUYASABKAkSPQoGcHJlc2V0GAIg",
             "ASgOMi0uVnJtUHJvdG9idWYuQmxlbmRTaGFwZUdyb3VwLkJsZW5kU2hhcGVQ",
             "cmVzZXQSOgoFYmluZHMYAyADKAsyKy5Wcm1Qcm90b2J1Zi5CbGVuZFNoYXBl",
             "R3JvdXAuQmxlbmRTaGFwZUJpbmQSQgoObWF0ZXJpYWxWYWx1ZXMYBCADKAsy",
-            "Ki5Wcm1Qcm90b2J1Zi5CbGVuZFNoYXBlR3JvdXAuTWF0ZXJpYWxWYWx1ZRIs",
-            "Cghpc0JpbmFyeRgHIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5Cb29sVmFsdWUS",
-            "LwoLaWdub3JlQmxpbmsYCCABKAsyGi5nb29nbGUucHJvdG9idWYuQm9vbFZh",
-            "bHVlEjAKDGlnbm9yZUxvb2tBdBgJIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5C",
-            "b29sVmFsdWUSLwoLaWdub3JlTW91dGgYCiABKAsyGi5nb29nbGUucHJvdG9i",
-            "dWYuQm9vbFZhbHVlGj0KDkJsZW5kU2hhcGVCaW5kEgwKBG5vZGUYASABKAUS",
-            "DQoFaW5kZXgYAiABKAUSDgoGd2VpZ2h0GAMgASgCGnUKDU1hdGVyaWFsVmFs",
-            "dWUSEAoIbWF0ZXJpYWwYASABKAUSPQoEdHlwZRgCIAEoDjIvLlZybVByb3Rv",
-            "YnVmLkJsZW5kU2hhcGVHcm91cC5NYXRlcmlhbFZhbHVlVHlwZXMSEwoLdGFy",
-            "Z2V0VmFsdWUYAyADKAIi3QEKEEJsZW5kU2hhcGVQcmVzZXQSCgoGY3VzdG9t",
-            "EAASBgoCYWEQARIGCgJpaBACEgYKAm91EAMSBgoCZWUQBBIGCgJvaBAFEgkK",
-            "BWJsaW5rEAYSBwoDam95EAcSCQoFYW5ncnkQCBIKCgZzb3Jyb3cQCRIHCgNm",
-            "dW4QChIKCgZsb29rVXAQCxIMCghsb29rRG93bhAMEgwKCGxvb2tMZWZ0EA0S",
-            "DQoJbG9va1JpZ2h0EA4SDQoJYmxpbmtMZWZ0EA8SDgoKYmxpbmtSaWdodBAQ",
-            "EgsKB25ldXRyYWwQESI6ChJNYXRlcmlhbFZhbHVlVHlwZXMSCQoFY29sb3IQ",
-            "ABILCgd1dlNjYWxlEAESDAoIdXZPZmZzZXQQAmIGcHJvdG8z"));
+            "Ki5Wcm1Qcm90b2J1Zi5CbGVuZFNoYXBlR3JvdXAuTWF0ZXJpYWxWYWx1ZRJE",
+            "Cg9tYXRlcmlhbFVWQmluZHMYBSADKAsyKy5Wcm1Qcm90b2J1Zi5CbGVuZFNo",
+            "YXBlR3JvdXAuTWF0ZXJpYWxVVkJpbmQSLAoIaXNCaW5hcnkYByABKAsyGi5n",
+            "b29nbGUucHJvdG9idWYuQm9vbFZhbHVlEi8KC2lnbm9yZUJsaW5rGAggASgL",
+            "MhouZ29vZ2xlLnByb3RvYnVmLkJvb2xWYWx1ZRIwCgxpZ25vcmVMb29rQXQY",
+            "CSABKAsyGi5nb29nbGUucHJvdG9idWYuQm9vbFZhbHVlEi8KC2lnbm9yZU1v",
+            "dXRoGAogASgLMhouZ29vZ2xlLnByb3RvYnVmLkJvb2xWYWx1ZRo9Cg5CbGVu",
+            "ZFNoYXBlQmluZBIMCgRub2RlGAEgASgFEg0KBWluZGV4GAIgASgFEg4KBndl",
+            "aWdodBgDIAEoAhp0Cg1NYXRlcmlhbFZhbHVlEhAKCG1hdGVyaWFsGAEgASgF",
+            "EjwKBHR5cGUYAiABKA4yLi5Wcm1Qcm90b2J1Zi5CbGVuZFNoYXBlR3JvdXAu",
+            "TWF0ZXJpYWxWYWx1ZVR5cGUSEwoLdGFyZ2V0VmFsdWUYAyADKAIaQwoOTWF0",
+            "ZXJpYWxVVkJpbmQSEAoIbWF0ZXJpYWwYASABKAUSDwoHc2NhbGluZxgCIAMo",
+            "AhIOCgZvZmZzZXQYAyADKAIi3QEKEEJsZW5kU2hhcGVQcmVzZXQSCgoGY3Vz",
+            "dG9tEAASBgoCYWEQARIGCgJpaBACEgYKAm91EAMSBgoCZWUQBBIGCgJvaBAF",
+            "EgkKBWJsaW5rEAYSBwoDam95EAcSCQoFYW5ncnkQCBIKCgZzb3Jyb3cQCRIH",
+            "CgNmdW4QChIKCgZsb29rVXAQCxIMCghsb29rRG93bhAMEgwKCGxvb2tMZWZ0",
+            "EA0SDQoJbG9va1JpZ2h0EA4SDQoJYmxpbmtMZWZ0EA8SDgoKYmxpbmtSaWdo",
+            "dBAQEgsKB25ldXRyYWwQESJhChFNYXRlcmlhbFZhbHVlVHlwZRIJCgVjb2xv",
+            "chAAEhEKDWVtaXNzaW9uQ29sb3IQARIOCgpzaGFkZUNvbG9yEAISDAoIcmlt",
+            "Q29sb3IQAxIQCgxvdXRsaW5lQ29sb3IQBGIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Google.Protobuf.WellKnownTypes.WrappersReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.BlendShape), global::VrmProtobuf.BlendShape.Parser, new[]{ "BlendShapeGroups" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.BlendShapeGroup), global::VrmProtobuf.BlendShapeGroup.Parser, new[]{ "Name", "Preset", "Binds", "MaterialValues", "IsBinary", "IgnoreBlink", "IgnoreLookAt", "IgnoreMouth" }, null, new[]{ typeof(global::VrmProtobuf.BlendShapeGroup.Types.BlendShapePreset), typeof(global::VrmProtobuf.BlendShapeGroup.Types.MaterialValueTypes) }, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.BlendShapeGroup.Types.BlendShapeBind), global::VrmProtobuf.BlendShapeGroup.Types.BlendShapeBind.Parser, new[]{ "Node", "Index", "Weight" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.BlendShapeGroup.Types.MaterialValue), global::VrmProtobuf.BlendShapeGroup.Types.MaterialValue.Parser, new[]{ "Material", "Type", "TargetValue" }, null, null, null, null)})
+            new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.BlendShapeGroup), global::VrmProtobuf.BlendShapeGroup.Parser, new[]{ "Name", "Preset", "Binds", "MaterialValues", "MaterialUVBinds", "IsBinary", "IgnoreBlink", "IgnoreLookAt", "IgnoreMouth" }, null, new[]{ typeof(global::VrmProtobuf.BlendShapeGroup.Types.BlendShapePreset), typeof(global::VrmProtobuf.BlendShapeGroup.Types.MaterialValueType) }, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.BlendShapeGroup.Types.BlendShapeBind), global::VrmProtobuf.BlendShapeGroup.Types.BlendShapeBind.Parser, new[]{ "Node", "Index", "Weight" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.BlendShapeGroup.Types.MaterialValue), global::VrmProtobuf.BlendShapeGroup.Types.MaterialValue.Parser, new[]{ "Material", "Type", "TargetValue" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.BlendShapeGroup.Types.MaterialUVBind), global::VrmProtobuf.BlendShapeGroup.Types.MaterialUVBind.Parser, new[]{ "Material", "Scaling", "Offset" }, null, null, null, null)})
           }));
     }
     #endregion
@@ -215,6 +220,7 @@ namespace VrmProtobuf {
       preset_ = other.preset_;
       binds_ = other.binds_.Clone();
       materialValues_ = other.materialValues_.Clone();
+      materialUVBinds_ = other.materialUVBinds_.Clone();
       IsBinary = other.IsBinary;
       IgnoreBlink = other.IgnoreBlink;
       IgnoreLookAt = other.IgnoreLookAt;
@@ -267,6 +273,16 @@ namespace VrmProtobuf {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public pbc::RepeatedField<global::VrmProtobuf.BlendShapeGroup.Types.MaterialValue> MaterialValues {
       get { return materialValues_; }
+    }
+
+    /// <summary>Field number for the "materialUVBinds" field.</summary>
+    public const int MaterialUVBindsFieldNumber = 5;
+    private static readonly pb::FieldCodec<global::VrmProtobuf.BlendShapeGroup.Types.MaterialUVBind> _repeated_materialUVBinds_codec
+        = pb::FieldCodec.ForMessage(42, global::VrmProtobuf.BlendShapeGroup.Types.MaterialUVBind.Parser);
+    private readonly pbc::RepeatedField<global::VrmProtobuf.BlendShapeGroup.Types.MaterialUVBind> materialUVBinds_ = new pbc::RepeatedField<global::VrmProtobuf.BlendShapeGroup.Types.MaterialUVBind>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::RepeatedField<global::VrmProtobuf.BlendShapeGroup.Types.MaterialUVBind> MaterialUVBinds {
+      get { return materialUVBinds_; }
     }
 
     /// <summary>Field number for the "isBinary" field.</summary>
@@ -350,6 +366,7 @@ namespace VrmProtobuf {
       if (Preset != other.Preset) return false;
       if(!binds_.Equals(other.binds_)) return false;
       if(!materialValues_.Equals(other.materialValues_)) return false;
+      if(!materialUVBinds_.Equals(other.materialUVBinds_)) return false;
       if (IsBinary != other.IsBinary) return false;
       if (IgnoreBlink != other.IgnoreBlink) return false;
       if (IgnoreLookAt != other.IgnoreLookAt) return false;
@@ -364,6 +381,7 @@ namespace VrmProtobuf {
       if (Preset != global::VrmProtobuf.BlendShapeGroup.Types.BlendShapePreset.Custom) hash ^= Preset.GetHashCode();
       hash ^= binds_.GetHashCode();
       hash ^= materialValues_.GetHashCode();
+      hash ^= materialUVBinds_.GetHashCode();
       if (isBinary_ != null) hash ^= IsBinary.GetHashCode();
       if (ignoreBlink_ != null) hash ^= IgnoreBlink.GetHashCode();
       if (ignoreLookAt_ != null) hash ^= IgnoreLookAt.GetHashCode();
@@ -391,6 +409,7 @@ namespace VrmProtobuf {
       }
       binds_.WriteTo(output, _repeated_binds_codec);
       materialValues_.WriteTo(output, _repeated_materialValues_codec);
+      materialUVBinds_.WriteTo(output, _repeated_materialUVBinds_codec);
       if (isBinary_ != null) {
         _single_isBinary_codec.WriteTagAndValue(output, IsBinary);
       }
@@ -419,6 +438,7 @@ namespace VrmProtobuf {
       }
       size += binds_.CalculateSize(_repeated_binds_codec);
       size += materialValues_.CalculateSize(_repeated_materialValues_codec);
+      size += materialUVBinds_.CalculateSize(_repeated_materialUVBinds_codec);
       if (isBinary_ != null) {
         size += _single_isBinary_codec.CalculateSizeWithTag(IsBinary);
       }
@@ -450,6 +470,7 @@ namespace VrmProtobuf {
       }
       binds_.Add(other.binds_);
       materialValues_.Add(other.materialValues_);
+      materialUVBinds_.Add(other.materialUVBinds_);
       if (other.isBinary_ != null) {
         if (isBinary_ == null || other.IsBinary != false) {
           IsBinary = other.IsBinary;
@@ -495,6 +516,10 @@ namespace VrmProtobuf {
           }
           case 34: {
             materialValues_.AddEntriesFrom(input, _repeated_materialValues_codec);
+            break;
+          }
+          case 42: {
+            materialUVBinds_.AddEntriesFrom(input, _repeated_materialUVBinds_codec);
             break;
           }
           case 58: {
@@ -557,10 +582,12 @@ namespace VrmProtobuf {
         [pbr::OriginalName("neutral")] Neutral = 17,
       }
 
-      public enum MaterialValueTypes {
+      public enum MaterialValueType {
         [pbr::OriginalName("color")] Color = 0,
-        [pbr::OriginalName("uvScale")] UvScale = 1,
-        [pbr::OriginalName("uvOffset")] UvOffset = 2,
+        [pbr::OriginalName("emissionColor")] EmissionColor = 1,
+        [pbr::OriginalName("shadeColor")] ShadeColor = 2,
+        [pbr::OriginalName("rimColor")] RimColor = 3,
+        [pbr::OriginalName("outlineColor")] OutlineColor = 4,
       }
 
       /// <summary>
@@ -752,7 +779,8 @@ namespace VrmProtobuf {
       }
 
       /// <summary>
-      /// Material animation references. "required": [ "material", "type", "targetValue" ]
+      /// Material animation references. "required": [ "material", "type",
+      /// "targetValue" ]
       /// </summary>
       public sealed partial class MaterialValue : pb::IMessage<MaterialValue> {
         private static readonly pb::MessageParser<MaterialValue> _parser = new pb::MessageParser<MaterialValue>(() => new MaterialValue());
@@ -803,9 +831,9 @@ namespace VrmProtobuf {
 
         /// <summary>Field number for the "type" field.</summary>
         public const int TypeFieldNumber = 2;
-        private global::VrmProtobuf.BlendShapeGroup.Types.MaterialValueTypes type_ = global::VrmProtobuf.BlendShapeGroup.Types.MaterialValueTypes.Color;
+        private global::VrmProtobuf.BlendShapeGroup.Types.MaterialValueType type_ = global::VrmProtobuf.BlendShapeGroup.Types.MaterialValueType.Color;
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public global::VrmProtobuf.BlendShapeGroup.Types.MaterialValueTypes Type {
+        public global::VrmProtobuf.BlendShapeGroup.Types.MaterialValueType Type {
           get { return type_; }
           set {
             type_ = value;
@@ -845,7 +873,7 @@ namespace VrmProtobuf {
         public override int GetHashCode() {
           int hash = 1;
           if (Material != 0) hash ^= Material.GetHashCode();
-          if (Type != global::VrmProtobuf.BlendShapeGroup.Types.MaterialValueTypes.Color) hash ^= Type.GetHashCode();
+          if (Type != global::VrmProtobuf.BlendShapeGroup.Types.MaterialValueType.Color) hash ^= Type.GetHashCode();
           hash ^= targetValue_.GetHashCode();
           if (_unknownFields != null) {
             hash ^= _unknownFields.GetHashCode();
@@ -864,7 +892,7 @@ namespace VrmProtobuf {
             output.WriteRawTag(8);
             output.WriteInt32(Material);
           }
-          if (Type != global::VrmProtobuf.BlendShapeGroup.Types.MaterialValueTypes.Color) {
+          if (Type != global::VrmProtobuf.BlendShapeGroup.Types.MaterialValueType.Color) {
             output.WriteRawTag(16);
             output.WriteEnum((int) Type);
           }
@@ -880,7 +908,7 @@ namespace VrmProtobuf {
           if (Material != 0) {
             size += 1 + pb::CodedOutputStream.ComputeInt32Size(Material);
           }
-          if (Type != global::VrmProtobuf.BlendShapeGroup.Types.MaterialValueTypes.Color) {
+          if (Type != global::VrmProtobuf.BlendShapeGroup.Types.MaterialValueType.Color) {
             size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Type);
           }
           size += targetValue_.CalculateSize(_repeated_targetValue_codec);
@@ -898,7 +926,7 @@ namespace VrmProtobuf {
           if (other.Material != 0) {
             Material = other.Material;
           }
-          if (other.Type != global::VrmProtobuf.BlendShapeGroup.Types.MaterialValueTypes.Color) {
+          if (other.Type != global::VrmProtobuf.BlendShapeGroup.Types.MaterialValueType.Color) {
             Type = other.Type;
           }
           targetValue_.Add(other.targetValue_);
@@ -918,12 +946,183 @@ namespace VrmProtobuf {
                 break;
               }
               case 16: {
-                Type = (global::VrmProtobuf.BlendShapeGroup.Types.MaterialValueTypes) input.ReadEnum();
+                Type = (global::VrmProtobuf.BlendShapeGroup.Types.MaterialValueType) input.ReadEnum();
                 break;
               }
               case 26:
               case 29: {
                 targetValue_.AddEntriesFrom(input, _repeated_targetValue_codec);
+                break;
+              }
+            }
+          }
+        }
+
+      }
+
+      public sealed partial class MaterialUVBind : pb::IMessage<MaterialUVBind> {
+        private static readonly pb::MessageParser<MaterialUVBind> _parser = new pb::MessageParser<MaterialUVBind>(() => new MaterialUVBind());
+        private pb::UnknownFieldSet _unknownFields;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pb::MessageParser<MaterialUVBind> Parser { get { return _parser; } }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pbr::MessageDescriptor Descriptor {
+          get { return global::VrmProtobuf.BlendShapeGroup.Descriptor.NestedTypes[2]; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        pbr::MessageDescriptor pb::IMessage.Descriptor {
+          get { return Descriptor; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public MaterialUVBind() {
+          OnConstruction();
+        }
+
+        partial void OnConstruction();
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public MaterialUVBind(MaterialUVBind other) : this() {
+          material_ = other.material_;
+          scaling_ = other.scaling_.Clone();
+          offset_ = other.offset_.Clone();
+          _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public MaterialUVBind Clone() {
+          return new MaterialUVBind(this);
+        }
+
+        /// <summary>Field number for the "material" field.</summary>
+        public const int MaterialFieldNumber = 1;
+        private int material_;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public int Material {
+          get { return material_; }
+          set {
+            material_ = value;
+          }
+        }
+
+        /// <summary>Field number for the "scaling" field.</summary>
+        public const int ScalingFieldNumber = 2;
+        private static readonly pb::FieldCodec<float> _repeated_scaling_codec
+            = pb::FieldCodec.ForFloat(18);
+        private readonly pbc::RepeatedField<float> scaling_ = new pbc::RepeatedField<float>();
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public pbc::RepeatedField<float> Scaling {
+          get { return scaling_; }
+        }
+
+        /// <summary>Field number for the "offset" field.</summary>
+        public const int OffsetFieldNumber = 3;
+        private static readonly pb::FieldCodec<float> _repeated_offset_codec
+            = pb::FieldCodec.ForFloat(26);
+        private readonly pbc::RepeatedField<float> offset_ = new pbc::RepeatedField<float>();
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public pbc::RepeatedField<float> Offset {
+          get { return offset_; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override bool Equals(object other) {
+          return Equals(other as MaterialUVBind);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public bool Equals(MaterialUVBind other) {
+          if (ReferenceEquals(other, null)) {
+            return false;
+          }
+          if (ReferenceEquals(other, this)) {
+            return true;
+          }
+          if (Material != other.Material) return false;
+          if(!scaling_.Equals(other.scaling_)) return false;
+          if(!offset_.Equals(other.offset_)) return false;
+          return Equals(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override int GetHashCode() {
+          int hash = 1;
+          if (Material != 0) hash ^= Material.GetHashCode();
+          hash ^= scaling_.GetHashCode();
+          hash ^= offset_.GetHashCode();
+          if (_unknownFields != null) {
+            hash ^= _unknownFields.GetHashCode();
+          }
+          return hash;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override string ToString() {
+          return pb::JsonFormatter.ToDiagnosticString(this);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void WriteTo(pb::CodedOutputStream output) {
+          if (Material != 0) {
+            output.WriteRawTag(8);
+            output.WriteInt32(Material);
+          }
+          scaling_.WriteTo(output, _repeated_scaling_codec);
+          offset_.WriteTo(output, _repeated_offset_codec);
+          if (_unknownFields != null) {
+            _unknownFields.WriteTo(output);
+          }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public int CalculateSize() {
+          int size = 0;
+          if (Material != 0) {
+            size += 1 + pb::CodedOutputStream.ComputeInt32Size(Material);
+          }
+          size += scaling_.CalculateSize(_repeated_scaling_codec);
+          size += offset_.CalculateSize(_repeated_offset_codec);
+          if (_unknownFields != null) {
+            size += _unknownFields.CalculateSize();
+          }
+          return size;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(MaterialUVBind other) {
+          if (other == null) {
+            return;
+          }
+          if (other.Material != 0) {
+            Material = other.Material;
+          }
+          scaling_.Add(other.scaling_);
+          offset_.Add(other.offset_);
+          _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(pb::CodedInputStream input) {
+          uint tag;
+          while ((tag = input.ReadTag()) != 0) {
+            switch(tag) {
+              default:
+                _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+                break;
+              case 8: {
+                Material = input.ReadInt32();
+                break;
+              }
+              case 18:
+              case 21: {
+                scaling_.AddEntriesFrom(input, _repeated_scaling_codec);
+                break;
+              }
+              case 26:
+              case 29: {
+                offset_.AddEntriesFrom(input, _repeated_offset_codec);
                 break;
               }
             }
