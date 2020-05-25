@@ -7,23 +7,15 @@ using UnityEngine;
 namespace UniVRM10
 {
     [CustomEditor(typeof(BlendShapeClip))]
-    public class BlendShapeClipEditor : PreviewEditor
+    public class BlendShapeClipEditor : BlendShapeClipEditorBase
     {
         SerializedBlendShapeEditor m_serializedEditor;
 
         BlendShapeClip m_target;
-        protected override PreviewSceneManager.BakeValue GetBakeValue()
+        protected override BlendShapeClip CurrentBlendShapeClip()
         {
-            return new PreviewSceneManager.BakeValue
-            {
-                BlendShapeBindings = m_target.Values,
-                MaterialValueBindings = m_target.MaterialValues,
-                Weight = 1.0f,
-            };
+            return m_target;
         }
-
-        //SerializedProperty m_thumbnailProp;
-        SerializedProperty m_isBinaryProp;
 
         protected override GameObject GetPrefab()
         {
@@ -89,56 +81,23 @@ namespace UniVRM10
             if (m_serializedEditor == null)
             {
                 m_serializedEditor = new SerializedBlendShapeEditor(serializedObject, PreviewSceneManager);
-                //m_thumbnailProp = serializedObject.FindProperty("Thumbnail");
-                m_isBinaryProp = serializedObject.FindProperty("IsBinary");
             }
 
             EditorGUILayout.BeginHorizontal();
-
-            /*
-            int thumbnailSize = 96;
-            var objectReferenceValue = EditorGUILayout.ObjectField(m_thumbnailProp.objectReferenceValue, typeof(Texture), false,
-                GUILayout.Width(thumbnailSize), GUILayout.Height(thumbnailSize));
-            if (m_thumbnailProp.objectReferenceValue != objectReferenceValue)
-            {
-                m_thumbnailProp.objectReferenceValue = objectReferenceValue;
-                serializedObject.ApplyModifiedProperties();
-            }
-            */
 
             var changed = false;
             EditorGUILayout.BeginVertical();
             base.OnInspectorGUI();
             EditorGUILayout.LabelField("Preview Weight");
             var previewSlider = EditorGUILayout.Slider(m_previewSlider, 0, 1.0f);
-            GUI.enabled = PreviewTexture != null;
-            /*
-            if (GUILayout.Button("save thumbnail"))
-            {
-                //var ext = "jpg";
-                var ext = "png";
-                var asset = UnityPath.FromAsset(target);
-                var path = EditorUtility.SaveFilePanel(
-                               "save thumbnail",
-                               asset.Parent.FullPath,
-                               string.Format("{0}.{1}", asset.FileNameWithoutExtension, ext),
-                               ext);
-                if (!string.IsNullOrEmpty(path))
-                {
-                    var thumbnail = SaveResizedImage(PreviewTexture, UnityPath.FromFullpath(path),
-                    BlendShapeClipDrawer.ThumbnailSize);
-                    m_thumbnailProp.objectReferenceValue = thumbnail;
-                    serializedObject.ApplyModifiedProperties();
-                }
-            }
-            */
-            GUI.enabled = true;
+
             EditorGUILayout.EndVertical();
 
-            if (m_isBinaryProp.boolValue)
+            if (m_serializedEditor.IsBinary)
             {
                 previewSlider = Mathf.Round(previewSlider);
             }
+
             if (previewSlider != m_previewSlider)
             {
                 m_previewSlider = previewSlider;
@@ -147,23 +106,17 @@ namespace UniVRM10
 
             EditorGUILayout.EndHorizontal();
             Separator();
-            EditorGUILayout.Space();
+            // EditorGUILayout.Space();
 
-            var result = m_serializedEditor.Draw();
-            if ((changed || result.Changed) && PreviewSceneManager != null)
+            if (m_serializedEditor.Draw(out BlendShapeClip bakeValue))
             {
-                PreviewSceneManager.Bake(new PreviewSceneManager.BakeValue
-                {
-                    BlendShapeBindings = result.BlendShapeBindings,
-                    MaterialValueBindings = result.MaterialValueBindings,
-                    Weight = m_previewSlider
-                });
+                changed = true;
             }
-        }
 
-        public override string GetInfoString()
-        {
-            return BlendShapeKey.CreateFromClip((BlendShapeClip)target).ToString();
+            if (changed && PreviewSceneManager != null)
+            {
+                PreviewSceneManager.Bake(bakeValue, m_previewSlider);
+            }
         }
     }
 }

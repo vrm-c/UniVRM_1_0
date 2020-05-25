@@ -116,6 +116,78 @@ namespace UniVRM10
 
         #region Export 1.0
         /// <summary>
+        /// VRM-0.X の MaterialBindValue を VRM-1.0 仕様に変換する
+        ///
+        /// * Property名 => enum MaterialBindType
+        /// * 特に _MainTex_ST の場合、MaterialBindType.UvScale + MaterialBindType.UvScale ２つになりうる
+        ///
+        /// </summary>
+        VrmLib.BlendShape ToVrmLib(BlendShapeClip clip, GameObject root)
+        {
+            var blendShape = new VrmLib.BlendShape(clip.Preset, clip.BlendShapeName, clip.IsBinary);
+            blendShape.IgnoreBlink = clip.IgnoreBlink;
+            blendShape.IgnoreLookAt = clip.IgnoreLookAt;
+            blendShape.IgnoreMouth = clip.IgnoreMouth;
+
+            foreach (var binding in clip.BlendShapeBindings)
+            {
+                var transform = GetTransformFromRelativePath(root.transform, binding.RelativePath);
+                if (transform == null)
+                    continue;
+                var renderer = transform.gameObject.GetComponent<SkinnedMeshRenderer>();
+                if (renderer == null)
+                    continue;
+                var mesh = renderer.sharedMesh;
+                if (mesh == null)
+                    continue;
+
+                var names = new List<string>();
+                for (int i = 0; i < mesh.blendShapeCount; ++i)
+                {
+                    names.Add(mesh.GetBlendShapeName(i));
+                }
+
+                var node = Nodes[transform.gameObject];
+                var blendShapeValue = new VrmLib.BlendShapeBindValue(
+                    node,
+                    names[binding.Index],
+                    binding.Weight
+                    );
+                blendShape.BlendShapeValues.Add(blendShapeValue);
+            }
+
+            foreach (var binding in clip.MaterialColorBindings)
+            {
+                var materialPair = Materials.FirstOrDefault(x => x.Key.name == binding.MaterialName);
+                if (materialPair.Value != null)
+                {
+                    var bind = new VrmLib.MaterialBindValue(
+                        materialPair.Value,
+                        binding.BindType,
+                        binding.TargetValue.ToNumericsVector4()
+                        );
+                    blendShape.MaterialValues.Add(bind);
+                }
+            }
+
+            foreach (var binding in clip.MaterialUVBindings)
+            {
+                var materialPair = Materials.FirstOrDefault(x => x.Key.name == binding.MaterialName);
+                if (materialPair.Value != null)
+                {
+                    var bind = new VrmLib.UVScaleOffsetValue(
+                        materialPair.Value,
+                        binding.Scaling.ToNumericsVector2(),
+                        binding.Offset.ToNumericsVector2()
+                    );
+                    blendShape.UVScaleOffsetValues.Add(bind);
+                }
+            }
+
+            return blendShape;
+        }
+
+        /// <summary>
         /// metaObject が null のときは、root から取得する
         /// </summary>
         public VrmLib.Model ToModelFrom10(GameObject root, VRMMetaObject metaObject = null)
@@ -191,53 +263,11 @@ namespace UniVRM10
                 {
                     foreach (var clip in blendShapeProxy.BlendShapeAvatar.Clips)
                     {
-                        var blendShape = new VrmLib.BlendShape(clip.Preset, clip.BlendShapeName, clip.IsBinary);
-                        blendShape.IgnoreBlink = clip.IgnoreBlink;
-                        blendShape.IgnoreLookAt = clip.IgnoreLookAt;
-                        blendShape.IgnoreMouth = clip.IgnoreMouth;
-
-                        foreach (var value in clip.Values)
+                        var blendShape = ToVrmLib(clip, root);
+                        if (blendShape != null)
                         {
-                            var transform = GetTransformFromRelativePath(root.transform, value.RelativePath);
-                            if (transform == null)
-                                continue;
-                            var renderer = transform.gameObject.GetComponent<SkinnedMeshRenderer>();
-                            if (renderer == null)
-                                continue;
-                            var mesh = renderer.sharedMesh;
-                            if (mesh == null)
-                                continue;
-
-                            var names = new List<string>();
-                            for (int i = 0; i < mesh.blendShapeCount; ++i)
-                            {
-                                names.Add(mesh.GetBlendShapeName(i));
-                            }
-
-                            var node = Nodes[transform.gameObject];
-                            var blendShapeValue = new VrmLib.BlendShapeBindValue(
-                                node,
-                                names[value.Index],
-                                value.Weight
-                                );
-                            blendShape.BlendShapeValues.Add(blendShapeValue);
+                            Model.Vrm.BlendShape.BlendShapeList.Add(blendShape);
                         }
-
-                        foreach (var value in clip.MaterialValues)
-                        {
-                            var materialPair = Materials.FirstOrDefault(x => x.Key.name == value.MaterialName);
-                            if (materialPair.Equals(default(KeyValuePair<Material, VrmLib.Material>)))
-                                continue;
-
-                            var bind = new VrmLib.MaterialBindValue(
-                                materialPair.Value,
-                                value.ValueName,
-                                value.TargetValue.ToNumericsVector4()
-                                );
-                            blendShape.MaterialValues.Add(bind);
-                        }
-
-                        Model.Vrm.BlendShape.BlendShapeList.Add(blendShape);
                     }
                 }
             }

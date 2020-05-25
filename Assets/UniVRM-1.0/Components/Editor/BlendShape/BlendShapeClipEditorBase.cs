@@ -1,9 +1,5 @@
 ﻿using UnityEditor;
 using UnityEngine;
-using UnityEditorInternal;
-using System;
-using System.Linq;
-using System.Collections.Generic;
 
 namespace UniVRM10
 {
@@ -13,7 +9,7 @@ namespace UniVRM10
     /// * https://github.com/Unity-Technologies/UnityCsReference/blob/11bcfd801fccd2a52b09bb6fd636c1ddcc9f1705/Editor/Mono/Inspector/ModelInspector.cs
     /// 
     /// </summary>
-    public abstract class PreviewEditor : Editor
+    public abstract class BlendShapeClipEditorBase : Editor
     {
         /// <summary>
         /// PreviewRenderUtilityを管理する。
@@ -72,7 +68,7 @@ namespace UniVRM10
             }
         }
 
-        protected abstract PreviewSceneManager.BakeValue GetBakeValue();
+        protected abstract BlendShapeClip CurrentBlendShapeClip();
 
         /// <summary>
         /// Preview シーンに BlendShape と MaterialValue を適用する
@@ -82,7 +78,7 @@ namespace UniVRM10
             if (m_scene != null)
             {
                 //Debug.Log("Bake");
-                m_scene.Bake(GetBakeValue());
+                m_scene.Bake(CurrentBlendShapeClip(), 1.0f);
             }
         }
 
@@ -95,7 +91,7 @@ namespace UniVRM10
             }
 
             var mainObject = AssetDatabase.LoadMainAssetAtPath(assetPath);
-            if(mainObject != null)
+            if (mainObject != null)
             {
                 //return mainObject;
             }
@@ -276,6 +272,19 @@ namespace UniVRM10
                     // draw the RenderTexture in the ObjectPreview pane
                     GUI.DrawTexture(r, PreviewTexture, ScaleMode.StretchToFill, false);
                 }
+            }
+        }
+
+        public override string GetInfoString()
+        {
+            var key = BlendShapeKey.CreateFromClip(CurrentBlendShapeClip());
+            if (key.Preset != VrmLib.BlendShapePreset.Custom)
+            {
+                return string.Format("Preset: {0}", key.Preset);
+            }
+            else
+            {
+                return string.Format("Custom: {0}", key.Name);
             }
         }
     }

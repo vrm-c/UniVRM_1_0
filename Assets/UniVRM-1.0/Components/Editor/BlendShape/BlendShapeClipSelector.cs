@@ -6,24 +6,45 @@ using System.IO;
 
 namespace UniVRM10
 {
+    /// <summary>
+    /// BlendShapeAvatarEditorの部品
+    /// </summary>
     class BlendShapeClipSelector
     {
         BlendShapeAvatar m_avatar;
 
-        public BlendShapeClip Selected
+        int m_mode;
+        static readonly string[] MODES = new string[]{
+            "Button",
+            "List"
+        };
+
+        ReorderableBlendShapeClipList m_clipList;
+
+        public BlendShapeClip GetSelected()
         {
-            get
+            if (m_avatar == null || m_avatar.Clips == null)
             {
-                if (m_avatar == null || m_avatar.Clips == null)
-                {
-                    return null;
-                }
-                if (m_selectedIndex < 0 || m_selectedIndex >= m_avatar.Clips.Count)
-                {
-                    return null;
-                }
-                return m_avatar.Clips[m_selectedIndex];
+                return null;
             }
+            if (m_selectedIndex < 0 || m_selectedIndex >= m_avatar.Clips.Count)
+            {
+                return null;
+            }
+            return m_avatar.Clips[m_selectedIndex];
+        }
+
+        public event Action<BlendShapeClip> Selected;
+        void RaiseSelected(int index)
+        {
+            m_clipList.Select(index);
+            var clip = GetSelected();
+            var handle = Selected;
+            if (handle == null)
+            {
+                return;
+            }
+            handle(clip);
         }
 
         int m_selectedIndex;
@@ -32,33 +53,53 @@ namespace UniVRM10
             get { return m_selectedIndex; }
             set
             {
+                // これで更新するべし
                 if (m_selectedIndex == value) return;
                 m_selectedIndex = value;
-                if (m_onSelected != null)
-                {
-                    m_onSelected(Selected);
-                }
+                RaiseSelected(value);
             }
         }
 
-        Action<BlendShapeClip> m_onSelected;
-
-        public BlendShapeClipSelector(BlendShapeAvatar avatar, Action<BlendShapeClip> onSelected)
+        public BlendShapeClipSelector(BlendShapeAvatar avatar, SerializedObject serializedObject)
         {
             avatar.RemoveNullClip();
 
             m_avatar = avatar;
-            m_onSelected = onSelected;
 
-            onSelected(Selected);
+            var prop = serializedObject.FindProperty("Clips");
+            m_clipList = new ReorderableBlendShapeClipList(serializedObject, prop, avatar);
+            m_clipList.Selected += (selected) =>
+            {
+                SelectedIndex = avatar.Clips.IndexOf(selected);
+            };
         }
 
-        public void SelectGUI()
+        public void GUI()
+        {
+            EditorGUILayout.Space();
+            EditorGUILayout.LabelField("Select BlendShapeClip", EditorStyles.boldLabel);
+
+            m_mode = GUILayout.Toolbar(m_mode, MODES);
+            switch (m_mode)
+            {
+                case 0:
+                    SelectGUI();
+                    break;
+
+                case 1:
+                    m_clipList.GUI();
+                    break;
+
+                default:
+                    throw new NotImplementedException();
+            }
+
+        }
+
+        void SelectGUI()
         {
             if (m_avatar != null && m_avatar.Clips != null)
             {
-                EditorGUILayout.Space();
-                EditorGUILayout.LabelField("Select BlendShapeClip", EditorStyles.boldLabel);
                 var array = m_avatar.Clips
                     .Select(x => x != null
                         ? BlendShapeKey.CreateFromClip(x).ToString()
@@ -87,12 +128,11 @@ namespace UniVRM10
 
         public void DuplicateWarn()
         {
-            var key = BlendShapeKey.CreateFromClip(Selected);
+            var key = BlendShapeKey.CreateFromClip(GetSelected());
             if (m_avatar.Clips.Where(x => key.Match(x)).Count() > 1)
             {
                 EditorGUILayout.HelpBox("duplicate clip: " + key, MessageType.Error);
             }
         }
     }
-
 }

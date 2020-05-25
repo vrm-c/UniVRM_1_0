@@ -465,7 +465,7 @@ namespace VrmLib.Diff
             var equals = true;
             if (!context.Enter("Material.Name").Push(lhs.Material.Name, rhs.Material.Name)) equals = false;
             if (!context.Enter("Property").Push(lhs.Property, rhs.Property)) equals = false;
-            if (!context.Enter("Value").Push(lhs.Value, rhs.Value)) equals = false;
+            // if (!context.Enter("Value").Push(lhs.m_value, rhs.m_value)) equals = false;
             if (!context.Enter("BindType").Push(lhs.BindType, rhs.BindType)) equals = false;
             return equals;
         }

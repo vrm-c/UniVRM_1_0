@@ -59,42 +59,44 @@ namespace UniVRM10
 #if UNITY_EDITOR
         public void DisposeEditor()
         {
+            if (!Application.isPlaying)
+            {
+                if (string.IsNullOrEmpty(AssetDatabase.GetAssetPath(Root)))
+                {
+                    GameObject.DestroyImmediate(Root);
+                }
+                if (string.IsNullOrEmpty(AssetDatabase.GetAssetPath(HumanoidAvatar)))
+                {
+                    UnityEngine.Object.DestroyImmediate(HumanoidAvatar);
+                }
 
-            if (string.IsNullOrEmpty(AssetDatabase.GetAssetPath(Root)))
-            {
-                GameObject.Destroy(Root);
-            }
-            if (string.IsNullOrEmpty(AssetDatabase.GetAssetPath(HumanoidAvatar)))
-            {
-                UnityEngine.Object.Destroy(HumanoidAvatar);
-            }
-
-            foreach (var v in Textures)
-            {
-                if (string.IsNullOrEmpty(AssetDatabase.GetAssetPath(v)))
+                foreach (var v in Textures)
                 {
-                    UnityEngine.Object.DestroyImmediate(v);
+                    if (string.IsNullOrEmpty(AssetDatabase.GetAssetPath(v)))
+                    {
+                        UnityEngine.Object.DestroyImmediate(v);
+                    }
                 }
-            }
-            foreach (var v in Materials)
-            {
-                if (string.IsNullOrEmpty(AssetDatabase.GetAssetPath(v)))
+                foreach (var v in Materials)
                 {
-                    UnityEngine.Object.DestroyImmediate(v);
+                    if (string.IsNullOrEmpty(AssetDatabase.GetAssetPath(v)))
+                    {
+                        UnityEngine.Object.DestroyImmediate(v);
+                    }
                 }
-            }
-            foreach (var v in Meshes)
-            {
-                if (string.IsNullOrEmpty(AssetDatabase.GetAssetPath(v)))
+                foreach (var v in Meshes)
                 {
-                    UnityEngine.Object.DestroyImmediate(v);
+                    if (string.IsNullOrEmpty(AssetDatabase.GetAssetPath(v)))
+                    {
+                        UnityEngine.Object.DestroyImmediate(v);
+                    }
                 }
-            }
-            foreach (var v in ScriptableObjects)
-            {
-                if (string.IsNullOrEmpty(AssetDatabase.GetAssetPath(v)))
+                foreach (var v in ScriptableObjects)
                 {
-                    ScriptableObject.DestroyImmediate(v);
+                    if (string.IsNullOrEmpty(AssetDatabase.GetAssetPath(v)))
+                    {
+                        ScriptableObject.DestroyImmediate(v);
+                    }
                 }
             }
         }

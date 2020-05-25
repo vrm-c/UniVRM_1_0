@@ -1,12 +1,13 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEditor;
-using UnityEditorInternal;
 using UnityEngine;
 
 namespace UniVRM10
 {
+    /// <summary>
+    /// BlendShapeClip カスタムエディタの実装
+    /// </summary>
     public class SerializedBlendShapeEditor
     {
         BlendShapeClip m_targetObject;
@@ -19,57 +20,63 @@ namespace UniVRM10
         SerializedProperty m_presetProp;
 
         SerializedProperty m_isBinaryProp;
+
+        public bool IsBinary => m_isBinaryProp.boolValue;
+
         SerializedProperty m_ignoreBlinkProp;
         SerializedProperty m_ignoreLookAtProp;
         SerializedProperty m_ignoreMouthProp;
         #endregion
 
-        #region BlendShapeBind
-        public static int BlendShapeBindingHeight = 60;
-        ReorderableList m_ValuesList;
-
-        SerializedProperty m_valuesProp;
-        #endregion
-
-        #region  MaterialValueBind
-        const int MaterialValueBindingHeight = 90;
-        ReorderableList m_MaterialValuesList;
-
-        SerializedProperty m_materialsProp;
-        #endregion
+        ReorderableBlendShapeBindingList m_blendShapeBindings;
+        ReorderableMaterialColorBindingList m_materialColorBindings;
+        ReorderableMaterialUVBindingList m_materialUVBindings;
 
         #region  Editor values
-        //float m_previewSlider = 1.0f;
 
         bool m_changed;
 
-        int m_mode;
+        public struct EditorStatus
+        {
+            public int Mode;
+            public bool BlendShapeFoldout;
+            public bool AdvancedFoldout;
+
+            public static EditorStatus Default => new EditorStatus
+            {
+                BlendShapeFoldout = true,
+            };
+        }
+        EditorStatus m_status = EditorStatus.Default;
+
+        public EditorStatus Status => m_status;
+
         static string[] MODES = new[]{
             "BlendShape",
-            "BlendShape List",
-            "Material List"
+            "Material Color",
+            "Material UV"
         };
 
-        MeshPreviewItem[] m_items;
+        PreviewMeshItem[] m_items;
         #endregion
 
         public SerializedBlendShapeEditor(SerializedObject serializedObject,
             PreviewSceneManager previewSceneManager) : this(
-                serializedObject, (BlendShapeClip)serializedObject.targetObject, previewSceneManager)
+                serializedObject, (BlendShapeClip)serializedObject.targetObject, previewSceneManager, EditorStatus.Default)
         { }
 
         public SerializedBlendShapeEditor(BlendShapeClip blendShapeClip,
-            PreviewSceneManager previewSceneManager) : this(
-                new SerializedObject(blendShapeClip), blendShapeClip, previewSceneManager)
+            PreviewSceneManager previewSceneManager, EditorStatus status) : this(
+                new SerializedObject(blendShapeClip), blendShapeClip, previewSceneManager, status)
         { }
 
         public SerializedBlendShapeEditor(SerializedObject serializedObject, BlendShapeClip targetObject,
-            PreviewSceneManager previewSceneManager)
+            PreviewSceneManager previewSceneManager, EditorStatus status)
         {
+            m_status = status;
             this.m_serializedObject = serializedObject;
             this.m_targetObject = targetObject;
 
-            //m_thumbnail = serializedObject.FindProperty("Thumbnail");
             m_blendShapeNameProp = serializedObject.FindProperty("BlendShapeName");
             m_presetProp = serializedObject.FindProperty("Preset");
             m_isBinaryProp = serializedObject.FindProperty("IsBinary");
@@ -77,52 +84,16 @@ namespace UniVRM10
             m_ignoreLookAtProp = serializedObject.FindProperty("IgnoreLookAt");
             m_ignoreMouthProp = serializedObject.FindProperty("IgnoreMouth");
 
-            m_valuesProp = serializedObject.FindProperty("Values");
-
-            m_ValuesList = new ReorderableList(serializedObject, m_valuesProp);
-            m_ValuesList.elementHeight = BlendShapeBindingHeight;
-            m_ValuesList.drawElementCallback =
-              (rect, index, isActive, isFocused) =>
-              {
-                  var element = m_valuesProp.GetArrayElementAtIndex(index);
-                  rect.height -= 4;
-                  rect.y += 2;
-                  if (BlendShapeClipEditorHelper.DrawBlendShapeBinding(rect, element, previewSceneManager))
-                  {
-                      m_changed = true;
-                  }
-              };
-
-            m_materialsProp = serializedObject.FindProperty("MaterialValues");
-            m_MaterialValuesList = new ReorderableList(serializedObject, m_materialsProp);
-            m_MaterialValuesList.elementHeight = MaterialValueBindingHeight;
-            m_MaterialValuesList.drawElementCallback =
-              (rect, index, isActive, isFocused) =>
-              {
-                  var element = m_materialsProp.GetArrayElementAtIndex(index);
-                  rect.height -= 4;
-                  rect.y += 2;
-                  if (BlendShapeClipEditorHelper.DrawMaterialValueBinding(rect, element, previewSceneManager))
-                  {
-                      m_changed = true;
-                  }
-              };
+            m_blendShapeBindings = new ReorderableBlendShapeBindingList(serializedObject, previewSceneManager, 20);
+            m_materialColorBindings = new ReorderableMaterialColorBindingList(serializedObject, previewSceneManager?.MaterialNames, 20);
+            m_materialUVBindings = new ReorderableMaterialUVBindingList(serializedObject, previewSceneManager?.MaterialNames, 20);
 
             m_items = previewSceneManager.EnumRenderItems
             .Where(x => x.SkinnedMeshRenderer != null)
             .ToArray();
         }
 
-        public struct DrawResult
-        {
-            public bool Changed;
-
-            public BlendShapeBinding[] BlendShapeBindings;
-
-            public MaterialValueBinding[] MaterialValueBindings;
-        }
-
-        public DrawResult Draw()
+        public bool Draw(out BlendShapeClip bakeValue)
         {
             m_changed = false;
 
@@ -137,101 +108,77 @@ namespace UniVRM10
             EditorGUILayout.PropertyField(m_blendShapeNameProp, true);
             EditorGUILayout.PropertyField(m_presetProp, true);
 
-            // v0.45 Added. Binary flag
-            EditorGUILayout.PropertyField(m_isBinaryProp, true);
-
-            // v1.0 Ignore State
-            EditorGUILayout.PropertyField(m_ignoreBlinkProp, true);
-            EditorGUILayout.PropertyField(m_ignoreLookAtProp, true);
-            EditorGUILayout.PropertyField(m_ignoreMouthProp, true);
-
-            EditorGUILayout.Space();
-            //m_mode = EditorGUILayout.Popup("SourceType", m_mode, MODES);
-            m_mode = GUILayout.Toolbar(m_mode, MODES);
-            switch (m_mode)
+            m_status.BlendShapeFoldout = CustomUI.Foldout(Status.BlendShapeFoldout, "BlendShape");
+            if (Status.BlendShapeFoldout)
             {
-                case 0:
-                    {
-                        ClipGUI();
-                    }
-                    break;
+                EditorGUI.indentLevel++;
+                var changed = BlendShapeBindsGUI();
+                if (changed)
+                {
+                    string maxWeightName;
+                    var bindings = GetBindings(out maxWeightName);
+                    m_blendShapeBindings.SetValues(bindings);
 
-                case 1:
-                    {
-                        if (GUILayout.Button("Clear"))
-                        {
-                            m_changed = true;
-                            m_valuesProp.arraySize = 0;
-                        }
-                        m_ValuesList.DoLayoutList();
-                    }
-                    break;
+                    m_changed = true;
+                }
+                EditorGUI.indentLevel--;
+            }
 
-                case 2:
-                    {
-                        if (GUILayout.Button("Clear"))
+            m_status.AdvancedFoldout = CustomUI.Foldout(Status.AdvancedFoldout, "Advanced");
+            if (Status.AdvancedFoldout)
+            {
+                EditorGUI.indentLevel++;
+
+                // v0.45 Added. Binary flag
+                EditorGUILayout.PropertyField(m_isBinaryProp, true);
+
+                // v1.0 Ignore State
+                EditorGUILayout.PropertyField(m_ignoreBlinkProp, true);
+                EditorGUILayout.PropertyField(m_ignoreLookAtProp, true);
+                EditorGUILayout.PropertyField(m_ignoreMouthProp, true);
+
+                EditorGUILayout.Space();
+                m_status.Mode = GUILayout.Toolbar(Status.Mode, MODES);
+                switch (Status.Mode)
+                {
+                    case 0:
+                        // BlendShape
                         {
-                            m_changed = true;
-                            m_materialsProp.arraySize = 0;
+                            if (m_blendShapeBindings.Draw())
+                            {
+                                m_changed = true;
+                            }
                         }
-                        m_MaterialValuesList.DoLayoutList();
-                    }
-                    break;
+                        break;
+
+                    case 1:
+                        // Material
+                        {
+                            if (m_materialColorBindings.Draw())
+                            {
+                                m_changed = true;
+                            }
+                        }
+                        break;
+
+                    case 2:
+                        // MaterialUV
+                        {
+                            if (m_materialUVBindings.Draw())
+                            {
+                                m_changed = true;
+                            }
+                        }
+                        break;
+                }
+
+                EditorGUI.indentLevel--;
             }
 
             m_serializedObject.ApplyModifiedProperties();
 
-            return new DrawResult
-            {
-                Changed = m_changed,
-                BlendShapeBindings = m_targetObject.Values,
-                MaterialValueBindings = m_targetObject.MaterialValues
-            };
-        }
-
-        void ClipGUI()
-        {
-            var changed = BlendShapeBindsGUI();
-            if (changed)
-            {
-                string maxWeightName;
-                var bindings = GetBindings(out maxWeightName);
-                m_valuesProp.ClearArray();
-                m_valuesProp.arraySize = bindings.Length;
-                for (int i = 0; i < bindings.Length; ++i)
-                {
-                    var item = m_valuesProp.GetArrayElementAtIndex(i);
-
-                    var endProperty = item.GetEndProperty();
-                    while (item.NextVisible(true))
-                    {
-                        if (SerializedProperty.EqualContents(item, endProperty))
-                        {
-                            break;
-                        }
-
-                        switch (item.name)
-                        {
-                            case "RelativePath":
-                                item.stringValue = bindings[i].RelativePath;
-                                break;
-
-                            case "Index":
-                                item.intValue = bindings[i].Index;
-                                break;
-
-                            case "Weight":
-                                item.floatValue = bindings[i].Weight;
-                                break;
-
-                            default:
-                                throw new Exception();
-                        }
-                    }
-                }
-
-                m_changed = true;
-            }
+            bakeValue = m_targetObject;
+            return m_changed;
         }
 
         List<bool> m_meshFolds = new List<bool>();
@@ -315,6 +262,38 @@ namespace UniVRM10
             ;
             _maxWeightName = maxWeightName;
             return values;
+        }
+    }
+
+    /// http://tips.hecomi.com/entry/2016/10/15/004144
+    public static class CustomUI
+    {
+        public static bool Foldout(bool display, string title)
+        {
+            var style = new GUIStyle("ShurikenModuleTitle");
+            style.font = new GUIStyle(EditorStyles.label).font;
+            style.border = new RectOffset(15, 7, 4, 4);
+            style.fixedHeight = 22;
+            style.contentOffset = new Vector2(20f, -2f);
+
+            var rect = GUILayoutUtility.GetRect(16f, 22f, style);
+            GUI.Box(rect, title, style);
+
+            var e = Event.current;
+
+            var toggleRect = new Rect(rect.x + 4f, rect.y + 2f, 13f, 13f);
+            if (e.type == EventType.Repaint)
+            {
+                EditorStyles.foldout.Draw(toggleRect, false, false, display, false);
+            }
+
+            if (e.type == EventType.MouseDown && rect.Contains(e.mousePosition))
+            {
+                display = !display;
+                e.Use();
+            }
+
+            return display;
         }
     }
 }

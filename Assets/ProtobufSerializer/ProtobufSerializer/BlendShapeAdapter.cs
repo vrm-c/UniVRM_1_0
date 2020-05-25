@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Numerics;
 using VrmLib;
 
@@ -11,33 +10,47 @@ namespace Vrm10
         public static BlendShapeManager FromGltf(this VrmProtobuf.BlendShape master, List<Node> nodes, List<Material> materials)
         {
             var manager = new BlendShapeManager();
-            manager.BlendShapeList.AddRange(master.BlendShapeGroups.Select(x =>
+            foreach (var x in master.BlendShapeGroups)
             {
                 var expression = new BlendShape((VrmLib.BlendShapePreset)x.Preset,
                     x.Name,
                     x.IsBinary.HasValue && x.IsBinary.Value);
-                expression.BlendShapeValues.AddRange(
-                    x.Binds.Select(y =>
-                    {
-                        var node = nodes[y.Node];
-                        var blendShapeName = node.Mesh.MorphTargets[y.Index].Name;
-                        var value = new BlendShapeBindValue(node, blendShapeName, y.Weight);
-                        return value;
-                    }));
-                expression.MaterialValues.AddRange(
-                    x.MaterialValues.Select(y =>
-                    {
-                        var material = materials[y.Material];
-                        Vector4 target = default;
-                        if (y.TargetValue.Count > 0) target.X = y.TargetValue[0];
-                        if (y.TargetValue.Count > 1) target.Y = y.TargetValue[1];
-                        if (y.TargetValue.Count > 2) target.Z = y.TargetValue[2];
-                        if (y.TargetValue.Count > 3) target.W = y.TargetValue[3];
-                        var value = new MaterialBindValue(material, EnumUtil.Cast<MaterialBindType>(y.Type), target);
-                        return value;
-                    }));
-                return expression;
-            }));
+
+                foreach (var y in x.Binds)
+                {
+                    var node = nodes[y.Node];
+                    var blendShapeName = node.Mesh.MorphTargets[y.Index].Name;
+                    var blendShapeBind = new BlendShapeBindValue(node, blendShapeName, y.Weight);
+                    expression.BlendShapeValues.Add(blendShapeBind);
+                }
+
+                foreach (var y in x.MaterialValues)
+                {
+                    var material = materials[y.Material];
+                    Vector4 target = default;
+                    if (y.TargetValue.Count > 0) target.X = y.TargetValue[0];
+                    if (y.TargetValue.Count > 1) target.Y = y.TargetValue[1];
+                    if (y.TargetValue.Count > 2) target.Z = y.TargetValue[2];
+                    if (y.TargetValue.Count > 3) target.W = y.TargetValue[3];
+                    var materialColorBind = new MaterialBindValue(material, EnumUtil.Cast<MaterialBindType>(y.Type), target);
+                    expression.MaterialValues.Add(materialColorBind);
+                }
+
+                foreach (var y in x.MaterialUVBinds)
+                {
+                    var material = materials[y.Material];
+                    var scaling = Vector2.One;
+                    if (y.Scaling.Count > 0) scaling.X = y.Scaling[0];
+                    if (y.Scaling.Count > 1) scaling.Y = y.Scaling[1];
+                    var offset = Vector2.Zero;
+                    if (y.Offset.Count > 0) offset.X = y.Offset[0];
+                    if (y.Offset.Count > 1) offset.Y = y.Offset[1];
+                    var materialUVBind = new UVScaleOffsetValue(material, scaling, offset);
+                    expression.UVScaleOffsetValues.Add(materialUVBind);
+                }
+
+                manager.BlendShapeList.Add(expression);
+            };
             return manager;
         }
 
@@ -64,12 +77,26 @@ namespace Vrm10
             var m = new VrmProtobuf.BlendShapeGroup.Types.MaterialValue
             {
                 Material = materials.IndexOfThrow(self.Material),
-                Type = EnumUtil.Cast<VrmProtobuf.BlendShapeGroup.Types.MaterialValueTypes>(self.BindType),
+                Type = EnumUtil.Cast<VrmProtobuf.BlendShapeGroup.Types.MaterialValueType>(self.BindType),
             };
-            m.TargetValue.Add(self.Value.X);
-            m.TargetValue.Add(self.Value.Y);
-            m.TargetValue.Add(self.Value.Z);
-            m.TargetValue.Add(self.Value.W);
+            var kv = self.Property;
+            m.TargetValue.Add(kv.Value.X);
+            m.TargetValue.Add(kv.Value.Y);
+            m.TargetValue.Add(kv.Value.Z);
+            m.TargetValue.Add(kv.Value.W);
+            return m;
+        }
+
+        public static VrmProtobuf.BlendShapeGroup.Types.MaterialUVBind ToGltf(this UVScaleOffsetValue self, List<Material> materials)
+        {
+            var m = new VrmProtobuf.BlendShapeGroup.Types.MaterialUVBind
+            {
+                Material = materials.IndexOfThrow(self.Material),
+            };
+            m.Scaling.Add(self.Scale.X);
+            m.Scaling.Add(self.Scale.Y);
+            m.Offset.Add(self.Offset.X);
+            m.Offset.Add(self.Offset.Y);
             return m;
         }
 
@@ -84,13 +111,17 @@ namespace Vrm10
                 IgnoreLookAt = x.IgnoreLookAt,
                 IgnoreMouth = x.IgnoreMouth,
             };
-            foreach (var y in x.BlendShapeValues)
+            foreach (var blendShapeBind in x.BlendShapeValues)
             {
-                g.Binds.Add(y.ToGltf(nodes));
+                g.Binds.Add(blendShapeBind.ToGltf(nodes));
             }
-            foreach (var y in x.MaterialValues)
+            foreach (var materialColorBind in x.MaterialValues)
             {
-                g.MaterialValues.Add(y.ToGltf(materials));
+                g.MaterialValues.Add(materialColorBind.ToGltf(materials));
+            }
+            foreach (var materialUVBind in x.UVScaleOffsetValues)
+            {
+                g.MaterialUVBinds.Add(materialUVBind.ToGltf(materials));
             }
             return g;
         }

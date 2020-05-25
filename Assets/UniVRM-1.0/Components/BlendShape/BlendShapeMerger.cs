@@ -93,42 +93,6 @@ namespace UniVRM10
             m_materialValueBindingMerger.AccumulateValue(clip, value);
         }
 
-        /// <summary>
-        /// 即時に反映する
-        /// </summary>
-        /// <param name="key"></param>
-        /// <param name="value"></param>
-        public void ImmediatelySetValue(BlendShapeKey key, float value)
-        {
-            m_valueMap[key] = value;
-
-            BlendShapeClip clip;
-            if (!m_clipMap.TryGetValue(key, out clip))
-            {
-                return;
-            }
-
-            if (clip.IsBinary)
-            {
-                value = Mathf.Round(value);
-            }
-
-            m_blendShapeBindingMerger.ImmediatelySetValue(clip, value);
-            m_materialValueBindingMerger.ImmediatelySetValue(clip, value);
-        }
-
-        public void SetValue(BlendShapeKey key, float value, bool immediately)
-        {
-            if (immediately)
-            {
-                ImmediatelySetValue(key, value);
-            }
-            else
-            {
-                AccumulateValue(key, value);
-            }
-        }
-
         public float GetValue(BlendShapeKey key)
         {
             float value;
@@ -141,7 +105,7 @@ namespace UniVRM10
 
         public BlendShapeClip GetClip(BlendShapeKey key)
         {
-            if(m_clipMap.ContainsKey(key))
+            if (m_clipMap.ContainsKey(key))
             {
                 return m_clipMap[key];
             }
@@ -151,9 +115,9 @@ namespace UniVRM10
             }
         }
 
-        public void RestoreMaterialInitialValues(IEnumerable<BlendShapeClip> clips)
+        public void RestoreMaterialInitialValues()
         {
-            m_materialValueBindingMerger.RestoreMaterialInitialValues(clips);
+            m_materialValueBindingMerger.RestoreMaterialInitialValues();
         }
     }
 }

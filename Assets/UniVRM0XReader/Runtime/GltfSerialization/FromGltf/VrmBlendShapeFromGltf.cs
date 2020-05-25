@@ -52,14 +52,37 @@ namespace GltfSerializationAdapter
                         var value = new BlendShapeBindValue(node, blendShapeName, y.weight);
                         return value;
                     }));
-                expression.MaterialValues.AddRange(
-                    x.materialValues.Select(y =>
+
+                /// VRM-0.X の MaterialBindValue を VRM-1.0 仕様に変換する
+                foreach (var y in x.materialValues)
+                {
+                    var material = materials.First(z => z.Name == y.materialName);
+
+                    if (y.propertyName.EndsWith("_ST"))
                     {
-                        var material = materials.First(z => z.Name == y.materialName);
+                        expression.UVScaleOffsetValues.Add(new UVScaleOffsetValue(material,
+                            new Vector2(y.targetValue[0], y.targetValue[1]),
+                            new Vector2(y.targetValue[2], y.targetValue[3])));
+                    }
+                    else if (y.propertyName.EndsWith("_ST_S"))
+                    {
+                        expression.UVScaleOffsetValues.Add(new UVScaleOffsetValue(material,
+                            new Vector2(y.targetValue[0], 1),
+                            new Vector2(y.targetValue[2], 0)));
+                    }
+                    else if (y.propertyName.EndsWith("_ST_T"))
+                    {
+                        expression.UVScaleOffsetValues.Add(new UVScaleOffsetValue(material,
+                            new Vector2(1, y.targetValue[1]),
+                            new Vector2(0, y.targetValue[3])));
+                    }
+                    else
+                    {
+                        var bindType = material.GetBindType(y.propertyName);
                         var target = new Vector4(y.targetValue[0], y.targetValue[1], y.targetValue[2], y.targetValue[3]);
-                        var value = new MaterialBindValue(material, y.propertyName, target);
-                        return value;
-                    }));
+                        expression.MaterialValues.Add(new MaterialBindValue(material, bindType, target));
+                    }
+                }
                 return expression;
             }));
             return manager;

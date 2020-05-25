@@ -54,30 +54,47 @@ namespace UniVRM10
             };
         }
 
-        static UniVRM10.MaterialValueBinding? Build10(this VrmLib.MaterialBindValue bind, ModelMap loader)
+        static UniVRM10.MaterialColorBinding? Build10(this VrmLib.MaterialBindValue bind, ModelMap loader)
         {
-            var value = bind.Value.ToUnityVector4();
+            var kv = bind.Property;
+            var value = kv.Value.ToUnityVector4();
             var material = loader.Materials[bind.Material];
 
-            var binding = default(UniVRM10.MaterialValueBinding?);
-
+            var binding = default(UniVRM10.MaterialColorBinding?);
             if (material != null)
             {
-                var propertyName = bind.Property;
-                if (propertyName.EndsWith("_ST_S")
-                || propertyName.EndsWith("_ST_T"))
-                {
-                    propertyName = propertyName.Substring(0, propertyName.Length - 2);
-                }
-
                 try
                 {
-                    binding = new UniVRM10.MaterialValueBinding
+                    binding = new UniVRM10.MaterialColorBinding
                     {
                         MaterialName = bind.Material.Name, // UniVRM-0Xの実装は名前で持っている
-                        ValueName = bind.Property,
+                        BindType = bind.BindType,
                         TargetValue = value,
-                        BaseValue = material.GetColor(propertyName),
+                        // BaseValue = material.GetColor(kv.Key),
+                    };
+                }
+                catch (Exception)
+                {
+                    // do nothing
+                }
+            }
+            return binding;
+        }
+
+        static UniVRM10.MaterialUVBinding? Build10(this VrmLib.UVScaleOffsetValue bind, ModelMap loader)
+        {
+            var material = loader.Materials[bind.Material];
+
+            var binding = default(UniVRM10.MaterialUVBinding?);
+            if (material != null)
+            {
+                try
+                {
+                    binding = new UniVRM10.MaterialUVBinding
+                    {
+                        MaterialName = bind.Material.Name, // UniVRM-0Xの実装は名前で持っている
+                        Scaling = new Vector2(bind.Scale.X, bind.Scale.Y),
+                        Offset = new Vector2(bind.Offset.X, bind.Offset.Y),
                     };
                 }
                 catch (Exception)
@@ -149,9 +166,13 @@ namespace UniVRM10
                         clip.IgnoreLookAt = blendShape.IgnoreLookAt;
                         clip.IgnoreMouth = blendShape.IgnoreMouth;
 
-                        clip.Values = blendShape.BlendShapeValues.Select(x => x.Build10(asset.Root, asset.Map))
+                        clip.BlendShapeBindings = blendShape.BlendShapeValues.Select(x => x.Build10(asset.Root, asset.Map))
                             .ToArray();
-                        clip.MaterialValues = blendShape.MaterialValues.Select(x => x.Build10(asset.Map))
+                        clip.MaterialColorBindings = blendShape.MaterialValues.Select(x => x.Build10(asset.Map))
+                            .Where(x => x.HasValue)
+                            .Select(x => x.Value)
+                            .ToArray();
+                        clip.MaterialUVBindings = blendShape.UVScaleOffsetValues.Select(x => x.Build10(asset.Map))
                             .Where(x => x.HasValue)
                             .Select(x => x.Value)
                             .ToArray();

@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 namespace UniVRM10
@@ -10,15 +9,87 @@ namespace UniVRM10
     ///
     class MaterialValueBindingMerger
     {
+        #region MaterialMap
+        /// <summary>
+        /// MaterialValueBinding の対象になるマテリアルの情報を記録する
+        /// </summary>
+        Dictionary<string, PreviewMaterialItem> m_materialMap = new Dictionary<string, PreviewMaterialItem>();
 
-        struct DictionaryKeyMaterialValueBindingComparer : IEqualityComparer<MaterialValueBinding>
+        void InitializeMaterialMap(Dictionary<BlendShapeKey, BlendShapeClip> clipMap, Transform root)
         {
-            public bool Equals(MaterialValueBinding x, MaterialValueBinding y)
+            Dictionary<string, Material> materialNameMap = new Dictionary<string, Material>();
+            foreach (var renderer in root.GetComponentsInChildren<Renderer>())
             {
-                return x.TargetValue == y.TargetValue && x.BaseValue == y.BaseValue && x.MaterialName == y.MaterialName && x.ValueName == y.ValueName;
+                foreach (var material in renderer.sharedMaterials)
+                {
+                    if (!materialNameMap.ContainsKey(material.name))
+                    {
+                        materialNameMap.Add(material.name, material);
+                    }
+                }
             }
 
-            public int GetHashCode(MaterialValueBinding obj)
+            foreach (var kv in clipMap)
+            {
+                foreach (var binding in kv.Value.MaterialColorBindings)
+                {
+                    PreviewMaterialItem item;
+                    if (!m_materialMap.TryGetValue(binding.MaterialName, out item))
+                    {
+                        if (!materialNameMap.TryGetValue(binding.MaterialName, out Material material))
+                        {
+                            // not found skip
+                            continue;
+                        }
+                        item = new PreviewMaterialItem(material);
+                        m_materialMap.Add(binding.MaterialName, item);
+                    }
+                    var propName = VrmLib.MaterialBindTypeExtensions.GetProperty(binding.BindType);
+                    item.PropMap.Add(binding.BindType, new PropItem
+                    {
+                        Name = propName,
+                        DefaultValues = item.Material.GetVector(propName),
+                    });
+                }
+
+                foreach (var binding in kv.Value.MaterialUVBindings)
+                {
+                    PreviewMaterialItem item;
+                    if (!m_materialMap.TryGetValue(binding.MaterialName, out item))
+                    {
+                        if (!materialNameMap.TryGetValue(binding.MaterialName, out Material material))
+                        {
+                            // not found skip
+                            continue;
+                        }
+                        item = new PreviewMaterialItem(material);
+                        m_materialMap.Add(binding.MaterialName, item);
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// m_materialMap に記録した値に Material を復旧する
+        /// </summary>
+        public void RestoreMaterialInitialValues()
+        {
+            foreach (var kv in m_materialMap)
+            {
+                kv.Value.RestoreInitialValues();
+            }
+        }
+        #endregion
+
+        #region Accumulate
+        struct DictionaryKeyMaterialValueBindingComparer : IEqualityComparer<MaterialColorBinding>
+        {
+            public bool Equals(MaterialColorBinding x, MaterialColorBinding y)
+            {
+                return x.TargetValue == y.TargetValue && x.MaterialName == y.MaterialName && x.BindType == y.BindType;
+            }
+
+            public int GetHashCode(MaterialColorBinding obj)
             {
                 return obj.GetHashCode();
             }
@@ -27,170 +98,47 @@ namespace UniVRM10
         static DictionaryKeyMaterialValueBindingComparer comparer = new DictionaryKeyMaterialValueBindingComparer();
 
         /// <summary>
-        /// 名前とmaterialのマッピング
-        /// </summary>
-        Dictionary<string, Material> m_materialMap = new Dictionary<string, Material>();
-
-        delegate void Setter(float value, bool firstValue);
-
-        /// <summary>
         /// MaterialValueの適用値を蓄積する
         /// </summary>
         /// <typeparam name="MaterialValueBinding"></typeparam>
         /// <typeparam name="float"></typeparam>
         /// <returns></returns>
-        Dictionary<MaterialValueBinding, float> m_materialValueMap = new Dictionary<MaterialValueBinding, float>(comparer);
+        Dictionary<MaterialColorBinding, float> m_materialColorMap = new Dictionary<MaterialColorBinding, float>(comparer);
 
-        Dictionary<MaterialValueBinding, Setter> m_materialSetterMap = new Dictionary<MaterialValueBinding, Setter>(comparer);
+        /// <summary>
+        /// UV Scale/Offset
+        /// </summary>
+        Dictionary<string, Vector4> m_materialUVMap = new Dictionary<string, Vector4>();
 
-        //BlendShapeClip[] m_clips;
-
-        public MaterialValueBindingMerger(Dictionary<BlendShapeKey, BlendShapeClip> clipMap, Transform root)
-        {
-            //m_clips = clipMap.Values.ToArray();
-
-            foreach (var x in root.Traverse())
-            {
-                var renderer = x.GetComponent<Renderer>();
-                if (renderer != null)
-                {
-                    foreach (var y in renderer.sharedMaterials.Where(y => y != null))
-                    {
-                        if (!string.IsNullOrEmpty(y.name))
-                        {
-                            if (!m_materialMap.ContainsKey(y.name))
-                            {
-                                m_materialMap.Add(y.name, y);
-                            }
-                        }
-                    }
-                }
-            }
-
-            foreach (var kv in clipMap)
-            {
-                foreach (var binding in kv.Value.MaterialValues)
-                {
-                    if (!m_materialSetterMap.ContainsKey(binding))
-                    {
-                        Material target;
-                        if (m_materialMap.TryGetValue(binding.MaterialName, out target))
-                        {
-                            if (binding.ValueName.EndsWith("_ST_S"))
-                            {
-                                var valueName = binding.ValueName.Substring(0, binding.ValueName.Length - 2);
-                                Setter setter = (value, firstValue) =>
-                                {
-                                    var propValue = firstValue
-                                        ? (binding.BaseValue + (binding.TargetValue - binding.BaseValue) * value)
-                                        : (target.GetVector(valueName) + (binding.TargetValue - binding.BaseValue) * value)
-                                        ;
-                                    var src = target.GetVector(valueName);
-                                    src.x = propValue.x; // horizontal only
-                                    src.z = propValue.z; // horizontal only
-                                    target.SetVector(valueName, src);
-                                };
-                                m_materialSetterMap.Add(binding, setter);
-                            }
-                            else if (binding.ValueName.EndsWith("_ST_T"))
-                            {
-                                var valueName = binding.ValueName.Substring(0, binding.ValueName.Length - 2);
-                                Setter setter = (value, firstValue) =>
-                                {
-                                    var propValue = firstValue
-                                        ? (binding.BaseValue + (binding.TargetValue - binding.BaseValue) * value)
-                                        : (target.GetVector(valueName) + (binding.TargetValue - binding.BaseValue) * value)
-                                        ;
-                                    var src = target.GetVector(valueName);
-                                    src.y = propValue.y; // vertical only
-                                    src.w = propValue.w; // vertical only
-                                    target.SetVector(valueName, src);
-                                };
-                                m_materialSetterMap.Add(binding, setter);
-                            }
-                            else
-                            {
-                                Setter vec4Setter = (value, firstValue) =>
-                                {
-                                    var propValue = firstValue
-                                        ? (binding.BaseValue + (binding.TargetValue - binding.BaseValue) * value)
-                                        : (target.GetVector(binding.ValueName) + (binding.TargetValue - binding.BaseValue) * value)
-                                        ;
-                                    target.SetColor(binding.ValueName, propValue);
-                                };
-                                m_materialSetterMap.Add(binding, vec4Setter);
-                            }
-                        }
-                        else
-                        {
-                            Debug.LogWarningFormat("material: {0} not found", binding.MaterialName);
-                        }
-                    }
-                }
-            }
-        }
-
-        public void RestoreMaterialInitialValues(IEnumerable<BlendShapeClip> clips)
-        {
-            if (m_materialMap != null)
-            {
-                foreach (var x in clips)
-                {
-                    foreach (var y in x.MaterialValues)
-                    {
-                        // restore values
-                        Material material;
-                        if (m_materialMap.TryGetValue(y.MaterialName, out material))
-                        {
-                            var valueName = y.ValueName;
-                            if (valueName.EndsWith("_ST_S")
-                            || valueName.EndsWith("_ST_T"))
-                            {
-                                valueName = valueName.Substring(0, valueName.Length - 2);
-                            }
-#if UNITY_EDITOR
-                            // restore only material with asset
-                            if (!string.IsNullOrEmpty(UnityEditor.AssetDatabase.GetAssetPath(material)))
-                            {
-                                material.SetColor(valueName, y.BaseValue);
-                            }
-#endif
-                        }
-                        else
-                        {
-                            Debug.LogWarningFormat("{0} not found", y.MaterialName);
-                        }
-                    }
-                }
-            }
-        }
-
-        public void ImmediatelySetValue(BlendShapeClip clip, float value)
-        {
-            foreach (var binding in clip.MaterialValues)
-            {
-                Setter setter;
-                if (m_materialSetterMap.TryGetValue(binding, out setter))
-                {
-                    setter(value, true);
-                }
-            }
-        }
+        static readonly Vector4 DefaultUVScaleOffset = new Vector4(1, 1, 0, 0);
 
         public void AccumulateValue(BlendShapeClip clip, float value)
         {
-            foreach (var binding in clip.MaterialValues)
+            // material color
+            foreach (var binding in clip.MaterialColorBindings)
             {
-                // 積算
                 float acc;
-                if (m_materialValueMap.TryGetValue(binding, out acc))
+                if (m_materialColorMap.TryGetValue(binding, out acc))
                 {
-                    m_materialValueMap[binding] = acc + value;
+                    m_materialColorMap[binding] = acc + value;
                 }
                 else
                 {
-                    m_materialValueMap[binding] = value;
+                    m_materialColorMap[binding] = value;
                 }
+            }
+
+            // maetrial uv
+            foreach (var binding in clip.MaterialUVBindings)
+            {
+                Vector4 acc;
+                if (!m_materialUVMap.TryGetValue(binding.MaterialName, out acc))
+                {
+                    acc = DefaultUVScaleOffset;
+                }
+
+                var delta = binding.ScalingOffset - DefaultUVScaleOffset;
+                m_materialUVMap[binding.MaterialName] = acc + delta * value;
             }
         }
 
@@ -226,62 +174,75 @@ namespace UniVRM10
                 return MaterialName.GetHashCode() + ValueName.GetHashCode();
             }
 
-            public static MaterialTarget Create(MaterialValueBinding binding)
+            public static MaterialTarget Create(MaterialColorBinding binding)
             {
                 return new MaterialTarget
                 {
-                    MaterialName=binding.MaterialName,
-                    ValueName=binding.ValueName
+                    MaterialName = binding.MaterialName,
+                    ValueName = VrmLib.MaterialBindTypeExtensions.GetProperty(binding.BindType),
                 };
             }
         }
 
         HashSet<MaterialTarget> m_used = new HashSet<MaterialTarget>();
-
         public void Apply()
         {
-            // clear
-            //RestoreMaterialInitialValues(m_clips);
-            m_used.Clear();
-
-            // (binding.Value-Base) * weight を足す
-            foreach (var kv in m_materialValueMap)
             {
-                var key = MaterialTarget.Create(kv.Key);
-                if (!m_used.Contains(key))
+                m_used.Clear();
+                foreach (var kv in m_materialColorMap)
                 {
-                    // restore value
-                    Material material;
-                    if (m_materialMap.TryGetValue(key.MaterialName, out material))
+                    var key = MaterialTarget.Create(kv.Key);
+                    PreviewMaterialItem item;
+                    if (m_materialMap.TryGetValue(key.MaterialName, out item))
                     {
-                        var value = kv.Key.BaseValue;
-                        var valueName = key.ValueName;
-                        if (valueName.EndsWith("_ST_S"))
+                        // 初期値(コンストラクタで記録)
+                        var initial = item.PropMap[kv.Key.BindType].DefaultValues;
+                        if (!m_used.Contains(key))
                         {
-                            valueName = valueName.Substring(0, valueName.Length - 2);
-                            var v=material.GetVector(valueName);
-                            value.y = v.y;
-                            value.w = v.w;
+                            //
+                            // m_used に入っていない場合は、このフレームで初回の呼び出しになる。
+                            // (Apply はフレームに一回呼ばれる想定)
+                            // 初回は、値を初期値に戻す。
+                            //
+                            item.Material.SetColor(key.ValueName, initial);
+                            m_used.Add(key);
                         }
-                        else if (valueName.EndsWith("_ST_T"))
-                        {
-                            valueName = valueName.Substring(0, valueName.Length - 2);
-                            var v = material.GetVector(valueName);
-                            value.x = v.x;
-                            value.z = v.z;
-                        }
-                        material.SetColor(valueName, value);
-                    }
-                    m_used.Add(key);
-                }
 
-                Setter setter;
-                if (m_materialSetterMap.TryGetValue(kv.Key, out setter))
-                {
-                    setter(kv.Value, false);
+                        // 現在値
+                        var current = item.Material.GetVector(key.ValueName);
+                        // 変化量
+                        var value = (kv.Key.TargetValue - initial) * kv.Value;
+                        // 適用
+                        item.Material.SetColor(key.ValueName, current + value);
+                    }
+                    else
+                    {
+                        // エラー？
+                    }
                 }
+                m_materialColorMap.Clear();
             }
-            m_materialValueMap.Clear();
+
+            {
+                foreach (var kv in m_materialUVMap)
+                {
+                    PreviewMaterialItem item;
+                    if (m_materialMap.TryGetValue(kv.Key, out item))
+                    {
+                        //
+                        // Standard and MToon use _MainTex_ST as uv0 scale/offset
+                        //
+                        item.Material.SetVector("_MainTex_ST", kv.Value);
+                    }
+                }
+                m_materialUVMap.Clear();
+            }
+        }
+        #endregion
+
+        public MaterialValueBindingMerger(Dictionary<BlendShapeKey, BlendShapeClip> clipMap, Transform root)
+        {
+            InitializeMaterialMap(clipMap, root);
         }
     }
 }

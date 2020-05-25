@@ -17,6 +17,8 @@ namespace VrmLib
 
         public readonly List<MaterialBindValue> MaterialValues = new List<MaterialBindValue>();
 
+        public readonly List<UVScaleOffsetValue> UVScaleOffsetValues = new List<UVScaleOffsetValue>();
+
         public BlendShape(BlendShapePreset preset, string name, bool isBinary)
         {
             Preset = preset;

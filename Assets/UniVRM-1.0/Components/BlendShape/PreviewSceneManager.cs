@@ -78,6 +78,10 @@ namespace UniVRM10
             Prefab = prefab;
 
             var materialNames = new List<string>();
+
+            // preview シーン用に Material を複製する。
+            // BlendShapeClip のカスタムエディタのマテリアル変更は、
+            // 複製したものに適用される。
             var map = new Dictionary<Material, Material>();
             Func<Material, Material> getOrCreateMaterial = src =>
             {
@@ -92,13 +96,13 @@ namespace UniVRM10
 
                     //Debug.LogFormat("add material {0}", src.name);
                     materialNames.Add(src.name);
-                    m_materialMap.Add(src.name, MaterialItem.Create(dst));
+                    m_materialMap.Add(src.name, PreviewMaterialItem.CreateForPreview(dst));
                 }
                 return dst;
             };
 
             m_meshes = transform.Traverse()
-                .Select(x => MeshPreviewItem.Create(x, transform, getOrCreateMaterial))
+                .Select(x => PreviewMeshItem.Create(x, transform, getOrCreateMaterial))
                 .Where(x => x != null)
                 .ToArray()
                 ;
@@ -108,8 +112,6 @@ namespace UniVRM10
                 .Where(x => x.SkinnedMeshRenderer != null
                 && x.SkinnedMeshRenderer.sharedMesh.blendShapeCount > 0)
                 .ToArray();
-
-            //Bake(values, materialValues);
 
             m_rendererPathList = m_meshes.Select(x => x.Path).ToArray();
             m_skinnedMeshRendererPathList = m_meshes
@@ -128,9 +130,9 @@ namespace UniVRM10
             }
         }
 
-        MeshPreviewItem[] m_meshes;
-        MeshPreviewItem[] m_blendShapeMeshes;
-        public IEnumerable<MeshPreviewItem> EnumRenderItems
+        PreviewMeshItem[] m_meshes;
+        PreviewMeshItem[] m_blendShapeMeshes;
+        public IEnumerable<PreviewMeshItem> EnumRenderItems
         {
             get
             {
@@ -150,7 +152,7 @@ namespace UniVRM10
             private set;
         }
 
-        Dictionary<string, MaterialItem> m_materialMap = new Dictionary<string, MaterialItem>();
+        Dictionary<string, PreviewMaterialItem> m_materialMap = new Dictionary<string, PreviewMaterialItem>();
 
         string[] m_rendererPathList;
         public string[] RendererPathList
@@ -175,9 +177,9 @@ namespace UniVRM10
             return null;
         }
 
-        public MaterialItem GetMaterialItem(string materialName)
+        public PreviewMaterialItem GetMaterialItem(string materialName)
         {
-            MaterialItem item;
+            PreviewMaterialItem item;
             if (!m_materialMap.TryGetValue(materialName, out item))
             {
                 return null;
@@ -200,16 +202,8 @@ namespace UniVRM10
         }
 
 #if UNITY_EDITOR
-
-        public struct BakeValue
-        {
-            public IEnumerable<BlendShapeBinding> BlendShapeBindings;
-            public IEnumerable<MaterialValueBinding> MaterialValueBindings;
-            public float Weight;
-        }
-
         Bounds m_bounds;
-        public void Bake(BakeValue bake)
+        public void Bake(BlendShapeClip bake, float weight)
         {
             //
             // Bake BlendShape
@@ -217,17 +211,20 @@ namespace UniVRM10
             m_bounds = default(Bounds);
             if (m_meshes != null)
             {
-                foreach (var x in m_meshes)
+                if (bake != null)
                 {
-                    x.Bake(bake.BlendShapeBindings, bake.Weight);
-                    m_bounds.Expand(x.Mesh.bounds.size);
+                    foreach (var x in m_meshes)
+                    {
+                        x.Bake(bake.BlendShapeBindings, weight);
+                        m_bounds.Expand(x.Mesh.bounds.size);
+                    }
                 }
             }
 
             //
             // Update Material
             //
-            if (bake.MaterialValueBindings != null && m_materialMap != null)
+            if (m_materialMap != null)
             {
                 // clear
                 //Debug.LogFormat("clear material");
@@ -235,30 +232,59 @@ namespace UniVRM10
                 {
                     foreach (var _kv in kv.Value.PropMap)
                     {
-                        kv.Value.Material.SetColor(_kv.Key, _kv.Value.DefaultValues);
+                        // var prop = VrmLib.MaterialBindTypeExtensions.GetProperty(_kv.Key);
+                        kv.Value.Material.SetColor(_kv.Value.Name, _kv.Value.DefaultValues);
+                    }
+
+                    // clear UV
+                    kv.Value.Material.SetVector("_MainTex_ST", new Vector4(1, 1, 0, 0));
+                }
+
+                if (bake.MaterialColorBindings != null)
+                {
+                    foreach (var x in bake.MaterialColorBindings)
+                    {
+                        PreviewMaterialItem item;
+                        if (m_materialMap.TryGetValue(x.MaterialName, out item))
+                        {
+                            //Debug.Log("set material");
+                            PropItem prop;
+                            if (item.PropMap.TryGetValue(x.BindType, out prop))
+                            {
+                                // var valueName = x.ValueName;
+                                // if (valueName.EndsWith("_ST_S")
+                                // || valueName.EndsWith("_ST_T"))
+                                // {
+                                //     valueName = valueName.Substring(0, valueName.Length - 2);
+                                // }
+
+                                var value = item.Material.GetVector(prop.Name);
+                                //Debug.LogFormat("{0} => {1}", valueName, x.TargetValue);
+                                value += ((x.TargetValue - prop.DefaultValues) * weight);
+                                item.Material.SetColor(prop.Name, value);
+                            }
+                        }
                     }
                 }
 
-                foreach (var x in bake.MaterialValueBindings)
+                if (bake.MaterialUVBindings != null)
                 {
-                    MaterialItem item;
-                    if (m_materialMap.TryGetValue(x.MaterialName, out item))
+                    foreach (var x in bake.MaterialUVBindings)
                     {
-                        //Debug.Log("set material");
-                        PropItem prop;
-                        if (item.PropMap.TryGetValue(x.ValueName, out prop))
+                        PreviewMaterialItem item;
+                        if (m_materialMap.TryGetValue(x.MaterialName, out item))
                         {
-                            var valueName = x.ValueName;
-                            if (valueName.EndsWith("_ST_S")
-                            || valueName.EndsWith("_ST_T"))
-                            {
-                                valueName = valueName.Substring(0, valueName.Length - 2);
-                            }
+                            // var valueName = x.ValueName;
+                            // if (valueName.EndsWith("_ST_S")
+                            // || valueName.EndsWith("_ST_T"))
+                            // {
+                            //     valueName = valueName.Substring(0, valueName.Length - 2);
+                            // }
 
-                            var value = item.Material.GetVector(valueName);
+                            var value = item.Material.GetVector("_MainTex_ST");
                             //Debug.LogFormat("{0} => {1}", valueName, x.TargetValue);
-                            value += ((x.TargetValue - x.BaseValue) * bake.Weight);
-                            item.Material.SetColor(valueName, value);
+                            value += ((x.ScalingOffset - new Vector4(1, 1, 0, 0)) * weight);
+                            item.Material.SetColor("_MainTex_ST", value);
                         }
                     }
                 }

@@ -1,76 +1,8 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 
 namespace UniVRM10
 {
-   [Serializable]
-    public struct BlendShapeBinding : IEquatable<BlendShapeBinding>
-    {
-        public String RelativePath;
-        public int Index;
-        public float Weight;
-
-        public override string ToString()
-        {
-            return string.Format("{0}[{1}]=>{2}", RelativePath, Index, Weight);
-        }
-
-        public bool Equals(BlendShapeBinding other)
-        {
-            return string.Equals(RelativePath, other.RelativePath) && Index == other.Index && Weight.Equals(other.Weight);
-        }
-
-        public override bool Equals(object obj)
-        {
-            if (ReferenceEquals(null, obj)) return false;
-            return obj is BlendShapeBinding && Equals((BlendShapeBinding)obj);
-        }
-
-        public override int GetHashCode()
-        {
-            unchecked
-            {
-                var hashCode = (RelativePath != null ? RelativePath.GetHashCode() : 0);
-                hashCode = (hashCode * 397) ^ Index;
-                hashCode = (hashCode * 397) ^ Weight.GetHashCode();
-                return hashCode;
-            }
-        }
-    }
-
-    [Serializable]
-    public struct MaterialValueBinding : IEquatable<MaterialValueBinding>
-    {
-        public String MaterialName;
-        public String ValueName;
-        public Vector4 TargetValue;
-        public Vector4 BaseValue;
-
-        public bool Equals(MaterialValueBinding other)
-        {
-            return string.Equals(MaterialName, other.MaterialName) && string.Equals(ValueName, other.ValueName) && TargetValue.Equals(other.TargetValue) && BaseValue.Equals(other.BaseValue);
-        }
-
-        public override bool Equals(object obj)
-        {
-            if (ReferenceEquals(null, obj)) return false;
-            return obj is MaterialValueBinding && Equals((MaterialValueBinding)obj);
-        }
-
-        public override int GetHashCode()
-        {
-            unchecked
-            {
-                var hashCode = (MaterialName != null ? MaterialName.GetHashCode() : 0);
-                hashCode = (hashCode * 397) ^ (ValueName != null ? ValueName.GetHashCode() : 0);
-                hashCode = (hashCode * 397) ^ TargetValue.GetHashCode();
-                hashCode = (hashCode * 397) ^ BaseValue.GetHashCode();
-                return hashCode;
-            }
-        }
-    }
-
     [CreateAssetMenu(menuName = "VRM/BlendShapeClip")]
     public class BlendShapeClip : ScriptableObject
     {
@@ -108,50 +40,6 @@ namespace UniVRM10
                 return m_prefab;
             }
         }
-
-        /// <summary>
-        /// Apply BlendShape for Preview
-        /// </summary>
-        /// <param name="root"></param>
-        /// <param name="value"></param>
-        public void Apply(Transform root, float value)
-        {
-            if (Values != null)
-            {
-                foreach (var x in Values)
-                {
-                    var target = root.Find(x.RelativePath);
-                    if (target != null)
-                    {
-                        var sr = target.GetComponent<SkinnedMeshRenderer>();
-                        if (sr != null)
-                        {
-                            sr.SetBlendShapeWeight(x.Index, x.Weight * value);
-                        }
-                    }
-                }
-            }
-
-            /*
-            if (MaterialValues != null)
-            {
-                foreach (var x in MaterialValues)
-                {
-                    var target = root.Find(x.RelativePath);
-                    if (target != null)
-                    {
-                        var sr = target.GetComponent<SkinnedMeshRenderer>();
-                        if (sr != null)
-                        {
-                            var m = sr.sharedMaterials[x.Index];
-                            var color = x.BaseValue + (x.TargetValue - x.BaseValue) * value;
-                            m.SetColor(x.ValueName, color);
-                        }
-                    }
-                }
-            }
-            */
-        }
 #endif
 
         /// <summary>
@@ -167,18 +55,22 @@ namespace UniVRM10
         public VrmLib.BlendShapePreset Preset;
 
         /// <summary>
-        /// BlendShapeに対する参照(index ベース)
-        /// </summary>
-        /// <value></value>
+        /// 対象メッシュの BlendShape を操作する
+        /// <summary>
         [SerializeField]
-        public BlendShapeBinding[] Values = new BlendShapeBinding[] { };
+        public BlendShapeBinding[] BlendShapeBindings = new BlendShapeBinding[] { };
 
         /// <summary>
-        /// マテリアルに対する参照(名前ベース)
-        /// </summary>
-        /// <value></value>
+        /// 対象マテリアルの Color を操作する
+        /// <summary>
         [SerializeField]
-        public MaterialValueBinding[] MaterialValues = new MaterialValueBinding[] { };
+        public MaterialColorBinding[] MaterialColorBindings = new MaterialColorBinding[] { };
+
+        /// <summary>
+        /// 対象マテリアルの UVScale+Offset を操作する
+        /// <summary>
+        [SerializeField]
+        public MaterialUVBinding[] MaterialUVBindings = new MaterialUVBinding[] { };
 
         /// <summary>
         /// UniVRM-0.45: trueの場合、このBlendShapeClipは0と1の間の中間値を取らない。四捨五入する
@@ -186,12 +78,21 @@ namespace UniVRM10
         [SerializeField]
         public bool IsBinary;
 
+        /// <summary>
+        /// この BlendShape と Blink(Blink, BlinkLeft, BlinkRight) が同時に有効な場合、Blink の Weight を 0 にする
+        /// </summary>
         [SerializeField]
         public bool IgnoreBlink;
 
+        /// <summary>
+        /// この BlendShape と LookAt(LookUp, LookDown, LookLeft, LookRight) が同時に有効な場合、LookAt の Weight を 0 にする
+        /// </summary>
         [SerializeField]
         public bool IgnoreLookAt;
 
+        /// <summary>
+        /// この BlendShape と Mouth(Aa, Ih, Ou, Ee, Oh) が同時に有効な場合、Mouth の Weight を 0 にする
+        /// </summary>
         [SerializeField]
         public bool IgnoreMouth;
     }

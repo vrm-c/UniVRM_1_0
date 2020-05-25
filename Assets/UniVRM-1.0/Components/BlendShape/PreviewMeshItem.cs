@@ -2,103 +2,11 @@
 using UnityEngine;
 using System;
 using System.Collections.Generic;
-#if UNITY_EDITOR
-using UnityEditor;
-#endif
-
 
 namespace UniVRM10
 {
-#if UNITY_EDITOR
     [Serializable]
-    public struct PropItem
-    {
-        public ShaderUtil.ShaderPropertyType PropertyType;
-        public Vector4 DefaultValues;
-    }
-#endif
-
-    [Serializable]
-    public class MaterialItem
-    {
-        public Material Material { get; private set; }
-#if UNITY_EDITOR
-        public Dictionary<string, PropItem> PropMap = new Dictionary<string, PropItem>();
-
-        public string[] PropNames
-        {
-            get;
-            private set;
-        }
-#endif
-
-        public static MaterialItem Create(Material material)
-        {
-            var item = new MaterialItem
-            {
-                Material = material
-            };
-#if UNITY_EDITOR
-
-            var propNames = new List<string>();
-            for (int i = 0; i < ShaderUtil.GetPropertyCount(material.shader); ++i)
-            {
-                var propType = ShaderUtil.GetPropertyType(material.shader, i);
-                var name = ShaderUtil.GetPropertyName(material.shader, i);
-
-                switch (propType)
-                {
-                    case ShaderUtil.ShaderPropertyType.Color:
-                        // 色
-                        item.PropMap.Add(name, new PropItem
-                        {
-                            PropertyType = propType,
-                            DefaultValues = material.GetColor(name),
-                        });
-                        propNames.Add(name);
-                        break;
-
-                    case ShaderUtil.ShaderPropertyType.TexEnv:
-                        // テクスチャ
-                        {
-                            name += "_ST";
-                            item.PropMap.Add(name, new PropItem
-                            {
-                                PropertyType = propType,
-                                DefaultValues = material.GetVector(name),
-                            });
-                            propNames.Add(name);
-                        }
-                        // 縦横分離用
-                        {
-                            var st_name = name + "_S";
-                            item.PropMap.Add(st_name, new PropItem
-                            {
-                                PropertyType = propType,
-                                DefaultValues = material.GetVector(name),
-                            });
-                            propNames.Add(st_name);
-                        }
-                        {
-                            var st_name = name + "_T";
-                            item.PropMap.Add(st_name, new PropItem
-                            {
-                                PropertyType = propType,
-                                DefaultValues = material.GetVector(name),
-                            });
-                            propNames.Add(st_name);
-                        }
-                        break;
-                }
-            }
-            item.PropNames = propNames.ToArray();
-#endif
-            return item;
-        }
-    }
-
-    [Serializable]
-    public class MeshPreviewItem
+    public class PreviewMeshItem
     {
         public string Path
         {
@@ -145,7 +53,7 @@ namespace UniVRM10
             get { return m_transform.rotation; }
         }
 
-        MeshPreviewItem(string path, Transform transform, Material[] materials)
+        PreviewMeshItem(string path, Transform transform, Material[] materials)
         {
             Path = path;
             m_transform = transform;
@@ -186,7 +94,7 @@ namespace UniVRM10
             SkinnedMeshRenderer.BakeMesh(Mesh);
         }
 
-        public static MeshPreviewItem Create(Transform t, Transform root,
+        public static PreviewMeshItem Create(Transform t, Transform root,
             Func<Material, Material> getOrCreateMaterial)
         {
             //Debug.Log("create");
@@ -198,7 +106,7 @@ namespace UniVRM10
             {
                 // copy
                 meshRenderer.sharedMaterials = meshRenderer.sharedMaterials.Select(x => getOrCreateMaterial(x)).ToArray();
-                return new MeshPreviewItem(t.RelativePathFrom(root), t, meshRenderer.sharedMaterials)
+                return new PreviewMeshItem(t.RelativePathFrom(root), t, meshRenderer.sharedMaterials)
                 {
                     Mesh = meshFilter.sharedMesh
                 };
@@ -211,7 +119,7 @@ namespace UniVRM10
                 {
                     // bake required
                     var sharedMesh = skinnedMeshRenderer.sharedMesh;
-                    return new MeshPreviewItem(t.RelativePathFrom(root), t, skinnedMeshRenderer.sharedMaterials)
+                    return new PreviewMeshItem(t.RelativePathFrom(root), t, skinnedMeshRenderer.sharedMaterials)
                     {
                         SkinnedMeshRenderer = skinnedMeshRenderer,
                         Mesh = new Mesh(), // for bake
@@ -220,7 +128,7 @@ namespace UniVRM10
                 }
                 else
                 {
-                    return new MeshPreviewItem(t.RelativePathFrom(root), t, skinnedMeshRenderer.sharedMaterials)
+                    return new PreviewMeshItem(t.RelativePathFrom(root), t, skinnedMeshRenderer.sharedMaterials)
                     {
                         Mesh = skinnedMeshRenderer.sharedMesh,
                     };
