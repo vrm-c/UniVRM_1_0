@@ -12,7 +12,12 @@ namespace Vrm10
         {
             var expression = new VrmLib.BlendShape((VrmLib.BlendShapePreset)x.Preset,
                 x.Name,
-                x.IsBinary.HasValue && x.IsBinary.Value);
+                x.IsBinary.HasValue && x.IsBinary.Value)
+            {
+                IgnoreBlink = x.IgnoreBlink.GetValueOrDefault(),
+                IgnoreLookAt = x.IgnoreLookAt.GetValueOrDefault(),
+                IgnoreMouth = x.IgnoreMouth.GetValueOrDefault(),
+            };
 
             foreach (var y in x.Binds)
             {
