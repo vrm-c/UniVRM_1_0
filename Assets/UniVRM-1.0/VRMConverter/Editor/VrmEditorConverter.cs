@@ -15,6 +15,34 @@ namespace UniVRM10
     {
         const string EXTENSION = ".vrm";
 
+        const string AssetPath = "VRMConverter/Editor";
+
+        static VisualTreeAsset Uxml
+        {
+            get
+            {
+                var uxml = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>($"Assets/UniVRM-1.0/{AssetPath}/VrmEditorConverter.uxml");
+                if (uxml)
+                {
+                    return uxml;
+                }
+                return AssetDatabase.LoadAssetAtPath<VisualTreeAsset>($"Packages/com.vrmc.univrm/{AssetPath}/VrmEditorConverter.uxml");
+            }
+        }
+
+        static StyleSheet StyleSheet
+        {
+            get
+            {
+                var stylesheet = AssetDatabase.LoadAssetAtPath<StyleSheet>($"Assets/UniVRM-1.0/{AssetPath}/VrmEditorConverter.uss");
+                if (stylesheet)
+                {
+                    return stylesheet;
+                }
+                return AssetDatabase.LoadAssetAtPath<StyleSheet>($"Packages/com.vrmc.univrm/{AssetPath}/VrmEditorConverter.uss");
+            }
+        }
+
         #region UXML項目のバインディング
         ObjectField m_gameObjectField;
         Label m_validationLabel;
@@ -372,14 +400,13 @@ namespace UniVRM10
             VisualElement root = rootVisualElement;
 
             // Import UXML
-            var visualTree = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>("Assets/UniVRM-1.0/VRMConverter/Editor/VrmEditorConverter.uxml");
+            var visualTree = Uxml;
             VisualElement labelFromUXML = visualTree.CloneTree();
             root.Add(labelFromUXML);
 
             // A stylesheet can be added to a VisualElement.
             // The style will be applied to the VisualElement and all of its children.
-            var styleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>("Assets/UniVRM-1.0/VRMConverter/Editor/VrmEditorConverter.uss");
-            root.styleSheets.Add(styleSheet);
+            root.styleSheets.Add(StyleSheet);
 
             // RootNode
             m_gameObjectField = root.Query<ObjectField>(name: "RootNode").First();
