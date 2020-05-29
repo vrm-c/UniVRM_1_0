@@ -217,5 +217,41 @@ namespace Vrm10
                 CompareUnityMaterial(src, dst);
             }
         }
+
+        [Test]
+        public void BlendShapeTest()
+        {
+            var settings = Google.Protobuf.JsonFormatter.Settings.Default.WithPreserveProtoFieldNames(true);
+            var q = "\"";
+
+            {
+                var data = new VrmProtobuf.BlendShapeGroup();
+                data.IgnoreBlink = true;
+
+                var json = new Google.Protobuf.JsonFormatter(settings).Format(data);
+                Assert.AreEqual($"{{ {q}ignoreBlink{q}: true }}", json);
+            }
+
+            {
+                var blendShape = new VrmLib.BlendShape(VrmLib.BlendShapePreset.Blink, "blink", true)
+                {
+                    IgnoreBlink = true,
+                    IgnoreLookAt = true,
+                    IgnoreMouth = true,
+                };
+
+                // export
+                var gltf = Vrm10.BlendShapeAdapter.ToGltf(blendShape, new List<VrmLib.Node>(), new List<VrmLib.Material>());
+                Assert.AreEqual(true, gltf.IgnoreBlink);
+                Assert.AreEqual(true, gltf.IgnoreLookAt);
+                Assert.AreEqual(true, gltf.IgnoreMouth);
+
+                // import
+                var imported = Vrm10.BlendShapeAdapter.FromGltf(gltf, new List<VrmLib.Node>(), new List<VrmLib.Material>());
+                Assert.AreEqual(true, imported.IgnoreBlink);
+                Assert.AreEqual(true, imported.IgnoreLookAt);
+                Assert.AreEqual(true, imported.IgnoreMouth);
+            }
+        }
     }
 }
