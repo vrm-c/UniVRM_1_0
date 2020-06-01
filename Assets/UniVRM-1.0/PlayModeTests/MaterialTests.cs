@@ -16,17 +16,17 @@ namespace UniVRM10.Test
         const string _vrmPath = "Tests/Models/Alicia_vrm-1.00/AliciaSolid_vrm-1.00.vrm";
 
         string[] _mtooSrgbTextureProperties = {
-            VrmLib.MToon.MToonUtils.PropMainTex,
-            VrmLib.MToon.MToonUtils.PropShadeTexture,
-            VrmLib.MToon.MToonUtils.PropEmissionMap,
-            VrmLib.MToon.MToonUtils.PropSphereAdd,
-            VrmLib.MToon.MToonUtils.PropRimTexture,
+            VrmLib.MToon.Utils.PropMainTex,
+            VrmLib.MToon.Utils.PropShadeTexture,
+            VrmLib.MToon.Utils.PropEmissionMap,
+            VrmLib.MToon.Utils.PropSphereAdd,
+            VrmLib.MToon.Utils.PropRimTexture,
         };
 
         string[] _mtoonLinearTextureProperties = {
-            VrmLib.MToon.MToonUtils.PropBumpMap,
-            VrmLib.MToon.MToonUtils.PropOutlineWidthTexture,
-            VrmLib.MToon.MToonUtils.PropUvAnimMaskTexture
+            VrmLib.MToon.Utils.PropBumpMap,
+            VrmLib.MToon.Utils.PropOutlineWidthTexture,
+            VrmLib.MToon.Utils.PropUvAnimMaskTexture
         };
 
         private ModelAsset ToUnity(string path)
@@ -138,11 +138,11 @@ namespace UniVRM10.Test
             var srcGammaColor = srcColor;
             var srclinerColor = srcColor.linear;
 
-            srcMaterial.Value.SetColor(VrmLib.MToon.MToonUtils.PropColor, srcColor);
-            srcMaterial.Value.SetColor(VrmLib.MToon.MToonUtils.PropShadeColor, srcColor);
-            srcMaterial.Value.SetColor(VrmLib.MToon.MToonUtils.PropEmissionColor, srcColor);
-            srcMaterial.Value.SetColor(VrmLib.MToon.MToonUtils.PropRimColor, srcColor);
-            srcMaterial.Value.SetColor(VrmLib.MToon.MToonUtils.PropOutlineColor, srcColor);
+            srcMaterial.Value.SetColor(VrmLib.MToon.Utils.PropColor, srcColor);
+            srcMaterial.Value.SetColor(VrmLib.MToon.Utils.PropShadeColor, srcColor);
+            srcMaterial.Value.SetColor(VrmLib.MToon.Utils.PropEmissionColor, srcColor);
+            srcMaterial.Value.SetColor(VrmLib.MToon.Utils.PropRimColor, srcColor);
+            srcMaterial.Value.SetColor(VrmLib.MToon.Utils.PropOutlineColor, srcColor);
 
             var model = ToVrmModel(assets.Root);
             var dstMaterial = model.Materials.First(x => x.Name == key.Name) as VrmLib.MToonMaterial;
@@ -181,12 +181,12 @@ namespace UniVRM10.Test
             var dstAssets = ToUnity(bytes);
             var dstMaterial = dstAssets.Map.Materials.First(x => x.Value.name == key.Name).Value;
             // sRGB
-            EqualColor(srcGammaColor.ToUnityColor(), dstMaterial.GetColor(VrmLib.MToon.MToonUtils.PropColor));
-            EqualColor(srcGammaColor.ToUnityColor(), dstMaterial.GetColor(VrmLib.MToon.MToonUtils.PropShadeColor));
-            EqualColor(srcGammaColor.ToUnityColor(), dstMaterial.GetColor(VrmLib.MToon.MToonUtils.PropOutlineColor));
+            EqualColor(srcGammaColor.ToUnityColor(), dstMaterial.GetColor(VrmLib.MToon.Utils.PropColor));
+            EqualColor(srcGammaColor.ToUnityColor(), dstMaterial.GetColor(VrmLib.MToon.Utils.PropShadeColor));
+            EqualColor(srcGammaColor.ToUnityColor(), dstMaterial.GetColor(VrmLib.MToon.Utils.PropOutlineColor));
             // HDR Color
-            EqualColor(srcColor, dstMaterial.GetColor(VrmLib.MToon.MToonUtils.PropEmissionColor));
-            EqualColor(srcColor, dstMaterial.GetColor(VrmLib.MToon.MToonUtils.PropRimColor));
+            EqualColor(srcColor, dstMaterial.GetColor(VrmLib.MToon.Utils.PropEmissionColor));
+            EqualColor(srcColor, dstMaterial.GetColor(VrmLib.MToon.Utils.PropRimColor));
 
             yield return null;
         }
@@ -229,7 +229,7 @@ namespace UniVRM10.Test
             var key = srcMaterial.Key;
             var srcSrgbTexture = CreateMonoTexture(0.5f, 0.5f, false);
 
-            srcMaterial.Value.SetTexture(VrmLib.MToon.MToonUtils.PropMainTex, srcSrgbTexture);
+            srcMaterial.Value.SetTexture(VrmLib.MToon.Utils.PropMainTex, srcSrgbTexture);
 
             var model = ToVrmModel(assets.Root);
             var dstMaterial = model.Materials.First(x => x.Name == key.Name) as VrmLib.MToonMaterial;
@@ -248,7 +248,7 @@ namespace UniVRM10.Test
             var key = srcMaterial.Key;
             var srcLinearTexture = CreateMonoTexture(0.5f, 0.5f, true);
 
-            srcMaterial.Value.SetTexture(VrmLib.MToon.MToonUtils.PropOutlineWidthTexture, srcLinearTexture);
+            srcMaterial.Value.SetTexture(VrmLib.MToon.Utils.PropOutlineWidthTexture, srcLinearTexture);
 
             var model = ToVrmModel(assets.Root);
             var dstMaterial = model.Materials.First(x => x.Name == key.Name) as VrmLib.MToonMaterial;
@@ -268,14 +268,14 @@ namespace UniVRM10.Test
             var srcSRGBTexture = CreateMonoTexture(0.5f, 1.0f, false);
 
             {
-                material.SetTexture(VrmLib.MToon.MToonUtils.PropOutlineWidthTexture, srcSRGBTexture);
+                material.SetTexture(VrmLib.MToon.Utils.PropOutlineWidthTexture, srcSRGBTexture);
                 var textureInfo = converter.GetOrCreateTexture(material, srcSRGBTexture, VrmLib.Texture.ColorSpaceTypes.Srgb, VrmLib.Texture.TextureTypes.Default);
                 var imageTexture = textureInfo.Texture as VrmLib.ImageTexture;
                 EqualTextureColor(srcSRGBTexture, imageTexture, false);
             }
 
             {
-                material.SetTexture(VrmLib.MToon.MToonUtils.PropOutlineWidthTexture, srcLinearTexture);
+                material.SetTexture(VrmLib.MToon.Utils.PropOutlineWidthTexture, srcLinearTexture);
                 var textureInfo = converter.GetOrCreateTexture(material, srcLinearTexture, VrmLib.Texture.ColorSpaceTypes.Linear, VrmLib.Texture.TextureTypes.Default);
                 var imageTexture = textureInfo.Texture as VrmLib.ImageTexture;
                 EqualTextureColor(srcLinearTexture, imageTexture, true);

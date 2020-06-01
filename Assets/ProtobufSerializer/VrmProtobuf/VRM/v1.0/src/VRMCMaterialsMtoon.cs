@@ -25,7 +25,7 @@ namespace VrmProtobuf {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChpWUk1DX21hdGVyaWFsc19tdG9vbi5wcm90bxILVnJtUHJvdG9idWYaHmdv",
-            "b2dsZS9wcm90b2J1Zi93cmFwcGVycy5wcm90byLXDQoUVlJNQ19tYXRlcmlh",
+            "b2dsZS9wcm90b2J1Zi93cmFwcGVycy5wcm90byLMDQoUVlJNQ19tYXRlcmlh",
             "bHNfbXRvb24SDwoHdmVyc2lvbhgCIAEoCRJACgpyZW5kZXJNb2RlGAMgASgO",
             "MiwuVnJtUHJvdG9idWYuVlJNQ19tYXRlcmlhbHNfbXRvb24uUmVuZGVyTW9k",
             "ZRI8CghjdWxsTW9kZRgEIAEoDjIqLlZybVByb3RvYnVmLlZSTUNfbWF0ZXJp",
@@ -60,11 +60,11 @@ namespace VrmProtobuf {
             "dG9yGCggASgCEiUKHXV2QW5pbWF0aW9uU2Nyb2xsWVNwZWVkRmFjdG9yGCkg",
             "ASgCEiYKHnV2QW5pbWF0aW9uUm90YXRpb25TcGVlZEZhY3RvchgqIAEoAiJQ",
             "CgpSZW5kZXJNb2RlEgoKBm9wYXF1ZRAAEgoKBmN1dG91dBABEg8KC3RyYW5z",
-            "cGFyZW50EAISGQoVdHJhbnNwYXJlbnRXaXRoWldyaXRlEAMiKAoIQ3VsbE1v",
-            "ZGUSBwoDb2ZmEAASCQoFZnJvbnQQARIICgRiYWNrEAIiSQoQT3V0bGluZVdp",
-            "ZHRoTW9kZRIICgRub25lEAASFAoQd29ybGRDb29yZGluYXRlcxABEhUKEXNj",
-            "cmVlbkNvb3JkaW5hdGVzEAIiNQoQT3V0bGluZUNvbG9yTW9kZRIOCgpmaXhl",
-            "ZENvbG9yEAASEQoNbWl4ZWRMaWdodGluZxABYgZwcm90bzM="));
+            "cGFyZW50EAISGQoVdHJhbnNwYXJlbnRXaXRoWldyaXRlEAMiHQoIQ3VsbE1v",
+            "ZGUSBwoDb2ZmEAASCAoEYmFjaxABIkkKEE91dGxpbmVXaWR0aE1vZGUSCAoE",
+            "bm9uZRAAEhQKEHdvcmxkQ29vcmRpbmF0ZXMQARIVChFzY3JlZW5Db29yZGlu",
+            "YXRlcxACIjUKEE91dGxpbmVDb2xvck1vZGUSDgoKZml4ZWRDb2xvchAAEhEK",
+            "DW1peGVkTGlnaHRpbmcQAWIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Google.Protobuf.WellKnownTypes.WrappersReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
@@ -1221,8 +1221,7 @@ namespace VrmProtobuf {
 
       public enum CullMode {
         [pbr::OriginalName("off")] Off = 0,
-        [pbr::OriginalName("front")] Front = 1,
-        [pbr::OriginalName("back")] Back = 2,
+        [pbr::OriginalName("back")] Back = 1,
       }
 
       /// <summary>

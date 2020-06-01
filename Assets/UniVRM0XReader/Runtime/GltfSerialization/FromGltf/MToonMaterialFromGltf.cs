@@ -10,7 +10,7 @@ namespace GltfSerializationAdapter
         public static MToonMaterial Load(VrmMaterial mp, List<Texture> textures)
         {
             var mtoon = new MToonMaterial(mp.name);
-            if (mp.floatProperties.TryGetValue(MToonUtils.PropDebugMode, out float value))
+            if (mp.floatProperties.TryGetValue(Utils.PropDebugMode, out float value))
             {
                 mtoon._DebugMode = value;
             }

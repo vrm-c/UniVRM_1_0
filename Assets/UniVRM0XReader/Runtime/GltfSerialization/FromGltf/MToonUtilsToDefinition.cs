@@ -1,20 +1,23 @@
 using System;
 using System.Collections.Generic;
-using VrmLib;
+using GltfFormat;
 using VrmLib.MToon;
+using Color = VrmLib.LinearColor;
+using Texture2D = VrmLib.TextureInfo;
+using Material = GltfFormat.VrmMaterial;
 
 namespace GltfSerializationAdapter.MToon
 {
-    public static partial class Utils
+    public partial class Utils : VrmLib.MToon.Utils
     {
-        public static MToonDefinition FromVrm0x(GltfFormat.VrmMaterial material, List<Texture> textures)
+        public static MToonDefinition FromVrm0x(Material material, List<VrmLib.Texture> textures)
         {
-            var definition = new MToonDefinition
+            return new MToonDefinition
             {
                 Meta = new MetaDefinition
                 {
-                    Implementation = MToonUtils.Implementation,
-                    VersionNumber = material.GetInt(MToonUtils.PropVersion),
+                    Implementation = Implementation,
+                    VersionNumber = material.GetInt(PropVersion),
                 },
                 Rendering = new RenderingDefinition
                 {
@@ -24,107 +27,107 @@ namespace GltfSerializationAdapter.MToon
                 },
                 Color = new ColorDefinition
                 {
-                    LitColor = ToLinear(material, MToonUtils.PropColor),
-                    LitMultiplyTexture = GetTexture(material, MToonUtils.PropMainTex, textures),
-                    ShadeColor = ToLinear(material, MToonUtils.PropShadeColor),
-                    ShadeMultiplyTexture = GetTexture(material, MToonUtils.PropShadeTexture, textures),
-                    CutoutThresholdValue = GetValue(material, MToonUtils.PropCutoff),
+                    LitColor = GetColor(material, PropColor),
+                    LitMultiplyTexture = GetTexture(material, PropMainTex, textures),
+                    ShadeColor = GetColor(material, PropShadeColor),
+                    ShadeMultiplyTexture = GetTexture(material, PropShadeTexture, textures),
+                    CutoutThresholdValue = GetValue(material, PropCutoff),
                 },
                 Lighting = new LightingDefinition
                 {
                     LitAndShadeMixing = new LitAndShadeMixingDefinition
                     {
-                        ShadingShiftValue = GetValue(material, MToonUtils.PropShadeShift),
-                        ShadingToonyValue = GetValue(material, MToonUtils.PropShadeToony),
-                        ShadowReceiveMultiplierValue = GetValue(material, MToonUtils.PropReceiveShadowRate),
-                        ShadowReceiveMultiplierMultiplyTexture = GetTexture(material, MToonUtils.PropReceiveShadowTexture, textures),
-                        LitAndShadeMixingMultiplierValue = GetValue(material, MToonUtils.PropShadingGradeRate),
-                        LitAndShadeMixingMultiplierMultiplyTexture = GetTexture(material, MToonUtils.PropShadingGradeTexture, textures),
+                        ShadingShiftValue = GetValue(material, PropShadeShift),
+                        ShadingToonyValue = GetValue(material, PropShadeToony),
+                        ShadowReceiveMultiplierValue = GetValue(material, PropReceiveShadowRate),
+                        ShadowReceiveMultiplierMultiplyTexture = GetTexture(material, PropReceiveShadowTexture, textures),
+                        LitAndShadeMixingMultiplierValue = GetValue(material, PropShadingGradeRate),
+                        LitAndShadeMixingMultiplierMultiplyTexture = GetTexture(material, PropShadingGradeTexture, textures),
                     },
                     LightingInfluence = new LightingInfluenceDefinition
                     {
-                        LightColorAttenuationValue = GetValue(material, MToonUtils.PropLightColorAttenuation),
-                        GiIntensityValue = GetValue(material, MToonUtils.PropIndirectLightIntensity),
+                        LightColorAttenuationValue = GetValue(material, PropLightColorAttenuation),
+                        GiIntensityValue = GetValue(material, PropIndirectLightIntensity),
                     },
                     Normal = new NormalDefinition
                     {
-                        NormalTexture = GetTexture(material, MToonUtils.PropBumpMap, textures),
-                        NormalScaleValue = GetValue(material, MToonUtils.PropBumpScale),
+                        NormalTexture = GetTexture(material, PropBumpMap, textures),
+                        NormalScaleValue = GetValue(material, PropBumpScale),
                     },
                 },
                 Emission = new EmissionDefinition
                 {
-                    EmissionColor = ToLinear(material, MToonUtils.PropEmissionColor),
-                    EmissionMultiplyTexture = GetTexture(material, MToonUtils.PropEmissionMap, textures),
+                    EmissionColor = GetColor(material, PropEmissionColor),
+                    EmissionMultiplyTexture = GetTexture(material, PropEmissionMap, textures),
                 },
                 MatCap = new MatCapDefinition
                 {
-                    AdditiveTexture = GetTexture(material, MToonUtils.PropSphereAdd, textures),
+                    AdditiveTexture = GetTexture(material, PropSphereAdd, textures),
                 },
                 Rim = new RimDefinition
                 {
-                    RimColor = ToLinear(material, MToonUtils.PropRimColor),
-                    RimMultiplyTexture = GetTexture(material, MToonUtils.PropRimTexture, textures),
-                    RimLightingMixValue = GetValue(material, MToonUtils.PropRimLightingMix),
-                    RimFresnelPowerValue = GetValue(material, MToonUtils.PropRimFresnelPower),
-                    RimLiftValue = GetValue(material, MToonUtils.PropRimLift),
+                    RimColor = GetColor(material, PropRimColor),
+                    RimMultiplyTexture = GetTexture(material, PropRimTexture, textures),
+                    RimLightingMixValue = GetValue(material, PropRimLightingMix),
+                    RimFresnelPowerValue = GetValue(material, PropRimFresnelPower),
+                    RimLiftValue = GetValue(material, PropRimLift),
                 },
                 Outline = new OutlineDefinition
                 {
                     OutlineWidthMode = GetOutlineWidthMode(material),
-                    OutlineWidthValue = GetValue(material, MToonUtils.PropOutlineWidth),
-                    OutlineWidthMultiplyTexture = GetTexture(material, MToonUtils.PropOutlineWidthTexture, textures),
-                    OutlineScaledMaxDistanceValue = GetValue(material, MToonUtils.PropOutlineScaledMaxDistance),
+                    OutlineWidthValue = GetValue(material, PropOutlineWidth),
+                    OutlineWidthMultiplyTexture = GetTexture(material, PropOutlineWidthTexture, textures),
+                    OutlineScaledMaxDistanceValue = GetValue(material, PropOutlineScaledMaxDistance),
                     OutlineColorMode = GetOutlineColorMode(material),
-                    OutlineColor = ToLinear(material, MToonUtils.PropOutlineColor),
-                    OutlineLightingMixValue = GetValue(material, MToonUtils.PropOutlineLightingMix),
+                    OutlineColor = GetColor(material, PropOutlineColor),
+                    OutlineLightingMixValue = GetValue(material, PropOutlineLightingMix),
                 },
                 TextureOption = new TextureUvCoordsDefinition
                 {
-                    MainTextureLeftBottomOriginScale = material.GetTextureScale(MToonUtils.PropMainTex),
-                    MainTextureLeftBottomOriginOffset = material.GetTextureOffset(MToonUtils.PropMainTex),
-                    UvAnimationMaskTexture = GetTexture(material, MToonUtils.PropUvAnimMaskTexture, textures),
-                    UvAnimationScrollXSpeedValue = GetValue(material, MToonUtils.PropUvAnimScrollX),
-                    UvAnimationScrollYSpeedValue = GetValue(material, MToonUtils.PropUvAnimScrollY),
-                    UvAnimationRotationSpeedValue = GetValue(material, MToonUtils.PropUvAnimRotation),
+                    MainTextureLeftBottomOriginScale = material.GetTextureScale(PropMainTex),
+                    MainTextureLeftBottomOriginOffset = material.GetTextureOffset(PropMainTex),
+                    UvAnimationMaskTexture = GetTexture(material, PropUvAnimMaskTexture, textures),
+                    UvAnimationScrollXSpeedValue = GetValue(material, PropUvAnimScrollX),
+                    UvAnimationScrollYSpeedValue = GetValue(material, PropUvAnimScrollY),
+                    UvAnimationRotationSpeedValue = GetValue(material, PropUvAnimRotation),
                 },
             };
-            return definition;
         }
 
-        private static float GetValue(GltfFormat.VrmMaterial material, string propertyName)
+        private static float GetValue(VrmMaterial material, string propertyName)
         {
             return material.GetFloat(propertyName);
         }
 
-        private static LinearColor ToLinear(GltfFormat.VrmMaterial material, string propertyName)
+        private static Color GetColor(VrmMaterial material, string propertyName)
         {
             // TODO
             var color = material.GetColor(propertyName);
-            return LinearColor.FromLiner(color.X, color.Y, color.Z, color.W);
+            return VrmLib.LinearColor.FromLiner(color.X, color.Y, color.Z, color.W);
         }
 
-        private static TextureInfo GetTexture(GltfFormat.VrmMaterial material, string propertyName, List<Texture> textures)
+        private static Texture2D GetTexture(VrmMaterial material, string propertyName, List<VrmLib.Texture> textures)
         {
-            return (TextureInfo)material.GetTexture(propertyName, textures);
+            return (Texture2D)material.GetTexture(propertyName, textures);
         }
 
-        private static RenderMode GetBlendMode(GltfFormat.VrmMaterial material)
+        private static RenderMode GetBlendMode(VrmMaterial material)
         {
-            if (material.IsKeywordEnabled(MToonUtils.KeyAlphaTestOn))
+            if (material.IsKeywordEnabled(KeyAlphaTestOn))
             {
                 return RenderMode.Cutout;
             }
-            else if (material.IsKeywordEnabled(MToonUtils.KeyAlphaBlendOn))
+            else if (material.IsKeywordEnabled(KeyAlphaBlendOn))
             {
-                switch (material.GetInt(MToonUtils.PropZWrite))
+                switch (material.GetInt(PropZWrite))
                 {
-                    case MToonUtils.EnabledIntValue:
+                    case EnabledIntValue:
                         return RenderMode.TransparentWithZWrite;
-                    case MToonUtils.DisabledIntValue:
+                    case DisabledIntValue:
                         return RenderMode.Transparent;
                     default:
-                        throw new ArgumentException("Invalid ZWrite Int Value.");
+                        Console.WriteLine("[GetBlendMode] Invalid ZWrite Int Value.");
+                        return RenderMode.Transparent;
                 }
             }
             else
@@ -133,9 +136,9 @@ namespace GltfSerializationAdapter.MToon
             }
         }
 
-        private static CullMode GetCullMode(GltfFormat.VrmMaterial material)
+        private static CullMode GetCullMode(VrmMaterial material)
         {
-            switch ((CullMode)material.GetInt(MToonUtils.PropCullMode))
+            switch ((CullMode)material.GetInt(PropCullMode))
             {
                 case CullMode.Off:
                     return CullMode.Off;
@@ -144,35 +147,36 @@ namespace GltfSerializationAdapter.MToon
                 case CullMode.Back:
                     return CullMode.Back;
                 default:
-                    throw new ArgumentException("Invalid CullMode.");
+                    Console.WriteLine("[GetCullMode]: Invalid CullMode.");
+                    return CullMode.Back;
             }
         }
 
-        private static OutlineWidthMode GetOutlineWidthMode(GltfFormat.VrmMaterial material)
+        private static OutlineWidthMode GetOutlineWidthMode(VrmMaterial material)
         {
-            if (material.IsKeywordEnabled(MToonUtils.KeyOutlineWidthWorld)) return OutlineWidthMode.WorldCoordinates;
-            if (material.IsKeywordEnabled(MToonUtils.KeyOutlineWidthScreen)) return OutlineWidthMode.ScreenCoordinates;
+            if (material.IsKeywordEnabled(KeyOutlineWidthWorld)) return OutlineWidthMode.WorldCoordinates;
+            if (material.IsKeywordEnabled(KeyOutlineWidthScreen)) return OutlineWidthMode.ScreenCoordinates;
 
             return OutlineWidthMode.None;
         }
 
-        private static OutlineColorMode GetOutlineColorMode(GltfFormat.VrmMaterial material)
+        private static OutlineColorMode GetOutlineColorMode(VrmMaterial material)
         {
-            if (material.IsKeywordEnabled(MToonUtils.KeyOutlineColorFixed)) return OutlineColorMode.FixedColor;
-            if (material.IsKeywordEnabled(MToonUtils.KeyOutlineColorMixed)) return OutlineColorMode.MixedLighting;
+            if (material.IsKeywordEnabled(KeyOutlineColorFixed)) return OutlineColorMode.FixedColor;
+            if (material.IsKeywordEnabled(KeyOutlineColorMixed)) return OutlineColorMode.MixedLighting;
 
             return OutlineColorMode.FixedColor;
         }
 
-        private static RenderMode GetRenderQueueOriginMode(GltfFormat.VrmMaterial material)
+        private static RenderMode GetRenderQueueOriginMode(VrmMaterial material)
         {
             return GetBlendMode(material);
         }
 
-        private static int GetRenderQueueOffset(GltfFormat.VrmMaterial material, RenderMode originMode)
+        private static int GetRenderQueueOffset(VrmMaterial material, RenderMode originMode)
         {
             var rawValue = material.renderQueue;
-            var requirement = MToonUtils.GetRenderQueueRequirement(originMode);
+            var requirement = GetRenderQueueRequirement(originMode);
             if (rawValue < requirement.MinValue || rawValue > requirement.MaxValue)
             {
                 return 0;
