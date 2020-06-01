@@ -2,7 +2,18 @@
 
 namespace VrmLib.MToon
 {
-    public static partial class MToonUtils
+    /// <summary>
+    /// from https://github.com/Santarh/MToon/tree/master/MToon/Scripts
+    ///
+    /// * namespace MToon to VrmLib.Mtoon
+    /// * remove `using UnityEngine;`
+    /// * remove `using UnityEngine.Rendering;`
+    /// * change static class to class
+    /// * using Color = VrmLib.LinearColor;
+    /// * using Texture2D = VrmLib.TextureInfo;
+    ///
+    /// </summary>
+    public partial class Utils
     {
         public const string ShaderName = "VRM/MToon";
 

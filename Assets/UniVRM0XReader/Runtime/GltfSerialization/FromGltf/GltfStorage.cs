@@ -671,20 +671,25 @@ namespace GltfSerialization
             else
             {
                 // not mtoon, as gltf
-                if (gltfVrm.materialProperties[index].tagMap.Keys.Contains("RenderType"))
+                var gltfMaterial = Gltf.materials[index];
+                if (
+                    gltfVrm != null &&
+                    gltfVrm.materialProperties[index].tagMap.Keys.Contains("RenderType"))
                 {
-                    // get transparent property
+                    //
+                    // restore transparent property from VRM
+                    // for data that exported by older version VRM
+                    //
                     if (gltfVrm.materialProperties[index].tagMap["RenderType"] == "Opaque")
-                        Gltf.materials[index].alphaMode = GltfFormat.AlphaModeType.OPAQUE;
+                        gltfMaterial.alphaMode = GltfFormat.AlphaModeType.OPAQUE;
                     else if (gltfVrm.materialProperties[index].tagMap["RenderType"] == "TransparentCutout")
-                        Gltf.materials[index].alphaMode = GltfFormat.AlphaModeType.MASK;
+                        gltfMaterial.alphaMode = GltfFormat.AlphaModeType.MASK;
                     else if (gltfVrm.materialProperties[index].tagMap["RenderType"] == "Transparent")
-                        Gltf.materials[index].alphaMode = GltfFormat.AlphaModeType.BLEND;
+                        gltfMaterial.alphaMode = GltfFormat.AlphaModeType.BLEND;
                     else
                         throw new Exception("Not enough information");
                 }
-                var x = Gltf.materials[index];
-                var material = x.FromGltf(textures);
+                var material = gltfMaterial.FromGltf(textures);
                 material.GltfIndex = index;
                 return material;
             }

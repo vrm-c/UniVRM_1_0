@@ -137,6 +137,11 @@ namespace VrmLib
 
         public static string GetProperty(this MaterialBindType bindType, Material material)
         {
+            if (material is MToonMaterial mtoon)
+            {
+                return _GetProperty(mtoon, bindType);
+            }
+
             if (material is UnlitMaterial unlit)
             {
                 return _GetProperty(unlit, bindType);
@@ -147,16 +152,16 @@ namespace VrmLib
                 return _GetProperty(pbr, bindType);
             }
 
-            if (material is MToonMaterial mtoon)
-            {
-                return _GetProperty(mtoon, bindType);
-            }
-
             throw new NotImplementedException();
         }
 
         public static MaterialBindType GetBindType(this Material material, string property)
         {
+            if (material is MToonMaterial mtoon)
+            {
+                return _GetBindType(mtoon, property);
+            }
+
             if (material is UnlitMaterial unlit)
             {
                 return _GetBindType(unlit, property);
@@ -165,11 +170,6 @@ namespace VrmLib
             if (material is PBRMaterial pbr)
             {
                 return _GetBindType(pbr, property);
-            }
-
-            if (material is MToonMaterial mtoon)
-            {
-                return _GetBindType(mtoon, property);
             }
 
             throw new NotImplementedException();

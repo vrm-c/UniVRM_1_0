@@ -113,6 +113,12 @@ namespace VrmLib.MToon
             return Vector4.Zero; // black ?
         }
 
+
+        public static void SetColor(this VrmMaterial m, string key, VrmLib.LinearColor color)
+        {
+            m.SetColor(key, new Vector4(color.RGBA.X, color.RGBA.Y, color.RGBA.Z, color.RGBA.W));
+        }
+
         public static void SetColor(this VrmMaterial m, string key, Vector4 value)
         {
             m.vectorProperties[key] = new float[] { value.X, value.Y, value.Z, value.W };
