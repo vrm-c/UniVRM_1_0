@@ -13,72 +13,72 @@ namespace UniVRM10
     [DisallowMultipleComponent]
     public class VrmHumanoid : MonoBehaviour
     {
-        public Transform Hips;
+        [SerializeField] private Transform m_Hips; public Transform Hips => m_Hips;
 
         #region leg
-        public Transform LeftUpperLeg;
-        public Transform RightUpperLeg;
-        public Transform LeftLowerLeg;
-        public Transform RightLowerLeg;
-        public Transform LeftFoot;
-        public Transform RightFoot;
-        public Transform LeftToes;
-        public Transform RightToes;
+        [SerializeField] private Transform m_LeftUpperLeg; public Transform LeftUpperLeg => m_LeftUpperLeg;
+        [SerializeField] private Transform m_RightUpperLeg; public Transform RightUpperLeg => m_RightUpperLeg;
+        [SerializeField] private Transform m_LeftLowerLeg; public Transform LeftLowerLeg => m_LeftLowerLeg;
+        [SerializeField] private Transform m_RightLowerLeg; public Transform RightLowerLeg => m_RightLowerLeg;
+        [SerializeField] private Transform m_LeftFoot; public Transform LeftFoot => m_LeftFoot;
+        [SerializeField] private Transform m_RightFoot; public Transform RightFoot => m_RightFoot;
+        [SerializeField] private Transform m_LeftToes; public Transform LeftToes => m_LeftToes;
+        [SerializeField] private Transform m_RightToes; public Transform RightToes => m_RightToes;
         #endregion
 
         #region spine
-        public Transform Spine;
-        public Transform Chest;
-        public Transform UpperChest;
-        public Transform Neck;
-        public Transform Head;
-        public Transform LeftEye;
-        public Transform RightEye;
-        public Transform Jaw;
+        [SerializeField] private Transform m_Spine; public Transform Spine => m_Spine;
+        [SerializeField] private Transform m_Chest; public Transform Chest => m_Chest;
+        [SerializeField] private Transform m_UpperChest; public Transform UpperChest => m_UpperChest;
+        [SerializeField] private Transform m_Neck; public Transform Neck => m_Neck;
+        [SerializeField] private Transform m_Head; public Transform Head => m_Head;
+        [SerializeField] private Transform m_LeftEye; public Transform LeftEye => m_LeftEye;
+        [SerializeField] private Transform m_RightEye; public Transform RightEye => m_RightEye;
+        [SerializeField] private Transform m_Jaw; public Transform Jaw => m_Jaw;
         #endregion
 
         #region arm
-        public Transform LeftShoulder;
-        public Transform RightShoulder;
-        public Transform LeftUpperArm;
-        public Transform RightUpperArm;
-        public Transform LeftLowerArm;
-        public Transform RightLowerArm;
-        public Transform LeftHand;
-        public Transform RightHand;
+        [SerializeField] private Transform m_LeftShoulder; public Transform LeftShoulder => m_LeftShoulder;
+        [SerializeField] private Transform m_RightShoulder; public Transform RightShoulder => m_RightShoulder;
+        [SerializeField] private Transform m_LeftUpperArm; public Transform LeftUpperArm => m_LeftUpperArm;
+        [SerializeField] private Transform m_RightUpperArm; public Transform RightUpperArm => m_RightUpperArm;
+        [SerializeField] private Transform m_LeftLowerArm; public Transform LeftLowerArm => m_LeftLowerArm;
+        [SerializeField] private Transform m_RightLowerArm; public Transform RightLowerArm => m_RightLowerArm;
+        [SerializeField] private Transform m_LeftHand; public Transform LeftHand => m_LeftHand;
+        [SerializeField] private Transform m_RightHand; public Transform RightHand => m_RightHand;
         #endregion
 
         #region fingers
-        public Transform LeftThumbProximal;
-        public Transform LeftThumbIntermediate;
-        public Transform LeftThumbDistal;
-        public Transform LeftIndexProximal;
-        public Transform LeftIndexIntermediate;
-        public Transform LeftIndexDistal;
-        public Transform LeftMiddleProximal;
-        public Transform LeftMiddleIntermediate;
-        public Transform LeftMiddleDistal;
-        public Transform LeftRingProximal;
-        public Transform LeftRingIntermediate;
-        public Transform LeftRingDistal;
-        public Transform LeftLittleProximal;
-        public Transform LeftLittleIntermediate;
-        public Transform LeftLittleDistal;
-        public Transform RightThumbProximal;
-        public Transform RightThumbIntermediate;
-        public Transform RightThumbDistal;
-        public Transform RightIndexProximal;
-        public Transform RightIndexIntermediate;
-        public Transform RightIndexDistal;
-        public Transform RightMiddleProximal;
-        public Transform RightMiddleIntermediate;
-        public Transform RightMiddleDistal;
-        public Transform RightRingProximal;
-        public Transform RightRingIntermediate;
-        public Transform RightRingDistal;
-        public Transform RightLittleProximal;
-        public Transform RightLittleIntermediate;
-        public Transform RightLittleDistal;
+        [SerializeField] private Transform m_LeftThumbProximal; public Transform LeftThumbProximal => m_LeftThumbProximal;
+        [SerializeField] private Transform m_LeftThumbIntermediate; public Transform LeftThumbIntermediate => m_LeftThumbIntermediate;
+        [SerializeField] private Transform m_LeftThumbDistal; public Transform LeftThumbDistal => m_LeftThumbDistal;
+        [SerializeField] private Transform m_LeftIndexProximal; public Transform LeftIndexProximal => m_LeftIndexProximal;
+        [SerializeField] private Transform m_LeftIndexIntermediate; public Transform LeftIndexIntermediate => m_LeftIndexIntermediate;
+        [SerializeField] private Transform m_LeftIndexDistal; public Transform LeftIndexDistal => m_LeftIndexDistal;
+        [SerializeField] private Transform m_LeftMiddleProximal; public Transform LeftMiddleProximal => m_LeftMiddleProximal;
+        [SerializeField] private Transform m_LeftMiddleIntermediate; public Transform LeftMiddleIntermediate => m_LeftMiddleIntermediate;
+        [SerializeField] private Transform m_LeftMiddleDistal; public Transform LeftMiddleDistal => m_LeftMiddleDistal;
+        [SerializeField] private Transform m_LeftRingProximal; public Transform LeftRingProximal => m_LeftRingProximal;
+        [SerializeField] private Transform m_LeftRingIntermediate; public Transform LeftRingIntermediate => m_LeftRingIntermediate;
+        [SerializeField] private Transform m_LeftRingDistal; public Transform LeftRingDistal => m_LeftRingDistal;
+        [SerializeField] private Transform m_LeftLittleProximal; public Transform LeftLittleProximal => m_LeftLittleProximal;
+        [SerializeField] private Transform m_LeftLittleIntermediate; public Transform LeftLittleIntermediate => m_LeftLittleIntermediate;
+        [SerializeField] private Transform m_LeftLittleDistal; public Transform LeftLittleDistal => m_LeftLittleDistal;
+        [SerializeField] private Transform m_RightThumbProximal; public Transform RightThumbProximal => m_RightThumbProximal;
+        [SerializeField] private Transform m_RightThumbIntermediate; public Transform RightThumbIntermediate => m_RightThumbIntermediate;
+        [SerializeField] private Transform m_RightThumbDistal; public Transform RightThumbDistal => m_RightThumbDistal;
+        [SerializeField] private Transform m_RightIndexProximal; public Transform RightIndexProximal => m_RightIndexProximal;
+        [SerializeField] private Transform m_RightIndexIntermediate; public Transform RightIndexIntermediate => m_RightIndexIntermediate;
+        [SerializeField] private Transform m_RightIndexDistal; public Transform RightIndexDistal => m_RightIndexDistal;
+        [SerializeField] private Transform m_RightMiddleProximal; public Transform RightMiddleProximal => m_RightMiddleProximal;
+        [SerializeField] private Transform m_RightMiddleIntermediate; public Transform RightMiddleIntermediate => m_RightMiddleIntermediate;
+        [SerializeField] private Transform m_RightMiddleDistal; public Transform RightMiddleDistal => m_RightMiddleDistal;
+        [SerializeField] private Transform m_RightRingProximal; public Transform RightRingProximal => m_RightRingProximal;
+        [SerializeField] private Transform m_RightRingIntermediate; public Transform RightRingIntermediate => m_RightRingIntermediate;
+        [SerializeField] private Transform m_RightRingDistal; public Transform RightRingDistal => m_RightRingDistal;
+        [SerializeField] private Transform m_RightLittleProximal; public Transform RightLittleProximal => m_RightLittleProximal;
+        [SerializeField] private Transform m_RightLittleIntermediate; public Transform RightLittleIntermediate => m_RightLittleIntermediate;
+        [SerializeField] private Transform m_RightLittleDistal; public Transform RightLittleDistal => m_RightLittleDistal;
         #endregion
 
         #region Unity
@@ -262,72 +262,72 @@ namespace UniVRM10
 
                 switch (key)
                 {
-                    case VrmLib.HumanoidBones.hips: Hips = value; break;
+                    case VrmLib.HumanoidBones.hips: m_Hips = value; break;
 
                     #region leg
-                    case VrmLib.HumanoidBones.leftUpperLeg: LeftUpperLeg = value; break;
-                    case VrmLib.HumanoidBones.rightUpperLeg: RightUpperLeg = value; break;
-                    case VrmLib.HumanoidBones.leftLowerLeg: LeftLowerLeg = value; break;
-                    case VrmLib.HumanoidBones.rightLowerLeg: RightLowerLeg = value; break;
-                    case VrmLib.HumanoidBones.leftFoot: LeftFoot = value; break;
-                    case VrmLib.HumanoidBones.rightFoot: RightFoot = value; break;
-                    case VrmLib.HumanoidBones.leftToes: LeftToes = value; break;
-                    case VrmLib.HumanoidBones.rightToes: RightToes = value; break;
+                    case VrmLib.HumanoidBones.leftUpperLeg: m_LeftUpperLeg = value; break;
+                    case VrmLib.HumanoidBones.rightUpperLeg: m_RightUpperLeg = value; break;
+                    case VrmLib.HumanoidBones.leftLowerLeg: m_LeftLowerLeg = value; break;
+                    case VrmLib.HumanoidBones.rightLowerLeg: m_RightLowerLeg = value; break;
+                    case VrmLib.HumanoidBones.leftFoot: m_LeftFoot = value; break;
+                    case VrmLib.HumanoidBones.rightFoot: m_RightFoot = value; break;
+                    case VrmLib.HumanoidBones.leftToes: m_LeftToes = value; break;
+                    case VrmLib.HumanoidBones.rightToes: m_RightToes = value; break;
                     #endregion
 
                     #region spine
-                    case VrmLib.HumanoidBones.spine: Spine = value; break;
-                    case VrmLib.HumanoidBones.chest: Chest = value; break;
-                    case VrmLib.HumanoidBones.upperChest: UpperChest = value; break;
-                    case VrmLib.HumanoidBones.neck: Neck = value; break;
-                    case VrmLib.HumanoidBones.head: Head = value; break;
-                    case VrmLib.HumanoidBones.leftEye: LeftEye = value; break;
-                    case VrmLib.HumanoidBones.rightEye: RightEye = value; break;
-                    case VrmLib.HumanoidBones.jaw: Jaw = value; break;
+                    case VrmLib.HumanoidBones.spine: m_Spine = value; break;
+                    case VrmLib.HumanoidBones.chest: m_Chest = value; break;
+                    case VrmLib.HumanoidBones.upperChest: m_UpperChest = value; break;
+                    case VrmLib.HumanoidBones.neck: m_Neck = value; break;
+                    case VrmLib.HumanoidBones.head: m_Head = value; break;
+                    case VrmLib.HumanoidBones.leftEye: m_LeftEye = value; break;
+                    case VrmLib.HumanoidBones.rightEye: m_RightEye = value; break;
+                    case VrmLib.HumanoidBones.jaw: m_Jaw = value; break;
                     #endregion
 
                     #region arm
-                    case VrmLib.HumanoidBones.leftShoulder: LeftShoulder = value; break;
-                    case VrmLib.HumanoidBones.rightShoulder: RightShoulder = value; break;
-                    case VrmLib.HumanoidBones.leftUpperArm: LeftUpperArm = value; break;
-                    case VrmLib.HumanoidBones.rightUpperArm: RightUpperArm = value; break;
-                    case VrmLib.HumanoidBones.leftLowerArm: LeftLowerArm = value; break;
-                    case VrmLib.HumanoidBones.rightLowerArm: RightLowerArm = value; break;
-                    case VrmLib.HumanoidBones.leftHand: LeftHand = value; break;
-                    case VrmLib.HumanoidBones.rightHand: RightHand = value; break;
+                    case VrmLib.HumanoidBones.leftShoulder: m_LeftShoulder = value; break;
+                    case VrmLib.HumanoidBones.rightShoulder: m_RightShoulder = value; break;
+                    case VrmLib.HumanoidBones.leftUpperArm: m_LeftUpperArm = value; break;
+                    case VrmLib.HumanoidBones.rightUpperArm: m_RightUpperArm = value; break;
+                    case VrmLib.HumanoidBones.leftLowerArm: m_LeftLowerArm = value; break;
+                    case VrmLib.HumanoidBones.rightLowerArm: m_RightLowerArm = value; break;
+                    case VrmLib.HumanoidBones.leftHand: m_LeftHand = value; break;
+                    case VrmLib.HumanoidBones.rightHand: m_RightHand = value; break;
                     #endregion
 
                     #region fingers
-                    case VrmLib.HumanoidBones.leftThumbProximal: LeftThumbProximal = value; break;
-                    case VrmLib.HumanoidBones.leftThumbIntermediate: LeftThumbIntermediate = value; break;
-                    case VrmLib.HumanoidBones.leftThumbDistal: LeftThumbDistal = value; break;
-                    case VrmLib.HumanoidBones.leftIndexProximal: LeftIndexProximal = value; break;
-                    case VrmLib.HumanoidBones.leftIndexIntermediate: LeftIndexIntermediate = value; break;
-                    case VrmLib.HumanoidBones.leftIndexDistal: LeftIndexDistal = value; break;
-                    case VrmLib.HumanoidBones.leftMiddleProximal: LeftMiddleProximal = value; break;
-                    case VrmLib.HumanoidBones.leftMiddleIntermediate: LeftMiddleIntermediate = value; break;
-                    case VrmLib.HumanoidBones.leftMiddleDistal: LeftMiddleDistal = value; break;
-                    case VrmLib.HumanoidBones.leftRingProximal: LeftRingProximal = value; break;
-                    case VrmLib.HumanoidBones.leftRingIntermediate: LeftRingIntermediate = value; break;
-                    case VrmLib.HumanoidBones.leftRingDistal: LeftRingDistal = value; break;
-                    case VrmLib.HumanoidBones.leftLittleProximal: LeftLittleProximal = value; break;
-                    case VrmLib.HumanoidBones.leftLittleIntermediate: LeftLittleIntermediate = value; break;
-                    case VrmLib.HumanoidBones.leftLittleDistal: LeftLittleDistal = value; break;
-                    case VrmLib.HumanoidBones.rightThumbProximal: RightThumbProximal = value; break;
-                    case VrmLib.HumanoidBones.rightThumbIntermediate: RightThumbIntermediate = value; break;
-                    case VrmLib.HumanoidBones.rightThumbDistal: RightThumbDistal = value; break;
-                    case VrmLib.HumanoidBones.rightIndexProximal: RightIndexProximal = value; break;
-                    case VrmLib.HumanoidBones.rightIndexIntermediate: RightIndexIntermediate = value; break;
-                    case VrmLib.HumanoidBones.rightIndexDistal: RightIndexDistal = value; break;
-                    case VrmLib.HumanoidBones.rightMiddleProximal: RightMiddleProximal = value; break;
-                    case VrmLib.HumanoidBones.rightMiddleIntermediate: RightMiddleIntermediate = value; break;
-                    case VrmLib.HumanoidBones.rightMiddleDistal: RightMiddleDistal = value; break;
-                    case VrmLib.HumanoidBones.rightRingProximal: RightRingProximal = value; break;
-                    case VrmLib.HumanoidBones.rightRingIntermediate: RightRingIntermediate = value; break;
-                    case VrmLib.HumanoidBones.rightRingDistal: RightRingDistal = value; break;
-                    case VrmLib.HumanoidBones.rightLittleProximal: RightLittleProximal = value; break;
-                    case VrmLib.HumanoidBones.rightLittleIntermediate: RightLittleIntermediate = value; break;
-                    case VrmLib.HumanoidBones.rightLittleDistal: RightLittleDistal = value; break;
+                    case VrmLib.HumanoidBones.leftThumbProximal: m_LeftThumbProximal = value; break;
+                    case VrmLib.HumanoidBones.leftThumbIntermediate: m_LeftThumbIntermediate = value; break;
+                    case VrmLib.HumanoidBones.leftThumbDistal: m_LeftThumbDistal = value; break;
+                    case VrmLib.HumanoidBones.leftIndexProximal: m_LeftIndexProximal = value; break;
+                    case VrmLib.HumanoidBones.leftIndexIntermediate: m_LeftIndexIntermediate = value; break;
+                    case VrmLib.HumanoidBones.leftIndexDistal: m_LeftIndexDistal = value; break;
+                    case VrmLib.HumanoidBones.leftMiddleProximal: m_LeftMiddleProximal = value; break;
+                    case VrmLib.HumanoidBones.leftMiddleIntermediate: m_LeftMiddleIntermediate = value; break;
+                    case VrmLib.HumanoidBones.leftMiddleDistal: m_LeftMiddleDistal = value; break;
+                    case VrmLib.HumanoidBones.leftRingProximal: m_LeftRingProximal = value; break;
+                    case VrmLib.HumanoidBones.leftRingIntermediate: m_LeftRingIntermediate = value; break;
+                    case VrmLib.HumanoidBones.leftRingDistal: m_LeftRingDistal = value; break;
+                    case VrmLib.HumanoidBones.leftLittleProximal: m_LeftLittleProximal = value; break;
+                    case VrmLib.HumanoidBones.leftLittleIntermediate: m_LeftLittleIntermediate = value; break;
+                    case VrmLib.HumanoidBones.leftLittleDistal: m_LeftLittleDistal = value; break;
+                    case VrmLib.HumanoidBones.rightThumbProximal: m_RightThumbProximal = value; break;
+                    case VrmLib.HumanoidBones.rightThumbIntermediate: m_RightThumbIntermediate = value; break;
+                    case VrmLib.HumanoidBones.rightThumbDistal: m_RightThumbDistal = value; break;
+                    case VrmLib.HumanoidBones.rightIndexProximal: m_RightIndexProximal = value; break;
+                    case VrmLib.HumanoidBones.rightIndexIntermediate: m_RightIndexIntermediate = value; break;
+                    case VrmLib.HumanoidBones.rightIndexDistal: m_RightIndexDistal = value; break;
+                    case VrmLib.HumanoidBones.rightMiddleProximal: m_RightMiddleProximal = value; break;
+                    case VrmLib.HumanoidBones.rightMiddleIntermediate: m_RightMiddleIntermediate = value; break;
+                    case VrmLib.HumanoidBones.rightMiddleDistal: m_RightMiddleDistal = value; break;
+                    case VrmLib.HumanoidBones.rightRingProximal: m_RightRingProximal = value; break;
+                    case VrmLib.HumanoidBones.rightRingIntermediate: m_RightRingIntermediate = value; break;
+                    case VrmLib.HumanoidBones.rightRingDistal: m_RightRingDistal = value; break;
+                    case VrmLib.HumanoidBones.rightLittleProximal: m_RightLittleProximal = value; break;
+                    case VrmLib.HumanoidBones.rightLittleIntermediate: m_RightLittleIntermediate = value; break;
+                    case VrmLib.HumanoidBones.rightLittleDistal: m_RightLittleDistal = value; break;
                         #endregion
                 }
             }
