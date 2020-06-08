@@ -38,7 +38,7 @@ namespace UniVRM10
 
             // humanoid
             var humanoid = modelAsset.Root.AddComponent<VrmHumanoid>();
-            humanoid.Load(modelAsset.Map.Nodes);
+            humanoid.AssignBones(modelAsset.Map.Nodes.Select(x => (x.Key.HumanoidBone.GetValueOrDefault(), x.Value.transform)));
             modelAsset.HumanoidAvatar = humanoid.CreateAvatar();
             modelAsset.HumanoidAvatar.name = "VRM";
 

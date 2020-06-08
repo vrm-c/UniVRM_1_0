@@ -237,19 +237,19 @@ namespace UniVRM10
 
             // humanoid
             {
-                var animator = root.GetComponent<Animator>();
-                if (animator != null && animator.avatar != null)
+                var humanoid = root.GetComponent<VrmHumanoid>();
+                if (humanoid is null)
                 {
-                    foreach (HumanBodyBones humanBoneType in Enum.GetValues(typeof(HumanBodyBones)))
-                    {
-                        if (humanBoneType == HumanBodyBones.LastBone)
-                            continue;
+                    humanoid = root.AddComponent<VrmHumanoid>();
+                    humanoid.AssignBonesFromAnimator();
+                }
 
-                        var transform = animator.GetBoneTransform(humanBoneType);
-                        if (transform != null && Nodes.TryGetValue(transform.gameObject, out VrmLib.Node node))
-                        {
-                            node.HumanoidBone = (VrmLib.HumanoidBones)Enum.Parse(typeof(VrmLib.HumanoidBones), humanBoneType.ToString(), true);
-                        }
+                foreach (HumanBodyBones humanBoneType in Enum.GetValues(typeof(HumanBodyBones)))
+                {
+                    var transform = humanoid.GetBoneTransform(humanBoneType);
+                    if (transform != null && Nodes.TryGetValue(transform.gameObject, out VrmLib.Node node))
+                    {
+                        node.HumanoidBone = (VrmLib.HumanoidBones)Enum.Parse(typeof(VrmLib.HumanoidBones), humanBoneType.ToString(), true);
                     }
                 }
             }

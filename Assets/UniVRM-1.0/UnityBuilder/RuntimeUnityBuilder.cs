@@ -95,10 +95,10 @@ namespace UniVRM10
             }
 
             var humanoid = modelAsset.Root.AddComponent<VrmHumanoid>();
-            humanoid.Load(map.Nodes);
+            humanoid.AssignBones(map.Nodes.Select(x => (x.Key.HumanoidBone.GetValueOrDefault(), x.Value.transform)));
             modelAsset.HumanoidAvatar = humanoid.CreateAvatar();
             modelAsset.HumanoidAvatar.name = "VRM";
-            
+
             var animator = modelAsset.Root.AddComponent<Animator>();
             animator.avatar = modelAsset.HumanoidAvatar;
 

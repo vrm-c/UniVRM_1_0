@@ -1,10 +1,16 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
 namespace UniVRM10
 {
+    /// <summary>
+    /// Bone割り当てを保持する。
+    /// ヒエラルキーのルート(おそらくHipsの親)にアタッチする
+    /// </summary>
+    [DisallowMultipleComponent]
     public class VrmHumanoid : MonoBehaviour
     {
         public Transform Hips;
@@ -73,6 +79,94 @@ namespace UniVRM10
         public Transform RightLittleProximal;
         public Transform RightLittleIntermediate;
         public Transform RightLittleDistal;
+        #endregion
+
+        #region Unity
+        /// <summary>
+        /// ボーン割り当てから UnityEngine.Avatar を生成する
+        /// </summary>
+        /// <returns></returns>
+        public Avatar CreateAvatar()
+        {
+            return HumanoidLoader.LoadHumanoidAvatar(transform, BoneMap);
+        }
+
+        public Transform GetBoneTransform(HumanBodyBones bone)
+        {
+            switch (bone)
+            {
+                case HumanBodyBones.Hips: return Hips;
+
+                #region leg
+                case HumanBodyBones.LeftUpperLeg: return LeftUpperLeg;
+                case HumanBodyBones.RightUpperLeg: return RightUpperLeg;
+                case HumanBodyBones.LeftLowerLeg: return LeftLowerLeg;
+                case HumanBodyBones.RightLowerLeg: return RightLowerLeg;
+                case HumanBodyBones.LeftFoot: return LeftFoot;
+                case HumanBodyBones.RightFoot: return RightFoot;
+                case HumanBodyBones.LeftToes: return LeftToes;
+                case HumanBodyBones.RightToes: return RightToes;
+                #endregion
+
+                #region spine
+                case HumanBodyBones.Spine: return Spine;
+                case HumanBodyBones.Chest: return Chest;
+                case HumanBodyBones.UpperChest: return UpperChest;
+                case HumanBodyBones.Neck: return Neck;
+                case HumanBodyBones.Head: return Head;
+                case HumanBodyBones.LeftEye: return LeftEye;
+                case HumanBodyBones.RightEye: return RightEye;
+                case HumanBodyBones.Jaw: return Jaw;
+                #endregion
+
+                #region arm
+                case HumanBodyBones.LeftShoulder: return LeftShoulder;
+                case HumanBodyBones.RightShoulder: return RightShoulder;
+                case HumanBodyBones.LeftUpperArm: return LeftUpperArm;
+                case HumanBodyBones.RightUpperArm: return RightUpperArm;
+                case HumanBodyBones.LeftLowerArm: return LeftLowerArm;
+                case HumanBodyBones.RightLowerArm: return RightLowerArm;
+                case HumanBodyBones.LeftHand: return LeftHand;
+                case HumanBodyBones.RightHand: return RightHand;
+                #endregion
+
+                #region fingers
+                case HumanBodyBones.LeftThumbProximal: return LeftThumbProximal;
+                case HumanBodyBones.LeftThumbIntermediate: return LeftThumbIntermediate;
+                case HumanBodyBones.LeftThumbDistal: return LeftThumbDistal;
+                case HumanBodyBones.LeftIndexProximal: return LeftIndexProximal;
+                case HumanBodyBones.LeftIndexIntermediate: return LeftIndexIntermediate;
+                case HumanBodyBones.LeftIndexDistal: return LeftIndexDistal;
+                case HumanBodyBones.LeftMiddleProximal: return LeftMiddleProximal;
+                case HumanBodyBones.LeftMiddleIntermediate: return LeftMiddleIntermediate;
+                case HumanBodyBones.LeftMiddleDistal: return LeftMiddleDistal;
+                case HumanBodyBones.LeftRingProximal: return LeftRingProximal;
+                case HumanBodyBones.LeftRingIntermediate: return LeftRingIntermediate;
+                case HumanBodyBones.LeftRingDistal: return LeftRingDistal;
+                case HumanBodyBones.LeftLittleProximal: return LeftLittleProximal;
+                case HumanBodyBones.LeftLittleIntermediate: return LeftLittleIntermediate;
+                case HumanBodyBones.LeftLittleDistal: return LeftLittleDistal;
+                case HumanBodyBones.RightThumbProximal: return RightThumbProximal;
+                case HumanBodyBones.RightThumbIntermediate: return RightThumbIntermediate;
+                case HumanBodyBones.RightThumbDistal: return RightThumbDistal;
+                case HumanBodyBones.RightIndexProximal: return RightIndexProximal;
+                case HumanBodyBones.RightIndexIntermediate: return RightIndexIntermediate;
+                case HumanBodyBones.RightIndexDistal: return RightIndexDistal;
+                case HumanBodyBones.RightMiddleProximal: return RightMiddleProximal;
+                case HumanBodyBones.RightMiddleIntermediate: return RightMiddleIntermediate;
+                case HumanBodyBones.RightMiddleDistal: return RightMiddleDistal;
+                case HumanBodyBones.RightRingProximal: return RightRingProximal;
+                case HumanBodyBones.RightRingIntermediate: return RightRingIntermediate;
+                case HumanBodyBones.RightRingDistal: return RightRingDistal;
+                case HumanBodyBones.RightLittleProximal: return RightLittleProximal;
+                case HumanBodyBones.RightLittleIntermediate: return RightLittleIntermediate;
+                case HumanBodyBones.RightLittleDistal: return RightLittleDistal;
+                    #endregion
+
+            }
+
+            return null;
+        }
         #endregion
 
         IEnumerable<(Transform, VrmLib.HumanoidBones)> BoneMap
@@ -149,86 +243,133 @@ namespace UniVRM10
             }
         }
 
-        public void Load(Dictionary<VrmLib.Node, GameObject> nodes)
+        /// <summary>
+        /// nodes からボーンを割り当てる
+        /// </summary>
+        /// <param name="nodes"></param>
+        public void AssignBones(IEnumerable<(VrmLib.HumanoidBones, Transform)> nodes)
         {
-            foreach (var kv in nodes)
+            foreach (var (key, value) in nodes)
             {
-                switch (kv.Key.HumanoidBone)
+                if (key == VrmLib.HumanoidBones.unknown)
                 {
-                    case VrmLib.HumanoidBones.hips: Hips = kv.Value.transform; break;
+                    continue;
+                }
+                if (value is null)
+                {
+                    continue;
+                }
+
+                switch (key)
+                {
+                    case VrmLib.HumanoidBones.hips: Hips = value; break;
 
                     #region leg
-                    case VrmLib.HumanoidBones.leftUpperLeg: LeftUpperLeg = kv.Value.transform; break;
-                    case VrmLib.HumanoidBones.rightUpperLeg: RightUpperLeg = kv.Value.transform; break;
-                    case VrmLib.HumanoidBones.leftLowerLeg: LeftLowerLeg = kv.Value.transform; break;
-                    case VrmLib.HumanoidBones.rightLowerLeg: RightLowerLeg = kv.Value.transform; break;
-                    case VrmLib.HumanoidBones.leftFoot: LeftFoot = kv.Value.transform; break;
-                    case VrmLib.HumanoidBones.rightFoot: RightFoot = kv.Value.transform; break;
-                    case VrmLib.HumanoidBones.leftToes: LeftToes = kv.Value.transform; break;
-                    case VrmLib.HumanoidBones.rightToes: RightToes = kv.Value.transform; break;
+                    case VrmLib.HumanoidBones.leftUpperLeg: LeftUpperLeg = value; break;
+                    case VrmLib.HumanoidBones.rightUpperLeg: RightUpperLeg = value; break;
+                    case VrmLib.HumanoidBones.leftLowerLeg: LeftLowerLeg = value; break;
+                    case VrmLib.HumanoidBones.rightLowerLeg: RightLowerLeg = value; break;
+                    case VrmLib.HumanoidBones.leftFoot: LeftFoot = value; break;
+                    case VrmLib.HumanoidBones.rightFoot: RightFoot = value; break;
+                    case VrmLib.HumanoidBones.leftToes: LeftToes = value; break;
+                    case VrmLib.HumanoidBones.rightToes: RightToes = value; break;
                     #endregion
 
                     #region spine
-                    case VrmLib.HumanoidBones.spine: Spine = kv.Value.transform; break;
-                    case VrmLib.HumanoidBones.chest: Chest = kv.Value.transform; break;
-                    case VrmLib.HumanoidBones.upperChest: UpperChest = kv.Value.transform; break;
-                    case VrmLib.HumanoidBones.neck: Neck = kv.Value.transform; break;
-                    case VrmLib.HumanoidBones.head: Head = kv.Value.transform; break;
-                    case VrmLib.HumanoidBones.leftEye: LeftEye = kv.Value.transform; break;
-                    case VrmLib.HumanoidBones.rightEye: RightEye = kv.Value.transform; break;
-                    case VrmLib.HumanoidBones.jaw: Jaw = kv.Value.transform; break;
+                    case VrmLib.HumanoidBones.spine: Spine = value; break;
+                    case VrmLib.HumanoidBones.chest: Chest = value; break;
+                    case VrmLib.HumanoidBones.upperChest: UpperChest = value; break;
+                    case VrmLib.HumanoidBones.neck: Neck = value; break;
+                    case VrmLib.HumanoidBones.head: Head = value; break;
+                    case VrmLib.HumanoidBones.leftEye: LeftEye = value; break;
+                    case VrmLib.HumanoidBones.rightEye: RightEye = value; break;
+                    case VrmLib.HumanoidBones.jaw: Jaw = value; break;
                     #endregion
 
                     #region arm
-                    case VrmLib.HumanoidBones.leftShoulder: LeftShoulder = kv.Value.transform; break;
-                    case VrmLib.HumanoidBones.rightShoulder: RightShoulder = kv.Value.transform; break;
-                    case VrmLib.HumanoidBones.leftUpperArm: LeftUpperArm = kv.Value.transform; break;
-                    case VrmLib.HumanoidBones.rightUpperArm: RightUpperArm = kv.Value.transform; break;
-                    case VrmLib.HumanoidBones.leftLowerArm: LeftLowerArm = kv.Value.transform; break;
-                    case VrmLib.HumanoidBones.rightLowerArm: RightLowerArm = kv.Value.transform; break;
-                    case VrmLib.HumanoidBones.leftHand: LeftHand = kv.Value.transform; break;
-                    case VrmLib.HumanoidBones.rightHand: RightHand = kv.Value.transform; break;
+                    case VrmLib.HumanoidBones.leftShoulder: LeftShoulder = value; break;
+                    case VrmLib.HumanoidBones.rightShoulder: RightShoulder = value; break;
+                    case VrmLib.HumanoidBones.leftUpperArm: LeftUpperArm = value; break;
+                    case VrmLib.HumanoidBones.rightUpperArm: RightUpperArm = value; break;
+                    case VrmLib.HumanoidBones.leftLowerArm: LeftLowerArm = value; break;
+                    case VrmLib.HumanoidBones.rightLowerArm: RightLowerArm = value; break;
+                    case VrmLib.HumanoidBones.leftHand: LeftHand = value; break;
+                    case VrmLib.HumanoidBones.rightHand: RightHand = value; break;
                     #endregion
 
                     #region fingers
-                    case VrmLib.HumanoidBones.leftThumbProximal: LeftThumbProximal = kv.Value.transform; break;
-                    case VrmLib.HumanoidBones.leftThumbIntermediate: LeftThumbIntermediate = kv.Value.transform; break;
-                    case VrmLib.HumanoidBones.leftThumbDistal: LeftThumbDistal = kv.Value.transform; break;
-                    case VrmLib.HumanoidBones.leftIndexProximal: LeftIndexProximal = kv.Value.transform; break;
-                    case VrmLib.HumanoidBones.leftIndexIntermediate: LeftIndexIntermediate = kv.Value.transform; break;
-                    case VrmLib.HumanoidBones.leftIndexDistal: LeftIndexDistal = kv.Value.transform; break;
-                    case VrmLib.HumanoidBones.leftMiddleProximal: LeftMiddleProximal = kv.Value.transform; break;
-                    case VrmLib.HumanoidBones.leftMiddleIntermediate: LeftMiddleIntermediate = kv.Value.transform; break;
-                    case VrmLib.HumanoidBones.leftMiddleDistal: LeftMiddleDistal = kv.Value.transform; break;
-                    case VrmLib.HumanoidBones.leftRingProximal: LeftRingProximal = kv.Value.transform; break;
-                    case VrmLib.HumanoidBones.leftRingIntermediate: LeftRingIntermediate = kv.Value.transform; break;
-                    case VrmLib.HumanoidBones.leftRingDistal: LeftRingDistal = kv.Value.transform; break;
-                    case VrmLib.HumanoidBones.leftLittleProximal: LeftLittleProximal = kv.Value.transform; break;
-                    case VrmLib.HumanoidBones.leftLittleIntermediate: LeftLittleIntermediate = kv.Value.transform; break;
-                    case VrmLib.HumanoidBones.leftLittleDistal: LeftLittleDistal = kv.Value.transform; break;
-                    case VrmLib.HumanoidBones.rightThumbProximal: RightThumbProximal = kv.Value.transform; break;
-                    case VrmLib.HumanoidBones.rightThumbIntermediate: RightThumbIntermediate = kv.Value.transform; break;
-                    case VrmLib.HumanoidBones.rightThumbDistal: RightThumbDistal = kv.Value.transform; break;
-                    case VrmLib.HumanoidBones.rightIndexProximal: RightIndexProximal = kv.Value.transform; break;
-                    case VrmLib.HumanoidBones.rightIndexIntermediate: RightIndexIntermediate = kv.Value.transform; break;
-                    case VrmLib.HumanoidBones.rightIndexDistal: RightIndexDistal = kv.Value.transform; break;
-                    case VrmLib.HumanoidBones.rightMiddleProximal: RightMiddleProximal = kv.Value.transform; break;
-                    case VrmLib.HumanoidBones.rightMiddleIntermediate: RightMiddleIntermediate = kv.Value.transform; break;
-                    case VrmLib.HumanoidBones.rightMiddleDistal: RightMiddleDistal = kv.Value.transform; break;
-                    case VrmLib.HumanoidBones.rightRingProximal: RightRingProximal = kv.Value.transform; break;
-                    case VrmLib.HumanoidBones.rightRingIntermediate: RightRingIntermediate = kv.Value.transform; break;
-                    case VrmLib.HumanoidBones.rightRingDistal: RightRingDistal = kv.Value.transform; break;
-                    case VrmLib.HumanoidBones.rightLittleProximal: RightLittleProximal = kv.Value.transform; break;
-                    case VrmLib.HumanoidBones.rightLittleIntermediate: RightLittleIntermediate = kv.Value.transform; break;
-                    case VrmLib.HumanoidBones.rightLittleDistal: RightLittleDistal = kv.Value.transform; break;
+                    case VrmLib.HumanoidBones.leftThumbProximal: LeftThumbProximal = value; break;
+                    case VrmLib.HumanoidBones.leftThumbIntermediate: LeftThumbIntermediate = value; break;
+                    case VrmLib.HumanoidBones.leftThumbDistal: LeftThumbDistal = value; break;
+                    case VrmLib.HumanoidBones.leftIndexProximal: LeftIndexProximal = value; break;
+                    case VrmLib.HumanoidBones.leftIndexIntermediate: LeftIndexIntermediate = value; break;
+                    case VrmLib.HumanoidBones.leftIndexDistal: LeftIndexDistal = value; break;
+                    case VrmLib.HumanoidBones.leftMiddleProximal: LeftMiddleProximal = value; break;
+                    case VrmLib.HumanoidBones.leftMiddleIntermediate: LeftMiddleIntermediate = value; break;
+                    case VrmLib.HumanoidBones.leftMiddleDistal: LeftMiddleDistal = value; break;
+                    case VrmLib.HumanoidBones.leftRingProximal: LeftRingProximal = value; break;
+                    case VrmLib.HumanoidBones.leftRingIntermediate: LeftRingIntermediate = value; break;
+                    case VrmLib.HumanoidBones.leftRingDistal: LeftRingDistal = value; break;
+                    case VrmLib.HumanoidBones.leftLittleProximal: LeftLittleProximal = value; break;
+                    case VrmLib.HumanoidBones.leftLittleIntermediate: LeftLittleIntermediate = value; break;
+                    case VrmLib.HumanoidBones.leftLittleDistal: LeftLittleDistal = value; break;
+                    case VrmLib.HumanoidBones.rightThumbProximal: RightThumbProximal = value; break;
+                    case VrmLib.HumanoidBones.rightThumbIntermediate: RightThumbIntermediate = value; break;
+                    case VrmLib.HumanoidBones.rightThumbDistal: RightThumbDistal = value; break;
+                    case VrmLib.HumanoidBones.rightIndexProximal: RightIndexProximal = value; break;
+                    case VrmLib.HumanoidBones.rightIndexIntermediate: RightIndexIntermediate = value; break;
+                    case VrmLib.HumanoidBones.rightIndexDistal: RightIndexDistal = value; break;
+                    case VrmLib.HumanoidBones.rightMiddleProximal: RightMiddleProximal = value; break;
+                    case VrmLib.HumanoidBones.rightMiddleIntermediate: RightMiddleIntermediate = value; break;
+                    case VrmLib.HumanoidBones.rightMiddleDistal: RightMiddleDistal = value; break;
+                    case VrmLib.HumanoidBones.rightRingProximal: RightRingProximal = value; break;
+                    case VrmLib.HumanoidBones.rightRingIntermediate: RightRingIntermediate = value; break;
+                    case VrmLib.HumanoidBones.rightRingDistal: RightRingDistal = value; break;
+                    case VrmLib.HumanoidBones.rightLittleProximal: RightLittleProximal = value; break;
+                    case VrmLib.HumanoidBones.rightLittleIntermediate: RightLittleIntermediate = value; break;
+                    case VrmLib.HumanoidBones.rightLittleDistal: RightLittleDistal = value; break;
                         #endregion
                 }
             }
         }
 
-        public Avatar CreateAvatar()
+        /// <summary>
+        /// Animator から Bone を割り当てる
+        /// </summary>
+        /// <returns></returns>
+        public bool AssignBonesFromAnimator()
         {
-            return HumanoidLoader.LoadHumanoidAvatar(transform, BoneMap);
+            var animator = GetComponent<Animator>();
+            if (animator is null)
+            {
+                return false;
+            }
+            var avatar = animator.avatar;
+            if (avatar is null)
+            {
+                return false;
+            }
+            if (!avatar.isValid)
+            {
+                return false;
+            }
+            if (!avatar.isHuman)
+            {
+                return false;
+            }
+
+            var keys = (UnityEngine.HumanBodyBones[])Enum.GetValues(typeof(UnityEngine.HumanBodyBones));
+
+            AssignBones(keys.Select(x =>
+            {
+                if (x == HumanBodyBones.LastBone)
+                {
+                    return (default(VrmLib.HumanoidBones), default(Transform));
+                }
+                return ((VrmLib.HumanoidBones)Enum.Parse(typeof(VrmLib.HumanoidBones), x.ToString(), true), animator.GetBoneTransform(x));
+            }));
+
+            return true;
         }
     }
 }
