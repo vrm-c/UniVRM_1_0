@@ -160,29 +160,6 @@ namespace UniVRM10
             #endregion
         }
 
-
-        //         static GameObject ObjectField(GameObject obj)
-        //         {
-        //             return (GameObject)EditorGUILayout.ObjectField(obj, typeof(GameObject), true);
-        //         }
-
-        //         static GameObject ObjectField(string label, GameObject obj)
-        //         {
-        //             return (GameObject)EditorGUILayout.ObjectField(label, obj, typeof(GameObject), true);
-        //         }
-
-
-        //         static void BoneField(HumanBodyBones bone)
-        //         {
-        //             EditorGUILayout.BeginHorizontal();
-        //             EditorGUILayout.LabelField(bone.ToString(), GUILayout.Width(LABEL_WIDTH));
-        //             // bones[(int)bone] = ObjectField(bones[(int)bone]);
-        //             EditorGUILayout.EndHorizontal();
-        //         }
-
-        //         bool m_handFoldout;
-        //         bool m_settingsFoldout;
-
         struct Horizontal : IDisposable
         {
             public static Horizontal Using()
@@ -196,9 +173,8 @@ namespace UniVRM10
             }
         }
 
-        static bool HorizontalFields(string label, params SerializedProperty[] props)
+        static void HorizontalFields(string label, params SerializedProperty[] props)
         {
-            var updated = false;
             try
             {
                 EditorGUILayout.BeginHorizontal();
@@ -208,17 +184,13 @@ namespace UniVRM10
 
                 foreach (var prop in props)
                 {
-                    if (EditorGUILayout.PropertyField(prop, GUIContent.none, true, GUILayout.MinWidth(100)))
-                    {
-                        updated = true;
-                    }
+                    EditorGUILayout.PropertyField(prop, GUIContent.none, true, GUILayout.MinWidth(100));
                 }
             }
             finally
             {
                 EditorGUILayout.EndHorizontal();
             }
-            return updated;
         }
 
         static bool s_spineFold;
@@ -226,11 +198,106 @@ namespace UniVRM10
         static bool s_armFold;
         static bool s_fingerFold;
 
+        struct Validation
+        {
+            public readonly string Message;
+            public readonly MessageType MessageType;
+
+            public Validation(string message, MessageType messageType)
+            {
+                Message = message;
+                MessageType = messageType;
+            }
+        }
+
+        IEnumerable<Validation> Required(params SerializedProperty[] props)
+        {
+            foreach (var prop in props)
+            {
+                if (prop.objectReferenceValue is null)
+                {
+                    var name = prop.name;
+                    if (name.StartsWith("m_"))
+                    {
+                        name = name.Substring(2);
+                    }
+                    yield return new Validation($"{name} is Required", MessageType.Error);
+                }
+            }
+        }
+
+        IEnumerable<Validation> Validate()
+        {
+            foreach (var validation in Required(
+                m_Hips, m_Spine, m_Head,
+                m_LeftUpperLeg, m_LeftLowerLeg, m_LeftFoot,
+                m_RightUpperLeg, m_RightLowerLeg, m_RightFoot,
+                m_LeftUpperArm, m_LeftLowerArm, m_LeftHand,
+                m_RightUpperArm, m_RightLowerArm, m_RightHand
+            ))
+            {
+                yield return validation;
+            }
+        }
+
         public override void OnInspectorGUI()
         {
+            foreach (var validation in Validate())
+            {
+                EditorGUILayout.HelpBox(validation.Message, validation.MessageType);
+            }
+
             // prefer
-            var updated = false;
             serializedObject.Update();
+
+            EditorGUILayout.PropertyField(m_Hips);
+
+            s_spineFold = EditorGUILayout.Foldout(s_spineFold, "Spine");
+            if (s_spineFold)
+            {
+                EditorGUILayout.PropertyField(m_Spine);
+                EditorGUILayout.PropertyField(m_Chest);
+                EditorGUILayout.PropertyField(m_UpperChest);
+                EditorGUILayout.PropertyField(m_Neck);
+                EditorGUILayout.PropertyField(m_Head);
+                EditorGUILayout.PropertyField(m_Jaw);
+                HorizontalFields("Eye", m_LeftEye, m_RightEye);
+            }
+
+            s_legFold = EditorGUILayout.Foldout(s_legFold, "Leg");
+            if (s_legFold)
+            {
+                HorizontalFields("UpperLeg", m_LeftUpperLeg, m_RightUpperLeg);
+                HorizontalFields("LowerLeg", m_LeftLowerLeg, m_RightLowerLeg);
+                HorizontalFields("Foot", m_LeftFoot, m_RightFoot);
+                HorizontalFields("Toes", m_LeftToes, m_RightToes);
+            }
+
+            s_armFold = EditorGUILayout.Foldout(s_armFold, "Arm");
+            if (s_armFold)
+            {
+                HorizontalFields("Shoulder", m_LeftShoulder, m_RightShoulder);
+                HorizontalFields("UpperArm", m_LeftUpperArm, m_RightUpperArm);
+                HorizontalFields("LowerArm", m_LeftLowerArm, m_RightLowerArm);
+                HorizontalFields("Hand", m_LeftHand, m_RightHand);
+            }
+
+            s_fingerFold = EditorGUILayout.Foldout(s_fingerFold, "Finger");
+            if (s_fingerFold)
+            {
+                HorizontalFields("LeftThumb", m_LeftThumbProximal, m_LeftThumbIntermediate, m_LeftThumbDistal);
+                HorizontalFields("LeftIndex", m_LeftIndexProximal, m_LeftIndexIntermediate, m_LeftIndexDistal);
+                HorizontalFields("LeftMiddle", m_LeftMiddleProximal, m_LeftMiddleIntermediate, m_LeftMiddleDistal);
+                HorizontalFields("LeftRing", m_LeftRingProximal, m_LeftRingIntermediate, m_LeftRingDistal);
+                HorizontalFields("LeftLittle", m_LeftLittleProximal, m_LeftLittleIntermediate, m_LeftLittleDistal);
+                HorizontalFields("RightThumb", m_RightThumbProximal, m_RightThumbIntermediate, m_RightThumbDistal);
+                HorizontalFields("RightIndex", m_RightIndexProximal, m_RightIndexIntermediate, m_RightIndexDistal);
+                HorizontalFields("RightMiddle", m_RightMiddleProximal, m_RightMiddleIntermediate, m_RightMiddleDistal);
+                HorizontalFields("RightRing", m_RightRingProximal, m_RightRingIntermediate, m_RightRingDistal);
+                HorizontalFields("RightLittle", m_RightLittleProximal, m_RightLittleIntermediate, m_RightLittleDistal);
+            }
+
+            serializedObject.ApplyModifiedProperties();
 
             // create avatar
             if (GUILayout.Button("Create UnityEngine.Avatar"))
@@ -264,58 +331,6 @@ namespace UniVRM10
                         Selection.activeObject = avatar;
                     }
                 }
-            }
-
-            if (EditorGUILayout.PropertyField(m_Hips)) updated = true;
-
-            s_spineFold = EditorGUILayout.Foldout(s_spineFold, "Spine");
-            if (s_spineFold)
-            {
-                if (EditorGUILayout.PropertyField(m_Spine)) updated = true;
-                if (EditorGUILayout.PropertyField(m_Chest)) updated = true;
-                if (EditorGUILayout.PropertyField(m_UpperChest)) updated = true;
-                if (EditorGUILayout.PropertyField(m_Neck)) updated = true;
-                if (EditorGUILayout.PropertyField(m_Head)) updated = true;
-                if (EditorGUILayout.PropertyField(m_Jaw)) updated = true;
-                if (HorizontalFields("Eye", m_LeftEye, m_RightEye)) updated = true;
-            }
-
-            s_legFold = EditorGUILayout.Foldout(s_legFold, "Leg");
-            if (s_legFold)
-            {
-                if (HorizontalFields("UpperLeg", m_LeftUpperLeg, m_RightUpperLeg)) updated = true;
-                if (HorizontalFields("LowerLeg", m_LeftLowerLeg, m_RightLowerLeg)) updated = true;
-                if (HorizontalFields("Foot", m_LeftFoot, m_RightFoot)) updated = true;
-                if (HorizontalFields("Toes", m_LeftToes, m_RightToes)) updated = true;
-            }
-
-            s_armFold = EditorGUILayout.Foldout(s_armFold, "Arm");
-            if (s_armFold)
-            {
-                if (HorizontalFields("Shoulder", m_LeftShoulder, m_RightShoulder)) updated = true;
-                if (HorizontalFields("UpperArm", m_LeftUpperArm, m_RightUpperArm)) updated = true;
-                if (HorizontalFields("LowerArm", m_LeftLowerArm, m_RightLowerArm)) updated = true;
-                if (HorizontalFields("Hand", m_LeftHand, m_RightHand)) updated = true;
-            }
-
-            s_fingerFold = EditorGUILayout.Foldout(s_fingerFold, "Finger");
-            if (s_fingerFold)
-            {
-                if (HorizontalFields("LeftThumb", m_LeftThumbProximal, m_LeftThumbIntermediate, m_LeftThumbDistal)) updated = true;
-                if (HorizontalFields("LeftIndex", m_LeftIndexProximal, m_LeftIndexIntermediate, m_LeftIndexDistal)) updated = true;
-                if (HorizontalFields("LeftMiddle", m_LeftMiddleProximal, m_LeftMiddleIntermediate, m_LeftMiddleDistal)) updated = true;
-                if (HorizontalFields("LeftRing", m_LeftRingProximal, m_LeftRingIntermediate, m_LeftRingDistal)) updated = true;
-                if (HorizontalFields("LeftLittle", m_LeftLittleProximal, m_LeftLittleIntermediate, m_LeftLittleDistal)) updated = true;
-                if (HorizontalFields("RightThumb", m_RightThumbProximal, m_RightThumbIntermediate, m_RightThumbDistal)) updated = true;
-                if (HorizontalFields("RightIndex", m_RightIndexProximal, m_RightIndexIntermediate, m_RightIndexDistal)) updated = true;
-                if (HorizontalFields("RightMiddle", m_RightMiddleProximal, m_RightMiddleIntermediate, m_RightMiddleDistal)) updated = true;
-                if (HorizontalFields("RightRing", m_RightRingProximal, m_RightRingIntermediate, m_RightRingDistal)) updated = true;
-                if (HorizontalFields("RightLittle", m_RightLittleProximal, m_RightLittleIntermediate, m_RightLittleDistal)) updated = true;
-            }
-
-            if (updated)
-            {
-                serializedObject.ApplyModifiedProperties();
             }
         }
 
