@@ -240,6 +240,16 @@ namespace UniVRM10
             }
         }
 
+        static string GetDialogDir(UnityEngine.Object obj)
+        {
+            var prefab = PrefabUtility.GetCorrespondingObjectFromSource(obj);
+            if (prefab is null)
+            {
+                return null;
+            }
+            return UnityPath.FromAsset(prefab).FullPath;
+        }
+
         public override void OnInspectorGUI()
         {
             foreach (var validation in Validate())
@@ -302,15 +312,9 @@ namespace UniVRM10
             // create avatar
             if (GUILayout.Button("Create UnityEngine.Avatar"))
             {
-                var prefabRoot = PrefabUtility.GetCorrespondingObjectFromSource(m_target);
-                var prefabPath = AssetDatabase.GetAssetPath(prefabRoot);
-                var path = (string.IsNullOrEmpty(prefabPath))
-                    ? string.Format("Assets/{0}.asset", m_target.gameObject.name)
-                    : string.Format("{0}/{1}.asset", Path.GetDirectoryName(prefabPath), Path.GetFileNameWithoutExtension(prefabPath))
-                    ;
-                path = EditorUtility.SaveFilePanel(
+                var path = EditorUtility.SaveFilePanel(
                         "Save avatar",
-                        Path.GetDirectoryName(path),
+                        GetDialogDir(m_target),
                         string.Format("{0}.avatar.asset", serializedObject.targetObject.name),
                         "asset");
                 if (!string.IsNullOrEmpty(path))
@@ -326,6 +330,10 @@ namespace UniVRM10
 
                         // replace
                         var animator = m_target.GetComponent<Animator>();
+                        if (animator == null)
+                        {
+                            animator = m_target.gameObject.AddComponent<Animator>();
+                        }
                         animator.avatar = avatar;
 
                         Selection.activeObject = avatar;
