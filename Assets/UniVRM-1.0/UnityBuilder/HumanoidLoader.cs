@@ -7,7 +7,7 @@ namespace UniVRM10
 {
     public static class HumanoidLoader
     {
-        public static Avatar LoadHumanoidAvatar(Transform root, Dictionary<Transform, VrmLib.HumanoidBones> boneMap)
+        public static Avatar LoadHumanoidAvatar(Transform root, IEnumerable<(Transform, VrmLib.HumanoidBones)> boneMap)
         {
             var description = new HumanDescription
             {
@@ -16,8 +16,8 @@ namespace UniVRM10
                 human = boneMap
                     .Select(x => new HumanBone
                     {
-                        boneName = x.Key.name,
-                        humanName = s_humanTranitBoneNameMap[x.Value],
+                        boneName = x.Item1.name,
+                        humanName = s_humanTranitBoneNameMap[x.Item2],
                         limit = new HumanLimit
                         {
                             useDefaultValues = true,

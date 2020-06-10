@@ -37,18 +37,10 @@ namespace UniVRM10
             }
 
             // humanoid
-            var boneMap = modelAsset.Map.Nodes
-            .Where(x => x.Key.HumanoidBone.GetValueOrDefault() != VrmLib.HumanoidBones.unknown)
-            .Select(x => (x.Value.transform, x.Key.HumanoidBone.Value))
-            .ToDictionary(x => x.transform, x => x.Item2);
-            if (boneMap.Any())
-            {
-                modelAsset.HumanoidAvatar = HumanoidLoader.LoadHumanoidAvatar(modelAsset.Root.transform, boneMap);
-                if (modelAsset.HumanoidAvatar != null)
-                {
-                    modelAsset.HumanoidAvatar.name = "VRM";
-                }
-            }
+            var humanoid = modelAsset.Root.AddComponent<VrmHumanoid>();
+            humanoid.AssignBones(modelAsset.Map.Nodes.Select(x => (x.Key.HumanoidBone.GetValueOrDefault(), x.Value.transform)));
+            modelAsset.HumanoidAvatar = humanoid.CreateAvatar();
+            modelAsset.HumanoidAvatar.name = "VRM";
 
             var animator = modelAsset.Root.AddComponent<Animator>();
             animator.avatar = modelAsset.HumanoidAvatar;
