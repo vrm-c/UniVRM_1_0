@@ -52,6 +52,7 @@ namespace UniVRM10
 
         #region UIメッセージ
         const string MSG_NO_GAMEOBJECT = "select export target.";
+        const string MSG_INVALID_HUMANOID = "humanoid is not valid";
         const string MSG_NO_ANIMATOR = "target has no Animator component.";
         const string MSG_NO_AVATAR = "Animator.avatar is null.";
         const string MSG_INVALID_AVATAR = "Animator.avatar is not valid.";
@@ -61,6 +62,10 @@ namespace UniVRM10
         const string MSG_EXPORT_OK = "Ready to VRM export.";
         const string MSG_AVATAR_HAS_JAW = "Animator.avatar has jaw bone.";
         const string MSG_REQUIRE_NORMALIZE = "Hierarchy has rotation/scaling. exporter bake hierarchy.";
+
+        const string MSG_ROOT_ROTATION = "Root rotation must zero";
+
+        const string MSG_ROOT_SCALING = "Root scaling must 1";
         #endregion
 
         [MenuItem("VRM/UniVRM-" + UniVRM10.VRMVersion.VERSION + "/VRMEditorExporter")]
@@ -235,29 +240,55 @@ namespace UniVRM10
                 return false;
             }
 
-            var animator = root.GetComponent<Animator>();
-            if (animator == null)
+            var humanoid = root.GetComponent<VrmHumanoid>();
+            if (humanoid != null)
             {
-                m_validation.Push(MSG_NO_ANIMATOR);
-                return false;
+                var isError = false;
+                foreach (var validation in humanoid.Validate())
+                {
+                    if (validation.IsError)
+                    {
+                        isError = true;
+                    }
+                    m_validation.Push(validation.Message);
+                }
+                if (isError)
+                {
+                    return false;
+                }
             }
-
-            if (animator.avatar == null)
+            else
             {
-                m_validation.Push(MSG_NO_ANIMATOR);
-                return false;
-            }
+                var animator = root.GetComponent<Animator>();
+                if (animator == null)
+                {
+                    m_validation.Push(MSG_NO_ANIMATOR);
+                    return false;
+                }
 
-            if (!animator.avatar.isValid)
-            {
-                m_validation.Push(MSG_INVALID_AVATAR);
-                return false;
-            }
+                if (animator.avatar == null)
+                {
+                    m_validation.Push(MSG_NO_AVATAR);
+                    return false;
+                }
 
-            if (!animator.avatar.isHuman)
-            {
-                m_validation.Push(MSG_AVATAR_IS_NOT_HUMAN);
-                return false;
+                if (!animator.avatar.isValid)
+                {
+                    m_validation.Push(MSG_INVALID_AVATAR);
+                    return false;
+                }
+
+                if (!animator.avatar.isHuman)
+                {
+                    m_validation.Push(MSG_AVATAR_IS_NOT_HUMAN);
+                    return false;
+                }
+
+                if (animator.GetBoneTransform(HumanBodyBones.Jaw) != null)
+                {
+                    // JAWあるよ
+                    m_validation.Push(MSG_AVATAR_HAS_JAW);
+                }
             }
 
             var meta = root.GetComponent<UniVRM10.VRMMeta>();
@@ -266,16 +297,21 @@ namespace UniVRM10
                 m_validation.Push(MSG_NO_META);
             }
 
-            if (animator.GetBoneTransform(HumanBodyBones.Jaw) != null)
-            {
-                // JAWあるよ
-                m_validation.Push(MSG_AVATAR_HAS_JAW);
-            }
-
             if (HasRotationOrScale(root.transform))
             {
                 // 回転・スケールが含まれているので正規化するよ
                 m_validation.Push(MSG_REQUIRE_NORMALIZE);
+            }
+
+            if (root.transform.rotation != Quaternion.identity)
+            {
+                m_validation.Push(MSG_ROOT_ROTATION);
+                return false;
+            }
+            if (root.transform.lossyScale != Vector3.one)
+            {
+                m_validation.Push(MSG_ROOT_SCALING);
+                return false;
             }
 
             return true;

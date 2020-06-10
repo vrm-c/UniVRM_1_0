@@ -81,7 +81,69 @@ namespace UniVRM10
         [SerializeField] private Transform m_RightLittleDistal; public Transform RightLittleDistal => m_RightLittleDistal;
         #endregion
 
-        #region Unity
+        public struct Validation
+        {
+            public readonly string Message;
+            public readonly bool IsError;
+
+            public Validation(string message, bool isError)
+            {
+                Message = message;
+                IsError = isError;
+            }
+        }
+
+        IEnumerable<Validation> Required(params (string, Transform)[] props)
+        {
+            foreach (var prop in props)
+            {
+                if (prop.Item2 is null)
+                {
+                    var name = prop.Item1;
+                    if (name.StartsWith("m_"))
+                    {
+                        name = name.Substring(2);
+                    }
+                    yield return new Validation($"{name} is Required", true);
+                }
+            }
+        }
+
+        static Vector3 GetForward(Transform l, Transform r)
+        {
+            if (l is null || r is null)
+            {
+                return Vector3.zero;
+            }
+            var lr = (r.position - l.position).normalized;
+            return Vector3.Cross(lr, Vector3.up);
+        }
+
+        public Vector3 GetForward()
+        {
+            return GetForward(m_LeftUpperLeg, m_RightUpperLeg);
+        }
+
+        public IEnumerable<Validation> Validate()
+        {
+            foreach (var validation in Required(
+                (nameof(m_Hips), m_Hips), (nameof(m_Spine), m_Spine), (nameof(m_Head), m_Head),
+                (nameof(m_LeftUpperLeg), m_LeftUpperLeg), (nameof(m_LeftLowerLeg), m_LeftLowerLeg), (nameof(m_LeftFoot), m_LeftFoot),
+                (nameof(m_RightUpperLeg), m_RightUpperLeg), (nameof(m_RightLowerLeg), m_RightLowerLeg), (nameof(m_RightFoot), m_RightFoot),
+                (nameof(m_LeftUpperArm), m_LeftUpperArm), (nameof(m_LeftLowerArm), m_LeftLowerArm), (nameof(m_LeftHand), m_LeftHand),
+                (nameof(m_RightUpperArm), m_RightUpperArm), (nameof(m_RightLowerArm), m_RightLowerArm), (nameof(m_RightHand), m_RightHand)
+            ))
+            {
+                yield return validation;
+            }
+
+            var forward = GetForward();
+            if (Vector3.Dot(Vector3.forward, forward) < 0.5f)
+            {
+                yield return new Validation("Not facing the Z-axis positive direction", true);
+            }
+        }
+
         /// <summary>
         /// ボーン割り当てから UnityEngine.Avatar を生成する
         /// </summary>
@@ -167,7 +229,6 @@ namespace UniVRM10
 
             return null;
         }
-        #endregion
 
         IEnumerable<(Transform, VrmLib.HumanoidBones)> BoneMap
         {

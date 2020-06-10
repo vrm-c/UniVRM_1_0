@@ -197,49 +197,6 @@ namespace UniVRM10
         static bool s_legFold;
         static bool s_armFold;
         static bool s_fingerFold;
-
-        struct Validation
-        {
-            public readonly string Message;
-            public readonly MessageType MessageType;
-
-            public Validation(string message, MessageType messageType)
-            {
-                Message = message;
-                MessageType = messageType;
-            }
-        }
-
-        IEnumerable<Validation> Required(params SerializedProperty[] props)
-        {
-            foreach (var prop in props)
-            {
-                if (prop.objectReferenceValue is null)
-                {
-                    var name = prop.name;
-                    if (name.StartsWith("m_"))
-                    {
-                        name = name.Substring(2);
-                    }
-                    yield return new Validation($"{name} is Required", MessageType.Error);
-                }
-            }
-        }
-
-        IEnumerable<Validation> Validate()
-        {
-            foreach (var validation in Required(
-                m_Hips, m_Spine, m_Head,
-                m_LeftUpperLeg, m_LeftLowerLeg, m_LeftFoot,
-                m_RightUpperLeg, m_RightLowerLeg, m_RightFoot,
-                m_LeftUpperArm, m_LeftLowerArm, m_LeftHand,
-                m_RightUpperArm, m_RightLowerArm, m_RightHand
-            ))
-            {
-                yield return validation;
-            }
-        }
-
         static string GetDialogDir(UnityEngine.Object obj)
         {
             var prefab = PrefabUtility.GetCorrespondingObjectFromSource(obj);
@@ -252,9 +209,9 @@ namespace UniVRM10
 
         public override void OnInspectorGUI()
         {
-            foreach (var validation in Validate())
+            foreach (var validation in m_target.Validate())
             {
-                EditorGUILayout.HelpBox(validation.Message, validation.MessageType);
+                EditorGUILayout.HelpBox(validation.Message, validation.IsError ? MessageType.Error : MessageType.Warning);
             }
 
             // prefer
@@ -342,20 +299,26 @@ namespace UniVRM10
             }
         }
 
-        //         private void OnSceneGUI()
-        //         {
-        //             var bones = m_target.Bones;
-        //             if (bones != null)
-        //             {
-        //                 for (int i = 0; i < bones.Length; ++i)
-        //                 {
-        //                     DrawBone((HumanBodyBones)i, bones[i]);
-        //                 }
-        //                 foreach (var x in m_bones)
-        //                 {
-        //                     x.Draw();
-        //                 }
-        //             }
-        //         }
+        void OnSceneGUI()
+        {
+            // var bones = m_target.Bones;
+            // if (bones != null)
+            // {
+            //     for (int i = 0; i < bones.Length; ++i)
+            //     {
+            //         DrawBone((HumanBodyBones)i, bones[i]);
+            //     }
+            //     foreach (var x in m_bones)
+            //     {
+            //         x.Draw();
+            //     }
+            // }
+
+            var forward = m_target.GetForward();
+
+            var begin = m_target.transform.position;
+            var end = begin + forward;
+            Handles.DrawLine(begin, end);
+        }
     }
 }
