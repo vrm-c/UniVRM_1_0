@@ -4,5 +4,7 @@
     "version": "0.0.1",
     "unity": "2019.3",
     "description": "vrm unity utility",
-    "dependencies": {}
+    "dependencies": {
+        "com.vrmc.vrmlib": "0.0.1"
+    }
 }

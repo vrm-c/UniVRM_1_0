@@ -4,5 +4,7 @@
     "version": "0.0.1",
     "unity": "2019.3",
     "description": "vrm utility",
-    "dependencies": {}
+    "dependencies": {
+        "dotnet.system.memory": "0.0.2"
+    }
 }

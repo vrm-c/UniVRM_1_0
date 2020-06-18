@@ -4,5 +4,9 @@
     "version": "1.0.0",
     "unity": "2019.3",
     "description": "vrm unity utility",
-    "dependencies": {}
+    "dependencies": {
+        "com.vrmc.vrmlib": "0.0.1",
+        "com.vrmc.univrm0xreader": "0.0.1",
+        "com.vrmc.protobufserializer": "0.0.1"
+    }
 }
