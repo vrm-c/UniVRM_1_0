@@ -58,7 +58,7 @@ namespace UniVRM10
             VisualElement root = rootVisualElement;
 
             // Import UXML
-            var visualTree = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>("Assets/UniVRM-1.0/VRMConverter/Editor/GltfEditorConverter.uxml");
+            var visualTree = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>("Assets/VRM10/UniVRM10/VRMConverter/Editor/GltfEditorConverter.uxml");
             VisualElement labelFromUXML = visualTree.CloneTree();
             root.Add(labelFromUXML);
 
