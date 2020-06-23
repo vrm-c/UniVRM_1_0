@@ -1,12 +1,12 @@
 {
-    "name": "UniVRM-1.0Tests",
+    "name": "UniVRM10Tests",
     "references": [
         "UnityEngine.TestRunner",
         "UnityEditor.TestRunner",
         "dotnet.system.memory",
         "VrmLib",
         "ProtobufSerializer",
-        "UniVRM-1.0"
+        "UniVRM10"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

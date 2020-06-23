@@ -21,7 +21,7 @@ namespace UniVRM10
         {
             get
             {
-                var uxml = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>($"Assets/UniVRM-1.0/{AssetPath}/VrmEditorConverter.uxml");
+                var uxml = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>($"Assets/VRM10/UniVRM10/{AssetPath}/VrmEditorConverter.uxml");
                 if (uxml)
                 {
                     return uxml;
@@ -34,7 +34,7 @@ namespace UniVRM10
         {
             get
             {
-                var stylesheet = AssetDatabase.LoadAssetAtPath<StyleSheet>($"Assets/UniVRM-1.0/{AssetPath}/VrmEditorConverter.uss");
+                var stylesheet = AssetDatabase.LoadAssetAtPath<StyleSheet>($"Assets/VRM10/UniVRM10/{AssetPath}/VrmEditorConverter.uss");
                 if (stylesheet)
                 {
                     return stylesheet;
