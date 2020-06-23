@@ -5,11 +5,9 @@
         "UnityEditor.TestRunner",
         "dotnet.system.memory",
         "VrmLib",
-        "UniJSON",
-        "VRM",
         "ShaderProperty.Runtime",
         "ProtobufSerializer",
-        "UniVRM-1.0"
+        "UniVRM10"
     ],
     "includePlatforms": [
         "Editor"
