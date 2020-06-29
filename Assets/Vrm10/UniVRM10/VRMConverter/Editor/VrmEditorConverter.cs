@@ -15,33 +15,9 @@ namespace UniVRM10
     {
         const string EXTENSION = ".vrm";
 
-        const string AssetPath = "VRMConverter/Editor";
-
-        static VisualTreeAsset Uxml
-        {
-            get
-            {
-                var uxml = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>($"Assets/VRM10/UniVRM10/{AssetPath}/VrmEditorConverter.uxml");
-                if (uxml)
-                {
-                    return uxml;
-                }
-                return AssetDatabase.LoadAssetAtPath<VisualTreeAsset>($"Packages/com.vrmc.univrm/{AssetPath}/VrmEditorConverter.uxml");
-            }
-        }
-
-        static StyleSheet StyleSheet
-        {
-            get
-            {
-                var stylesheet = AssetDatabase.LoadAssetAtPath<StyleSheet>($"Assets/VRM10/UniVRM10/{AssetPath}/VrmEditorConverter.uss");
-                if (stylesheet)
-                {
-                    return stylesheet;
-                }
-                return AssetDatabase.LoadAssetAtPath<StyleSheet>($"Packages/com.vrmc.univrm/{AssetPath}/VrmEditorConverter.uss");
-            }
-        }
+        const string AssetPath = "UniVRM10/VRMConverter/Editor";
+        static VisualTreeAsset Uxml => PackageResource.ResourceLocalOrUPM<VisualTreeAsset>($"{AssetPath}/VrmEditorConverter.uxml");
+        static StyleSheet Uss => PackageResource.ResourceLocalOrUPM<StyleSheet>($"{AssetPath}/VrmEditorConverter.uss");
 
         #region UXML項目のバインディング
         ObjectField m_gameObjectField;
@@ -442,7 +418,7 @@ namespace UniVRM10
 
             // A stylesheet can be added to a VisualElement.
             // The style will be applied to the VisualElement and all of its children.
-            root.styleSheets.Add(StyleSheet);
+            root.styleSheets.Add(Uss);
 
             // RootNode
             m_gameObjectField = root.Query<ObjectField>(name: "RootNode").First();

@@ -2,7 +2,6 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEditor.UIElements;
-using System.Linq;
 using System.Collections.Generic;
 using System;
 
@@ -11,33 +10,9 @@ namespace UniVRM10
     [CustomEditor(typeof(AssetsContainer))]
     public class AssetsContainerEditor : Editor
     {
-        const string AssetPath = "UnityBuilder/Editor/AssetsContainerEditor";
-
-        static VisualTreeAsset Uxml
-        {
-            get
-            {
-                var uxml = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>($"Assets/VRM10/UniVRM10/{AssetPath}/AssetsContainerEditor.uxml");
-                if (uxml)
-                {
-                    return uxml;
-                }
-                return AssetDatabase.LoadAssetAtPath<VisualTreeAsset>($"Packages/com.vrmc.univrm/{AssetPath}/AssetsContainerEditor.uxml");
-            }
-        }
-
-        static StyleSheet StyleSheet
-        {
-            get
-            {
-                var stylesheet = AssetDatabase.LoadAssetAtPath<StyleSheet>($"Assets/VRM10/UniVRM10/{AssetPath}/AssetsContainerEditor.uss");
-                if (stylesheet)
-                {
-                    return stylesheet;
-                }
-                return AssetDatabase.LoadAssetAtPath<StyleSheet>($"Packages/com.vrmc.univrm/{AssetPath}/AssetsContainerEditor.uss");
-            }
-        }
+        const string AssetPath = "UniVRM10/UnityBuilder/Editor/AssetsContainerEditor";
+        static VisualTreeAsset Uxml => PackageResource.ResourceLocalOrUPM<VisualTreeAsset>($"{AssetPath}/AssetsContainerEditor.uxml");
+        static StyleSheet Uss => PackageResource.ResourceLocalOrUPM<StyleSheet>($"{AssetPath}/AssetsContainerEditor.uss");
 
         Dictionary<UnityEngine.Object, Editor> m_editors = new Dictionary<UnityEngine.Object, Editor>();
 
@@ -52,7 +27,7 @@ namespace UniVRM10
             m_visualTree = Uxml;
 
             // Styles
-            m_rootElement.styleSheets.Add(StyleSheet);
+            m_rootElement.styleSheets.Add(Uss);
         }
 
         public void OnDisable()
