@@ -10,6 +10,9 @@ namespace UniVRM10
 {
     public class GltfEditorConverter : EditorWindow
     {
+        const string AssetPath = "UniVRM10/VRMConverter/Editor";
+        static VisualTreeAsset Uxml => PackageResource.ResourceLocalOrUPM<VisualTreeAsset>($"{AssetPath}/GltfEditorConverter.uxml");
+
         const string EXTENSION = ".glb";
         ObjectField m_gameObjectField;
         Button m_exportButton;
@@ -42,7 +45,7 @@ namespace UniVRM10
 
         private void Validate(GameObject gameObject)
         {
-            if(gameObject == null)
+            if (gameObject == null)
             {
                 m_exportButton.SetEnabled(false);
             }
@@ -58,7 +61,7 @@ namespace UniVRM10
             VisualElement root = rootVisualElement;
 
             // Import UXML
-            var visualTree = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>("Assets/VRM10/UniVRM10/VRMConverter/Editor/GltfEditorConverter.uxml");
+            var visualTree = Uxml;
             VisualElement labelFromUXML = visualTree.CloneTree();
             root.Add(labelFromUXML);
 
