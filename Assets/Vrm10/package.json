@@ -2,9 +2,9 @@
     "name": "com.vrmc.univrm",
     "displayName": "UniVRM",
     "version": "1.0.0",
-    "unity": "2019.3",
+    "unity": "2019.4",
     "description": "vrm unity utility",
     "dependencies": {
-        "com.vrmc.vrmlib": "0.0.1"
+        "com.vrmc.vrmshaders": "0.56.0"
     }
 }
