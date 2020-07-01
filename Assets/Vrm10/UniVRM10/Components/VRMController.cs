@@ -6,9 +6,15 @@ using UnityEngine;
 
 namespace UniVRM10
 {
+    /// <summary>
+    /// VRM全体を制御するコンポーネント。
+    /// VRMBlendShapeProxy, LookAt, SpringBone などの適用を一括して行う。
+    /// 各フレームのHumanoidへのモーション適用後に任意のタイミングで
+    /// Applyを呼び出してください。
+    /// </summary>
     [AddComponentMenu("VRM/VRMBlendShapeProxy")]
     [DisallowMultipleComponent]
-    public class VRMBlendShapeProxy : MonoBehaviour
+    public class VRMController : MonoBehaviour
     {
         public enum UpdateTypes
         {
@@ -151,6 +157,8 @@ namespace UniVRM10
             m_pitch = pitch;
         }
         #endregion
+
+        VRMSpringBone[] m_springs;
 
         /// <summary>
         /// LookAtTargetType に応じた yaw, pitch を得る
@@ -382,20 +390,40 @@ namespace UniVRM10
         }
 
         /// <summary>
-        /// Apply blendShape values that use SetValue apply=false
+        /// TODO: Constraint
+        /// TODO: SpringBone
         /// </summary>
         public void Apply()
         {
+            //
+            // spring
+            //
+            if (m_springs == null)
+            {
+                m_springs = GetComponentsInChildren<VRMSpringBone>();
+            }
+            foreach (var spring in m_springs)
+            {
+                spring.Process();
+            }
+
+            //
+            // get ingore settings
+            //
             var validateState = GetValidateState();
             m_ignoreBlink = validateState.ignoreBlink;
             m_ignoreLookAt = validateState.ignoreLookAt;
             m_ignoreMouth = validateState.ignoreMouth;
+
             if (validateState.ignoreBlink)
             {
+                // cancel blink
                 m_blinkBlendShapeKeys.ForEach(x => BlendShapeKeyWeights[x] = 0.0f);
             }
 
+            //
             // gaze control
+            //
             var (yaw, pitch) = (validateState.ignoreLookAt)
                 ? (0.0f, 0.0f)
                 : GetLookAtYawPitch()
@@ -411,6 +439,9 @@ namespace UniVRM10
                     break;
             }
 
+            //
+            // blendshape
+            //
             if (validateState.ignoreMouth)
             {
                 m_mouthBlendShapeKeys.ForEach(x => BlendShapeKeyWeights[x] = 0.0f);

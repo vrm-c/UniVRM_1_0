@@ -55,7 +55,7 @@ namespace UniVRM10
         }
 
         List<SpringBoneLogic.InternalCollider> m_colliderList = new List<SpringBoneLogic.InternalCollider>();
-        void LateUpdate()
+        public void Process()
         {
             if (RootBones == null)
             {

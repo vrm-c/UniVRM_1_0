@@ -150,7 +150,7 @@ namespace UniVRM10
             }
 
             // blendShape
-            var blendShapeProxy = asset.Root.AddComponent<UniVRM10.VRMBlendShapeProxy>();
+            var blendShapeProxy = asset.Root.AddComponent<UniVRM10.VRMController>();
             {
                 blendShapeProxy.BlendShapeAvatar = ScriptableObject.CreateInstance<UniVRM10.BlendShapeAvatar>();
                 asset.ScriptableObjects.Add(blendShapeProxy.BlendShapeAvatar);
@@ -199,7 +199,7 @@ namespace UniVRM10
                 if (model.Vrm.LookAt.LookAtType == VrmLib.LookAtType.BlendShape)
                 {
                     var lookAtApplyer = blendShapeProxy;
-                    lookAtApplyer.LookAtType = VRMBlendShapeProxy.LookAtTypes.BlendShape;
+                    lookAtApplyer.LookAtType = VRMController.LookAtTypes.BlendShape;
                     lookAtApplyer.HorizontalOuter = new UniVRM10.CurveMapper(
                         model.Vrm.LookAt.HorizontalOuter.InputMaxValue,
                         model.Vrm.LookAt.HorizontalOuter.OutputScaling);
