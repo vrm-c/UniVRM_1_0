@@ -6,10 +6,10 @@ using System.Linq;
 
 namespace UniVRM10
 {
-    [CustomEditor(typeof(VRMBlendShapeProxy))]
-    public class VRMBlendShapeProxyEditor : Editor
+    [CustomEditor(typeof(VRMController))]
+    public class VRMControllerEditor : Editor
     {
-        VRMBlendShapeProxy m_target;
+        VRMController m_target;
         SkinnedMeshRenderer[] m_renderers;
         Dictionary<BlendShapeKey, float> m_blendShapeKeyWeights = new Dictionary<BlendShapeKey, float>();
 
@@ -38,7 +38,7 @@ namespace UniVRM10
 
         void OnEnable()
         {
-            m_target = (VRMBlendShapeProxy)target;
+            m_target = (VRMController)target;
             if (m_target.BlendShapeAvatar != null && m_target.BlendShapeAvatar.Clips != null)
             {
                 m_blendShapeKeyWeights = m_target.BlendShapeAvatar.Clips.ToDictionary(x => BlendShapeKey.CreateFromClip(x), x => 0.0f);
@@ -100,7 +100,7 @@ namespace UniVRM10
 
         void OnSceneGUIOffset()
         {
-            var component = target as VRMBlendShapeProxy;
+            var component = target as VRMController;
             if (!component.DrawGizmo)
             {
                 return;

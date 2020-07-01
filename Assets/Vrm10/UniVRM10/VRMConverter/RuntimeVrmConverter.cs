@@ -258,7 +258,7 @@ namespace UniVRM10
             // blendShape
             {
                 Model.Vrm.BlendShape = new VrmLib.BlendShapeManager();
-                var blendShapeProxy = root.GetComponent<UniVRM10.VRMBlendShapeProxy>();
+                var blendShapeProxy = root.GetComponent<UniVRM10.VRMController>();
                 if (blendShapeProxy != null)
                 {
                     foreach (var clip in blendShapeProxy.BlendShapeAvatar.Clips)
@@ -291,13 +291,13 @@ namespace UniVRM10
 
             // lookAt
             {
-                var blendShapeProxy = root.GetComponent<UniVRM10.VRMBlendShapeProxy>();
+                var blendShapeProxy = root.GetComponent<UniVRM10.VRMController>();
                 var lookAt = new VrmLib.LookAt();
                 var lookAtBlendShape = blendShapeProxy;
                 var lookAtBone = blendShapeProxy;
                 if (lookAtBlendShape != null)
                 {
-                    if (lookAtBlendShape.LookAtType == VRMBlendShapeProxy.LookAtTypes.BlendShape)
+                    if (lookAtBlendShape.LookAtType == VRMController.LookAtTypes.BlendShape)
                     {
                         lookAt.HorizontalInner = new VrmLib.LookAtRangeMap();
                         lookAt.HorizontalOuter = new VrmLib.LookAtRangeMap()
@@ -316,7 +316,7 @@ namespace UniVRM10
                             OutputScaling = lookAtBlendShape.VerticalDown.CurveYRangeDegree,
                         };
                     }
-                    else if (lookAtBlendShape.LookAtType == VRMBlendShapeProxy.LookAtTypes.Bone)
+                    else if (lookAtBlendShape.LookAtType == VRMController.LookAtTypes.Bone)
                     {
                         lookAt.HorizontalInner = new VrmLib.LookAtRangeMap()
                         {

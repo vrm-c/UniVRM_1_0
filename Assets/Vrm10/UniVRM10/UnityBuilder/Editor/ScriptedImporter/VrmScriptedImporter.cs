@@ -123,7 +123,7 @@ namespace UniVRM10
                     var external = this.GetExternalUnityObjects<UniVRM10.BlendShapeAvatar>().FirstOrDefault();
                     if (external.Value != null)
                     {
-                        var blendShapeComponent = assets.Root.GetComponent<VRMBlendShapeProxy>();
+                        var blendShapeComponent = assets.Root.GetComponent<VRMController>();
                         if (blendShapeComponent != null)
                         {
                             blendShapeComponent.BlendShapeAvatar = external.Value;
