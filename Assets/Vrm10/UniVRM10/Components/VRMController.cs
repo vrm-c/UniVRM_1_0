@@ -158,6 +158,7 @@ namespace UniVRM10
         }
         #endregion
 
+        VRMConstraint[] m_constraints;
         VRMSpringBone[] m_springs;
 
         /// <summary>
@@ -395,6 +396,18 @@ namespace UniVRM10
         /// </summary>
         public void Apply()
         {
+            // 
+            // constraint
+            //
+            if(m_constraints==null)
+            {
+                m_constraints = GetComponentsInChildren<VRMConstraint>();
+            }
+            foreach(var constraint in m_constraints)
+            {
+                constraint.Process();
+            }
+
             //
             // spring
             //
