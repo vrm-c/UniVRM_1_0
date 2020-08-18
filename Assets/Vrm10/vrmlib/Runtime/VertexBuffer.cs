@@ -128,6 +128,14 @@ namespace VrmLib
             }
         }
 
+        public void RemoveTangent()
+        {
+            if (VertexBuffers.ContainsKey(TangentKey))
+            {
+                VertexBuffers.Remove(TangentKey);
+            }
+        }
+
         public int ByteLength
         {
             get
@@ -136,7 +144,7 @@ namespace VrmLib
             }
         }
 
-        public void ValidateLength()
+        public void ValidateLength(string name = "")
         {
             foreach (var kv in VertexBuffers)
             {
@@ -144,7 +152,29 @@ namespace VrmLib
 
                 if (kv.Value.Count != Count)
                 {
-                    throw new ArgumentException("vertex attirbute not same length");
+                    var msg = "vertex attribute not same length";
+                    if (!string.IsNullOrEmpty(name))
+                    {
+                        msg = $"{name}: {msg}";
+                    }
+                    throw new ArgumentException(msg);
+                }
+            }
+        }
+
+        public void ValidateNAN()
+        {
+            foreach (var kv in VertexBuffers)
+            {
+                if (kv.Value.ComponentType == AccessorValueType.FLOAT)
+                {
+                    var values = kv.Value.GetSpan<float>(false);
+                    int i = 0;
+                    foreach (var f in values)
+                    {
+                        if (float.IsNaN(f)) throw new ArithmeticException("float error");
+                        ++i;
+                    }
                 }
             }
         }

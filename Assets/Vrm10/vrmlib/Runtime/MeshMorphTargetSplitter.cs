@@ -18,6 +18,11 @@ namespace VrmLib
             // 各モーフ
             foreach (var morph in src.MorphTargets)
             {
+                if (morph.VertexBuffer.Count == 0)
+                {
+                    // 無効
+                    continue;
+                }
                 // POSITIONが使っているtriangleのカウンターをアップさせる
                 var positions = morph.VertexBuffer.Positions.GetSpan<Vector3>();
                 for (int i = 0; i < triangles.Length; ++i)

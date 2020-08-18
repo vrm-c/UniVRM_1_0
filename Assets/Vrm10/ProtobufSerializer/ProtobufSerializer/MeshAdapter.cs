@@ -107,7 +107,6 @@ namespace Vrm10
                 var accessor = storage.CreateAccessor(kv.Value);
                 b.Add(kv.Key, accessor);
             }
-            b.ValidateLength();
             return b;
         }
 
@@ -117,7 +116,6 @@ namespace Vrm10
             storage.CreateBufferAccessorAndAdd(target.POSITION, b, VertexBuffer.PositionKey);
             storage.CreateBufferAccessorAndAdd(target.NORMAL, b, VertexBuffer.NormalKey);
             storage.CreateBufferAccessorAndAdd(target.TANGENT, b, VertexBuffer.TangentKey);
-            b.ValidateLength();
             return b;
         }
 

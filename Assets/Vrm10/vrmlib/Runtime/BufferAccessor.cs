@@ -86,6 +86,11 @@ namespace VrmLib
 
         public int ByteLength => Stride * Count;
 
+        public override string ToString()
+        {
+            return $"{Stride}stride x{Count}";
+        }
+
         public Span<T> GetSpan<T>(bool checkStride = true) where T : struct
         {
             if (checkStride && Marshal.SizeOf(typeof(T)) != Stride)
