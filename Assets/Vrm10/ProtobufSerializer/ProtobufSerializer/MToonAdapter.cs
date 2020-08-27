@@ -47,7 +47,6 @@ namespace Vrm10
                 Color = new ColorDefinition
                 {
                     LitColor = material.PbrMetallicRoughness.BaseColorFactor.ToLinearColor(Nan),
-                    LitMultiplyTexture = material.PbrMetallicRoughness.BaseColorTexture.Index.GetTexture(textures),
                     ShadeColor = extension.ShadeFactor.ToLinearColor(Nan),
                     ShadeMultiplyTexture = extension.ShadeMultiplyTexture.GetTexture(textures),
                     CutoutThresholdValue = material.AlphaCutoff.Value,
@@ -65,7 +64,6 @@ namespace Vrm10
                 Emission = new EmissionDefinition
                 {
                     EmissionColor = material.EmissiveFactor.ToLinearColor(Nan),
-                    EmissionMultiplyTexture = material.EmissiveTexture.Index.GetTexture(textures),
                 },
                 Lighting = new LightingDefinition
                 {
@@ -81,8 +79,6 @@ namespace Vrm10
                     },
                     Normal = new NormalDefinition
                     {
-                        NormalScaleValue = material.NormalTexture.Scale.Value,
-                        NormalTexture = material.NormalTexture.Index.GetTexture(textures),
                     },
                 },
                 MatCap = new MatCapDefinition
@@ -109,10 +105,28 @@ namespace Vrm10
                     UvAnimationRotationSpeedValue = extension.UvAnimationRotationSpeedFactor.Value,
                     UvAnimationScrollXSpeedValue = extension.UvAnimationScrollXSpeedFactor.Value,
                     UvAnimationScrollYSpeedValue = extension.UvAnimationScrollYSpeedFactor.Value,
-                    MainTextureLeftBottomOriginOffset = material.PbrMetallicRoughness.BaseColorTexture.Extensions.KHRTextureTransform.Offset.ToVector2(),
-                    MainTextureLeftBottomOriginScale = material.PbrMetallicRoughness.BaseColorTexture.Extensions.KHRTextureTransform.Scale.ToVector2(),
                 },
             };
+
+            if (material.PbrMetallicRoughness.BaseColorTexture != null)
+            {
+                mtoon.Definition.Color.LitMultiplyTexture = material.PbrMetallicRoughness.BaseColorTexture.Index.GetTexture(textures);
+                if (material.PbrMetallicRoughness.BaseColorTexture.Extensions != null &&
+                material.PbrMetallicRoughness.BaseColorTexture.Extensions.KHRTextureTransform != null)
+                {
+                    mtoon.Definition.TextureOption.MainTextureLeftBottomOriginOffset = material.PbrMetallicRoughness.BaseColorTexture.Extensions.KHRTextureTransform.Offset.ToVector2();
+                    mtoon.Definition.TextureOption.MainTextureLeftBottomOriginScale = material.PbrMetallicRoughness.BaseColorTexture.Extensions.KHRTextureTransform.Scale.ToVector2();
+                }
+            }
+            if (material.EmissiveTexture != null)
+            {
+                mtoon.Definition.Emission.EmissionMultiplyTexture = material.EmissiveTexture.Index.GetTexture(textures);
+            }
+            if (material.NormalTexture != null)
+            {
+                mtoon.Definition.Lighting.Normal.NormalScaleValue = material.NormalTexture.Scale.Value;
+                mtoon.Definition.Lighting.Normal.NormalTexture = material.NormalTexture.Index.GetTexture(textures);
+            }
 
             return mtoon;
         }
@@ -134,15 +148,29 @@ namespace Vrm10
         {
             var material = mtoon.UnlitToGltf(textures);
 
-            // Unlitも有効にする
-            // material.Extensions.KHRMaterialsUnlit = null;
-
             var dst = new VrmProtobuf.VRMC_materials_mtoon();
             material.Extensions.VRMCMaterialsMtoon = dst;
 
             // Color
-            material.PbrMetallicRoughness.BaseColorFactor.Assign(mtoon.Definition.Color.LitColor);
-            material.PbrMetallicRoughness.BaseColorTexture.Index = mtoon.Definition.Color.LitMultiplyTexture.ToIndex(textures);
+            // unlit で済んでいる
+            // material.PbrMetallicRoughness.BaseColorFactor.Assign(mtoon.Definition.Color.LitColor);
+            if (mtoon.Definition.Color.LitMultiplyTexture != null)
+            {
+                // material.PbrMetallicRoughness.BaseColorTexture = new VrmProtobuf.TextureInfo
+                // {
+                //     Index = mtoon.Definition.Color.LitMultiplyTexture.ToIndex(textures),
+                // };
+
+                // standard, unlit, mtoon で共通処理にすべき？
+                material.PbrMetallicRoughness.BaseColorTexture.Extensions = new VrmProtobuf.TextureInfo.Types.Extensions
+                {
+                    KHRTextureTransform = new VrmProtobuf.TextureInfo.Types.KHR_texture_transformtextureInfoextension
+                    {
+                    },
+                };
+                material.PbrMetallicRoughness.BaseColorTexture.Extensions.KHRTextureTransform.Offset.Assign(mtoon.Definition.TextureOption.MainTextureLeftBottomOriginOffset);
+                material.PbrMetallicRoughness.BaseColorTexture.Extensions.KHRTextureTransform.Scale.Assign(mtoon.Definition.TextureOption.MainTextureLeftBottomOriginScale);
+            }
             dst.ShadeFactor.Assign(mtoon.Definition.Color.ShadeColor);
             dst.ShadeMultiplyTexture = mtoon.Definition.Color.ShadeMultiplyTexture.ToIndex(textures);
             material.AlphaCutoff = mtoon.Definition.Color.CutoutThresholdValue;
@@ -158,7 +186,6 @@ namespace Vrm10
 
             // Emission
             material.EmissiveFactor.Assign(mtoon.Definition.Emission.EmissionColor);
-            material.EmissiveTexture.Index = mtoon.Definition.Emission.EmissionMultiplyTexture.ToIndex(textures);
             if (mtoon.Definition.Emission.EmissionMultiplyTexture != null)
             {
                 material.EmissiveTexture = new VrmProtobuf.TextureInfo
@@ -172,12 +199,11 @@ namespace Vrm10
             dst.LightColorAttenuationFactor = mtoon.Definition.Lighting.LightingInfluence.LightColorAttenuationValue;
             dst.ShadingShiftFactor = mtoon.Definition.Lighting.LitAndShadeMixing.ShadingShiftValue;
             dst.ShadingToonyFactor = mtoon.Definition.Lighting.LitAndShadeMixing.ShadingToonyValue;
-            material.NormalTexture.Scale = mtoon.Definition.Lighting.Normal.NormalScaleValue;
-            material.NormalTexture.Index = mtoon.Definition.Lighting.Normal.NormalTexture.ToIndex(textures);
             if (mtoon.Definition.Lighting.Normal.NormalTexture != null)
             {
                 material.NormalTexture = new VrmProtobuf.MaterialNormalTextureInfo
                 {
+                    Scale = mtoon.Definition.Lighting.Normal.NormalScaleValue,
                     Index = textures.IndexOfNullable(mtoon.Definition.Lighting.Normal.NormalTexture.Texture)
                 };
             }
@@ -219,8 +245,6 @@ namespace Vrm10
             dst.UvAnimationRotationSpeedFactor = mtoon.Definition.TextureOption.UvAnimationRotationSpeedValue;
             dst.UvAnimationScrollXSpeedFactor = mtoon.Definition.TextureOption.UvAnimationScrollXSpeedValue;
             dst.UvAnimationScrollYSpeedFactor = mtoon.Definition.TextureOption.UvAnimationScrollYSpeedValue;
-            material.PbrMetallicRoughness.BaseColorTexture.Extensions.KHRTextureTransform.Offset.Assign(mtoon.Definition.TextureOption.MainTextureLeftBottomOriginOffset);
-            material.PbrMetallicRoughness.BaseColorTexture.Extensions.KHRTextureTransform.Scale.Assign(mtoon.Definition.TextureOption.MainTextureLeftBottomOriginScale);
 
             return material;
         }
