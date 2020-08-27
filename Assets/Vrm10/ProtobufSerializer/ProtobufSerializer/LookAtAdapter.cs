@@ -9,8 +9,8 @@ namespace Vrm10
         {
             return new LookAtRangeMap
             {
-                InputMaxValue = map.InputMaxValue,
-                OutputScaling = map.OutputScale,
+                InputMaxValue = map.InputMaxValue.Value,
+                OutputScaling = map.OutputScale.Value,
             };
         }
 

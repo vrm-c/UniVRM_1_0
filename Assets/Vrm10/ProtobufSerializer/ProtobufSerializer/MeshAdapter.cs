@@ -110,7 +110,7 @@ namespace Vrm10
             return b;
         }
 
-        public static VertexBuffer FromGltf(this VrmProtobuf.MeshPrimitive.Types.Target target, Vrm10Storage storage)
+        public static VertexBuffer FromGltf(this VrmProtobuf.target target, Vrm10Storage storage)
         {
             var b = new VertexBuffer();
             storage.CreateBufferAccessorAndAdd(target.POSITION, b, VertexBuffer.PositionKey);
@@ -183,7 +183,7 @@ namespace Vrm10
                 foreach (var primitive in x.Primitives)
                 {
                     var materialIndex = primitive.Material.HasValue ? primitive.Material.Value : 0;
-                    var count = storage.Gltf.Accessors[primitive.Indices.Value].Count;
+                    var count = storage.Gltf.Accessors[primitive.Indices.Value].Count.Value;
                     mesh.Submeshes.Add(
                         new Submesh(offset, count, materials[materialIndex]));
                     offset += count;
@@ -318,7 +318,7 @@ namespace Vrm10
                     foreach (var (t, accessorIndexMap) in
                         Enumerable.Zip(mesh.MorphTargets, morphTargetAccessorIndexMapList, (t, v) => (t, v)))
                     {
-                        var target = new VrmProtobuf.MeshPrimitive.Types.Target();
+                        var target = new VrmProtobuf.target();
                         prim.Targets.Add(target);
 
                         foreach (var kv in t.VertexBuffer)

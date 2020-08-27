@@ -30,6 +30,28 @@ namespace Vrm10
             }
         }
 
+        public static int TypeCount(this VrmProtobuf.Accessor.Types.accessorType type)
+        {
+            switch (type)
+            {
+                case VrmProtobuf.Accessor.Types.accessorType.Scalar:
+                    return 1;
+                case VrmProtobuf.Accessor.Types.accessorType.Vec2:
+                    return 2;
+                case VrmProtobuf.Accessor.Types.accessorType.Vec3:
+                    return 3;
+                case VrmProtobuf.Accessor.Types.accessorType.Vec4:
+                case VrmProtobuf.Accessor.Types.accessorType.Mat2:
+                    return 4;
+                case VrmProtobuf.Accessor.Types.accessorType.Mat3:
+                    return 9;
+                case VrmProtobuf.Accessor.Types.accessorType.Mat4:
+                    return 16;
+                default:
+                    throw new NotImplementedException();
+            }
+        }
+
         public static int GetStride(this VrmProtobuf.Accessor accessor)
         {
             return accessor.Type.TypeCount() * ((VrmLib.AccessorValueType)accessor.ComponentType).ByteSize();
@@ -60,7 +82,7 @@ namespace Vrm10
                 BufferView = viewIndex,
                 ByteOffset = byteOffset,
                 ComponentType = (int)self.ComponentType,
-                Type = self.AccessorType.ToString(),
+                Type = EnumUtil.Cast<VrmProtobuf.Accessor.Types.accessorType>(self.AccessorType),
                 Count = count,
             };
         }
@@ -129,7 +151,7 @@ namespace Vrm10
                     var accessor = new VrmProtobuf.Accessor
                     {
                         ComponentType = (int)self.ComponentType,
-                        Type = self.AccessorType.ToString(),
+                        Type = EnumUtil.Cast<VrmProtobuf.Accessor.Types.accessorType>(self.AccessorType),
                         Count = self.Count,
                         Sparse = new VrmProtobuf.AccessorSparse
                         {

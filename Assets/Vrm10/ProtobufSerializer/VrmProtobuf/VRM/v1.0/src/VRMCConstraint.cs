@@ -37,9 +37,6 @@ namespace VrmProtobuf {
 
   }
   #region Messages
-  /// <summary>
-  /// Specification undecided in draft state
-  /// </summary>
   public sealed partial class VRMCConstraint : pb::IMessage<VRMCConstraint> {
     private static readonly pb::MessageParser<VRMCConstraint> _parser = new pb::MessageParser<VRMCConstraint>(() => new VRMCConstraint());
     private pb::UnknownFieldSet _unknownFields;

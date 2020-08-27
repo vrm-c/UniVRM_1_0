@@ -25,1078 +25,318 @@ namespace VrmProtobuf {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "CgpnbFRGLnByb3RvEgtWcm1Qcm90b2J1ZhoeZ29vZ2xlL3Byb3RvYnVmL3dy",
-            "YXBwZXJzLnByb3RvGhpWUk1DX21hdGVyaWFsc19tdG9vbi5wcm90bxoVZ2xU",
-            "Rl9leHRlbnNpb25zLnByb3RvIokFCgRnbFRGEhYKDmV4dGVuc2lvbnNVc2Vk",
-            "GAEgAygJEhoKEmV4dGVuc2lvbnNSZXF1aXJlZBgCIAMoCRIoCglhY2Nlc3Nv",
-            "cnMYAyADKAsyFS5Wcm1Qcm90b2J1Zi5BY2Nlc3NvchIqCgphbmltYXRpb25z",
-            "GAQgAygLMhYuVnJtUHJvdG9idWYuQW5pbWF0aW9uEiEKBWFzc2V0GAUgASgL",
-            "MhIuVnJtUHJvdG9idWYuQXNzZXQSJAoHYnVmZmVycxgGIAMoCzITLlZybVBy",
-            "b3RvYnVmLkJ1ZmZlchIsCgtidWZmZXJWaWV3cxgHIAMoCzIXLlZybVByb3Rv",
-            "YnVmLkJ1ZmZlclZpZXcSIgoGaW1hZ2VzGAggAygLMhIuVnJtUHJvdG9idWYu",
-            "SW1hZ2USKAoJbWF0ZXJpYWxzGAkgAygLMhUuVnJtUHJvdG9idWYuTWF0ZXJp",
-            "YWwSIQoGbWVzaGVzGAogAygLMhEuVnJtUHJvdG9idWYuTWVzaBIgCgVub2Rl",
-            "cxgLIAMoCzIRLlZybVByb3RvYnVmLk5vZGUSJgoIc2FtcGxlcnMYDCADKAsy",
-            "FC5Wcm1Qcm90b2J1Zi5TYW1wbGVyEioKBXNjZW5lGA0gASgLMhsuZ29vZ2xl",
-            "LnByb3RvYnVmLkludDMyVmFsdWUSIgoGc2NlbmVzGA4gAygLMhIuVnJtUHJv",
-            "dG9idWYuU2NlbmUSIAoFc2tpbnMYDyADKAsyES5Wcm1Qcm90b2J1Zi5Ta2lu",
-            "EiYKCHRleHR1cmVzGBAgAygLMhQuVnJtUHJvdG9idWYuVGV4dHVyZRIrCgpl",
-            "eHRlbnNpb25zGBEgASgLMhcuVnJtUHJvdG9idWYuRXh0ZW5zaW9ucyKlAgoI",
-            "QWNjZXNzb3ISLwoKYnVmZmVyVmlldxgBIAEoCzIbLmdvb2dsZS5wcm90b2J1",
-            "Zi5JbnQzMlZhbHVlEi8KCmJ5dGVPZmZzZXQYAiABKAsyGy5nb29nbGUucHJv",
-            "dG9idWYuSW50MzJWYWx1ZRIVCg1jb21wb25lbnRUeXBlGAMgASgFEi4KCm5v",
-            "cm1hbGl6ZWQYBCABKAsyGi5nb29nbGUucHJvdG9idWYuQm9vbFZhbHVlEg0K",
-            "BWNvdW50GAUgASgFEgwKBHR5cGUYBiABKAkSCwoDbWF4GAcgAygCEgsKA21p",
-            "bhgIIAMoAhIrCgZzcGFyc2UYCSABKAsyGy5Wcm1Qcm90b2J1Zi5BY2Nlc3Nv",
-            "clNwYXJzZRIMCgRuYW1lGAogASgJIpABChVBY2Nlc3NvclNwYXJzZUluZGlj",
-            "ZXMSLwoKYnVmZmVyVmlldxgBIAEoCzIbLmdvb2dsZS5wcm90b2J1Zi5JbnQz",
-            "MlZhbHVlEi8KCmJ5dGVPZmZzZXQYAiABKAsyGy5nb29nbGUucHJvdG9idWYu",
-            "SW50MzJWYWx1ZRIVCg1jb21wb25lbnRUeXBlGAMgASgFIocBCg5BY2Nlc3Nv",
-            "clNwYXJzZRINCgVjb3VudBgBIAEoBRIzCgdpbmRpY2VzGAIgASgLMiIuVnJt",
-            "UHJvdG9idWYuQWNjZXNzb3JTcGFyc2VJbmRpY2VzEjEKBnZhbHVlcxgDIAEo",
-            "CzIhLlZybVByb3RvYnVmLkFjY2Vzc29yU3BhcnNlVmFsdWVzIngKFEFjY2Vz",
-            "c29yU3BhcnNlVmFsdWVzEi8KCmJ1ZmZlclZpZXcYASABKAsyGy5nb29nbGUu",
-            "cHJvdG9idWYuSW50MzJWYWx1ZRIvCgpieXRlT2Zmc2V0GAIgASgLMhsuZ29v",
-            "Z2xlLnByb3RvYnVmLkludDMyVmFsdWUiUQoWQW5pbWF0aW9uQ2hhbm5lbFRh",
-            "cmdldBIpCgRub2RlGAEgASgLMhsuZ29vZ2xlLnByb3RvYnVmLkludDMyVmFs",
-            "dWUSDAoEcGF0aBgCIAEoCSJ1ChBBbmltYXRpb25DaGFubmVsEiwKB3NhbXBs",
-            "ZXIYASABKAsyGy5nb29nbGUucHJvdG9idWYuSW50MzJWYWx1ZRIzCgZ0YXJn",
-            "ZXQYAiABKAsyIy5Wcm1Qcm90b2J1Zi5BbmltYXRpb25DaGFubmVsVGFyZ2V0",
-            "IoIBChBBbmltYXRpb25TYW1wbGVyEioKBWlucHV0GAEgASgLMhsuZ29vZ2xl",
-            "LnByb3RvYnVmLkludDMyVmFsdWUSFQoNaW50ZXJwb2xhdGlvbhgCIAEoCRIr",
-            "CgZvdXRwdXQYAyABKAsyGy5nb29nbGUucHJvdG9idWYuSW50MzJWYWx1ZSJ7",
-            "CglBbmltYXRpb24SLwoIY2hhbm5lbHMYASADKAsyHS5Wcm1Qcm90b2J1Zi5B",
-            "bmltYXRpb25DaGFubmVsEi8KCHNhbXBsZXJzGAIgAygLMh0uVnJtUHJvdG9i",
-            "dWYuQW5pbWF0aW9uU2FtcGxlchIMCgRuYW1lGAMgASgJIlIKBUFzc2V0EhEK",
-            "CWNvcHlyaWdodBgBIAEoCRIRCglnZW5lcmF0b3IYAiABKAkSDwoHdmVyc2lv",
-            "bhgDIAEoCRISCgptaW5WZXJzaW9uGAQgASgJIjcKBkJ1ZmZlchILCgN1cmkY",
-            "ASABKAkSEgoKYnl0ZUxlbmd0aBgCIAEoBRIMCgRuYW1lGAMgASgJIs0BCgpC",
-            "dWZmZXJWaWV3EisKBmJ1ZmZlchgBIAEoCzIbLmdvb2dsZS5wcm90b2J1Zi5J",
-            "bnQzMlZhbHVlEi8KCmJ5dGVPZmZzZXQYAiABKAsyGy5nb29nbGUucHJvdG9i",
-            "dWYuSW50MzJWYWx1ZRISCgpieXRlTGVuZ3RoGAMgASgFEi8KCmJ5dGVTdHJp",
-            "ZGUYBCABKAsyGy5nb29nbGUucHJvdG9idWYuSW50MzJWYWx1ZRIMCgRuYW1l",
-            "GAUgASgJEg4KBnRhcmdldBgGIAEoBSJlCgVJbWFnZRILCgN1cmkYASABKAkS",
-            "EAoIbWltZVR5cGUYAiABKAkSLwoKYnVmZmVyVmlldxgDIAEoCzIbLmdvb2ds",
-            "ZS5wcm90b2J1Zi5JbnQzMlZhbHVlEgwKBG5hbWUYBCABKAkiwQIKGU1hdGVy",
-            "aWFsTm9ybWFsVGV4dHVyZUluZm8SKgoFaW5kZXgYASABKAsyGy5nb29nbGUu",
-            "cHJvdG9idWYuSW50MzJWYWx1ZRItCgh0ZXhDb29yZBgCIAEoCzIbLmdvb2ds",
-            "ZS5wcm90b2J1Zi5JbnQzMlZhbHVlEioKBXNjYWxlGAMgASgLMhsuZ29vZ2xl",
-            "LnByb3RvYnVmLkZsb2F0VmFsdWUSRQoKZXh0ZW5zaW9ucxgEIAEoCzIxLlZy",
-            "bVByb3RvYnVmLk1hdGVyaWFsTm9ybWFsVGV4dHVyZUluZm8uRXh0ZW5zaW9u",
-            "cxpWCgpFeHRlbnNpb25zEkgKFUtIUl90ZXh0dXJlX3RyYW5zZm9ybRgBIAEo",
-            "CzIpLlZybVByb3RvYnVmLktIUlRleHR1cmVUcmFuc2Zvcm1FeHRlbnNpb24i",
-            "ygIKHE1hdGVyaWFsT2NjbHVzaW9uVGV4dHVyZUluZm8SKgoFaW5kZXgYASAB",
-            "KAsyGy5nb29nbGUucHJvdG9idWYuSW50MzJWYWx1ZRItCgh0ZXhDb29yZBgC",
-            "IAEoCzIbLmdvb2dsZS5wcm90b2J1Zi5JbnQzMlZhbHVlEi0KCHN0cmVuZ3Ro",
-            "GAMgASgLMhsuZ29vZ2xlLnByb3RvYnVmLkZsb2F0VmFsdWUSSAoKZXh0ZW5z",
-            "aW9ucxgEIAEoCzI0LlZybVByb3RvYnVmLk1hdGVyaWFsT2NjbHVzaW9uVGV4",
-            "dHVyZUluZm8uRXh0ZW5zaW9ucxpWCgpFeHRlbnNpb25zEkgKFUtIUl90ZXh0",
-            "dXJlX3RyYW5zZm9ybRgBIAEoCzIpLlZybVByb3RvYnVmLktIUlRleHR1cmVU",
-            "cmFuc2Zvcm1FeHRlbnNpb24ikgIKHE1hdGVyaWFsUGJyTWV0YWxsaWNSb3Vn",
-            "aG5lc3MSFwoPYmFzZUNvbG9yRmFjdG9yGAEgAygCEjIKEGJhc2VDb2xvclRl",
-            "eHR1cmUYAiABKAsyGC5Wcm1Qcm90b2J1Zi5UZXh0dXJlSW5mbxIzCg5tZXRh",
-            "bGxpY0ZhY3RvchgDIAEoCzIbLmdvb2dsZS5wcm90b2J1Zi5GbG9hdFZhbHVl",
-            "EjQKD3JvdWdobmVzc0ZhY3RvchgEIAEoCzIbLmdvb2dsZS5wcm90b2J1Zi5G",
-            "bG9hdFZhbHVlEjoKGG1ldGFsbGljUm91Z2huZXNzVGV4dHVyZRgFIAEoCzIY",
-            "LlZybVByb3RvYnVmLlRleHR1cmVJbmZvIhUKE0tIUl9tYXRlcmlhbHNfdW5s",
-            "aXQi0QUKCE1hdGVyaWFsEgwKBG5hbWUYASABKAkSRwoUcGJyTWV0YWxsaWNS",
-            "b3VnaG5lc3MYAiABKAsyKS5Wcm1Qcm90b2J1Zi5NYXRlcmlhbFBick1ldGFs",
-            "bGljUm91Z2huZXNzEj0KDW5vcm1hbFRleHR1cmUYAyABKAsyJi5Wcm1Qcm90",
-            "b2J1Zi5NYXRlcmlhbE5vcm1hbFRleHR1cmVJbmZvEkMKEG9jY2x1c2lvblRl",
-            "eHR1cmUYBCABKAsyKS5Wcm1Qcm90b2J1Zi5NYXRlcmlhbE9jY2x1c2lvblRl",
-            "eHR1cmVJbmZvEjEKD2VtaXNzaXZlVGV4dHVyZRgFIAEoCzIYLlZybVByb3Rv",
-            "YnVmLlRleHR1cmVJbmZvEhYKDmVtaXNzaXZlRmFjdG9yGAYgAygCEhEKCWFs",
-            "cGhhTW9kZRgHIAEoCRIwCgthbHBoYUN1dG9mZhgIIAEoCzIbLmdvb2dsZS5w",
-            "cm90b2J1Zi5GbG9hdFZhbHVlEi8KC2RvdWJsZVNpZGVkGAkgASgLMhouZ29v",
-            "Z2xlLnByb3RvYnVmLkJvb2xWYWx1ZRI0CgpleHRlbnNpb25zGAogASgLMiAu",
-            "VnJtUHJvdG9idWYuTWF0ZXJpYWwuRXh0ZW5zaW9ucxryAQoKRXh0ZW5zaW9u",
-            "cxI9ChNLSFJfbWF0ZXJpYWxzX3VubGl0GAEgASgLMiAuVnJtUHJvdG9idWYu",
-            "S0hSX21hdGVyaWFsc191bmxpdBI/ChRWUk1DX21hdGVyaWFsc19tdG9vbhgC",
-            "IAEoCzIhLlZybVByb3RvYnVmLlZSTUNfbWF0ZXJpYWxzX210b29uEmQKI0tI",
-            "Ul9tYXRlcmlhbHNfcGJyU3BlY3VsYXJHbG9zc2luZXNzGAMgASgLMjcuVnJt",
-            "UHJvdG9idWYuS0hSTWF0ZXJpYWxzUGJyU3BlY3VsYXJHbG9zc2luZXNzRXh0",
-            "ZW5zaW9uIqUECg1NZXNoUHJpbWl0aXZlEj4KCmF0dHJpYnV0ZXMYASADKAsy",
-            "Ki5Wcm1Qcm90b2J1Zi5NZXNoUHJpbWl0aXZlLkF0dHJpYnV0ZXNFbnRyeRIs",
-            "CgdpbmRpY2VzGAIgASgLMhsuZ29vZ2xlLnByb3RvYnVmLkludDMyVmFsdWUS",
-            "LQoIbWF0ZXJpYWwYAyABKAsyGy5nb29nbGUucHJvdG9idWYuSW50MzJWYWx1",
-            "ZRIpCgRtb2RlGAQgASgLMhsuZ29vZ2xlLnByb3RvYnVmLkludDMyVmFsdWUS",
-            "MgoHdGFyZ2V0cxgFIAMoCzIhLlZybVByb3RvYnVmLk1lc2hQcmltaXRpdmUu",
-            "VGFyZ2V0EjEKBmV4dHJhcxgGIAEoCzIhLlZybVByb3RvYnVmLk1lc2hQcmlt",
-            "aXRpdmUuRXh0cmFzGjEKD0F0dHJpYnV0ZXNFbnRyeRILCgNrZXkYASABKAkS",
-            "DQoFdmFsdWUYAiABKAU6AjgBGpIBCgZUYXJnZXQSLQoIUE9TSVRJT04YASAB",
-            "KAsyGy5nb29nbGUucHJvdG9idWYuSW50MzJWYWx1ZRIrCgZOT1JNQUwYAiAB",
-            "KAsyGy5nb29nbGUucHJvdG9idWYuSW50MzJWYWx1ZRIsCgdUQU5HRU5UGAMg",
-            "ASgLMhsuZ29vZ2xlLnByb3RvYnVmLkludDMyVmFsdWUaHQoGRXh0cmFzEhMK",
-            "C3RhcmdldE5hbWVzGAEgAygJIkQKBE1lc2gSLgoKcHJpbWl0aXZlcxgCIAMo",
-            "CzIaLlZybVByb3RvYnVmLk1lc2hQcmltaXRpdmUSDAoEbmFtZRgBIAEoCSLC",
-            "AQoETm9kZRIMCgRuYW1lGAEgASgJEhAKCGNoaWxkcmVuGAIgAygFEg4KBm1h",
-            "dHJpeBgDIAMoAhIQCghyb3RhdGlvbhgEIAMoAhINCgVzY2FsZRgFIAMoAhIT",
-            "Cgt0cmFuc2xhdGlvbhgGIAMoAhIpCgRtZXNoGAcgASgLMhsuZ29vZ2xlLnBy",
-            "b3RvYnVmLkludDMyVmFsdWUSKQoEc2tpbhgIIAEoCzIbLmdvb2dsZS5wcm90",
-            "b2J1Zi5JbnQzMlZhbHVlIsEBCgdTYW1wbGVyEi4KCW1hZ0ZpbHRlchgBIAEo",
-            "CzIbLmdvb2dsZS5wcm90b2J1Zi5JbnQzMlZhbHVlEi4KCW1pbkZpbHRlchgC",
-            "IAEoCzIbLmdvb2dsZS5wcm90b2J1Zi5JbnQzMlZhbHVlEioKBXdyYXBTGAMg",
-            "ASgLMhsuZ29vZ2xlLnByb3RvYnVmLkludDMyVmFsdWUSKgoFd3JhcFQYBCAB",
-            "KAsyGy5nb29nbGUucHJvdG9idWYuSW50MzJWYWx1ZSIkCgVTY2VuZRINCgVu",
-            "b2RlcxgBIAMoBRIMCgRuYW1lGAIgASgJIo0BCgRTa2luEjgKE2ludmVyc2VC",
-            "aW5kTWF0cmljZXMYASABKAsyGy5nb29nbGUucHJvdG9idWYuSW50MzJWYWx1",
-            "ZRItCghza2VsZXRvbhgCIAEoCzIbLmdvb2dsZS5wcm90b2J1Zi5JbnQzMlZh",
-            "bHVlEg4KBmpvaW50cxgDIAMoBRIMCgRuYW1lGAQgASgJInIKB1RleHR1cmUS",
-            "LAoHc2FtcGxlchgBIAEoCzIbLmdvb2dsZS5wcm90b2J1Zi5JbnQzMlZhbHVl",
-            "EisKBnNvdXJjZRgCIAEoCzIbLmdvb2dsZS5wcm90b2J1Zi5JbnQzMlZhbHVl",
-            "EgwKBG5hbWUYAyABKAki+QEKC1RleHR1cmVJbmZvEioKBWluZGV4GAEgASgL",
-            "MhsuZ29vZ2xlLnByb3RvYnVmLkludDMyVmFsdWUSLQoIdGV4Q29vcmQYAiAB",
-            "KAsyGy5nb29nbGUucHJvdG9idWYuSW50MzJWYWx1ZRI3CgpleHRlbnNpb25z",
-            "GAMgASgLMiMuVnJtUHJvdG9idWYuVGV4dHVyZUluZm8uRXh0ZW5zaW9ucxpW",
-            "CgpFeHRlbnNpb25zEkgKFUtIUl90ZXh0dXJlX3RyYW5zZm9ybRgBIAEoCzIp",
-            "LlZybVByb3RvYnVmLktIUlRleHR1cmVUcmFuc2Zvcm1FeHRlbnNpb24imwEK",
-            "HEtIUlRleHR1cmVUcmFuc2Zvcm1FeHRlbnNpb24SDgoGb2Zmc2V0GAEgAygC",
-            "Ei0KCHJvdGF0aW9uGAIgASgLMhsuZ29vZ2xlLnByb3RvYnVmLkZsb2F0VmFs",
-            "dWUSDQoFc2NhbGUYAyADKAISLQoIdGV4Q29vcmQYBCABKAsyGy5nb29nbGUu",
-            "cHJvdG9idWYuSW50MzJWYWx1ZSKBAgoqS0hSTWF0ZXJpYWxzUGJyU3BlY3Vs",
-            "YXJHbG9zc2luZXNzRXh0ZW5zaW9uEhUKDWRpZmZ1c2VGYWN0b3IYASADKAIS",
-            "MAoOZGlmZnVzZVRleHR1cmUYAiABKAsyGC5Wcm1Qcm90b2J1Zi5UZXh0dXJl",
-            "SW5mbxIWCg5zcGVjdWxhckZhY3RvchgDIAMoAhI1ChBnbG9zc2luZXNzRmFj",
-            "dG9yGAQgASgLMhsuZ29vZ2xlLnByb3RvYnVmLkZsb2F0VmFsdWUSOwoZc3Bl",
-            "Y3VsYXJHbG9zc2luZXNzVGV4dHVyZRgFIAEoCzIYLlZybVByb3RvYnVmLlRl",
-            "eHR1cmVJbmZvYgZwcm90bzM="));
+            "YXBwZXJzLnByb3RvGg5WUk1DX3ZybS5wcm90bxoVVlJNQ19zcHJpbmdCb25l",
+            "LnByb3RvGhVWUk1DX2NvbnN0cmFpbnQucHJvdG8aGlZSTUNfbWF0ZXJpYWxz",
+            "X210b29uLnByb3RvGhhWUk1DX25vZGVfY29sbGlkZXIucHJvdG8iwwIKFUFj",
+            "Y2Vzc29yU3BhcnNlSW5kaWNlcxJBCgpleHRlbnNpb25zGAEgASgLMi0uVnJt",
+            "UHJvdG9idWYuQWNjZXNzb3JTcGFyc2VJbmRpY2VzLkV4dGVuc2lvbnMSOQoG",
+            "ZXh0cmFzGAIgASgLMikuVnJtUHJvdG9idWYuQWNjZXNzb3JTcGFyc2VJbmRp",
+            "Y2VzLkV4dHJhcxIvCgpidWZmZXJWaWV3GAMgASgLMhsuZ29vZ2xlLnByb3Rv",
+            "YnVmLkludDMyVmFsdWUSLwoKYnl0ZU9mZnNldBgEIAEoCzIbLmdvb2dsZS5w",
+            "cm90b2J1Zi5JbnQzMlZhbHVlEjIKDWNvbXBvbmVudFR5cGUYBSABKAsyGy5n",
+            "b29nbGUucHJvdG9idWYuSW50MzJWYWx1ZRoMCgpFeHRlbnNpb25zGggKBkV4",
+            "dHJhcyKMAgoUQWNjZXNzb3JTcGFyc2VWYWx1ZXMSQAoKZXh0ZW5zaW9ucxgB",
+            "IAEoCzIsLlZybVByb3RvYnVmLkFjY2Vzc29yU3BhcnNlVmFsdWVzLkV4dGVu",
+            "c2lvbnMSOAoGZXh0cmFzGAIgASgLMiguVnJtUHJvdG9idWYuQWNjZXNzb3JT",
+            "cGFyc2VWYWx1ZXMuRXh0cmFzEi8KCmJ1ZmZlclZpZXcYAyABKAsyGy5nb29n",
+            "bGUucHJvdG9idWYuSW50MzJWYWx1ZRIvCgpieXRlT2Zmc2V0GAQgASgLMhsu",
+            "Z29vZ2xlLnByb3RvYnVmLkludDMyVmFsdWUaDAoKRXh0ZW5zaW9ucxoICgZF",
+            "eHRyYXMirAIKDkFjY2Vzc29yU3BhcnNlEjoKCmV4dGVuc2lvbnMYASABKAsy",
+            "Ji5Wcm1Qcm90b2J1Zi5BY2Nlc3NvclNwYXJzZS5FeHRlbnNpb25zEjIKBmV4",
+            "dHJhcxgCIAEoCzIiLlZybVByb3RvYnVmLkFjY2Vzc29yU3BhcnNlLkV4dHJh",
+            "cxIqCgVjb3VudBgDIAEoCzIbLmdvb2dsZS5wcm90b2J1Zi5JbnQzMlZhbHVl",
+            "EjMKB2luZGljZXMYBCABKAsyIi5Wcm1Qcm90b2J1Zi5BY2Nlc3NvclNwYXJz",
+            "ZUluZGljZXMSMQoGdmFsdWVzGAUgASgLMiEuVnJtUHJvdG9idWYuQWNjZXNz",
+            "b3JTcGFyc2VWYWx1ZXMaDAoKRXh0ZW5zaW9ucxoICgZFeHRyYXMi1wQKCEFj",
+            "Y2Vzc29yEjQKCmV4dGVuc2lvbnMYASABKAsyIC5Wcm1Qcm90b2J1Zi5BY2Nl",
+            "c3Nvci5FeHRlbnNpb25zEiwKBmV4dHJhcxgCIAEoCzIcLlZybVByb3RvYnVm",
+            "LkFjY2Vzc29yLkV4dHJhcxIMCgRuYW1lGAMgASgJEi8KCmJ1ZmZlclZpZXcY",
+            "BCABKAsyGy5nb29nbGUucHJvdG9idWYuSW50MzJWYWx1ZRIvCgpieXRlT2Zm",
+            "c2V0GAUgASgLMhsuZ29vZ2xlLnByb3RvYnVmLkludDMyVmFsdWUSMgoNY29t",
+            "cG9uZW50VHlwZRgGIAEoCzIbLmdvb2dsZS5wcm90b2J1Zi5JbnQzMlZhbHVl",
+            "Ei4KCm5vcm1hbGl6ZWQYByABKAsyGi5nb29nbGUucHJvdG9idWYuQm9vbFZh",
+            "bHVlEioKBWNvdW50GAggASgLMhsuZ29vZ2xlLnByb3RvYnVmLkludDMyVmFs",
+            "dWUSMAoEdHlwZRgJIAEoDjIiLlZybVByb3RvYnVmLkFjY2Vzc29yLmFjY2Vz",
+            "c29yVHlwZRILCgNtYXgYCiADKAISCwoDbWluGAsgAygCEisKBnNwYXJzZRgM",
+            "IAEoCzIbLlZybVByb3RvYnVmLkFjY2Vzc29yU3BhcnNlGgwKCkV4dGVuc2lv",
+            "bnMaCAoGRXh0cmFzIlYKDGFjY2Vzc29yVHlwZRIKCgZTQ0FMQVIQABIICgRW",
+            "RUMyEAESCAoEVkVDMxACEggKBFZFQzQQAxIICgRNQVQyEAQSCAoETUFUMxAF",
+            "EggKBE1BVDQQBiLaAgoWQW5pbWF0aW9uQ2hhbm5lbFRhcmdldBJCCgpleHRl",
+            "bnNpb25zGAEgASgLMi4uVnJtUHJvdG9idWYuQW5pbWF0aW9uQ2hhbm5lbFRh",
+            "cmdldC5FeHRlbnNpb25zEjoKBmV4dHJhcxgCIAEoCzIqLlZybVByb3RvYnVm",
+            "LkFuaW1hdGlvbkNoYW5uZWxUYXJnZXQuRXh0cmFzEikKBG5vZGUYAyABKAsy",
+            "Gy5nb29nbGUucHJvdG9idWYuSW50MzJWYWx1ZRI6CgRwYXRoGAQgASgOMiwu",
+            "VnJtUHJvdG9idWYuQW5pbWF0aW9uQ2hhbm5lbFRhcmdldC5wYXRoVHlwZRoM",
+            "CgpFeHRlbnNpb25zGggKBkV4dHJhcyJBCghwYXRoVHlwZRIPCgt0cmFuc2xh",
+            "dGlvbhAAEgwKCHJvdGF0aW9uEAESCQoFc2NhbGUQAhILCgd3ZWlnaHRzEAMi",
+            "gQIKEEFuaW1hdGlvbkNoYW5uZWwSPAoKZXh0ZW5zaW9ucxgBIAEoCzIoLlZy",
+            "bVByb3RvYnVmLkFuaW1hdGlvbkNoYW5uZWwuRXh0ZW5zaW9ucxI0CgZleHRy",
+            "YXMYAiABKAsyJC5Wcm1Qcm90b2J1Zi5BbmltYXRpb25DaGFubmVsLkV4dHJh",
+            "cxIsCgdzYW1wbGVyGAMgASgLMhsuZ29vZ2xlLnByb3RvYnVmLkludDMyVmFs",
+            "dWUSMwoGdGFyZ2V0GAQgASgLMiMuVnJtUHJvdG9idWYuQW5pbWF0aW9uQ2hh",
+            "bm5lbFRhcmdldBoMCgpFeHRlbnNpb25zGggKBkV4dHJhcyL7AgoQQW5pbWF0",
+            "aW9uU2FtcGxlchI8CgpleHRlbnNpb25zGAEgASgLMiguVnJtUHJvdG9idWYu",
+            "QW5pbWF0aW9uU2FtcGxlci5FeHRlbnNpb25zEjQKBmV4dHJhcxgCIAEoCzIk",
+            "LlZybVByb3RvYnVmLkFuaW1hdGlvblNhbXBsZXIuRXh0cmFzEioKBWlucHV0",
+            "GAMgASgLMhsuZ29vZ2xlLnByb3RvYnVmLkludDMyVmFsdWUSRgoNaW50ZXJw",
+            "b2xhdGlvbhgEIAEoDjIvLlZybVByb3RvYnVmLkFuaW1hdGlvblNhbXBsZXIu",
+            "aW50ZXJwb2xhdGlvblR5cGUSKwoGb3V0cHV0GAUgASgLMhsuZ29vZ2xlLnBy",
+            "b3RvYnVmLkludDMyVmFsdWUaDAoKRXh0ZW5zaW9ucxoICgZFeHRyYXMiOgoR",
+            "aW50ZXJwb2xhdGlvblR5cGUSCgoGTElORUFSEAASCAoEU1RFUBABEg8KC0NV",
+            "QklDU1BMSU5FEAIi+QEKCUFuaW1hdGlvbhI1CgpleHRlbnNpb25zGAEgASgL",
+            "MiEuVnJtUHJvdG9idWYuQW5pbWF0aW9uLkV4dGVuc2lvbnMSLQoGZXh0cmFz",
+            "GAIgASgLMh0uVnJtUHJvdG9idWYuQW5pbWF0aW9uLkV4dHJhcxIMCgRuYW1l",
+            "GAMgASgJEi8KCGNoYW5uZWxzGAQgAygLMh0uVnJtUHJvdG9idWYuQW5pbWF0",
+            "aW9uQ2hhbm5lbBIvCghzYW1wbGVycxgFIAMoCzIdLlZybVByb3RvYnVmLkFu",
+            "aW1hdGlvblNhbXBsZXIaDAoKRXh0ZW5zaW9ucxoICgZFeHRyYXMiyAEKBUFz",
+            "c2V0EjEKCmV4dGVuc2lvbnMYASABKAsyHS5Wcm1Qcm90b2J1Zi5Bc3NldC5F",
+            "eHRlbnNpb25zEikKBmV4dHJhcxgCIAEoCzIZLlZybVByb3RvYnVmLkFzc2V0",
+            "LkV4dHJhcxIRCgljb3B5cmlnaHQYAyABKAkSEQoJZ2VuZXJhdG9yGAQgASgJ",
+            "Eg8KB3ZlcnNpb24YBSABKAkSEgoKbWluVmVyc2lvbhgGIAEoCRoMCgpFeHRl",
+            "bnNpb25zGggKBkV4dHJhcyLMAQoGQnVmZmVyEjIKCmV4dGVuc2lvbnMYASAB",
+            "KAsyHi5Wcm1Qcm90b2J1Zi5CdWZmZXIuRXh0ZW5zaW9ucxIqCgZleHRyYXMY",
+            "AiABKAsyGi5Wcm1Qcm90b2J1Zi5CdWZmZXIuRXh0cmFzEgwKBG5hbWUYAyAB",
+            "KAkSCwoDdXJpGAQgASgJEi8KCmJ5dGVMZW5ndGgYBSABKAsyGy5nb29nbGUu",
+            "cHJvdG9idWYuSW50MzJWYWx1ZRoMCgpFeHRlbnNpb25zGggKBkV4dHJhcyKH",
+            "AwoKQnVmZmVyVmlldxI2CgpleHRlbnNpb25zGAEgASgLMiIuVnJtUHJvdG9i",
+            "dWYuQnVmZmVyVmlldy5FeHRlbnNpb25zEi4KBmV4dHJhcxgCIAEoCzIeLlZy",
+            "bVByb3RvYnVmLkJ1ZmZlclZpZXcuRXh0cmFzEgwKBG5hbWUYAyABKAkSKwoG",
+            "YnVmZmVyGAQgASgLMhsuZ29vZ2xlLnByb3RvYnVmLkludDMyVmFsdWUSLwoK",
+            "Ynl0ZU9mZnNldBgFIAEoCzIbLmdvb2dsZS5wcm90b2J1Zi5JbnQzMlZhbHVl",
+            "Ei8KCmJ5dGVMZW5ndGgYBiABKAsyGy5nb29nbGUucHJvdG9idWYuSW50MzJW",
+            "YWx1ZRIvCgpieXRlU3RyaWRlGAcgASgLMhsuZ29vZ2xlLnByb3RvYnVmLklu",
+            "dDMyVmFsdWUSKwoGdGFyZ2V0GAggASgLMhsuZ29vZ2xlLnByb3RvYnVmLklu",
+            "dDMyVmFsdWUaDAoKRXh0ZW5zaW9ucxoICgZFeHRyYXMi0QIKEkNhbWVyYU9y",
+            "dGhvZ3JhcGhpYxI+CgpleHRlbnNpb25zGAEgASgLMiouVnJtUHJvdG9idWYu",
+            "Q2FtZXJhT3J0aG9ncmFwaGljLkV4dGVuc2lvbnMSNgoGZXh0cmFzGAIgASgL",
+            "MiYuVnJtUHJvdG9idWYuQ2FtZXJhT3J0aG9ncmFwaGljLkV4dHJhcxIpCgR4",
+            "bWFnGAMgASgLMhsuZ29vZ2xlLnByb3RvYnVmLkZsb2F0VmFsdWUSKQoEeW1h",
+            "ZxgEIAEoCzIbLmdvb2dsZS5wcm90b2J1Zi5GbG9hdFZhbHVlEikKBHpmYXIY",
+            "BSABKAsyGy5nb29nbGUucHJvdG9idWYuRmxvYXRWYWx1ZRIqCgV6bmVhchgG",
+            "IAEoCzIbLmdvb2dsZS5wcm90b2J1Zi5GbG9hdFZhbHVlGgwKCkV4dGVuc2lv",
+            "bnMaCAoGRXh0cmFzItUCChFDYW1lcmFQZXJzcGVjdGl2ZRI9CgpleHRlbnNp",
+            "b25zGAEgASgLMikuVnJtUHJvdG9idWYuQ2FtZXJhUGVyc3BlY3RpdmUuRXh0",
+            "ZW5zaW9ucxI1CgZleHRyYXMYAiABKAsyJS5Wcm1Qcm90b2J1Zi5DYW1lcmFQ",
+            "ZXJzcGVjdGl2ZS5FeHRyYXMSMAoLYXNwZWN0UmF0aW8YAyABKAsyGy5nb29n",
+            "bGUucHJvdG9idWYuRmxvYXRWYWx1ZRIpCgR5Zm92GAQgASgLMhsuZ29vZ2xl",
+            "LnByb3RvYnVmLkZsb2F0VmFsdWUSKQoEemZhchgFIAEoCzIbLmdvb2dsZS5w",
+            "cm90b2J1Zi5GbG9hdFZhbHVlEioKBXpuZWFyGAYgASgLMhsuZ29vZ2xlLnBy",
+            "b3RvYnVmLkZsb2F0VmFsdWUaDAoKRXh0ZW5zaW9ucxoICgZFeHRyYXMiiAIK",
+            "BkNhbWVyYRIyCgpleHRlbnNpb25zGAEgASgLMh4uVnJtUHJvdG9idWYuQ2Ft",
+            "ZXJhLkV4dGVuc2lvbnMSKgoGZXh0cmFzGAIgASgLMhouVnJtUHJvdG9idWYu",
+            "Q2FtZXJhLkV4dHJhcxIMCgRuYW1lGAMgASgJEjUKDG9ydGhvZ3JhcGhpYxgE",
+            "IAEoCzIfLlZybVByb3RvYnVmLkNhbWVyYU9ydGhvZ3JhcGhpYxIzCgtwZXJz",
+            "cGVjdGl2ZRgFIAEoCzIeLlZybVByb3RvYnVmLkNhbWVyYVBlcnNwZWN0aXZl",
+            "EgwKBHR5cGUYBiABKAkaDAoKRXh0ZW5zaW9ucxoICgZFeHRyYXMi2wEKBUlt",
+            "YWdlEjEKCmV4dGVuc2lvbnMYASABKAsyHS5Wcm1Qcm90b2J1Zi5JbWFnZS5F",
+            "eHRlbnNpb25zEikKBmV4dHJhcxgCIAEoCzIZLlZybVByb3RvYnVmLkltYWdl",
+            "LkV4dHJhcxIMCgRuYW1lGAMgASgJEgsKA3VyaRgEIAEoCRIvCgpidWZmZXJW",
+            "aWV3GAUgASgLMhsuZ29vZ2xlLnByb3RvYnVmLkludDMyVmFsdWUSEAoIbWlt",
+            "ZVR5cGUYBiABKAkaDAoKRXh0ZW5zaW9ucxoICgZFeHRyYXMizgUKC1RleHR1",
+            "cmVJbmZvEjcKCmV4dGVuc2lvbnMYASABKAsyIy5Wcm1Qcm90b2J1Zi5UZXh0",
+            "dXJlSW5mby5FeHRlbnNpb25zEi8KBmV4dHJhcxgCIAEoCzIfLlZybVByb3Rv",
+            "YnVmLlRleHR1cmVJbmZvLkV4dHJhcxIqCgVpbmRleBgDIAEoCzIbLmdvb2ds",
+            "ZS5wcm90b2J1Zi5JbnQzMlZhbHVlEi0KCHRleENvb3JkGAQgASgLMhsuZ29v",
+            "Z2xlLnByb3RvYnVmLkludDMyVmFsdWUa/gIKKUtIUl90ZXh0dXJlX3RyYW5z",
+            "Zm9ybXRleHR1cmVJbmZvZXh0ZW5zaW9uEmEKCmV4dGVuc2lvbnMYASABKAsy",
+            "TS5Wcm1Qcm90b2J1Zi5UZXh0dXJlSW5mby5LSFJfdGV4dHVyZV90cmFuc2Zv",
+            "cm10ZXh0dXJlSW5mb2V4dGVuc2lvbi5FeHRlbnNpb25zElkKBmV4dHJhcxgC",
+            "IAEoCzJJLlZybVByb3RvYnVmLlRleHR1cmVJbmZvLktIUl90ZXh0dXJlX3Ry",
+            "YW5zZm9ybXRleHR1cmVJbmZvZXh0ZW5zaW9uLkV4dHJhcxIOCgZvZmZzZXQY",
+            "AyADKAISLQoIcm90YXRpb24YBCABKAsyGy5nb29nbGUucHJvdG9idWYuRmxv",
+            "YXRWYWx1ZRINCgVzY2FsZRgFIAMoAhItCgh0ZXhDb29yZBgGIAEoCzIbLmdv",
+            "b2dsZS5wcm90b2J1Zi5JbnQzMlZhbHVlGgwKCkV4dGVuc2lvbnMaCAoGRXh0",
+            "cmFzGm8KCkV4dGVuc2lvbnMSYQoVS0hSX3RleHR1cmVfdHJhbnNmb3JtGAEg",
+            "ASgLMkIuVnJtUHJvdG9idWYuVGV4dHVyZUluZm8uS0hSX3RleHR1cmVfdHJh",
+            "bnNmb3JtdGV4dHVyZUluZm9leHRlbnNpb24aCAoGRXh0cmFzIrYDChxNYXRl",
+            "cmlhbFBCUk1ldGFsbGljUm91Z2huZXNzEkgKCmV4dGVuc2lvbnMYASABKAsy",
+            "NC5Wcm1Qcm90b2J1Zi5NYXRlcmlhbFBCUk1ldGFsbGljUm91Z2huZXNzLkV4",
+            "dGVuc2lvbnMSQAoGZXh0cmFzGAIgASgLMjAuVnJtUHJvdG9idWYuTWF0ZXJp",
+            "YWxQQlJNZXRhbGxpY1JvdWdobmVzcy5FeHRyYXMSFwoPYmFzZUNvbG9yRmFj",
+            "dG9yGAMgAygCEjIKEGJhc2VDb2xvclRleHR1cmUYBCABKAsyGC5Wcm1Qcm90",
+            "b2J1Zi5UZXh0dXJlSW5mbxIzCg5tZXRhbGxpY0ZhY3RvchgFIAEoCzIbLmdv",
+            "b2dsZS5wcm90b2J1Zi5GbG9hdFZhbHVlEjQKD3JvdWdobmVzc0ZhY3RvchgG",
+            "IAEoCzIbLmdvb2dsZS5wcm90b2J1Zi5GbG9hdFZhbHVlEjoKGG1ldGFsbGlj",
+            "Um91Z2huZXNzVGV4dHVyZRgHIAEoCzIYLlZybVByb3RvYnVmLlRleHR1cmVJ",
+            "bmZvGgwKCkV4dGVuc2lvbnMaCAoGRXh0cmFzIsACChlNYXRlcmlhbE5vcm1h",
+            "bFRleHR1cmVJbmZvEkUKCmV4dGVuc2lvbnMYASABKAsyMS5Wcm1Qcm90b2J1",
+            "Zi5NYXRlcmlhbE5vcm1hbFRleHR1cmVJbmZvLkV4dGVuc2lvbnMSPQoGZXh0",
+            "cmFzGAIgASgLMi0uVnJtUHJvdG9idWYuTWF0ZXJpYWxOb3JtYWxUZXh0dXJl",
+            "SW5mby5FeHRyYXMSKgoFaW5kZXgYAyABKAsyGy5nb29nbGUucHJvdG9idWYu",
+            "SW50MzJWYWx1ZRItCgh0ZXhDb29yZBgEIAEoCzIbLmdvb2dsZS5wcm90b2J1",
+            "Zi5JbnQzMlZhbHVlEioKBXNjYWxlGAUgASgLMhsuZ29vZ2xlLnByb3RvYnVm",
+            "LkZsb2F0VmFsdWUaDAoKRXh0ZW5zaW9ucxoICgZFeHRyYXMizAIKHE1hdGVy",
+            "aWFsT2NjbHVzaW9uVGV4dHVyZUluZm8SSAoKZXh0ZW5zaW9ucxgBIAEoCzI0",
+            "LlZybVByb3RvYnVmLk1hdGVyaWFsT2NjbHVzaW9uVGV4dHVyZUluZm8uRXh0",
+            "ZW5zaW9ucxJACgZleHRyYXMYAiABKAsyMC5Wcm1Qcm90b2J1Zi5NYXRlcmlh",
+            "bE9jY2x1c2lvblRleHR1cmVJbmZvLkV4dHJhcxIqCgVpbmRleBgDIAEoCzIb",
+            "Lmdvb2dsZS5wcm90b2J1Zi5JbnQzMlZhbHVlEi0KCHRleENvb3JkGAQgASgL",
+            "MhsuZ29vZ2xlLnByb3RvYnVmLkludDMyVmFsdWUSLQoIc3RyZW5ndGgYBSAB",
+            "KAsyGy5nb29nbGUucHJvdG9idWYuRmxvYXRWYWx1ZRoMCgpFeHRlbnNpb25z",
+            "GggKBkV4dHJhcyLzBwoITWF0ZXJpYWwSNAoKZXh0ZW5zaW9ucxgBIAEoCzIg",
+            "LlZybVByb3RvYnVmLk1hdGVyaWFsLkV4dGVuc2lvbnMSLAoGZXh0cmFzGAIg",
+            "ASgLMhwuVnJtUHJvdG9idWYuTWF0ZXJpYWwuRXh0cmFzEgwKBG5hbWUYAyAB",
+            "KAkSRwoUcGJyTWV0YWxsaWNSb3VnaG5lc3MYBCABKAsyKS5Wcm1Qcm90b2J1",
+            "Zi5NYXRlcmlhbFBCUk1ldGFsbGljUm91Z2huZXNzEj0KDW5vcm1hbFRleHR1",
+            "cmUYBSABKAsyJi5Wcm1Qcm90b2J1Zi5NYXRlcmlhbE5vcm1hbFRleHR1cmVJ",
+            "bmZvEkMKEG9jY2x1c2lvblRleHR1cmUYBiABKAsyKS5Wcm1Qcm90b2J1Zi5N",
+            "YXRlcmlhbE9jY2x1c2lvblRleHR1cmVJbmZvEjEKD2VtaXNzaXZlVGV4dHVy",
+            "ZRgHIAEoCzIYLlZybVByb3RvYnVmLlRleHR1cmVJbmZvEhYKDmVtaXNzaXZl",
+            "RmFjdG9yGAggAygCEjYKCWFscGhhTW9kZRgJIAEoDjIjLlZybVByb3RvYnVm",
+            "Lk1hdGVyaWFsLmFscGhhTW9kZVR5cGUSMAoLYWxwaGFDdXRvZmYYCiABKAsy",
+            "Gy5nb29nbGUucHJvdG9idWYuRmxvYXRWYWx1ZRIvCgtkb3VibGVTaWRlZBgL",
+            "IAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5Cb29sVmFsdWUa4AEKIEtIUl9tYXRl",
+            "cmlhbHNfdW5saXRnbFRGZXh0ZW5zaW9uElUKCmV4dGVuc2lvbnMYASABKAsy",
+            "QS5Wcm1Qcm90b2J1Zi5NYXRlcmlhbC5LSFJfbWF0ZXJpYWxzX3VubGl0Z2xU",
+            "RmV4dGVuc2lvbi5FeHRlbnNpb25zEk0KBmV4dHJhcxgCIAEoCzI9LlZybVBy",
+            "b3RvYnVmLk1hdGVyaWFsLktIUl9tYXRlcmlhbHNfdW5saXRnbFRGZXh0ZW5z",
+            "aW9uLkV4dHJhcxoMCgpFeHRlbnNpb25zGggKBkV4dHJhcxqiAQoKRXh0ZW5z",
+            "aW9ucxJTChNLSFJfbWF0ZXJpYWxzX3VubGl0GAEgASgLMjYuVnJtUHJvdG9i",
+            "dWYuTWF0ZXJpYWwuS0hSX21hdGVyaWFsc191bmxpdGdsVEZleHRlbnNpb24S",
+            "PwoUVlJNQ19tYXRlcmlhbHNfbXRvb24YAiABKAsyIS5Wcm1Qcm90b2J1Zi5W",
+            "Uk1DX21hdGVyaWFsc19tdG9vbhoICgZFeHRyYXMiMAoNYWxwaGFNb2RlVHlw",
+            "ZRIKCgZPUEFRVUUQABIICgRNQVNLEAESCQoFQkxFTkQQAiKSAQoGdGFyZ2V0",
+            "Ei0KCFBPU0lUSU9OGAEgASgLMhsuZ29vZ2xlLnByb3RvYnVmLkludDMyVmFs",
+            "dWUSKwoGTk9STUFMGAIgASgLMhsuZ29vZ2xlLnByb3RvYnVmLkludDMyVmFs",
+            "dWUSLAoHVEFOR0VOVBgDIAEoCzIbLmdvb2dsZS5wcm90b2J1Zi5JbnQzMlZh",
+            "bHVlIssDCg1NZXNoUHJpbWl0aXZlEjkKCmV4dGVuc2lvbnMYASABKAsyJS5W",
+            "cm1Qcm90b2J1Zi5NZXNoUHJpbWl0aXZlLkV4dGVuc2lvbnMSMQoGZXh0cmFz",
+            "GAIgASgLMiEuVnJtUHJvdG9idWYuTWVzaFByaW1pdGl2ZS5FeHRyYXMSPgoK",
+            "YXR0cmlidXRlcxgDIAMoCzIqLlZybVByb3RvYnVmLk1lc2hQcmltaXRpdmUu",
+            "QXR0cmlidXRlc0VudHJ5EiwKB2luZGljZXMYBCABKAsyGy5nb29nbGUucHJv",
+            "dG9idWYuSW50MzJWYWx1ZRItCghtYXRlcmlhbBgFIAEoCzIbLmdvb2dsZS5w",
+            "cm90b2J1Zi5JbnQzMlZhbHVlEikKBG1vZGUYBiABKAsyGy5nb29nbGUucHJv",
+            "dG9idWYuSW50MzJWYWx1ZRIkCgd0YXJnZXRzGAcgAygLMhMuVnJtUHJvdG9i",
+            "dWYudGFyZ2V0GgwKCkV4dGVuc2lvbnMaHQoGRXh0cmFzEhMKC3RhcmdldE5h",
+            "bWVzGAEgAygJGjEKD0F0dHJpYnV0ZXNFbnRyeRILCgNrZXkYASABKAkSDQoF",
+            "dmFsdWUYAiABKAU6AjgBIskBCgRNZXNoEjAKCmV4dGVuc2lvbnMYASABKAsy",
+            "HC5Wcm1Qcm90b2J1Zi5NZXNoLkV4dGVuc2lvbnMSKAoGZXh0cmFzGAIgASgL",
+            "MhguVnJtUHJvdG9idWYuTWVzaC5FeHRyYXMSDAoEbmFtZRgDIAEoCRIuCgpw",
+            "cmltaXRpdmVzGAQgAygLMhouVnJtUHJvdG9idWYuTWVzaFByaW1pdGl2ZRIP",
+            "Cgd3ZWlnaHRzGAUgAygCGgwKCkV4dGVuc2lvbnMaCAoGRXh0cmFzIrEDCgRO",
+            "b2RlEjAKCmV4dGVuc2lvbnMYASABKAsyHC5Wcm1Qcm90b2J1Zi5Ob2RlLkV4",
+            "dGVuc2lvbnMSKAoGZXh0cmFzGAIgASgLMhguVnJtUHJvdG9idWYuTm9kZS5F",
+            "eHRyYXMSDAoEbmFtZRgDIAEoCRIrCgZjYW1lcmEYBCABKAsyGy5nb29nbGUu",
+            "cHJvdG9idWYuSW50MzJWYWx1ZRIQCghjaGlsZHJlbhgFIAMoBRIpCgRza2lu",
+            "GAYgASgLMhsuZ29vZ2xlLnByb3RvYnVmLkludDMyVmFsdWUSDgoGbWF0cml4",
+            "GAcgAygCEikKBG1lc2gYCCABKAsyGy5nb29nbGUucHJvdG9idWYuSW50MzJW",
+            "YWx1ZRIQCghyb3RhdGlvbhgJIAMoAhINCgVzY2FsZRgKIAMoAhITCgt0cmFu",
+            "c2xhdGlvbhgLIAMoAhIPCgd3ZWlnaHRzGAwgAygCGkkKCkV4dGVuc2lvbnMS",
+            "OwoSVlJNQ19ub2RlX2NvbGxpZGVyGAEgASgLMh8uVnJtUHJvdG9idWYuVlJN",
+            "Q19ub2RlX2NvbGxpZGVyGggKBkV4dHJhcyLJAgoHU2FtcGxlchIzCgpleHRl",
+            "bnNpb25zGAEgASgLMh8uVnJtUHJvdG9idWYuU2FtcGxlci5FeHRlbnNpb25z",
+            "EisKBmV4dHJhcxgCIAEoCzIbLlZybVByb3RvYnVmLlNhbXBsZXIuRXh0cmFz",
+            "EgwKBG5hbWUYAyABKAkSLgoJbWFnRmlsdGVyGAQgASgLMhsuZ29vZ2xlLnBy",
+            "b3RvYnVmLkludDMyVmFsdWUSLgoJbWluRmlsdGVyGAUgASgLMhsuZ29vZ2xl",
+            "LnByb3RvYnVmLkludDMyVmFsdWUSKgoFd3JhcFMYBiABKAsyGy5nb29nbGUu",
+            "cHJvdG9idWYuSW50MzJWYWx1ZRIqCgV3cmFwVBgHIAEoCzIbLmdvb2dsZS5w",
+            "cm90b2J1Zi5JbnQzMlZhbHVlGgwKCkV4dGVuc2lvbnMaCAoGRXh0cmFzIpoB",
+            "CgVTY2VuZRIxCgpleHRlbnNpb25zGAEgASgLMh0uVnJtUHJvdG9idWYuU2Nl",
+            "bmUuRXh0ZW5zaW9ucxIpCgZleHRyYXMYAiABKAsyGS5Wcm1Qcm90b2J1Zi5T",
+            "Y2VuZS5FeHRyYXMSDAoEbmFtZRgDIAEoCRINCgVub2RlcxgEIAMoBRoMCgpF",
+            "eHRlbnNpb25zGggKBkV4dHJhcyKBAgoEU2tpbhIwCgpleHRlbnNpb25zGAEg",
+            "ASgLMhwuVnJtUHJvdG9idWYuU2tpbi5FeHRlbnNpb25zEigKBmV4dHJhcxgC",
+            "IAEoCzIYLlZybVByb3RvYnVmLlNraW4uRXh0cmFzEgwKBG5hbWUYAyABKAkS",
+            "OAoTaW52ZXJzZUJpbmRNYXRyaWNlcxgEIAEoCzIbLmdvb2dsZS5wcm90b2J1",
+            "Zi5JbnQzMlZhbHVlEi0KCHNrZWxldG9uGAUgASgLMhsuZ29vZ2xlLnByb3Rv",
+            "YnVmLkludDMyVmFsdWUSDgoGam9pbnRzGAYgAygFGgwKCkV4dGVuc2lvbnMa",
+            "CAoGRXh0cmFzIuwBCgdUZXh0dXJlEjMKCmV4dGVuc2lvbnMYASABKAsyHy5W",
+            "cm1Qcm90b2J1Zi5UZXh0dXJlLkV4dGVuc2lvbnMSKwoGZXh0cmFzGAIgASgL",
+            "MhsuVnJtUHJvdG9idWYuVGV4dHVyZS5FeHRyYXMSDAoEbmFtZRgDIAEoCRIs",
+            "CgdzYW1wbGVyGAQgASgLMhsuZ29vZ2xlLnByb3RvYnVmLkludDMyVmFsdWUS",
+            "KwoGc291cmNlGAUgASgLMhsuZ29vZ2xlLnByb3RvYnVmLkludDMyVmFsdWUa",
+            "DAoKRXh0ZW5zaW9ucxoICgZFeHRyYXMiiwcKBGdsVEYSMAoKZXh0ZW5zaW9u",
+            "cxgBIAEoCzIcLlZybVByb3RvYnVmLmdsVEYuRXh0ZW5zaW9ucxIoCgZleHRy",
+            "YXMYAiABKAsyGC5Wcm1Qcm90b2J1Zi5nbFRGLkV4dHJhcxIWCg5leHRlbnNp",
+            "b25zVXNlZBgDIAMoCRIaChJleHRlbnNpb25zUmVxdWlyZWQYBCADKAkSKAoJ",
+            "YWNjZXNzb3JzGAUgAygLMhUuVnJtUHJvdG9idWYuQWNjZXNzb3ISKgoKYW5p",
+            "bWF0aW9ucxgGIAMoCzIWLlZybVByb3RvYnVmLkFuaW1hdGlvbhIhCgVhc3Nl",
+            "dBgHIAEoCzISLlZybVByb3RvYnVmLkFzc2V0EiQKB2J1ZmZlcnMYCCADKAsy",
+            "Ey5Wcm1Qcm90b2J1Zi5CdWZmZXISLAoLYnVmZmVyVmlld3MYCSADKAsyFy5W",
+            "cm1Qcm90b2J1Zi5CdWZmZXJWaWV3EiQKB2NhbWVyYXMYCiADKAsyEy5Wcm1Q",
+            "cm90b2J1Zi5DYW1lcmESIgoGaW1hZ2VzGAsgAygLMhIuVnJtUHJvdG9idWYu",
+            "SW1hZ2USKAoJbWF0ZXJpYWxzGAwgAygLMhUuVnJtUHJvdG9idWYuTWF0ZXJp",
+            "YWwSIQoGbWVzaGVzGA0gAygLMhEuVnJtUHJvdG9idWYuTWVzaBIgCgVub2Rl",
+            "cxgOIAMoCzIRLlZybVByb3RvYnVmLk5vZGUSJgoIc2FtcGxlcnMYDyADKAsy",
+            "FC5Wcm1Qcm90b2J1Zi5TYW1wbGVyEioKBXNjZW5lGBAgASgLMhsuZ29vZ2xl",
+            "LnByb3RvYnVmLkludDMyVmFsdWUSIgoGc2NlbmVzGBEgAygLMhIuVnJtUHJv",
+            "dG9idWYuU2NlbmUSIAoFc2tpbnMYEiADKAsyES5Wcm1Qcm90b2J1Zi5Ta2lu",
+            "EiYKCHRleHR1cmVzGBMgAygLMhQuVnJtUHJvdG9idWYuVGV4dHVyZRqgAQoK",
+            "RXh0ZW5zaW9ucxImCghWUk1DX3ZybRgBIAEoCzIULlZybVByb3RvYnVmLlZS",
+            "TUNWcm0SNAoPVlJNQ19zcHJpbmdCb25lGAIgASgLMhsuVnJtUHJvdG9idWYu",
+            "VlJNQ1NwcmluZ0JvbmUSNAoPVlJNQ19jb25zdHJhaW50GAMgASgLMhsuVnJt",
+            "UHJvdG9idWYuVlJNQ0NvbnN0cmFpbnQaCAoGRXh0cmFzYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::Google.Protobuf.WellKnownTypes.WrappersReflection.Descriptor, global::VrmProtobuf.VRMCMaterialsMtoonReflection.Descriptor, global::VrmProtobuf.GlTFExtensionsReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::Google.Protobuf.WellKnownTypes.WrappersReflection.Descriptor, global::VrmProtobuf.VRMCVrmReflection.Descriptor, global::VrmProtobuf.VRMCSpringBoneReflection.Descriptor, global::VrmProtobuf.VRMCConstraintReflection.Descriptor, global::VrmProtobuf.VRMCMaterialsMtoonReflection.Descriptor, global::VrmProtobuf.VRMCNodeColliderReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.glTF), global::VrmProtobuf.glTF.Parser, new[]{ "ExtensionsUsed", "ExtensionsRequired", "Accessors", "Animations", "Asset", "Buffers", "BufferViews", "Images", "Materials", "Meshes", "Nodes", "Samplers", "Scene", "Scenes", "Skins", "Textures", "Extensions" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.Accessor), global::VrmProtobuf.Accessor.Parser, new[]{ "BufferView", "ByteOffset", "ComponentType", "Normalized", "Count", "Type", "Max", "Min", "Sparse", "Name" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.AccessorSparseIndices), global::VrmProtobuf.AccessorSparseIndices.Parser, new[]{ "BufferView", "ByteOffset", "ComponentType" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.AccessorSparse), global::VrmProtobuf.AccessorSparse.Parser, new[]{ "Count", "Indices", "Values" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.AccessorSparseValues), global::VrmProtobuf.AccessorSparseValues.Parser, new[]{ "BufferView", "ByteOffset" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.AnimationChannelTarget), global::VrmProtobuf.AnimationChannelTarget.Parser, new[]{ "Node", "Path" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.AnimationChannel), global::VrmProtobuf.AnimationChannel.Parser, new[]{ "Sampler", "Target" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.AnimationSampler), global::VrmProtobuf.AnimationSampler.Parser, new[]{ "Input", "Interpolation", "Output" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.Animation), global::VrmProtobuf.Animation.Parser, new[]{ "Channels", "Samplers", "Name" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.Asset), global::VrmProtobuf.Asset.Parser, new[]{ "Copyright", "Generator", "Version", "MinVersion" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.Buffer), global::VrmProtobuf.Buffer.Parser, new[]{ "Uri", "ByteLength", "Name" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.BufferView), global::VrmProtobuf.BufferView.Parser, new[]{ "Buffer", "ByteOffset", "ByteLength", "ByteStride", "Name", "Target" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.Image), global::VrmProtobuf.Image.Parser, new[]{ "Uri", "MimeType", "BufferView", "Name" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.MaterialNormalTextureInfo), global::VrmProtobuf.MaterialNormalTextureInfo.Parser, new[]{ "Index", "TexCoord", "Scale", "Extensions" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.MaterialNormalTextureInfo.Types.Extensions), global::VrmProtobuf.MaterialNormalTextureInfo.Types.Extensions.Parser, new[]{ "KHRTextureTransform" }, null, null, null, null)}),
-            new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.MaterialOcclusionTextureInfo), global::VrmProtobuf.MaterialOcclusionTextureInfo.Parser, new[]{ "Index", "TexCoord", "Strength", "Extensions" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.MaterialOcclusionTextureInfo.Types.Extensions), global::VrmProtobuf.MaterialOcclusionTextureInfo.Types.Extensions.Parser, new[]{ "KHRTextureTransform" }, null, null, null, null)}),
-            new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.MaterialPbrMetallicRoughness), global::VrmProtobuf.MaterialPbrMetallicRoughness.Parser, new[]{ "BaseColorFactor", "BaseColorTexture", "MetallicFactor", "RoughnessFactor", "MetallicRoughnessTexture" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.KHR_materials_unlit), global::VrmProtobuf.KHR_materials_unlit.Parser, null, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.Material), global::VrmProtobuf.Material.Parser, new[]{ "Name", "PbrMetallicRoughness", "NormalTexture", "OcclusionTexture", "EmissiveTexture", "EmissiveFactor", "AlphaMode", "AlphaCutoff", "DoubleSided", "Extensions" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.Material.Types.Extensions), global::VrmProtobuf.Material.Types.Extensions.Parser, new[]{ "KHRMaterialsUnlit", "VRMCMaterialsMtoon", "KHRMaterialsPbrSpecularGlossiness" }, null, null, null, null)}),
-            new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.MeshPrimitive), global::VrmProtobuf.MeshPrimitive.Parser, new[]{ "Attributes", "Indices", "Material", "Mode", "Targets", "Extras" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.MeshPrimitive.Types.Target), global::VrmProtobuf.MeshPrimitive.Types.Target.Parser, new[]{ "POSITION", "NORMAL", "TANGENT" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.MeshPrimitive.Types.Extras), global::VrmProtobuf.MeshPrimitive.Types.Extras.Parser, new[]{ "TargetNames" }, null, null, null, null)}),
-            new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.Mesh), global::VrmProtobuf.Mesh.Parser, new[]{ "Primitives", "Name" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.Node), global::VrmProtobuf.Node.Parser, new[]{ "Name", "Children", "Matrix", "Rotation", "Scale", "Translation", "Mesh", "Skin" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.Sampler), global::VrmProtobuf.Sampler.Parser, new[]{ "MagFilter", "MinFilter", "WrapS", "WrapT" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.Scene), global::VrmProtobuf.Scene.Parser, new[]{ "Nodes", "Name" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.Skin), global::VrmProtobuf.Skin.Parser, new[]{ "InverseBindMatrices", "Skeleton", "Joints", "Name" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.Texture), global::VrmProtobuf.Texture.Parser, new[]{ "Sampler", "Source", "Name" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.TextureInfo), global::VrmProtobuf.TextureInfo.Parser, new[]{ "Index", "TexCoord", "Extensions" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.TextureInfo.Types.Extensions), global::VrmProtobuf.TextureInfo.Types.Extensions.Parser, new[]{ "KHRTextureTransform" }, null, null, null, null)}),
-            new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.KHRTextureTransformExtension), global::VrmProtobuf.KHRTextureTransformExtension.Parser, new[]{ "Offset", "Rotation", "Scale", "TexCoord" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.KHRMaterialsPbrSpecularGlossinessExtension), global::VrmProtobuf.KHRMaterialsPbrSpecularGlossinessExtension.Parser, new[]{ "DiffuseFactor", "DiffuseTexture", "SpecularFactor", "GlossinessFactor", "SpecularGlossinessTexture" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.AccessorSparseIndices), global::VrmProtobuf.AccessorSparseIndices.Parser, new[]{ "Extensions", "Extras", "BufferView", "ByteOffset", "ComponentType" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.AccessorSparseIndices.Types.Extensions), global::VrmProtobuf.AccessorSparseIndices.Types.Extensions.Parser, null, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.AccessorSparseIndices.Types.Extras), global::VrmProtobuf.AccessorSparseIndices.Types.Extras.Parser, null, null, null, null, null)}),
+            new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.AccessorSparseValues), global::VrmProtobuf.AccessorSparseValues.Parser, new[]{ "Extensions", "Extras", "BufferView", "ByteOffset" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.AccessorSparseValues.Types.Extensions), global::VrmProtobuf.AccessorSparseValues.Types.Extensions.Parser, null, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.AccessorSparseValues.Types.Extras), global::VrmProtobuf.AccessorSparseValues.Types.Extras.Parser, null, null, null, null, null)}),
+            new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.AccessorSparse), global::VrmProtobuf.AccessorSparse.Parser, new[]{ "Extensions", "Extras", "Count", "Indices", "Values" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.AccessorSparse.Types.Extensions), global::VrmProtobuf.AccessorSparse.Types.Extensions.Parser, null, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.AccessorSparse.Types.Extras), global::VrmProtobuf.AccessorSparse.Types.Extras.Parser, null, null, null, null, null)}),
+            new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.Accessor), global::VrmProtobuf.Accessor.Parser, new[]{ "Extensions", "Extras", "Name", "BufferView", "ByteOffset", "ComponentType", "Normalized", "Count", "Type", "Max", "Min", "Sparse" }, null, new[]{ typeof(global::VrmProtobuf.Accessor.Types.accessorType) }, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.Accessor.Types.Extensions), global::VrmProtobuf.Accessor.Types.Extensions.Parser, null, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.Accessor.Types.Extras), global::VrmProtobuf.Accessor.Types.Extras.Parser, null, null, null, null, null)}),
+            new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.AnimationChannelTarget), global::VrmProtobuf.AnimationChannelTarget.Parser, new[]{ "Extensions", "Extras", "Node", "Path" }, null, new[]{ typeof(global::VrmProtobuf.AnimationChannelTarget.Types.pathType) }, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.AnimationChannelTarget.Types.Extensions), global::VrmProtobuf.AnimationChannelTarget.Types.Extensions.Parser, null, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.AnimationChannelTarget.Types.Extras), global::VrmProtobuf.AnimationChannelTarget.Types.Extras.Parser, null, null, null, null, null)}),
+            new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.AnimationChannel), global::VrmProtobuf.AnimationChannel.Parser, new[]{ "Extensions", "Extras", "Sampler", "Target" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.AnimationChannel.Types.Extensions), global::VrmProtobuf.AnimationChannel.Types.Extensions.Parser, null, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.AnimationChannel.Types.Extras), global::VrmProtobuf.AnimationChannel.Types.Extras.Parser, null, null, null, null, null)}),
+            new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.AnimationSampler), global::VrmProtobuf.AnimationSampler.Parser, new[]{ "Extensions", "Extras", "Input", "Interpolation", "Output" }, null, new[]{ typeof(global::VrmProtobuf.AnimationSampler.Types.interpolationType) }, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.AnimationSampler.Types.Extensions), global::VrmProtobuf.AnimationSampler.Types.Extensions.Parser, null, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.AnimationSampler.Types.Extras), global::VrmProtobuf.AnimationSampler.Types.Extras.Parser, null, null, null, null, null)}),
+            new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.Animation), global::VrmProtobuf.Animation.Parser, new[]{ "Extensions", "Extras", "Name", "Channels", "Samplers" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.Animation.Types.Extensions), global::VrmProtobuf.Animation.Types.Extensions.Parser, null, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.Animation.Types.Extras), global::VrmProtobuf.Animation.Types.Extras.Parser, null, null, null, null, null)}),
+            new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.Asset), global::VrmProtobuf.Asset.Parser, new[]{ "Extensions", "Extras", "Copyright", "Generator", "Version", "MinVersion" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.Asset.Types.Extensions), global::VrmProtobuf.Asset.Types.Extensions.Parser, null, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.Asset.Types.Extras), global::VrmProtobuf.Asset.Types.Extras.Parser, null, null, null, null, null)}),
+            new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.Buffer), global::VrmProtobuf.Buffer.Parser, new[]{ "Extensions", "Extras", "Name", "Uri", "ByteLength" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.Buffer.Types.Extensions), global::VrmProtobuf.Buffer.Types.Extensions.Parser, null, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.Buffer.Types.Extras), global::VrmProtobuf.Buffer.Types.Extras.Parser, null, null, null, null, null)}),
+            new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.BufferView), global::VrmProtobuf.BufferView.Parser, new[]{ "Extensions", "Extras", "Name", "Buffer", "ByteOffset", "ByteLength", "ByteStride", "Target" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.BufferView.Types.Extensions), global::VrmProtobuf.BufferView.Types.Extensions.Parser, null, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.BufferView.Types.Extras), global::VrmProtobuf.BufferView.Types.Extras.Parser, null, null, null, null, null)}),
+            new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.CameraOrthographic), global::VrmProtobuf.CameraOrthographic.Parser, new[]{ "Extensions", "Extras", "Xmag", "Ymag", "Zfar", "Znear" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.CameraOrthographic.Types.Extensions), global::VrmProtobuf.CameraOrthographic.Types.Extensions.Parser, null, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.CameraOrthographic.Types.Extras), global::VrmProtobuf.CameraOrthographic.Types.Extras.Parser, null, null, null, null, null)}),
+            new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.CameraPerspective), global::VrmProtobuf.CameraPerspective.Parser, new[]{ "Extensions", "Extras", "AspectRatio", "Yfov", "Zfar", "Znear" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.CameraPerspective.Types.Extensions), global::VrmProtobuf.CameraPerspective.Types.Extensions.Parser, null, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.CameraPerspective.Types.Extras), global::VrmProtobuf.CameraPerspective.Types.Extras.Parser, null, null, null, null, null)}),
+            new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.Camera), global::VrmProtobuf.Camera.Parser, new[]{ "Extensions", "Extras", "Name", "Orthographic", "Perspective", "Type" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.Camera.Types.Extensions), global::VrmProtobuf.Camera.Types.Extensions.Parser, null, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.Camera.Types.Extras), global::VrmProtobuf.Camera.Types.Extras.Parser, null, null, null, null, null)}),
+            new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.Image), global::VrmProtobuf.Image.Parser, new[]{ "Extensions", "Extras", "Name", "Uri", "BufferView", "MimeType" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.Image.Types.Extensions), global::VrmProtobuf.Image.Types.Extensions.Parser, null, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.Image.Types.Extras), global::VrmProtobuf.Image.Types.Extras.Parser, null, null, null, null, null)}),
+            new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.TextureInfo), global::VrmProtobuf.TextureInfo.Parser, new[]{ "Extensions", "Extras", "Index", "TexCoord" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.TextureInfo.Types.KHR_texture_transformtextureInfoextension), global::VrmProtobuf.TextureInfo.Types.KHR_texture_transformtextureInfoextension.Parser, new[]{ "Extensions", "Extras", "Offset", "Rotation", "Scale", "TexCoord" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.TextureInfo.Types.KHR_texture_transformtextureInfoextension.Types.Extensions), global::VrmProtobuf.TextureInfo.Types.KHR_texture_transformtextureInfoextension.Types.Extensions.Parser, null, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.TextureInfo.Types.KHR_texture_transformtextureInfoextension.Types.Extras), global::VrmProtobuf.TextureInfo.Types.KHR_texture_transformtextureInfoextension.Types.Extras.Parser, null, null, null, null, null)}),
+            new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.TextureInfo.Types.Extensions), global::VrmProtobuf.TextureInfo.Types.Extensions.Parser, new[]{ "KHRTextureTransform" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.TextureInfo.Types.Extras), global::VrmProtobuf.TextureInfo.Types.Extras.Parser, null, null, null, null, null)}),
+            new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.MaterialPBRMetallicRoughness), global::VrmProtobuf.MaterialPBRMetallicRoughness.Parser, new[]{ "Extensions", "Extras", "BaseColorFactor", "BaseColorTexture", "MetallicFactor", "RoughnessFactor", "MetallicRoughnessTexture" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.MaterialPBRMetallicRoughness.Types.Extensions), global::VrmProtobuf.MaterialPBRMetallicRoughness.Types.Extensions.Parser, null, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.MaterialPBRMetallicRoughness.Types.Extras), global::VrmProtobuf.MaterialPBRMetallicRoughness.Types.Extras.Parser, null, null, null, null, null)}),
+            new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.MaterialNormalTextureInfo), global::VrmProtobuf.MaterialNormalTextureInfo.Parser, new[]{ "Extensions", "Extras", "Index", "TexCoord", "Scale" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.MaterialNormalTextureInfo.Types.Extensions), global::VrmProtobuf.MaterialNormalTextureInfo.Types.Extensions.Parser, null, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.MaterialNormalTextureInfo.Types.Extras), global::VrmProtobuf.MaterialNormalTextureInfo.Types.Extras.Parser, null, null, null, null, null)}),
+            new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.MaterialOcclusionTextureInfo), global::VrmProtobuf.MaterialOcclusionTextureInfo.Parser, new[]{ "Extensions", "Extras", "Index", "TexCoord", "Strength" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.MaterialOcclusionTextureInfo.Types.Extensions), global::VrmProtobuf.MaterialOcclusionTextureInfo.Types.Extensions.Parser, null, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.MaterialOcclusionTextureInfo.Types.Extras), global::VrmProtobuf.MaterialOcclusionTextureInfo.Types.Extras.Parser, null, null, null, null, null)}),
+            new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.Material), global::VrmProtobuf.Material.Parser, new[]{ "Extensions", "Extras", "Name", "PbrMetallicRoughness", "NormalTexture", "OcclusionTexture", "EmissiveTexture", "EmissiveFactor", "AlphaMode", "AlphaCutoff", "DoubleSided" }, null, new[]{ typeof(global::VrmProtobuf.Material.Types.alphaModeType) }, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.Material.Types.KHR_materials_unlitglTFextension), global::VrmProtobuf.Material.Types.KHR_materials_unlitglTFextension.Parser, new[]{ "Extensions", "Extras" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.Material.Types.KHR_materials_unlitglTFextension.Types.Extensions), global::VrmProtobuf.Material.Types.KHR_materials_unlitglTFextension.Types.Extensions.Parser, null, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.Material.Types.KHR_materials_unlitglTFextension.Types.Extras), global::VrmProtobuf.Material.Types.KHR_materials_unlitglTFextension.Types.Extras.Parser, null, null, null, null, null)}),
+            new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.Material.Types.Extensions), global::VrmProtobuf.Material.Types.Extensions.Parser, new[]{ "KHRMaterialsUnlit", "VRMCMaterialsMtoon" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.Material.Types.Extras), global::VrmProtobuf.Material.Types.Extras.Parser, null, null, null, null, null)}),
+            new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.target), global::VrmProtobuf.target.Parser, new[]{ "POSITION", "NORMAL", "TANGENT" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.MeshPrimitive), global::VrmProtobuf.MeshPrimitive.Parser, new[]{ "Extensions", "Extras", "Attributes", "Indices", "Material", "Mode", "Targets" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.MeshPrimitive.Types.Extensions), global::VrmProtobuf.MeshPrimitive.Types.Extensions.Parser, null, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.MeshPrimitive.Types.Extras), global::VrmProtobuf.MeshPrimitive.Types.Extras.Parser, new[]{ "TargetNames" }, null, null, null, null),
+            null, }),
+            new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.Mesh), global::VrmProtobuf.Mesh.Parser, new[]{ "Extensions", "Extras", "Name", "Primitives", "Weights" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.Mesh.Types.Extensions), global::VrmProtobuf.Mesh.Types.Extensions.Parser, null, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.Mesh.Types.Extras), global::VrmProtobuf.Mesh.Types.Extras.Parser, null, null, null, null, null)}),
+            new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.Node), global::VrmProtobuf.Node.Parser, new[]{ "Extensions", "Extras", "Name", "Camera", "Children", "Skin", "Matrix", "Mesh", "Rotation", "Scale", "Translation", "Weights" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.Node.Types.Extensions), global::VrmProtobuf.Node.Types.Extensions.Parser, new[]{ "VRMCNodeCollider" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.Node.Types.Extras), global::VrmProtobuf.Node.Types.Extras.Parser, null, null, null, null, null)}),
+            new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.Sampler), global::VrmProtobuf.Sampler.Parser, new[]{ "Extensions", "Extras", "Name", "MagFilter", "MinFilter", "WrapS", "WrapT" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.Sampler.Types.Extensions), global::VrmProtobuf.Sampler.Types.Extensions.Parser, null, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.Sampler.Types.Extras), global::VrmProtobuf.Sampler.Types.Extras.Parser, null, null, null, null, null)}),
+            new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.Scene), global::VrmProtobuf.Scene.Parser, new[]{ "Extensions", "Extras", "Name", "Nodes" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.Scene.Types.Extensions), global::VrmProtobuf.Scene.Types.Extensions.Parser, null, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.Scene.Types.Extras), global::VrmProtobuf.Scene.Types.Extras.Parser, null, null, null, null, null)}),
+            new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.Skin), global::VrmProtobuf.Skin.Parser, new[]{ "Extensions", "Extras", "Name", "InverseBindMatrices", "Skeleton", "Joints" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.Skin.Types.Extensions), global::VrmProtobuf.Skin.Types.Extensions.Parser, null, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.Skin.Types.Extras), global::VrmProtobuf.Skin.Types.Extras.Parser, null, null, null, null, null)}),
+            new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.Texture), global::VrmProtobuf.Texture.Parser, new[]{ "Extensions", "Extras", "Name", "Sampler", "Source" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.Texture.Types.Extensions), global::VrmProtobuf.Texture.Types.Extensions.Parser, null, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.Texture.Types.Extras), global::VrmProtobuf.Texture.Types.Extras.Parser, null, null, null, null, null)}),
+            new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.glTF), global::VrmProtobuf.glTF.Parser, new[]{ "Extensions", "Extras", "ExtensionsUsed", "ExtensionsRequired", "Accessors", "Animations", "Asset", "Buffers", "BufferViews", "Cameras", "Images", "Materials", "Meshes", "Nodes", "Samplers", "Scene", "Scenes", "Skins", "Textures" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.glTF.Types.Extensions), global::VrmProtobuf.glTF.Types.Extensions.Parser, new[]{ "VRMCVrm", "VRMCSpringBone", "VRMCConstraint" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.glTF.Types.Extras), global::VrmProtobuf.glTF.Types.Extras.Parser, null, null, null, null, null)})
           }));
     }
     #endregion
 
   }
   #region Messages
-  /// <summary>
-  /// [START GLTF]
-  /// https://github.com/KhronosGroup/glTF/blob/master/specification/2.0/schema/glTF.schema.json
-  /// </summary>
-  public sealed partial class glTF : pb::IMessage<glTF> {
-    private static readonly pb::MessageParser<glTF> _parser = new pb::MessageParser<glTF>(() => new glTF());
-    private pb::UnknownFieldSet _unknownFields;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<glTF> Parser { get { return _parser; } }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pbr::MessageDescriptor Descriptor {
-      get { return global::VrmProtobuf.GlTFReflection.Descriptor.MessageTypes[0]; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    pbr::MessageDescriptor pb::IMessage.Descriptor {
-      get { return Descriptor; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public glTF() {
-      OnConstruction();
-    }
-
-    partial void OnConstruction();
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public glTF(glTF other) : this() {
-      extensionsUsed_ = other.extensionsUsed_.Clone();
-      extensionsRequired_ = other.extensionsRequired_.Clone();
-      accessors_ = other.accessors_.Clone();
-      animations_ = other.animations_.Clone();
-      asset_ = other.asset_ != null ? other.asset_.Clone() : null;
-      buffers_ = other.buffers_.Clone();
-      bufferViews_ = other.bufferViews_.Clone();
-      images_ = other.images_.Clone();
-      materials_ = other.materials_.Clone();
-      meshes_ = other.meshes_.Clone();
-      nodes_ = other.nodes_.Clone();
-      samplers_ = other.samplers_.Clone();
-      Scene = other.Scene;
-      scenes_ = other.scenes_.Clone();
-      skins_ = other.skins_.Clone();
-      textures_ = other.textures_.Clone();
-      extensions_ = other.extensions_ != null ? other.extensions_.Clone() : null;
-      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public glTF Clone() {
-      return new glTF(this);
-    }
-
-    /// <summary>Field number for the "extensionsUsed" field.</summary>
-    public const int ExtensionsUsedFieldNumber = 1;
-    private static readonly pb::FieldCodec<string> _repeated_extensionsUsed_codec
-        = pb::FieldCodec.ForString(10);
-    private readonly pbc::RepeatedField<string> extensionsUsed_ = new pbc::RepeatedField<string>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::RepeatedField<string> ExtensionsUsed {
-      get { return extensionsUsed_; }
-    }
-
-    /// <summary>Field number for the "extensionsRequired" field.</summary>
-    public const int ExtensionsRequiredFieldNumber = 2;
-    private static readonly pb::FieldCodec<string> _repeated_extensionsRequired_codec
-        = pb::FieldCodec.ForString(18);
-    private readonly pbc::RepeatedField<string> extensionsRequired_ = new pbc::RepeatedField<string>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::RepeatedField<string> ExtensionsRequired {
-      get { return extensionsRequired_; }
-    }
-
-    /// <summary>Field number for the "accessors" field.</summary>
-    public const int AccessorsFieldNumber = 3;
-    private static readonly pb::FieldCodec<global::VrmProtobuf.Accessor> _repeated_accessors_codec
-        = pb::FieldCodec.ForMessage(26, global::VrmProtobuf.Accessor.Parser);
-    private readonly pbc::RepeatedField<global::VrmProtobuf.Accessor> accessors_ = new pbc::RepeatedField<global::VrmProtobuf.Accessor>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::RepeatedField<global::VrmProtobuf.Accessor> Accessors {
-      get { return accessors_; }
-    }
-
-    /// <summary>Field number for the "animations" field.</summary>
-    public const int AnimationsFieldNumber = 4;
-    private static readonly pb::FieldCodec<global::VrmProtobuf.Animation> _repeated_animations_codec
-        = pb::FieldCodec.ForMessage(34, global::VrmProtobuf.Animation.Parser);
-    private readonly pbc::RepeatedField<global::VrmProtobuf.Animation> animations_ = new pbc::RepeatedField<global::VrmProtobuf.Animation>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::RepeatedField<global::VrmProtobuf.Animation> Animations {
-      get { return animations_; }
-    }
-
-    /// <summary>Field number for the "asset" field.</summary>
-    public const int AssetFieldNumber = 5;
-    private global::VrmProtobuf.Asset asset_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::VrmProtobuf.Asset Asset {
-      get { return asset_; }
-      set {
-        asset_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "buffers" field.</summary>
-    public const int BuffersFieldNumber = 6;
-    private static readonly pb::FieldCodec<global::VrmProtobuf.Buffer> _repeated_buffers_codec
-        = pb::FieldCodec.ForMessage(50, global::VrmProtobuf.Buffer.Parser);
-    private readonly pbc::RepeatedField<global::VrmProtobuf.Buffer> buffers_ = new pbc::RepeatedField<global::VrmProtobuf.Buffer>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::RepeatedField<global::VrmProtobuf.Buffer> Buffers {
-      get { return buffers_; }
-    }
-
-    /// <summary>Field number for the "bufferViews" field.</summary>
-    public const int BufferViewsFieldNumber = 7;
-    private static readonly pb::FieldCodec<global::VrmProtobuf.BufferView> _repeated_bufferViews_codec
-        = pb::FieldCodec.ForMessage(58, global::VrmProtobuf.BufferView.Parser);
-    private readonly pbc::RepeatedField<global::VrmProtobuf.BufferView> bufferViews_ = new pbc::RepeatedField<global::VrmProtobuf.BufferView>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::RepeatedField<global::VrmProtobuf.BufferView> BufferViews {
-      get { return bufferViews_; }
-    }
-
-    /// <summary>Field number for the "images" field.</summary>
-    public const int ImagesFieldNumber = 8;
-    private static readonly pb::FieldCodec<global::VrmProtobuf.Image> _repeated_images_codec
-        = pb::FieldCodec.ForMessage(66, global::VrmProtobuf.Image.Parser);
-    private readonly pbc::RepeatedField<global::VrmProtobuf.Image> images_ = new pbc::RepeatedField<global::VrmProtobuf.Image>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::RepeatedField<global::VrmProtobuf.Image> Images {
-      get { return images_; }
-    }
-
-    /// <summary>Field number for the "materials" field.</summary>
-    public const int MaterialsFieldNumber = 9;
-    private static readonly pb::FieldCodec<global::VrmProtobuf.Material> _repeated_materials_codec
-        = pb::FieldCodec.ForMessage(74, global::VrmProtobuf.Material.Parser);
-    private readonly pbc::RepeatedField<global::VrmProtobuf.Material> materials_ = new pbc::RepeatedField<global::VrmProtobuf.Material>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::RepeatedField<global::VrmProtobuf.Material> Materials {
-      get { return materials_; }
-    }
-
-    /// <summary>Field number for the "meshes" field.</summary>
-    public const int MeshesFieldNumber = 10;
-    private static readonly pb::FieldCodec<global::VrmProtobuf.Mesh> _repeated_meshes_codec
-        = pb::FieldCodec.ForMessage(82, global::VrmProtobuf.Mesh.Parser);
-    private readonly pbc::RepeatedField<global::VrmProtobuf.Mesh> meshes_ = new pbc::RepeatedField<global::VrmProtobuf.Mesh>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::RepeatedField<global::VrmProtobuf.Mesh> Meshes {
-      get { return meshes_; }
-    }
-
-    /// <summary>Field number for the "nodes" field.</summary>
-    public const int NodesFieldNumber = 11;
-    private static readonly pb::FieldCodec<global::VrmProtobuf.Node> _repeated_nodes_codec
-        = pb::FieldCodec.ForMessage(90, global::VrmProtobuf.Node.Parser);
-    private readonly pbc::RepeatedField<global::VrmProtobuf.Node> nodes_ = new pbc::RepeatedField<global::VrmProtobuf.Node>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::RepeatedField<global::VrmProtobuf.Node> Nodes {
-      get { return nodes_; }
-    }
-
-    /// <summary>Field number for the "samplers" field.</summary>
-    public const int SamplersFieldNumber = 12;
-    private static readonly pb::FieldCodec<global::VrmProtobuf.Sampler> _repeated_samplers_codec
-        = pb::FieldCodec.ForMessage(98, global::VrmProtobuf.Sampler.Parser);
-    private readonly pbc::RepeatedField<global::VrmProtobuf.Sampler> samplers_ = new pbc::RepeatedField<global::VrmProtobuf.Sampler>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::RepeatedField<global::VrmProtobuf.Sampler> Samplers {
-      get { return samplers_; }
-    }
-
-    /// <summary>Field number for the "scene" field.</summary>
-    public const int SceneFieldNumber = 13;
-    private static readonly pb::FieldCodec<int?> _single_scene_codec = pb::FieldCodec.ForStructWrapper<int>(106);
-    private int? scene_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int? Scene {
-      get { return scene_; }
-      set {
-        scene_ = value;
-      }
-    }
-
-
-    /// <summary>Field number for the "scenes" field.</summary>
-    public const int ScenesFieldNumber = 14;
-    private static readonly pb::FieldCodec<global::VrmProtobuf.Scene> _repeated_scenes_codec
-        = pb::FieldCodec.ForMessage(114, global::VrmProtobuf.Scene.Parser);
-    private readonly pbc::RepeatedField<global::VrmProtobuf.Scene> scenes_ = new pbc::RepeatedField<global::VrmProtobuf.Scene>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::RepeatedField<global::VrmProtobuf.Scene> Scenes {
-      get { return scenes_; }
-    }
-
-    /// <summary>Field number for the "skins" field.</summary>
-    public const int SkinsFieldNumber = 15;
-    private static readonly pb::FieldCodec<global::VrmProtobuf.Skin> _repeated_skins_codec
-        = pb::FieldCodec.ForMessage(122, global::VrmProtobuf.Skin.Parser);
-    private readonly pbc::RepeatedField<global::VrmProtobuf.Skin> skins_ = new pbc::RepeatedField<global::VrmProtobuf.Skin>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::RepeatedField<global::VrmProtobuf.Skin> Skins {
-      get { return skins_; }
-    }
-
-    /// <summary>Field number for the "textures" field.</summary>
-    public const int TexturesFieldNumber = 16;
-    private static readonly pb::FieldCodec<global::VrmProtobuf.Texture> _repeated_textures_codec
-        = pb::FieldCodec.ForMessage(130, global::VrmProtobuf.Texture.Parser);
-    private readonly pbc::RepeatedField<global::VrmProtobuf.Texture> textures_ = new pbc::RepeatedField<global::VrmProtobuf.Texture>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::RepeatedField<global::VrmProtobuf.Texture> Textures {
-      get { return textures_; }
-    }
-
-    /// <summary>Field number for the "extensions" field.</summary>
-    public const int ExtensionsFieldNumber = 17;
-    private global::VrmProtobuf.Extensions extensions_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::VrmProtobuf.Extensions Extensions {
-      get { return extensions_; }
-      set {
-        extensions_ = value;
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override bool Equals(object other) {
-      return Equals(other as glTF);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(glTF other) {
-      if (ReferenceEquals(other, null)) {
-        return false;
-      }
-      if (ReferenceEquals(other, this)) {
-        return true;
-      }
-      if(!extensionsUsed_.Equals(other.extensionsUsed_)) return false;
-      if(!extensionsRequired_.Equals(other.extensionsRequired_)) return false;
-      if(!accessors_.Equals(other.accessors_)) return false;
-      if(!animations_.Equals(other.animations_)) return false;
-      if (!object.Equals(Asset, other.Asset)) return false;
-      if(!buffers_.Equals(other.buffers_)) return false;
-      if(!bufferViews_.Equals(other.bufferViews_)) return false;
-      if(!images_.Equals(other.images_)) return false;
-      if(!materials_.Equals(other.materials_)) return false;
-      if(!meshes_.Equals(other.meshes_)) return false;
-      if(!nodes_.Equals(other.nodes_)) return false;
-      if(!samplers_.Equals(other.samplers_)) return false;
-      if (Scene != other.Scene) return false;
-      if(!scenes_.Equals(other.scenes_)) return false;
-      if(!skins_.Equals(other.skins_)) return false;
-      if(!textures_.Equals(other.textures_)) return false;
-      if (!object.Equals(Extensions, other.Extensions)) return false;
-      return Equals(_unknownFields, other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override int GetHashCode() {
-      int hash = 1;
-      hash ^= extensionsUsed_.GetHashCode();
-      hash ^= extensionsRequired_.GetHashCode();
-      hash ^= accessors_.GetHashCode();
-      hash ^= animations_.GetHashCode();
-      if (asset_ != null) hash ^= Asset.GetHashCode();
-      hash ^= buffers_.GetHashCode();
-      hash ^= bufferViews_.GetHashCode();
-      hash ^= images_.GetHashCode();
-      hash ^= materials_.GetHashCode();
-      hash ^= meshes_.GetHashCode();
-      hash ^= nodes_.GetHashCode();
-      hash ^= samplers_.GetHashCode();
-      if (scene_ != null) hash ^= Scene.GetHashCode();
-      hash ^= scenes_.GetHashCode();
-      hash ^= skins_.GetHashCode();
-      hash ^= textures_.GetHashCode();
-      if (extensions_ != null) hash ^= Extensions.GetHashCode();
-      if (_unknownFields != null) {
-        hash ^= _unknownFields.GetHashCode();
-      }
-      return hash;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override string ToString() {
-      return pb::JsonFormatter.ToDiagnosticString(this);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void WriteTo(pb::CodedOutputStream output) {
-      extensionsUsed_.WriteTo(output, _repeated_extensionsUsed_codec);
-      extensionsRequired_.WriteTo(output, _repeated_extensionsRequired_codec);
-      accessors_.WriteTo(output, _repeated_accessors_codec);
-      animations_.WriteTo(output, _repeated_animations_codec);
-      if (asset_ != null) {
-        output.WriteRawTag(42);
-        output.WriteMessage(Asset);
-      }
-      buffers_.WriteTo(output, _repeated_buffers_codec);
-      bufferViews_.WriteTo(output, _repeated_bufferViews_codec);
-      images_.WriteTo(output, _repeated_images_codec);
-      materials_.WriteTo(output, _repeated_materials_codec);
-      meshes_.WriteTo(output, _repeated_meshes_codec);
-      nodes_.WriteTo(output, _repeated_nodes_codec);
-      samplers_.WriteTo(output, _repeated_samplers_codec);
-      if (scene_ != null) {
-        _single_scene_codec.WriteTagAndValue(output, Scene);
-      }
-      scenes_.WriteTo(output, _repeated_scenes_codec);
-      skins_.WriteTo(output, _repeated_skins_codec);
-      textures_.WriteTo(output, _repeated_textures_codec);
-      if (extensions_ != null) {
-        output.WriteRawTag(138, 1);
-        output.WriteMessage(Extensions);
-      }
-      if (_unknownFields != null) {
-        _unknownFields.WriteTo(output);
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int CalculateSize() {
-      int size = 0;
-      size += extensionsUsed_.CalculateSize(_repeated_extensionsUsed_codec);
-      size += extensionsRequired_.CalculateSize(_repeated_extensionsRequired_codec);
-      size += accessors_.CalculateSize(_repeated_accessors_codec);
-      size += animations_.CalculateSize(_repeated_animations_codec);
-      if (asset_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Asset);
-      }
-      size += buffers_.CalculateSize(_repeated_buffers_codec);
-      size += bufferViews_.CalculateSize(_repeated_bufferViews_codec);
-      size += images_.CalculateSize(_repeated_images_codec);
-      size += materials_.CalculateSize(_repeated_materials_codec);
-      size += meshes_.CalculateSize(_repeated_meshes_codec);
-      size += nodes_.CalculateSize(_repeated_nodes_codec);
-      size += samplers_.CalculateSize(_repeated_samplers_codec);
-      if (scene_ != null) {
-        size += _single_scene_codec.CalculateSizeWithTag(Scene);
-      }
-      size += scenes_.CalculateSize(_repeated_scenes_codec);
-      size += skins_.CalculateSize(_repeated_skins_codec);
-      size += textures_.CalculateSize(_repeated_textures_codec);
-      if (extensions_ != null) {
-        size += 2 + pb::CodedOutputStream.ComputeMessageSize(Extensions);
-      }
-      if (_unknownFields != null) {
-        size += _unknownFields.CalculateSize();
-      }
-      return size;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(glTF other) {
-      if (other == null) {
-        return;
-      }
-      extensionsUsed_.Add(other.extensionsUsed_);
-      extensionsRequired_.Add(other.extensionsRequired_);
-      accessors_.Add(other.accessors_);
-      animations_.Add(other.animations_);
-      if (other.asset_ != null) {
-        if (asset_ == null) {
-          Asset = new global::VrmProtobuf.Asset();
-        }
-        Asset.MergeFrom(other.Asset);
-      }
-      buffers_.Add(other.buffers_);
-      bufferViews_.Add(other.bufferViews_);
-      images_.Add(other.images_);
-      materials_.Add(other.materials_);
-      meshes_.Add(other.meshes_);
-      nodes_.Add(other.nodes_);
-      samplers_.Add(other.samplers_);
-      if (other.scene_ != null) {
-        if (scene_ == null || other.Scene != 0) {
-          Scene = other.Scene;
-        }
-      }
-      scenes_.Add(other.scenes_);
-      skins_.Add(other.skins_);
-      textures_.Add(other.textures_);
-      if (other.extensions_ != null) {
-        if (extensions_ == null) {
-          Extensions = new global::VrmProtobuf.Extensions();
-        }
-        Extensions.MergeFrom(other.Extensions);
-      }
-      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(pb::CodedInputStream input) {
-      uint tag;
-      while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
-          default:
-            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
-            break;
-          case 10: {
-            extensionsUsed_.AddEntriesFrom(input, _repeated_extensionsUsed_codec);
-            break;
-          }
-          case 18: {
-            extensionsRequired_.AddEntriesFrom(input, _repeated_extensionsRequired_codec);
-            break;
-          }
-          case 26: {
-            accessors_.AddEntriesFrom(input, _repeated_accessors_codec);
-            break;
-          }
-          case 34: {
-            animations_.AddEntriesFrom(input, _repeated_animations_codec);
-            break;
-          }
-          case 42: {
-            if (asset_ == null) {
-              Asset = new global::VrmProtobuf.Asset();
-            }
-            input.ReadMessage(Asset);
-            break;
-          }
-          case 50: {
-            buffers_.AddEntriesFrom(input, _repeated_buffers_codec);
-            break;
-          }
-          case 58: {
-            bufferViews_.AddEntriesFrom(input, _repeated_bufferViews_codec);
-            break;
-          }
-          case 66: {
-            images_.AddEntriesFrom(input, _repeated_images_codec);
-            break;
-          }
-          case 74: {
-            materials_.AddEntriesFrom(input, _repeated_materials_codec);
-            break;
-          }
-          case 82: {
-            meshes_.AddEntriesFrom(input, _repeated_meshes_codec);
-            break;
-          }
-          case 90: {
-            nodes_.AddEntriesFrom(input, _repeated_nodes_codec);
-            break;
-          }
-          case 98: {
-            samplers_.AddEntriesFrom(input, _repeated_samplers_codec);
-            break;
-          }
-          case 106: {
-            int? value = _single_scene_codec.Read(input);
-            if (scene_ == null || value != 0) {
-              Scene = value;
-            }
-            break;
-          }
-          case 114: {
-            scenes_.AddEntriesFrom(input, _repeated_scenes_codec);
-            break;
-          }
-          case 122: {
-            skins_.AddEntriesFrom(input, _repeated_skins_codec);
-            break;
-          }
-          case 130: {
-            textures_.AddEntriesFrom(input, _repeated_textures_codec);
-            break;
-          }
-          case 138: {
-            if (extensions_ == null) {
-              Extensions = new global::VrmProtobuf.Extensions();
-            }
-            input.ReadMessage(Extensions);
-            break;
-          }
-        }
-      }
-    }
-
-  }
-
-  /// <summary>
-  /// https://github.com/KhronosGroup/glTF/blob/master/specification/2.0/schema/accessor.schema.json
-  /// "required": [ "componentType", "count", "type" ]
-  /// </summary>
-  public sealed partial class Accessor : pb::IMessage<Accessor> {
-    private static readonly pb::MessageParser<Accessor> _parser = new pb::MessageParser<Accessor>(() => new Accessor());
-    private pb::UnknownFieldSet _unknownFields;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<Accessor> Parser { get { return _parser; } }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pbr::MessageDescriptor Descriptor {
-      get { return global::VrmProtobuf.GlTFReflection.Descriptor.MessageTypes[1]; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    pbr::MessageDescriptor pb::IMessage.Descriptor {
-      get { return Descriptor; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public Accessor() {
-      OnConstruction();
-    }
-
-    partial void OnConstruction();
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public Accessor(Accessor other) : this() {
-      BufferView = other.BufferView;
-      ByteOffset = other.ByteOffset;
-      componentType_ = other.componentType_;
-      Normalized = other.Normalized;
-      count_ = other.count_;
-      type_ = other.type_;
-      max_ = other.max_.Clone();
-      min_ = other.min_.Clone();
-      sparse_ = other.sparse_ != null ? other.sparse_.Clone() : null;
-      name_ = other.name_;
-      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public Accessor Clone() {
-      return new Accessor(this);
-    }
-
-    /// <summary>Field number for the "bufferView" field.</summary>
-    public const int BufferViewFieldNumber = 1;
-    private static readonly pb::FieldCodec<int?> _single_bufferView_codec = pb::FieldCodec.ForStructWrapper<int>(10);
-    private int? bufferView_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int? BufferView {
-      get { return bufferView_; }
-      set {
-        bufferView_ = value;
-      }
-    }
-
-
-    /// <summary>Field number for the "byteOffset" field.</summary>
-    public const int ByteOffsetFieldNumber = 2;
-    private static readonly pb::FieldCodec<int?> _single_byteOffset_codec = pb::FieldCodec.ForStructWrapper<int>(18);
-    private int? byteOffset_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int? ByteOffset {
-      get { return byteOffset_; }
-      set {
-        byteOffset_ = value;
-      }
-    }
-
-
-    /// <summary>Field number for the "componentType" field.</summary>
-    public const int ComponentTypeFieldNumber = 3;
-    private int componentType_;
-    /// <summary>
-    /// enum ComponentType {
-    ///   COMPONENTTYPE_UNKNOWN = 0;
-    ///   BYTE = 5120;
-    ///   UNSIGNED_BYTE = 5121;
-    ///   SHORT = 5122;
-    ///   UNSIGNED_SHORT = 5123;
-    ///   UNSIGNED_INT = 5125;
-    ///   FLOAT = 5126;
-    /// }
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int ComponentType {
-      get { return componentType_; }
-      set {
-        componentType_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "normalized" field.</summary>
-    public const int NormalizedFieldNumber = 4;
-    private static readonly pb::FieldCodec<bool?> _single_normalized_codec = pb::FieldCodec.ForStructWrapper<bool>(34);
-    private bool? normalized_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool? Normalized {
-      get { return normalized_; }
-      set {
-        normalized_ = value;
-      }
-    }
-
-
-    /// <summary>Field number for the "count" field.</summary>
-    public const int CountFieldNumber = 5;
-    private int count_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int Count {
-      get { return count_; }
-      set {
-        count_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "type" field.</summary>
-    public const int TypeFieldNumber = 6;
-    private string type_ = "";
-    /// <summary>
-    ///  "SCALAR", "VEC2", "VEC3", "VEC4", "MAT2", "MAT3", "MAT4"
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string Type {
-      get { return type_; }
-      set {
-        type_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "max" field.</summary>
-    public const int MaxFieldNumber = 7;
-    private static readonly pb::FieldCodec<float> _repeated_max_codec
-        = pb::FieldCodec.ForFloat(58);
-    private readonly pbc::RepeatedField<float> max_ = new pbc::RepeatedField<float>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::RepeatedField<float> Max {
-      get { return max_; }
-    }
-
-    /// <summary>Field number for the "min" field.</summary>
-    public const int MinFieldNumber = 8;
-    private static readonly pb::FieldCodec<float> _repeated_min_codec
-        = pb::FieldCodec.ForFloat(66);
-    private readonly pbc::RepeatedField<float> min_ = new pbc::RepeatedField<float>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::RepeatedField<float> Min {
-      get { return min_; }
-    }
-
-    /// <summary>Field number for the "sparse" field.</summary>
-    public const int SparseFieldNumber = 9;
-    private global::VrmProtobuf.AccessorSparse sparse_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::VrmProtobuf.AccessorSparse Sparse {
-      get { return sparse_; }
-      set {
-        sparse_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "name" field.</summary>
-    public const int NameFieldNumber = 10;
-    private string name_ = "";
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string Name {
-      get { return name_; }
-      set {
-        name_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override bool Equals(object other) {
-      return Equals(other as Accessor);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(Accessor other) {
-      if (ReferenceEquals(other, null)) {
-        return false;
-      }
-      if (ReferenceEquals(other, this)) {
-        return true;
-      }
-      if (BufferView != other.BufferView) return false;
-      if (ByteOffset != other.ByteOffset) return false;
-      if (ComponentType != other.ComponentType) return false;
-      if (Normalized != other.Normalized) return false;
-      if (Count != other.Count) return false;
-      if (Type != other.Type) return false;
-      if(!max_.Equals(other.max_)) return false;
-      if(!min_.Equals(other.min_)) return false;
-      if (!object.Equals(Sparse, other.Sparse)) return false;
-      if (Name != other.Name) return false;
-      return Equals(_unknownFields, other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override int GetHashCode() {
-      int hash = 1;
-      if (bufferView_ != null) hash ^= BufferView.GetHashCode();
-      if (byteOffset_ != null) hash ^= ByteOffset.GetHashCode();
-      if (ComponentType != 0) hash ^= ComponentType.GetHashCode();
-      if (normalized_ != null) hash ^= Normalized.GetHashCode();
-      if (Count != 0) hash ^= Count.GetHashCode();
-      if (Type.Length != 0) hash ^= Type.GetHashCode();
-      hash ^= max_.GetHashCode();
-      hash ^= min_.GetHashCode();
-      if (sparse_ != null) hash ^= Sparse.GetHashCode();
-      if (Name.Length != 0) hash ^= Name.GetHashCode();
-      if (_unknownFields != null) {
-        hash ^= _unknownFields.GetHashCode();
-      }
-      return hash;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override string ToString() {
-      return pb::JsonFormatter.ToDiagnosticString(this);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void WriteTo(pb::CodedOutputStream output) {
-      if (bufferView_ != null) {
-        _single_bufferView_codec.WriteTagAndValue(output, BufferView);
-      }
-      if (byteOffset_ != null) {
-        _single_byteOffset_codec.WriteTagAndValue(output, ByteOffset);
-      }
-      if (ComponentType != 0) {
-        output.WriteRawTag(24);
-        output.WriteInt32(ComponentType);
-      }
-      if (normalized_ != null) {
-        _single_normalized_codec.WriteTagAndValue(output, Normalized);
-      }
-      if (Count != 0) {
-        output.WriteRawTag(40);
-        output.WriteInt32(Count);
-      }
-      if (Type.Length != 0) {
-        output.WriteRawTag(50);
-        output.WriteString(Type);
-      }
-      max_.WriteTo(output, _repeated_max_codec);
-      min_.WriteTo(output, _repeated_min_codec);
-      if (sparse_ != null) {
-        output.WriteRawTag(74);
-        output.WriteMessage(Sparse);
-      }
-      if (Name.Length != 0) {
-        output.WriteRawTag(82);
-        output.WriteString(Name);
-      }
-      if (_unknownFields != null) {
-        _unknownFields.WriteTo(output);
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int CalculateSize() {
-      int size = 0;
-      if (bufferView_ != null) {
-        size += _single_bufferView_codec.CalculateSizeWithTag(BufferView);
-      }
-      if (byteOffset_ != null) {
-        size += _single_byteOffset_codec.CalculateSizeWithTag(ByteOffset);
-      }
-      if (ComponentType != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(ComponentType);
-      }
-      if (normalized_ != null) {
-        size += _single_normalized_codec.CalculateSizeWithTag(Normalized);
-      }
-      if (Count != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Count);
-      }
-      if (Type.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(Type);
-      }
-      size += max_.CalculateSize(_repeated_max_codec);
-      size += min_.CalculateSize(_repeated_min_codec);
-      if (sparse_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Sparse);
-      }
-      if (Name.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(Name);
-      }
-      if (_unknownFields != null) {
-        size += _unknownFields.CalculateSize();
-      }
-      return size;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(Accessor other) {
-      if (other == null) {
-        return;
-      }
-      if (other.bufferView_ != null) {
-        if (bufferView_ == null || other.BufferView != 0) {
-          BufferView = other.BufferView;
-        }
-      }
-      if (other.byteOffset_ != null) {
-        if (byteOffset_ == null || other.ByteOffset != 0) {
-          ByteOffset = other.ByteOffset;
-        }
-      }
-      if (other.ComponentType != 0) {
-        ComponentType = other.ComponentType;
-      }
-      if (other.normalized_ != null) {
-        if (normalized_ == null || other.Normalized != false) {
-          Normalized = other.Normalized;
-        }
-      }
-      if (other.Count != 0) {
-        Count = other.Count;
-      }
-      if (other.Type.Length != 0) {
-        Type = other.Type;
-      }
-      max_.Add(other.max_);
-      min_.Add(other.min_);
-      if (other.sparse_ != null) {
-        if (sparse_ == null) {
-          Sparse = new global::VrmProtobuf.AccessorSparse();
-        }
-        Sparse.MergeFrom(other.Sparse);
-      }
-      if (other.Name.Length != 0) {
-        Name = other.Name;
-      }
-      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(pb::CodedInputStream input) {
-      uint tag;
-      while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
-          default:
-            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
-            break;
-          case 10: {
-            int? value = _single_bufferView_codec.Read(input);
-            if (bufferView_ == null || value != 0) {
-              BufferView = value;
-            }
-            break;
-          }
-          case 18: {
-            int? value = _single_byteOffset_codec.Read(input);
-            if (byteOffset_ == null || value != 0) {
-              ByteOffset = value;
-            }
-            break;
-          }
-          case 24: {
-            ComponentType = input.ReadInt32();
-            break;
-          }
-          case 34: {
-            bool? value = _single_normalized_codec.Read(input);
-            if (normalized_ == null || value != false) {
-              Normalized = value;
-            }
-            break;
-          }
-          case 40: {
-            Count = input.ReadInt32();
-            break;
-          }
-          case 50: {
-            Type = input.ReadString();
-            break;
-          }
-          case 58:
-          case 61: {
-            max_.AddEntriesFrom(input, _repeated_max_codec);
-            break;
-          }
-          case 66:
-          case 69: {
-            min_.AddEntriesFrom(input, _repeated_min_codec);
-            break;
-          }
-          case 74: {
-            if (sparse_ == null) {
-              Sparse = new global::VrmProtobuf.AccessorSparse();
-            }
-            input.ReadMessage(Sparse);
-            break;
-          }
-          case 82: {
-            Name = input.ReadString();
-            break;
-          }
-        }
-      }
-    }
-
-  }
-
-  /// <summary>
-  /// https://github.com/KhronosGroup/glTF/blob/master/specification/2.0/schema/accessor.sparse.indices.schema.json
-  /// "required": [ "bufferView", "componentType" ]
-  /// </summary>
   public sealed partial class AccessorSparseIndices : pb::IMessage<AccessorSparseIndices> {
     private static readonly pb::MessageParser<AccessorSparseIndices> _parser = new pb::MessageParser<AccessorSparseIndices>(() => new AccessorSparseIndices());
     private pb::UnknownFieldSet _unknownFields;
@@ -1105,7 +345,7 @@ namespace VrmProtobuf {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::VrmProtobuf.GlTFReflection.Descriptor.MessageTypes[2]; }
+      get { return global::VrmProtobuf.GlTFReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1122,9 +362,11 @@ namespace VrmProtobuf {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public AccessorSparseIndices(AccessorSparseIndices other) : this() {
+      extensions_ = other.extensions_ != null ? other.extensions_.Clone() : null;
+      extras_ = other.extras_ != null ? other.extras_.Clone() : null;
       BufferView = other.BufferView;
       ByteOffset = other.ByteOffset;
-      componentType_ = other.componentType_;
+      ComponentType = other.ComponentType;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -1133,10 +375,41 @@ namespace VrmProtobuf {
       return new AccessorSparseIndices(this);
     }
 
+    /// <summary>Field number for the "extensions" field.</summary>
+    public const int ExtensionsFieldNumber = 1;
+    private global::VrmProtobuf.AccessorSparseIndices.Types.Extensions extensions_;
+    /// <summary>
+    /// Dictionary object with extension-specific objects.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::VrmProtobuf.AccessorSparseIndices.Types.Extensions Extensions {
+      get { return extensions_; }
+      set {
+        extensions_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "extras" field.</summary>
+    public const int ExtrasFieldNumber = 2;
+    private global::VrmProtobuf.AccessorSparseIndices.Types.Extras extras_;
+    /// <summary>
+    /// Application-specific data.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::VrmProtobuf.AccessorSparseIndices.Types.Extras Extras {
+      get { return extras_; }
+      set {
+        extras_ = value;
+      }
+    }
+
     /// <summary>Field number for the "bufferView" field.</summary>
-    public const int BufferViewFieldNumber = 1;
-    private static readonly pb::FieldCodec<int?> _single_bufferView_codec = pb::FieldCodec.ForStructWrapper<int>(10);
+    public const int BufferViewFieldNumber = 3;
+    private static readonly pb::FieldCodec<int?> _single_bufferView_codec = pb::FieldCodec.ForStructWrapper<int>(26);
     private int? bufferView_;
+    /// <summary>
+    /// The index of the bufferView with sparse indices. Referenced bufferView can't have ARRAY_BUFFER or ELEMENT_ARRAY_BUFFER target.
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int? BufferView {
       get { return bufferView_; }
@@ -1147,9 +420,12 @@ namespace VrmProtobuf {
 
 
     /// <summary>Field number for the "byteOffset" field.</summary>
-    public const int ByteOffsetFieldNumber = 2;
-    private static readonly pb::FieldCodec<int?> _single_byteOffset_codec = pb::FieldCodec.ForStructWrapper<int>(18);
+    public const int ByteOffsetFieldNumber = 4;
+    private static readonly pb::FieldCodec<int?> _single_byteOffset_codec = pb::FieldCodec.ForStructWrapper<int>(34);
     private int? byteOffset_;
+    /// <summary>
+    /// The offset relative to the start of the bufferView in bytes. Must be aligned.
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int? ByteOffset {
       get { return byteOffset_; }
@@ -1160,23 +436,20 @@ namespace VrmProtobuf {
 
 
     /// <summary>Field number for the "componentType" field.</summary>
-    public const int ComponentTypeFieldNumber = 3;
-    private int componentType_;
+    public const int ComponentTypeFieldNumber = 5;
+    private static readonly pb::FieldCodec<int?> _single_componentType_codec = pb::FieldCodec.ForStructWrapper<int>(42);
+    private int? componentType_;
     /// <summary>
-    /// enum ComponentType {
-    ///   UNKNOWN = 0;
-    ///   UNSIGNED_BYTE = 5121;
-    ///   UNSIGNED_SHORT = 5123;
-    ///   UNSIGNED_INT = 5125;
-    /// }
+    /// The indices data type.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int ComponentType {
+    public int? ComponentType {
       get { return componentType_; }
       set {
         componentType_ = value;
       }
     }
+
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
@@ -1191,6 +464,8 @@ namespace VrmProtobuf {
       if (ReferenceEquals(other, this)) {
         return true;
       }
+      if (!object.Equals(Extensions, other.Extensions)) return false;
+      if (!object.Equals(Extras, other.Extras)) return false;
       if (BufferView != other.BufferView) return false;
       if (ByteOffset != other.ByteOffset) return false;
       if (ComponentType != other.ComponentType) return false;
@@ -1200,9 +475,11 @@ namespace VrmProtobuf {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
+      if (extensions_ != null) hash ^= Extensions.GetHashCode();
+      if (extras_ != null) hash ^= Extras.GetHashCode();
       if (bufferView_ != null) hash ^= BufferView.GetHashCode();
       if (byteOffset_ != null) hash ^= ByteOffset.GetHashCode();
-      if (ComponentType != 0) hash ^= ComponentType.GetHashCode();
+      if (componentType_ != null) hash ^= ComponentType.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -1216,15 +493,22 @@ namespace VrmProtobuf {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+      if (extensions_ != null) {
+        output.WriteRawTag(10);
+        output.WriteMessage(Extensions);
+      }
+      if (extras_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(Extras);
+      }
       if (bufferView_ != null) {
         _single_bufferView_codec.WriteTagAndValue(output, BufferView);
       }
       if (byteOffset_ != null) {
         _single_byteOffset_codec.WriteTagAndValue(output, ByteOffset);
       }
-      if (ComponentType != 0) {
-        output.WriteRawTag(24);
-        output.WriteInt32(ComponentType);
+      if (componentType_ != null) {
+        _single_componentType_codec.WriteTagAndValue(output, ComponentType);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -1234,14 +518,20 @@ namespace VrmProtobuf {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
+      if (extensions_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Extensions);
+      }
+      if (extras_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Extras);
+      }
       if (bufferView_ != null) {
         size += _single_bufferView_codec.CalculateSizeWithTag(BufferView);
       }
       if (byteOffset_ != null) {
         size += _single_byteOffset_codec.CalculateSizeWithTag(ByteOffset);
       }
-      if (ComponentType != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(ComponentType);
+      if (componentType_ != null) {
+        size += _single_componentType_codec.CalculateSizeWithTag(ComponentType);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -1254,6 +544,18 @@ namespace VrmProtobuf {
       if (other == null) {
         return;
       }
+      if (other.extensions_ != null) {
+        if (extensions_ == null) {
+          Extensions = new global::VrmProtobuf.AccessorSparseIndices.Types.Extensions();
+        }
+        Extensions.MergeFrom(other.Extensions);
+      }
+      if (other.extras_ != null) {
+        if (extras_ == null) {
+          Extras = new global::VrmProtobuf.AccessorSparseIndices.Types.Extras();
+        }
+        Extras.MergeFrom(other.Extras);
+      }
       if (other.bufferView_ != null) {
         if (bufferView_ == null || other.BufferView != 0) {
           BufferView = other.BufferView;
@@ -1264,8 +566,10 @@ namespace VrmProtobuf {
           ByteOffset = other.ByteOffset;
         }
       }
-      if (other.ComponentType != 0) {
-        ComponentType = other.ComponentType;
+      if (other.componentType_ != null) {
+        if (componentType_ == null || other.ComponentType != 0) {
+          ComponentType = other.ComponentType;
+        }
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -1279,33 +583,713 @@ namespace VrmProtobuf {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 10: {
+            if (extensions_ == null) {
+              Extensions = new global::VrmProtobuf.AccessorSparseIndices.Types.Extensions();
+            }
+            input.ReadMessage(Extensions);
+            break;
+          }
+          case 18: {
+            if (extras_ == null) {
+              Extras = new global::VrmProtobuf.AccessorSparseIndices.Types.Extras();
+            }
+            input.ReadMessage(Extras);
+            break;
+          }
+          case 26: {
             int? value = _single_bufferView_codec.Read(input);
             if (bufferView_ == null || value != 0) {
               BufferView = value;
             }
             break;
           }
-          case 18: {
+          case 34: {
             int? value = _single_byteOffset_codec.Read(input);
             if (byteOffset_ == null || value != 0) {
               ByteOffset = value;
             }
             break;
           }
-          case 24: {
-            ComponentType = input.ReadInt32();
+          case 42: {
+            int? value = _single_componentType_codec.Read(input);
+            if (componentType_ == null || value != 0) {
+              ComponentType = value;
+            }
             break;
           }
         }
       }
     }
 
+    #region Nested types
+    /// <summary>Container for nested types declared in the AccessorSparseIndices message type.</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static partial class Types {
+      public sealed partial class Extensions : pb::IMessage<Extensions> {
+        private static readonly pb::MessageParser<Extensions> _parser = new pb::MessageParser<Extensions>(() => new Extensions());
+        private pb::UnknownFieldSet _unknownFields;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pb::MessageParser<Extensions> Parser { get { return _parser; } }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pbr::MessageDescriptor Descriptor {
+          get { return global::VrmProtobuf.AccessorSparseIndices.Descriptor.NestedTypes[0]; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        pbr::MessageDescriptor pb::IMessage.Descriptor {
+          get { return Descriptor; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extensions() {
+          OnConstruction();
+        }
+
+        partial void OnConstruction();
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extensions(Extensions other) : this() {
+          _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extensions Clone() {
+          return new Extensions(this);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override bool Equals(object other) {
+          return Equals(other as Extensions);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public bool Equals(Extensions other) {
+          if (ReferenceEquals(other, null)) {
+            return false;
+          }
+          if (ReferenceEquals(other, this)) {
+            return true;
+          }
+          return Equals(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override int GetHashCode() {
+          int hash = 1;
+          if (_unknownFields != null) {
+            hash ^= _unknownFields.GetHashCode();
+          }
+          return hash;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override string ToString() {
+          return pb::JsonFormatter.ToDiagnosticString(this);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void WriteTo(pb::CodedOutputStream output) {
+          if (_unknownFields != null) {
+            _unknownFields.WriteTo(output);
+          }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public int CalculateSize() {
+          int size = 0;
+          if (_unknownFields != null) {
+            size += _unknownFields.CalculateSize();
+          }
+          return size;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(Extensions other) {
+          if (other == null) {
+            return;
+          }
+          _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(pb::CodedInputStream input) {
+          uint tag;
+          while ((tag = input.ReadTag()) != 0) {
+            switch(tag) {
+              default:
+                _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+                break;
+            }
+          }
+        }
+
+      }
+
+      public sealed partial class Extras : pb::IMessage<Extras> {
+        private static readonly pb::MessageParser<Extras> _parser = new pb::MessageParser<Extras>(() => new Extras());
+        private pb::UnknownFieldSet _unknownFields;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pb::MessageParser<Extras> Parser { get { return _parser; } }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pbr::MessageDescriptor Descriptor {
+          get { return global::VrmProtobuf.AccessorSparseIndices.Descriptor.NestedTypes[1]; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        pbr::MessageDescriptor pb::IMessage.Descriptor {
+          get { return Descriptor; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extras() {
+          OnConstruction();
+        }
+
+        partial void OnConstruction();
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extras(Extras other) : this() {
+          _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extras Clone() {
+          return new Extras(this);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override bool Equals(object other) {
+          return Equals(other as Extras);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public bool Equals(Extras other) {
+          if (ReferenceEquals(other, null)) {
+            return false;
+          }
+          if (ReferenceEquals(other, this)) {
+            return true;
+          }
+          return Equals(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override int GetHashCode() {
+          int hash = 1;
+          if (_unknownFields != null) {
+            hash ^= _unknownFields.GetHashCode();
+          }
+          return hash;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override string ToString() {
+          return pb::JsonFormatter.ToDiagnosticString(this);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void WriteTo(pb::CodedOutputStream output) {
+          if (_unknownFields != null) {
+            _unknownFields.WriteTo(output);
+          }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public int CalculateSize() {
+          int size = 0;
+          if (_unknownFields != null) {
+            size += _unknownFields.CalculateSize();
+          }
+          return size;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(Extras other) {
+          if (other == null) {
+            return;
+          }
+          _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(pb::CodedInputStream input) {
+          uint tag;
+          while ((tag = input.ReadTag()) != 0) {
+            switch(tag) {
+              default:
+                _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+                break;
+            }
+          }
+        }
+
+      }
+
+    }
+    #endregion
+
   }
 
-  /// <summary>
-  /// https://github.com/KhronosGroup/glTF/blob/master/specification/2.0/schema/accessor.sparse.schema.json
-  /// "required": [ "count", "indices", "values" ]
-  /// </summary>
+  public sealed partial class AccessorSparseValues : pb::IMessage<AccessorSparseValues> {
+    private static readonly pb::MessageParser<AccessorSparseValues> _parser = new pb::MessageParser<AccessorSparseValues>(() => new AccessorSparseValues());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<AccessorSparseValues> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::VrmProtobuf.GlTFReflection.Descriptor.MessageTypes[1]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public AccessorSparseValues() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public AccessorSparseValues(AccessorSparseValues other) : this() {
+      extensions_ = other.extensions_ != null ? other.extensions_.Clone() : null;
+      extras_ = other.extras_ != null ? other.extras_.Clone() : null;
+      BufferView = other.BufferView;
+      ByteOffset = other.ByteOffset;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public AccessorSparseValues Clone() {
+      return new AccessorSparseValues(this);
+    }
+
+    /// <summary>Field number for the "extensions" field.</summary>
+    public const int ExtensionsFieldNumber = 1;
+    private global::VrmProtobuf.AccessorSparseValues.Types.Extensions extensions_;
+    /// <summary>
+    /// Dictionary object with extension-specific objects.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::VrmProtobuf.AccessorSparseValues.Types.Extensions Extensions {
+      get { return extensions_; }
+      set {
+        extensions_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "extras" field.</summary>
+    public const int ExtrasFieldNumber = 2;
+    private global::VrmProtobuf.AccessorSparseValues.Types.Extras extras_;
+    /// <summary>
+    /// Application-specific data.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::VrmProtobuf.AccessorSparseValues.Types.Extras Extras {
+      get { return extras_; }
+      set {
+        extras_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "bufferView" field.</summary>
+    public const int BufferViewFieldNumber = 3;
+    private static readonly pb::FieldCodec<int?> _single_bufferView_codec = pb::FieldCodec.ForStructWrapper<int>(26);
+    private int? bufferView_;
+    /// <summary>
+    /// The index of the bufferView with sparse values. Referenced bufferView can't have ARRAY_BUFFER or ELEMENT_ARRAY_BUFFER target.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int? BufferView {
+      get { return bufferView_; }
+      set {
+        bufferView_ = value;
+      }
+    }
+
+
+    /// <summary>Field number for the "byteOffset" field.</summary>
+    public const int ByteOffsetFieldNumber = 4;
+    private static readonly pb::FieldCodec<int?> _single_byteOffset_codec = pb::FieldCodec.ForStructWrapper<int>(34);
+    private int? byteOffset_;
+    /// <summary>
+    /// The offset relative to the start of the bufferView in bytes. Must be aligned.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int? ByteOffset {
+      get { return byteOffset_; }
+      set {
+        byteOffset_ = value;
+      }
+    }
+
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as AccessorSparseValues);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(AccessorSparseValues other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (!object.Equals(Extensions, other.Extensions)) return false;
+      if (!object.Equals(Extras, other.Extras)) return false;
+      if (BufferView != other.BufferView) return false;
+      if (ByteOffset != other.ByteOffset) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (extensions_ != null) hash ^= Extensions.GetHashCode();
+      if (extras_ != null) hash ^= Extras.GetHashCode();
+      if (bufferView_ != null) hash ^= BufferView.GetHashCode();
+      if (byteOffset_ != null) hash ^= ByteOffset.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (extensions_ != null) {
+        output.WriteRawTag(10);
+        output.WriteMessage(Extensions);
+      }
+      if (extras_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(Extras);
+      }
+      if (bufferView_ != null) {
+        _single_bufferView_codec.WriteTagAndValue(output, BufferView);
+      }
+      if (byteOffset_ != null) {
+        _single_byteOffset_codec.WriteTagAndValue(output, ByteOffset);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (extensions_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Extensions);
+      }
+      if (extras_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Extras);
+      }
+      if (bufferView_ != null) {
+        size += _single_bufferView_codec.CalculateSizeWithTag(BufferView);
+      }
+      if (byteOffset_ != null) {
+        size += _single_byteOffset_codec.CalculateSizeWithTag(ByteOffset);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(AccessorSparseValues other) {
+      if (other == null) {
+        return;
+      }
+      if (other.extensions_ != null) {
+        if (extensions_ == null) {
+          Extensions = new global::VrmProtobuf.AccessorSparseValues.Types.Extensions();
+        }
+        Extensions.MergeFrom(other.Extensions);
+      }
+      if (other.extras_ != null) {
+        if (extras_ == null) {
+          Extras = new global::VrmProtobuf.AccessorSparseValues.Types.Extras();
+        }
+        Extras.MergeFrom(other.Extras);
+      }
+      if (other.bufferView_ != null) {
+        if (bufferView_ == null || other.BufferView != 0) {
+          BufferView = other.BufferView;
+        }
+      }
+      if (other.byteOffset_ != null) {
+        if (byteOffset_ == null || other.ByteOffset != 0) {
+          ByteOffset = other.ByteOffset;
+        }
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            if (extensions_ == null) {
+              Extensions = new global::VrmProtobuf.AccessorSparseValues.Types.Extensions();
+            }
+            input.ReadMessage(Extensions);
+            break;
+          }
+          case 18: {
+            if (extras_ == null) {
+              Extras = new global::VrmProtobuf.AccessorSparseValues.Types.Extras();
+            }
+            input.ReadMessage(Extras);
+            break;
+          }
+          case 26: {
+            int? value = _single_bufferView_codec.Read(input);
+            if (bufferView_ == null || value != 0) {
+              BufferView = value;
+            }
+            break;
+          }
+          case 34: {
+            int? value = _single_byteOffset_codec.Read(input);
+            if (byteOffset_ == null || value != 0) {
+              ByteOffset = value;
+            }
+            break;
+          }
+        }
+      }
+    }
+
+    #region Nested types
+    /// <summary>Container for nested types declared in the AccessorSparseValues message type.</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static partial class Types {
+      public sealed partial class Extensions : pb::IMessage<Extensions> {
+        private static readonly pb::MessageParser<Extensions> _parser = new pb::MessageParser<Extensions>(() => new Extensions());
+        private pb::UnknownFieldSet _unknownFields;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pb::MessageParser<Extensions> Parser { get { return _parser; } }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pbr::MessageDescriptor Descriptor {
+          get { return global::VrmProtobuf.AccessorSparseValues.Descriptor.NestedTypes[0]; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        pbr::MessageDescriptor pb::IMessage.Descriptor {
+          get { return Descriptor; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extensions() {
+          OnConstruction();
+        }
+
+        partial void OnConstruction();
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extensions(Extensions other) : this() {
+          _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extensions Clone() {
+          return new Extensions(this);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override bool Equals(object other) {
+          return Equals(other as Extensions);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public bool Equals(Extensions other) {
+          if (ReferenceEquals(other, null)) {
+            return false;
+          }
+          if (ReferenceEquals(other, this)) {
+            return true;
+          }
+          return Equals(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override int GetHashCode() {
+          int hash = 1;
+          if (_unknownFields != null) {
+            hash ^= _unknownFields.GetHashCode();
+          }
+          return hash;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override string ToString() {
+          return pb::JsonFormatter.ToDiagnosticString(this);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void WriteTo(pb::CodedOutputStream output) {
+          if (_unknownFields != null) {
+            _unknownFields.WriteTo(output);
+          }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public int CalculateSize() {
+          int size = 0;
+          if (_unknownFields != null) {
+            size += _unknownFields.CalculateSize();
+          }
+          return size;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(Extensions other) {
+          if (other == null) {
+            return;
+          }
+          _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(pb::CodedInputStream input) {
+          uint tag;
+          while ((tag = input.ReadTag()) != 0) {
+            switch(tag) {
+              default:
+                _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+                break;
+            }
+          }
+        }
+
+      }
+
+      public sealed partial class Extras : pb::IMessage<Extras> {
+        private static readonly pb::MessageParser<Extras> _parser = new pb::MessageParser<Extras>(() => new Extras());
+        private pb::UnknownFieldSet _unknownFields;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pb::MessageParser<Extras> Parser { get { return _parser; } }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pbr::MessageDescriptor Descriptor {
+          get { return global::VrmProtobuf.AccessorSparseValues.Descriptor.NestedTypes[1]; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        pbr::MessageDescriptor pb::IMessage.Descriptor {
+          get { return Descriptor; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extras() {
+          OnConstruction();
+        }
+
+        partial void OnConstruction();
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extras(Extras other) : this() {
+          _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extras Clone() {
+          return new Extras(this);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override bool Equals(object other) {
+          return Equals(other as Extras);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public bool Equals(Extras other) {
+          if (ReferenceEquals(other, null)) {
+            return false;
+          }
+          if (ReferenceEquals(other, this)) {
+            return true;
+          }
+          return Equals(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override int GetHashCode() {
+          int hash = 1;
+          if (_unknownFields != null) {
+            hash ^= _unknownFields.GetHashCode();
+          }
+          return hash;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override string ToString() {
+          return pb::JsonFormatter.ToDiagnosticString(this);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void WriteTo(pb::CodedOutputStream output) {
+          if (_unknownFields != null) {
+            _unknownFields.WriteTo(output);
+          }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public int CalculateSize() {
+          int size = 0;
+          if (_unknownFields != null) {
+            size += _unknownFields.CalculateSize();
+          }
+          return size;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(Extras other) {
+          if (other == null) {
+            return;
+          }
+          _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(pb::CodedInputStream input) {
+          uint tag;
+          while ((tag = input.ReadTag()) != 0) {
+            switch(tag) {
+              default:
+                _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+                break;
+            }
+          }
+        }
+
+      }
+
+    }
+    #endregion
+
+  }
+
   public sealed partial class AccessorSparse : pb::IMessage<AccessorSparse> {
     private static readonly pb::MessageParser<AccessorSparse> _parser = new pb::MessageParser<AccessorSparse>(() => new AccessorSparse());
     private pb::UnknownFieldSet _unknownFields;
@@ -1314,7 +1298,7 @@ namespace VrmProtobuf {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::VrmProtobuf.GlTFReflection.Descriptor.MessageTypes[3]; }
+      get { return global::VrmProtobuf.GlTFReflection.Descriptor.MessageTypes[2]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1331,7 +1315,9 @@ namespace VrmProtobuf {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public AccessorSparse(AccessorSparse other) : this() {
-      count_ = other.count_;
+      extensions_ = other.extensions_ != null ? other.extensions_.Clone() : null;
+      extras_ = other.extras_ != null ? other.extras_.Clone() : null;
+      Count = other.Count;
       indices_ = other.indices_ != null ? other.indices_.Clone() : null;
       values_ = other.values_ != null ? other.values_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
@@ -1342,20 +1328,56 @@ namespace VrmProtobuf {
       return new AccessorSparse(this);
     }
 
-    /// <summary>Field number for the "count" field.</summary>
-    public const int CountFieldNumber = 1;
-    private int count_;
+    /// <summary>Field number for the "extensions" field.</summary>
+    public const int ExtensionsFieldNumber = 1;
+    private global::VrmProtobuf.AccessorSparse.Types.Extensions extensions_;
+    /// <summary>
+    /// Dictionary object with extension-specific objects.
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int Count {
+    public global::VrmProtobuf.AccessorSparse.Types.Extensions Extensions {
+      get { return extensions_; }
+      set {
+        extensions_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "extras" field.</summary>
+    public const int ExtrasFieldNumber = 2;
+    private global::VrmProtobuf.AccessorSparse.Types.Extras extras_;
+    /// <summary>
+    /// Application-specific data.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::VrmProtobuf.AccessorSparse.Types.Extras Extras {
+      get { return extras_; }
+      set {
+        extras_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "count" field.</summary>
+    public const int CountFieldNumber = 3;
+    private static readonly pb::FieldCodec<int?> _single_count_codec = pb::FieldCodec.ForStructWrapper<int>(26);
+    private int? count_;
+    /// <summary>
+    /// Number of entries stored in the sparse array.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int? Count {
       get { return count_; }
       set {
         count_ = value;
       }
     }
 
+
     /// <summary>Field number for the "indices" field.</summary>
-    public const int IndicesFieldNumber = 2;
+    public const int IndicesFieldNumber = 4;
     private global::VrmProtobuf.AccessorSparseIndices indices_;
+    /// <summary>
+    /// Index array of size `count` that points to those accessor attributes that deviate from their initialization value. Indices must strictly increase.
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::VrmProtobuf.AccessorSparseIndices Indices {
       get { return indices_; }
@@ -1365,8 +1387,11 @@ namespace VrmProtobuf {
     }
 
     /// <summary>Field number for the "values" field.</summary>
-    public const int ValuesFieldNumber = 3;
+    public const int ValuesFieldNumber = 5;
     private global::VrmProtobuf.AccessorSparseValues values_;
+    /// <summary>
+    /// Array of size `count` times number of components, storing the displaced accessor attributes pointed by `indices`. Substituted values must have the same `componentType` and number of components as the base accessor.
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::VrmProtobuf.AccessorSparseValues Values {
       get { return values_; }
@@ -1388,6 +1413,8 @@ namespace VrmProtobuf {
       if (ReferenceEquals(other, this)) {
         return true;
       }
+      if (!object.Equals(Extensions, other.Extensions)) return false;
+      if (!object.Equals(Extras, other.Extras)) return false;
       if (Count != other.Count) return false;
       if (!object.Equals(Indices, other.Indices)) return false;
       if (!object.Equals(Values, other.Values)) return false;
@@ -1397,7 +1424,9 @@ namespace VrmProtobuf {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
-      if (Count != 0) hash ^= Count.GetHashCode();
+      if (extensions_ != null) hash ^= Extensions.GetHashCode();
+      if (extras_ != null) hash ^= Extras.GetHashCode();
+      if (count_ != null) hash ^= Count.GetHashCode();
       if (indices_ != null) hash ^= Indices.GetHashCode();
       if (values_ != null) hash ^= Values.GetHashCode();
       if (_unknownFields != null) {
@@ -1413,16 +1442,23 @@ namespace VrmProtobuf {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
-      if (Count != 0) {
-        output.WriteRawTag(8);
-        output.WriteInt32(Count);
+      if (extensions_ != null) {
+        output.WriteRawTag(10);
+        output.WriteMessage(Extensions);
+      }
+      if (extras_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(Extras);
+      }
+      if (count_ != null) {
+        _single_count_codec.WriteTagAndValue(output, Count);
       }
       if (indices_ != null) {
-        output.WriteRawTag(18);
+        output.WriteRawTag(34);
         output.WriteMessage(Indices);
       }
       if (values_ != null) {
-        output.WriteRawTag(26);
+        output.WriteRawTag(42);
         output.WriteMessage(Values);
       }
       if (_unknownFields != null) {
@@ -1433,8 +1469,14 @@ namespace VrmProtobuf {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
-      if (Count != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Count);
+      if (extensions_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Extensions);
+      }
+      if (extras_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Extras);
+      }
+      if (count_ != null) {
+        size += _single_count_codec.CalculateSizeWithTag(Count);
       }
       if (indices_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(Indices);
@@ -1453,8 +1495,22 @@ namespace VrmProtobuf {
       if (other == null) {
         return;
       }
-      if (other.Count != 0) {
-        Count = other.Count;
+      if (other.extensions_ != null) {
+        if (extensions_ == null) {
+          Extensions = new global::VrmProtobuf.AccessorSparse.Types.Extensions();
+        }
+        Extensions.MergeFrom(other.Extensions);
+      }
+      if (other.extras_ != null) {
+        if (extras_ == null) {
+          Extras = new global::VrmProtobuf.AccessorSparse.Types.Extras();
+        }
+        Extras.MergeFrom(other.Extras);
+      }
+      if (other.count_ != null) {
+        if (count_ == null || other.Count != 0) {
+          Count = other.Count;
+        }
       }
       if (other.indices_ != null) {
         if (indices_ == null) {
@@ -1479,18 +1535,35 @@ namespace VrmProtobuf {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 8: {
-            Count = input.ReadInt32();
+          case 10: {
+            if (extensions_ == null) {
+              Extensions = new global::VrmProtobuf.AccessorSparse.Types.Extensions();
+            }
+            input.ReadMessage(Extensions);
             break;
           }
           case 18: {
+            if (extras_ == null) {
+              Extras = new global::VrmProtobuf.AccessorSparse.Types.Extras();
+            }
+            input.ReadMessage(Extras);
+            break;
+          }
+          case 26: {
+            int? value = _single_count_codec.Read(input);
+            if (count_ == null || value != 0) {
+              Count = value;
+            }
+            break;
+          }
+          case 34: {
             if (indices_ == null) {
               Indices = new global::VrmProtobuf.AccessorSparseIndices();
             }
             input.ReadMessage(Indices);
             break;
           }
-          case 26: {
+          case 42: {
             if (values_ == null) {
               Values = new global::VrmProtobuf.AccessorSparseValues();
             }
@@ -1501,21 +1574,226 @@ namespace VrmProtobuf {
       }
     }
 
+    #region Nested types
+    /// <summary>Container for nested types declared in the AccessorSparse message type.</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static partial class Types {
+      public sealed partial class Extensions : pb::IMessage<Extensions> {
+        private static readonly pb::MessageParser<Extensions> _parser = new pb::MessageParser<Extensions>(() => new Extensions());
+        private pb::UnknownFieldSet _unknownFields;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pb::MessageParser<Extensions> Parser { get { return _parser; } }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pbr::MessageDescriptor Descriptor {
+          get { return global::VrmProtobuf.AccessorSparse.Descriptor.NestedTypes[0]; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        pbr::MessageDescriptor pb::IMessage.Descriptor {
+          get { return Descriptor; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extensions() {
+          OnConstruction();
+        }
+
+        partial void OnConstruction();
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extensions(Extensions other) : this() {
+          _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extensions Clone() {
+          return new Extensions(this);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override bool Equals(object other) {
+          return Equals(other as Extensions);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public bool Equals(Extensions other) {
+          if (ReferenceEquals(other, null)) {
+            return false;
+          }
+          if (ReferenceEquals(other, this)) {
+            return true;
+          }
+          return Equals(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override int GetHashCode() {
+          int hash = 1;
+          if (_unknownFields != null) {
+            hash ^= _unknownFields.GetHashCode();
+          }
+          return hash;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override string ToString() {
+          return pb::JsonFormatter.ToDiagnosticString(this);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void WriteTo(pb::CodedOutputStream output) {
+          if (_unknownFields != null) {
+            _unknownFields.WriteTo(output);
+          }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public int CalculateSize() {
+          int size = 0;
+          if (_unknownFields != null) {
+            size += _unknownFields.CalculateSize();
+          }
+          return size;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(Extensions other) {
+          if (other == null) {
+            return;
+          }
+          _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(pb::CodedInputStream input) {
+          uint tag;
+          while ((tag = input.ReadTag()) != 0) {
+            switch(tag) {
+              default:
+                _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+                break;
+            }
+          }
+        }
+
+      }
+
+      public sealed partial class Extras : pb::IMessage<Extras> {
+        private static readonly pb::MessageParser<Extras> _parser = new pb::MessageParser<Extras>(() => new Extras());
+        private pb::UnknownFieldSet _unknownFields;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pb::MessageParser<Extras> Parser { get { return _parser; } }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pbr::MessageDescriptor Descriptor {
+          get { return global::VrmProtobuf.AccessorSparse.Descriptor.NestedTypes[1]; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        pbr::MessageDescriptor pb::IMessage.Descriptor {
+          get { return Descriptor; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extras() {
+          OnConstruction();
+        }
+
+        partial void OnConstruction();
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extras(Extras other) : this() {
+          _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extras Clone() {
+          return new Extras(this);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override bool Equals(object other) {
+          return Equals(other as Extras);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public bool Equals(Extras other) {
+          if (ReferenceEquals(other, null)) {
+            return false;
+          }
+          if (ReferenceEquals(other, this)) {
+            return true;
+          }
+          return Equals(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override int GetHashCode() {
+          int hash = 1;
+          if (_unknownFields != null) {
+            hash ^= _unknownFields.GetHashCode();
+          }
+          return hash;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override string ToString() {
+          return pb::JsonFormatter.ToDiagnosticString(this);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void WriteTo(pb::CodedOutputStream output) {
+          if (_unknownFields != null) {
+            _unknownFields.WriteTo(output);
+          }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public int CalculateSize() {
+          int size = 0;
+          if (_unknownFields != null) {
+            size += _unknownFields.CalculateSize();
+          }
+          return size;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(Extras other) {
+          if (other == null) {
+            return;
+          }
+          _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(pb::CodedInputStream input) {
+          uint tag;
+          while ((tag = input.ReadTag()) != 0) {
+            switch(tag) {
+              default:
+                _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+                break;
+            }
+          }
+        }
+
+      }
+
+    }
+    #endregion
+
   }
 
-  /// <summary>
-  /// https://github.com/KhronosGroup/glTF/blob/master/specification/2.0/schema/accessor.sparse.values.schema.json
-  /// "required": [ "bufferView" ]
-  /// </summary>
-  public sealed partial class AccessorSparseValues : pb::IMessage<AccessorSparseValues> {
-    private static readonly pb::MessageParser<AccessorSparseValues> _parser = new pb::MessageParser<AccessorSparseValues>(() => new AccessorSparseValues());
+  public sealed partial class Accessor : pb::IMessage<Accessor> {
+    private static readonly pb::MessageParser<Accessor> _parser = new pb::MessageParser<Accessor>(() => new Accessor());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<AccessorSparseValues> Parser { get { return _parser; } }
+    public static pb::MessageParser<Accessor> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::VrmProtobuf.GlTFReflection.Descriptor.MessageTypes[4]; }
+      get { return global::VrmProtobuf.GlTFReflection.Descriptor.MessageTypes[3]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1524,28 +1802,83 @@ namespace VrmProtobuf {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public AccessorSparseValues() {
+    public Accessor() {
       OnConstruction();
     }
 
     partial void OnConstruction();
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public AccessorSparseValues(AccessorSparseValues other) : this() {
+    public Accessor(Accessor other) : this() {
+      extensions_ = other.extensions_ != null ? other.extensions_.Clone() : null;
+      extras_ = other.extras_ != null ? other.extras_.Clone() : null;
+      name_ = other.name_;
       BufferView = other.BufferView;
       ByteOffset = other.ByteOffset;
+      ComponentType = other.ComponentType;
+      Normalized = other.Normalized;
+      Count = other.Count;
+      type_ = other.type_;
+      max_ = other.max_.Clone();
+      min_ = other.min_.Clone();
+      sparse_ = other.sparse_ != null ? other.sparse_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public AccessorSparseValues Clone() {
-      return new AccessorSparseValues(this);
+    public Accessor Clone() {
+      return new Accessor(this);
+    }
+
+    /// <summary>Field number for the "extensions" field.</summary>
+    public const int ExtensionsFieldNumber = 1;
+    private global::VrmProtobuf.Accessor.Types.Extensions extensions_;
+    /// <summary>
+    /// Dictionary object with extension-specific objects.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::VrmProtobuf.Accessor.Types.Extensions Extensions {
+      get { return extensions_; }
+      set {
+        extensions_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "extras" field.</summary>
+    public const int ExtrasFieldNumber = 2;
+    private global::VrmProtobuf.Accessor.Types.Extras extras_;
+    /// <summary>
+    /// Application-specific data.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::VrmProtobuf.Accessor.Types.Extras Extras {
+      get { return extras_; }
+      set {
+        extras_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "name" field.</summary>
+    public const int NameFieldNumber = 3;
+    private string name_ = "";
+    /// <summary>
+    /// The user-defined name of this object.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Name {
+      get { return name_; }
+      set {
+        name_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
     }
 
     /// <summary>Field number for the "bufferView" field.</summary>
-    public const int BufferViewFieldNumber = 1;
-    private static readonly pb::FieldCodec<int?> _single_bufferView_codec = pb::FieldCodec.ForStructWrapper<int>(10);
+    public const int BufferViewFieldNumber = 4;
+    private static readonly pb::FieldCodec<int?> _single_bufferView_codec = pb::FieldCodec.ForStructWrapper<int>(34);
     private int? bufferView_;
+    /// <summary>
+    /// The index of the bufferView.
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int? BufferView {
       get { return bufferView_; }
@@ -1556,9 +1889,12 @@ namespace VrmProtobuf {
 
 
     /// <summary>Field number for the "byteOffset" field.</summary>
-    public const int ByteOffsetFieldNumber = 2;
-    private static readonly pb::FieldCodec<int?> _single_byteOffset_codec = pb::FieldCodec.ForStructWrapper<int>(18);
+    public const int ByteOffsetFieldNumber = 5;
+    private static readonly pb::FieldCodec<int?> _single_byteOffset_codec = pb::FieldCodec.ForStructWrapper<int>(42);
     private int? byteOffset_;
+    /// <summary>
+    /// The offset relative to the start of the bufferView in bytes.
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int? ByteOffset {
       get { return byteOffset_; }
@@ -1568,29 +1904,151 @@ namespace VrmProtobuf {
     }
 
 
+    /// <summary>Field number for the "componentType" field.</summary>
+    public const int ComponentTypeFieldNumber = 6;
+    private static readonly pb::FieldCodec<int?> _single_componentType_codec = pb::FieldCodec.ForStructWrapper<int>(50);
+    private int? componentType_;
+    /// <summary>
+    /// The datatype of components in the attribute.
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override bool Equals(object other) {
-      return Equals(other as AccessorSparseValues);
+    public int? ComponentType {
+      get { return componentType_; }
+      set {
+        componentType_ = value;
+      }
+    }
+
+
+    /// <summary>Field number for the "normalized" field.</summary>
+    public const int NormalizedFieldNumber = 7;
+    private static readonly pb::FieldCodec<bool?> _single_normalized_codec = pb::FieldCodec.ForStructWrapper<bool>(58);
+    private bool? normalized_;
+    /// <summary>
+    /// Specifies whether integer data values should be normalized.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool? Normalized {
+      get { return normalized_; }
+      set {
+        normalized_ = value;
+      }
+    }
+
+
+    /// <summary>Field number for the "count" field.</summary>
+    public const int CountFieldNumber = 8;
+    private static readonly pb::FieldCodec<int?> _single_count_codec = pb::FieldCodec.ForStructWrapper<int>(66);
+    private int? count_;
+    /// <summary>
+    /// The number of attributes referenced by this accessor.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int? Count {
+      get { return count_; }
+      set {
+        count_ = value;
+      }
+    }
+
+
+    /// <summary>Field number for the "type" field.</summary>
+    public const int TypeFieldNumber = 9;
+    private global::VrmProtobuf.Accessor.Types.accessorType type_ = global::VrmProtobuf.Accessor.Types.accessorType.Scalar;
+    /// <summary>
+    /// Specifies if the attribute is a scalar, vector, or matrix.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::VrmProtobuf.Accessor.Types.accessorType Type {
+      get { return type_; }
+      set {
+        type_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "max" field.</summary>
+    public const int MaxFieldNumber = 10;
+    private static readonly pb::FieldCodec<float> _repeated_max_codec
+        = pb::FieldCodec.ForFloat(82);
+    private readonly pbc::RepeatedField<float> max_ = new pbc::RepeatedField<float>();
+    /// <summary>
+    /// Maximum value of each component in this attribute.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::RepeatedField<float> Max {
+      get { return max_; }
+    }
+
+    /// <summary>Field number for the "min" field.</summary>
+    public const int MinFieldNumber = 11;
+    private static readonly pb::FieldCodec<float> _repeated_min_codec
+        = pb::FieldCodec.ForFloat(90);
+    private readonly pbc::RepeatedField<float> min_ = new pbc::RepeatedField<float>();
+    /// <summary>
+    /// Minimum value of each component in this attribute.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::RepeatedField<float> Min {
+      get { return min_; }
+    }
+
+    /// <summary>Field number for the "sparse" field.</summary>
+    public const int SparseFieldNumber = 12;
+    private global::VrmProtobuf.AccessorSparse sparse_;
+    /// <summary>
+    /// Sparse storage of attributes that deviate from their initialization value.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::VrmProtobuf.AccessorSparse Sparse {
+      get { return sparse_; }
+      set {
+        sparse_ = value;
+      }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(AccessorSparseValues other) {
+    public override bool Equals(object other) {
+      return Equals(other as Accessor);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(Accessor other) {
       if (ReferenceEquals(other, null)) {
         return false;
       }
       if (ReferenceEquals(other, this)) {
         return true;
       }
+      if (!object.Equals(Extensions, other.Extensions)) return false;
+      if (!object.Equals(Extras, other.Extras)) return false;
+      if (Name != other.Name) return false;
       if (BufferView != other.BufferView) return false;
       if (ByteOffset != other.ByteOffset) return false;
+      if (ComponentType != other.ComponentType) return false;
+      if (Normalized != other.Normalized) return false;
+      if (Count != other.Count) return false;
+      if (Type != other.Type) return false;
+      if(!max_.Equals(other.max_)) return false;
+      if(!min_.Equals(other.min_)) return false;
+      if (!object.Equals(Sparse, other.Sparse)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
+      if (extensions_ != null) hash ^= Extensions.GetHashCode();
+      if (extras_ != null) hash ^= Extras.GetHashCode();
+      if (Name.Length != 0) hash ^= Name.GetHashCode();
       if (bufferView_ != null) hash ^= BufferView.GetHashCode();
       if (byteOffset_ != null) hash ^= ByteOffset.GetHashCode();
+      if (componentType_ != null) hash ^= ComponentType.GetHashCode();
+      if (normalized_ != null) hash ^= Normalized.GetHashCode();
+      if (count_ != null) hash ^= Count.GetHashCode();
+      if (Type != global::VrmProtobuf.Accessor.Types.accessorType.Scalar) hash ^= Type.GetHashCode();
+      hash ^= max_.GetHashCode();
+      hash ^= min_.GetHashCode();
+      if (sparse_ != null) hash ^= Sparse.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -1604,11 +2062,42 @@ namespace VrmProtobuf {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+      if (extensions_ != null) {
+        output.WriteRawTag(10);
+        output.WriteMessage(Extensions);
+      }
+      if (extras_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(Extras);
+      }
+      if (Name.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(Name);
+      }
       if (bufferView_ != null) {
         _single_bufferView_codec.WriteTagAndValue(output, BufferView);
       }
       if (byteOffset_ != null) {
         _single_byteOffset_codec.WriteTagAndValue(output, ByteOffset);
+      }
+      if (componentType_ != null) {
+        _single_componentType_codec.WriteTagAndValue(output, ComponentType);
+      }
+      if (normalized_ != null) {
+        _single_normalized_codec.WriteTagAndValue(output, Normalized);
+      }
+      if (count_ != null) {
+        _single_count_codec.WriteTagAndValue(output, Count);
+      }
+      if (Type != global::VrmProtobuf.Accessor.Types.accessorType.Scalar) {
+        output.WriteRawTag(72);
+        output.WriteEnum((int) Type);
+      }
+      max_.WriteTo(output, _repeated_max_codec);
+      min_.WriteTo(output, _repeated_min_codec);
+      if (sparse_ != null) {
+        output.WriteRawTag(98);
+        output.WriteMessage(Sparse);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -1618,11 +2107,37 @@ namespace VrmProtobuf {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
+      if (extensions_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Extensions);
+      }
+      if (extras_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Extras);
+      }
+      if (Name.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Name);
+      }
       if (bufferView_ != null) {
         size += _single_bufferView_codec.CalculateSizeWithTag(BufferView);
       }
       if (byteOffset_ != null) {
         size += _single_byteOffset_codec.CalculateSizeWithTag(ByteOffset);
+      }
+      if (componentType_ != null) {
+        size += _single_componentType_codec.CalculateSizeWithTag(ComponentType);
+      }
+      if (normalized_ != null) {
+        size += _single_normalized_codec.CalculateSizeWithTag(Normalized);
+      }
+      if (count_ != null) {
+        size += _single_count_codec.CalculateSizeWithTag(Count);
+      }
+      if (Type != global::VrmProtobuf.Accessor.Types.accessorType.Scalar) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Type);
+      }
+      size += max_.CalculateSize(_repeated_max_codec);
+      size += min_.CalculateSize(_repeated_min_codec);
+      if (sparse_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Sparse);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -1631,9 +2146,24 @@ namespace VrmProtobuf {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(AccessorSparseValues other) {
+    public void MergeFrom(Accessor other) {
       if (other == null) {
         return;
+      }
+      if (other.extensions_ != null) {
+        if (extensions_ == null) {
+          Extensions = new global::VrmProtobuf.Accessor.Types.Extensions();
+        }
+        Extensions.MergeFrom(other.Extensions);
+      }
+      if (other.extras_ != null) {
+        if (extras_ == null) {
+          Extras = new global::VrmProtobuf.Accessor.Types.Extras();
+        }
+        Extras.MergeFrom(other.Extras);
+      }
+      if (other.Name.Length != 0) {
+        Name = other.Name;
       }
       if (other.bufferView_ != null) {
         if (bufferView_ == null || other.BufferView != 0) {
@@ -1644,6 +2174,32 @@ namespace VrmProtobuf {
         if (byteOffset_ == null || other.ByteOffset != 0) {
           ByteOffset = other.ByteOffset;
         }
+      }
+      if (other.componentType_ != null) {
+        if (componentType_ == null || other.ComponentType != 0) {
+          ComponentType = other.ComponentType;
+        }
+      }
+      if (other.normalized_ != null) {
+        if (normalized_ == null || other.Normalized != false) {
+          Normalized = other.Normalized;
+        }
+      }
+      if (other.count_ != null) {
+        if (count_ == null || other.Count != 0) {
+          Count = other.Count;
+        }
+      }
+      if (other.Type != global::VrmProtobuf.Accessor.Types.accessorType.Scalar) {
+        Type = other.Type;
+      }
+      max_.Add(other.max_);
+      min_.Add(other.min_);
+      if (other.sparse_ != null) {
+        if (sparse_ == null) {
+          Sparse = new global::VrmProtobuf.AccessorSparse();
+        }
+        Sparse.MergeFrom(other.Sparse);
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -1657,29 +2213,304 @@ namespace VrmProtobuf {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 10: {
+            if (extensions_ == null) {
+              Extensions = new global::VrmProtobuf.Accessor.Types.Extensions();
+            }
+            input.ReadMessage(Extensions);
+            break;
+          }
+          case 18: {
+            if (extras_ == null) {
+              Extras = new global::VrmProtobuf.Accessor.Types.Extras();
+            }
+            input.ReadMessage(Extras);
+            break;
+          }
+          case 26: {
+            Name = input.ReadString();
+            break;
+          }
+          case 34: {
             int? value = _single_bufferView_codec.Read(input);
             if (bufferView_ == null || value != 0) {
               BufferView = value;
             }
             break;
           }
-          case 18: {
+          case 42: {
             int? value = _single_byteOffset_codec.Read(input);
             if (byteOffset_ == null || value != 0) {
               ByteOffset = value;
             }
             break;
           }
+          case 50: {
+            int? value = _single_componentType_codec.Read(input);
+            if (componentType_ == null || value != 0) {
+              ComponentType = value;
+            }
+            break;
+          }
+          case 58: {
+            bool? value = _single_normalized_codec.Read(input);
+            if (normalized_ == null || value != false) {
+              Normalized = value;
+            }
+            break;
+          }
+          case 66: {
+            int? value = _single_count_codec.Read(input);
+            if (count_ == null || value != 0) {
+              Count = value;
+            }
+            break;
+          }
+          case 72: {
+            Type = (global::VrmProtobuf.Accessor.Types.accessorType) input.ReadEnum();
+            break;
+          }
+          case 82:
+          case 85: {
+            max_.AddEntriesFrom(input, _repeated_max_codec);
+            break;
+          }
+          case 90:
+          case 93: {
+            min_.AddEntriesFrom(input, _repeated_min_codec);
+            break;
+          }
+          case 98: {
+            if (sparse_ == null) {
+              Sparse = new global::VrmProtobuf.AccessorSparse();
+            }
+            input.ReadMessage(Sparse);
+            break;
+          }
         }
       }
     }
 
+    #region Nested types
+    /// <summary>Container for nested types declared in the Accessor message type.</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static partial class Types {
+      public enum accessorType {
+        [pbr::OriginalName("SCALAR")] Scalar = 0,
+        [pbr::OriginalName("VEC2")] Vec2 = 1,
+        [pbr::OriginalName("VEC3")] Vec3 = 2,
+        [pbr::OriginalName("VEC4")] Vec4 = 3,
+        [pbr::OriginalName("MAT2")] Mat2 = 4,
+        [pbr::OriginalName("MAT3")] Mat3 = 5,
+        [pbr::OriginalName("MAT4")] Mat4 = 6,
+      }
+
+      public sealed partial class Extensions : pb::IMessage<Extensions> {
+        private static readonly pb::MessageParser<Extensions> _parser = new pb::MessageParser<Extensions>(() => new Extensions());
+        private pb::UnknownFieldSet _unknownFields;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pb::MessageParser<Extensions> Parser { get { return _parser; } }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pbr::MessageDescriptor Descriptor {
+          get { return global::VrmProtobuf.Accessor.Descriptor.NestedTypes[0]; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        pbr::MessageDescriptor pb::IMessage.Descriptor {
+          get { return Descriptor; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extensions() {
+          OnConstruction();
+        }
+
+        partial void OnConstruction();
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extensions(Extensions other) : this() {
+          _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extensions Clone() {
+          return new Extensions(this);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override bool Equals(object other) {
+          return Equals(other as Extensions);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public bool Equals(Extensions other) {
+          if (ReferenceEquals(other, null)) {
+            return false;
+          }
+          if (ReferenceEquals(other, this)) {
+            return true;
+          }
+          return Equals(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override int GetHashCode() {
+          int hash = 1;
+          if (_unknownFields != null) {
+            hash ^= _unknownFields.GetHashCode();
+          }
+          return hash;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override string ToString() {
+          return pb::JsonFormatter.ToDiagnosticString(this);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void WriteTo(pb::CodedOutputStream output) {
+          if (_unknownFields != null) {
+            _unknownFields.WriteTo(output);
+          }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public int CalculateSize() {
+          int size = 0;
+          if (_unknownFields != null) {
+            size += _unknownFields.CalculateSize();
+          }
+          return size;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(Extensions other) {
+          if (other == null) {
+            return;
+          }
+          _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(pb::CodedInputStream input) {
+          uint tag;
+          while ((tag = input.ReadTag()) != 0) {
+            switch(tag) {
+              default:
+                _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+                break;
+            }
+          }
+        }
+
+      }
+
+      public sealed partial class Extras : pb::IMessage<Extras> {
+        private static readonly pb::MessageParser<Extras> _parser = new pb::MessageParser<Extras>(() => new Extras());
+        private pb::UnknownFieldSet _unknownFields;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pb::MessageParser<Extras> Parser { get { return _parser; } }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pbr::MessageDescriptor Descriptor {
+          get { return global::VrmProtobuf.Accessor.Descriptor.NestedTypes[1]; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        pbr::MessageDescriptor pb::IMessage.Descriptor {
+          get { return Descriptor; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extras() {
+          OnConstruction();
+        }
+
+        partial void OnConstruction();
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extras(Extras other) : this() {
+          _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extras Clone() {
+          return new Extras(this);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override bool Equals(object other) {
+          return Equals(other as Extras);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public bool Equals(Extras other) {
+          if (ReferenceEquals(other, null)) {
+            return false;
+          }
+          if (ReferenceEquals(other, this)) {
+            return true;
+          }
+          return Equals(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override int GetHashCode() {
+          int hash = 1;
+          if (_unknownFields != null) {
+            hash ^= _unknownFields.GetHashCode();
+          }
+          return hash;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override string ToString() {
+          return pb::JsonFormatter.ToDiagnosticString(this);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void WriteTo(pb::CodedOutputStream output) {
+          if (_unknownFields != null) {
+            _unknownFields.WriteTo(output);
+          }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public int CalculateSize() {
+          int size = 0;
+          if (_unknownFields != null) {
+            size += _unknownFields.CalculateSize();
+          }
+          return size;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(Extras other) {
+          if (other == null) {
+            return;
+          }
+          _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(pb::CodedInputStream input) {
+          uint tag;
+          while ((tag = input.ReadTag()) != 0) {
+            switch(tag) {
+              default:
+                _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+                break;
+            }
+          }
+        }
+
+      }
+
+    }
+    #endregion
+
   }
 
-  /// <summary>
-  /// https://github.com/KhronosGroup/glTF/blob/master/specification/2.0/schema/animation.channel.target.schema.json
-  /// "required": [ "path" ]
-  /// </summary>
   public sealed partial class AnimationChannelTarget : pb::IMessage<AnimationChannelTarget> {
     private static readonly pb::MessageParser<AnimationChannelTarget> _parser = new pb::MessageParser<AnimationChannelTarget>(() => new AnimationChannelTarget());
     private pb::UnknownFieldSet _unknownFields;
@@ -1688,7 +2519,7 @@ namespace VrmProtobuf {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::VrmProtobuf.GlTFReflection.Descriptor.MessageTypes[5]; }
+      get { return global::VrmProtobuf.GlTFReflection.Descriptor.MessageTypes[4]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1705,6 +2536,8 @@ namespace VrmProtobuf {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public AnimationChannelTarget(AnimationChannelTarget other) : this() {
+      extensions_ = other.extensions_ != null ? other.extensions_.Clone() : null;
+      extras_ = other.extras_ != null ? other.extras_.Clone() : null;
       Node = other.Node;
       path_ = other.path_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
@@ -1715,10 +2548,41 @@ namespace VrmProtobuf {
       return new AnimationChannelTarget(this);
     }
 
+    /// <summary>Field number for the "extensions" field.</summary>
+    public const int ExtensionsFieldNumber = 1;
+    private global::VrmProtobuf.AnimationChannelTarget.Types.Extensions extensions_;
+    /// <summary>
+    /// Dictionary object with extension-specific objects.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::VrmProtobuf.AnimationChannelTarget.Types.Extensions Extensions {
+      get { return extensions_; }
+      set {
+        extensions_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "extras" field.</summary>
+    public const int ExtrasFieldNumber = 2;
+    private global::VrmProtobuf.AnimationChannelTarget.Types.Extras extras_;
+    /// <summary>
+    /// Application-specific data.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::VrmProtobuf.AnimationChannelTarget.Types.Extras Extras {
+      get { return extras_; }
+      set {
+        extras_ = value;
+      }
+    }
+
     /// <summary>Field number for the "node" field.</summary>
-    public const int NodeFieldNumber = 1;
-    private static readonly pb::FieldCodec<int?> _single_node_codec = pb::FieldCodec.ForStructWrapper<int>(10);
+    public const int NodeFieldNumber = 3;
+    private static readonly pb::FieldCodec<int?> _single_node_codec = pb::FieldCodec.ForStructWrapper<int>(26);
     private int? node_;
+    /// <summary>
+    /// The index of the node to target.
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int? Node {
       get { return node_; }
@@ -1729,13 +2593,16 @@ namespace VrmProtobuf {
 
 
     /// <summary>Field number for the "path" field.</summary>
-    public const int PathFieldNumber = 2;
-    private string path_ = "";
+    public const int PathFieldNumber = 4;
+    private global::VrmProtobuf.AnimationChannelTarget.Types.pathType path_ = global::VrmProtobuf.AnimationChannelTarget.Types.pathType.Translation;
+    /// <summary>
+    /// The name of the node's TRS property to modify, or the "weights" of the Morph Targets it instantiates. For the "translation" property, the values that are provided by the sampler are the translation along the x, y, and z axes. For the "rotation" property, the values are a quaternion in the order (x, y, z, w), where w is the scalar. For the "scale" property, the values are the scaling factors along the x, y, and z axes.
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string Path {
+    public global::VrmProtobuf.AnimationChannelTarget.Types.pathType Path {
       get { return path_; }
       set {
-        path_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        path_ = value;
       }
     }
 
@@ -1752,6 +2619,8 @@ namespace VrmProtobuf {
       if (ReferenceEquals(other, this)) {
         return true;
       }
+      if (!object.Equals(Extensions, other.Extensions)) return false;
+      if (!object.Equals(Extras, other.Extras)) return false;
       if (Node != other.Node) return false;
       if (Path != other.Path) return false;
       return Equals(_unknownFields, other._unknownFields);
@@ -1760,8 +2629,10 @@ namespace VrmProtobuf {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
+      if (extensions_ != null) hash ^= Extensions.GetHashCode();
+      if (extras_ != null) hash ^= Extras.GetHashCode();
       if (node_ != null) hash ^= Node.GetHashCode();
-      if (Path.Length != 0) hash ^= Path.GetHashCode();
+      if (Path != global::VrmProtobuf.AnimationChannelTarget.Types.pathType.Translation) hash ^= Path.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -1775,12 +2646,20 @@ namespace VrmProtobuf {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+      if (extensions_ != null) {
+        output.WriteRawTag(10);
+        output.WriteMessage(Extensions);
+      }
+      if (extras_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(Extras);
+      }
       if (node_ != null) {
         _single_node_codec.WriteTagAndValue(output, Node);
       }
-      if (Path.Length != 0) {
-        output.WriteRawTag(18);
-        output.WriteString(Path);
+      if (Path != global::VrmProtobuf.AnimationChannelTarget.Types.pathType.Translation) {
+        output.WriteRawTag(32);
+        output.WriteEnum((int) Path);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -1790,11 +2669,17 @@ namespace VrmProtobuf {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
+      if (extensions_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Extensions);
+      }
+      if (extras_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Extras);
+      }
       if (node_ != null) {
         size += _single_node_codec.CalculateSizeWithTag(Node);
       }
-      if (Path.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(Path);
+      if (Path != global::VrmProtobuf.AnimationChannelTarget.Types.pathType.Translation) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Path);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -1807,12 +2692,24 @@ namespace VrmProtobuf {
       if (other == null) {
         return;
       }
+      if (other.extensions_ != null) {
+        if (extensions_ == null) {
+          Extensions = new global::VrmProtobuf.AnimationChannelTarget.Types.Extensions();
+        }
+        Extensions.MergeFrom(other.Extensions);
+      }
+      if (other.extras_ != null) {
+        if (extras_ == null) {
+          Extras = new global::VrmProtobuf.AnimationChannelTarget.Types.Extras();
+        }
+        Extras.MergeFrom(other.Extras);
+      }
       if (other.node_ != null) {
         if (node_ == null || other.Node != 0) {
           Node = other.Node;
         }
       }
-      if (other.Path.Length != 0) {
+      if (other.Path != global::VrmProtobuf.AnimationChannelTarget.Types.pathType.Translation) {
         Path = other.Path;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
@@ -1827,26 +2724,252 @@ namespace VrmProtobuf {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 10: {
+            if (extensions_ == null) {
+              Extensions = new global::VrmProtobuf.AnimationChannelTarget.Types.Extensions();
+            }
+            input.ReadMessage(Extensions);
+            break;
+          }
+          case 18: {
+            if (extras_ == null) {
+              Extras = new global::VrmProtobuf.AnimationChannelTarget.Types.Extras();
+            }
+            input.ReadMessage(Extras);
+            break;
+          }
+          case 26: {
             int? value = _single_node_codec.Read(input);
             if (node_ == null || value != 0) {
               Node = value;
             }
             break;
           }
-          case 18: {
-            Path = input.ReadString();
+          case 32: {
+            Path = (global::VrmProtobuf.AnimationChannelTarget.Types.pathType) input.ReadEnum();
             break;
           }
         }
       }
     }
 
+    #region Nested types
+    /// <summary>Container for nested types declared in the AnimationChannelTarget message type.</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static partial class Types {
+      public enum pathType {
+        [pbr::OriginalName("translation")] Translation = 0,
+        [pbr::OriginalName("rotation")] Rotation = 1,
+        [pbr::OriginalName("scale")] Scale = 2,
+        [pbr::OriginalName("weights")] Weights = 3,
+      }
+
+      public sealed partial class Extensions : pb::IMessage<Extensions> {
+        private static readonly pb::MessageParser<Extensions> _parser = new pb::MessageParser<Extensions>(() => new Extensions());
+        private pb::UnknownFieldSet _unknownFields;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pb::MessageParser<Extensions> Parser { get { return _parser; } }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pbr::MessageDescriptor Descriptor {
+          get { return global::VrmProtobuf.AnimationChannelTarget.Descriptor.NestedTypes[0]; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        pbr::MessageDescriptor pb::IMessage.Descriptor {
+          get { return Descriptor; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extensions() {
+          OnConstruction();
+        }
+
+        partial void OnConstruction();
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extensions(Extensions other) : this() {
+          _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extensions Clone() {
+          return new Extensions(this);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override bool Equals(object other) {
+          return Equals(other as Extensions);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public bool Equals(Extensions other) {
+          if (ReferenceEquals(other, null)) {
+            return false;
+          }
+          if (ReferenceEquals(other, this)) {
+            return true;
+          }
+          return Equals(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override int GetHashCode() {
+          int hash = 1;
+          if (_unknownFields != null) {
+            hash ^= _unknownFields.GetHashCode();
+          }
+          return hash;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override string ToString() {
+          return pb::JsonFormatter.ToDiagnosticString(this);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void WriteTo(pb::CodedOutputStream output) {
+          if (_unknownFields != null) {
+            _unknownFields.WriteTo(output);
+          }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public int CalculateSize() {
+          int size = 0;
+          if (_unknownFields != null) {
+            size += _unknownFields.CalculateSize();
+          }
+          return size;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(Extensions other) {
+          if (other == null) {
+            return;
+          }
+          _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(pb::CodedInputStream input) {
+          uint tag;
+          while ((tag = input.ReadTag()) != 0) {
+            switch(tag) {
+              default:
+                _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+                break;
+            }
+          }
+        }
+
+      }
+
+      public sealed partial class Extras : pb::IMessage<Extras> {
+        private static readonly pb::MessageParser<Extras> _parser = new pb::MessageParser<Extras>(() => new Extras());
+        private pb::UnknownFieldSet _unknownFields;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pb::MessageParser<Extras> Parser { get { return _parser; } }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pbr::MessageDescriptor Descriptor {
+          get { return global::VrmProtobuf.AnimationChannelTarget.Descriptor.NestedTypes[1]; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        pbr::MessageDescriptor pb::IMessage.Descriptor {
+          get { return Descriptor; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extras() {
+          OnConstruction();
+        }
+
+        partial void OnConstruction();
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extras(Extras other) : this() {
+          _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extras Clone() {
+          return new Extras(this);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override bool Equals(object other) {
+          return Equals(other as Extras);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public bool Equals(Extras other) {
+          if (ReferenceEquals(other, null)) {
+            return false;
+          }
+          if (ReferenceEquals(other, this)) {
+            return true;
+          }
+          return Equals(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override int GetHashCode() {
+          int hash = 1;
+          if (_unknownFields != null) {
+            hash ^= _unknownFields.GetHashCode();
+          }
+          return hash;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override string ToString() {
+          return pb::JsonFormatter.ToDiagnosticString(this);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void WriteTo(pb::CodedOutputStream output) {
+          if (_unknownFields != null) {
+            _unknownFields.WriteTo(output);
+          }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public int CalculateSize() {
+          int size = 0;
+          if (_unknownFields != null) {
+            size += _unknownFields.CalculateSize();
+          }
+          return size;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(Extras other) {
+          if (other == null) {
+            return;
+          }
+          _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(pb::CodedInputStream input) {
+          uint tag;
+          while ((tag = input.ReadTag()) != 0) {
+            switch(tag) {
+              default:
+                _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+                break;
+            }
+          }
+        }
+
+      }
+
+    }
+    #endregion
+
   }
 
-  /// <summary>
-  /// https://github.com/KhronosGroup/glTF/blob/master/specification/2.0/schema/animation.channel.schema.json
-  /// "required": [ "sampler", "target" ]
-  /// </summary>
   public sealed partial class AnimationChannel : pb::IMessage<AnimationChannel> {
     private static readonly pb::MessageParser<AnimationChannel> _parser = new pb::MessageParser<AnimationChannel>(() => new AnimationChannel());
     private pb::UnknownFieldSet _unknownFields;
@@ -1855,7 +2978,7 @@ namespace VrmProtobuf {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::VrmProtobuf.GlTFReflection.Descriptor.MessageTypes[6]; }
+      get { return global::VrmProtobuf.GlTFReflection.Descriptor.MessageTypes[5]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1872,6 +2995,8 @@ namespace VrmProtobuf {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public AnimationChannel(AnimationChannel other) : this() {
+      extensions_ = other.extensions_ != null ? other.extensions_.Clone() : null;
+      extras_ = other.extras_ != null ? other.extras_.Clone() : null;
       Sampler = other.Sampler;
       target_ = other.target_ != null ? other.target_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
@@ -1882,10 +3007,41 @@ namespace VrmProtobuf {
       return new AnimationChannel(this);
     }
 
+    /// <summary>Field number for the "extensions" field.</summary>
+    public const int ExtensionsFieldNumber = 1;
+    private global::VrmProtobuf.AnimationChannel.Types.Extensions extensions_;
+    /// <summary>
+    /// Dictionary object with extension-specific objects.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::VrmProtobuf.AnimationChannel.Types.Extensions Extensions {
+      get { return extensions_; }
+      set {
+        extensions_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "extras" field.</summary>
+    public const int ExtrasFieldNumber = 2;
+    private global::VrmProtobuf.AnimationChannel.Types.Extras extras_;
+    /// <summary>
+    /// Application-specific data.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::VrmProtobuf.AnimationChannel.Types.Extras Extras {
+      get { return extras_; }
+      set {
+        extras_ = value;
+      }
+    }
+
     /// <summary>Field number for the "sampler" field.</summary>
-    public const int SamplerFieldNumber = 1;
-    private static readonly pb::FieldCodec<int?> _single_sampler_codec = pb::FieldCodec.ForStructWrapper<int>(10);
+    public const int SamplerFieldNumber = 3;
+    private static readonly pb::FieldCodec<int?> _single_sampler_codec = pb::FieldCodec.ForStructWrapper<int>(26);
     private int? sampler_;
+    /// <summary>
+    /// The index of a sampler in this animation used to compute the value for the target.
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int? Sampler {
       get { return sampler_; }
@@ -1896,8 +3052,11 @@ namespace VrmProtobuf {
 
 
     /// <summary>Field number for the "target" field.</summary>
-    public const int TargetFieldNumber = 2;
+    public const int TargetFieldNumber = 4;
     private global::VrmProtobuf.AnimationChannelTarget target_;
+    /// <summary>
+    /// The index of the node and TRS property to target.
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::VrmProtobuf.AnimationChannelTarget Target {
       get { return target_; }
@@ -1919,6 +3078,8 @@ namespace VrmProtobuf {
       if (ReferenceEquals(other, this)) {
         return true;
       }
+      if (!object.Equals(Extensions, other.Extensions)) return false;
+      if (!object.Equals(Extras, other.Extras)) return false;
       if (Sampler != other.Sampler) return false;
       if (!object.Equals(Target, other.Target)) return false;
       return Equals(_unknownFields, other._unknownFields);
@@ -1927,6 +3088,8 @@ namespace VrmProtobuf {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
+      if (extensions_ != null) hash ^= Extensions.GetHashCode();
+      if (extras_ != null) hash ^= Extras.GetHashCode();
       if (sampler_ != null) hash ^= Sampler.GetHashCode();
       if (target_ != null) hash ^= Target.GetHashCode();
       if (_unknownFields != null) {
@@ -1942,11 +3105,19 @@ namespace VrmProtobuf {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+      if (extensions_ != null) {
+        output.WriteRawTag(10);
+        output.WriteMessage(Extensions);
+      }
+      if (extras_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(Extras);
+      }
       if (sampler_ != null) {
         _single_sampler_codec.WriteTagAndValue(output, Sampler);
       }
       if (target_ != null) {
-        output.WriteRawTag(18);
+        output.WriteRawTag(34);
         output.WriteMessage(Target);
       }
       if (_unknownFields != null) {
@@ -1957,6 +3128,12 @@ namespace VrmProtobuf {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
+      if (extensions_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Extensions);
+      }
+      if (extras_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Extras);
+      }
       if (sampler_ != null) {
         size += _single_sampler_codec.CalculateSizeWithTag(Sampler);
       }
@@ -1973,6 +3150,18 @@ namespace VrmProtobuf {
     public void MergeFrom(AnimationChannel other) {
       if (other == null) {
         return;
+      }
+      if (other.extensions_ != null) {
+        if (extensions_ == null) {
+          Extensions = new global::VrmProtobuf.AnimationChannel.Types.Extensions();
+        }
+        Extensions.MergeFrom(other.Extensions);
+      }
+      if (other.extras_ != null) {
+        if (extras_ == null) {
+          Extras = new global::VrmProtobuf.AnimationChannel.Types.Extras();
+        }
+        Extras.MergeFrom(other.Extras);
       }
       if (other.sampler_ != null) {
         if (sampler_ == null || other.Sampler != 0) {
@@ -1997,13 +3186,27 @@ namespace VrmProtobuf {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 10: {
+            if (extensions_ == null) {
+              Extensions = new global::VrmProtobuf.AnimationChannel.Types.Extensions();
+            }
+            input.ReadMessage(Extensions);
+            break;
+          }
+          case 18: {
+            if (extras_ == null) {
+              Extras = new global::VrmProtobuf.AnimationChannel.Types.Extras();
+            }
+            input.ReadMessage(Extras);
+            break;
+          }
+          case 26: {
             int? value = _single_sampler_codec.Read(input);
             if (sampler_ == null || value != 0) {
               Sampler = value;
             }
             break;
           }
-          case 18: {
+          case 34: {
             if (target_ == null) {
               Target = new global::VrmProtobuf.AnimationChannelTarget();
             }
@@ -2014,12 +3217,217 @@ namespace VrmProtobuf {
       }
     }
 
+    #region Nested types
+    /// <summary>Container for nested types declared in the AnimationChannel message type.</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static partial class Types {
+      public sealed partial class Extensions : pb::IMessage<Extensions> {
+        private static readonly pb::MessageParser<Extensions> _parser = new pb::MessageParser<Extensions>(() => new Extensions());
+        private pb::UnknownFieldSet _unknownFields;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pb::MessageParser<Extensions> Parser { get { return _parser; } }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pbr::MessageDescriptor Descriptor {
+          get { return global::VrmProtobuf.AnimationChannel.Descriptor.NestedTypes[0]; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        pbr::MessageDescriptor pb::IMessage.Descriptor {
+          get { return Descriptor; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extensions() {
+          OnConstruction();
+        }
+
+        partial void OnConstruction();
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extensions(Extensions other) : this() {
+          _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extensions Clone() {
+          return new Extensions(this);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override bool Equals(object other) {
+          return Equals(other as Extensions);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public bool Equals(Extensions other) {
+          if (ReferenceEquals(other, null)) {
+            return false;
+          }
+          if (ReferenceEquals(other, this)) {
+            return true;
+          }
+          return Equals(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override int GetHashCode() {
+          int hash = 1;
+          if (_unknownFields != null) {
+            hash ^= _unknownFields.GetHashCode();
+          }
+          return hash;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override string ToString() {
+          return pb::JsonFormatter.ToDiagnosticString(this);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void WriteTo(pb::CodedOutputStream output) {
+          if (_unknownFields != null) {
+            _unknownFields.WriteTo(output);
+          }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public int CalculateSize() {
+          int size = 0;
+          if (_unknownFields != null) {
+            size += _unknownFields.CalculateSize();
+          }
+          return size;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(Extensions other) {
+          if (other == null) {
+            return;
+          }
+          _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(pb::CodedInputStream input) {
+          uint tag;
+          while ((tag = input.ReadTag()) != 0) {
+            switch(tag) {
+              default:
+                _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+                break;
+            }
+          }
+        }
+
+      }
+
+      public sealed partial class Extras : pb::IMessage<Extras> {
+        private static readonly pb::MessageParser<Extras> _parser = new pb::MessageParser<Extras>(() => new Extras());
+        private pb::UnknownFieldSet _unknownFields;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pb::MessageParser<Extras> Parser { get { return _parser; } }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pbr::MessageDescriptor Descriptor {
+          get { return global::VrmProtobuf.AnimationChannel.Descriptor.NestedTypes[1]; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        pbr::MessageDescriptor pb::IMessage.Descriptor {
+          get { return Descriptor; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extras() {
+          OnConstruction();
+        }
+
+        partial void OnConstruction();
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extras(Extras other) : this() {
+          _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extras Clone() {
+          return new Extras(this);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override bool Equals(object other) {
+          return Equals(other as Extras);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public bool Equals(Extras other) {
+          if (ReferenceEquals(other, null)) {
+            return false;
+          }
+          if (ReferenceEquals(other, this)) {
+            return true;
+          }
+          return Equals(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override int GetHashCode() {
+          int hash = 1;
+          if (_unknownFields != null) {
+            hash ^= _unknownFields.GetHashCode();
+          }
+          return hash;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override string ToString() {
+          return pb::JsonFormatter.ToDiagnosticString(this);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void WriteTo(pb::CodedOutputStream output) {
+          if (_unknownFields != null) {
+            _unknownFields.WriteTo(output);
+          }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public int CalculateSize() {
+          int size = 0;
+          if (_unknownFields != null) {
+            size += _unknownFields.CalculateSize();
+          }
+          return size;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(Extras other) {
+          if (other == null) {
+            return;
+          }
+          _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(pb::CodedInputStream input) {
+          uint tag;
+          while ((tag = input.ReadTag()) != 0) {
+            switch(tag) {
+              default:
+                _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+                break;
+            }
+          }
+        }
+
+      }
+
+    }
+    #endregion
+
   }
 
-  /// <summary>
-  /// https://github.com/KhronosGroup/glTF/blob/master/specification/2.0/schema/animation.sampler.schema.json
-  /// "required": [ "input", "output" ]
-  /// </summary>
   public sealed partial class AnimationSampler : pb::IMessage<AnimationSampler> {
     private static readonly pb::MessageParser<AnimationSampler> _parser = new pb::MessageParser<AnimationSampler>(() => new AnimationSampler());
     private pb::UnknownFieldSet _unknownFields;
@@ -2028,7 +3436,7 @@ namespace VrmProtobuf {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::VrmProtobuf.GlTFReflection.Descriptor.MessageTypes[7]; }
+      get { return global::VrmProtobuf.GlTFReflection.Descriptor.MessageTypes[6]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2045,6 +3453,8 @@ namespace VrmProtobuf {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public AnimationSampler(AnimationSampler other) : this() {
+      extensions_ = other.extensions_ != null ? other.extensions_.Clone() : null;
+      extras_ = other.extras_ != null ? other.extras_.Clone() : null;
       Input = other.Input;
       interpolation_ = other.interpolation_;
       Output = other.Output;
@@ -2056,10 +3466,41 @@ namespace VrmProtobuf {
       return new AnimationSampler(this);
     }
 
+    /// <summary>Field number for the "extensions" field.</summary>
+    public const int ExtensionsFieldNumber = 1;
+    private global::VrmProtobuf.AnimationSampler.Types.Extensions extensions_;
+    /// <summary>
+    /// Dictionary object with extension-specific objects.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::VrmProtobuf.AnimationSampler.Types.Extensions Extensions {
+      get { return extensions_; }
+      set {
+        extensions_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "extras" field.</summary>
+    public const int ExtrasFieldNumber = 2;
+    private global::VrmProtobuf.AnimationSampler.Types.Extras extras_;
+    /// <summary>
+    /// Application-specific data.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::VrmProtobuf.AnimationSampler.Types.Extras Extras {
+      get { return extras_; }
+      set {
+        extras_ = value;
+      }
+    }
+
     /// <summary>Field number for the "input" field.</summary>
-    public const int InputFieldNumber = 1;
-    private static readonly pb::FieldCodec<int?> _single_input_codec = pb::FieldCodec.ForStructWrapper<int>(10);
+    public const int InputFieldNumber = 3;
+    private static readonly pb::FieldCodec<int?> _single_input_codec = pb::FieldCodec.ForStructWrapper<int>(26);
     private int? input_;
+    /// <summary>
+    /// The index of an accessor containing keyframe input values, e.g., time.
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int? Input {
       get { return input_; }
@@ -2070,20 +3511,26 @@ namespace VrmProtobuf {
 
 
     /// <summary>Field number for the "interpolation" field.</summary>
-    public const int InterpolationFieldNumber = 2;
-    private string interpolation_ = "";
+    public const int InterpolationFieldNumber = 4;
+    private global::VrmProtobuf.AnimationSampler.Types.interpolationType interpolation_ = global::VrmProtobuf.AnimationSampler.Types.interpolationType.Linear;
+    /// <summary>
+    /// Interpolation algorithm.
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string Interpolation {
+    public global::VrmProtobuf.AnimationSampler.Types.interpolationType Interpolation {
       get { return interpolation_; }
       set {
-        interpolation_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        interpolation_ = value;
       }
     }
 
     /// <summary>Field number for the "output" field.</summary>
-    public const int OutputFieldNumber = 3;
-    private static readonly pb::FieldCodec<int?> _single_output_codec = pb::FieldCodec.ForStructWrapper<int>(26);
+    public const int OutputFieldNumber = 5;
+    private static readonly pb::FieldCodec<int?> _single_output_codec = pb::FieldCodec.ForStructWrapper<int>(42);
     private int? output_;
+    /// <summary>
+    /// The index of an accessor, containing keyframe output values.
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int? Output {
       get { return output_; }
@@ -2106,6 +3553,8 @@ namespace VrmProtobuf {
       if (ReferenceEquals(other, this)) {
         return true;
       }
+      if (!object.Equals(Extensions, other.Extensions)) return false;
+      if (!object.Equals(Extras, other.Extras)) return false;
       if (Input != other.Input) return false;
       if (Interpolation != other.Interpolation) return false;
       if (Output != other.Output) return false;
@@ -2115,8 +3564,10 @@ namespace VrmProtobuf {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
+      if (extensions_ != null) hash ^= Extensions.GetHashCode();
+      if (extras_ != null) hash ^= Extras.GetHashCode();
       if (input_ != null) hash ^= Input.GetHashCode();
-      if (Interpolation.Length != 0) hash ^= Interpolation.GetHashCode();
+      if (Interpolation != global::VrmProtobuf.AnimationSampler.Types.interpolationType.Linear) hash ^= Interpolation.GetHashCode();
       if (output_ != null) hash ^= Output.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -2131,12 +3582,20 @@ namespace VrmProtobuf {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+      if (extensions_ != null) {
+        output.WriteRawTag(10);
+        output.WriteMessage(Extensions);
+      }
+      if (extras_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(Extras);
+      }
       if (input_ != null) {
         _single_input_codec.WriteTagAndValue(output, Input);
       }
-      if (Interpolation.Length != 0) {
-        output.WriteRawTag(18);
-        output.WriteString(Interpolation);
+      if (Interpolation != global::VrmProtobuf.AnimationSampler.Types.interpolationType.Linear) {
+        output.WriteRawTag(32);
+        output.WriteEnum((int) Interpolation);
       }
       if (output_ != null) {
         _single_output_codec.WriteTagAndValue(output, Output);
@@ -2149,11 +3608,17 @@ namespace VrmProtobuf {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
+      if (extensions_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Extensions);
+      }
+      if (extras_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Extras);
+      }
       if (input_ != null) {
         size += _single_input_codec.CalculateSizeWithTag(Input);
       }
-      if (Interpolation.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(Interpolation);
+      if (Interpolation != global::VrmProtobuf.AnimationSampler.Types.interpolationType.Linear) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Interpolation);
       }
       if (output_ != null) {
         size += _single_output_codec.CalculateSizeWithTag(Output);
@@ -2169,12 +3634,24 @@ namespace VrmProtobuf {
       if (other == null) {
         return;
       }
+      if (other.extensions_ != null) {
+        if (extensions_ == null) {
+          Extensions = new global::VrmProtobuf.AnimationSampler.Types.Extensions();
+        }
+        Extensions.MergeFrom(other.Extensions);
+      }
+      if (other.extras_ != null) {
+        if (extras_ == null) {
+          Extras = new global::VrmProtobuf.AnimationSampler.Types.Extras();
+        }
+        Extras.MergeFrom(other.Extras);
+      }
       if (other.input_ != null) {
         if (input_ == null || other.Input != 0) {
           Input = other.Input;
         }
       }
-      if (other.Interpolation.Length != 0) {
+      if (other.Interpolation != global::VrmProtobuf.AnimationSampler.Types.interpolationType.Linear) {
         Interpolation = other.Interpolation;
       }
       if (other.output_ != null) {
@@ -2194,17 +3671,31 @@ namespace VrmProtobuf {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 10: {
+            if (extensions_ == null) {
+              Extensions = new global::VrmProtobuf.AnimationSampler.Types.Extensions();
+            }
+            input.ReadMessage(Extensions);
+            break;
+          }
+          case 18: {
+            if (extras_ == null) {
+              Extras = new global::VrmProtobuf.AnimationSampler.Types.Extras();
+            }
+            input.ReadMessage(Extras);
+            break;
+          }
+          case 26: {
             int? value = _single_input_codec.Read(input);
             if (input_ == null || value != 0) {
               Input = value;
             }
             break;
           }
-          case 18: {
-            Interpolation = input.ReadString();
+          case 32: {
+            Interpolation = (global::VrmProtobuf.AnimationSampler.Types.interpolationType) input.ReadEnum();
             break;
           }
-          case 26: {
+          case 42: {
             int? value = _single_output_codec.Read(input);
             if (output_ == null || value != 0) {
               Output = value;
@@ -2215,12 +3706,223 @@ namespace VrmProtobuf {
       }
     }
 
+    #region Nested types
+    /// <summary>Container for nested types declared in the AnimationSampler message type.</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static partial class Types {
+      public enum interpolationType {
+        [pbr::OriginalName("LINEAR")] Linear = 0,
+        [pbr::OriginalName("STEP")] Step = 1,
+        [pbr::OriginalName("CUBICSPLINE")] Cubicspline = 2,
+      }
+
+      public sealed partial class Extensions : pb::IMessage<Extensions> {
+        private static readonly pb::MessageParser<Extensions> _parser = new pb::MessageParser<Extensions>(() => new Extensions());
+        private pb::UnknownFieldSet _unknownFields;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pb::MessageParser<Extensions> Parser { get { return _parser; } }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pbr::MessageDescriptor Descriptor {
+          get { return global::VrmProtobuf.AnimationSampler.Descriptor.NestedTypes[0]; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        pbr::MessageDescriptor pb::IMessage.Descriptor {
+          get { return Descriptor; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extensions() {
+          OnConstruction();
+        }
+
+        partial void OnConstruction();
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extensions(Extensions other) : this() {
+          _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extensions Clone() {
+          return new Extensions(this);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override bool Equals(object other) {
+          return Equals(other as Extensions);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public bool Equals(Extensions other) {
+          if (ReferenceEquals(other, null)) {
+            return false;
+          }
+          if (ReferenceEquals(other, this)) {
+            return true;
+          }
+          return Equals(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override int GetHashCode() {
+          int hash = 1;
+          if (_unknownFields != null) {
+            hash ^= _unknownFields.GetHashCode();
+          }
+          return hash;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override string ToString() {
+          return pb::JsonFormatter.ToDiagnosticString(this);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void WriteTo(pb::CodedOutputStream output) {
+          if (_unknownFields != null) {
+            _unknownFields.WriteTo(output);
+          }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public int CalculateSize() {
+          int size = 0;
+          if (_unknownFields != null) {
+            size += _unknownFields.CalculateSize();
+          }
+          return size;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(Extensions other) {
+          if (other == null) {
+            return;
+          }
+          _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(pb::CodedInputStream input) {
+          uint tag;
+          while ((tag = input.ReadTag()) != 0) {
+            switch(tag) {
+              default:
+                _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+                break;
+            }
+          }
+        }
+
+      }
+
+      public sealed partial class Extras : pb::IMessage<Extras> {
+        private static readonly pb::MessageParser<Extras> _parser = new pb::MessageParser<Extras>(() => new Extras());
+        private pb::UnknownFieldSet _unknownFields;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pb::MessageParser<Extras> Parser { get { return _parser; } }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pbr::MessageDescriptor Descriptor {
+          get { return global::VrmProtobuf.AnimationSampler.Descriptor.NestedTypes[1]; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        pbr::MessageDescriptor pb::IMessage.Descriptor {
+          get { return Descriptor; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extras() {
+          OnConstruction();
+        }
+
+        partial void OnConstruction();
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extras(Extras other) : this() {
+          _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extras Clone() {
+          return new Extras(this);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override bool Equals(object other) {
+          return Equals(other as Extras);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public bool Equals(Extras other) {
+          if (ReferenceEquals(other, null)) {
+            return false;
+          }
+          if (ReferenceEquals(other, this)) {
+            return true;
+          }
+          return Equals(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override int GetHashCode() {
+          int hash = 1;
+          if (_unknownFields != null) {
+            hash ^= _unknownFields.GetHashCode();
+          }
+          return hash;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override string ToString() {
+          return pb::JsonFormatter.ToDiagnosticString(this);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void WriteTo(pb::CodedOutputStream output) {
+          if (_unknownFields != null) {
+            _unknownFields.WriteTo(output);
+          }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public int CalculateSize() {
+          int size = 0;
+          if (_unknownFields != null) {
+            size += _unknownFields.CalculateSize();
+          }
+          return size;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(Extras other) {
+          if (other == null) {
+            return;
+          }
+          _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(pb::CodedInputStream input) {
+          uint tag;
+          while ((tag = input.ReadTag()) != 0) {
+            switch(tag) {
+              default:
+                _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+                break;
+            }
+          }
+        }
+
+      }
+
+    }
+    #endregion
+
   }
 
-  /// <summary>
-  /// https://github.com/KhronosGroup/glTF/blob/master/specification/2.0/schema/animation.schema.json
-  /// "required": [ "channels", "samplers" ]
-  /// </summary>
   public sealed partial class Animation : pb::IMessage<Animation> {
     private static readonly pb::MessageParser<Animation> _parser = new pb::MessageParser<Animation>(() => new Animation());
     private pb::UnknownFieldSet _unknownFields;
@@ -2229,7 +3931,7 @@ namespace VrmProtobuf {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::VrmProtobuf.GlTFReflection.Descriptor.MessageTypes[8]; }
+      get { return global::VrmProtobuf.GlTFReflection.Descriptor.MessageTypes[7]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2246,9 +3948,11 @@ namespace VrmProtobuf {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public Animation(Animation other) : this() {
+      extensions_ = other.extensions_ != null ? other.extensions_.Clone() : null;
+      extras_ = other.extras_ != null ? other.extras_.Clone() : null;
+      name_ = other.name_;
       channels_ = other.channels_.Clone();
       samplers_ = other.samplers_.Clone();
-      name_ = other.name_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -2257,35 +3961,72 @@ namespace VrmProtobuf {
       return new Animation(this);
     }
 
-    /// <summary>Field number for the "channels" field.</summary>
-    public const int ChannelsFieldNumber = 1;
-    private static readonly pb::FieldCodec<global::VrmProtobuf.AnimationChannel> _repeated_channels_codec
-        = pb::FieldCodec.ForMessage(10, global::VrmProtobuf.AnimationChannel.Parser);
-    private readonly pbc::RepeatedField<global::VrmProtobuf.AnimationChannel> channels_ = new pbc::RepeatedField<global::VrmProtobuf.AnimationChannel>();
+    /// <summary>Field number for the "extensions" field.</summary>
+    public const int ExtensionsFieldNumber = 1;
+    private global::VrmProtobuf.Animation.Types.Extensions extensions_;
+    /// <summary>
+    /// Dictionary object with extension-specific objects.
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::RepeatedField<global::VrmProtobuf.AnimationChannel> Channels {
-      get { return channels_; }
+    public global::VrmProtobuf.Animation.Types.Extensions Extensions {
+      get { return extensions_; }
+      set {
+        extensions_ = value;
+      }
     }
 
-    /// <summary>Field number for the "samplers" field.</summary>
-    public const int SamplersFieldNumber = 2;
-    private static readonly pb::FieldCodec<global::VrmProtobuf.AnimationSampler> _repeated_samplers_codec
-        = pb::FieldCodec.ForMessage(18, global::VrmProtobuf.AnimationSampler.Parser);
-    private readonly pbc::RepeatedField<global::VrmProtobuf.AnimationSampler> samplers_ = new pbc::RepeatedField<global::VrmProtobuf.AnimationSampler>();
+    /// <summary>Field number for the "extras" field.</summary>
+    public const int ExtrasFieldNumber = 2;
+    private global::VrmProtobuf.Animation.Types.Extras extras_;
+    /// <summary>
+    /// Application-specific data.
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::RepeatedField<global::VrmProtobuf.AnimationSampler> Samplers {
-      get { return samplers_; }
+    public global::VrmProtobuf.Animation.Types.Extras Extras {
+      get { return extras_; }
+      set {
+        extras_ = value;
+      }
     }
 
     /// <summary>Field number for the "name" field.</summary>
     public const int NameFieldNumber = 3;
     private string name_ = "";
+    /// <summary>
+    /// The user-defined name of this object.
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string Name {
       get { return name_; }
       set {
         name_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
+    }
+
+    /// <summary>Field number for the "channels" field.</summary>
+    public const int ChannelsFieldNumber = 4;
+    private static readonly pb::FieldCodec<global::VrmProtobuf.AnimationChannel> _repeated_channels_codec
+        = pb::FieldCodec.ForMessage(34, global::VrmProtobuf.AnimationChannel.Parser);
+    private readonly pbc::RepeatedField<global::VrmProtobuf.AnimationChannel> channels_ = new pbc::RepeatedField<global::VrmProtobuf.AnimationChannel>();
+    /// <summary>
+    /// An array of channels, each of which targets an animation's sampler at a node's property. Different channels of the same animation can't have equal targets.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::RepeatedField<global::VrmProtobuf.AnimationChannel> Channels {
+      get { return channels_; }
+    }
+
+    /// <summary>Field number for the "samplers" field.</summary>
+    public const int SamplersFieldNumber = 5;
+    private static readonly pb::FieldCodec<global::VrmProtobuf.AnimationSampler> _repeated_samplers_codec
+        = pb::FieldCodec.ForMessage(42, global::VrmProtobuf.AnimationSampler.Parser);
+    private readonly pbc::RepeatedField<global::VrmProtobuf.AnimationSampler> samplers_ = new pbc::RepeatedField<global::VrmProtobuf.AnimationSampler>();
+    /// <summary>
+    /// An array of samplers that combines input and output accessors with an interpolation algorithm to define a keyframe graph (but not its target).
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::RepeatedField<global::VrmProtobuf.AnimationSampler> Samplers {
+      get { return samplers_; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2301,18 +4042,22 @@ namespace VrmProtobuf {
       if (ReferenceEquals(other, this)) {
         return true;
       }
+      if (!object.Equals(Extensions, other.Extensions)) return false;
+      if (!object.Equals(Extras, other.Extras)) return false;
+      if (Name != other.Name) return false;
       if(!channels_.Equals(other.channels_)) return false;
       if(!samplers_.Equals(other.samplers_)) return false;
-      if (Name != other.Name) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
+      if (extensions_ != null) hash ^= Extensions.GetHashCode();
+      if (extras_ != null) hash ^= Extras.GetHashCode();
+      if (Name.Length != 0) hash ^= Name.GetHashCode();
       hash ^= channels_.GetHashCode();
       hash ^= samplers_.GetHashCode();
-      if (Name.Length != 0) hash ^= Name.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -2326,12 +4071,20 @@ namespace VrmProtobuf {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
-      channels_.WriteTo(output, _repeated_channels_codec);
-      samplers_.WriteTo(output, _repeated_samplers_codec);
+      if (extensions_ != null) {
+        output.WriteRawTag(10);
+        output.WriteMessage(Extensions);
+      }
+      if (extras_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(Extras);
+      }
       if (Name.Length != 0) {
         output.WriteRawTag(26);
         output.WriteString(Name);
       }
+      channels_.WriteTo(output, _repeated_channels_codec);
+      samplers_.WriteTo(output, _repeated_samplers_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -2340,11 +4093,17 @@ namespace VrmProtobuf {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
-      size += channels_.CalculateSize(_repeated_channels_codec);
-      size += samplers_.CalculateSize(_repeated_samplers_codec);
+      if (extensions_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Extensions);
+      }
+      if (extras_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Extras);
+      }
       if (Name.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Name);
       }
+      size += channels_.CalculateSize(_repeated_channels_codec);
+      size += samplers_.CalculateSize(_repeated_samplers_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -2356,11 +4115,23 @@ namespace VrmProtobuf {
       if (other == null) {
         return;
       }
-      channels_.Add(other.channels_);
-      samplers_.Add(other.samplers_);
+      if (other.extensions_ != null) {
+        if (extensions_ == null) {
+          Extensions = new global::VrmProtobuf.Animation.Types.Extensions();
+        }
+        Extensions.MergeFrom(other.Extensions);
+      }
+      if (other.extras_ != null) {
+        if (extras_ == null) {
+          Extras = new global::VrmProtobuf.Animation.Types.Extras();
+        }
+        Extras.MergeFrom(other.Extras);
+      }
       if (other.Name.Length != 0) {
         Name = other.Name;
       }
+      channels_.Add(other.channels_);
+      samplers_.Add(other.samplers_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -2373,27 +4144,246 @@ namespace VrmProtobuf {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 10: {
-            channels_.AddEntriesFrom(input, _repeated_channels_codec);
+            if (extensions_ == null) {
+              Extensions = new global::VrmProtobuf.Animation.Types.Extensions();
+            }
+            input.ReadMessage(Extensions);
             break;
           }
           case 18: {
-            samplers_.AddEntriesFrom(input, _repeated_samplers_codec);
+            if (extras_ == null) {
+              Extras = new global::VrmProtobuf.Animation.Types.Extras();
+            }
+            input.ReadMessage(Extras);
             break;
           }
           case 26: {
             Name = input.ReadString();
             break;
           }
+          case 34: {
+            channels_.AddEntriesFrom(input, _repeated_channels_codec);
+            break;
+          }
+          case 42: {
+            samplers_.AddEntriesFrom(input, _repeated_samplers_codec);
+            break;
+          }
         }
       }
     }
 
+    #region Nested types
+    /// <summary>Container for nested types declared in the Animation message type.</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static partial class Types {
+      public sealed partial class Extensions : pb::IMessage<Extensions> {
+        private static readonly pb::MessageParser<Extensions> _parser = new pb::MessageParser<Extensions>(() => new Extensions());
+        private pb::UnknownFieldSet _unknownFields;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pb::MessageParser<Extensions> Parser { get { return _parser; } }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pbr::MessageDescriptor Descriptor {
+          get { return global::VrmProtobuf.Animation.Descriptor.NestedTypes[0]; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        pbr::MessageDescriptor pb::IMessage.Descriptor {
+          get { return Descriptor; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extensions() {
+          OnConstruction();
+        }
+
+        partial void OnConstruction();
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extensions(Extensions other) : this() {
+          _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extensions Clone() {
+          return new Extensions(this);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override bool Equals(object other) {
+          return Equals(other as Extensions);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public bool Equals(Extensions other) {
+          if (ReferenceEquals(other, null)) {
+            return false;
+          }
+          if (ReferenceEquals(other, this)) {
+            return true;
+          }
+          return Equals(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override int GetHashCode() {
+          int hash = 1;
+          if (_unknownFields != null) {
+            hash ^= _unknownFields.GetHashCode();
+          }
+          return hash;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override string ToString() {
+          return pb::JsonFormatter.ToDiagnosticString(this);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void WriteTo(pb::CodedOutputStream output) {
+          if (_unknownFields != null) {
+            _unknownFields.WriteTo(output);
+          }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public int CalculateSize() {
+          int size = 0;
+          if (_unknownFields != null) {
+            size += _unknownFields.CalculateSize();
+          }
+          return size;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(Extensions other) {
+          if (other == null) {
+            return;
+          }
+          _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(pb::CodedInputStream input) {
+          uint tag;
+          while ((tag = input.ReadTag()) != 0) {
+            switch(tag) {
+              default:
+                _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+                break;
+            }
+          }
+        }
+
+      }
+
+      public sealed partial class Extras : pb::IMessage<Extras> {
+        private static readonly pb::MessageParser<Extras> _parser = new pb::MessageParser<Extras>(() => new Extras());
+        private pb::UnknownFieldSet _unknownFields;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pb::MessageParser<Extras> Parser { get { return _parser; } }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pbr::MessageDescriptor Descriptor {
+          get { return global::VrmProtobuf.Animation.Descriptor.NestedTypes[1]; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        pbr::MessageDescriptor pb::IMessage.Descriptor {
+          get { return Descriptor; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extras() {
+          OnConstruction();
+        }
+
+        partial void OnConstruction();
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extras(Extras other) : this() {
+          _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extras Clone() {
+          return new Extras(this);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override bool Equals(object other) {
+          return Equals(other as Extras);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public bool Equals(Extras other) {
+          if (ReferenceEquals(other, null)) {
+            return false;
+          }
+          if (ReferenceEquals(other, this)) {
+            return true;
+          }
+          return Equals(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override int GetHashCode() {
+          int hash = 1;
+          if (_unknownFields != null) {
+            hash ^= _unknownFields.GetHashCode();
+          }
+          return hash;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override string ToString() {
+          return pb::JsonFormatter.ToDiagnosticString(this);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void WriteTo(pb::CodedOutputStream output) {
+          if (_unknownFields != null) {
+            _unknownFields.WriteTo(output);
+          }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public int CalculateSize() {
+          int size = 0;
+          if (_unknownFields != null) {
+            size += _unknownFields.CalculateSize();
+          }
+          return size;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(Extras other) {
+          if (other == null) {
+            return;
+          }
+          _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(pb::CodedInputStream input) {
+          uint tag;
+          while ((tag = input.ReadTag()) != 0) {
+            switch(tag) {
+              default:
+                _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+                break;
+            }
+          }
+        }
+
+      }
+
+    }
+    #endregion
+
   }
 
-  /// <summary>
-  /// https://github.com/KhronosGroup/glTF/blob/master/specification/2.0/schema/asset.schema.json
-  /// "required": [ "version" ]
-  /// </summary>
   public sealed partial class Asset : pb::IMessage<Asset> {
     private static readonly pb::MessageParser<Asset> _parser = new pb::MessageParser<Asset>(() => new Asset());
     private pb::UnknownFieldSet _unknownFields;
@@ -2402,7 +4392,7 @@ namespace VrmProtobuf {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::VrmProtobuf.GlTFReflection.Descriptor.MessageTypes[9]; }
+      get { return global::VrmProtobuf.GlTFReflection.Descriptor.MessageTypes[8]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2419,6 +4409,8 @@ namespace VrmProtobuf {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public Asset(Asset other) : this() {
+      extensions_ = other.extensions_ != null ? other.extensions_.Clone() : null;
+      extras_ = other.extras_ != null ? other.extras_.Clone() : null;
       copyright_ = other.copyright_;
       generator_ = other.generator_;
       version_ = other.version_;
@@ -2431,9 +4423,40 @@ namespace VrmProtobuf {
       return new Asset(this);
     }
 
+    /// <summary>Field number for the "extensions" field.</summary>
+    public const int ExtensionsFieldNumber = 1;
+    private global::VrmProtobuf.Asset.Types.Extensions extensions_;
+    /// <summary>
+    /// Dictionary object with extension-specific objects.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::VrmProtobuf.Asset.Types.Extensions Extensions {
+      get { return extensions_; }
+      set {
+        extensions_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "extras" field.</summary>
+    public const int ExtrasFieldNumber = 2;
+    private global::VrmProtobuf.Asset.Types.Extras extras_;
+    /// <summary>
+    /// Application-specific data.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::VrmProtobuf.Asset.Types.Extras Extras {
+      get { return extras_; }
+      set {
+        extras_ = value;
+      }
+    }
+
     /// <summary>Field number for the "copyright" field.</summary>
-    public const int CopyrightFieldNumber = 1;
+    public const int CopyrightFieldNumber = 3;
     private string copyright_ = "";
+    /// <summary>
+    /// A copyright message suitable for display to credit the content creator.
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string Copyright {
       get { return copyright_; }
@@ -2443,8 +4466,11 @@ namespace VrmProtobuf {
     }
 
     /// <summary>Field number for the "generator" field.</summary>
-    public const int GeneratorFieldNumber = 2;
+    public const int GeneratorFieldNumber = 4;
     private string generator_ = "";
+    /// <summary>
+    /// Tool that generated this glTF model.  Useful for debugging.
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string Generator {
       get { return generator_; }
@@ -2454,8 +4480,11 @@ namespace VrmProtobuf {
     }
 
     /// <summary>Field number for the "version" field.</summary>
-    public const int VersionFieldNumber = 3;
+    public const int VersionFieldNumber = 5;
     private string version_ = "";
+    /// <summary>
+    /// The glTF version that this asset targets.
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string Version {
       get { return version_; }
@@ -2465,8 +4494,11 @@ namespace VrmProtobuf {
     }
 
     /// <summary>Field number for the "minVersion" field.</summary>
-    public const int MinVersionFieldNumber = 4;
+    public const int MinVersionFieldNumber = 6;
     private string minVersion_ = "";
+    /// <summary>
+    /// The minimum glTF version that this asset targets.
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string MinVersion {
       get { return minVersion_; }
@@ -2488,6 +4520,8 @@ namespace VrmProtobuf {
       if (ReferenceEquals(other, this)) {
         return true;
       }
+      if (!object.Equals(Extensions, other.Extensions)) return false;
+      if (!object.Equals(Extras, other.Extras)) return false;
       if (Copyright != other.Copyright) return false;
       if (Generator != other.Generator) return false;
       if (Version != other.Version) return false;
@@ -2498,6 +4532,8 @@ namespace VrmProtobuf {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
+      if (extensions_ != null) hash ^= Extensions.GetHashCode();
+      if (extras_ != null) hash ^= Extras.GetHashCode();
       if (Copyright.Length != 0) hash ^= Copyright.GetHashCode();
       if (Generator.Length != 0) hash ^= Generator.GetHashCode();
       if (Version.Length != 0) hash ^= Version.GetHashCode();
@@ -2515,20 +4551,28 @@ namespace VrmProtobuf {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
-      if (Copyright.Length != 0) {
+      if (extensions_ != null) {
         output.WriteRawTag(10);
+        output.WriteMessage(Extensions);
+      }
+      if (extras_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(Extras);
+      }
+      if (Copyright.Length != 0) {
+        output.WriteRawTag(26);
         output.WriteString(Copyright);
       }
       if (Generator.Length != 0) {
-        output.WriteRawTag(18);
+        output.WriteRawTag(34);
         output.WriteString(Generator);
       }
       if (Version.Length != 0) {
-        output.WriteRawTag(26);
+        output.WriteRawTag(42);
         output.WriteString(Version);
       }
       if (MinVersion.Length != 0) {
-        output.WriteRawTag(34);
+        output.WriteRawTag(50);
         output.WriteString(MinVersion);
       }
       if (_unknownFields != null) {
@@ -2539,6 +4583,12 @@ namespace VrmProtobuf {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
+      if (extensions_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Extensions);
+      }
+      if (extras_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Extras);
+      }
       if (Copyright.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Copyright);
       }
@@ -2561,6 +4611,18 @@ namespace VrmProtobuf {
     public void MergeFrom(Asset other) {
       if (other == null) {
         return;
+      }
+      if (other.extensions_ != null) {
+        if (extensions_ == null) {
+          Extensions = new global::VrmProtobuf.Asset.Types.Extensions();
+        }
+        Extensions.MergeFrom(other.Extensions);
+      }
+      if (other.extras_ != null) {
+        if (extras_ == null) {
+          Extras = new global::VrmProtobuf.Asset.Types.Extras();
+        }
+        Extras.MergeFrom(other.Extras);
       }
       if (other.Copyright.Length != 0) {
         Copyright = other.Copyright;
@@ -2586,18 +4648,32 @@ namespace VrmProtobuf {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 10: {
-            Copyright = input.ReadString();
+            if (extensions_ == null) {
+              Extensions = new global::VrmProtobuf.Asset.Types.Extensions();
+            }
+            input.ReadMessage(Extensions);
             break;
           }
           case 18: {
-            Generator = input.ReadString();
+            if (extras_ == null) {
+              Extras = new global::VrmProtobuf.Asset.Types.Extras();
+            }
+            input.ReadMessage(Extras);
             break;
           }
           case 26: {
-            Version = input.ReadString();
+            Copyright = input.ReadString();
             break;
           }
           case 34: {
+            Generator = input.ReadString();
+            break;
+          }
+          case 42: {
+            Version = input.ReadString();
+            break;
+          }
+          case 50: {
             MinVersion = input.ReadString();
             break;
           }
@@ -2605,12 +4681,217 @@ namespace VrmProtobuf {
       }
     }
 
+    #region Nested types
+    /// <summary>Container for nested types declared in the Asset message type.</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static partial class Types {
+      public sealed partial class Extensions : pb::IMessage<Extensions> {
+        private static readonly pb::MessageParser<Extensions> _parser = new pb::MessageParser<Extensions>(() => new Extensions());
+        private pb::UnknownFieldSet _unknownFields;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pb::MessageParser<Extensions> Parser { get { return _parser; } }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pbr::MessageDescriptor Descriptor {
+          get { return global::VrmProtobuf.Asset.Descriptor.NestedTypes[0]; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        pbr::MessageDescriptor pb::IMessage.Descriptor {
+          get { return Descriptor; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extensions() {
+          OnConstruction();
+        }
+
+        partial void OnConstruction();
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extensions(Extensions other) : this() {
+          _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extensions Clone() {
+          return new Extensions(this);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override bool Equals(object other) {
+          return Equals(other as Extensions);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public bool Equals(Extensions other) {
+          if (ReferenceEquals(other, null)) {
+            return false;
+          }
+          if (ReferenceEquals(other, this)) {
+            return true;
+          }
+          return Equals(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override int GetHashCode() {
+          int hash = 1;
+          if (_unknownFields != null) {
+            hash ^= _unknownFields.GetHashCode();
+          }
+          return hash;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override string ToString() {
+          return pb::JsonFormatter.ToDiagnosticString(this);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void WriteTo(pb::CodedOutputStream output) {
+          if (_unknownFields != null) {
+            _unknownFields.WriteTo(output);
+          }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public int CalculateSize() {
+          int size = 0;
+          if (_unknownFields != null) {
+            size += _unknownFields.CalculateSize();
+          }
+          return size;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(Extensions other) {
+          if (other == null) {
+            return;
+          }
+          _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(pb::CodedInputStream input) {
+          uint tag;
+          while ((tag = input.ReadTag()) != 0) {
+            switch(tag) {
+              default:
+                _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+                break;
+            }
+          }
+        }
+
+      }
+
+      public sealed partial class Extras : pb::IMessage<Extras> {
+        private static readonly pb::MessageParser<Extras> _parser = new pb::MessageParser<Extras>(() => new Extras());
+        private pb::UnknownFieldSet _unknownFields;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pb::MessageParser<Extras> Parser { get { return _parser; } }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pbr::MessageDescriptor Descriptor {
+          get { return global::VrmProtobuf.Asset.Descriptor.NestedTypes[1]; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        pbr::MessageDescriptor pb::IMessage.Descriptor {
+          get { return Descriptor; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extras() {
+          OnConstruction();
+        }
+
+        partial void OnConstruction();
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extras(Extras other) : this() {
+          _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extras Clone() {
+          return new Extras(this);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override bool Equals(object other) {
+          return Equals(other as Extras);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public bool Equals(Extras other) {
+          if (ReferenceEquals(other, null)) {
+            return false;
+          }
+          if (ReferenceEquals(other, this)) {
+            return true;
+          }
+          return Equals(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override int GetHashCode() {
+          int hash = 1;
+          if (_unknownFields != null) {
+            hash ^= _unknownFields.GetHashCode();
+          }
+          return hash;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override string ToString() {
+          return pb::JsonFormatter.ToDiagnosticString(this);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void WriteTo(pb::CodedOutputStream output) {
+          if (_unknownFields != null) {
+            _unknownFields.WriteTo(output);
+          }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public int CalculateSize() {
+          int size = 0;
+          if (_unknownFields != null) {
+            size += _unknownFields.CalculateSize();
+          }
+          return size;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(Extras other) {
+          if (other == null) {
+            return;
+          }
+          _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(pb::CodedInputStream input) {
+          uint tag;
+          while ((tag = input.ReadTag()) != 0) {
+            switch(tag) {
+              default:
+                _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+                break;
+            }
+          }
+        }
+
+      }
+
+    }
+    #endregion
+
   }
 
-  /// <summary>
-  /// https://github.com/KhronosGroup/glTF/blob/master/specification/2.0/schema/buffer.schema.json
-  /// "required": [ "byteLength" ]
-  /// </summary>
   public sealed partial class Buffer : pb::IMessage<Buffer> {
     private static readonly pb::MessageParser<Buffer> _parser = new pb::MessageParser<Buffer>(() => new Buffer());
     private pb::UnknownFieldSet _unknownFields;
@@ -2619,7 +4900,7 @@ namespace VrmProtobuf {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::VrmProtobuf.GlTFReflection.Descriptor.MessageTypes[10]; }
+      get { return global::VrmProtobuf.GlTFReflection.Descriptor.MessageTypes[9]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2636,9 +4917,11 @@ namespace VrmProtobuf {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public Buffer(Buffer other) : this() {
-      uri_ = other.uri_;
-      byteLength_ = other.byteLength_;
+      extensions_ = other.extensions_ != null ? other.extensions_.Clone() : null;
+      extras_ = other.extras_ != null ? other.extras_.Clone() : null;
       name_ = other.name_;
+      uri_ = other.uri_;
+      ByteLength = other.ByteLength;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -2647,9 +4930,54 @@ namespace VrmProtobuf {
       return new Buffer(this);
     }
 
+    /// <summary>Field number for the "extensions" field.</summary>
+    public const int ExtensionsFieldNumber = 1;
+    private global::VrmProtobuf.Buffer.Types.Extensions extensions_;
+    /// <summary>
+    /// Dictionary object with extension-specific objects.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::VrmProtobuf.Buffer.Types.Extensions Extensions {
+      get { return extensions_; }
+      set {
+        extensions_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "extras" field.</summary>
+    public const int ExtrasFieldNumber = 2;
+    private global::VrmProtobuf.Buffer.Types.Extras extras_;
+    /// <summary>
+    /// Application-specific data.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::VrmProtobuf.Buffer.Types.Extras Extras {
+      get { return extras_; }
+      set {
+        extras_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "name" field.</summary>
+    public const int NameFieldNumber = 3;
+    private string name_ = "";
+    /// <summary>
+    /// The user-defined name of this object.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Name {
+      get { return name_; }
+      set {
+        name_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
     /// <summary>Field number for the "uri" field.</summary>
-    public const int UriFieldNumber = 1;
+    public const int UriFieldNumber = 4;
     private string uri_ = "";
+    /// <summary>
+    /// The uri of the buffer.
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string Uri {
       get { return uri_; }
@@ -2659,26 +4987,20 @@ namespace VrmProtobuf {
     }
 
     /// <summary>Field number for the "byteLength" field.</summary>
-    public const int ByteLengthFieldNumber = 2;
-    private int byteLength_;
+    public const int ByteLengthFieldNumber = 5;
+    private static readonly pb::FieldCodec<int?> _single_byteLength_codec = pb::FieldCodec.ForStructWrapper<int>(42);
+    private int? byteLength_;
+    /// <summary>
+    /// The length of the buffer in bytes.
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int ByteLength {
+    public int? ByteLength {
       get { return byteLength_; }
       set {
         byteLength_ = value;
       }
     }
 
-    /// <summary>Field number for the "name" field.</summary>
-    public const int NameFieldNumber = 3;
-    private string name_ = "";
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string Name {
-      get { return name_; }
-      set {
-        name_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
@@ -2693,18 +5015,22 @@ namespace VrmProtobuf {
       if (ReferenceEquals(other, this)) {
         return true;
       }
+      if (!object.Equals(Extensions, other.Extensions)) return false;
+      if (!object.Equals(Extras, other.Extras)) return false;
+      if (Name != other.Name) return false;
       if (Uri != other.Uri) return false;
       if (ByteLength != other.ByteLength) return false;
-      if (Name != other.Name) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
-      if (Uri.Length != 0) hash ^= Uri.GetHashCode();
-      if (ByteLength != 0) hash ^= ByteLength.GetHashCode();
+      if (extensions_ != null) hash ^= Extensions.GetHashCode();
+      if (extras_ != null) hash ^= Extras.GetHashCode();
       if (Name.Length != 0) hash ^= Name.GetHashCode();
+      if (Uri.Length != 0) hash ^= Uri.GetHashCode();
+      if (byteLength_ != null) hash ^= ByteLength.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -2718,17 +5044,24 @@ namespace VrmProtobuf {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
-      if (Uri.Length != 0) {
+      if (extensions_ != null) {
         output.WriteRawTag(10);
-        output.WriteString(Uri);
+        output.WriteMessage(Extensions);
       }
-      if (ByteLength != 0) {
-        output.WriteRawTag(16);
-        output.WriteInt32(ByteLength);
+      if (extras_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(Extras);
       }
       if (Name.Length != 0) {
         output.WriteRawTag(26);
         output.WriteString(Name);
+      }
+      if (Uri.Length != 0) {
+        output.WriteRawTag(34);
+        output.WriteString(Uri);
+      }
+      if (byteLength_ != null) {
+        _single_byteLength_codec.WriteTagAndValue(output, ByteLength);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -2738,14 +5071,20 @@ namespace VrmProtobuf {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
-      if (Uri.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(Uri);
+      if (extensions_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Extensions);
       }
-      if (ByteLength != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(ByteLength);
+      if (extras_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Extras);
       }
       if (Name.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Name);
+      }
+      if (Uri.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Uri);
+      }
+      if (byteLength_ != null) {
+        size += _single_byteLength_codec.CalculateSizeWithTag(ByteLength);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -2758,14 +5097,28 @@ namespace VrmProtobuf {
       if (other == null) {
         return;
       }
-      if (other.Uri.Length != 0) {
-        Uri = other.Uri;
+      if (other.extensions_ != null) {
+        if (extensions_ == null) {
+          Extensions = new global::VrmProtobuf.Buffer.Types.Extensions();
+        }
+        Extensions.MergeFrom(other.Extensions);
       }
-      if (other.ByteLength != 0) {
-        ByteLength = other.ByteLength;
+      if (other.extras_ != null) {
+        if (extras_ == null) {
+          Extras = new global::VrmProtobuf.Buffer.Types.Extras();
+        }
+        Extras.MergeFrom(other.Extras);
       }
       if (other.Name.Length != 0) {
         Name = other.Name;
+      }
+      if (other.Uri.Length != 0) {
+        Uri = other.Uri;
+      }
+      if (other.byteLength_ != null) {
+        if (byteLength_ == null || other.ByteLength != 0) {
+          ByteLength = other.ByteLength;
+        }
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -2779,27 +5132,249 @@ namespace VrmProtobuf {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 10: {
-            Uri = input.ReadString();
+            if (extensions_ == null) {
+              Extensions = new global::VrmProtobuf.Buffer.Types.Extensions();
+            }
+            input.ReadMessage(Extensions);
             break;
           }
-          case 16: {
-            ByteLength = input.ReadInt32();
+          case 18: {
+            if (extras_ == null) {
+              Extras = new global::VrmProtobuf.Buffer.Types.Extras();
+            }
+            input.ReadMessage(Extras);
             break;
           }
           case 26: {
             Name = input.ReadString();
             break;
           }
+          case 34: {
+            Uri = input.ReadString();
+            break;
+          }
+          case 42: {
+            int? value = _single_byteLength_codec.Read(input);
+            if (byteLength_ == null || value != 0) {
+              ByteLength = value;
+            }
+            break;
+          }
         }
       }
     }
 
+    #region Nested types
+    /// <summary>Container for nested types declared in the Buffer message type.</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static partial class Types {
+      public sealed partial class Extensions : pb::IMessage<Extensions> {
+        private static readonly pb::MessageParser<Extensions> _parser = new pb::MessageParser<Extensions>(() => new Extensions());
+        private pb::UnknownFieldSet _unknownFields;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pb::MessageParser<Extensions> Parser { get { return _parser; } }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pbr::MessageDescriptor Descriptor {
+          get { return global::VrmProtobuf.Buffer.Descriptor.NestedTypes[0]; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        pbr::MessageDescriptor pb::IMessage.Descriptor {
+          get { return Descriptor; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extensions() {
+          OnConstruction();
+        }
+
+        partial void OnConstruction();
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extensions(Extensions other) : this() {
+          _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extensions Clone() {
+          return new Extensions(this);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override bool Equals(object other) {
+          return Equals(other as Extensions);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public bool Equals(Extensions other) {
+          if (ReferenceEquals(other, null)) {
+            return false;
+          }
+          if (ReferenceEquals(other, this)) {
+            return true;
+          }
+          return Equals(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override int GetHashCode() {
+          int hash = 1;
+          if (_unknownFields != null) {
+            hash ^= _unknownFields.GetHashCode();
+          }
+          return hash;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override string ToString() {
+          return pb::JsonFormatter.ToDiagnosticString(this);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void WriteTo(pb::CodedOutputStream output) {
+          if (_unknownFields != null) {
+            _unknownFields.WriteTo(output);
+          }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public int CalculateSize() {
+          int size = 0;
+          if (_unknownFields != null) {
+            size += _unknownFields.CalculateSize();
+          }
+          return size;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(Extensions other) {
+          if (other == null) {
+            return;
+          }
+          _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(pb::CodedInputStream input) {
+          uint tag;
+          while ((tag = input.ReadTag()) != 0) {
+            switch(tag) {
+              default:
+                _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+                break;
+            }
+          }
+        }
+
+      }
+
+      public sealed partial class Extras : pb::IMessage<Extras> {
+        private static readonly pb::MessageParser<Extras> _parser = new pb::MessageParser<Extras>(() => new Extras());
+        private pb::UnknownFieldSet _unknownFields;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pb::MessageParser<Extras> Parser { get { return _parser; } }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pbr::MessageDescriptor Descriptor {
+          get { return global::VrmProtobuf.Buffer.Descriptor.NestedTypes[1]; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        pbr::MessageDescriptor pb::IMessage.Descriptor {
+          get { return Descriptor; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extras() {
+          OnConstruction();
+        }
+
+        partial void OnConstruction();
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extras(Extras other) : this() {
+          _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extras Clone() {
+          return new Extras(this);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override bool Equals(object other) {
+          return Equals(other as Extras);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public bool Equals(Extras other) {
+          if (ReferenceEquals(other, null)) {
+            return false;
+          }
+          if (ReferenceEquals(other, this)) {
+            return true;
+          }
+          return Equals(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override int GetHashCode() {
+          int hash = 1;
+          if (_unknownFields != null) {
+            hash ^= _unknownFields.GetHashCode();
+          }
+          return hash;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override string ToString() {
+          return pb::JsonFormatter.ToDiagnosticString(this);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void WriteTo(pb::CodedOutputStream output) {
+          if (_unknownFields != null) {
+            _unknownFields.WriteTo(output);
+          }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public int CalculateSize() {
+          int size = 0;
+          if (_unknownFields != null) {
+            size += _unknownFields.CalculateSize();
+          }
+          return size;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(Extras other) {
+          if (other == null) {
+            return;
+          }
+          _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(pb::CodedInputStream input) {
+          uint tag;
+          while ((tag = input.ReadTag()) != 0) {
+            switch(tag) {
+              default:
+                _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+                break;
+            }
+          }
+        }
+
+      }
+
+    }
+    #endregion
+
   }
 
-  /// <summary>
-  /// https://github.com/KhronosGroup/glTF/blob/master/specification/2.0/schema/bufferView.schema.json
-  /// "required": [ "buffer", "byteLength" ]
-  /// </summary>
   public sealed partial class BufferView : pb::IMessage<BufferView> {
     private static readonly pb::MessageParser<BufferView> _parser = new pb::MessageParser<BufferView>(() => new BufferView());
     private pb::UnknownFieldSet _unknownFields;
@@ -2808,7 +5383,7 @@ namespace VrmProtobuf {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::VrmProtobuf.GlTFReflection.Descriptor.MessageTypes[11]; }
+      get { return global::VrmProtobuf.GlTFReflection.Descriptor.MessageTypes[10]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2825,12 +5400,14 @@ namespace VrmProtobuf {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public BufferView(BufferView other) : this() {
+      extensions_ = other.extensions_ != null ? other.extensions_.Clone() : null;
+      extras_ = other.extras_ != null ? other.extras_.Clone() : null;
+      name_ = other.name_;
       Buffer = other.Buffer;
       ByteOffset = other.ByteOffset;
-      byteLength_ = other.byteLength_;
+      ByteLength = other.ByteLength;
       ByteStride = other.ByteStride;
-      name_ = other.name_;
-      target_ = other.target_;
+      Target = other.Target;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -2839,10 +5416,55 @@ namespace VrmProtobuf {
       return new BufferView(this);
     }
 
+    /// <summary>Field number for the "extensions" field.</summary>
+    public const int ExtensionsFieldNumber = 1;
+    private global::VrmProtobuf.BufferView.Types.Extensions extensions_;
+    /// <summary>
+    /// Dictionary object with extension-specific objects.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::VrmProtobuf.BufferView.Types.Extensions Extensions {
+      get { return extensions_; }
+      set {
+        extensions_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "extras" field.</summary>
+    public const int ExtrasFieldNumber = 2;
+    private global::VrmProtobuf.BufferView.Types.Extras extras_;
+    /// <summary>
+    /// Application-specific data.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::VrmProtobuf.BufferView.Types.Extras Extras {
+      get { return extras_; }
+      set {
+        extras_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "name" field.</summary>
+    public const int NameFieldNumber = 3;
+    private string name_ = "";
+    /// <summary>
+    /// The user-defined name of this object.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Name {
+      get { return name_; }
+      set {
+        name_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
     /// <summary>Field number for the "buffer" field.</summary>
-    public const int BufferFieldNumber = 1;
-    private static readonly pb::FieldCodec<int?> _single_buffer_codec = pb::FieldCodec.ForStructWrapper<int>(10);
+    public const int BufferFieldNumber = 4;
+    private static readonly pb::FieldCodec<int?> _single_buffer_codec = pb::FieldCodec.ForStructWrapper<int>(34);
     private int? buffer_;
+    /// <summary>
+    /// The index of the buffer.
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int? Buffer {
       get { return buffer_; }
@@ -2853,9 +5475,12 @@ namespace VrmProtobuf {
 
 
     /// <summary>Field number for the "byteOffset" field.</summary>
-    public const int ByteOffsetFieldNumber = 2;
-    private static readonly pb::FieldCodec<int?> _single_byteOffset_codec = pb::FieldCodec.ForStructWrapper<int>(18);
+    public const int ByteOffsetFieldNumber = 5;
+    private static readonly pb::FieldCodec<int?> _single_byteOffset_codec = pb::FieldCodec.ForStructWrapper<int>(42);
     private int? byteOffset_;
+    /// <summary>
+    /// The offset into the buffer in bytes.
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int? ByteOffset {
       get { return byteOffset_; }
@@ -2866,20 +5491,28 @@ namespace VrmProtobuf {
 
 
     /// <summary>Field number for the "byteLength" field.</summary>
-    public const int ByteLengthFieldNumber = 3;
-    private int byteLength_;
+    public const int ByteLengthFieldNumber = 6;
+    private static readonly pb::FieldCodec<int?> _single_byteLength_codec = pb::FieldCodec.ForStructWrapper<int>(50);
+    private int? byteLength_;
+    /// <summary>
+    /// The total byte length of the buffer view.
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int ByteLength {
+    public int? ByteLength {
       get { return byteLength_; }
       set {
         byteLength_ = value;
       }
     }
 
+
     /// <summary>Field number for the "byteStride" field.</summary>
-    public const int ByteStrideFieldNumber = 4;
-    private static readonly pb::FieldCodec<int?> _single_byteStride_codec = pb::FieldCodec.ForStructWrapper<int>(34);
+    public const int ByteStrideFieldNumber = 7;
+    private static readonly pb::FieldCodec<int?> _single_byteStride_codec = pb::FieldCodec.ForStructWrapper<int>(58);
     private int? byteStride_;
+    /// <summary>
+    /// The stride, in bytes.
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int? ByteStride {
       get { return byteStride_; }
@@ -2889,27 +5522,21 @@ namespace VrmProtobuf {
     }
 
 
-    /// <summary>Field number for the "name" field.</summary>
-    public const int NameFieldNumber = 5;
-    private string name_ = "";
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string Name {
-      get { return name_; }
-      set {
-        name_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
     /// <summary>Field number for the "target" field.</summary>
-    public const int TargetFieldNumber = 6;
-    private int target_;
+    public const int TargetFieldNumber = 8;
+    private static readonly pb::FieldCodec<int?> _single_target_codec = pb::FieldCodec.ForStructWrapper<int>(66);
+    private int? target_;
+    /// <summary>
+    /// The target that the GPU buffer should be bound to.
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int Target {
+    public int? Target {
       get { return target_; }
       set {
         target_ = value;
       }
     }
+
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
@@ -2924,11 +5551,13 @@ namespace VrmProtobuf {
       if (ReferenceEquals(other, this)) {
         return true;
       }
+      if (!object.Equals(Extensions, other.Extensions)) return false;
+      if (!object.Equals(Extras, other.Extras)) return false;
+      if (Name != other.Name) return false;
       if (Buffer != other.Buffer) return false;
       if (ByteOffset != other.ByteOffset) return false;
       if (ByteLength != other.ByteLength) return false;
       if (ByteStride != other.ByteStride) return false;
-      if (Name != other.Name) return false;
       if (Target != other.Target) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -2936,12 +5565,14 @@ namespace VrmProtobuf {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
+      if (extensions_ != null) hash ^= Extensions.GetHashCode();
+      if (extras_ != null) hash ^= Extras.GetHashCode();
+      if (Name.Length != 0) hash ^= Name.GetHashCode();
       if (buffer_ != null) hash ^= Buffer.GetHashCode();
       if (byteOffset_ != null) hash ^= ByteOffset.GetHashCode();
-      if (ByteLength != 0) hash ^= ByteLength.GetHashCode();
+      if (byteLength_ != null) hash ^= ByteLength.GetHashCode();
       if (byteStride_ != null) hash ^= ByteStride.GetHashCode();
-      if (Name.Length != 0) hash ^= Name.GetHashCode();
-      if (Target != 0) hash ^= Target.GetHashCode();
+      if (target_ != null) hash ^= Target.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -2955,26 +5586,32 @@ namespace VrmProtobuf {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+      if (extensions_ != null) {
+        output.WriteRawTag(10);
+        output.WriteMessage(Extensions);
+      }
+      if (extras_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(Extras);
+      }
+      if (Name.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(Name);
+      }
       if (buffer_ != null) {
         _single_buffer_codec.WriteTagAndValue(output, Buffer);
       }
       if (byteOffset_ != null) {
         _single_byteOffset_codec.WriteTagAndValue(output, ByteOffset);
       }
-      if (ByteLength != 0) {
-        output.WriteRawTag(24);
-        output.WriteInt32(ByteLength);
+      if (byteLength_ != null) {
+        _single_byteLength_codec.WriteTagAndValue(output, ByteLength);
       }
       if (byteStride_ != null) {
         _single_byteStride_codec.WriteTagAndValue(output, ByteStride);
       }
-      if (Name.Length != 0) {
-        output.WriteRawTag(42);
-        output.WriteString(Name);
-      }
-      if (Target != 0) {
-        output.WriteRawTag(48);
-        output.WriteInt32(Target);
+      if (target_ != null) {
+        _single_target_codec.WriteTagAndValue(output, Target);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -2984,23 +5621,29 @@ namespace VrmProtobuf {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
+      if (extensions_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Extensions);
+      }
+      if (extras_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Extras);
+      }
+      if (Name.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Name);
+      }
       if (buffer_ != null) {
         size += _single_buffer_codec.CalculateSizeWithTag(Buffer);
       }
       if (byteOffset_ != null) {
         size += _single_byteOffset_codec.CalculateSizeWithTag(ByteOffset);
       }
-      if (ByteLength != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(ByteLength);
+      if (byteLength_ != null) {
+        size += _single_byteLength_codec.CalculateSizeWithTag(ByteLength);
       }
       if (byteStride_ != null) {
         size += _single_byteStride_codec.CalculateSizeWithTag(ByteStride);
       }
-      if (Name.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(Name);
-      }
-      if (Target != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Target);
+      if (target_ != null) {
+        size += _single_target_codec.CalculateSizeWithTag(Target);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -3013,6 +5656,21 @@ namespace VrmProtobuf {
       if (other == null) {
         return;
       }
+      if (other.extensions_ != null) {
+        if (extensions_ == null) {
+          Extensions = new global::VrmProtobuf.BufferView.Types.Extensions();
+        }
+        Extensions.MergeFrom(other.Extensions);
+      }
+      if (other.extras_ != null) {
+        if (extras_ == null) {
+          Extras = new global::VrmProtobuf.BufferView.Types.Extras();
+        }
+        Extras.MergeFrom(other.Extras);
+      }
+      if (other.Name.Length != 0) {
+        Name = other.Name;
+      }
       if (other.buffer_ != null) {
         if (buffer_ == null || other.Buffer != 0) {
           Buffer = other.Buffer;
@@ -3023,19 +5681,20 @@ namespace VrmProtobuf {
           ByteOffset = other.ByteOffset;
         }
       }
-      if (other.ByteLength != 0) {
-        ByteLength = other.ByteLength;
+      if (other.byteLength_ != null) {
+        if (byteLength_ == null || other.ByteLength != 0) {
+          ByteLength = other.ByteLength;
+        }
       }
       if (other.byteStride_ != null) {
         if (byteStride_ == null || other.ByteStride != 0) {
           ByteStride = other.ByteStride;
         }
       }
-      if (other.Name.Length != 0) {
-        Name = other.Name;
-      }
-      if (other.Target != 0) {
-        Target = other.Target;
+      if (other.target_ != null) {
+        if (target_ == null || other.Target != 0) {
+          Target = other.Target;
+        }
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -3049,51 +5708,1857 @@ namespace VrmProtobuf {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 10: {
+            if (extensions_ == null) {
+              Extensions = new global::VrmProtobuf.BufferView.Types.Extensions();
+            }
+            input.ReadMessage(Extensions);
+            break;
+          }
+          case 18: {
+            if (extras_ == null) {
+              Extras = new global::VrmProtobuf.BufferView.Types.Extras();
+            }
+            input.ReadMessage(Extras);
+            break;
+          }
+          case 26: {
+            Name = input.ReadString();
+            break;
+          }
+          case 34: {
             int? value = _single_buffer_codec.Read(input);
             if (buffer_ == null || value != 0) {
               Buffer = value;
             }
             break;
           }
-          case 18: {
+          case 42: {
             int? value = _single_byteOffset_codec.Read(input);
             if (byteOffset_ == null || value != 0) {
               ByteOffset = value;
             }
             break;
           }
-          case 24: {
-            ByteLength = input.ReadInt32();
+          case 50: {
+            int? value = _single_byteLength_codec.Read(input);
+            if (byteLength_ == null || value != 0) {
+              ByteLength = value;
+            }
             break;
           }
-          case 34: {
+          case 58: {
             int? value = _single_byteStride_codec.Read(input);
             if (byteStride_ == null || value != 0) {
               ByteStride = value;
             }
             break;
           }
-          case 42: {
-            Name = input.ReadString();
-            break;
-          }
-          case 48: {
-            Target = input.ReadInt32();
+          case 66: {
+            int? value = _single_target_codec.Read(input);
+            if (target_ == null || value != 0) {
+              Target = value;
+            }
             break;
           }
         }
       }
     }
 
+    #region Nested types
+    /// <summary>Container for nested types declared in the BufferView message type.</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static partial class Types {
+      public sealed partial class Extensions : pb::IMessage<Extensions> {
+        private static readonly pb::MessageParser<Extensions> _parser = new pb::MessageParser<Extensions>(() => new Extensions());
+        private pb::UnknownFieldSet _unknownFields;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pb::MessageParser<Extensions> Parser { get { return _parser; } }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pbr::MessageDescriptor Descriptor {
+          get { return global::VrmProtobuf.BufferView.Descriptor.NestedTypes[0]; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        pbr::MessageDescriptor pb::IMessage.Descriptor {
+          get { return Descriptor; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extensions() {
+          OnConstruction();
+        }
+
+        partial void OnConstruction();
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extensions(Extensions other) : this() {
+          _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extensions Clone() {
+          return new Extensions(this);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override bool Equals(object other) {
+          return Equals(other as Extensions);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public bool Equals(Extensions other) {
+          if (ReferenceEquals(other, null)) {
+            return false;
+          }
+          if (ReferenceEquals(other, this)) {
+            return true;
+          }
+          return Equals(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override int GetHashCode() {
+          int hash = 1;
+          if (_unknownFields != null) {
+            hash ^= _unknownFields.GetHashCode();
+          }
+          return hash;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override string ToString() {
+          return pb::JsonFormatter.ToDiagnosticString(this);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void WriteTo(pb::CodedOutputStream output) {
+          if (_unknownFields != null) {
+            _unknownFields.WriteTo(output);
+          }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public int CalculateSize() {
+          int size = 0;
+          if (_unknownFields != null) {
+            size += _unknownFields.CalculateSize();
+          }
+          return size;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(Extensions other) {
+          if (other == null) {
+            return;
+          }
+          _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(pb::CodedInputStream input) {
+          uint tag;
+          while ((tag = input.ReadTag()) != 0) {
+            switch(tag) {
+              default:
+                _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+                break;
+            }
+          }
+        }
+
+      }
+
+      public sealed partial class Extras : pb::IMessage<Extras> {
+        private static readonly pb::MessageParser<Extras> _parser = new pb::MessageParser<Extras>(() => new Extras());
+        private pb::UnknownFieldSet _unknownFields;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pb::MessageParser<Extras> Parser { get { return _parser; } }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pbr::MessageDescriptor Descriptor {
+          get { return global::VrmProtobuf.BufferView.Descriptor.NestedTypes[1]; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        pbr::MessageDescriptor pb::IMessage.Descriptor {
+          get { return Descriptor; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extras() {
+          OnConstruction();
+        }
+
+        partial void OnConstruction();
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extras(Extras other) : this() {
+          _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extras Clone() {
+          return new Extras(this);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override bool Equals(object other) {
+          return Equals(other as Extras);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public bool Equals(Extras other) {
+          if (ReferenceEquals(other, null)) {
+            return false;
+          }
+          if (ReferenceEquals(other, this)) {
+            return true;
+          }
+          return Equals(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override int GetHashCode() {
+          int hash = 1;
+          if (_unknownFields != null) {
+            hash ^= _unknownFields.GetHashCode();
+          }
+          return hash;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override string ToString() {
+          return pb::JsonFormatter.ToDiagnosticString(this);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void WriteTo(pb::CodedOutputStream output) {
+          if (_unknownFields != null) {
+            _unknownFields.WriteTo(output);
+          }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public int CalculateSize() {
+          int size = 0;
+          if (_unknownFields != null) {
+            size += _unknownFields.CalculateSize();
+          }
+          return size;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(Extras other) {
+          if (other == null) {
+            return;
+          }
+          _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(pb::CodedInputStream input) {
+          uint tag;
+          while ((tag = input.ReadTag()) != 0) {
+            switch(tag) {
+              default:
+                _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+                break;
+            }
+          }
+        }
+
+      }
+
+    }
+    #endregion
+
   }
 
-  /// <summary>
-  /// https://github.com/KhronosGroup/glTF/blob/master/specification/2.0/schema/image.schema.json
-  /// "oneOf": [
-  ///   { "required": [ "uri" ] },
-  ///   { "required": [ "bufferView" ] }
-  /// ]
-  /// </summary>
+  public sealed partial class CameraOrthographic : pb::IMessage<CameraOrthographic> {
+    private static readonly pb::MessageParser<CameraOrthographic> _parser = new pb::MessageParser<CameraOrthographic>(() => new CameraOrthographic());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<CameraOrthographic> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::VrmProtobuf.GlTFReflection.Descriptor.MessageTypes[11]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public CameraOrthographic() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public CameraOrthographic(CameraOrthographic other) : this() {
+      extensions_ = other.extensions_ != null ? other.extensions_.Clone() : null;
+      extras_ = other.extras_ != null ? other.extras_.Clone() : null;
+      Xmag = other.Xmag;
+      Ymag = other.Ymag;
+      Zfar = other.Zfar;
+      Znear = other.Znear;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public CameraOrthographic Clone() {
+      return new CameraOrthographic(this);
+    }
+
+    /// <summary>Field number for the "extensions" field.</summary>
+    public const int ExtensionsFieldNumber = 1;
+    private global::VrmProtobuf.CameraOrthographic.Types.Extensions extensions_;
+    /// <summary>
+    /// Dictionary object with extension-specific objects.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::VrmProtobuf.CameraOrthographic.Types.Extensions Extensions {
+      get { return extensions_; }
+      set {
+        extensions_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "extras" field.</summary>
+    public const int ExtrasFieldNumber = 2;
+    private global::VrmProtobuf.CameraOrthographic.Types.Extras extras_;
+    /// <summary>
+    /// Application-specific data.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::VrmProtobuf.CameraOrthographic.Types.Extras Extras {
+      get { return extras_; }
+      set {
+        extras_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "xmag" field.</summary>
+    public const int XmagFieldNumber = 3;
+    private static readonly pb::FieldCodec<float?> _single_xmag_codec = pb::FieldCodec.ForStructWrapper<float>(26);
+    private float? xmag_;
+    /// <summary>
+    /// The floating-point horizontal magnification of the view. Must not be zero.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public float? Xmag {
+      get { return xmag_; }
+      set {
+        xmag_ = value;
+      }
+    }
+
+
+    /// <summary>Field number for the "ymag" field.</summary>
+    public const int YmagFieldNumber = 4;
+    private static readonly pb::FieldCodec<float?> _single_ymag_codec = pb::FieldCodec.ForStructWrapper<float>(34);
+    private float? ymag_;
+    /// <summary>
+    /// The floating-point vertical magnification of the view. Must not be zero.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public float? Ymag {
+      get { return ymag_; }
+      set {
+        ymag_ = value;
+      }
+    }
+
+
+    /// <summary>Field number for the "zfar" field.</summary>
+    public const int ZfarFieldNumber = 5;
+    private static readonly pb::FieldCodec<float?> _single_zfar_codec = pb::FieldCodec.ForStructWrapper<float>(42);
+    private float? zfar_;
+    /// <summary>
+    /// The floating-point distance to the far clipping plane. `zfar` must be greater than `znear`.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public float? Zfar {
+      get { return zfar_; }
+      set {
+        zfar_ = value;
+      }
+    }
+
+
+    /// <summary>Field number for the "znear" field.</summary>
+    public const int ZnearFieldNumber = 6;
+    private static readonly pb::FieldCodec<float?> _single_znear_codec = pb::FieldCodec.ForStructWrapper<float>(50);
+    private float? znear_;
+    /// <summary>
+    /// The floating-point distance to the near clipping plane.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public float? Znear {
+      get { return znear_; }
+      set {
+        znear_ = value;
+      }
+    }
+
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as CameraOrthographic);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(CameraOrthographic other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (!object.Equals(Extensions, other.Extensions)) return false;
+      if (!object.Equals(Extras, other.Extras)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseNullableSingleEqualityComparer.Equals(Xmag, other.Xmag)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseNullableSingleEqualityComparer.Equals(Ymag, other.Ymag)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseNullableSingleEqualityComparer.Equals(Zfar, other.Zfar)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseNullableSingleEqualityComparer.Equals(Znear, other.Znear)) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (extensions_ != null) hash ^= Extensions.GetHashCode();
+      if (extras_ != null) hash ^= Extras.GetHashCode();
+      if (xmag_ != null) hash ^= pbc::ProtobufEqualityComparers.BitwiseNullableSingleEqualityComparer.GetHashCode(Xmag);
+      if (ymag_ != null) hash ^= pbc::ProtobufEqualityComparers.BitwiseNullableSingleEqualityComparer.GetHashCode(Ymag);
+      if (zfar_ != null) hash ^= pbc::ProtobufEqualityComparers.BitwiseNullableSingleEqualityComparer.GetHashCode(Zfar);
+      if (znear_ != null) hash ^= pbc::ProtobufEqualityComparers.BitwiseNullableSingleEqualityComparer.GetHashCode(Znear);
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (extensions_ != null) {
+        output.WriteRawTag(10);
+        output.WriteMessage(Extensions);
+      }
+      if (extras_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(Extras);
+      }
+      if (xmag_ != null) {
+        _single_xmag_codec.WriteTagAndValue(output, Xmag);
+      }
+      if (ymag_ != null) {
+        _single_ymag_codec.WriteTagAndValue(output, Ymag);
+      }
+      if (zfar_ != null) {
+        _single_zfar_codec.WriteTagAndValue(output, Zfar);
+      }
+      if (znear_ != null) {
+        _single_znear_codec.WriteTagAndValue(output, Znear);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (extensions_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Extensions);
+      }
+      if (extras_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Extras);
+      }
+      if (xmag_ != null) {
+        size += _single_xmag_codec.CalculateSizeWithTag(Xmag);
+      }
+      if (ymag_ != null) {
+        size += _single_ymag_codec.CalculateSizeWithTag(Ymag);
+      }
+      if (zfar_ != null) {
+        size += _single_zfar_codec.CalculateSizeWithTag(Zfar);
+      }
+      if (znear_ != null) {
+        size += _single_znear_codec.CalculateSizeWithTag(Znear);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(CameraOrthographic other) {
+      if (other == null) {
+        return;
+      }
+      if (other.extensions_ != null) {
+        if (extensions_ == null) {
+          Extensions = new global::VrmProtobuf.CameraOrthographic.Types.Extensions();
+        }
+        Extensions.MergeFrom(other.Extensions);
+      }
+      if (other.extras_ != null) {
+        if (extras_ == null) {
+          Extras = new global::VrmProtobuf.CameraOrthographic.Types.Extras();
+        }
+        Extras.MergeFrom(other.Extras);
+      }
+      if (other.xmag_ != null) {
+        if (xmag_ == null || other.Xmag != 0F) {
+          Xmag = other.Xmag;
+        }
+      }
+      if (other.ymag_ != null) {
+        if (ymag_ == null || other.Ymag != 0F) {
+          Ymag = other.Ymag;
+        }
+      }
+      if (other.zfar_ != null) {
+        if (zfar_ == null || other.Zfar != 0F) {
+          Zfar = other.Zfar;
+        }
+      }
+      if (other.znear_ != null) {
+        if (znear_ == null || other.Znear != 0F) {
+          Znear = other.Znear;
+        }
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            if (extensions_ == null) {
+              Extensions = new global::VrmProtobuf.CameraOrthographic.Types.Extensions();
+            }
+            input.ReadMessage(Extensions);
+            break;
+          }
+          case 18: {
+            if (extras_ == null) {
+              Extras = new global::VrmProtobuf.CameraOrthographic.Types.Extras();
+            }
+            input.ReadMessage(Extras);
+            break;
+          }
+          case 26: {
+            float? value = _single_xmag_codec.Read(input);
+            if (xmag_ == null || value != 0F) {
+              Xmag = value;
+            }
+            break;
+          }
+          case 34: {
+            float? value = _single_ymag_codec.Read(input);
+            if (ymag_ == null || value != 0F) {
+              Ymag = value;
+            }
+            break;
+          }
+          case 42: {
+            float? value = _single_zfar_codec.Read(input);
+            if (zfar_ == null || value != 0F) {
+              Zfar = value;
+            }
+            break;
+          }
+          case 50: {
+            float? value = _single_znear_codec.Read(input);
+            if (znear_ == null || value != 0F) {
+              Znear = value;
+            }
+            break;
+          }
+        }
+      }
+    }
+
+    #region Nested types
+    /// <summary>Container for nested types declared in the CameraOrthographic message type.</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static partial class Types {
+      public sealed partial class Extensions : pb::IMessage<Extensions> {
+        private static readonly pb::MessageParser<Extensions> _parser = new pb::MessageParser<Extensions>(() => new Extensions());
+        private pb::UnknownFieldSet _unknownFields;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pb::MessageParser<Extensions> Parser { get { return _parser; } }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pbr::MessageDescriptor Descriptor {
+          get { return global::VrmProtobuf.CameraOrthographic.Descriptor.NestedTypes[0]; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        pbr::MessageDescriptor pb::IMessage.Descriptor {
+          get { return Descriptor; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extensions() {
+          OnConstruction();
+        }
+
+        partial void OnConstruction();
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extensions(Extensions other) : this() {
+          _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extensions Clone() {
+          return new Extensions(this);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override bool Equals(object other) {
+          return Equals(other as Extensions);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public bool Equals(Extensions other) {
+          if (ReferenceEquals(other, null)) {
+            return false;
+          }
+          if (ReferenceEquals(other, this)) {
+            return true;
+          }
+          return Equals(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override int GetHashCode() {
+          int hash = 1;
+          if (_unknownFields != null) {
+            hash ^= _unknownFields.GetHashCode();
+          }
+          return hash;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override string ToString() {
+          return pb::JsonFormatter.ToDiagnosticString(this);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void WriteTo(pb::CodedOutputStream output) {
+          if (_unknownFields != null) {
+            _unknownFields.WriteTo(output);
+          }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public int CalculateSize() {
+          int size = 0;
+          if (_unknownFields != null) {
+            size += _unknownFields.CalculateSize();
+          }
+          return size;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(Extensions other) {
+          if (other == null) {
+            return;
+          }
+          _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(pb::CodedInputStream input) {
+          uint tag;
+          while ((tag = input.ReadTag()) != 0) {
+            switch(tag) {
+              default:
+                _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+                break;
+            }
+          }
+        }
+
+      }
+
+      public sealed partial class Extras : pb::IMessage<Extras> {
+        private static readonly pb::MessageParser<Extras> _parser = new pb::MessageParser<Extras>(() => new Extras());
+        private pb::UnknownFieldSet _unknownFields;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pb::MessageParser<Extras> Parser { get { return _parser; } }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pbr::MessageDescriptor Descriptor {
+          get { return global::VrmProtobuf.CameraOrthographic.Descriptor.NestedTypes[1]; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        pbr::MessageDescriptor pb::IMessage.Descriptor {
+          get { return Descriptor; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extras() {
+          OnConstruction();
+        }
+
+        partial void OnConstruction();
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extras(Extras other) : this() {
+          _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extras Clone() {
+          return new Extras(this);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override bool Equals(object other) {
+          return Equals(other as Extras);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public bool Equals(Extras other) {
+          if (ReferenceEquals(other, null)) {
+            return false;
+          }
+          if (ReferenceEquals(other, this)) {
+            return true;
+          }
+          return Equals(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override int GetHashCode() {
+          int hash = 1;
+          if (_unknownFields != null) {
+            hash ^= _unknownFields.GetHashCode();
+          }
+          return hash;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override string ToString() {
+          return pb::JsonFormatter.ToDiagnosticString(this);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void WriteTo(pb::CodedOutputStream output) {
+          if (_unknownFields != null) {
+            _unknownFields.WriteTo(output);
+          }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public int CalculateSize() {
+          int size = 0;
+          if (_unknownFields != null) {
+            size += _unknownFields.CalculateSize();
+          }
+          return size;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(Extras other) {
+          if (other == null) {
+            return;
+          }
+          _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(pb::CodedInputStream input) {
+          uint tag;
+          while ((tag = input.ReadTag()) != 0) {
+            switch(tag) {
+              default:
+                _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+                break;
+            }
+          }
+        }
+
+      }
+
+    }
+    #endregion
+
+  }
+
+  public sealed partial class CameraPerspective : pb::IMessage<CameraPerspective> {
+    private static readonly pb::MessageParser<CameraPerspective> _parser = new pb::MessageParser<CameraPerspective>(() => new CameraPerspective());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<CameraPerspective> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::VrmProtobuf.GlTFReflection.Descriptor.MessageTypes[12]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public CameraPerspective() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public CameraPerspective(CameraPerspective other) : this() {
+      extensions_ = other.extensions_ != null ? other.extensions_.Clone() : null;
+      extras_ = other.extras_ != null ? other.extras_.Clone() : null;
+      AspectRatio = other.AspectRatio;
+      Yfov = other.Yfov;
+      Zfar = other.Zfar;
+      Znear = other.Znear;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public CameraPerspective Clone() {
+      return new CameraPerspective(this);
+    }
+
+    /// <summary>Field number for the "extensions" field.</summary>
+    public const int ExtensionsFieldNumber = 1;
+    private global::VrmProtobuf.CameraPerspective.Types.Extensions extensions_;
+    /// <summary>
+    /// Dictionary object with extension-specific objects.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::VrmProtobuf.CameraPerspective.Types.Extensions Extensions {
+      get { return extensions_; }
+      set {
+        extensions_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "extras" field.</summary>
+    public const int ExtrasFieldNumber = 2;
+    private global::VrmProtobuf.CameraPerspective.Types.Extras extras_;
+    /// <summary>
+    /// Application-specific data.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::VrmProtobuf.CameraPerspective.Types.Extras Extras {
+      get { return extras_; }
+      set {
+        extras_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "aspectRatio" field.</summary>
+    public const int AspectRatioFieldNumber = 3;
+    private static readonly pb::FieldCodec<float?> _single_aspectRatio_codec = pb::FieldCodec.ForStructWrapper<float>(26);
+    private float? aspectRatio_;
+    /// <summary>
+    /// The floating-point aspect ratio of the field of view.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public float? AspectRatio {
+      get { return aspectRatio_; }
+      set {
+        aspectRatio_ = value;
+      }
+    }
+
+
+    /// <summary>Field number for the "yfov" field.</summary>
+    public const int YfovFieldNumber = 4;
+    private static readonly pb::FieldCodec<float?> _single_yfov_codec = pb::FieldCodec.ForStructWrapper<float>(34);
+    private float? yfov_;
+    /// <summary>
+    /// The floating-point vertical field of view in radians.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public float? Yfov {
+      get { return yfov_; }
+      set {
+        yfov_ = value;
+      }
+    }
+
+
+    /// <summary>Field number for the "zfar" field.</summary>
+    public const int ZfarFieldNumber = 5;
+    private static readonly pb::FieldCodec<float?> _single_zfar_codec = pb::FieldCodec.ForStructWrapper<float>(42);
+    private float? zfar_;
+    /// <summary>
+    /// The floating-point distance to the far clipping plane.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public float? Zfar {
+      get { return zfar_; }
+      set {
+        zfar_ = value;
+      }
+    }
+
+
+    /// <summary>Field number for the "znear" field.</summary>
+    public const int ZnearFieldNumber = 6;
+    private static readonly pb::FieldCodec<float?> _single_znear_codec = pb::FieldCodec.ForStructWrapper<float>(50);
+    private float? znear_;
+    /// <summary>
+    /// The floating-point distance to the near clipping plane.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public float? Znear {
+      get { return znear_; }
+      set {
+        znear_ = value;
+      }
+    }
+
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as CameraPerspective);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(CameraPerspective other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (!object.Equals(Extensions, other.Extensions)) return false;
+      if (!object.Equals(Extras, other.Extras)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseNullableSingleEqualityComparer.Equals(AspectRatio, other.AspectRatio)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseNullableSingleEqualityComparer.Equals(Yfov, other.Yfov)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseNullableSingleEqualityComparer.Equals(Zfar, other.Zfar)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseNullableSingleEqualityComparer.Equals(Znear, other.Znear)) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (extensions_ != null) hash ^= Extensions.GetHashCode();
+      if (extras_ != null) hash ^= Extras.GetHashCode();
+      if (aspectRatio_ != null) hash ^= pbc::ProtobufEqualityComparers.BitwiseNullableSingleEqualityComparer.GetHashCode(AspectRatio);
+      if (yfov_ != null) hash ^= pbc::ProtobufEqualityComparers.BitwiseNullableSingleEqualityComparer.GetHashCode(Yfov);
+      if (zfar_ != null) hash ^= pbc::ProtobufEqualityComparers.BitwiseNullableSingleEqualityComparer.GetHashCode(Zfar);
+      if (znear_ != null) hash ^= pbc::ProtobufEqualityComparers.BitwiseNullableSingleEqualityComparer.GetHashCode(Znear);
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (extensions_ != null) {
+        output.WriteRawTag(10);
+        output.WriteMessage(Extensions);
+      }
+      if (extras_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(Extras);
+      }
+      if (aspectRatio_ != null) {
+        _single_aspectRatio_codec.WriteTagAndValue(output, AspectRatio);
+      }
+      if (yfov_ != null) {
+        _single_yfov_codec.WriteTagAndValue(output, Yfov);
+      }
+      if (zfar_ != null) {
+        _single_zfar_codec.WriteTagAndValue(output, Zfar);
+      }
+      if (znear_ != null) {
+        _single_znear_codec.WriteTagAndValue(output, Znear);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (extensions_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Extensions);
+      }
+      if (extras_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Extras);
+      }
+      if (aspectRatio_ != null) {
+        size += _single_aspectRatio_codec.CalculateSizeWithTag(AspectRatio);
+      }
+      if (yfov_ != null) {
+        size += _single_yfov_codec.CalculateSizeWithTag(Yfov);
+      }
+      if (zfar_ != null) {
+        size += _single_zfar_codec.CalculateSizeWithTag(Zfar);
+      }
+      if (znear_ != null) {
+        size += _single_znear_codec.CalculateSizeWithTag(Znear);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(CameraPerspective other) {
+      if (other == null) {
+        return;
+      }
+      if (other.extensions_ != null) {
+        if (extensions_ == null) {
+          Extensions = new global::VrmProtobuf.CameraPerspective.Types.Extensions();
+        }
+        Extensions.MergeFrom(other.Extensions);
+      }
+      if (other.extras_ != null) {
+        if (extras_ == null) {
+          Extras = new global::VrmProtobuf.CameraPerspective.Types.Extras();
+        }
+        Extras.MergeFrom(other.Extras);
+      }
+      if (other.aspectRatio_ != null) {
+        if (aspectRatio_ == null || other.AspectRatio != 0F) {
+          AspectRatio = other.AspectRatio;
+        }
+      }
+      if (other.yfov_ != null) {
+        if (yfov_ == null || other.Yfov != 0F) {
+          Yfov = other.Yfov;
+        }
+      }
+      if (other.zfar_ != null) {
+        if (zfar_ == null || other.Zfar != 0F) {
+          Zfar = other.Zfar;
+        }
+      }
+      if (other.znear_ != null) {
+        if (znear_ == null || other.Znear != 0F) {
+          Znear = other.Znear;
+        }
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            if (extensions_ == null) {
+              Extensions = new global::VrmProtobuf.CameraPerspective.Types.Extensions();
+            }
+            input.ReadMessage(Extensions);
+            break;
+          }
+          case 18: {
+            if (extras_ == null) {
+              Extras = new global::VrmProtobuf.CameraPerspective.Types.Extras();
+            }
+            input.ReadMessage(Extras);
+            break;
+          }
+          case 26: {
+            float? value = _single_aspectRatio_codec.Read(input);
+            if (aspectRatio_ == null || value != 0F) {
+              AspectRatio = value;
+            }
+            break;
+          }
+          case 34: {
+            float? value = _single_yfov_codec.Read(input);
+            if (yfov_ == null || value != 0F) {
+              Yfov = value;
+            }
+            break;
+          }
+          case 42: {
+            float? value = _single_zfar_codec.Read(input);
+            if (zfar_ == null || value != 0F) {
+              Zfar = value;
+            }
+            break;
+          }
+          case 50: {
+            float? value = _single_znear_codec.Read(input);
+            if (znear_ == null || value != 0F) {
+              Znear = value;
+            }
+            break;
+          }
+        }
+      }
+    }
+
+    #region Nested types
+    /// <summary>Container for nested types declared in the CameraPerspective message type.</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static partial class Types {
+      public sealed partial class Extensions : pb::IMessage<Extensions> {
+        private static readonly pb::MessageParser<Extensions> _parser = new pb::MessageParser<Extensions>(() => new Extensions());
+        private pb::UnknownFieldSet _unknownFields;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pb::MessageParser<Extensions> Parser { get { return _parser; } }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pbr::MessageDescriptor Descriptor {
+          get { return global::VrmProtobuf.CameraPerspective.Descriptor.NestedTypes[0]; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        pbr::MessageDescriptor pb::IMessage.Descriptor {
+          get { return Descriptor; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extensions() {
+          OnConstruction();
+        }
+
+        partial void OnConstruction();
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extensions(Extensions other) : this() {
+          _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extensions Clone() {
+          return new Extensions(this);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override bool Equals(object other) {
+          return Equals(other as Extensions);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public bool Equals(Extensions other) {
+          if (ReferenceEquals(other, null)) {
+            return false;
+          }
+          if (ReferenceEquals(other, this)) {
+            return true;
+          }
+          return Equals(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override int GetHashCode() {
+          int hash = 1;
+          if (_unknownFields != null) {
+            hash ^= _unknownFields.GetHashCode();
+          }
+          return hash;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override string ToString() {
+          return pb::JsonFormatter.ToDiagnosticString(this);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void WriteTo(pb::CodedOutputStream output) {
+          if (_unknownFields != null) {
+            _unknownFields.WriteTo(output);
+          }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public int CalculateSize() {
+          int size = 0;
+          if (_unknownFields != null) {
+            size += _unknownFields.CalculateSize();
+          }
+          return size;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(Extensions other) {
+          if (other == null) {
+            return;
+          }
+          _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(pb::CodedInputStream input) {
+          uint tag;
+          while ((tag = input.ReadTag()) != 0) {
+            switch(tag) {
+              default:
+                _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+                break;
+            }
+          }
+        }
+
+      }
+
+      public sealed partial class Extras : pb::IMessage<Extras> {
+        private static readonly pb::MessageParser<Extras> _parser = new pb::MessageParser<Extras>(() => new Extras());
+        private pb::UnknownFieldSet _unknownFields;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pb::MessageParser<Extras> Parser { get { return _parser; } }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pbr::MessageDescriptor Descriptor {
+          get { return global::VrmProtobuf.CameraPerspective.Descriptor.NestedTypes[1]; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        pbr::MessageDescriptor pb::IMessage.Descriptor {
+          get { return Descriptor; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extras() {
+          OnConstruction();
+        }
+
+        partial void OnConstruction();
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extras(Extras other) : this() {
+          _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extras Clone() {
+          return new Extras(this);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override bool Equals(object other) {
+          return Equals(other as Extras);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public bool Equals(Extras other) {
+          if (ReferenceEquals(other, null)) {
+            return false;
+          }
+          if (ReferenceEquals(other, this)) {
+            return true;
+          }
+          return Equals(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override int GetHashCode() {
+          int hash = 1;
+          if (_unknownFields != null) {
+            hash ^= _unknownFields.GetHashCode();
+          }
+          return hash;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override string ToString() {
+          return pb::JsonFormatter.ToDiagnosticString(this);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void WriteTo(pb::CodedOutputStream output) {
+          if (_unknownFields != null) {
+            _unknownFields.WriteTo(output);
+          }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public int CalculateSize() {
+          int size = 0;
+          if (_unknownFields != null) {
+            size += _unknownFields.CalculateSize();
+          }
+          return size;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(Extras other) {
+          if (other == null) {
+            return;
+          }
+          _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(pb::CodedInputStream input) {
+          uint tag;
+          while ((tag = input.ReadTag()) != 0) {
+            switch(tag) {
+              default:
+                _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+                break;
+            }
+          }
+        }
+
+      }
+
+    }
+    #endregion
+
+  }
+
+  public sealed partial class Camera : pb::IMessage<Camera> {
+    private static readonly pb::MessageParser<Camera> _parser = new pb::MessageParser<Camera>(() => new Camera());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<Camera> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::VrmProtobuf.GlTFReflection.Descriptor.MessageTypes[13]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public Camera() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public Camera(Camera other) : this() {
+      extensions_ = other.extensions_ != null ? other.extensions_.Clone() : null;
+      extras_ = other.extras_ != null ? other.extras_.Clone() : null;
+      name_ = other.name_;
+      orthographic_ = other.orthographic_ != null ? other.orthographic_.Clone() : null;
+      perspective_ = other.perspective_ != null ? other.perspective_.Clone() : null;
+      type_ = other.type_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public Camera Clone() {
+      return new Camera(this);
+    }
+
+    /// <summary>Field number for the "extensions" field.</summary>
+    public const int ExtensionsFieldNumber = 1;
+    private global::VrmProtobuf.Camera.Types.Extensions extensions_;
+    /// <summary>
+    /// Dictionary object with extension-specific objects.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::VrmProtobuf.Camera.Types.Extensions Extensions {
+      get { return extensions_; }
+      set {
+        extensions_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "extras" field.</summary>
+    public const int ExtrasFieldNumber = 2;
+    private global::VrmProtobuf.Camera.Types.Extras extras_;
+    /// <summary>
+    /// Application-specific data.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::VrmProtobuf.Camera.Types.Extras Extras {
+      get { return extras_; }
+      set {
+        extras_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "name" field.</summary>
+    public const int NameFieldNumber = 3;
+    private string name_ = "";
+    /// <summary>
+    /// The user-defined name of this object.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Name {
+      get { return name_; }
+      set {
+        name_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "orthographic" field.</summary>
+    public const int OrthographicFieldNumber = 4;
+    private global::VrmProtobuf.CameraOrthographic orthographic_;
+    /// <summary>
+    /// An orthographic camera containing properties to create an orthographic projection matrix.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::VrmProtobuf.CameraOrthographic Orthographic {
+      get { return orthographic_; }
+      set {
+        orthographic_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "perspective" field.</summary>
+    public const int PerspectiveFieldNumber = 5;
+    private global::VrmProtobuf.CameraPerspective perspective_;
+    /// <summary>
+    /// A perspective camera containing properties to create a perspective projection matrix.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::VrmProtobuf.CameraPerspective Perspective {
+      get { return perspective_; }
+      set {
+        perspective_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "type" field.</summary>
+    public const int TypeFieldNumber = 6;
+    private string type_ = "";
+    /// <summary>
+    /// Specifies if the camera uses a perspective or orthographic projection.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Type {
+      get { return type_; }
+      set {
+        type_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as Camera);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(Camera other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (!object.Equals(Extensions, other.Extensions)) return false;
+      if (!object.Equals(Extras, other.Extras)) return false;
+      if (Name != other.Name) return false;
+      if (!object.Equals(Orthographic, other.Orthographic)) return false;
+      if (!object.Equals(Perspective, other.Perspective)) return false;
+      if (Type != other.Type) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (extensions_ != null) hash ^= Extensions.GetHashCode();
+      if (extras_ != null) hash ^= Extras.GetHashCode();
+      if (Name.Length != 0) hash ^= Name.GetHashCode();
+      if (orthographic_ != null) hash ^= Orthographic.GetHashCode();
+      if (perspective_ != null) hash ^= Perspective.GetHashCode();
+      if (Type.Length != 0) hash ^= Type.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (extensions_ != null) {
+        output.WriteRawTag(10);
+        output.WriteMessage(Extensions);
+      }
+      if (extras_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(Extras);
+      }
+      if (Name.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(Name);
+      }
+      if (orthographic_ != null) {
+        output.WriteRawTag(34);
+        output.WriteMessage(Orthographic);
+      }
+      if (perspective_ != null) {
+        output.WriteRawTag(42);
+        output.WriteMessage(Perspective);
+      }
+      if (Type.Length != 0) {
+        output.WriteRawTag(50);
+        output.WriteString(Type);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (extensions_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Extensions);
+      }
+      if (extras_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Extras);
+      }
+      if (Name.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Name);
+      }
+      if (orthographic_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Orthographic);
+      }
+      if (perspective_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Perspective);
+      }
+      if (Type.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Type);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(Camera other) {
+      if (other == null) {
+        return;
+      }
+      if (other.extensions_ != null) {
+        if (extensions_ == null) {
+          Extensions = new global::VrmProtobuf.Camera.Types.Extensions();
+        }
+        Extensions.MergeFrom(other.Extensions);
+      }
+      if (other.extras_ != null) {
+        if (extras_ == null) {
+          Extras = new global::VrmProtobuf.Camera.Types.Extras();
+        }
+        Extras.MergeFrom(other.Extras);
+      }
+      if (other.Name.Length != 0) {
+        Name = other.Name;
+      }
+      if (other.orthographic_ != null) {
+        if (orthographic_ == null) {
+          Orthographic = new global::VrmProtobuf.CameraOrthographic();
+        }
+        Orthographic.MergeFrom(other.Orthographic);
+      }
+      if (other.perspective_ != null) {
+        if (perspective_ == null) {
+          Perspective = new global::VrmProtobuf.CameraPerspective();
+        }
+        Perspective.MergeFrom(other.Perspective);
+      }
+      if (other.Type.Length != 0) {
+        Type = other.Type;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            if (extensions_ == null) {
+              Extensions = new global::VrmProtobuf.Camera.Types.Extensions();
+            }
+            input.ReadMessage(Extensions);
+            break;
+          }
+          case 18: {
+            if (extras_ == null) {
+              Extras = new global::VrmProtobuf.Camera.Types.Extras();
+            }
+            input.ReadMessage(Extras);
+            break;
+          }
+          case 26: {
+            Name = input.ReadString();
+            break;
+          }
+          case 34: {
+            if (orthographic_ == null) {
+              Orthographic = new global::VrmProtobuf.CameraOrthographic();
+            }
+            input.ReadMessage(Orthographic);
+            break;
+          }
+          case 42: {
+            if (perspective_ == null) {
+              Perspective = new global::VrmProtobuf.CameraPerspective();
+            }
+            input.ReadMessage(Perspective);
+            break;
+          }
+          case 50: {
+            Type = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+
+    #region Nested types
+    /// <summary>Container for nested types declared in the Camera message type.</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static partial class Types {
+      public sealed partial class Extensions : pb::IMessage<Extensions> {
+        private static readonly pb::MessageParser<Extensions> _parser = new pb::MessageParser<Extensions>(() => new Extensions());
+        private pb::UnknownFieldSet _unknownFields;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pb::MessageParser<Extensions> Parser { get { return _parser; } }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pbr::MessageDescriptor Descriptor {
+          get { return global::VrmProtobuf.Camera.Descriptor.NestedTypes[0]; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        pbr::MessageDescriptor pb::IMessage.Descriptor {
+          get { return Descriptor; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extensions() {
+          OnConstruction();
+        }
+
+        partial void OnConstruction();
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extensions(Extensions other) : this() {
+          _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extensions Clone() {
+          return new Extensions(this);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override bool Equals(object other) {
+          return Equals(other as Extensions);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public bool Equals(Extensions other) {
+          if (ReferenceEquals(other, null)) {
+            return false;
+          }
+          if (ReferenceEquals(other, this)) {
+            return true;
+          }
+          return Equals(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override int GetHashCode() {
+          int hash = 1;
+          if (_unknownFields != null) {
+            hash ^= _unknownFields.GetHashCode();
+          }
+          return hash;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override string ToString() {
+          return pb::JsonFormatter.ToDiagnosticString(this);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void WriteTo(pb::CodedOutputStream output) {
+          if (_unknownFields != null) {
+            _unknownFields.WriteTo(output);
+          }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public int CalculateSize() {
+          int size = 0;
+          if (_unknownFields != null) {
+            size += _unknownFields.CalculateSize();
+          }
+          return size;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(Extensions other) {
+          if (other == null) {
+            return;
+          }
+          _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(pb::CodedInputStream input) {
+          uint tag;
+          while ((tag = input.ReadTag()) != 0) {
+            switch(tag) {
+              default:
+                _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+                break;
+            }
+          }
+        }
+
+      }
+
+      public sealed partial class Extras : pb::IMessage<Extras> {
+        private static readonly pb::MessageParser<Extras> _parser = new pb::MessageParser<Extras>(() => new Extras());
+        private pb::UnknownFieldSet _unknownFields;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pb::MessageParser<Extras> Parser { get { return _parser; } }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pbr::MessageDescriptor Descriptor {
+          get { return global::VrmProtobuf.Camera.Descriptor.NestedTypes[1]; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        pbr::MessageDescriptor pb::IMessage.Descriptor {
+          get { return Descriptor; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extras() {
+          OnConstruction();
+        }
+
+        partial void OnConstruction();
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extras(Extras other) : this() {
+          _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extras Clone() {
+          return new Extras(this);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override bool Equals(object other) {
+          return Equals(other as Extras);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public bool Equals(Extras other) {
+          if (ReferenceEquals(other, null)) {
+            return false;
+          }
+          if (ReferenceEquals(other, this)) {
+            return true;
+          }
+          return Equals(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override int GetHashCode() {
+          int hash = 1;
+          if (_unknownFields != null) {
+            hash ^= _unknownFields.GetHashCode();
+          }
+          return hash;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override string ToString() {
+          return pb::JsonFormatter.ToDiagnosticString(this);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void WriteTo(pb::CodedOutputStream output) {
+          if (_unknownFields != null) {
+            _unknownFields.WriteTo(output);
+          }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public int CalculateSize() {
+          int size = 0;
+          if (_unknownFields != null) {
+            size += _unknownFields.CalculateSize();
+          }
+          return size;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(Extras other) {
+          if (other == null) {
+            return;
+          }
+          _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(pb::CodedInputStream input) {
+          uint tag;
+          while ((tag = input.ReadTag()) != 0) {
+            switch(tag) {
+              default:
+                _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+                break;
+            }
+          }
+        }
+
+      }
+
+    }
+    #endregion
+
+  }
+
   public sealed partial class Image : pb::IMessage<Image> {
     private static readonly pb::MessageParser<Image> _parser = new pb::MessageParser<Image>(() => new Image());
     private pb::UnknownFieldSet _unknownFields;
@@ -3102,7 +7567,7 @@ namespace VrmProtobuf {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::VrmProtobuf.GlTFReflection.Descriptor.MessageTypes[12]; }
+      get { return global::VrmProtobuf.GlTFReflection.Descriptor.MessageTypes[14]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -3119,10 +7584,12 @@ namespace VrmProtobuf {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public Image(Image other) : this() {
-      uri_ = other.uri_;
-      mimeType_ = other.mimeType_;
-      BufferView = other.BufferView;
+      extensions_ = other.extensions_ != null ? other.extensions_.Clone() : null;
+      extras_ = other.extras_ != null ? other.extras_.Clone() : null;
       name_ = other.name_;
+      uri_ = other.uri_;
+      BufferView = other.BufferView;
+      mimeType_ = other.mimeType_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -3131,9 +7598,54 @@ namespace VrmProtobuf {
       return new Image(this);
     }
 
+    /// <summary>Field number for the "extensions" field.</summary>
+    public const int ExtensionsFieldNumber = 1;
+    private global::VrmProtobuf.Image.Types.Extensions extensions_;
+    /// <summary>
+    /// Dictionary object with extension-specific objects.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::VrmProtobuf.Image.Types.Extensions Extensions {
+      get { return extensions_; }
+      set {
+        extensions_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "extras" field.</summary>
+    public const int ExtrasFieldNumber = 2;
+    private global::VrmProtobuf.Image.Types.Extras extras_;
+    /// <summary>
+    /// Application-specific data.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::VrmProtobuf.Image.Types.Extras Extras {
+      get { return extras_; }
+      set {
+        extras_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "name" field.</summary>
+    public const int NameFieldNumber = 3;
+    private string name_ = "";
+    /// <summary>
+    /// The user-defined name of this object.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Name {
+      get { return name_; }
+      set {
+        name_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
     /// <summary>Field number for the "uri" field.</summary>
-    public const int UriFieldNumber = 1;
+    public const int UriFieldNumber = 4;
     private string uri_ = "";
+    /// <summary>
+    /// The uri of the image.
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string Uri {
       get { return uri_; }
@@ -3142,24 +7654,13 @@ namespace VrmProtobuf {
       }
     }
 
-    /// <summary>Field number for the "mimeType" field.</summary>
-    public const int MimeTypeFieldNumber = 2;
-    private string mimeType_ = "";
-    /// <summary>
-    /// "image/jpeg", "image/png"
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string MimeType {
-      get { return mimeType_; }
-      set {
-        mimeType_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
     /// <summary>Field number for the "bufferView" field.</summary>
-    public const int BufferViewFieldNumber = 3;
-    private static readonly pb::FieldCodec<int?> _single_bufferView_codec = pb::FieldCodec.ForStructWrapper<int>(26);
+    public const int BufferViewFieldNumber = 5;
+    private static readonly pb::FieldCodec<int?> _single_bufferView_codec = pb::FieldCodec.ForStructWrapper<int>(42);
     private int? bufferView_;
+    /// <summary>
+    /// The index of the bufferView that contains the image. Use this instead of the image's uri property.
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int? BufferView {
       get { return bufferView_; }
@@ -3169,14 +7670,17 @@ namespace VrmProtobuf {
     }
 
 
-    /// <summary>Field number for the "name" field.</summary>
-    public const int NameFieldNumber = 4;
-    private string name_ = "";
+    /// <summary>Field number for the "mimeType" field.</summary>
+    public const int MimeTypeFieldNumber = 6;
+    private string mimeType_ = "";
+    /// <summary>
+    /// The image's MIME type. Required if `bufferView` is defined.
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string Name {
-      get { return name_; }
+    public string MimeType {
+      get { return mimeType_; }
       set {
-        name_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        mimeType_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
@@ -3193,20 +7697,24 @@ namespace VrmProtobuf {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (Uri != other.Uri) return false;
-      if (MimeType != other.MimeType) return false;
-      if (BufferView != other.BufferView) return false;
+      if (!object.Equals(Extensions, other.Extensions)) return false;
+      if (!object.Equals(Extras, other.Extras)) return false;
       if (Name != other.Name) return false;
+      if (Uri != other.Uri) return false;
+      if (BufferView != other.BufferView) return false;
+      if (MimeType != other.MimeType) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
-      if (Uri.Length != 0) hash ^= Uri.GetHashCode();
-      if (MimeType.Length != 0) hash ^= MimeType.GetHashCode();
-      if (bufferView_ != null) hash ^= BufferView.GetHashCode();
+      if (extensions_ != null) hash ^= Extensions.GetHashCode();
+      if (extras_ != null) hash ^= Extras.GetHashCode();
       if (Name.Length != 0) hash ^= Name.GetHashCode();
+      if (Uri.Length != 0) hash ^= Uri.GetHashCode();
+      if (bufferView_ != null) hash ^= BufferView.GetHashCode();
+      if (MimeType.Length != 0) hash ^= MimeType.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -3220,20 +7728,28 @@ namespace VrmProtobuf {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
-      if (Uri.Length != 0) {
+      if (extensions_ != null) {
         output.WriteRawTag(10);
-        output.WriteString(Uri);
+        output.WriteMessage(Extensions);
       }
-      if (MimeType.Length != 0) {
+      if (extras_ != null) {
         output.WriteRawTag(18);
-        output.WriteString(MimeType);
+        output.WriteMessage(Extras);
+      }
+      if (Name.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(Name);
+      }
+      if (Uri.Length != 0) {
+        output.WriteRawTag(34);
+        output.WriteString(Uri);
       }
       if (bufferView_ != null) {
         _single_bufferView_codec.WriteTagAndValue(output, BufferView);
       }
-      if (Name.Length != 0) {
-        output.WriteRawTag(34);
-        output.WriteString(Name);
+      if (MimeType.Length != 0) {
+        output.WriteRawTag(50);
+        output.WriteString(MimeType);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -3243,17 +7759,23 @@ namespace VrmProtobuf {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
+      if (extensions_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Extensions);
+      }
+      if (extras_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Extras);
+      }
+      if (Name.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Name);
+      }
       if (Uri.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Uri);
-      }
-      if (MimeType.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(MimeType);
       }
       if (bufferView_ != null) {
         size += _single_bufferView_codec.CalculateSizeWithTag(BufferView);
       }
-      if (Name.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(Name);
+      if (MimeType.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(MimeType);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -3266,19 +7788,31 @@ namespace VrmProtobuf {
       if (other == null) {
         return;
       }
+      if (other.extensions_ != null) {
+        if (extensions_ == null) {
+          Extensions = new global::VrmProtobuf.Image.Types.Extensions();
+        }
+        Extensions.MergeFrom(other.Extensions);
+      }
+      if (other.extras_ != null) {
+        if (extras_ == null) {
+          Extras = new global::VrmProtobuf.Image.Types.Extras();
+        }
+        Extras.MergeFrom(other.Extras);
+      }
+      if (other.Name.Length != 0) {
+        Name = other.Name;
+      }
       if (other.Uri.Length != 0) {
         Uri = other.Uri;
-      }
-      if (other.MimeType.Length != 0) {
-        MimeType = other.MimeType;
       }
       if (other.bufferView_ != null) {
         if (bufferView_ == null || other.BufferView != 0) {
           BufferView = other.BufferView;
         }
       }
-      if (other.Name.Length != 0) {
-        Name = other.Name;
+      if (other.MimeType.Length != 0) {
+        MimeType = other.MimeType;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -3292,263 +7826,36 @@ namespace VrmProtobuf {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 10: {
-            Uri = input.ReadString();
+            if (extensions_ == null) {
+              Extensions = new global::VrmProtobuf.Image.Types.Extensions();
+            }
+            input.ReadMessage(Extensions);
             break;
           }
           case 18: {
-            MimeType = input.ReadString();
+            if (extras_ == null) {
+              Extras = new global::VrmProtobuf.Image.Types.Extras();
+            }
+            input.ReadMessage(Extras);
             break;
           }
           case 26: {
+            Name = input.ReadString();
+            break;
+          }
+          case 34: {
+            Uri = input.ReadString();
+            break;
+          }
+          case 42: {
             int? value = _single_bufferView_codec.Read(input);
             if (bufferView_ == null || value != 0) {
               BufferView = value;
             }
             break;
           }
-          case 34: {
-            Name = input.ReadString();
-            break;
-          }
-        }
-      }
-    }
-
-  }
-
-  /// <summary>
-  /// https://github.com/KhronosGroup/glTF/blob/master/specification/2.0/schema/material.normalTextureInfo.schema.json
-  /// "required": [ "index" ]
-  /// </summary>
-  public sealed partial class MaterialNormalTextureInfo : pb::IMessage<MaterialNormalTextureInfo> {
-    private static readonly pb::MessageParser<MaterialNormalTextureInfo> _parser = new pb::MessageParser<MaterialNormalTextureInfo>(() => new MaterialNormalTextureInfo());
-    private pb::UnknownFieldSet _unknownFields;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<MaterialNormalTextureInfo> Parser { get { return _parser; } }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pbr::MessageDescriptor Descriptor {
-      get { return global::VrmProtobuf.GlTFReflection.Descriptor.MessageTypes[13]; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    pbr::MessageDescriptor pb::IMessage.Descriptor {
-      get { return Descriptor; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public MaterialNormalTextureInfo() {
-      OnConstruction();
-    }
-
-    partial void OnConstruction();
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public MaterialNormalTextureInfo(MaterialNormalTextureInfo other) : this() {
-      Index = other.Index;
-      TexCoord = other.TexCoord;
-      Scale = other.Scale;
-      extensions_ = other.extensions_ != null ? other.extensions_.Clone() : null;
-      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public MaterialNormalTextureInfo Clone() {
-      return new MaterialNormalTextureInfo(this);
-    }
-
-    /// <summary>Field number for the "index" field.</summary>
-    public const int IndexFieldNumber = 1;
-    private static readonly pb::FieldCodec<int?> _single_index_codec = pb::FieldCodec.ForStructWrapper<int>(10);
-    private int? index_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int? Index {
-      get { return index_; }
-      set {
-        index_ = value;
-      }
-    }
-
-
-    /// <summary>Field number for the "texCoord" field.</summary>
-    public const int TexCoordFieldNumber = 2;
-    private static readonly pb::FieldCodec<int?> _single_texCoord_codec = pb::FieldCodec.ForStructWrapper<int>(18);
-    private int? texCoord_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int? TexCoord {
-      get { return texCoord_; }
-      set {
-        texCoord_ = value;
-      }
-    }
-
-
-    /// <summary>Field number for the "scale" field.</summary>
-    public const int ScaleFieldNumber = 3;
-    private static readonly pb::FieldCodec<float?> _single_scale_codec = pb::FieldCodec.ForStructWrapper<float>(26);
-    private float? scale_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public float? Scale {
-      get { return scale_; }
-      set {
-        scale_ = value;
-      }
-    }
-
-
-    /// <summary>Field number for the "extensions" field.</summary>
-    public const int ExtensionsFieldNumber = 4;
-    private global::VrmProtobuf.MaterialNormalTextureInfo.Types.Extensions extensions_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::VrmProtobuf.MaterialNormalTextureInfo.Types.Extensions Extensions {
-      get { return extensions_; }
-      set {
-        extensions_ = value;
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override bool Equals(object other) {
-      return Equals(other as MaterialNormalTextureInfo);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(MaterialNormalTextureInfo other) {
-      if (ReferenceEquals(other, null)) {
-        return false;
-      }
-      if (ReferenceEquals(other, this)) {
-        return true;
-      }
-      if (Index != other.Index) return false;
-      if (TexCoord != other.TexCoord) return false;
-      if (!pbc::ProtobufEqualityComparers.BitwiseNullableSingleEqualityComparer.Equals(Scale, other.Scale)) return false;
-      if (!object.Equals(Extensions, other.Extensions)) return false;
-      return Equals(_unknownFields, other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override int GetHashCode() {
-      int hash = 1;
-      if (index_ != null) hash ^= Index.GetHashCode();
-      if (texCoord_ != null) hash ^= TexCoord.GetHashCode();
-      if (scale_ != null) hash ^= pbc::ProtobufEqualityComparers.BitwiseNullableSingleEqualityComparer.GetHashCode(Scale);
-      if (extensions_ != null) hash ^= Extensions.GetHashCode();
-      if (_unknownFields != null) {
-        hash ^= _unknownFields.GetHashCode();
-      }
-      return hash;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override string ToString() {
-      return pb::JsonFormatter.ToDiagnosticString(this);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void WriteTo(pb::CodedOutputStream output) {
-      if (index_ != null) {
-        _single_index_codec.WriteTagAndValue(output, Index);
-      }
-      if (texCoord_ != null) {
-        _single_texCoord_codec.WriteTagAndValue(output, TexCoord);
-      }
-      if (scale_ != null) {
-        _single_scale_codec.WriteTagAndValue(output, Scale);
-      }
-      if (extensions_ != null) {
-        output.WriteRawTag(34);
-        output.WriteMessage(Extensions);
-      }
-      if (_unknownFields != null) {
-        _unknownFields.WriteTo(output);
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int CalculateSize() {
-      int size = 0;
-      if (index_ != null) {
-        size += _single_index_codec.CalculateSizeWithTag(Index);
-      }
-      if (texCoord_ != null) {
-        size += _single_texCoord_codec.CalculateSizeWithTag(TexCoord);
-      }
-      if (scale_ != null) {
-        size += _single_scale_codec.CalculateSizeWithTag(Scale);
-      }
-      if (extensions_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Extensions);
-      }
-      if (_unknownFields != null) {
-        size += _unknownFields.CalculateSize();
-      }
-      return size;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(MaterialNormalTextureInfo other) {
-      if (other == null) {
-        return;
-      }
-      if (other.index_ != null) {
-        if (index_ == null || other.Index != 0) {
-          Index = other.Index;
-        }
-      }
-      if (other.texCoord_ != null) {
-        if (texCoord_ == null || other.TexCoord != 0) {
-          TexCoord = other.TexCoord;
-        }
-      }
-      if (other.scale_ != null) {
-        if (scale_ == null || other.Scale != 0F) {
-          Scale = other.Scale;
-        }
-      }
-      if (other.extensions_ != null) {
-        if (extensions_ == null) {
-          Extensions = new global::VrmProtobuf.MaterialNormalTextureInfo.Types.Extensions();
-        }
-        Extensions.MergeFrom(other.Extensions);
-      }
-      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(pb::CodedInputStream input) {
-      uint tag;
-      while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
-          default:
-            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
-            break;
-          case 10: {
-            int? value = _single_index_codec.Read(input);
-            if (index_ == null || value != 0) {
-              Index = value;
-            }
-            break;
-          }
-          case 18: {
-            int? value = _single_texCoord_codec.Read(input);
-            if (texCoord_ == null || value != 0) {
-              TexCoord = value;
-            }
-            break;
-          }
-          case 26: {
-            float? value = _single_scale_codec.Read(input);
-            if (scale_ == null || value != 0F) {
-              Scale = value;
-            }
-            break;
-          }
-          case 34: {
-            if (extensions_ == null) {
-              Extensions = new global::VrmProtobuf.MaterialNormalTextureInfo.Types.Extensions();
-            }
-            input.ReadMessage(Extensions);
+          case 50: {
+            MimeType = input.ReadString();
             break;
           }
         }
@@ -3556,7 +7863,7 @@ namespace VrmProtobuf {
     }
 
     #region Nested types
-    /// <summary>Container for nested types declared in the MaterialNormalTextureInfo message type.</summary>
+    /// <summary>Container for nested types declared in the Image message type.</summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static partial class Types {
       public sealed partial class Extensions : pb::IMessage<Extensions> {
@@ -3567,7 +7874,7 @@ namespace VrmProtobuf {
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public static pbr::MessageDescriptor Descriptor {
-          get { return global::VrmProtobuf.MaterialNormalTextureInfo.Descriptor.NestedTypes[0]; }
+          get { return global::VrmProtobuf.Image.Descriptor.NestedTypes[0]; }
         }
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -3584,27 +7891,12 @@ namespace VrmProtobuf {
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public Extensions(Extensions other) : this() {
-          kHRTextureTransform_ = other.kHRTextureTransform_ != null ? other.kHRTextureTransform_.Clone() : null;
           _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
         }
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public Extensions Clone() {
           return new Extensions(this);
-        }
-
-        /// <summary>Field number for the "KHR_texture_transform" field.</summary>
-        public const int KHRTextureTransformFieldNumber = 1;
-        private global::VrmProtobuf.KHRTextureTransformExtension kHRTextureTransform_;
-        /// <summary>
-        /// KHR_texture_transform
-        /// </summary>
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public global::VrmProtobuf.KHRTextureTransformExtension KHRTextureTransform {
-          get { return kHRTextureTransform_; }
-          set {
-            kHRTextureTransform_ = value;
-          }
         }
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -3620,14 +7912,12 @@ namespace VrmProtobuf {
           if (ReferenceEquals(other, this)) {
             return true;
           }
-          if (!object.Equals(KHRTextureTransform, other.KHRTextureTransform)) return false;
           return Equals(_unknownFields, other._unknownFields);
         }
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public override int GetHashCode() {
           int hash = 1;
-          if (kHRTextureTransform_ != null) hash ^= KHRTextureTransform.GetHashCode();
           if (_unknownFields != null) {
             hash ^= _unknownFields.GetHashCode();
           }
@@ -3641,10 +7931,6 @@ namespace VrmProtobuf {
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public void WriteTo(pb::CodedOutputStream output) {
-          if (kHRTextureTransform_ != null) {
-            output.WriteRawTag(10);
-            output.WriteMessage(KHRTextureTransform);
-          }
           if (_unknownFields != null) {
             _unknownFields.WriteTo(output);
           }
@@ -3653,9 +7939,6 @@ namespace VrmProtobuf {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public int CalculateSize() {
           int size = 0;
-          if (kHRTextureTransform_ != null) {
-            size += 1 + pb::CodedOutputStream.ComputeMessageSize(KHRTextureTransform);
-          }
           if (_unknownFields != null) {
             size += _unknownFields.CalculateSize();
           }
@@ -3666,12 +7949,6 @@ namespace VrmProtobuf {
         public void MergeFrom(Extensions other) {
           if (other == null) {
             return;
-          }
-          if (other.kHRTextureTransform_ != null) {
-            if (kHRTextureTransform_ == null) {
-              KHRTextureTransform = new global::VrmProtobuf.KHRTextureTransformExtension();
-            }
-            KHRTextureTransform.MergeFrom(other.KHRTextureTransform);
           }
           _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
         }
@@ -3684,276 +7961,21 @@ namespace VrmProtobuf {
               default:
                 _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
                 break;
-              case 10: {
-                if (kHRTextureTransform_ == null) {
-                  KHRTextureTransform = new global::VrmProtobuf.KHRTextureTransformExtension();
-                }
-                input.ReadMessage(KHRTextureTransform);
-                break;
-              }
             }
           }
         }
 
       }
 
-    }
-    #endregion
-
-  }
-
-  /// <summary>
-  /// https://github.com/KhronosGroup/glTF/blob/master/specification/2.0/schema/material.occlusionTextureInfo.schema.json
-  /// "required": [ "index" ]
-  /// </summary>
-  public sealed partial class MaterialOcclusionTextureInfo : pb::IMessage<MaterialOcclusionTextureInfo> {
-    private static readonly pb::MessageParser<MaterialOcclusionTextureInfo> _parser = new pb::MessageParser<MaterialOcclusionTextureInfo>(() => new MaterialOcclusionTextureInfo());
-    private pb::UnknownFieldSet _unknownFields;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<MaterialOcclusionTextureInfo> Parser { get { return _parser; } }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pbr::MessageDescriptor Descriptor {
-      get { return global::VrmProtobuf.GlTFReflection.Descriptor.MessageTypes[14]; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    pbr::MessageDescriptor pb::IMessage.Descriptor {
-      get { return Descriptor; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public MaterialOcclusionTextureInfo() {
-      OnConstruction();
-    }
-
-    partial void OnConstruction();
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public MaterialOcclusionTextureInfo(MaterialOcclusionTextureInfo other) : this() {
-      Index = other.Index;
-      TexCoord = other.TexCoord;
-      Strength = other.Strength;
-      extensions_ = other.extensions_ != null ? other.extensions_.Clone() : null;
-      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public MaterialOcclusionTextureInfo Clone() {
-      return new MaterialOcclusionTextureInfo(this);
-    }
-
-    /// <summary>Field number for the "index" field.</summary>
-    public const int IndexFieldNumber = 1;
-    private static readonly pb::FieldCodec<int?> _single_index_codec = pb::FieldCodec.ForStructWrapper<int>(10);
-    private int? index_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int? Index {
-      get { return index_; }
-      set {
-        index_ = value;
-      }
-    }
-
-
-    /// <summary>Field number for the "texCoord" field.</summary>
-    public const int TexCoordFieldNumber = 2;
-    private static readonly pb::FieldCodec<int?> _single_texCoord_codec = pb::FieldCodec.ForStructWrapper<int>(18);
-    private int? texCoord_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int? TexCoord {
-      get { return texCoord_; }
-      set {
-        texCoord_ = value;
-      }
-    }
-
-
-    /// <summary>Field number for the "strength" field.</summary>
-    public const int StrengthFieldNumber = 3;
-    private static readonly pb::FieldCodec<float?> _single_strength_codec = pb::FieldCodec.ForStructWrapper<float>(26);
-    private float? strength_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public float? Strength {
-      get { return strength_; }
-      set {
-        strength_ = value;
-      }
-    }
-
-
-    /// <summary>Field number for the "extensions" field.</summary>
-    public const int ExtensionsFieldNumber = 4;
-    private global::VrmProtobuf.MaterialOcclusionTextureInfo.Types.Extensions extensions_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::VrmProtobuf.MaterialOcclusionTextureInfo.Types.Extensions Extensions {
-      get { return extensions_; }
-      set {
-        extensions_ = value;
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override bool Equals(object other) {
-      return Equals(other as MaterialOcclusionTextureInfo);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(MaterialOcclusionTextureInfo other) {
-      if (ReferenceEquals(other, null)) {
-        return false;
-      }
-      if (ReferenceEquals(other, this)) {
-        return true;
-      }
-      if (Index != other.Index) return false;
-      if (TexCoord != other.TexCoord) return false;
-      if (!pbc::ProtobufEqualityComparers.BitwiseNullableSingleEqualityComparer.Equals(Strength, other.Strength)) return false;
-      if (!object.Equals(Extensions, other.Extensions)) return false;
-      return Equals(_unknownFields, other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override int GetHashCode() {
-      int hash = 1;
-      if (index_ != null) hash ^= Index.GetHashCode();
-      if (texCoord_ != null) hash ^= TexCoord.GetHashCode();
-      if (strength_ != null) hash ^= pbc::ProtobufEqualityComparers.BitwiseNullableSingleEqualityComparer.GetHashCode(Strength);
-      if (extensions_ != null) hash ^= Extensions.GetHashCode();
-      if (_unknownFields != null) {
-        hash ^= _unknownFields.GetHashCode();
-      }
-      return hash;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override string ToString() {
-      return pb::JsonFormatter.ToDiagnosticString(this);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void WriteTo(pb::CodedOutputStream output) {
-      if (index_ != null) {
-        _single_index_codec.WriteTagAndValue(output, Index);
-      }
-      if (texCoord_ != null) {
-        _single_texCoord_codec.WriteTagAndValue(output, TexCoord);
-      }
-      if (strength_ != null) {
-        _single_strength_codec.WriteTagAndValue(output, Strength);
-      }
-      if (extensions_ != null) {
-        output.WriteRawTag(34);
-        output.WriteMessage(Extensions);
-      }
-      if (_unknownFields != null) {
-        _unknownFields.WriteTo(output);
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int CalculateSize() {
-      int size = 0;
-      if (index_ != null) {
-        size += _single_index_codec.CalculateSizeWithTag(Index);
-      }
-      if (texCoord_ != null) {
-        size += _single_texCoord_codec.CalculateSizeWithTag(TexCoord);
-      }
-      if (strength_ != null) {
-        size += _single_strength_codec.CalculateSizeWithTag(Strength);
-      }
-      if (extensions_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Extensions);
-      }
-      if (_unknownFields != null) {
-        size += _unknownFields.CalculateSize();
-      }
-      return size;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(MaterialOcclusionTextureInfo other) {
-      if (other == null) {
-        return;
-      }
-      if (other.index_ != null) {
-        if (index_ == null || other.Index != 0) {
-          Index = other.Index;
-        }
-      }
-      if (other.texCoord_ != null) {
-        if (texCoord_ == null || other.TexCoord != 0) {
-          TexCoord = other.TexCoord;
-        }
-      }
-      if (other.strength_ != null) {
-        if (strength_ == null || other.Strength != 0F) {
-          Strength = other.Strength;
-        }
-      }
-      if (other.extensions_ != null) {
-        if (extensions_ == null) {
-          Extensions = new global::VrmProtobuf.MaterialOcclusionTextureInfo.Types.Extensions();
-        }
-        Extensions.MergeFrom(other.Extensions);
-      }
-      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(pb::CodedInputStream input) {
-      uint tag;
-      while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
-          default:
-            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
-            break;
-          case 10: {
-            int? value = _single_index_codec.Read(input);
-            if (index_ == null || value != 0) {
-              Index = value;
-            }
-            break;
-          }
-          case 18: {
-            int? value = _single_texCoord_codec.Read(input);
-            if (texCoord_ == null || value != 0) {
-              TexCoord = value;
-            }
-            break;
-          }
-          case 26: {
-            float? value = _single_strength_codec.Read(input);
-            if (strength_ == null || value != 0F) {
-              Strength = value;
-            }
-            break;
-          }
-          case 34: {
-            if (extensions_ == null) {
-              Extensions = new global::VrmProtobuf.MaterialOcclusionTextureInfo.Types.Extensions();
-            }
-            input.ReadMessage(Extensions);
-            break;
-          }
-        }
-      }
-    }
-
-    #region Nested types
-    /// <summary>Container for nested types declared in the MaterialOcclusionTextureInfo message type.</summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static partial class Types {
-      public sealed partial class Extensions : pb::IMessage<Extensions> {
-        private static readonly pb::MessageParser<Extensions> _parser = new pb::MessageParser<Extensions>(() => new Extensions());
+      public sealed partial class Extras : pb::IMessage<Extras> {
+        private static readonly pb::MessageParser<Extras> _parser = new pb::MessageParser<Extras>(() => new Extras());
         private pb::UnknownFieldSet _unknownFields;
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public static pb::MessageParser<Extensions> Parser { get { return _parser; } }
+        public static pb::MessageParser<Extras> Parser { get { return _parser; } }
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public static pbr::MessageDescriptor Descriptor {
-          get { return global::VrmProtobuf.MaterialOcclusionTextureInfo.Descriptor.NestedTypes[0]; }
+          get { return global::VrmProtobuf.Image.Descriptor.NestedTypes[1]; }
         }
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -3962,58 +7984,41 @@ namespace VrmProtobuf {
         }
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public Extensions() {
+        public Extras() {
           OnConstruction();
         }
 
         partial void OnConstruction();
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public Extensions(Extensions other) : this() {
-          kHRTextureTransform_ = other.kHRTextureTransform_ != null ? other.kHRTextureTransform_.Clone() : null;
+        public Extras(Extras other) : this() {
           _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
         }
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public Extensions Clone() {
-          return new Extensions(this);
-        }
-
-        /// <summary>Field number for the "KHR_texture_transform" field.</summary>
-        public const int KHRTextureTransformFieldNumber = 1;
-        private global::VrmProtobuf.KHRTextureTransformExtension kHRTextureTransform_;
-        /// <summary>
-        /// KHR_texture_transform
-        /// </summary>
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public global::VrmProtobuf.KHRTextureTransformExtension KHRTextureTransform {
-          get { return kHRTextureTransform_; }
-          set {
-            kHRTextureTransform_ = value;
-          }
+        public Extras Clone() {
+          return new Extras(this);
         }
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public override bool Equals(object other) {
-          return Equals(other as Extensions);
+          return Equals(other as Extras);
         }
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public bool Equals(Extensions other) {
+        public bool Equals(Extras other) {
           if (ReferenceEquals(other, null)) {
             return false;
           }
           if (ReferenceEquals(other, this)) {
             return true;
           }
-          if (!object.Equals(KHRTextureTransform, other.KHRTextureTransform)) return false;
           return Equals(_unknownFields, other._unknownFields);
         }
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public override int GetHashCode() {
           int hash = 1;
-          if (kHRTextureTransform_ != null) hash ^= KHRTextureTransform.GetHashCode();
           if (_unknownFields != null) {
             hash ^= _unknownFields.GetHashCode();
           }
@@ -4027,10 +8032,6 @@ namespace VrmProtobuf {
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public void WriteTo(pb::CodedOutputStream output) {
-          if (kHRTextureTransform_ != null) {
-            output.WriteRawTag(10);
-            output.WriteMessage(KHRTextureTransform);
-          }
           if (_unknownFields != null) {
             _unknownFields.WriteTo(output);
           }
@@ -4039,9 +8040,6 @@ namespace VrmProtobuf {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public int CalculateSize() {
           int size = 0;
-          if (kHRTextureTransform_ != null) {
-            size += 1 + pb::CodedOutputStream.ComputeMessageSize(KHRTextureTransform);
-          }
           if (_unknownFields != null) {
             size += _unknownFields.CalculateSize();
           }
@@ -4049,15 +8047,9 @@ namespace VrmProtobuf {
         }
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public void MergeFrom(Extensions other) {
+        public void MergeFrom(Extras other) {
           if (other == null) {
             return;
-          }
-          if (other.kHRTextureTransform_ != null) {
-            if (kHRTextureTransform_ == null) {
-              KHRTextureTransform = new global::VrmProtobuf.KHRTextureTransformExtension();
-            }
-            KHRTextureTransform.MergeFrom(other.KHRTextureTransform);
           }
           _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
         }
@@ -4070,13 +8062,6 @@ namespace VrmProtobuf {
               default:
                 _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
                 break;
-              case 10: {
-                if (kHRTextureTransform_ == null) {
-                  KHRTextureTransform = new global::VrmProtobuf.KHRTextureTransformExtension();
-                }
-                input.ReadMessage(KHRTextureTransform);
-                break;
-              }
             }
           }
         }
@@ -4088,14 +8073,11 @@ namespace VrmProtobuf {
 
   }
 
-  /// <summary>
-  /// https://github.com/KhronosGroup/glTF/blob/master/specification/2.0/schema/material.pbrMetallicRoughness.schema.json
-  /// </summary>
-  public sealed partial class MaterialPbrMetallicRoughness : pb::IMessage<MaterialPbrMetallicRoughness> {
-    private static readonly pb::MessageParser<MaterialPbrMetallicRoughness> _parser = new pb::MessageParser<MaterialPbrMetallicRoughness>(() => new MaterialPbrMetallicRoughness());
+  public sealed partial class TextureInfo : pb::IMessage<TextureInfo> {
+    private static readonly pb::MessageParser<TextureInfo> _parser = new pb::MessageParser<TextureInfo>(() => new TextureInfo());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<MaterialPbrMetallicRoughness> Parser { get { return _parser; } }
+    public static pb::MessageParser<TextureInfo> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
@@ -4108,14 +8090,1017 @@ namespace VrmProtobuf {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public MaterialPbrMetallicRoughness() {
+    public TextureInfo() {
       OnConstruction();
     }
 
     partial void OnConstruction();
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public MaterialPbrMetallicRoughness(MaterialPbrMetallicRoughness other) : this() {
+    public TextureInfo(TextureInfo other) : this() {
+      extensions_ = other.extensions_ != null ? other.extensions_.Clone() : null;
+      extras_ = other.extras_ != null ? other.extras_.Clone() : null;
+      Index = other.Index;
+      TexCoord = other.TexCoord;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public TextureInfo Clone() {
+      return new TextureInfo(this);
+    }
+
+    /// <summary>Field number for the "extensions" field.</summary>
+    public const int ExtensionsFieldNumber = 1;
+    private global::VrmProtobuf.TextureInfo.Types.Extensions extensions_;
+    /// <summary>
+    /// Dictionary object with extension-specific objects.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::VrmProtobuf.TextureInfo.Types.Extensions Extensions {
+      get { return extensions_; }
+      set {
+        extensions_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "extras" field.</summary>
+    public const int ExtrasFieldNumber = 2;
+    private global::VrmProtobuf.TextureInfo.Types.Extras extras_;
+    /// <summary>
+    /// Application-specific data.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::VrmProtobuf.TextureInfo.Types.Extras Extras {
+      get { return extras_; }
+      set {
+        extras_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "index" field.</summary>
+    public const int IndexFieldNumber = 3;
+    private static readonly pb::FieldCodec<int?> _single_index_codec = pb::FieldCodec.ForStructWrapper<int>(26);
+    private int? index_;
+    /// <summary>
+    /// The index of the texture.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int? Index {
+      get { return index_; }
+      set {
+        index_ = value;
+      }
+    }
+
+
+    /// <summary>Field number for the "texCoord" field.</summary>
+    public const int TexCoordFieldNumber = 4;
+    private static readonly pb::FieldCodec<int?> _single_texCoord_codec = pb::FieldCodec.ForStructWrapper<int>(34);
+    private int? texCoord_;
+    /// <summary>
+    /// The set index of texture's TEXCOORD attribute used for texture coordinate mapping.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int? TexCoord {
+      get { return texCoord_; }
+      set {
+        texCoord_ = value;
+      }
+    }
+
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as TextureInfo);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(TextureInfo other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (!object.Equals(Extensions, other.Extensions)) return false;
+      if (!object.Equals(Extras, other.Extras)) return false;
+      if (Index != other.Index) return false;
+      if (TexCoord != other.TexCoord) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (extensions_ != null) hash ^= Extensions.GetHashCode();
+      if (extras_ != null) hash ^= Extras.GetHashCode();
+      if (index_ != null) hash ^= Index.GetHashCode();
+      if (texCoord_ != null) hash ^= TexCoord.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (extensions_ != null) {
+        output.WriteRawTag(10);
+        output.WriteMessage(Extensions);
+      }
+      if (extras_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(Extras);
+      }
+      if (index_ != null) {
+        _single_index_codec.WriteTagAndValue(output, Index);
+      }
+      if (texCoord_ != null) {
+        _single_texCoord_codec.WriteTagAndValue(output, TexCoord);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (extensions_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Extensions);
+      }
+      if (extras_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Extras);
+      }
+      if (index_ != null) {
+        size += _single_index_codec.CalculateSizeWithTag(Index);
+      }
+      if (texCoord_ != null) {
+        size += _single_texCoord_codec.CalculateSizeWithTag(TexCoord);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(TextureInfo other) {
+      if (other == null) {
+        return;
+      }
+      if (other.extensions_ != null) {
+        if (extensions_ == null) {
+          Extensions = new global::VrmProtobuf.TextureInfo.Types.Extensions();
+        }
+        Extensions.MergeFrom(other.Extensions);
+      }
+      if (other.extras_ != null) {
+        if (extras_ == null) {
+          Extras = new global::VrmProtobuf.TextureInfo.Types.Extras();
+        }
+        Extras.MergeFrom(other.Extras);
+      }
+      if (other.index_ != null) {
+        if (index_ == null || other.Index != 0) {
+          Index = other.Index;
+        }
+      }
+      if (other.texCoord_ != null) {
+        if (texCoord_ == null || other.TexCoord != 0) {
+          TexCoord = other.TexCoord;
+        }
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            if (extensions_ == null) {
+              Extensions = new global::VrmProtobuf.TextureInfo.Types.Extensions();
+            }
+            input.ReadMessage(Extensions);
+            break;
+          }
+          case 18: {
+            if (extras_ == null) {
+              Extras = new global::VrmProtobuf.TextureInfo.Types.Extras();
+            }
+            input.ReadMessage(Extras);
+            break;
+          }
+          case 26: {
+            int? value = _single_index_codec.Read(input);
+            if (index_ == null || value != 0) {
+              Index = value;
+            }
+            break;
+          }
+          case 34: {
+            int? value = _single_texCoord_codec.Read(input);
+            if (texCoord_ == null || value != 0) {
+              TexCoord = value;
+            }
+            break;
+          }
+        }
+      }
+    }
+
+    #region Nested types
+    /// <summary>Container for nested types declared in the TextureInfo message type.</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static partial class Types {
+      public sealed partial class KHR_texture_transformtextureInfoextension : pb::IMessage<KHR_texture_transformtextureInfoextension> {
+        private static readonly pb::MessageParser<KHR_texture_transformtextureInfoextension> _parser = new pb::MessageParser<KHR_texture_transformtextureInfoextension>(() => new KHR_texture_transformtextureInfoextension());
+        private pb::UnknownFieldSet _unknownFields;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pb::MessageParser<KHR_texture_transformtextureInfoextension> Parser { get { return _parser; } }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pbr::MessageDescriptor Descriptor {
+          get { return global::VrmProtobuf.TextureInfo.Descriptor.NestedTypes[0]; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        pbr::MessageDescriptor pb::IMessage.Descriptor {
+          get { return Descriptor; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public KHR_texture_transformtextureInfoextension() {
+          OnConstruction();
+        }
+
+        partial void OnConstruction();
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public KHR_texture_transformtextureInfoextension(KHR_texture_transformtextureInfoextension other) : this() {
+          extensions_ = other.extensions_ != null ? other.extensions_.Clone() : null;
+          extras_ = other.extras_ != null ? other.extras_.Clone() : null;
+          offset_ = other.offset_.Clone();
+          Rotation = other.Rotation;
+          scale_ = other.scale_.Clone();
+          TexCoord = other.TexCoord;
+          _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public KHR_texture_transformtextureInfoextension Clone() {
+          return new KHR_texture_transformtextureInfoextension(this);
+        }
+
+        /// <summary>Field number for the "extensions" field.</summary>
+        public const int ExtensionsFieldNumber = 1;
+        private global::VrmProtobuf.TextureInfo.Types.KHR_texture_transformtextureInfoextension.Types.Extensions extensions_;
+        /// <summary>
+        /// Dictionary object with extension-specific objects.
+        /// </summary>
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public global::VrmProtobuf.TextureInfo.Types.KHR_texture_transformtextureInfoextension.Types.Extensions Extensions {
+          get { return extensions_; }
+          set {
+            extensions_ = value;
+          }
+        }
+
+        /// <summary>Field number for the "extras" field.</summary>
+        public const int ExtrasFieldNumber = 2;
+        private global::VrmProtobuf.TextureInfo.Types.KHR_texture_transformtextureInfoextension.Types.Extras extras_;
+        /// <summary>
+        /// Application-specific data.
+        /// </summary>
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public global::VrmProtobuf.TextureInfo.Types.KHR_texture_transformtextureInfoextension.Types.Extras Extras {
+          get { return extras_; }
+          set {
+            extras_ = value;
+          }
+        }
+
+        /// <summary>Field number for the "offset" field.</summary>
+        public const int OffsetFieldNumber = 3;
+        private static readonly pb::FieldCodec<float> _repeated_offset_codec
+            = pb::FieldCodec.ForFloat(26);
+        private readonly pbc::RepeatedField<float> offset_ = new pbc::RepeatedField<float>();
+        /// <summary>
+        /// The offset of the UV coordinate origin as a factor of the texture dimensions.
+        /// </summary>
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public pbc::RepeatedField<float> Offset {
+          get { return offset_; }
+        }
+
+        /// <summary>Field number for the "rotation" field.</summary>
+        public const int RotationFieldNumber = 4;
+        private static readonly pb::FieldCodec<float?> _single_rotation_codec = pb::FieldCodec.ForStructWrapper<float>(34);
+        private float? rotation_;
+        /// <summary>
+        /// Rotate the UVs by this many radians counter-clockwise around the origin.
+        /// </summary>
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public float? Rotation {
+          get { return rotation_; }
+          set {
+            rotation_ = value;
+          }
+        }
+
+
+        /// <summary>Field number for the "scale" field.</summary>
+        public const int ScaleFieldNumber = 5;
+        private static readonly pb::FieldCodec<float> _repeated_scale_codec
+            = pb::FieldCodec.ForFloat(42);
+        private readonly pbc::RepeatedField<float> scale_ = new pbc::RepeatedField<float>();
+        /// <summary>
+        /// The scale factor applied to the components of the UV coordinates.
+        /// </summary>
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public pbc::RepeatedField<float> Scale {
+          get { return scale_; }
+        }
+
+        /// <summary>Field number for the "texCoord" field.</summary>
+        public const int TexCoordFieldNumber = 6;
+        private static readonly pb::FieldCodec<int?> _single_texCoord_codec = pb::FieldCodec.ForStructWrapper<int>(50);
+        private int? texCoord_;
+        /// <summary>
+        /// Overrides the textureInfo texCoord value if supplied, and if this extension is supported.
+        /// </summary>
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public int? TexCoord {
+          get { return texCoord_; }
+          set {
+            texCoord_ = value;
+          }
+        }
+
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override bool Equals(object other) {
+          return Equals(other as KHR_texture_transformtextureInfoextension);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public bool Equals(KHR_texture_transformtextureInfoextension other) {
+          if (ReferenceEquals(other, null)) {
+            return false;
+          }
+          if (ReferenceEquals(other, this)) {
+            return true;
+          }
+          if (!object.Equals(Extensions, other.Extensions)) return false;
+          if (!object.Equals(Extras, other.Extras)) return false;
+          if(!offset_.Equals(other.offset_)) return false;
+          if (!pbc::ProtobufEqualityComparers.BitwiseNullableSingleEqualityComparer.Equals(Rotation, other.Rotation)) return false;
+          if(!scale_.Equals(other.scale_)) return false;
+          if (TexCoord != other.TexCoord) return false;
+          return Equals(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override int GetHashCode() {
+          int hash = 1;
+          if (extensions_ != null) hash ^= Extensions.GetHashCode();
+          if (extras_ != null) hash ^= Extras.GetHashCode();
+          hash ^= offset_.GetHashCode();
+          if (rotation_ != null) hash ^= pbc::ProtobufEqualityComparers.BitwiseNullableSingleEqualityComparer.GetHashCode(Rotation);
+          hash ^= scale_.GetHashCode();
+          if (texCoord_ != null) hash ^= TexCoord.GetHashCode();
+          if (_unknownFields != null) {
+            hash ^= _unknownFields.GetHashCode();
+          }
+          return hash;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override string ToString() {
+          return pb::JsonFormatter.ToDiagnosticString(this);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void WriteTo(pb::CodedOutputStream output) {
+          if (extensions_ != null) {
+            output.WriteRawTag(10);
+            output.WriteMessage(Extensions);
+          }
+          if (extras_ != null) {
+            output.WriteRawTag(18);
+            output.WriteMessage(Extras);
+          }
+          offset_.WriteTo(output, _repeated_offset_codec);
+          if (rotation_ != null) {
+            _single_rotation_codec.WriteTagAndValue(output, Rotation);
+          }
+          scale_.WriteTo(output, _repeated_scale_codec);
+          if (texCoord_ != null) {
+            _single_texCoord_codec.WriteTagAndValue(output, TexCoord);
+          }
+          if (_unknownFields != null) {
+            _unknownFields.WriteTo(output);
+          }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public int CalculateSize() {
+          int size = 0;
+          if (extensions_ != null) {
+            size += 1 + pb::CodedOutputStream.ComputeMessageSize(Extensions);
+          }
+          if (extras_ != null) {
+            size += 1 + pb::CodedOutputStream.ComputeMessageSize(Extras);
+          }
+          size += offset_.CalculateSize(_repeated_offset_codec);
+          if (rotation_ != null) {
+            size += _single_rotation_codec.CalculateSizeWithTag(Rotation);
+          }
+          size += scale_.CalculateSize(_repeated_scale_codec);
+          if (texCoord_ != null) {
+            size += _single_texCoord_codec.CalculateSizeWithTag(TexCoord);
+          }
+          if (_unknownFields != null) {
+            size += _unknownFields.CalculateSize();
+          }
+          return size;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(KHR_texture_transformtextureInfoextension other) {
+          if (other == null) {
+            return;
+          }
+          if (other.extensions_ != null) {
+            if (extensions_ == null) {
+              Extensions = new global::VrmProtobuf.TextureInfo.Types.KHR_texture_transformtextureInfoextension.Types.Extensions();
+            }
+            Extensions.MergeFrom(other.Extensions);
+          }
+          if (other.extras_ != null) {
+            if (extras_ == null) {
+              Extras = new global::VrmProtobuf.TextureInfo.Types.KHR_texture_transformtextureInfoextension.Types.Extras();
+            }
+            Extras.MergeFrom(other.Extras);
+          }
+          offset_.Add(other.offset_);
+          if (other.rotation_ != null) {
+            if (rotation_ == null || other.Rotation != 0F) {
+              Rotation = other.Rotation;
+            }
+          }
+          scale_.Add(other.scale_);
+          if (other.texCoord_ != null) {
+            if (texCoord_ == null || other.TexCoord != 0) {
+              TexCoord = other.TexCoord;
+            }
+          }
+          _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(pb::CodedInputStream input) {
+          uint tag;
+          while ((tag = input.ReadTag()) != 0) {
+            switch(tag) {
+              default:
+                _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+                break;
+              case 10: {
+                if (extensions_ == null) {
+                  Extensions = new global::VrmProtobuf.TextureInfo.Types.KHR_texture_transformtextureInfoextension.Types.Extensions();
+                }
+                input.ReadMessage(Extensions);
+                break;
+              }
+              case 18: {
+                if (extras_ == null) {
+                  Extras = new global::VrmProtobuf.TextureInfo.Types.KHR_texture_transformtextureInfoextension.Types.Extras();
+                }
+                input.ReadMessage(Extras);
+                break;
+              }
+              case 26:
+              case 29: {
+                offset_.AddEntriesFrom(input, _repeated_offset_codec);
+                break;
+              }
+              case 34: {
+                float? value = _single_rotation_codec.Read(input);
+                if (rotation_ == null || value != 0F) {
+                  Rotation = value;
+                }
+                break;
+              }
+              case 42:
+              case 45: {
+                scale_.AddEntriesFrom(input, _repeated_scale_codec);
+                break;
+              }
+              case 50: {
+                int? value = _single_texCoord_codec.Read(input);
+                if (texCoord_ == null || value != 0) {
+                  TexCoord = value;
+                }
+                break;
+              }
+            }
+          }
+        }
+
+        #region Nested types
+        /// <summary>Container for nested types declared in the KHR_texture_transformtextureInfoextension message type.</summary>
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static partial class Types {
+          public sealed partial class Extensions : pb::IMessage<Extensions> {
+            private static readonly pb::MessageParser<Extensions> _parser = new pb::MessageParser<Extensions>(() => new Extensions());
+            private pb::UnknownFieldSet _unknownFields;
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public static pb::MessageParser<Extensions> Parser { get { return _parser; } }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public static pbr::MessageDescriptor Descriptor {
+              get { return global::VrmProtobuf.TextureInfo.Types.KHR_texture_transformtextureInfoextension.Descriptor.NestedTypes[0]; }
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            pbr::MessageDescriptor pb::IMessage.Descriptor {
+              get { return Descriptor; }
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public Extensions() {
+              OnConstruction();
+            }
+
+            partial void OnConstruction();
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public Extensions(Extensions other) : this() {
+              _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public Extensions Clone() {
+              return new Extensions(this);
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public override bool Equals(object other) {
+              return Equals(other as Extensions);
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public bool Equals(Extensions other) {
+              if (ReferenceEquals(other, null)) {
+                return false;
+              }
+              if (ReferenceEquals(other, this)) {
+                return true;
+              }
+              return Equals(_unknownFields, other._unknownFields);
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public override int GetHashCode() {
+              int hash = 1;
+              if (_unknownFields != null) {
+                hash ^= _unknownFields.GetHashCode();
+              }
+              return hash;
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public override string ToString() {
+              return pb::JsonFormatter.ToDiagnosticString(this);
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public void WriteTo(pb::CodedOutputStream output) {
+              if (_unknownFields != null) {
+                _unknownFields.WriteTo(output);
+              }
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public int CalculateSize() {
+              int size = 0;
+              if (_unknownFields != null) {
+                size += _unknownFields.CalculateSize();
+              }
+              return size;
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public void MergeFrom(Extensions other) {
+              if (other == null) {
+                return;
+              }
+              _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public void MergeFrom(pb::CodedInputStream input) {
+              uint tag;
+              while ((tag = input.ReadTag()) != 0) {
+                switch(tag) {
+                  default:
+                    _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+                    break;
+                }
+              }
+            }
+
+          }
+
+          public sealed partial class Extras : pb::IMessage<Extras> {
+            private static readonly pb::MessageParser<Extras> _parser = new pb::MessageParser<Extras>(() => new Extras());
+            private pb::UnknownFieldSet _unknownFields;
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public static pb::MessageParser<Extras> Parser { get { return _parser; } }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public static pbr::MessageDescriptor Descriptor {
+              get { return global::VrmProtobuf.TextureInfo.Types.KHR_texture_transformtextureInfoextension.Descriptor.NestedTypes[1]; }
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            pbr::MessageDescriptor pb::IMessage.Descriptor {
+              get { return Descriptor; }
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public Extras() {
+              OnConstruction();
+            }
+
+            partial void OnConstruction();
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public Extras(Extras other) : this() {
+              _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public Extras Clone() {
+              return new Extras(this);
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public override bool Equals(object other) {
+              return Equals(other as Extras);
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public bool Equals(Extras other) {
+              if (ReferenceEquals(other, null)) {
+                return false;
+              }
+              if (ReferenceEquals(other, this)) {
+                return true;
+              }
+              return Equals(_unknownFields, other._unknownFields);
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public override int GetHashCode() {
+              int hash = 1;
+              if (_unknownFields != null) {
+                hash ^= _unknownFields.GetHashCode();
+              }
+              return hash;
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public override string ToString() {
+              return pb::JsonFormatter.ToDiagnosticString(this);
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public void WriteTo(pb::CodedOutputStream output) {
+              if (_unknownFields != null) {
+                _unknownFields.WriteTo(output);
+              }
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public int CalculateSize() {
+              int size = 0;
+              if (_unknownFields != null) {
+                size += _unknownFields.CalculateSize();
+              }
+              return size;
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public void MergeFrom(Extras other) {
+              if (other == null) {
+                return;
+              }
+              _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public void MergeFrom(pb::CodedInputStream input) {
+              uint tag;
+              while ((tag = input.ReadTag()) != 0) {
+                switch(tag) {
+                  default:
+                    _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+                    break;
+                }
+              }
+            }
+
+          }
+
+        }
+        #endregion
+
+      }
+
+      public sealed partial class Extensions : pb::IMessage<Extensions> {
+        private static readonly pb::MessageParser<Extensions> _parser = new pb::MessageParser<Extensions>(() => new Extensions());
+        private pb::UnknownFieldSet _unknownFields;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pb::MessageParser<Extensions> Parser { get { return _parser; } }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pbr::MessageDescriptor Descriptor {
+          get { return global::VrmProtobuf.TextureInfo.Descriptor.NestedTypes[1]; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        pbr::MessageDescriptor pb::IMessage.Descriptor {
+          get { return Descriptor; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extensions() {
+          OnConstruction();
+        }
+
+        partial void OnConstruction();
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extensions(Extensions other) : this() {
+          kHRTextureTransform_ = other.kHRTextureTransform_ != null ? other.kHRTextureTransform_.Clone() : null;
+          _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extensions Clone() {
+          return new Extensions(this);
+        }
+
+        /// <summary>Field number for the "KHR_texture_transform" field.</summary>
+        public const int KHRTextureTransformFieldNumber = 1;
+        private global::VrmProtobuf.TextureInfo.Types.KHR_texture_transformtextureInfoextension kHRTextureTransform_;
+        /// <summary>
+        /// glTF extension that enables shifting and scaling UV coordinates on a per-texture basis
+        /// </summary>
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public global::VrmProtobuf.TextureInfo.Types.KHR_texture_transformtextureInfoextension KHRTextureTransform {
+          get { return kHRTextureTransform_; }
+          set {
+            kHRTextureTransform_ = value;
+          }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override bool Equals(object other) {
+          return Equals(other as Extensions);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public bool Equals(Extensions other) {
+          if (ReferenceEquals(other, null)) {
+            return false;
+          }
+          if (ReferenceEquals(other, this)) {
+            return true;
+          }
+          if (!object.Equals(KHRTextureTransform, other.KHRTextureTransform)) return false;
+          return Equals(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override int GetHashCode() {
+          int hash = 1;
+          if (kHRTextureTransform_ != null) hash ^= KHRTextureTransform.GetHashCode();
+          if (_unknownFields != null) {
+            hash ^= _unknownFields.GetHashCode();
+          }
+          return hash;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override string ToString() {
+          return pb::JsonFormatter.ToDiagnosticString(this);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void WriteTo(pb::CodedOutputStream output) {
+          if (kHRTextureTransform_ != null) {
+            output.WriteRawTag(10);
+            output.WriteMessage(KHRTextureTransform);
+          }
+          if (_unknownFields != null) {
+            _unknownFields.WriteTo(output);
+          }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public int CalculateSize() {
+          int size = 0;
+          if (kHRTextureTransform_ != null) {
+            size += 1 + pb::CodedOutputStream.ComputeMessageSize(KHRTextureTransform);
+          }
+          if (_unknownFields != null) {
+            size += _unknownFields.CalculateSize();
+          }
+          return size;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(Extensions other) {
+          if (other == null) {
+            return;
+          }
+          if (other.kHRTextureTransform_ != null) {
+            if (kHRTextureTransform_ == null) {
+              KHRTextureTransform = new global::VrmProtobuf.TextureInfo.Types.KHR_texture_transformtextureInfoextension();
+            }
+            KHRTextureTransform.MergeFrom(other.KHRTextureTransform);
+          }
+          _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(pb::CodedInputStream input) {
+          uint tag;
+          while ((tag = input.ReadTag()) != 0) {
+            switch(tag) {
+              default:
+                _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+                break;
+              case 10: {
+                if (kHRTextureTransform_ == null) {
+                  KHRTextureTransform = new global::VrmProtobuf.TextureInfo.Types.KHR_texture_transformtextureInfoextension();
+                }
+                input.ReadMessage(KHRTextureTransform);
+                break;
+              }
+            }
+          }
+        }
+
+      }
+
+      public sealed partial class Extras : pb::IMessage<Extras> {
+        private static readonly pb::MessageParser<Extras> _parser = new pb::MessageParser<Extras>(() => new Extras());
+        private pb::UnknownFieldSet _unknownFields;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pb::MessageParser<Extras> Parser { get { return _parser; } }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pbr::MessageDescriptor Descriptor {
+          get { return global::VrmProtobuf.TextureInfo.Descriptor.NestedTypes[2]; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        pbr::MessageDescriptor pb::IMessage.Descriptor {
+          get { return Descriptor; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extras() {
+          OnConstruction();
+        }
+
+        partial void OnConstruction();
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extras(Extras other) : this() {
+          _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extras Clone() {
+          return new Extras(this);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override bool Equals(object other) {
+          return Equals(other as Extras);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public bool Equals(Extras other) {
+          if (ReferenceEquals(other, null)) {
+            return false;
+          }
+          if (ReferenceEquals(other, this)) {
+            return true;
+          }
+          return Equals(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override int GetHashCode() {
+          int hash = 1;
+          if (_unknownFields != null) {
+            hash ^= _unknownFields.GetHashCode();
+          }
+          return hash;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override string ToString() {
+          return pb::JsonFormatter.ToDiagnosticString(this);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void WriteTo(pb::CodedOutputStream output) {
+          if (_unknownFields != null) {
+            _unknownFields.WriteTo(output);
+          }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public int CalculateSize() {
+          int size = 0;
+          if (_unknownFields != null) {
+            size += _unknownFields.CalculateSize();
+          }
+          return size;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(Extras other) {
+          if (other == null) {
+            return;
+          }
+          _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(pb::CodedInputStream input) {
+          uint tag;
+          while ((tag = input.ReadTag()) != 0) {
+            switch(tag) {
+              default:
+                _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+                break;
+            }
+          }
+        }
+
+      }
+
+    }
+    #endregion
+
+  }
+
+  public sealed partial class MaterialPBRMetallicRoughness : pb::IMessage<MaterialPBRMetallicRoughness> {
+    private static readonly pb::MessageParser<MaterialPBRMetallicRoughness> _parser = new pb::MessageParser<MaterialPBRMetallicRoughness>(() => new MaterialPBRMetallicRoughness());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<MaterialPBRMetallicRoughness> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::VrmProtobuf.GlTFReflection.Descriptor.MessageTypes[16]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public MaterialPBRMetallicRoughness() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public MaterialPBRMetallicRoughness(MaterialPBRMetallicRoughness other) : this() {
+      extensions_ = other.extensions_ != null ? other.extensions_.Clone() : null;
+      extras_ = other.extras_ != null ? other.extras_.Clone() : null;
       baseColorFactor_ = other.baseColorFactor_.Clone();
       baseColorTexture_ = other.baseColorTexture_ != null ? other.baseColorTexture_.Clone() : null;
       MetallicFactor = other.MetallicFactor;
@@ -4125,17 +9110,45 @@ namespace VrmProtobuf {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public MaterialPbrMetallicRoughness Clone() {
-      return new MaterialPbrMetallicRoughness(this);
+    public MaterialPBRMetallicRoughness Clone() {
+      return new MaterialPBRMetallicRoughness(this);
+    }
+
+    /// <summary>Field number for the "extensions" field.</summary>
+    public const int ExtensionsFieldNumber = 1;
+    private global::VrmProtobuf.MaterialPBRMetallicRoughness.Types.Extensions extensions_;
+    /// <summary>
+    /// Dictionary object with extension-specific objects.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::VrmProtobuf.MaterialPBRMetallicRoughness.Types.Extensions Extensions {
+      get { return extensions_; }
+      set {
+        extensions_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "extras" field.</summary>
+    public const int ExtrasFieldNumber = 2;
+    private global::VrmProtobuf.MaterialPBRMetallicRoughness.Types.Extras extras_;
+    /// <summary>
+    /// Application-specific data.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::VrmProtobuf.MaterialPBRMetallicRoughness.Types.Extras Extras {
+      get { return extras_; }
+      set {
+        extras_ = value;
+      }
     }
 
     /// <summary>Field number for the "baseColorFactor" field.</summary>
-    public const int BaseColorFactorFieldNumber = 1;
+    public const int BaseColorFactorFieldNumber = 3;
     private static readonly pb::FieldCodec<float> _repeated_baseColorFactor_codec
-        = pb::FieldCodec.ForFloat(10);
+        = pb::FieldCodec.ForFloat(26);
     private readonly pbc::RepeatedField<float> baseColorFactor_ = new pbc::RepeatedField<float>();
     /// <summary>
-    /// RGBA
+    /// The material's base color factor.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public pbc::RepeatedField<float> BaseColorFactor {
@@ -4143,8 +9156,11 @@ namespace VrmProtobuf {
     }
 
     /// <summary>Field number for the "baseColorTexture" field.</summary>
-    public const int BaseColorTextureFieldNumber = 2;
+    public const int BaseColorTextureFieldNumber = 4;
     private global::VrmProtobuf.TextureInfo baseColorTexture_;
+    /// <summary>
+    /// The base color texture.
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::VrmProtobuf.TextureInfo BaseColorTexture {
       get { return baseColorTexture_; }
@@ -4154,9 +9170,12 @@ namespace VrmProtobuf {
     }
 
     /// <summary>Field number for the "metallicFactor" field.</summary>
-    public const int MetallicFactorFieldNumber = 3;
-    private static readonly pb::FieldCodec<float?> _single_metallicFactor_codec = pb::FieldCodec.ForStructWrapper<float>(26);
+    public const int MetallicFactorFieldNumber = 5;
+    private static readonly pb::FieldCodec<float?> _single_metallicFactor_codec = pb::FieldCodec.ForStructWrapper<float>(42);
     private float? metallicFactor_;
+    /// <summary>
+    /// The metalness of the material.
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public float? MetallicFactor {
       get { return metallicFactor_; }
@@ -4167,9 +9186,12 @@ namespace VrmProtobuf {
 
 
     /// <summary>Field number for the "roughnessFactor" field.</summary>
-    public const int RoughnessFactorFieldNumber = 4;
-    private static readonly pb::FieldCodec<float?> _single_roughnessFactor_codec = pb::FieldCodec.ForStructWrapper<float>(34);
+    public const int RoughnessFactorFieldNumber = 6;
+    private static readonly pb::FieldCodec<float?> _single_roughnessFactor_codec = pb::FieldCodec.ForStructWrapper<float>(50);
     private float? roughnessFactor_;
+    /// <summary>
+    /// The roughness of the material.
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public float? RoughnessFactor {
       get { return roughnessFactor_; }
@@ -4180,8 +9202,11 @@ namespace VrmProtobuf {
 
 
     /// <summary>Field number for the "metallicRoughnessTexture" field.</summary>
-    public const int MetallicRoughnessTextureFieldNumber = 5;
+    public const int MetallicRoughnessTextureFieldNumber = 7;
     private global::VrmProtobuf.TextureInfo metallicRoughnessTexture_;
+    /// <summary>
+    /// The metallic-roughness texture.
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::VrmProtobuf.TextureInfo MetallicRoughnessTexture {
       get { return metallicRoughnessTexture_; }
@@ -4192,17 +9217,19 @@ namespace VrmProtobuf {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
-      return Equals(other as MaterialPbrMetallicRoughness);
+      return Equals(other as MaterialPBRMetallicRoughness);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(MaterialPbrMetallicRoughness other) {
+    public bool Equals(MaterialPBRMetallicRoughness other) {
       if (ReferenceEquals(other, null)) {
         return false;
       }
       if (ReferenceEquals(other, this)) {
         return true;
       }
+      if (!object.Equals(Extensions, other.Extensions)) return false;
+      if (!object.Equals(Extras, other.Extras)) return false;
       if(!baseColorFactor_.Equals(other.baseColorFactor_)) return false;
       if (!object.Equals(BaseColorTexture, other.BaseColorTexture)) return false;
       if (!pbc::ProtobufEqualityComparers.BitwiseNullableSingleEqualityComparer.Equals(MetallicFactor, other.MetallicFactor)) return false;
@@ -4214,6 +9241,8 @@ namespace VrmProtobuf {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
+      if (extensions_ != null) hash ^= Extensions.GetHashCode();
+      if (extras_ != null) hash ^= Extras.GetHashCode();
       hash ^= baseColorFactor_.GetHashCode();
       if (baseColorTexture_ != null) hash ^= BaseColorTexture.GetHashCode();
       if (metallicFactor_ != null) hash ^= pbc::ProtobufEqualityComparers.BitwiseNullableSingleEqualityComparer.GetHashCode(MetallicFactor);
@@ -4232,9 +9261,17 @@ namespace VrmProtobuf {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+      if (extensions_ != null) {
+        output.WriteRawTag(10);
+        output.WriteMessage(Extensions);
+      }
+      if (extras_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(Extras);
+      }
       baseColorFactor_.WriteTo(output, _repeated_baseColorFactor_codec);
       if (baseColorTexture_ != null) {
-        output.WriteRawTag(18);
+        output.WriteRawTag(34);
         output.WriteMessage(BaseColorTexture);
       }
       if (metallicFactor_ != null) {
@@ -4244,7 +9281,7 @@ namespace VrmProtobuf {
         _single_roughnessFactor_codec.WriteTagAndValue(output, RoughnessFactor);
       }
       if (metallicRoughnessTexture_ != null) {
-        output.WriteRawTag(42);
+        output.WriteRawTag(58);
         output.WriteMessage(MetallicRoughnessTexture);
       }
       if (_unknownFields != null) {
@@ -4255,6 +9292,12 @@ namespace VrmProtobuf {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
+      if (extensions_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Extensions);
+      }
+      if (extras_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Extras);
+      }
       size += baseColorFactor_.CalculateSize(_repeated_baseColorFactor_codec);
       if (baseColorTexture_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(BaseColorTexture);
@@ -4275,9 +9318,21 @@ namespace VrmProtobuf {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(MaterialPbrMetallicRoughness other) {
+    public void MergeFrom(MaterialPBRMetallicRoughness other) {
       if (other == null) {
         return;
+      }
+      if (other.extensions_ != null) {
+        if (extensions_ == null) {
+          Extensions = new global::VrmProtobuf.MaterialPBRMetallicRoughness.Types.Extensions();
+        }
+        Extensions.MergeFrom(other.Extensions);
+      }
+      if (other.extras_ != null) {
+        if (extras_ == null) {
+          Extras = new global::VrmProtobuf.MaterialPBRMetallicRoughness.Types.Extras();
+        }
+        Extras.MergeFrom(other.Extras);
       }
       baseColorFactor_.Add(other.baseColorFactor_);
       if (other.baseColorTexture_ != null) {
@@ -4313,33 +9368,47 @@ namespace VrmProtobuf {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 10:
-          case 13: {
-            baseColorFactor_.AddEntriesFrom(input, _repeated_baseColorFactor_codec);
+          case 10: {
+            if (extensions_ == null) {
+              Extensions = new global::VrmProtobuf.MaterialPBRMetallicRoughness.Types.Extensions();
+            }
+            input.ReadMessage(Extensions);
             break;
           }
           case 18: {
+            if (extras_ == null) {
+              Extras = new global::VrmProtobuf.MaterialPBRMetallicRoughness.Types.Extras();
+            }
+            input.ReadMessage(Extras);
+            break;
+          }
+          case 26:
+          case 29: {
+            baseColorFactor_.AddEntriesFrom(input, _repeated_baseColorFactor_codec);
+            break;
+          }
+          case 34: {
             if (baseColorTexture_ == null) {
               BaseColorTexture = new global::VrmProtobuf.TextureInfo();
             }
             input.ReadMessage(BaseColorTexture);
             break;
           }
-          case 26: {
+          case 42: {
             float? value = _single_metallicFactor_codec.Read(input);
             if (metallicFactor_ == null || value != 0F) {
               MetallicFactor = value;
             }
             break;
           }
-          case 34: {
+          case 50: {
             float? value = _single_roughnessFactor_codec.Read(input);
             if (roughnessFactor_ == null || value != 0F) {
               RoughnessFactor = value;
             }
             break;
           }
-          case 42: {
+          case 58: {
             if (metallicRoughnessTexture_ == null) {
               MetallicRoughnessTexture = new global::VrmProtobuf.TextureInfo();
             }
@@ -4350,17 +9419,226 @@ namespace VrmProtobuf {
       }
     }
 
+    #region Nested types
+    /// <summary>Container for nested types declared in the MaterialPBRMetallicRoughness message type.</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static partial class Types {
+      public sealed partial class Extensions : pb::IMessage<Extensions> {
+        private static readonly pb::MessageParser<Extensions> _parser = new pb::MessageParser<Extensions>(() => new Extensions());
+        private pb::UnknownFieldSet _unknownFields;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pb::MessageParser<Extensions> Parser { get { return _parser; } }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pbr::MessageDescriptor Descriptor {
+          get { return global::VrmProtobuf.MaterialPBRMetallicRoughness.Descriptor.NestedTypes[0]; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        pbr::MessageDescriptor pb::IMessage.Descriptor {
+          get { return Descriptor; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extensions() {
+          OnConstruction();
+        }
+
+        partial void OnConstruction();
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extensions(Extensions other) : this() {
+          _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extensions Clone() {
+          return new Extensions(this);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override bool Equals(object other) {
+          return Equals(other as Extensions);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public bool Equals(Extensions other) {
+          if (ReferenceEquals(other, null)) {
+            return false;
+          }
+          if (ReferenceEquals(other, this)) {
+            return true;
+          }
+          return Equals(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override int GetHashCode() {
+          int hash = 1;
+          if (_unknownFields != null) {
+            hash ^= _unknownFields.GetHashCode();
+          }
+          return hash;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override string ToString() {
+          return pb::JsonFormatter.ToDiagnosticString(this);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void WriteTo(pb::CodedOutputStream output) {
+          if (_unknownFields != null) {
+            _unknownFields.WriteTo(output);
+          }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public int CalculateSize() {
+          int size = 0;
+          if (_unknownFields != null) {
+            size += _unknownFields.CalculateSize();
+          }
+          return size;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(Extensions other) {
+          if (other == null) {
+            return;
+          }
+          _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(pb::CodedInputStream input) {
+          uint tag;
+          while ((tag = input.ReadTag()) != 0) {
+            switch(tag) {
+              default:
+                _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+                break;
+            }
+          }
+        }
+
+      }
+
+      public sealed partial class Extras : pb::IMessage<Extras> {
+        private static readonly pb::MessageParser<Extras> _parser = new pb::MessageParser<Extras>(() => new Extras());
+        private pb::UnknownFieldSet _unknownFields;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pb::MessageParser<Extras> Parser { get { return _parser; } }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pbr::MessageDescriptor Descriptor {
+          get { return global::VrmProtobuf.MaterialPBRMetallicRoughness.Descriptor.NestedTypes[1]; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        pbr::MessageDescriptor pb::IMessage.Descriptor {
+          get { return Descriptor; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extras() {
+          OnConstruction();
+        }
+
+        partial void OnConstruction();
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extras(Extras other) : this() {
+          _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extras Clone() {
+          return new Extras(this);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override bool Equals(object other) {
+          return Equals(other as Extras);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public bool Equals(Extras other) {
+          if (ReferenceEquals(other, null)) {
+            return false;
+          }
+          if (ReferenceEquals(other, this)) {
+            return true;
+          }
+          return Equals(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override int GetHashCode() {
+          int hash = 1;
+          if (_unknownFields != null) {
+            hash ^= _unknownFields.GetHashCode();
+          }
+          return hash;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override string ToString() {
+          return pb::JsonFormatter.ToDiagnosticString(this);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void WriteTo(pb::CodedOutputStream output) {
+          if (_unknownFields != null) {
+            _unknownFields.WriteTo(output);
+          }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public int CalculateSize() {
+          int size = 0;
+          if (_unknownFields != null) {
+            size += _unknownFields.CalculateSize();
+          }
+          return size;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(Extras other) {
+          if (other == null) {
+            return;
+          }
+          _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(pb::CodedInputStream input) {
+          uint tag;
+          while ((tag = input.ReadTag()) != 0) {
+            switch(tag) {
+              default:
+                _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+                break;
+            }
+          }
+        }
+
+      }
+
+    }
+    #endregion
+
   }
 
-  public sealed partial class KHR_materials_unlit : pb::IMessage<KHR_materials_unlit> {
-    private static readonly pb::MessageParser<KHR_materials_unlit> _parser = new pb::MessageParser<KHR_materials_unlit>(() => new KHR_materials_unlit());
+  public sealed partial class MaterialNormalTextureInfo : pb::IMessage<MaterialNormalTextureInfo> {
+    private static readonly pb::MessageParser<MaterialNormalTextureInfo> _parser = new pb::MessageParser<MaterialNormalTextureInfo>(() => new MaterialNormalTextureInfo());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<KHR_materials_unlit> Parser { get { return _parser; } }
+    public static pb::MessageParser<MaterialNormalTextureInfo> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::VrmProtobuf.GlTFReflection.Descriptor.MessageTypes[16]; }
+      get { return global::VrmProtobuf.GlTFReflection.Descriptor.MessageTypes[17]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -4369,41 +9647,132 @@ namespace VrmProtobuf {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public KHR_materials_unlit() {
+    public MaterialNormalTextureInfo() {
       OnConstruction();
     }
 
     partial void OnConstruction();
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public KHR_materials_unlit(KHR_materials_unlit other) : this() {
+    public MaterialNormalTextureInfo(MaterialNormalTextureInfo other) : this() {
+      extensions_ = other.extensions_ != null ? other.extensions_.Clone() : null;
+      extras_ = other.extras_ != null ? other.extras_.Clone() : null;
+      Index = other.Index;
+      TexCoord = other.TexCoord;
+      Scale = other.Scale;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public KHR_materials_unlit Clone() {
-      return new KHR_materials_unlit(this);
+    public MaterialNormalTextureInfo Clone() {
+      return new MaterialNormalTextureInfo(this);
     }
+
+    /// <summary>Field number for the "extensions" field.</summary>
+    public const int ExtensionsFieldNumber = 1;
+    private global::VrmProtobuf.MaterialNormalTextureInfo.Types.Extensions extensions_;
+    /// <summary>
+    /// Dictionary object with extension-specific objects.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::VrmProtobuf.MaterialNormalTextureInfo.Types.Extensions Extensions {
+      get { return extensions_; }
+      set {
+        extensions_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "extras" field.</summary>
+    public const int ExtrasFieldNumber = 2;
+    private global::VrmProtobuf.MaterialNormalTextureInfo.Types.Extras extras_;
+    /// <summary>
+    /// Application-specific data.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::VrmProtobuf.MaterialNormalTextureInfo.Types.Extras Extras {
+      get { return extras_; }
+      set {
+        extras_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "index" field.</summary>
+    public const int IndexFieldNumber = 3;
+    private static readonly pb::FieldCodec<int?> _single_index_codec = pb::FieldCodec.ForStructWrapper<int>(26);
+    private int? index_;
+    /// <summary>
+    /// The index of the texture.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int? Index {
+      get { return index_; }
+      set {
+        index_ = value;
+      }
+    }
+
+
+    /// <summary>Field number for the "texCoord" field.</summary>
+    public const int TexCoordFieldNumber = 4;
+    private static readonly pb::FieldCodec<int?> _single_texCoord_codec = pb::FieldCodec.ForStructWrapper<int>(34);
+    private int? texCoord_;
+    /// <summary>
+    /// The set index of texture's TEXCOORD attribute used for texture coordinate mapping.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int? TexCoord {
+      get { return texCoord_; }
+      set {
+        texCoord_ = value;
+      }
+    }
+
+
+    /// <summary>Field number for the "scale" field.</summary>
+    public const int ScaleFieldNumber = 5;
+    private static readonly pb::FieldCodec<float?> _single_scale_codec = pb::FieldCodec.ForStructWrapper<float>(42);
+    private float? scale_;
+    /// <summary>
+    /// The scalar multiplier applied to each normal vector of the normal texture.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public float? Scale {
+      get { return scale_; }
+      set {
+        scale_ = value;
+      }
+    }
+
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
-      return Equals(other as KHR_materials_unlit);
+      return Equals(other as MaterialNormalTextureInfo);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(KHR_materials_unlit other) {
+    public bool Equals(MaterialNormalTextureInfo other) {
       if (ReferenceEquals(other, null)) {
         return false;
       }
       if (ReferenceEquals(other, this)) {
         return true;
       }
+      if (!object.Equals(Extensions, other.Extensions)) return false;
+      if (!object.Equals(Extras, other.Extras)) return false;
+      if (Index != other.Index) return false;
+      if (TexCoord != other.TexCoord) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseNullableSingleEqualityComparer.Equals(Scale, other.Scale)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
+      if (extensions_ != null) hash ^= Extensions.GetHashCode();
+      if (extras_ != null) hash ^= Extras.GetHashCode();
+      if (index_ != null) hash ^= Index.GetHashCode();
+      if (texCoord_ != null) hash ^= TexCoord.GetHashCode();
+      if (scale_ != null) hash ^= pbc::ProtobufEqualityComparers.BitwiseNullableSingleEqualityComparer.GetHashCode(Scale);
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -4417,6 +9786,23 @@ namespace VrmProtobuf {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+      if (extensions_ != null) {
+        output.WriteRawTag(10);
+        output.WriteMessage(Extensions);
+      }
+      if (extras_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(Extras);
+      }
+      if (index_ != null) {
+        _single_index_codec.WriteTagAndValue(output, Index);
+      }
+      if (texCoord_ != null) {
+        _single_texCoord_codec.WriteTagAndValue(output, TexCoord);
+      }
+      if (scale_ != null) {
+        _single_scale_codec.WriteTagAndValue(output, Scale);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -4425,6 +9811,21 @@ namespace VrmProtobuf {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
+      if (extensions_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Extensions);
+      }
+      if (extras_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Extras);
+      }
+      if (index_ != null) {
+        size += _single_index_codec.CalculateSizeWithTag(Index);
+      }
+      if (texCoord_ != null) {
+        size += _single_texCoord_codec.CalculateSizeWithTag(TexCoord);
+      }
+      if (scale_ != null) {
+        size += _single_scale_codec.CalculateSizeWithTag(Scale);
+      }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -4432,9 +9833,36 @@ namespace VrmProtobuf {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(KHR_materials_unlit other) {
+    public void MergeFrom(MaterialNormalTextureInfo other) {
       if (other == null) {
         return;
+      }
+      if (other.extensions_ != null) {
+        if (extensions_ == null) {
+          Extensions = new global::VrmProtobuf.MaterialNormalTextureInfo.Types.Extensions();
+        }
+        Extensions.MergeFrom(other.Extensions);
+      }
+      if (other.extras_ != null) {
+        if (extras_ == null) {
+          Extras = new global::VrmProtobuf.MaterialNormalTextureInfo.Types.Extras();
+        }
+        Extras.MergeFrom(other.Extras);
+      }
+      if (other.index_ != null) {
+        if (index_ == null || other.Index != 0) {
+          Index = other.Index;
+        }
+      }
+      if (other.texCoord_ != null) {
+        if (texCoord_ == null || other.TexCoord != 0) {
+          TexCoord = other.TexCoord;
+        }
+      }
+      if (other.scale_ != null) {
+        if (scale_ == null || other.Scale != 0F) {
+          Scale = other.Scale;
+        }
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -4447,15 +9875,751 @@ namespace VrmProtobuf {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
+          case 10: {
+            if (extensions_ == null) {
+              Extensions = new global::VrmProtobuf.MaterialNormalTextureInfo.Types.Extensions();
+            }
+            input.ReadMessage(Extensions);
+            break;
+          }
+          case 18: {
+            if (extras_ == null) {
+              Extras = new global::VrmProtobuf.MaterialNormalTextureInfo.Types.Extras();
+            }
+            input.ReadMessage(Extras);
+            break;
+          }
+          case 26: {
+            int? value = _single_index_codec.Read(input);
+            if (index_ == null || value != 0) {
+              Index = value;
+            }
+            break;
+          }
+          case 34: {
+            int? value = _single_texCoord_codec.Read(input);
+            if (texCoord_ == null || value != 0) {
+              TexCoord = value;
+            }
+            break;
+          }
+          case 42: {
+            float? value = _single_scale_codec.Read(input);
+            if (scale_ == null || value != 0F) {
+              Scale = value;
+            }
+            break;
+          }
         }
       }
     }
 
+    #region Nested types
+    /// <summary>Container for nested types declared in the MaterialNormalTextureInfo message type.</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static partial class Types {
+      public sealed partial class Extensions : pb::IMessage<Extensions> {
+        private static readonly pb::MessageParser<Extensions> _parser = new pb::MessageParser<Extensions>(() => new Extensions());
+        private pb::UnknownFieldSet _unknownFields;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pb::MessageParser<Extensions> Parser { get { return _parser; } }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pbr::MessageDescriptor Descriptor {
+          get { return global::VrmProtobuf.MaterialNormalTextureInfo.Descriptor.NestedTypes[0]; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        pbr::MessageDescriptor pb::IMessage.Descriptor {
+          get { return Descriptor; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extensions() {
+          OnConstruction();
+        }
+
+        partial void OnConstruction();
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extensions(Extensions other) : this() {
+          _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extensions Clone() {
+          return new Extensions(this);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override bool Equals(object other) {
+          return Equals(other as Extensions);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public bool Equals(Extensions other) {
+          if (ReferenceEquals(other, null)) {
+            return false;
+          }
+          if (ReferenceEquals(other, this)) {
+            return true;
+          }
+          return Equals(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override int GetHashCode() {
+          int hash = 1;
+          if (_unknownFields != null) {
+            hash ^= _unknownFields.GetHashCode();
+          }
+          return hash;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override string ToString() {
+          return pb::JsonFormatter.ToDiagnosticString(this);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void WriteTo(pb::CodedOutputStream output) {
+          if (_unknownFields != null) {
+            _unknownFields.WriteTo(output);
+          }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public int CalculateSize() {
+          int size = 0;
+          if (_unknownFields != null) {
+            size += _unknownFields.CalculateSize();
+          }
+          return size;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(Extensions other) {
+          if (other == null) {
+            return;
+          }
+          _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(pb::CodedInputStream input) {
+          uint tag;
+          while ((tag = input.ReadTag()) != 0) {
+            switch(tag) {
+              default:
+                _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+                break;
+            }
+          }
+        }
+
+      }
+
+      public sealed partial class Extras : pb::IMessage<Extras> {
+        private static readonly pb::MessageParser<Extras> _parser = new pb::MessageParser<Extras>(() => new Extras());
+        private pb::UnknownFieldSet _unknownFields;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pb::MessageParser<Extras> Parser { get { return _parser; } }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pbr::MessageDescriptor Descriptor {
+          get { return global::VrmProtobuf.MaterialNormalTextureInfo.Descriptor.NestedTypes[1]; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        pbr::MessageDescriptor pb::IMessage.Descriptor {
+          get { return Descriptor; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extras() {
+          OnConstruction();
+        }
+
+        partial void OnConstruction();
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extras(Extras other) : this() {
+          _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extras Clone() {
+          return new Extras(this);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override bool Equals(object other) {
+          return Equals(other as Extras);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public bool Equals(Extras other) {
+          if (ReferenceEquals(other, null)) {
+            return false;
+          }
+          if (ReferenceEquals(other, this)) {
+            return true;
+          }
+          return Equals(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override int GetHashCode() {
+          int hash = 1;
+          if (_unknownFields != null) {
+            hash ^= _unknownFields.GetHashCode();
+          }
+          return hash;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override string ToString() {
+          return pb::JsonFormatter.ToDiagnosticString(this);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void WriteTo(pb::CodedOutputStream output) {
+          if (_unknownFields != null) {
+            _unknownFields.WriteTo(output);
+          }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public int CalculateSize() {
+          int size = 0;
+          if (_unknownFields != null) {
+            size += _unknownFields.CalculateSize();
+          }
+          return size;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(Extras other) {
+          if (other == null) {
+            return;
+          }
+          _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(pb::CodedInputStream input) {
+          uint tag;
+          while ((tag = input.ReadTag()) != 0) {
+            switch(tag) {
+              default:
+                _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+                break;
+            }
+          }
+        }
+
+      }
+
+    }
+    #endregion
+
   }
 
-  /// <summary>
-  /// https://github.com/KhronosGroup/glTF/blob/master/specification/2.0/schema/material.schema.json
-  /// </summary>
+  public sealed partial class MaterialOcclusionTextureInfo : pb::IMessage<MaterialOcclusionTextureInfo> {
+    private static readonly pb::MessageParser<MaterialOcclusionTextureInfo> _parser = new pb::MessageParser<MaterialOcclusionTextureInfo>(() => new MaterialOcclusionTextureInfo());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<MaterialOcclusionTextureInfo> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::VrmProtobuf.GlTFReflection.Descriptor.MessageTypes[18]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public MaterialOcclusionTextureInfo() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public MaterialOcclusionTextureInfo(MaterialOcclusionTextureInfo other) : this() {
+      extensions_ = other.extensions_ != null ? other.extensions_.Clone() : null;
+      extras_ = other.extras_ != null ? other.extras_.Clone() : null;
+      Index = other.Index;
+      TexCoord = other.TexCoord;
+      Strength = other.Strength;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public MaterialOcclusionTextureInfo Clone() {
+      return new MaterialOcclusionTextureInfo(this);
+    }
+
+    /// <summary>Field number for the "extensions" field.</summary>
+    public const int ExtensionsFieldNumber = 1;
+    private global::VrmProtobuf.MaterialOcclusionTextureInfo.Types.Extensions extensions_;
+    /// <summary>
+    /// Dictionary object with extension-specific objects.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::VrmProtobuf.MaterialOcclusionTextureInfo.Types.Extensions Extensions {
+      get { return extensions_; }
+      set {
+        extensions_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "extras" field.</summary>
+    public const int ExtrasFieldNumber = 2;
+    private global::VrmProtobuf.MaterialOcclusionTextureInfo.Types.Extras extras_;
+    /// <summary>
+    /// Application-specific data.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::VrmProtobuf.MaterialOcclusionTextureInfo.Types.Extras Extras {
+      get { return extras_; }
+      set {
+        extras_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "index" field.</summary>
+    public const int IndexFieldNumber = 3;
+    private static readonly pb::FieldCodec<int?> _single_index_codec = pb::FieldCodec.ForStructWrapper<int>(26);
+    private int? index_;
+    /// <summary>
+    /// The index of the texture.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int? Index {
+      get { return index_; }
+      set {
+        index_ = value;
+      }
+    }
+
+
+    /// <summary>Field number for the "texCoord" field.</summary>
+    public const int TexCoordFieldNumber = 4;
+    private static readonly pb::FieldCodec<int?> _single_texCoord_codec = pb::FieldCodec.ForStructWrapper<int>(34);
+    private int? texCoord_;
+    /// <summary>
+    /// The set index of texture's TEXCOORD attribute used for texture coordinate mapping.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int? TexCoord {
+      get { return texCoord_; }
+      set {
+        texCoord_ = value;
+      }
+    }
+
+
+    /// <summary>Field number for the "strength" field.</summary>
+    public const int StrengthFieldNumber = 5;
+    private static readonly pb::FieldCodec<float?> _single_strength_codec = pb::FieldCodec.ForStructWrapper<float>(42);
+    private float? strength_;
+    /// <summary>
+    /// A scalar multiplier controlling the amount of occlusion applied.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public float? Strength {
+      get { return strength_; }
+      set {
+        strength_ = value;
+      }
+    }
+
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as MaterialOcclusionTextureInfo);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(MaterialOcclusionTextureInfo other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (!object.Equals(Extensions, other.Extensions)) return false;
+      if (!object.Equals(Extras, other.Extras)) return false;
+      if (Index != other.Index) return false;
+      if (TexCoord != other.TexCoord) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseNullableSingleEqualityComparer.Equals(Strength, other.Strength)) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (extensions_ != null) hash ^= Extensions.GetHashCode();
+      if (extras_ != null) hash ^= Extras.GetHashCode();
+      if (index_ != null) hash ^= Index.GetHashCode();
+      if (texCoord_ != null) hash ^= TexCoord.GetHashCode();
+      if (strength_ != null) hash ^= pbc::ProtobufEqualityComparers.BitwiseNullableSingleEqualityComparer.GetHashCode(Strength);
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (extensions_ != null) {
+        output.WriteRawTag(10);
+        output.WriteMessage(Extensions);
+      }
+      if (extras_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(Extras);
+      }
+      if (index_ != null) {
+        _single_index_codec.WriteTagAndValue(output, Index);
+      }
+      if (texCoord_ != null) {
+        _single_texCoord_codec.WriteTagAndValue(output, TexCoord);
+      }
+      if (strength_ != null) {
+        _single_strength_codec.WriteTagAndValue(output, Strength);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (extensions_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Extensions);
+      }
+      if (extras_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Extras);
+      }
+      if (index_ != null) {
+        size += _single_index_codec.CalculateSizeWithTag(Index);
+      }
+      if (texCoord_ != null) {
+        size += _single_texCoord_codec.CalculateSizeWithTag(TexCoord);
+      }
+      if (strength_ != null) {
+        size += _single_strength_codec.CalculateSizeWithTag(Strength);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(MaterialOcclusionTextureInfo other) {
+      if (other == null) {
+        return;
+      }
+      if (other.extensions_ != null) {
+        if (extensions_ == null) {
+          Extensions = new global::VrmProtobuf.MaterialOcclusionTextureInfo.Types.Extensions();
+        }
+        Extensions.MergeFrom(other.Extensions);
+      }
+      if (other.extras_ != null) {
+        if (extras_ == null) {
+          Extras = new global::VrmProtobuf.MaterialOcclusionTextureInfo.Types.Extras();
+        }
+        Extras.MergeFrom(other.Extras);
+      }
+      if (other.index_ != null) {
+        if (index_ == null || other.Index != 0) {
+          Index = other.Index;
+        }
+      }
+      if (other.texCoord_ != null) {
+        if (texCoord_ == null || other.TexCoord != 0) {
+          TexCoord = other.TexCoord;
+        }
+      }
+      if (other.strength_ != null) {
+        if (strength_ == null || other.Strength != 0F) {
+          Strength = other.Strength;
+        }
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            if (extensions_ == null) {
+              Extensions = new global::VrmProtobuf.MaterialOcclusionTextureInfo.Types.Extensions();
+            }
+            input.ReadMessage(Extensions);
+            break;
+          }
+          case 18: {
+            if (extras_ == null) {
+              Extras = new global::VrmProtobuf.MaterialOcclusionTextureInfo.Types.Extras();
+            }
+            input.ReadMessage(Extras);
+            break;
+          }
+          case 26: {
+            int? value = _single_index_codec.Read(input);
+            if (index_ == null || value != 0) {
+              Index = value;
+            }
+            break;
+          }
+          case 34: {
+            int? value = _single_texCoord_codec.Read(input);
+            if (texCoord_ == null || value != 0) {
+              TexCoord = value;
+            }
+            break;
+          }
+          case 42: {
+            float? value = _single_strength_codec.Read(input);
+            if (strength_ == null || value != 0F) {
+              Strength = value;
+            }
+            break;
+          }
+        }
+      }
+    }
+
+    #region Nested types
+    /// <summary>Container for nested types declared in the MaterialOcclusionTextureInfo message type.</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static partial class Types {
+      public sealed partial class Extensions : pb::IMessage<Extensions> {
+        private static readonly pb::MessageParser<Extensions> _parser = new pb::MessageParser<Extensions>(() => new Extensions());
+        private pb::UnknownFieldSet _unknownFields;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pb::MessageParser<Extensions> Parser { get { return _parser; } }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pbr::MessageDescriptor Descriptor {
+          get { return global::VrmProtobuf.MaterialOcclusionTextureInfo.Descriptor.NestedTypes[0]; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        pbr::MessageDescriptor pb::IMessage.Descriptor {
+          get { return Descriptor; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extensions() {
+          OnConstruction();
+        }
+
+        partial void OnConstruction();
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extensions(Extensions other) : this() {
+          _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extensions Clone() {
+          return new Extensions(this);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override bool Equals(object other) {
+          return Equals(other as Extensions);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public bool Equals(Extensions other) {
+          if (ReferenceEquals(other, null)) {
+            return false;
+          }
+          if (ReferenceEquals(other, this)) {
+            return true;
+          }
+          return Equals(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override int GetHashCode() {
+          int hash = 1;
+          if (_unknownFields != null) {
+            hash ^= _unknownFields.GetHashCode();
+          }
+          return hash;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override string ToString() {
+          return pb::JsonFormatter.ToDiagnosticString(this);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void WriteTo(pb::CodedOutputStream output) {
+          if (_unknownFields != null) {
+            _unknownFields.WriteTo(output);
+          }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public int CalculateSize() {
+          int size = 0;
+          if (_unknownFields != null) {
+            size += _unknownFields.CalculateSize();
+          }
+          return size;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(Extensions other) {
+          if (other == null) {
+            return;
+          }
+          _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(pb::CodedInputStream input) {
+          uint tag;
+          while ((tag = input.ReadTag()) != 0) {
+            switch(tag) {
+              default:
+                _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+                break;
+            }
+          }
+        }
+
+      }
+
+      public sealed partial class Extras : pb::IMessage<Extras> {
+        private static readonly pb::MessageParser<Extras> _parser = new pb::MessageParser<Extras>(() => new Extras());
+        private pb::UnknownFieldSet _unknownFields;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pb::MessageParser<Extras> Parser { get { return _parser; } }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pbr::MessageDescriptor Descriptor {
+          get { return global::VrmProtobuf.MaterialOcclusionTextureInfo.Descriptor.NestedTypes[1]; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        pbr::MessageDescriptor pb::IMessage.Descriptor {
+          get { return Descriptor; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extras() {
+          OnConstruction();
+        }
+
+        partial void OnConstruction();
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extras(Extras other) : this() {
+          _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extras Clone() {
+          return new Extras(this);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override bool Equals(object other) {
+          return Equals(other as Extras);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public bool Equals(Extras other) {
+          if (ReferenceEquals(other, null)) {
+            return false;
+          }
+          if (ReferenceEquals(other, this)) {
+            return true;
+          }
+          return Equals(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override int GetHashCode() {
+          int hash = 1;
+          if (_unknownFields != null) {
+            hash ^= _unknownFields.GetHashCode();
+          }
+          return hash;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override string ToString() {
+          return pb::JsonFormatter.ToDiagnosticString(this);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void WriteTo(pb::CodedOutputStream output) {
+          if (_unknownFields != null) {
+            _unknownFields.WriteTo(output);
+          }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public int CalculateSize() {
+          int size = 0;
+          if (_unknownFields != null) {
+            size += _unknownFields.CalculateSize();
+          }
+          return size;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(Extras other) {
+          if (other == null) {
+            return;
+          }
+          _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(pb::CodedInputStream input) {
+          uint tag;
+          while ((tag = input.ReadTag()) != 0) {
+            switch(tag) {
+              default:
+                _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+                break;
+            }
+          }
+        }
+
+      }
+
+    }
+    #endregion
+
+  }
+
   public sealed partial class Material : pb::IMessage<Material> {
     private static readonly pb::MessageParser<Material> _parser = new pb::MessageParser<Material>(() => new Material());
     private pb::UnknownFieldSet _unknownFields;
@@ -4464,7 +10628,7 @@ namespace VrmProtobuf {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::VrmProtobuf.GlTFReflection.Descriptor.MessageTypes[17]; }
+      get { return global::VrmProtobuf.GlTFReflection.Descriptor.MessageTypes[19]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -4481,6 +10645,8 @@ namespace VrmProtobuf {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public Material(Material other) : this() {
+      extensions_ = other.extensions_ != null ? other.extensions_.Clone() : null;
+      extras_ = other.extras_ != null ? other.extras_.Clone() : null;
       name_ = other.name_;
       pbrMetallicRoughness_ = other.pbrMetallicRoughness_ != null ? other.pbrMetallicRoughness_.Clone() : null;
       normalTexture_ = other.normalTexture_ != null ? other.normalTexture_.Clone() : null;
@@ -4490,7 +10656,6 @@ namespace VrmProtobuf {
       alphaMode_ = other.alphaMode_;
       AlphaCutoff = other.AlphaCutoff;
       DoubleSided = other.DoubleSided;
-      extensions_ = other.extensions_ != null ? other.extensions_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -4499,9 +10664,40 @@ namespace VrmProtobuf {
       return new Material(this);
     }
 
+    /// <summary>Field number for the "extensions" field.</summary>
+    public const int ExtensionsFieldNumber = 1;
+    private global::VrmProtobuf.Material.Types.Extensions extensions_;
+    /// <summary>
+    /// Dictionary object with extension-specific objects.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::VrmProtobuf.Material.Types.Extensions Extensions {
+      get { return extensions_; }
+      set {
+        extensions_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "extras" field.</summary>
+    public const int ExtrasFieldNumber = 2;
+    private global::VrmProtobuf.Material.Types.Extras extras_;
+    /// <summary>
+    /// Application-specific data.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::VrmProtobuf.Material.Types.Extras Extras {
+      get { return extras_; }
+      set {
+        extras_ = value;
+      }
+    }
+
     /// <summary>Field number for the "name" field.</summary>
-    public const int NameFieldNumber = 1;
+    public const int NameFieldNumber = 3;
     private string name_ = "";
+    /// <summary>
+    /// The user-defined name of this object.
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string Name {
       get { return name_; }
@@ -4511,10 +10707,13 @@ namespace VrmProtobuf {
     }
 
     /// <summary>Field number for the "pbrMetallicRoughness" field.</summary>
-    public const int PbrMetallicRoughnessFieldNumber = 2;
-    private global::VrmProtobuf.MaterialPbrMetallicRoughness pbrMetallicRoughness_;
+    public const int PbrMetallicRoughnessFieldNumber = 4;
+    private global::VrmProtobuf.MaterialPBRMetallicRoughness pbrMetallicRoughness_;
+    /// <summary>
+    /// A set of parameter values that are used to define the metallic-roughness material model from Physically-Based Rendering (PBR) methodology. When not specified, all the default values of `pbrMetallicRoughness` apply.
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::VrmProtobuf.MaterialPbrMetallicRoughness PbrMetallicRoughness {
+    public global::VrmProtobuf.MaterialPBRMetallicRoughness PbrMetallicRoughness {
       get { return pbrMetallicRoughness_; }
       set {
         pbrMetallicRoughness_ = value;
@@ -4522,8 +10721,11 @@ namespace VrmProtobuf {
     }
 
     /// <summary>Field number for the "normalTexture" field.</summary>
-    public const int NormalTextureFieldNumber = 3;
+    public const int NormalTextureFieldNumber = 5;
     private global::VrmProtobuf.MaterialNormalTextureInfo normalTexture_;
+    /// <summary>
+    /// The normal map texture.
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::VrmProtobuf.MaterialNormalTextureInfo NormalTexture {
       get { return normalTexture_; }
@@ -4533,8 +10735,11 @@ namespace VrmProtobuf {
     }
 
     /// <summary>Field number for the "occlusionTexture" field.</summary>
-    public const int OcclusionTextureFieldNumber = 4;
+    public const int OcclusionTextureFieldNumber = 6;
     private global::VrmProtobuf.MaterialOcclusionTextureInfo occlusionTexture_;
+    /// <summary>
+    /// The occlusion map texture.
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::VrmProtobuf.MaterialOcclusionTextureInfo OcclusionTexture {
       get { return occlusionTexture_; }
@@ -4544,8 +10749,11 @@ namespace VrmProtobuf {
     }
 
     /// <summary>Field number for the "emissiveTexture" field.</summary>
-    public const int EmissiveTextureFieldNumber = 5;
+    public const int EmissiveTextureFieldNumber = 7;
     private global::VrmProtobuf.TextureInfo emissiveTexture_;
+    /// <summary>
+    /// The emissive map texture.
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::VrmProtobuf.TextureInfo EmissiveTexture {
       get { return emissiveTexture_; }
@@ -4555,12 +10763,12 @@ namespace VrmProtobuf {
     }
 
     /// <summary>Field number for the "emissiveFactor" field.</summary>
-    public const int EmissiveFactorFieldNumber = 6;
+    public const int EmissiveFactorFieldNumber = 8;
     private static readonly pb::FieldCodec<float> _repeated_emissiveFactor_codec
-        = pb::FieldCodec.ForFloat(50);
+        = pb::FieldCodec.ForFloat(66);
     private readonly pbc::RepeatedField<float> emissiveFactor_ = new pbc::RepeatedField<float>();
     /// <summary>
-    /// RGB
+    /// The emissive color of the material.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public pbc::RepeatedField<float> EmissiveFactor {
@@ -4568,23 +10776,26 @@ namespace VrmProtobuf {
     }
 
     /// <summary>Field number for the "alphaMode" field.</summary>
-    public const int AlphaModeFieldNumber = 7;
-    private string alphaMode_ = "";
+    public const int AlphaModeFieldNumber = 9;
+    private global::VrmProtobuf.Material.Types.alphaModeType alphaMode_ = global::VrmProtobuf.Material.Types.alphaModeType.Opaque;
     /// <summary>
-    /// "OPAQUE", "MASK", "BLEND"
+    /// The alpha rendering mode of the material.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string AlphaMode {
+    public global::VrmProtobuf.Material.Types.alphaModeType AlphaMode {
       get { return alphaMode_; }
       set {
-        alphaMode_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        alphaMode_ = value;
       }
     }
 
     /// <summary>Field number for the "alphaCutoff" field.</summary>
-    public const int AlphaCutoffFieldNumber = 8;
-    private static readonly pb::FieldCodec<float?> _single_alphaCutoff_codec = pb::FieldCodec.ForStructWrapper<float>(66);
+    public const int AlphaCutoffFieldNumber = 10;
+    private static readonly pb::FieldCodec<float?> _single_alphaCutoff_codec = pb::FieldCodec.ForStructWrapper<float>(82);
     private float? alphaCutoff_;
+    /// <summary>
+    /// The alpha cutoff value of the material.
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public float? AlphaCutoff {
       get { return alphaCutoff_; }
@@ -4595,9 +10806,12 @@ namespace VrmProtobuf {
 
 
     /// <summary>Field number for the "doubleSided" field.</summary>
-    public const int DoubleSidedFieldNumber = 9;
-    private static readonly pb::FieldCodec<bool?> _single_doubleSided_codec = pb::FieldCodec.ForStructWrapper<bool>(74);
+    public const int DoubleSidedFieldNumber = 11;
+    private static readonly pb::FieldCodec<bool?> _single_doubleSided_codec = pb::FieldCodec.ForStructWrapper<bool>(90);
     private bool? doubleSided_;
+    /// <summary>
+    /// Specifies whether the material is double sided.
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public bool? DoubleSided {
       get { return doubleSided_; }
@@ -4606,17 +10820,6 @@ namespace VrmProtobuf {
       }
     }
 
-
-    /// <summary>Field number for the "extensions" field.</summary>
-    public const int ExtensionsFieldNumber = 10;
-    private global::VrmProtobuf.Material.Types.Extensions extensions_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::VrmProtobuf.Material.Types.Extensions Extensions {
-      get { return extensions_; }
-      set {
-        extensions_ = value;
-      }
-    }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
@@ -4631,6 +10834,8 @@ namespace VrmProtobuf {
       if (ReferenceEquals(other, this)) {
         return true;
       }
+      if (!object.Equals(Extensions, other.Extensions)) return false;
+      if (!object.Equals(Extras, other.Extras)) return false;
       if (Name != other.Name) return false;
       if (!object.Equals(PbrMetallicRoughness, other.PbrMetallicRoughness)) return false;
       if (!object.Equals(NormalTexture, other.NormalTexture)) return false;
@@ -4640,23 +10845,23 @@ namespace VrmProtobuf {
       if (AlphaMode != other.AlphaMode) return false;
       if (!pbc::ProtobufEqualityComparers.BitwiseNullableSingleEqualityComparer.Equals(AlphaCutoff, other.AlphaCutoff)) return false;
       if (DoubleSided != other.DoubleSided) return false;
-      if (!object.Equals(Extensions, other.Extensions)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
+      if (extensions_ != null) hash ^= Extensions.GetHashCode();
+      if (extras_ != null) hash ^= Extras.GetHashCode();
       if (Name.Length != 0) hash ^= Name.GetHashCode();
       if (pbrMetallicRoughness_ != null) hash ^= PbrMetallicRoughness.GetHashCode();
       if (normalTexture_ != null) hash ^= NormalTexture.GetHashCode();
       if (occlusionTexture_ != null) hash ^= OcclusionTexture.GetHashCode();
       if (emissiveTexture_ != null) hash ^= EmissiveTexture.GetHashCode();
       hash ^= emissiveFactor_.GetHashCode();
-      if (AlphaMode.Length != 0) hash ^= AlphaMode.GetHashCode();
+      if (AlphaMode != global::VrmProtobuf.Material.Types.alphaModeType.Opaque) hash ^= AlphaMode.GetHashCode();
       if (alphaCutoff_ != null) hash ^= pbc::ProtobufEqualityComparers.BitwiseNullableSingleEqualityComparer.GetHashCode(AlphaCutoff);
       if (doubleSided_ != null) hash ^= DoubleSided.GetHashCode();
-      if (extensions_ != null) hash ^= Extensions.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -4670,40 +10875,44 @@ namespace VrmProtobuf {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
-      if (Name.Length != 0) {
+      if (extensions_ != null) {
         output.WriteRawTag(10);
+        output.WriteMessage(Extensions);
+      }
+      if (extras_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(Extras);
+      }
+      if (Name.Length != 0) {
+        output.WriteRawTag(26);
         output.WriteString(Name);
       }
       if (pbrMetallicRoughness_ != null) {
-        output.WriteRawTag(18);
+        output.WriteRawTag(34);
         output.WriteMessage(PbrMetallicRoughness);
       }
       if (normalTexture_ != null) {
-        output.WriteRawTag(26);
+        output.WriteRawTag(42);
         output.WriteMessage(NormalTexture);
       }
       if (occlusionTexture_ != null) {
-        output.WriteRawTag(34);
+        output.WriteRawTag(50);
         output.WriteMessage(OcclusionTexture);
       }
       if (emissiveTexture_ != null) {
-        output.WriteRawTag(42);
+        output.WriteRawTag(58);
         output.WriteMessage(EmissiveTexture);
       }
       emissiveFactor_.WriteTo(output, _repeated_emissiveFactor_codec);
-      if (AlphaMode.Length != 0) {
-        output.WriteRawTag(58);
-        output.WriteString(AlphaMode);
+      if (AlphaMode != global::VrmProtobuf.Material.Types.alphaModeType.Opaque) {
+        output.WriteRawTag(72);
+        output.WriteEnum((int) AlphaMode);
       }
       if (alphaCutoff_ != null) {
         _single_alphaCutoff_codec.WriteTagAndValue(output, AlphaCutoff);
       }
       if (doubleSided_ != null) {
         _single_doubleSided_codec.WriteTagAndValue(output, DoubleSided);
-      }
-      if (extensions_ != null) {
-        output.WriteRawTag(82);
-        output.WriteMessage(Extensions);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -4713,6 +10922,12 @@ namespace VrmProtobuf {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
+      if (extensions_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Extensions);
+      }
+      if (extras_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Extras);
+      }
       if (Name.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Name);
       }
@@ -4729,17 +10944,14 @@ namespace VrmProtobuf {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(EmissiveTexture);
       }
       size += emissiveFactor_.CalculateSize(_repeated_emissiveFactor_codec);
-      if (AlphaMode.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(AlphaMode);
+      if (AlphaMode != global::VrmProtobuf.Material.Types.alphaModeType.Opaque) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) AlphaMode);
       }
       if (alphaCutoff_ != null) {
         size += _single_alphaCutoff_codec.CalculateSizeWithTag(AlphaCutoff);
       }
       if (doubleSided_ != null) {
         size += _single_doubleSided_codec.CalculateSizeWithTag(DoubleSided);
-      }
-      if (extensions_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Extensions);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -4752,12 +10964,24 @@ namespace VrmProtobuf {
       if (other == null) {
         return;
       }
+      if (other.extensions_ != null) {
+        if (extensions_ == null) {
+          Extensions = new global::VrmProtobuf.Material.Types.Extensions();
+        }
+        Extensions.MergeFrom(other.Extensions);
+      }
+      if (other.extras_ != null) {
+        if (extras_ == null) {
+          Extras = new global::VrmProtobuf.Material.Types.Extras();
+        }
+        Extras.MergeFrom(other.Extras);
+      }
       if (other.Name.Length != 0) {
         Name = other.Name;
       }
       if (other.pbrMetallicRoughness_ != null) {
         if (pbrMetallicRoughness_ == null) {
-          PbrMetallicRoughness = new global::VrmProtobuf.MaterialPbrMetallicRoughness();
+          PbrMetallicRoughness = new global::VrmProtobuf.MaterialPBRMetallicRoughness();
         }
         PbrMetallicRoughness.MergeFrom(other.PbrMetallicRoughness);
       }
@@ -4780,7 +11004,7 @@ namespace VrmProtobuf {
         EmissiveTexture.MergeFrom(other.EmissiveTexture);
       }
       emissiveFactor_.Add(other.emissiveFactor_);
-      if (other.AlphaMode.Length != 0) {
+      if (other.AlphaMode != global::VrmProtobuf.Material.Types.alphaModeType.Opaque) {
         AlphaMode = other.AlphaMode;
       }
       if (other.alphaCutoff_ != null) {
@@ -4792,12 +11016,6 @@ namespace VrmProtobuf {
         if (doubleSided_ == null || other.DoubleSided != false) {
           DoubleSided = other.DoubleSided;
         }
-      }
-      if (other.extensions_ != null) {
-        if (extensions_ == null) {
-          Extensions = new global::VrmProtobuf.Material.Types.Extensions();
-        }
-        Extensions.MergeFrom(other.Extensions);
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -4811,65 +11029,72 @@ namespace VrmProtobuf {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 10: {
-            Name = input.ReadString();
+            if (extensions_ == null) {
+              Extensions = new global::VrmProtobuf.Material.Types.Extensions();
+            }
+            input.ReadMessage(Extensions);
             break;
           }
           case 18: {
+            if (extras_ == null) {
+              Extras = new global::VrmProtobuf.Material.Types.Extras();
+            }
+            input.ReadMessage(Extras);
+            break;
+          }
+          case 26: {
+            Name = input.ReadString();
+            break;
+          }
+          case 34: {
             if (pbrMetallicRoughness_ == null) {
-              PbrMetallicRoughness = new global::VrmProtobuf.MaterialPbrMetallicRoughness();
+              PbrMetallicRoughness = new global::VrmProtobuf.MaterialPBRMetallicRoughness();
             }
             input.ReadMessage(PbrMetallicRoughness);
             break;
           }
-          case 26: {
+          case 42: {
             if (normalTexture_ == null) {
               NormalTexture = new global::VrmProtobuf.MaterialNormalTextureInfo();
             }
             input.ReadMessage(NormalTexture);
             break;
           }
-          case 34: {
+          case 50: {
             if (occlusionTexture_ == null) {
               OcclusionTexture = new global::VrmProtobuf.MaterialOcclusionTextureInfo();
             }
             input.ReadMessage(OcclusionTexture);
             break;
           }
-          case 42: {
+          case 58: {
             if (emissiveTexture_ == null) {
               EmissiveTexture = new global::VrmProtobuf.TextureInfo();
             }
             input.ReadMessage(EmissiveTexture);
             break;
           }
-          case 50:
-          case 53: {
+          case 66:
+          case 69: {
             emissiveFactor_.AddEntriesFrom(input, _repeated_emissiveFactor_codec);
             break;
           }
-          case 58: {
-            AlphaMode = input.ReadString();
+          case 72: {
+            AlphaMode = (global::VrmProtobuf.Material.Types.alphaModeType) input.ReadEnum();
             break;
           }
-          case 66: {
+          case 82: {
             float? value = _single_alphaCutoff_codec.Read(input);
             if (alphaCutoff_ == null || value != 0F) {
               AlphaCutoff = value;
             }
             break;
           }
-          case 74: {
+          case 90: {
             bool? value = _single_doubleSided_codec.Read(input);
             if (doubleSided_ == null || value != false) {
               DoubleSided = value;
             }
-            break;
-          }
-          case 82: {
-            if (extensions_ == null) {
-              Extensions = new global::VrmProtobuf.Material.Types.Extensions();
-            }
-            input.ReadMessage(Extensions);
             break;
           }
         }
@@ -4880,6 +11105,396 @@ namespace VrmProtobuf {
     /// <summary>Container for nested types declared in the Material message type.</summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static partial class Types {
+      public enum alphaModeType {
+        [pbr::OriginalName("OPAQUE")] Opaque = 0,
+        [pbr::OriginalName("MASK")] Mask = 1,
+        [pbr::OriginalName("BLEND")] Blend = 2,
+      }
+
+      public sealed partial class KHR_materials_unlitglTFextension : pb::IMessage<KHR_materials_unlitglTFextension> {
+        private static readonly pb::MessageParser<KHR_materials_unlitglTFextension> _parser = new pb::MessageParser<KHR_materials_unlitglTFextension>(() => new KHR_materials_unlitglTFextension());
+        private pb::UnknownFieldSet _unknownFields;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pb::MessageParser<KHR_materials_unlitglTFextension> Parser { get { return _parser; } }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pbr::MessageDescriptor Descriptor {
+          get { return global::VrmProtobuf.Material.Descriptor.NestedTypes[0]; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        pbr::MessageDescriptor pb::IMessage.Descriptor {
+          get { return Descriptor; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public KHR_materials_unlitglTFextension() {
+          OnConstruction();
+        }
+
+        partial void OnConstruction();
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public KHR_materials_unlitglTFextension(KHR_materials_unlitglTFextension other) : this() {
+          extensions_ = other.extensions_ != null ? other.extensions_.Clone() : null;
+          extras_ = other.extras_ != null ? other.extras_.Clone() : null;
+          _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public KHR_materials_unlitglTFextension Clone() {
+          return new KHR_materials_unlitglTFextension(this);
+        }
+
+        /// <summary>Field number for the "extensions" field.</summary>
+        public const int ExtensionsFieldNumber = 1;
+        private global::VrmProtobuf.Material.Types.KHR_materials_unlitglTFextension.Types.Extensions extensions_;
+        /// <summary>
+        /// Dictionary object with extension-specific objects.
+        /// </summary>
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public global::VrmProtobuf.Material.Types.KHR_materials_unlitglTFextension.Types.Extensions Extensions {
+          get { return extensions_; }
+          set {
+            extensions_ = value;
+          }
+        }
+
+        /// <summary>Field number for the "extras" field.</summary>
+        public const int ExtrasFieldNumber = 2;
+        private global::VrmProtobuf.Material.Types.KHR_materials_unlitglTFextension.Types.Extras extras_;
+        /// <summary>
+        /// Application-specific data.
+        /// </summary>
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public global::VrmProtobuf.Material.Types.KHR_materials_unlitglTFextension.Types.Extras Extras {
+          get { return extras_; }
+          set {
+            extras_ = value;
+          }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override bool Equals(object other) {
+          return Equals(other as KHR_materials_unlitglTFextension);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public bool Equals(KHR_materials_unlitglTFextension other) {
+          if (ReferenceEquals(other, null)) {
+            return false;
+          }
+          if (ReferenceEquals(other, this)) {
+            return true;
+          }
+          if (!object.Equals(Extensions, other.Extensions)) return false;
+          if (!object.Equals(Extras, other.Extras)) return false;
+          return Equals(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override int GetHashCode() {
+          int hash = 1;
+          if (extensions_ != null) hash ^= Extensions.GetHashCode();
+          if (extras_ != null) hash ^= Extras.GetHashCode();
+          if (_unknownFields != null) {
+            hash ^= _unknownFields.GetHashCode();
+          }
+          return hash;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override string ToString() {
+          return pb::JsonFormatter.ToDiagnosticString(this);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void WriteTo(pb::CodedOutputStream output) {
+          if (extensions_ != null) {
+            output.WriteRawTag(10);
+            output.WriteMessage(Extensions);
+          }
+          if (extras_ != null) {
+            output.WriteRawTag(18);
+            output.WriteMessage(Extras);
+          }
+          if (_unknownFields != null) {
+            _unknownFields.WriteTo(output);
+          }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public int CalculateSize() {
+          int size = 0;
+          if (extensions_ != null) {
+            size += 1 + pb::CodedOutputStream.ComputeMessageSize(Extensions);
+          }
+          if (extras_ != null) {
+            size += 1 + pb::CodedOutputStream.ComputeMessageSize(Extras);
+          }
+          if (_unknownFields != null) {
+            size += _unknownFields.CalculateSize();
+          }
+          return size;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(KHR_materials_unlitglTFextension other) {
+          if (other == null) {
+            return;
+          }
+          if (other.extensions_ != null) {
+            if (extensions_ == null) {
+              Extensions = new global::VrmProtobuf.Material.Types.KHR_materials_unlitglTFextension.Types.Extensions();
+            }
+            Extensions.MergeFrom(other.Extensions);
+          }
+          if (other.extras_ != null) {
+            if (extras_ == null) {
+              Extras = new global::VrmProtobuf.Material.Types.KHR_materials_unlitglTFextension.Types.Extras();
+            }
+            Extras.MergeFrom(other.Extras);
+          }
+          _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(pb::CodedInputStream input) {
+          uint tag;
+          while ((tag = input.ReadTag()) != 0) {
+            switch(tag) {
+              default:
+                _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+                break;
+              case 10: {
+                if (extensions_ == null) {
+                  Extensions = new global::VrmProtobuf.Material.Types.KHR_materials_unlitglTFextension.Types.Extensions();
+                }
+                input.ReadMessage(Extensions);
+                break;
+              }
+              case 18: {
+                if (extras_ == null) {
+                  Extras = new global::VrmProtobuf.Material.Types.KHR_materials_unlitglTFextension.Types.Extras();
+                }
+                input.ReadMessage(Extras);
+                break;
+              }
+            }
+          }
+        }
+
+        #region Nested types
+        /// <summary>Container for nested types declared in the KHR_materials_unlitglTFextension message type.</summary>
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static partial class Types {
+          public sealed partial class Extensions : pb::IMessage<Extensions> {
+            private static readonly pb::MessageParser<Extensions> _parser = new pb::MessageParser<Extensions>(() => new Extensions());
+            private pb::UnknownFieldSet _unknownFields;
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public static pb::MessageParser<Extensions> Parser { get { return _parser; } }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public static pbr::MessageDescriptor Descriptor {
+              get { return global::VrmProtobuf.Material.Types.KHR_materials_unlitglTFextension.Descriptor.NestedTypes[0]; }
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            pbr::MessageDescriptor pb::IMessage.Descriptor {
+              get { return Descriptor; }
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public Extensions() {
+              OnConstruction();
+            }
+
+            partial void OnConstruction();
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public Extensions(Extensions other) : this() {
+              _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public Extensions Clone() {
+              return new Extensions(this);
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public override bool Equals(object other) {
+              return Equals(other as Extensions);
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public bool Equals(Extensions other) {
+              if (ReferenceEquals(other, null)) {
+                return false;
+              }
+              if (ReferenceEquals(other, this)) {
+                return true;
+              }
+              return Equals(_unknownFields, other._unknownFields);
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public override int GetHashCode() {
+              int hash = 1;
+              if (_unknownFields != null) {
+                hash ^= _unknownFields.GetHashCode();
+              }
+              return hash;
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public override string ToString() {
+              return pb::JsonFormatter.ToDiagnosticString(this);
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public void WriteTo(pb::CodedOutputStream output) {
+              if (_unknownFields != null) {
+                _unknownFields.WriteTo(output);
+              }
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public int CalculateSize() {
+              int size = 0;
+              if (_unknownFields != null) {
+                size += _unknownFields.CalculateSize();
+              }
+              return size;
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public void MergeFrom(Extensions other) {
+              if (other == null) {
+                return;
+              }
+              _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public void MergeFrom(pb::CodedInputStream input) {
+              uint tag;
+              while ((tag = input.ReadTag()) != 0) {
+                switch(tag) {
+                  default:
+                    _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+                    break;
+                }
+              }
+            }
+
+          }
+
+          public sealed partial class Extras : pb::IMessage<Extras> {
+            private static readonly pb::MessageParser<Extras> _parser = new pb::MessageParser<Extras>(() => new Extras());
+            private pb::UnknownFieldSet _unknownFields;
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public static pb::MessageParser<Extras> Parser { get { return _parser; } }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public static pbr::MessageDescriptor Descriptor {
+              get { return global::VrmProtobuf.Material.Types.KHR_materials_unlitglTFextension.Descriptor.NestedTypes[1]; }
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            pbr::MessageDescriptor pb::IMessage.Descriptor {
+              get { return Descriptor; }
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public Extras() {
+              OnConstruction();
+            }
+
+            partial void OnConstruction();
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public Extras(Extras other) : this() {
+              _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public Extras Clone() {
+              return new Extras(this);
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public override bool Equals(object other) {
+              return Equals(other as Extras);
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public bool Equals(Extras other) {
+              if (ReferenceEquals(other, null)) {
+                return false;
+              }
+              if (ReferenceEquals(other, this)) {
+                return true;
+              }
+              return Equals(_unknownFields, other._unknownFields);
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public override int GetHashCode() {
+              int hash = 1;
+              if (_unknownFields != null) {
+                hash ^= _unknownFields.GetHashCode();
+              }
+              return hash;
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public override string ToString() {
+              return pb::JsonFormatter.ToDiagnosticString(this);
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public void WriteTo(pb::CodedOutputStream output) {
+              if (_unknownFields != null) {
+                _unknownFields.WriteTo(output);
+              }
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public int CalculateSize() {
+              int size = 0;
+              if (_unknownFields != null) {
+                size += _unknownFields.CalculateSize();
+              }
+              return size;
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public void MergeFrom(Extras other) {
+              if (other == null) {
+                return;
+              }
+              _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            public void MergeFrom(pb::CodedInputStream input) {
+              uint tag;
+              while ((tag = input.ReadTag()) != 0) {
+                switch(tag) {
+                  default:
+                    _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+                    break;
+                }
+              }
+            }
+
+          }
+
+        }
+        #endregion
+
+      }
+
       public sealed partial class Extensions : pb::IMessage<Extensions> {
         private static readonly pb::MessageParser<Extensions> _parser = new pb::MessageParser<Extensions>(() => new Extensions());
         private pb::UnknownFieldSet _unknownFields;
@@ -4888,7 +11503,7 @@ namespace VrmProtobuf {
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public static pbr::MessageDescriptor Descriptor {
-          get { return global::VrmProtobuf.Material.Descriptor.NestedTypes[0]; }
+          get { return global::VrmProtobuf.Material.Descriptor.NestedTypes[1]; }
         }
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -4907,7 +11522,6 @@ namespace VrmProtobuf {
         public Extensions(Extensions other) : this() {
           kHRMaterialsUnlit_ = other.kHRMaterialsUnlit_ != null ? other.kHRMaterialsUnlit_.Clone() : null;
           vRMCMaterialsMtoon_ = other.vRMCMaterialsMtoon_ != null ? other.vRMCMaterialsMtoon_.Clone() : null;
-          kHRMaterialsPbrSpecularGlossiness_ = other.kHRMaterialsPbrSpecularGlossiness_ != null ? other.kHRMaterialsPbrSpecularGlossiness_.Clone() : null;
           _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
         }
 
@@ -4918,12 +11532,12 @@ namespace VrmProtobuf {
 
         /// <summary>Field number for the "KHR_materials_unlit" field.</summary>
         public const int KHRMaterialsUnlitFieldNumber = 1;
-        private global::VrmProtobuf.KHR_materials_unlit kHRMaterialsUnlit_;
+        private global::VrmProtobuf.Material.Types.KHR_materials_unlitglTFextension kHRMaterialsUnlit_;
         /// <summary>
-        /// unlit
+        /// glTF extension that defines the unlit material model.
         /// </summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public global::VrmProtobuf.KHR_materials_unlit KHRMaterialsUnlit {
+        public global::VrmProtobuf.Material.Types.KHR_materials_unlitglTFextension KHRMaterialsUnlit {
           get { return kHRMaterialsUnlit_; }
           set {
             kHRMaterialsUnlit_ = value;
@@ -4934,28 +11548,13 @@ namespace VrmProtobuf {
         public const int VRMCMaterialsMtoonFieldNumber = 2;
         private global::VrmProtobuf.VRMC_materials_mtoon vRMCMaterialsMtoon_;
         /// <summary>
-        /// MToon extension
+        /// 
         /// </summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public global::VrmProtobuf.VRMC_materials_mtoon VRMCMaterialsMtoon {
           get { return vRMCMaterialsMtoon_; }
           set {
             vRMCMaterialsMtoon_ = value;
-          }
-        }
-
-        /// <summary>Field number for the "KHR_materials_pbrSpecularGlossiness" field.</summary>
-        public const int KHRMaterialsPbrSpecularGlossinessFieldNumber = 3;
-        private global::VrmProtobuf.KHRMaterialsPbrSpecularGlossinessExtension kHRMaterialsPbrSpecularGlossiness_;
-        /// <summary>
-        /// This extension defines the specular-glossiness material model from
-        /// Physically-Based Rendering (PBR).
-        /// </summary>
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public global::VrmProtobuf.KHRMaterialsPbrSpecularGlossinessExtension KHRMaterialsPbrSpecularGlossiness {
-          get { return kHRMaterialsPbrSpecularGlossiness_; }
-          set {
-            kHRMaterialsPbrSpecularGlossiness_ = value;
           }
         }
 
@@ -4974,7 +11573,6 @@ namespace VrmProtobuf {
           }
           if (!object.Equals(KHRMaterialsUnlit, other.KHRMaterialsUnlit)) return false;
           if (!object.Equals(VRMCMaterialsMtoon, other.VRMCMaterialsMtoon)) return false;
-          if (!object.Equals(KHRMaterialsPbrSpecularGlossiness, other.KHRMaterialsPbrSpecularGlossiness)) return false;
           return Equals(_unknownFields, other._unknownFields);
         }
 
@@ -4983,7 +11581,6 @@ namespace VrmProtobuf {
           int hash = 1;
           if (kHRMaterialsUnlit_ != null) hash ^= KHRMaterialsUnlit.GetHashCode();
           if (vRMCMaterialsMtoon_ != null) hash ^= VRMCMaterialsMtoon.GetHashCode();
-          if (kHRMaterialsPbrSpecularGlossiness_ != null) hash ^= KHRMaterialsPbrSpecularGlossiness.GetHashCode();
           if (_unknownFields != null) {
             hash ^= _unknownFields.GetHashCode();
           }
@@ -5005,10 +11602,6 @@ namespace VrmProtobuf {
             output.WriteRawTag(18);
             output.WriteMessage(VRMCMaterialsMtoon);
           }
-          if (kHRMaterialsPbrSpecularGlossiness_ != null) {
-            output.WriteRawTag(26);
-            output.WriteMessage(KHRMaterialsPbrSpecularGlossiness);
-          }
           if (_unknownFields != null) {
             _unknownFields.WriteTo(output);
           }
@@ -5023,9 +11616,6 @@ namespace VrmProtobuf {
           if (vRMCMaterialsMtoon_ != null) {
             size += 1 + pb::CodedOutputStream.ComputeMessageSize(VRMCMaterialsMtoon);
           }
-          if (kHRMaterialsPbrSpecularGlossiness_ != null) {
-            size += 1 + pb::CodedOutputStream.ComputeMessageSize(KHRMaterialsPbrSpecularGlossiness);
-          }
           if (_unknownFields != null) {
             size += _unknownFields.CalculateSize();
           }
@@ -5039,7 +11629,7 @@ namespace VrmProtobuf {
           }
           if (other.kHRMaterialsUnlit_ != null) {
             if (kHRMaterialsUnlit_ == null) {
-              KHRMaterialsUnlit = new global::VrmProtobuf.KHR_materials_unlit();
+              KHRMaterialsUnlit = new global::VrmProtobuf.Material.Types.KHR_materials_unlitglTFextension();
             }
             KHRMaterialsUnlit.MergeFrom(other.KHRMaterialsUnlit);
           }
@@ -5048,12 +11638,6 @@ namespace VrmProtobuf {
               VRMCMaterialsMtoon = new global::VrmProtobuf.VRMC_materials_mtoon();
             }
             VRMCMaterialsMtoon.MergeFrom(other.VRMCMaterialsMtoon);
-          }
-          if (other.kHRMaterialsPbrSpecularGlossiness_ != null) {
-            if (kHRMaterialsPbrSpecularGlossiness_ == null) {
-              KHRMaterialsPbrSpecularGlossiness = new global::VrmProtobuf.KHRMaterialsPbrSpecularGlossinessExtension();
-            }
-            KHRMaterialsPbrSpecularGlossiness.MergeFrom(other.KHRMaterialsPbrSpecularGlossiness);
           }
           _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
         }
@@ -5068,7 +11652,7 @@ namespace VrmProtobuf {
                 break;
               case 10: {
                 if (kHRMaterialsUnlit_ == null) {
-                  KHRMaterialsUnlit = new global::VrmProtobuf.KHR_materials_unlit();
+                  KHRMaterialsUnlit = new global::VrmProtobuf.Material.Types.KHR_materials_unlitglTFextension();
                 }
                 input.ReadMessage(KHRMaterialsUnlit);
                 break;
@@ -5080,13 +11664,107 @@ namespace VrmProtobuf {
                 input.ReadMessage(VRMCMaterialsMtoon);
                 break;
               }
-              case 26: {
-                if (kHRMaterialsPbrSpecularGlossiness_ == null) {
-                  KHRMaterialsPbrSpecularGlossiness = new global::VrmProtobuf.KHRMaterialsPbrSpecularGlossinessExtension();
-                }
-                input.ReadMessage(KHRMaterialsPbrSpecularGlossiness);
+            }
+          }
+        }
+
+      }
+
+      public sealed partial class Extras : pb::IMessage<Extras> {
+        private static readonly pb::MessageParser<Extras> _parser = new pb::MessageParser<Extras>(() => new Extras());
+        private pb::UnknownFieldSet _unknownFields;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pb::MessageParser<Extras> Parser { get { return _parser; } }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pbr::MessageDescriptor Descriptor {
+          get { return global::VrmProtobuf.Material.Descriptor.NestedTypes[2]; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        pbr::MessageDescriptor pb::IMessage.Descriptor {
+          get { return Descriptor; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extras() {
+          OnConstruction();
+        }
+
+        partial void OnConstruction();
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extras(Extras other) : this() {
+          _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extras Clone() {
+          return new Extras(this);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override bool Equals(object other) {
+          return Equals(other as Extras);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public bool Equals(Extras other) {
+          if (ReferenceEquals(other, null)) {
+            return false;
+          }
+          if (ReferenceEquals(other, this)) {
+            return true;
+          }
+          return Equals(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override int GetHashCode() {
+          int hash = 1;
+          if (_unknownFields != null) {
+            hash ^= _unknownFields.GetHashCode();
+          }
+          return hash;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override string ToString() {
+          return pb::JsonFormatter.ToDiagnosticString(this);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void WriteTo(pb::CodedOutputStream output) {
+          if (_unknownFields != null) {
+            _unknownFields.WriteTo(output);
+          }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public int CalculateSize() {
+          int size = 0;
+          if (_unknownFields != null) {
+            size += _unknownFields.CalculateSize();
+          }
+          return size;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(Extras other) {
+          if (other == null) {
+            return;
+          }
+          _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(pb::CodedInputStream input) {
+          uint tag;
+          while ((tag = input.ReadTag()) != 0) {
+            switch(tag) {
+              default:
+                _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
                 break;
-              }
             }
           }
         }
@@ -5098,10 +11776,218 @@ namespace VrmProtobuf {
 
   }
 
-  /// <summary>
-  /// https://github.com/KhronosGroup/glTF/blob/master/specification/2.0/schema/mesh.primitive.schema.json
-  /// "required": [ "attributes" ]
-  /// </summary>
+  public sealed partial class target : pb::IMessage<target> {
+    private static readonly pb::MessageParser<target> _parser = new pb::MessageParser<target>(() => new target());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<target> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::VrmProtobuf.GlTFReflection.Descriptor.MessageTypes[20]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public target() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public target(target other) : this() {
+      POSITION = other.POSITION;
+      NORMAL = other.NORMAL;
+      TANGENT = other.TANGENT;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public target Clone() {
+      return new target(this);
+    }
+
+    /// <summary>Field number for the "POSITION" field.</summary>
+    public const int POSITIONFieldNumber = 1;
+    private static readonly pb::FieldCodec<int?> _single_pOSITION_codec = pb::FieldCodec.ForStructWrapper<int>(10);
+    private int? pOSITION_;
+    /// <summary>
+    /// 
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int? POSITION {
+      get { return pOSITION_; }
+      set {
+        pOSITION_ = value;
+      }
+    }
+
+
+    /// <summary>Field number for the "NORMAL" field.</summary>
+    public const int NORMALFieldNumber = 2;
+    private static readonly pb::FieldCodec<int?> _single_nORMAL_codec = pb::FieldCodec.ForStructWrapper<int>(18);
+    private int? nORMAL_;
+    /// <summary>
+    /// 
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int? NORMAL {
+      get { return nORMAL_; }
+      set {
+        nORMAL_ = value;
+      }
+    }
+
+
+    /// <summary>Field number for the "TANGENT" field.</summary>
+    public const int TANGENTFieldNumber = 3;
+    private static readonly pb::FieldCodec<int?> _single_tANGENT_codec = pb::FieldCodec.ForStructWrapper<int>(26);
+    private int? tANGENT_;
+    /// <summary>
+    /// 
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int? TANGENT {
+      get { return tANGENT_; }
+      set {
+        tANGENT_ = value;
+      }
+    }
+
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as target);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(target other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (POSITION != other.POSITION) return false;
+      if (NORMAL != other.NORMAL) return false;
+      if (TANGENT != other.TANGENT) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (pOSITION_ != null) hash ^= POSITION.GetHashCode();
+      if (nORMAL_ != null) hash ^= NORMAL.GetHashCode();
+      if (tANGENT_ != null) hash ^= TANGENT.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (pOSITION_ != null) {
+        _single_pOSITION_codec.WriteTagAndValue(output, POSITION);
+      }
+      if (nORMAL_ != null) {
+        _single_nORMAL_codec.WriteTagAndValue(output, NORMAL);
+      }
+      if (tANGENT_ != null) {
+        _single_tANGENT_codec.WriteTagAndValue(output, TANGENT);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (pOSITION_ != null) {
+        size += _single_pOSITION_codec.CalculateSizeWithTag(POSITION);
+      }
+      if (nORMAL_ != null) {
+        size += _single_nORMAL_codec.CalculateSizeWithTag(NORMAL);
+      }
+      if (tANGENT_ != null) {
+        size += _single_tANGENT_codec.CalculateSizeWithTag(TANGENT);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(target other) {
+      if (other == null) {
+        return;
+      }
+      if (other.pOSITION_ != null) {
+        if (pOSITION_ == null || other.POSITION != 0) {
+          POSITION = other.POSITION;
+        }
+      }
+      if (other.nORMAL_ != null) {
+        if (nORMAL_ == null || other.NORMAL != 0) {
+          NORMAL = other.NORMAL;
+        }
+      }
+      if (other.tANGENT_ != null) {
+        if (tANGENT_ == null || other.TANGENT != 0) {
+          TANGENT = other.TANGENT;
+        }
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            int? value = _single_pOSITION_codec.Read(input);
+            if (pOSITION_ == null || value != 0) {
+              POSITION = value;
+            }
+            break;
+          }
+          case 18: {
+            int? value = _single_nORMAL_codec.Read(input);
+            if (nORMAL_ == null || value != 0) {
+              NORMAL = value;
+            }
+            break;
+          }
+          case 26: {
+            int? value = _single_tANGENT_codec.Read(input);
+            if (tANGENT_ == null || value != 0) {
+              TANGENT = value;
+            }
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
   public sealed partial class MeshPrimitive : pb::IMessage<MeshPrimitive> {
     private static readonly pb::MessageParser<MeshPrimitive> _parser = new pb::MessageParser<MeshPrimitive>(() => new MeshPrimitive());
     private pb::UnknownFieldSet _unknownFields;
@@ -5110,7 +11996,7 @@ namespace VrmProtobuf {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::VrmProtobuf.GlTFReflection.Descriptor.MessageTypes[18]; }
+      get { return global::VrmProtobuf.GlTFReflection.Descriptor.MessageTypes[21]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -5127,12 +12013,13 @@ namespace VrmProtobuf {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public MeshPrimitive(MeshPrimitive other) : this() {
+      extensions_ = other.extensions_ != null ? other.extensions_.Clone() : null;
+      extras_ = other.extras_ != null ? other.extras_.Clone() : null;
       attributes_ = other.attributes_.Clone();
       Indices = other.Indices;
       Material = other.Material;
       Mode = other.Mode;
       targets_ = other.targets_.Clone();
-      extras_ = other.extras_ != null ? other.extras_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -5141,20 +12028,54 @@ namespace VrmProtobuf {
       return new MeshPrimitive(this);
     }
 
+    /// <summary>Field number for the "extensions" field.</summary>
+    public const int ExtensionsFieldNumber = 1;
+    private global::VrmProtobuf.MeshPrimitive.Types.Extensions extensions_;
+    /// <summary>
+    /// Dictionary object with extension-specific objects.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::VrmProtobuf.MeshPrimitive.Types.Extensions Extensions {
+      get { return extensions_; }
+      set {
+        extensions_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "extras" field.</summary>
+    public const int ExtrasFieldNumber = 2;
+    private global::VrmProtobuf.MeshPrimitive.Types.Extras extras_;
+    /// <summary>
+    /// Application-specific data.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::VrmProtobuf.MeshPrimitive.Types.Extras Extras {
+      get { return extras_; }
+      set {
+        extras_ = value;
+      }
+    }
+
     /// <summary>Field number for the "attributes" field.</summary>
-    public const int AttributesFieldNumber = 1;
+    public const int AttributesFieldNumber = 3;
     private static readonly pbc::MapField<string, int>.Codec _map_attributes_codec
-        = new pbc::MapField<string, int>.Codec(pb::FieldCodec.ForString(10, ""), pb::FieldCodec.ForInt32(16, 0), 10);
+        = new pbc::MapField<string, int>.Codec(pb::FieldCodec.ForString(10, ""), pb::FieldCodec.ForInt32(16, 0), 26);
     private readonly pbc::MapField<string, int> attributes_ = new pbc::MapField<string, int>();
+    /// <summary>
+    /// A dictionary object, where each key corresponds to mesh attribute semantic and each value is the index of the accessor containing attribute's data.
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public pbc::MapField<string, int> Attributes {
       get { return attributes_; }
     }
 
     /// <summary>Field number for the "indices" field.</summary>
-    public const int IndicesFieldNumber = 2;
-    private static readonly pb::FieldCodec<int?> _single_indices_codec = pb::FieldCodec.ForStructWrapper<int>(18);
+    public const int IndicesFieldNumber = 4;
+    private static readonly pb::FieldCodec<int?> _single_indices_codec = pb::FieldCodec.ForStructWrapper<int>(34);
     private int? indices_;
+    /// <summary>
+    /// The index of the accessor that contains the indices.
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int? Indices {
       get { return indices_; }
@@ -5165,9 +12086,12 @@ namespace VrmProtobuf {
 
 
     /// <summary>Field number for the "material" field.</summary>
-    public const int MaterialFieldNumber = 3;
-    private static readonly pb::FieldCodec<int?> _single_material_codec = pb::FieldCodec.ForStructWrapper<int>(26);
+    public const int MaterialFieldNumber = 5;
+    private static readonly pb::FieldCodec<int?> _single_material_codec = pb::FieldCodec.ForStructWrapper<int>(42);
     private int? material_;
+    /// <summary>
+    /// The index of the material to apply to this primitive when rendering.
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int? Material {
       get { return material_; }
@@ -5178,19 +12102,11 @@ namespace VrmProtobuf {
 
 
     /// <summary>Field number for the "mode" field.</summary>
-    public const int ModeFieldNumber = 4;
-    private static readonly pb::FieldCodec<int?> _single_mode_codec = pb::FieldCodec.ForStructWrapper<int>(34);
+    public const int ModeFieldNumber = 6;
+    private static readonly pb::FieldCodec<int?> _single_mode_codec = pb::FieldCodec.ForStructWrapper<int>(50);
     private int? mode_;
     /// <summary>
-    /// enum Mode {
-    ///   POINTS = 0;
-    ///   LINES = 1;
-    ///   LINE_LOOP = 2;
-    ///   LINE_STRIP = 3;
-    ///   TRIANGLES = 4;
-    ///   TRIANGLE_STRIP = 5;
-    ///   TRIANGLE_FAN = 6;
-    /// }
+    /// The type of primitives to render.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int? Mode {
@@ -5202,24 +12118,16 @@ namespace VrmProtobuf {
 
 
     /// <summary>Field number for the "targets" field.</summary>
-    public const int TargetsFieldNumber = 5;
-    private static readonly pb::FieldCodec<global::VrmProtobuf.MeshPrimitive.Types.Target> _repeated_targets_codec
-        = pb::FieldCodec.ForMessage(42, global::VrmProtobuf.MeshPrimitive.Types.Target.Parser);
-    private readonly pbc::RepeatedField<global::VrmProtobuf.MeshPrimitive.Types.Target> targets_ = new pbc::RepeatedField<global::VrmProtobuf.MeshPrimitive.Types.Target>();
+    public const int TargetsFieldNumber = 7;
+    private static readonly pb::FieldCodec<global::VrmProtobuf.target> _repeated_targets_codec
+        = pb::FieldCodec.ForMessage(58, global::VrmProtobuf.target.Parser);
+    private readonly pbc::RepeatedField<global::VrmProtobuf.target> targets_ = new pbc::RepeatedField<global::VrmProtobuf.target>();
+    /// <summary>
+    /// An array of Morph Targets, each  Morph Target is a dictionary mapping attributes (only `POSITION`, `NORMAL`, and `TANGENT` supported) to their deviations in the Morph Target.
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::RepeatedField<global::VrmProtobuf.MeshPrimitive.Types.Target> Targets {
+    public pbc::RepeatedField<global::VrmProtobuf.target> Targets {
       get { return targets_; }
-    }
-
-    /// <summary>Field number for the "extras" field.</summary>
-    public const int ExtrasFieldNumber = 6;
-    private global::VrmProtobuf.MeshPrimitive.Types.Extras extras_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::VrmProtobuf.MeshPrimitive.Types.Extras Extras {
-      get { return extras_; }
-      set {
-        extras_ = value;
-      }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -5235,24 +12143,26 @@ namespace VrmProtobuf {
       if (ReferenceEquals(other, this)) {
         return true;
       }
+      if (!object.Equals(Extensions, other.Extensions)) return false;
+      if (!object.Equals(Extras, other.Extras)) return false;
       if (!Attributes.Equals(other.Attributes)) return false;
       if (Indices != other.Indices) return false;
       if (Material != other.Material) return false;
       if (Mode != other.Mode) return false;
       if(!targets_.Equals(other.targets_)) return false;
-      if (!object.Equals(Extras, other.Extras)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
+      if (extensions_ != null) hash ^= Extensions.GetHashCode();
+      if (extras_ != null) hash ^= Extras.GetHashCode();
       hash ^= Attributes.GetHashCode();
       if (indices_ != null) hash ^= Indices.GetHashCode();
       if (material_ != null) hash ^= Material.GetHashCode();
       if (mode_ != null) hash ^= Mode.GetHashCode();
       hash ^= targets_.GetHashCode();
-      if (extras_ != null) hash ^= Extras.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -5266,6 +12176,14 @@ namespace VrmProtobuf {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+      if (extensions_ != null) {
+        output.WriteRawTag(10);
+        output.WriteMessage(Extensions);
+      }
+      if (extras_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(Extras);
+      }
       attributes_.WriteTo(output, _map_attributes_codec);
       if (indices_ != null) {
         _single_indices_codec.WriteTagAndValue(output, Indices);
@@ -5277,10 +12195,6 @@ namespace VrmProtobuf {
         _single_mode_codec.WriteTagAndValue(output, Mode);
       }
       targets_.WriteTo(output, _repeated_targets_codec);
-      if (extras_ != null) {
-        output.WriteRawTag(50);
-        output.WriteMessage(Extras);
-      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -5289,6 +12203,12 @@ namespace VrmProtobuf {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
+      if (extensions_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Extensions);
+      }
+      if (extras_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Extras);
+      }
       size += attributes_.CalculateSize(_map_attributes_codec);
       if (indices_ != null) {
         size += _single_indices_codec.CalculateSizeWithTag(Indices);
@@ -5300,9 +12220,6 @@ namespace VrmProtobuf {
         size += _single_mode_codec.CalculateSizeWithTag(Mode);
       }
       size += targets_.CalculateSize(_repeated_targets_codec);
-      if (extras_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Extras);
-      }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -5313,6 +12230,18 @@ namespace VrmProtobuf {
     public void MergeFrom(MeshPrimitive other) {
       if (other == null) {
         return;
+      }
+      if (other.extensions_ != null) {
+        if (extensions_ == null) {
+          Extensions = new global::VrmProtobuf.MeshPrimitive.Types.Extensions();
+        }
+        Extensions.MergeFrom(other.Extensions);
+      }
+      if (other.extras_ != null) {
+        if (extras_ == null) {
+          Extras = new global::VrmProtobuf.MeshPrimitive.Types.Extras();
+        }
+        Extras.MergeFrom(other.Extras);
       }
       attributes_.Add(other.attributes_);
       if (other.indices_ != null) {
@@ -5331,12 +12260,6 @@ namespace VrmProtobuf {
         }
       }
       targets_.Add(other.targets_);
-      if (other.extras_ != null) {
-        if (extras_ == null) {
-          Extras = new global::VrmProtobuf.MeshPrimitive.Types.Extras();
-        }
-        Extras.MergeFrom(other.Extras);
-      }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -5349,39 +12272,46 @@ namespace VrmProtobuf {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 10: {
-            attributes_.AddEntriesFrom(input, _map_attributes_codec);
+            if (extensions_ == null) {
+              Extensions = new global::VrmProtobuf.MeshPrimitive.Types.Extensions();
+            }
+            input.ReadMessage(Extensions);
             break;
           }
           case 18: {
+            if (extras_ == null) {
+              Extras = new global::VrmProtobuf.MeshPrimitive.Types.Extras();
+            }
+            input.ReadMessage(Extras);
+            break;
+          }
+          case 26: {
+            attributes_.AddEntriesFrom(input, _map_attributes_codec);
+            break;
+          }
+          case 34: {
             int? value = _single_indices_codec.Read(input);
             if (indices_ == null || value != 0) {
               Indices = value;
             }
             break;
           }
-          case 26: {
+          case 42: {
             int? value = _single_material_codec.Read(input);
             if (material_ == null || value != 0) {
               Material = value;
             }
             break;
           }
-          case 34: {
+          case 50: {
             int? value = _single_mode_codec.Read(input);
             if (mode_ == null || value != 0) {
               Mode = value;
             }
             break;
           }
-          case 42: {
+          case 58: {
             targets_.AddEntriesFrom(input, _repeated_targets_codec);
-            break;
-          }
-          case 50: {
-            if (extras_ == null) {
-              Extras = new global::VrmProtobuf.MeshPrimitive.Types.Extras();
-            }
-            input.ReadMessage(Extras);
             break;
           }
         }
@@ -5392,15 +12322,15 @@ namespace VrmProtobuf {
     /// <summary>Container for nested types declared in the MeshPrimitive message type.</summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static partial class Types {
-      public sealed partial class Target : pb::IMessage<Target> {
-        private static readonly pb::MessageParser<Target> _parser = new pb::MessageParser<Target>(() => new Target());
+      public sealed partial class Extensions : pb::IMessage<Extensions> {
+        private static readonly pb::MessageParser<Extensions> _parser = new pb::MessageParser<Extensions>(() => new Extensions());
         private pb::UnknownFieldSet _unknownFields;
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public static pb::MessageParser<Target> Parser { get { return _parser; } }
+        public static pb::MessageParser<Extensions> Parser { get { return _parser; } }
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public static pbr::MessageDescriptor Descriptor {
-          get { return global::VrmProtobuf.MeshPrimitive.Descriptor.NestedTypes[1]; }
+          get { return global::VrmProtobuf.MeshPrimitive.Descriptor.NestedTypes[0]; }
         }
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -5409,89 +12339,41 @@ namespace VrmProtobuf {
         }
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public Target() {
+        public Extensions() {
           OnConstruction();
         }
 
         partial void OnConstruction();
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public Target(Target other) : this() {
-          POSITION = other.POSITION;
-          NORMAL = other.NORMAL;
-          TANGENT = other.TANGENT;
+        public Extensions(Extensions other) : this() {
           _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
         }
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public Target Clone() {
-          return new Target(this);
+        public Extensions Clone() {
+          return new Extensions(this);
         }
-
-        /// <summary>Field number for the "POSITION" field.</summary>
-        public const int POSITIONFieldNumber = 1;
-        private static readonly pb::FieldCodec<int?> _single_pOSITION_codec = pb::FieldCodec.ForStructWrapper<int>(10);
-        private int? pOSITION_;
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public int? POSITION {
-          get { return pOSITION_; }
-          set {
-            pOSITION_ = value;
-          }
-        }
-
-
-        /// <summary>Field number for the "NORMAL" field.</summary>
-        public const int NORMALFieldNumber = 2;
-        private static readonly pb::FieldCodec<int?> _single_nORMAL_codec = pb::FieldCodec.ForStructWrapper<int>(18);
-        private int? nORMAL_;
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public int? NORMAL {
-          get { return nORMAL_; }
-          set {
-            nORMAL_ = value;
-          }
-        }
-
-
-        /// <summary>Field number for the "TANGENT" field.</summary>
-        public const int TANGENTFieldNumber = 3;
-        private static readonly pb::FieldCodec<int?> _single_tANGENT_codec = pb::FieldCodec.ForStructWrapper<int>(26);
-        private int? tANGENT_;
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public int? TANGENT {
-          get { return tANGENT_; }
-          set {
-            tANGENT_ = value;
-          }
-        }
-
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public override bool Equals(object other) {
-          return Equals(other as Target);
+          return Equals(other as Extensions);
         }
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public bool Equals(Target other) {
+        public bool Equals(Extensions other) {
           if (ReferenceEquals(other, null)) {
             return false;
           }
           if (ReferenceEquals(other, this)) {
             return true;
           }
-          if (POSITION != other.POSITION) return false;
-          if (NORMAL != other.NORMAL) return false;
-          if (TANGENT != other.TANGENT) return false;
           return Equals(_unknownFields, other._unknownFields);
         }
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public override int GetHashCode() {
           int hash = 1;
-          if (pOSITION_ != null) hash ^= POSITION.GetHashCode();
-          if (nORMAL_ != null) hash ^= NORMAL.GetHashCode();
-          if (tANGENT_ != null) hash ^= TANGENT.GetHashCode();
           if (_unknownFields != null) {
             hash ^= _unknownFields.GetHashCode();
           }
@@ -5505,15 +12387,6 @@ namespace VrmProtobuf {
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public void WriteTo(pb::CodedOutputStream output) {
-          if (pOSITION_ != null) {
-            _single_pOSITION_codec.WriteTagAndValue(output, POSITION);
-          }
-          if (nORMAL_ != null) {
-            _single_nORMAL_codec.WriteTagAndValue(output, NORMAL);
-          }
-          if (tANGENT_ != null) {
-            _single_tANGENT_codec.WriteTagAndValue(output, TANGENT);
-          }
           if (_unknownFields != null) {
             _unknownFields.WriteTo(output);
           }
@@ -5522,15 +12395,6 @@ namespace VrmProtobuf {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public int CalculateSize() {
           int size = 0;
-          if (pOSITION_ != null) {
-            size += _single_pOSITION_codec.CalculateSizeWithTag(POSITION);
-          }
-          if (nORMAL_ != null) {
-            size += _single_nORMAL_codec.CalculateSizeWithTag(NORMAL);
-          }
-          if (tANGENT_ != null) {
-            size += _single_tANGENT_codec.CalculateSizeWithTag(TANGENT);
-          }
           if (_unknownFields != null) {
             size += _unknownFields.CalculateSize();
           }
@@ -5538,24 +12402,9 @@ namespace VrmProtobuf {
         }
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public void MergeFrom(Target other) {
+        public void MergeFrom(Extensions other) {
           if (other == null) {
             return;
-          }
-          if (other.pOSITION_ != null) {
-            if (pOSITION_ == null || other.POSITION != 0) {
-              POSITION = other.POSITION;
-            }
-          }
-          if (other.nORMAL_ != null) {
-            if (nORMAL_ == null || other.NORMAL != 0) {
-              NORMAL = other.NORMAL;
-            }
-          }
-          if (other.tANGENT_ != null) {
-            if (tANGENT_ == null || other.TANGENT != 0) {
-              TANGENT = other.TANGENT;
-            }
           }
           _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
         }
@@ -5568,27 +12417,6 @@ namespace VrmProtobuf {
               default:
                 _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
                 break;
-              case 10: {
-                int? value = _single_pOSITION_codec.Read(input);
-                if (pOSITION_ == null || value != 0) {
-                  POSITION = value;
-                }
-                break;
-              }
-              case 18: {
-                int? value = _single_nORMAL_codec.Read(input);
-                if (nORMAL_ == null || value != 0) {
-                  NORMAL = value;
-                }
-                break;
-              }
-              case 26: {
-                int? value = _single_tANGENT_codec.Read(input);
-                if (tANGENT_ == null || value != 0) {
-                  TANGENT = value;
-                }
-                break;
-              }
             }
           }
         }
@@ -5603,7 +12431,7 @@ namespace VrmProtobuf {
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public static pbr::MessageDescriptor Descriptor {
-          get { return global::VrmProtobuf.MeshPrimitive.Descriptor.NestedTypes[2]; }
+          get { return global::VrmProtobuf.MeshPrimitive.Descriptor.NestedTypes[1]; }
         }
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -5635,7 +12463,7 @@ namespace VrmProtobuf {
             = pb::FieldCodec.ForString(10);
         private readonly pbc::RepeatedField<string> targetNames_ = new pbc::RepeatedField<string>();
         /// <summary>
-        /// https://github.com/KhronosGroup/glTF/issues/1036
+        /// 
         /// </summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public pbc::RepeatedField<string> TargetNames {
@@ -5724,9 +12552,6 @@ namespace VrmProtobuf {
 
   }
 
-  /// <summary>
-  /// https://github.com/KhronosGroup/glTF/blob/master/specification/2.0/schema/mesh.schema.json
-  /// </summary>
   public sealed partial class Mesh : pb::IMessage<Mesh> {
     private static readonly pb::MessageParser<Mesh> _parser = new pb::MessageParser<Mesh>(() => new Mesh());
     private pb::UnknownFieldSet _unknownFields;
@@ -5735,7 +12560,7 @@ namespace VrmProtobuf {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::VrmProtobuf.GlTFReflection.Descriptor.MessageTypes[19]; }
+      get { return global::VrmProtobuf.GlTFReflection.Descriptor.MessageTypes[22]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -5752,8 +12577,11 @@ namespace VrmProtobuf {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public Mesh(Mesh other) : this() {
-      primitives_ = other.primitives_.Clone();
+      extensions_ = other.extensions_ != null ? other.extensions_.Clone() : null;
+      extras_ = other.extras_ != null ? other.extras_.Clone() : null;
       name_ = other.name_;
+      primitives_ = other.primitives_.Clone();
+      weights_ = other.weights_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -5762,21 +12590,39 @@ namespace VrmProtobuf {
       return new Mesh(this);
     }
 
-    /// <summary>Field number for the "primitives" field.</summary>
-    public const int PrimitivesFieldNumber = 2;
-    private static readonly pb::FieldCodec<global::VrmProtobuf.MeshPrimitive> _repeated_primitives_codec
-        = pb::FieldCodec.ForMessage(18, global::VrmProtobuf.MeshPrimitive.Parser);
-    private readonly pbc::RepeatedField<global::VrmProtobuf.MeshPrimitive> primitives_ = new pbc::RepeatedField<global::VrmProtobuf.MeshPrimitive>();
+    /// <summary>Field number for the "extensions" field.</summary>
+    public const int ExtensionsFieldNumber = 1;
+    private global::VrmProtobuf.Mesh.Types.Extensions extensions_;
+    /// <summary>
+    /// Dictionary object with extension-specific objects.
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::RepeatedField<global::VrmProtobuf.MeshPrimitive> Primitives {
-      get { return primitives_; }
+    public global::VrmProtobuf.Mesh.Types.Extensions Extensions {
+      get { return extensions_; }
+      set {
+        extensions_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "extras" field.</summary>
+    public const int ExtrasFieldNumber = 2;
+    private global::VrmProtobuf.Mesh.Types.Extras extras_;
+    /// <summary>
+    /// Application-specific data.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::VrmProtobuf.Mesh.Types.Extras Extras {
+      get { return extras_; }
+      set {
+        extras_ = value;
+      }
     }
 
     /// <summary>Field number for the "name" field.</summary>
-    public const int NameFieldNumber = 1;
+    public const int NameFieldNumber = 3;
     private string name_ = "";
     /// <summary>
-    /// weights
+    /// The user-defined name of this object.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string Name {
@@ -5784,6 +12630,32 @@ namespace VrmProtobuf {
       set {
         name_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
+    }
+
+    /// <summary>Field number for the "primitives" field.</summary>
+    public const int PrimitivesFieldNumber = 4;
+    private static readonly pb::FieldCodec<global::VrmProtobuf.MeshPrimitive> _repeated_primitives_codec
+        = pb::FieldCodec.ForMessage(34, global::VrmProtobuf.MeshPrimitive.Parser);
+    private readonly pbc::RepeatedField<global::VrmProtobuf.MeshPrimitive> primitives_ = new pbc::RepeatedField<global::VrmProtobuf.MeshPrimitive>();
+    /// <summary>
+    /// An array of primitives, each defining geometry to be rendered with a material.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::RepeatedField<global::VrmProtobuf.MeshPrimitive> Primitives {
+      get { return primitives_; }
+    }
+
+    /// <summary>Field number for the "weights" field.</summary>
+    public const int WeightsFieldNumber = 5;
+    private static readonly pb::FieldCodec<float> _repeated_weights_codec
+        = pb::FieldCodec.ForFloat(42);
+    private readonly pbc::RepeatedField<float> weights_ = new pbc::RepeatedField<float>();
+    /// <summary>
+    /// Array of weights to be applied to the Morph Targets.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::RepeatedField<float> Weights {
+      get { return weights_; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -5799,16 +12671,22 @@ namespace VrmProtobuf {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if(!primitives_.Equals(other.primitives_)) return false;
+      if (!object.Equals(Extensions, other.Extensions)) return false;
+      if (!object.Equals(Extras, other.Extras)) return false;
       if (Name != other.Name) return false;
+      if(!primitives_.Equals(other.primitives_)) return false;
+      if(!weights_.Equals(other.weights_)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
-      hash ^= primitives_.GetHashCode();
+      if (extensions_ != null) hash ^= Extensions.GetHashCode();
+      if (extras_ != null) hash ^= Extras.GetHashCode();
       if (Name.Length != 0) hash ^= Name.GetHashCode();
+      hash ^= primitives_.GetHashCode();
+      hash ^= weights_.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -5822,11 +12700,20 @@ namespace VrmProtobuf {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
-      if (Name.Length != 0) {
+      if (extensions_ != null) {
         output.WriteRawTag(10);
+        output.WriteMessage(Extensions);
+      }
+      if (extras_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(Extras);
+      }
+      if (Name.Length != 0) {
+        output.WriteRawTag(26);
         output.WriteString(Name);
       }
       primitives_.WriteTo(output, _repeated_primitives_codec);
+      weights_.WriteTo(output, _repeated_weights_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -5835,10 +12722,17 @@ namespace VrmProtobuf {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
-      size += primitives_.CalculateSize(_repeated_primitives_codec);
+      if (extensions_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Extensions);
+      }
+      if (extras_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Extras);
+      }
       if (Name.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Name);
       }
+      size += primitives_.CalculateSize(_repeated_primitives_codec);
+      size += weights_.CalculateSize(_repeated_weights_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -5850,10 +12744,23 @@ namespace VrmProtobuf {
       if (other == null) {
         return;
       }
-      primitives_.Add(other.primitives_);
+      if (other.extensions_ != null) {
+        if (extensions_ == null) {
+          Extensions = new global::VrmProtobuf.Mesh.Types.Extensions();
+        }
+        Extensions.MergeFrom(other.Extensions);
+      }
+      if (other.extras_ != null) {
+        if (extras_ == null) {
+          Extras = new global::VrmProtobuf.Mesh.Types.Extras();
+        }
+        Extras.MergeFrom(other.Extras);
+      }
       if (other.Name.Length != 0) {
         Name = other.Name;
       }
+      primitives_.Add(other.primitives_);
+      weights_.Add(other.weights_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -5866,22 +12773,247 @@ namespace VrmProtobuf {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 10: {
-            Name = input.ReadString();
+            if (extensions_ == null) {
+              Extensions = new global::VrmProtobuf.Mesh.Types.Extensions();
+            }
+            input.ReadMessage(Extensions);
             break;
           }
           case 18: {
+            if (extras_ == null) {
+              Extras = new global::VrmProtobuf.Mesh.Types.Extras();
+            }
+            input.ReadMessage(Extras);
+            break;
+          }
+          case 26: {
+            Name = input.ReadString();
+            break;
+          }
+          case 34: {
             primitives_.AddEntriesFrom(input, _repeated_primitives_codec);
+            break;
+          }
+          case 42:
+          case 45: {
+            weights_.AddEntriesFrom(input, _repeated_weights_codec);
             break;
           }
         }
       }
     }
 
+    #region Nested types
+    /// <summary>Container for nested types declared in the Mesh message type.</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static partial class Types {
+      public sealed partial class Extensions : pb::IMessage<Extensions> {
+        private static readonly pb::MessageParser<Extensions> _parser = new pb::MessageParser<Extensions>(() => new Extensions());
+        private pb::UnknownFieldSet _unknownFields;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pb::MessageParser<Extensions> Parser { get { return _parser; } }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pbr::MessageDescriptor Descriptor {
+          get { return global::VrmProtobuf.Mesh.Descriptor.NestedTypes[0]; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        pbr::MessageDescriptor pb::IMessage.Descriptor {
+          get { return Descriptor; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extensions() {
+          OnConstruction();
+        }
+
+        partial void OnConstruction();
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extensions(Extensions other) : this() {
+          _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extensions Clone() {
+          return new Extensions(this);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override bool Equals(object other) {
+          return Equals(other as Extensions);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public bool Equals(Extensions other) {
+          if (ReferenceEquals(other, null)) {
+            return false;
+          }
+          if (ReferenceEquals(other, this)) {
+            return true;
+          }
+          return Equals(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override int GetHashCode() {
+          int hash = 1;
+          if (_unknownFields != null) {
+            hash ^= _unknownFields.GetHashCode();
+          }
+          return hash;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override string ToString() {
+          return pb::JsonFormatter.ToDiagnosticString(this);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void WriteTo(pb::CodedOutputStream output) {
+          if (_unknownFields != null) {
+            _unknownFields.WriteTo(output);
+          }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public int CalculateSize() {
+          int size = 0;
+          if (_unknownFields != null) {
+            size += _unknownFields.CalculateSize();
+          }
+          return size;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(Extensions other) {
+          if (other == null) {
+            return;
+          }
+          _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(pb::CodedInputStream input) {
+          uint tag;
+          while ((tag = input.ReadTag()) != 0) {
+            switch(tag) {
+              default:
+                _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+                break;
+            }
+          }
+        }
+
+      }
+
+      public sealed partial class Extras : pb::IMessage<Extras> {
+        private static readonly pb::MessageParser<Extras> _parser = new pb::MessageParser<Extras>(() => new Extras());
+        private pb::UnknownFieldSet _unknownFields;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pb::MessageParser<Extras> Parser { get { return _parser; } }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pbr::MessageDescriptor Descriptor {
+          get { return global::VrmProtobuf.Mesh.Descriptor.NestedTypes[1]; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        pbr::MessageDescriptor pb::IMessage.Descriptor {
+          get { return Descriptor; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extras() {
+          OnConstruction();
+        }
+
+        partial void OnConstruction();
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extras(Extras other) : this() {
+          _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extras Clone() {
+          return new Extras(this);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override bool Equals(object other) {
+          return Equals(other as Extras);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public bool Equals(Extras other) {
+          if (ReferenceEquals(other, null)) {
+            return false;
+          }
+          if (ReferenceEquals(other, this)) {
+            return true;
+          }
+          return Equals(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override int GetHashCode() {
+          int hash = 1;
+          if (_unknownFields != null) {
+            hash ^= _unknownFields.GetHashCode();
+          }
+          return hash;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override string ToString() {
+          return pb::JsonFormatter.ToDiagnosticString(this);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void WriteTo(pb::CodedOutputStream output) {
+          if (_unknownFields != null) {
+            _unknownFields.WriteTo(output);
+          }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public int CalculateSize() {
+          int size = 0;
+          if (_unknownFields != null) {
+            size += _unknownFields.CalculateSize();
+          }
+          return size;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(Extras other) {
+          if (other == null) {
+            return;
+          }
+          _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(pb::CodedInputStream input) {
+          uint tag;
+          while ((tag = input.ReadTag()) != 0) {
+            switch(tag) {
+              default:
+                _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+                break;
+            }
+          }
+        }
+
+      }
+
+    }
+    #endregion
+
   }
 
-  /// <summary>
-  /// https://github.com/KhronosGroup/glTF/blob/master/specification/2.0/schema/node.schema.json
-  /// </summary>
   public sealed partial class Node : pb::IMessage<Node> {
     private static readonly pb::MessageParser<Node> _parser = new pb::MessageParser<Node>(() => new Node());
     private pb::UnknownFieldSet _unknownFields;
@@ -5890,7 +13022,7 @@ namespace VrmProtobuf {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::VrmProtobuf.GlTFReflection.Descriptor.MessageTypes[20]; }
+      get { return global::VrmProtobuf.GlTFReflection.Descriptor.MessageTypes[23]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -5907,14 +13039,18 @@ namespace VrmProtobuf {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public Node(Node other) : this() {
+      extensions_ = other.extensions_ != null ? other.extensions_.Clone() : null;
+      extras_ = other.extras_ != null ? other.extras_.Clone() : null;
       name_ = other.name_;
+      Camera = other.Camera;
       children_ = other.children_.Clone();
+      Skin = other.Skin;
       matrix_ = other.matrix_.Clone();
+      Mesh = other.Mesh;
       rotation_ = other.rotation_.Clone();
       scale_ = other.scale_.Clone();
       translation_ = other.translation_.Clone();
-      Mesh = other.Mesh;
-      Skin = other.Skin;
+      weights_ = other.weights_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -5923,9 +13059,40 @@ namespace VrmProtobuf {
       return new Node(this);
     }
 
+    /// <summary>Field number for the "extensions" field.</summary>
+    public const int ExtensionsFieldNumber = 1;
+    private global::VrmProtobuf.Node.Types.Extensions extensions_;
+    /// <summary>
+    /// Dictionary object with extension-specific objects.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::VrmProtobuf.Node.Types.Extensions Extensions {
+      get { return extensions_; }
+      set {
+        extensions_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "extras" field.</summary>
+    public const int ExtrasFieldNumber = 2;
+    private global::VrmProtobuf.Node.Types.Extras extras_;
+    /// <summary>
+    /// Application-specific data.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::VrmProtobuf.Node.Types.Extras Extras {
+      get { return extras_; }
+      set {
+        extras_ = value;
+      }
+    }
+
     /// <summary>Field number for the "name" field.</summary>
-    public const int NameFieldNumber = 1;
+    public const int NameFieldNumber = 3;
     private string name_ = "";
+    /// <summary>
+    /// The user-defined name of this object.
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string Name {
       get { return name_; }
@@ -5934,72 +13101,71 @@ namespace VrmProtobuf {
       }
     }
 
+    /// <summary>Field number for the "camera" field.</summary>
+    public const int CameraFieldNumber = 4;
+    private static readonly pb::FieldCodec<int?> _single_camera_codec = pb::FieldCodec.ForStructWrapper<int>(34);
+    private int? camera_;
+    /// <summary>
+    /// The index of the camera referenced by this node.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int? Camera {
+      get { return camera_; }
+      set {
+        camera_ = value;
+      }
+    }
+
+
     /// <summary>Field number for the "children" field.</summary>
-    public const int ChildrenFieldNumber = 2;
+    public const int ChildrenFieldNumber = 5;
     private static readonly pb::FieldCodec<int> _repeated_children_codec
-        = pb::FieldCodec.ForInt32(18);
+        = pb::FieldCodec.ForInt32(42);
     private readonly pbc::RepeatedField<int> children_ = new pbc::RepeatedField<int>();
+    /// <summary>
+    /// The indices of this node's children.
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public pbc::RepeatedField<int> Children {
       get { return children_; }
     }
 
+    /// <summary>Field number for the "skin" field.</summary>
+    public const int SkinFieldNumber = 6;
+    private static readonly pb::FieldCodec<int?> _single_skin_codec = pb::FieldCodec.ForStructWrapper<int>(50);
+    private int? skin_;
+    /// <summary>
+    /// The index of the skin referenced by this node.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int? Skin {
+      get { return skin_; }
+      set {
+        skin_ = value;
+      }
+    }
+
+
     /// <summary>Field number for the "matrix" field.</summary>
-    public const int MatrixFieldNumber = 3;
+    public const int MatrixFieldNumber = 7;
     private static readonly pb::FieldCodec<float> _repeated_matrix_codec
-        = pb::FieldCodec.ForFloat(26);
+        = pb::FieldCodec.ForFloat(58);
     private readonly pbc::RepeatedField<float> matrix_ = new pbc::RepeatedField<float>();
     /// <summary>
-    /// float[16]
+    /// A floating-point 4x4 transformation matrix stored in column-major order.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public pbc::RepeatedField<float> Matrix {
       get { return matrix_; }
     }
 
-    /// <summary>Field number for the "rotation" field.</summary>
-    public const int RotationFieldNumber = 4;
-    private static readonly pb::FieldCodec<float> _repeated_rotation_codec
-        = pb::FieldCodec.ForFloat(34);
-    private readonly pbc::RepeatedField<float> rotation_ = new pbc::RepeatedField<float>();
-    /// <summary>
-    /// float[4]
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::RepeatedField<float> Rotation {
-      get { return rotation_; }
-    }
-
-    /// <summary>Field number for the "scale" field.</summary>
-    public const int ScaleFieldNumber = 5;
-    private static readonly pb::FieldCodec<float> _repeated_scale_codec
-        = pb::FieldCodec.ForFloat(42);
-    private readonly pbc::RepeatedField<float> scale_ = new pbc::RepeatedField<float>();
-    /// <summary>
-    /// float[3]
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::RepeatedField<float> Scale {
-      get { return scale_; }
-    }
-
-    /// <summary>Field number for the "translation" field.</summary>
-    public const int TranslationFieldNumber = 6;
-    private static readonly pb::FieldCodec<float> _repeated_translation_codec
-        = pb::FieldCodec.ForFloat(50);
-    private readonly pbc::RepeatedField<float> translation_ = new pbc::RepeatedField<float>();
-    /// <summary>
-    /// float[3]
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::RepeatedField<float> Translation {
-      get { return translation_; }
-    }
-
     /// <summary>Field number for the "mesh" field.</summary>
-    public const int MeshFieldNumber = 7;
-    private static readonly pb::FieldCodec<int?> _single_mesh_codec = pb::FieldCodec.ForStructWrapper<int>(58);
+    public const int MeshFieldNumber = 8;
+    private static readonly pb::FieldCodec<int?> _single_mesh_codec = pb::FieldCodec.ForStructWrapper<int>(66);
     private int? mesh_;
+    /// <summary>
+    /// The index of the mesh in this node.
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int? Mesh {
       get { return mesh_; }
@@ -6009,18 +13175,57 @@ namespace VrmProtobuf {
     }
 
 
-    /// <summary>Field number for the "skin" field.</summary>
-    public const int SkinFieldNumber = 8;
-    private static readonly pb::FieldCodec<int?> _single_skin_codec = pb::FieldCodec.ForStructWrapper<int>(66);
-    private int? skin_;
+    /// <summary>Field number for the "rotation" field.</summary>
+    public const int RotationFieldNumber = 9;
+    private static readonly pb::FieldCodec<float> _repeated_rotation_codec
+        = pb::FieldCodec.ForFloat(74);
+    private readonly pbc::RepeatedField<float> rotation_ = new pbc::RepeatedField<float>();
+    /// <summary>
+    /// The node's unit quaternion rotation in the order (x, y, z, w), where w is the scalar.
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int? Skin {
-      get { return skin_; }
-      set {
-        skin_ = value;
-      }
+    public pbc::RepeatedField<float> Rotation {
+      get { return rotation_; }
     }
 
+    /// <summary>Field number for the "scale" field.</summary>
+    public const int ScaleFieldNumber = 10;
+    private static readonly pb::FieldCodec<float> _repeated_scale_codec
+        = pb::FieldCodec.ForFloat(82);
+    private readonly pbc::RepeatedField<float> scale_ = new pbc::RepeatedField<float>();
+    /// <summary>
+    /// The node's non-uniform scale, given as the scaling factors along the x, y, and z axes.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::RepeatedField<float> Scale {
+      get { return scale_; }
+    }
+
+    /// <summary>Field number for the "translation" field.</summary>
+    public const int TranslationFieldNumber = 11;
+    private static readonly pb::FieldCodec<float> _repeated_translation_codec
+        = pb::FieldCodec.ForFloat(90);
+    private readonly pbc::RepeatedField<float> translation_ = new pbc::RepeatedField<float>();
+    /// <summary>
+    /// The node's translation along the x, y, and z axes.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::RepeatedField<float> Translation {
+      get { return translation_; }
+    }
+
+    /// <summary>Field number for the "weights" field.</summary>
+    public const int WeightsFieldNumber = 12;
+    private static readonly pb::FieldCodec<float> _repeated_weights_codec
+        = pb::FieldCodec.ForFloat(98);
+    private readonly pbc::RepeatedField<float> weights_ = new pbc::RepeatedField<float>();
+    /// <summary>
+    /// The weights of the instantiated Morph Target. Number of elements must match number of Morph Targets of used mesh.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::RepeatedField<float> Weights {
+      get { return weights_; }
+    }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
@@ -6035,28 +13240,36 @@ namespace VrmProtobuf {
       if (ReferenceEquals(other, this)) {
         return true;
       }
+      if (!object.Equals(Extensions, other.Extensions)) return false;
+      if (!object.Equals(Extras, other.Extras)) return false;
       if (Name != other.Name) return false;
+      if (Camera != other.Camera) return false;
       if(!children_.Equals(other.children_)) return false;
+      if (Skin != other.Skin) return false;
       if(!matrix_.Equals(other.matrix_)) return false;
+      if (Mesh != other.Mesh) return false;
       if(!rotation_.Equals(other.rotation_)) return false;
       if(!scale_.Equals(other.scale_)) return false;
       if(!translation_.Equals(other.translation_)) return false;
-      if (Mesh != other.Mesh) return false;
-      if (Skin != other.Skin) return false;
+      if(!weights_.Equals(other.weights_)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
+      if (extensions_ != null) hash ^= Extensions.GetHashCode();
+      if (extras_ != null) hash ^= Extras.GetHashCode();
       if (Name.Length != 0) hash ^= Name.GetHashCode();
+      if (camera_ != null) hash ^= Camera.GetHashCode();
       hash ^= children_.GetHashCode();
+      if (skin_ != null) hash ^= Skin.GetHashCode();
       hash ^= matrix_.GetHashCode();
+      if (mesh_ != null) hash ^= Mesh.GetHashCode();
       hash ^= rotation_.GetHashCode();
       hash ^= scale_.GetHashCode();
       hash ^= translation_.GetHashCode();
-      if (mesh_ != null) hash ^= Mesh.GetHashCode();
-      if (skin_ != null) hash ^= Skin.GetHashCode();
+      hash ^= weights_.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -6070,21 +13283,33 @@ namespace VrmProtobuf {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
-      if (Name.Length != 0) {
+      if (extensions_ != null) {
         output.WriteRawTag(10);
+        output.WriteMessage(Extensions);
+      }
+      if (extras_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(Extras);
+      }
+      if (Name.Length != 0) {
+        output.WriteRawTag(26);
         output.WriteString(Name);
       }
-      children_.WriteTo(output, _repeated_children_codec);
-      matrix_.WriteTo(output, _repeated_matrix_codec);
-      rotation_.WriteTo(output, _repeated_rotation_codec);
-      scale_.WriteTo(output, _repeated_scale_codec);
-      translation_.WriteTo(output, _repeated_translation_codec);
-      if (mesh_ != null) {
-        _single_mesh_codec.WriteTagAndValue(output, Mesh);
+      if (camera_ != null) {
+        _single_camera_codec.WriteTagAndValue(output, Camera);
       }
+      children_.WriteTo(output, _repeated_children_codec);
       if (skin_ != null) {
         _single_skin_codec.WriteTagAndValue(output, Skin);
       }
+      matrix_.WriteTo(output, _repeated_matrix_codec);
+      if (mesh_ != null) {
+        _single_mesh_codec.WriteTagAndValue(output, Mesh);
+      }
+      rotation_.WriteTo(output, _repeated_rotation_codec);
+      scale_.WriteTo(output, _repeated_scale_codec);
+      translation_.WriteTo(output, _repeated_translation_codec);
+      weights_.WriteTo(output, _repeated_weights_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -6093,20 +13318,30 @@ namespace VrmProtobuf {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
+      if (extensions_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Extensions);
+      }
+      if (extras_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Extras);
+      }
       if (Name.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Name);
       }
-      size += children_.CalculateSize(_repeated_children_codec);
-      size += matrix_.CalculateSize(_repeated_matrix_codec);
-      size += rotation_.CalculateSize(_repeated_rotation_codec);
-      size += scale_.CalculateSize(_repeated_scale_codec);
-      size += translation_.CalculateSize(_repeated_translation_codec);
-      if (mesh_ != null) {
-        size += _single_mesh_codec.CalculateSizeWithTag(Mesh);
+      if (camera_ != null) {
+        size += _single_camera_codec.CalculateSizeWithTag(Camera);
       }
+      size += children_.CalculateSize(_repeated_children_codec);
       if (skin_ != null) {
         size += _single_skin_codec.CalculateSizeWithTag(Skin);
       }
+      size += matrix_.CalculateSize(_repeated_matrix_codec);
+      if (mesh_ != null) {
+        size += _single_mesh_codec.CalculateSizeWithTag(Mesh);
+      }
+      size += rotation_.CalculateSize(_repeated_rotation_codec);
+      size += scale_.CalculateSize(_repeated_scale_codec);
+      size += translation_.CalculateSize(_repeated_translation_codec);
+      size += weights_.CalculateSize(_repeated_weights_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -6118,24 +13353,42 @@ namespace VrmProtobuf {
       if (other == null) {
         return;
       }
+      if (other.extensions_ != null) {
+        if (extensions_ == null) {
+          Extensions = new global::VrmProtobuf.Node.Types.Extensions();
+        }
+        Extensions.MergeFrom(other.Extensions);
+      }
+      if (other.extras_ != null) {
+        if (extras_ == null) {
+          Extras = new global::VrmProtobuf.Node.Types.Extras();
+        }
+        Extras.MergeFrom(other.Extras);
+      }
       if (other.Name.Length != 0) {
         Name = other.Name;
       }
-      children_.Add(other.children_);
-      matrix_.Add(other.matrix_);
-      rotation_.Add(other.rotation_);
-      scale_.Add(other.scale_);
-      translation_.Add(other.translation_);
-      if (other.mesh_ != null) {
-        if (mesh_ == null || other.Mesh != 0) {
-          Mesh = other.Mesh;
+      if (other.camera_ != null) {
+        if (camera_ == null || other.Camera != 0) {
+          Camera = other.Camera;
         }
       }
+      children_.Add(other.children_);
       if (other.skin_ != null) {
         if (skin_ == null || other.Skin != 0) {
           Skin = other.Skin;
         }
       }
+      matrix_.Add(other.matrix_);
+      if (other.mesh_ != null) {
+        if (mesh_ == null || other.Mesh != 0) {
+          Mesh = other.Mesh;
+        }
+      }
+      rotation_.Add(other.rotation_);
+      scale_.Add(other.scale_);
+      translation_.Add(other.translation_);
+      weights_.Add(other.weights_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -6148,57 +13401,326 @@ namespace VrmProtobuf {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 10: {
+            if (extensions_ == null) {
+              Extensions = new global::VrmProtobuf.Node.Types.Extensions();
+            }
+            input.ReadMessage(Extensions);
+            break;
+          }
+          case 18: {
+            if (extras_ == null) {
+              Extras = new global::VrmProtobuf.Node.Types.Extras();
+            }
+            input.ReadMessage(Extras);
+            break;
+          }
+          case 26: {
             Name = input.ReadString();
             break;
           }
-          case 18:
-          case 16: {
-            children_.AddEntriesFrom(input, _repeated_children_codec);
-            break;
-          }
-          case 26:
-          case 29: {
-            matrix_.AddEntriesFrom(input, _repeated_matrix_codec);
-            break;
-          }
-          case 34:
-          case 37: {
-            rotation_.AddEntriesFrom(input, _repeated_rotation_codec);
-            break;
-          }
-          case 42:
-          case 45: {
-            scale_.AddEntriesFrom(input, _repeated_scale_codec);
-            break;
-          }
-          case 50:
-          case 53: {
-            translation_.AddEntriesFrom(input, _repeated_translation_codec);
-            break;
-          }
-          case 58: {
-            int? value = _single_mesh_codec.Read(input);
-            if (mesh_ == null || value != 0) {
-              Mesh = value;
+          case 34: {
+            int? value = _single_camera_codec.Read(input);
+            if (camera_ == null || value != 0) {
+              Camera = value;
             }
             break;
           }
-          case 66: {
+          case 42:
+          case 40: {
+            children_.AddEntriesFrom(input, _repeated_children_codec);
+            break;
+          }
+          case 50: {
             int? value = _single_skin_codec.Read(input);
             if (skin_ == null || value != 0) {
               Skin = value;
             }
             break;
           }
+          case 58:
+          case 61: {
+            matrix_.AddEntriesFrom(input, _repeated_matrix_codec);
+            break;
+          }
+          case 66: {
+            int? value = _single_mesh_codec.Read(input);
+            if (mesh_ == null || value != 0) {
+              Mesh = value;
+            }
+            break;
+          }
+          case 74:
+          case 77: {
+            rotation_.AddEntriesFrom(input, _repeated_rotation_codec);
+            break;
+          }
+          case 82:
+          case 85: {
+            scale_.AddEntriesFrom(input, _repeated_scale_codec);
+            break;
+          }
+          case 90:
+          case 93: {
+            translation_.AddEntriesFrom(input, _repeated_translation_codec);
+            break;
+          }
+          case 98:
+          case 101: {
+            weights_.AddEntriesFrom(input, _repeated_weights_codec);
+            break;
+          }
         }
       }
     }
 
+    #region Nested types
+    /// <summary>Container for nested types declared in the Node message type.</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static partial class Types {
+      public sealed partial class Extensions : pb::IMessage<Extensions> {
+        private static readonly pb::MessageParser<Extensions> _parser = new pb::MessageParser<Extensions>(() => new Extensions());
+        private pb::UnknownFieldSet _unknownFields;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pb::MessageParser<Extensions> Parser { get { return _parser; } }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pbr::MessageDescriptor Descriptor {
+          get { return global::VrmProtobuf.Node.Descriptor.NestedTypes[0]; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        pbr::MessageDescriptor pb::IMessage.Descriptor {
+          get { return Descriptor; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extensions() {
+          OnConstruction();
+        }
+
+        partial void OnConstruction();
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extensions(Extensions other) : this() {
+          vRMCNodeCollider_ = other.vRMCNodeCollider_ != null ? other.vRMCNodeCollider_.Clone() : null;
+          _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extensions Clone() {
+          return new Extensions(this);
+        }
+
+        /// <summary>Field number for the "VRMC_node_collider" field.</summary>
+        public const int VRMCNodeColliderFieldNumber = 1;
+        private global::VrmProtobuf.VRMC_node_collider vRMCNodeCollider_;
+        /// <summary>
+        /// collider definition for SpringBone
+        /// </summary>
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public global::VrmProtobuf.VRMC_node_collider VRMCNodeCollider {
+          get { return vRMCNodeCollider_; }
+          set {
+            vRMCNodeCollider_ = value;
+          }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override bool Equals(object other) {
+          return Equals(other as Extensions);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public bool Equals(Extensions other) {
+          if (ReferenceEquals(other, null)) {
+            return false;
+          }
+          if (ReferenceEquals(other, this)) {
+            return true;
+          }
+          if (!object.Equals(VRMCNodeCollider, other.VRMCNodeCollider)) return false;
+          return Equals(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override int GetHashCode() {
+          int hash = 1;
+          if (vRMCNodeCollider_ != null) hash ^= VRMCNodeCollider.GetHashCode();
+          if (_unknownFields != null) {
+            hash ^= _unknownFields.GetHashCode();
+          }
+          return hash;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override string ToString() {
+          return pb::JsonFormatter.ToDiagnosticString(this);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void WriteTo(pb::CodedOutputStream output) {
+          if (vRMCNodeCollider_ != null) {
+            output.WriteRawTag(10);
+            output.WriteMessage(VRMCNodeCollider);
+          }
+          if (_unknownFields != null) {
+            _unknownFields.WriteTo(output);
+          }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public int CalculateSize() {
+          int size = 0;
+          if (vRMCNodeCollider_ != null) {
+            size += 1 + pb::CodedOutputStream.ComputeMessageSize(VRMCNodeCollider);
+          }
+          if (_unknownFields != null) {
+            size += _unknownFields.CalculateSize();
+          }
+          return size;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(Extensions other) {
+          if (other == null) {
+            return;
+          }
+          if (other.vRMCNodeCollider_ != null) {
+            if (vRMCNodeCollider_ == null) {
+              VRMCNodeCollider = new global::VrmProtobuf.VRMC_node_collider();
+            }
+            VRMCNodeCollider.MergeFrom(other.VRMCNodeCollider);
+          }
+          _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(pb::CodedInputStream input) {
+          uint tag;
+          while ((tag = input.ReadTag()) != 0) {
+            switch(tag) {
+              default:
+                _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+                break;
+              case 10: {
+                if (vRMCNodeCollider_ == null) {
+                  VRMCNodeCollider = new global::VrmProtobuf.VRMC_node_collider();
+                }
+                input.ReadMessage(VRMCNodeCollider);
+                break;
+              }
+            }
+          }
+        }
+
+      }
+
+      public sealed partial class Extras : pb::IMessage<Extras> {
+        private static readonly pb::MessageParser<Extras> _parser = new pb::MessageParser<Extras>(() => new Extras());
+        private pb::UnknownFieldSet _unknownFields;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pb::MessageParser<Extras> Parser { get { return _parser; } }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pbr::MessageDescriptor Descriptor {
+          get { return global::VrmProtobuf.Node.Descriptor.NestedTypes[1]; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        pbr::MessageDescriptor pb::IMessage.Descriptor {
+          get { return Descriptor; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extras() {
+          OnConstruction();
+        }
+
+        partial void OnConstruction();
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extras(Extras other) : this() {
+          _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extras Clone() {
+          return new Extras(this);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override bool Equals(object other) {
+          return Equals(other as Extras);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public bool Equals(Extras other) {
+          if (ReferenceEquals(other, null)) {
+            return false;
+          }
+          if (ReferenceEquals(other, this)) {
+            return true;
+          }
+          return Equals(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override int GetHashCode() {
+          int hash = 1;
+          if (_unknownFields != null) {
+            hash ^= _unknownFields.GetHashCode();
+          }
+          return hash;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override string ToString() {
+          return pb::JsonFormatter.ToDiagnosticString(this);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void WriteTo(pb::CodedOutputStream output) {
+          if (_unknownFields != null) {
+            _unknownFields.WriteTo(output);
+          }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public int CalculateSize() {
+          int size = 0;
+          if (_unknownFields != null) {
+            size += _unknownFields.CalculateSize();
+          }
+          return size;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(Extras other) {
+          if (other == null) {
+            return;
+          }
+          _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(pb::CodedInputStream input) {
+          uint tag;
+          while ((tag = input.ReadTag()) != 0) {
+            switch(tag) {
+              default:
+                _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+                break;
+            }
+          }
+        }
+
+      }
+
+    }
+    #endregion
+
   }
 
-  /// <summary>
-  /// https://github.com/KhronosGroup/glTF/blob/master/specification/2.0/schema/sampler.schema.json
-  /// </summary>
   public sealed partial class Sampler : pb::IMessage<Sampler> {
     private static readonly pb::MessageParser<Sampler> _parser = new pb::MessageParser<Sampler>(() => new Sampler());
     private pb::UnknownFieldSet _unknownFields;
@@ -6207,7 +13729,7 @@ namespace VrmProtobuf {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::VrmProtobuf.GlTFReflection.Descriptor.MessageTypes[21]; }
+      get { return global::VrmProtobuf.GlTFReflection.Descriptor.MessageTypes[24]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -6224,6 +13746,9 @@ namespace VrmProtobuf {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public Sampler(Sampler other) : this() {
+      extensions_ = other.extensions_ != null ? other.extensions_.Clone() : null;
+      extras_ = other.extras_ != null ? other.extras_.Clone() : null;
+      name_ = other.name_;
       MagFilter = other.MagFilter;
       MinFilter = other.MinFilter;
       WrapS = other.WrapS;
@@ -6236,20 +13761,54 @@ namespace VrmProtobuf {
       return new Sampler(this);
     }
 
+    /// <summary>Field number for the "extensions" field.</summary>
+    public const int ExtensionsFieldNumber = 1;
+    private global::VrmProtobuf.Sampler.Types.Extensions extensions_;
+    /// <summary>
+    /// Dictionary object with extension-specific objects.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::VrmProtobuf.Sampler.Types.Extensions Extensions {
+      get { return extensions_; }
+      set {
+        extensions_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "extras" field.</summary>
+    public const int ExtrasFieldNumber = 2;
+    private global::VrmProtobuf.Sampler.Types.Extras extras_;
+    /// <summary>
+    /// Application-specific data.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::VrmProtobuf.Sampler.Types.Extras Extras {
+      get { return extras_; }
+      set {
+        extras_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "name" field.</summary>
+    public const int NameFieldNumber = 3;
+    private string name_ = "";
+    /// <summary>
+    /// The user-defined name of this object.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Name {
+      get { return name_; }
+      set {
+        name_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
     /// <summary>Field number for the "magFilter" field.</summary>
-    public const int MagFilterFieldNumber = 1;
-    private static readonly pb::FieldCodec<int?> _single_magFilter_codec = pb::FieldCodec.ForStructWrapper<int>(10);
+    public const int MagFilterFieldNumber = 4;
+    private static readonly pb::FieldCodec<int?> _single_magFilter_codec = pb::FieldCodec.ForStructWrapper<int>(34);
     private int? magFilter_;
     /// <summary>
-    /// enum FilterType {
-    ///   FILTER_UNKNOWN = 0;
-    ///   NEAREST = 9728;
-    ///   LINEAR = 9729;
-    ///   NEAREST_MIPMAP_NEAREST = 9984;
-    ///   LINEAR_MIPMAP_NEAREST = 9985;
-    ///   NEAREST_MIPMAP_LINEAR = 9986;
-    ///   LINEAR_MIPMAP_LINEAR = 9987;
-    /// }
+    /// Magnification filter.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int? MagFilter {
@@ -6261,9 +13820,12 @@ namespace VrmProtobuf {
 
 
     /// <summary>Field number for the "minFilter" field.</summary>
-    public const int MinFilterFieldNumber = 2;
-    private static readonly pb::FieldCodec<int?> _single_minFilter_codec = pb::FieldCodec.ForStructWrapper<int>(18);
+    public const int MinFilterFieldNumber = 5;
+    private static readonly pb::FieldCodec<int?> _single_minFilter_codec = pb::FieldCodec.ForStructWrapper<int>(42);
     private int? minFilter_;
+    /// <summary>
+    /// Minification filter.
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int? MinFilter {
       get { return minFilter_; }
@@ -6274,16 +13836,11 @@ namespace VrmProtobuf {
 
 
     /// <summary>Field number for the "wrapS" field.</summary>
-    public const int WrapSFieldNumber = 3;
-    private static readonly pb::FieldCodec<int?> _single_wrapS_codec = pb::FieldCodec.ForStructWrapper<int>(26);
+    public const int WrapSFieldNumber = 6;
+    private static readonly pb::FieldCodec<int?> _single_wrapS_codec = pb::FieldCodec.ForStructWrapper<int>(50);
     private int? wrapS_;
     /// <summary>
-    /// enum WrapType {
-    ///   WRAP_UNKNWON = 0;
-    ///   CLAMP_TO_EDGE = 33071;
-    ///   MIRRORED_REPEAT = 33648;
-    ///   REPEAT = 10497;
-    /// }
+    /// s wrapping mode.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int? WrapS {
@@ -6295,9 +13852,12 @@ namespace VrmProtobuf {
 
 
     /// <summary>Field number for the "wrapT" field.</summary>
-    public const int WrapTFieldNumber = 4;
-    private static readonly pb::FieldCodec<int?> _single_wrapT_codec = pb::FieldCodec.ForStructWrapper<int>(34);
+    public const int WrapTFieldNumber = 7;
+    private static readonly pb::FieldCodec<int?> _single_wrapT_codec = pb::FieldCodec.ForStructWrapper<int>(58);
     private int? wrapT_;
+    /// <summary>
+    /// t wrapping mode.
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int? WrapT {
       get { return wrapT_; }
@@ -6320,6 +13880,9 @@ namespace VrmProtobuf {
       if (ReferenceEquals(other, this)) {
         return true;
       }
+      if (!object.Equals(Extensions, other.Extensions)) return false;
+      if (!object.Equals(Extras, other.Extras)) return false;
+      if (Name != other.Name) return false;
       if (MagFilter != other.MagFilter) return false;
       if (MinFilter != other.MinFilter) return false;
       if (WrapS != other.WrapS) return false;
@@ -6330,6 +13893,9 @@ namespace VrmProtobuf {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
+      if (extensions_ != null) hash ^= Extensions.GetHashCode();
+      if (extras_ != null) hash ^= Extras.GetHashCode();
+      if (Name.Length != 0) hash ^= Name.GetHashCode();
       if (magFilter_ != null) hash ^= MagFilter.GetHashCode();
       if (minFilter_ != null) hash ^= MinFilter.GetHashCode();
       if (wrapS_ != null) hash ^= WrapS.GetHashCode();
@@ -6347,6 +13913,18 @@ namespace VrmProtobuf {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+      if (extensions_ != null) {
+        output.WriteRawTag(10);
+        output.WriteMessage(Extensions);
+      }
+      if (extras_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(Extras);
+      }
+      if (Name.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(Name);
+      }
       if (magFilter_ != null) {
         _single_magFilter_codec.WriteTagAndValue(output, MagFilter);
       }
@@ -6367,6 +13945,15 @@ namespace VrmProtobuf {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
+      if (extensions_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Extensions);
+      }
+      if (extras_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Extras);
+      }
+      if (Name.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Name);
+      }
       if (magFilter_ != null) {
         size += _single_magFilter_codec.CalculateSizeWithTag(MagFilter);
       }
@@ -6389,6 +13976,21 @@ namespace VrmProtobuf {
     public void MergeFrom(Sampler other) {
       if (other == null) {
         return;
+      }
+      if (other.extensions_ != null) {
+        if (extensions_ == null) {
+          Extensions = new global::VrmProtobuf.Sampler.Types.Extensions();
+        }
+        Extensions.MergeFrom(other.Extensions);
+      }
+      if (other.extras_ != null) {
+        if (extras_ == null) {
+          Extras = new global::VrmProtobuf.Sampler.Types.Extras();
+        }
+        Extras.MergeFrom(other.Extras);
+      }
+      if (other.Name.Length != 0) {
+        Name = other.Name;
       }
       if (other.magFilter_ != null) {
         if (magFilter_ == null || other.MagFilter != 0) {
@@ -6422,27 +14024,45 @@ namespace VrmProtobuf {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 10: {
+            if (extensions_ == null) {
+              Extensions = new global::VrmProtobuf.Sampler.Types.Extensions();
+            }
+            input.ReadMessage(Extensions);
+            break;
+          }
+          case 18: {
+            if (extras_ == null) {
+              Extras = new global::VrmProtobuf.Sampler.Types.Extras();
+            }
+            input.ReadMessage(Extras);
+            break;
+          }
+          case 26: {
+            Name = input.ReadString();
+            break;
+          }
+          case 34: {
             int? value = _single_magFilter_codec.Read(input);
             if (magFilter_ == null || value != 0) {
               MagFilter = value;
             }
             break;
           }
-          case 18: {
+          case 42: {
             int? value = _single_minFilter_codec.Read(input);
             if (minFilter_ == null || value != 0) {
               MinFilter = value;
             }
             break;
           }
-          case 26: {
+          case 50: {
             int? value = _single_wrapS_codec.Read(input);
             if (wrapS_ == null || value != 0) {
               WrapS = value;
             }
             break;
           }
-          case 34: {
+          case 58: {
             int? value = _single_wrapT_codec.Read(input);
             if (wrapT_ == null || value != 0) {
               WrapT = value;
@@ -6453,790 +14073,8 @@ namespace VrmProtobuf {
       }
     }
 
-  }
-
-  /// <summary>
-  /// https://github.com/KhronosGroup/glTF/blob/master/specification/2.0/schema/scene.schema.json
-  /// </summary>
-  public sealed partial class Scene : pb::IMessage<Scene> {
-    private static readonly pb::MessageParser<Scene> _parser = new pb::MessageParser<Scene>(() => new Scene());
-    private pb::UnknownFieldSet _unknownFields;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<Scene> Parser { get { return _parser; } }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pbr::MessageDescriptor Descriptor {
-      get { return global::VrmProtobuf.GlTFReflection.Descriptor.MessageTypes[22]; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    pbr::MessageDescriptor pb::IMessage.Descriptor {
-      get { return Descriptor; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public Scene() {
-      OnConstruction();
-    }
-
-    partial void OnConstruction();
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public Scene(Scene other) : this() {
-      nodes_ = other.nodes_.Clone();
-      name_ = other.name_;
-      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public Scene Clone() {
-      return new Scene(this);
-    }
-
-    /// <summary>Field number for the "nodes" field.</summary>
-    public const int NodesFieldNumber = 1;
-    private static readonly pb::FieldCodec<int> _repeated_nodes_codec
-        = pb::FieldCodec.ForInt32(10);
-    private readonly pbc::RepeatedField<int> nodes_ = new pbc::RepeatedField<int>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::RepeatedField<int> Nodes {
-      get { return nodes_; }
-    }
-
-    /// <summary>Field number for the "name" field.</summary>
-    public const int NameFieldNumber = 2;
-    private string name_ = "";
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string Name {
-      get { return name_; }
-      set {
-        name_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override bool Equals(object other) {
-      return Equals(other as Scene);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(Scene other) {
-      if (ReferenceEquals(other, null)) {
-        return false;
-      }
-      if (ReferenceEquals(other, this)) {
-        return true;
-      }
-      if(!nodes_.Equals(other.nodes_)) return false;
-      if (Name != other.Name) return false;
-      return Equals(_unknownFields, other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override int GetHashCode() {
-      int hash = 1;
-      hash ^= nodes_.GetHashCode();
-      if (Name.Length != 0) hash ^= Name.GetHashCode();
-      if (_unknownFields != null) {
-        hash ^= _unknownFields.GetHashCode();
-      }
-      return hash;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override string ToString() {
-      return pb::JsonFormatter.ToDiagnosticString(this);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void WriteTo(pb::CodedOutputStream output) {
-      nodes_.WriteTo(output, _repeated_nodes_codec);
-      if (Name.Length != 0) {
-        output.WriteRawTag(18);
-        output.WriteString(Name);
-      }
-      if (_unknownFields != null) {
-        _unknownFields.WriteTo(output);
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int CalculateSize() {
-      int size = 0;
-      size += nodes_.CalculateSize(_repeated_nodes_codec);
-      if (Name.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(Name);
-      }
-      if (_unknownFields != null) {
-        size += _unknownFields.CalculateSize();
-      }
-      return size;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(Scene other) {
-      if (other == null) {
-        return;
-      }
-      nodes_.Add(other.nodes_);
-      if (other.Name.Length != 0) {
-        Name = other.Name;
-      }
-      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(pb::CodedInputStream input) {
-      uint tag;
-      while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
-          default:
-            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
-            break;
-          case 10:
-          case 8: {
-            nodes_.AddEntriesFrom(input, _repeated_nodes_codec);
-            break;
-          }
-          case 18: {
-            Name = input.ReadString();
-            break;
-          }
-        }
-      }
-    }
-
-  }
-
-  /// <summary>
-  /// https://github.com/KhronosGroup/glTF/blob/master/specification/2.0/schema/skin.schema.json
-  /// "required": [ "joints" ]
-  /// </summary>
-  public sealed partial class Skin : pb::IMessage<Skin> {
-    private static readonly pb::MessageParser<Skin> _parser = new pb::MessageParser<Skin>(() => new Skin());
-    private pb::UnknownFieldSet _unknownFields;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<Skin> Parser { get { return _parser; } }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pbr::MessageDescriptor Descriptor {
-      get { return global::VrmProtobuf.GlTFReflection.Descriptor.MessageTypes[23]; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    pbr::MessageDescriptor pb::IMessage.Descriptor {
-      get { return Descriptor; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public Skin() {
-      OnConstruction();
-    }
-
-    partial void OnConstruction();
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public Skin(Skin other) : this() {
-      InverseBindMatrices = other.InverseBindMatrices;
-      Skeleton = other.Skeleton;
-      joints_ = other.joints_.Clone();
-      name_ = other.name_;
-      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public Skin Clone() {
-      return new Skin(this);
-    }
-
-    /// <summary>Field number for the "inverseBindMatrices" field.</summary>
-    public const int InverseBindMatricesFieldNumber = 1;
-    private static readonly pb::FieldCodec<int?> _single_inverseBindMatrices_codec = pb::FieldCodec.ForStructWrapper<int>(10);
-    private int? inverseBindMatrices_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int? InverseBindMatrices {
-      get { return inverseBindMatrices_; }
-      set {
-        inverseBindMatrices_ = value;
-      }
-    }
-
-
-    /// <summary>Field number for the "skeleton" field.</summary>
-    public const int SkeletonFieldNumber = 2;
-    private static readonly pb::FieldCodec<int?> _single_skeleton_codec = pb::FieldCodec.ForStructWrapper<int>(18);
-    private int? skeleton_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int? Skeleton {
-      get { return skeleton_; }
-      set {
-        skeleton_ = value;
-      }
-    }
-
-
-    /// <summary>Field number for the "joints" field.</summary>
-    public const int JointsFieldNumber = 3;
-    private static readonly pb::FieldCodec<int> _repeated_joints_codec
-        = pb::FieldCodec.ForInt32(26);
-    private readonly pbc::RepeatedField<int> joints_ = new pbc::RepeatedField<int>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::RepeatedField<int> Joints {
-      get { return joints_; }
-    }
-
-    /// <summary>Field number for the "name" field.</summary>
-    public const int NameFieldNumber = 4;
-    private string name_ = "";
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string Name {
-      get { return name_; }
-      set {
-        name_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override bool Equals(object other) {
-      return Equals(other as Skin);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(Skin other) {
-      if (ReferenceEquals(other, null)) {
-        return false;
-      }
-      if (ReferenceEquals(other, this)) {
-        return true;
-      }
-      if (InverseBindMatrices != other.InverseBindMatrices) return false;
-      if (Skeleton != other.Skeleton) return false;
-      if(!joints_.Equals(other.joints_)) return false;
-      if (Name != other.Name) return false;
-      return Equals(_unknownFields, other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override int GetHashCode() {
-      int hash = 1;
-      if (inverseBindMatrices_ != null) hash ^= InverseBindMatrices.GetHashCode();
-      if (skeleton_ != null) hash ^= Skeleton.GetHashCode();
-      hash ^= joints_.GetHashCode();
-      if (Name.Length != 0) hash ^= Name.GetHashCode();
-      if (_unknownFields != null) {
-        hash ^= _unknownFields.GetHashCode();
-      }
-      return hash;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override string ToString() {
-      return pb::JsonFormatter.ToDiagnosticString(this);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void WriteTo(pb::CodedOutputStream output) {
-      if (inverseBindMatrices_ != null) {
-        _single_inverseBindMatrices_codec.WriteTagAndValue(output, InverseBindMatrices);
-      }
-      if (skeleton_ != null) {
-        _single_skeleton_codec.WriteTagAndValue(output, Skeleton);
-      }
-      joints_.WriteTo(output, _repeated_joints_codec);
-      if (Name.Length != 0) {
-        output.WriteRawTag(34);
-        output.WriteString(Name);
-      }
-      if (_unknownFields != null) {
-        _unknownFields.WriteTo(output);
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int CalculateSize() {
-      int size = 0;
-      if (inverseBindMatrices_ != null) {
-        size += _single_inverseBindMatrices_codec.CalculateSizeWithTag(InverseBindMatrices);
-      }
-      if (skeleton_ != null) {
-        size += _single_skeleton_codec.CalculateSizeWithTag(Skeleton);
-      }
-      size += joints_.CalculateSize(_repeated_joints_codec);
-      if (Name.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(Name);
-      }
-      if (_unknownFields != null) {
-        size += _unknownFields.CalculateSize();
-      }
-      return size;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(Skin other) {
-      if (other == null) {
-        return;
-      }
-      if (other.inverseBindMatrices_ != null) {
-        if (inverseBindMatrices_ == null || other.InverseBindMatrices != 0) {
-          InverseBindMatrices = other.InverseBindMatrices;
-        }
-      }
-      if (other.skeleton_ != null) {
-        if (skeleton_ == null || other.Skeleton != 0) {
-          Skeleton = other.Skeleton;
-        }
-      }
-      joints_.Add(other.joints_);
-      if (other.Name.Length != 0) {
-        Name = other.Name;
-      }
-      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(pb::CodedInputStream input) {
-      uint tag;
-      while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
-          default:
-            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
-            break;
-          case 10: {
-            int? value = _single_inverseBindMatrices_codec.Read(input);
-            if (inverseBindMatrices_ == null || value != 0) {
-              InverseBindMatrices = value;
-            }
-            break;
-          }
-          case 18: {
-            int? value = _single_skeleton_codec.Read(input);
-            if (skeleton_ == null || value != 0) {
-              Skeleton = value;
-            }
-            break;
-          }
-          case 26:
-          case 24: {
-            joints_.AddEntriesFrom(input, _repeated_joints_codec);
-            break;
-          }
-          case 34: {
-            Name = input.ReadString();
-            break;
-          }
-        }
-      }
-    }
-
-  }
-
-  /// <summary>
-  /// https://github.com/KhronosGroup/glTF/blob/master/specification/2.0/schema/texture.schema.json
-  /// </summary>
-  public sealed partial class Texture : pb::IMessage<Texture> {
-    private static readonly pb::MessageParser<Texture> _parser = new pb::MessageParser<Texture>(() => new Texture());
-    private pb::UnknownFieldSet _unknownFields;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<Texture> Parser { get { return _parser; } }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pbr::MessageDescriptor Descriptor {
-      get { return global::VrmProtobuf.GlTFReflection.Descriptor.MessageTypes[24]; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    pbr::MessageDescriptor pb::IMessage.Descriptor {
-      get { return Descriptor; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public Texture() {
-      OnConstruction();
-    }
-
-    partial void OnConstruction();
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public Texture(Texture other) : this() {
-      Sampler = other.Sampler;
-      Source = other.Source;
-      name_ = other.name_;
-      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public Texture Clone() {
-      return new Texture(this);
-    }
-
-    /// <summary>Field number for the "sampler" field.</summary>
-    public const int SamplerFieldNumber = 1;
-    private static readonly pb::FieldCodec<int?> _single_sampler_codec = pb::FieldCodec.ForStructWrapper<int>(10);
-    private int? sampler_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int? Sampler {
-      get { return sampler_; }
-      set {
-        sampler_ = value;
-      }
-    }
-
-
-    /// <summary>Field number for the "source" field.</summary>
-    public const int SourceFieldNumber = 2;
-    private static readonly pb::FieldCodec<int?> _single_source_codec = pb::FieldCodec.ForStructWrapper<int>(18);
-    private int? source_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int? Source {
-      get { return source_; }
-      set {
-        source_ = value;
-      }
-    }
-
-
-    /// <summary>Field number for the "name" field.</summary>
-    public const int NameFieldNumber = 3;
-    private string name_ = "";
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string Name {
-      get { return name_; }
-      set {
-        name_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override bool Equals(object other) {
-      return Equals(other as Texture);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(Texture other) {
-      if (ReferenceEquals(other, null)) {
-        return false;
-      }
-      if (ReferenceEquals(other, this)) {
-        return true;
-      }
-      if (Sampler != other.Sampler) return false;
-      if (Source != other.Source) return false;
-      if (Name != other.Name) return false;
-      return Equals(_unknownFields, other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override int GetHashCode() {
-      int hash = 1;
-      if (sampler_ != null) hash ^= Sampler.GetHashCode();
-      if (source_ != null) hash ^= Source.GetHashCode();
-      if (Name.Length != 0) hash ^= Name.GetHashCode();
-      if (_unknownFields != null) {
-        hash ^= _unknownFields.GetHashCode();
-      }
-      return hash;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override string ToString() {
-      return pb::JsonFormatter.ToDiagnosticString(this);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void WriteTo(pb::CodedOutputStream output) {
-      if (sampler_ != null) {
-        _single_sampler_codec.WriteTagAndValue(output, Sampler);
-      }
-      if (source_ != null) {
-        _single_source_codec.WriteTagAndValue(output, Source);
-      }
-      if (Name.Length != 0) {
-        output.WriteRawTag(26);
-        output.WriteString(Name);
-      }
-      if (_unknownFields != null) {
-        _unknownFields.WriteTo(output);
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int CalculateSize() {
-      int size = 0;
-      if (sampler_ != null) {
-        size += _single_sampler_codec.CalculateSizeWithTag(Sampler);
-      }
-      if (source_ != null) {
-        size += _single_source_codec.CalculateSizeWithTag(Source);
-      }
-      if (Name.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(Name);
-      }
-      if (_unknownFields != null) {
-        size += _unknownFields.CalculateSize();
-      }
-      return size;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(Texture other) {
-      if (other == null) {
-        return;
-      }
-      if (other.sampler_ != null) {
-        if (sampler_ == null || other.Sampler != 0) {
-          Sampler = other.Sampler;
-        }
-      }
-      if (other.source_ != null) {
-        if (source_ == null || other.Source != 0) {
-          Source = other.Source;
-        }
-      }
-      if (other.Name.Length != 0) {
-        Name = other.Name;
-      }
-      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(pb::CodedInputStream input) {
-      uint tag;
-      while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
-          default:
-            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
-            break;
-          case 10: {
-            int? value = _single_sampler_codec.Read(input);
-            if (sampler_ == null || value != 0) {
-              Sampler = value;
-            }
-            break;
-          }
-          case 18: {
-            int? value = _single_source_codec.Read(input);
-            if (source_ == null || value != 0) {
-              Source = value;
-            }
-            break;
-          }
-          case 26: {
-            Name = input.ReadString();
-            break;
-          }
-        }
-      }
-    }
-
-  }
-
-  /// <summary>
-  /// https://github.com/KhronosGroup/glTF/blob/master/specification/2.0/schema/textureInfo.schema.json
-  /// "required": [ "index" ]
-  /// </summary>
-  public sealed partial class TextureInfo : pb::IMessage<TextureInfo> {
-    private static readonly pb::MessageParser<TextureInfo> _parser = new pb::MessageParser<TextureInfo>(() => new TextureInfo());
-    private pb::UnknownFieldSet _unknownFields;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<TextureInfo> Parser { get { return _parser; } }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pbr::MessageDescriptor Descriptor {
-      get { return global::VrmProtobuf.GlTFReflection.Descriptor.MessageTypes[25]; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    pbr::MessageDescriptor pb::IMessage.Descriptor {
-      get { return Descriptor; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public TextureInfo() {
-      OnConstruction();
-    }
-
-    partial void OnConstruction();
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public TextureInfo(TextureInfo other) : this() {
-      Index = other.Index;
-      TexCoord = other.TexCoord;
-      extensions_ = other.extensions_ != null ? other.extensions_.Clone() : null;
-      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public TextureInfo Clone() {
-      return new TextureInfo(this);
-    }
-
-    /// <summary>Field number for the "index" field.</summary>
-    public const int IndexFieldNumber = 1;
-    private static readonly pb::FieldCodec<int?> _single_index_codec = pb::FieldCodec.ForStructWrapper<int>(10);
-    private int? index_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int? Index {
-      get { return index_; }
-      set {
-        index_ = value;
-      }
-    }
-
-
-    /// <summary>Field number for the "texCoord" field.</summary>
-    public const int TexCoordFieldNumber = 2;
-    private static readonly pb::FieldCodec<int?> _single_texCoord_codec = pb::FieldCodec.ForStructWrapper<int>(18);
-    private int? texCoord_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int? TexCoord {
-      get { return texCoord_; }
-      set {
-        texCoord_ = value;
-      }
-    }
-
-
-    /// <summary>Field number for the "extensions" field.</summary>
-    public const int ExtensionsFieldNumber = 3;
-    private global::VrmProtobuf.TextureInfo.Types.Extensions extensions_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::VrmProtobuf.TextureInfo.Types.Extensions Extensions {
-      get { return extensions_; }
-      set {
-        extensions_ = value;
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override bool Equals(object other) {
-      return Equals(other as TextureInfo);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(TextureInfo other) {
-      if (ReferenceEquals(other, null)) {
-        return false;
-      }
-      if (ReferenceEquals(other, this)) {
-        return true;
-      }
-      if (Index != other.Index) return false;
-      if (TexCoord != other.TexCoord) return false;
-      if (!object.Equals(Extensions, other.Extensions)) return false;
-      return Equals(_unknownFields, other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override int GetHashCode() {
-      int hash = 1;
-      if (index_ != null) hash ^= Index.GetHashCode();
-      if (texCoord_ != null) hash ^= TexCoord.GetHashCode();
-      if (extensions_ != null) hash ^= Extensions.GetHashCode();
-      if (_unknownFields != null) {
-        hash ^= _unknownFields.GetHashCode();
-      }
-      return hash;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override string ToString() {
-      return pb::JsonFormatter.ToDiagnosticString(this);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void WriteTo(pb::CodedOutputStream output) {
-      if (index_ != null) {
-        _single_index_codec.WriteTagAndValue(output, Index);
-      }
-      if (texCoord_ != null) {
-        _single_texCoord_codec.WriteTagAndValue(output, TexCoord);
-      }
-      if (extensions_ != null) {
-        output.WriteRawTag(26);
-        output.WriteMessage(Extensions);
-      }
-      if (_unknownFields != null) {
-        _unknownFields.WriteTo(output);
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int CalculateSize() {
-      int size = 0;
-      if (index_ != null) {
-        size += _single_index_codec.CalculateSizeWithTag(Index);
-      }
-      if (texCoord_ != null) {
-        size += _single_texCoord_codec.CalculateSizeWithTag(TexCoord);
-      }
-      if (extensions_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Extensions);
-      }
-      if (_unknownFields != null) {
-        size += _unknownFields.CalculateSize();
-      }
-      return size;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(TextureInfo other) {
-      if (other == null) {
-        return;
-      }
-      if (other.index_ != null) {
-        if (index_ == null || other.Index != 0) {
-          Index = other.Index;
-        }
-      }
-      if (other.texCoord_ != null) {
-        if (texCoord_ == null || other.TexCoord != 0) {
-          TexCoord = other.TexCoord;
-        }
-      }
-      if (other.extensions_ != null) {
-        if (extensions_ == null) {
-          Extensions = new global::VrmProtobuf.TextureInfo.Types.Extensions();
-        }
-        Extensions.MergeFrom(other.Extensions);
-      }
-      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(pb::CodedInputStream input) {
-      uint tag;
-      while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
-          default:
-            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
-            break;
-          case 10: {
-            int? value = _single_index_codec.Read(input);
-            if (index_ == null || value != 0) {
-              Index = value;
-            }
-            break;
-          }
-          case 18: {
-            int? value = _single_texCoord_codec.Read(input);
-            if (texCoord_ == null || value != 0) {
-              TexCoord = value;
-            }
-            break;
-          }
-          case 26: {
-            if (extensions_ == null) {
-              Extensions = new global::VrmProtobuf.TextureInfo.Types.Extensions();
-            }
-            input.ReadMessage(Extensions);
-            break;
-          }
-        }
-      }
-    }
-
     #region Nested types
-    /// <summary>Container for nested types declared in the TextureInfo message type.</summary>
+    /// <summary>Container for nested types declared in the Sampler message type.</summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static partial class Types {
       public sealed partial class Extensions : pb::IMessage<Extensions> {
@@ -7247,7 +14085,7 @@ namespace VrmProtobuf {
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public static pbr::MessageDescriptor Descriptor {
-          get { return global::VrmProtobuf.TextureInfo.Descriptor.NestedTypes[0]; }
+          get { return global::VrmProtobuf.Sampler.Descriptor.NestedTypes[0]; }
         }
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -7264,7 +14102,6 @@ namespace VrmProtobuf {
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public Extensions(Extensions other) : this() {
-          kHRTextureTransform_ = other.kHRTextureTransform_ != null ? other.kHRTextureTransform_.Clone() : null;
           _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
         }
 
@@ -7273,17 +14110,2292 @@ namespace VrmProtobuf {
           return new Extensions(this);
         }
 
-        /// <summary>Field number for the "KHR_texture_transform" field.</summary>
-        public const int KHRTextureTransformFieldNumber = 1;
-        private global::VrmProtobuf.KHRTextureTransformExtension kHRTextureTransform_;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override bool Equals(object other) {
+          return Equals(other as Extensions);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public bool Equals(Extensions other) {
+          if (ReferenceEquals(other, null)) {
+            return false;
+          }
+          if (ReferenceEquals(other, this)) {
+            return true;
+          }
+          return Equals(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override int GetHashCode() {
+          int hash = 1;
+          if (_unknownFields != null) {
+            hash ^= _unknownFields.GetHashCode();
+          }
+          return hash;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override string ToString() {
+          return pb::JsonFormatter.ToDiagnosticString(this);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void WriteTo(pb::CodedOutputStream output) {
+          if (_unknownFields != null) {
+            _unknownFields.WriteTo(output);
+          }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public int CalculateSize() {
+          int size = 0;
+          if (_unknownFields != null) {
+            size += _unknownFields.CalculateSize();
+          }
+          return size;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(Extensions other) {
+          if (other == null) {
+            return;
+          }
+          _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(pb::CodedInputStream input) {
+          uint tag;
+          while ((tag = input.ReadTag()) != 0) {
+            switch(tag) {
+              default:
+                _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+                break;
+            }
+          }
+        }
+
+      }
+
+      public sealed partial class Extras : pb::IMessage<Extras> {
+        private static readonly pb::MessageParser<Extras> _parser = new pb::MessageParser<Extras>(() => new Extras());
+        private pb::UnknownFieldSet _unknownFields;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pb::MessageParser<Extras> Parser { get { return _parser; } }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pbr::MessageDescriptor Descriptor {
+          get { return global::VrmProtobuf.Sampler.Descriptor.NestedTypes[1]; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        pbr::MessageDescriptor pb::IMessage.Descriptor {
+          get { return Descriptor; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extras() {
+          OnConstruction();
+        }
+
+        partial void OnConstruction();
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extras(Extras other) : this() {
+          _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extras Clone() {
+          return new Extras(this);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override bool Equals(object other) {
+          return Equals(other as Extras);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public bool Equals(Extras other) {
+          if (ReferenceEquals(other, null)) {
+            return false;
+          }
+          if (ReferenceEquals(other, this)) {
+            return true;
+          }
+          return Equals(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override int GetHashCode() {
+          int hash = 1;
+          if (_unknownFields != null) {
+            hash ^= _unknownFields.GetHashCode();
+          }
+          return hash;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override string ToString() {
+          return pb::JsonFormatter.ToDiagnosticString(this);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void WriteTo(pb::CodedOutputStream output) {
+          if (_unknownFields != null) {
+            _unknownFields.WriteTo(output);
+          }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public int CalculateSize() {
+          int size = 0;
+          if (_unknownFields != null) {
+            size += _unknownFields.CalculateSize();
+          }
+          return size;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(Extras other) {
+          if (other == null) {
+            return;
+          }
+          _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(pb::CodedInputStream input) {
+          uint tag;
+          while ((tag = input.ReadTag()) != 0) {
+            switch(tag) {
+              default:
+                _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+                break;
+            }
+          }
+        }
+
+      }
+
+    }
+    #endregion
+
+  }
+
+  public sealed partial class Scene : pb::IMessage<Scene> {
+    private static readonly pb::MessageParser<Scene> _parser = new pb::MessageParser<Scene>(() => new Scene());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<Scene> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::VrmProtobuf.GlTFReflection.Descriptor.MessageTypes[25]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public Scene() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public Scene(Scene other) : this() {
+      extensions_ = other.extensions_ != null ? other.extensions_.Clone() : null;
+      extras_ = other.extras_ != null ? other.extras_.Clone() : null;
+      name_ = other.name_;
+      nodes_ = other.nodes_.Clone();
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public Scene Clone() {
+      return new Scene(this);
+    }
+
+    /// <summary>Field number for the "extensions" field.</summary>
+    public const int ExtensionsFieldNumber = 1;
+    private global::VrmProtobuf.Scene.Types.Extensions extensions_;
+    /// <summary>
+    /// Dictionary object with extension-specific objects.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::VrmProtobuf.Scene.Types.Extensions Extensions {
+      get { return extensions_; }
+      set {
+        extensions_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "extras" field.</summary>
+    public const int ExtrasFieldNumber = 2;
+    private global::VrmProtobuf.Scene.Types.Extras extras_;
+    /// <summary>
+    /// Application-specific data.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::VrmProtobuf.Scene.Types.Extras Extras {
+      get { return extras_; }
+      set {
+        extras_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "name" field.</summary>
+    public const int NameFieldNumber = 3;
+    private string name_ = "";
+    /// <summary>
+    /// The user-defined name of this object.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Name {
+      get { return name_; }
+      set {
+        name_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "nodes" field.</summary>
+    public const int NodesFieldNumber = 4;
+    private static readonly pb::FieldCodec<int> _repeated_nodes_codec
+        = pb::FieldCodec.ForInt32(34);
+    private readonly pbc::RepeatedField<int> nodes_ = new pbc::RepeatedField<int>();
+    /// <summary>
+    /// The indices of each root node.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::RepeatedField<int> Nodes {
+      get { return nodes_; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as Scene);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(Scene other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (!object.Equals(Extensions, other.Extensions)) return false;
+      if (!object.Equals(Extras, other.Extras)) return false;
+      if (Name != other.Name) return false;
+      if(!nodes_.Equals(other.nodes_)) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (extensions_ != null) hash ^= Extensions.GetHashCode();
+      if (extras_ != null) hash ^= Extras.GetHashCode();
+      if (Name.Length != 0) hash ^= Name.GetHashCode();
+      hash ^= nodes_.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (extensions_ != null) {
+        output.WriteRawTag(10);
+        output.WriteMessage(Extensions);
+      }
+      if (extras_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(Extras);
+      }
+      if (Name.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(Name);
+      }
+      nodes_.WriteTo(output, _repeated_nodes_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (extensions_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Extensions);
+      }
+      if (extras_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Extras);
+      }
+      if (Name.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Name);
+      }
+      size += nodes_.CalculateSize(_repeated_nodes_codec);
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(Scene other) {
+      if (other == null) {
+        return;
+      }
+      if (other.extensions_ != null) {
+        if (extensions_ == null) {
+          Extensions = new global::VrmProtobuf.Scene.Types.Extensions();
+        }
+        Extensions.MergeFrom(other.Extensions);
+      }
+      if (other.extras_ != null) {
+        if (extras_ == null) {
+          Extras = new global::VrmProtobuf.Scene.Types.Extras();
+        }
+        Extras.MergeFrom(other.Extras);
+      }
+      if (other.Name.Length != 0) {
+        Name = other.Name;
+      }
+      nodes_.Add(other.nodes_);
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            if (extensions_ == null) {
+              Extensions = new global::VrmProtobuf.Scene.Types.Extensions();
+            }
+            input.ReadMessage(Extensions);
+            break;
+          }
+          case 18: {
+            if (extras_ == null) {
+              Extras = new global::VrmProtobuf.Scene.Types.Extras();
+            }
+            input.ReadMessage(Extras);
+            break;
+          }
+          case 26: {
+            Name = input.ReadString();
+            break;
+          }
+          case 34:
+          case 32: {
+            nodes_.AddEntriesFrom(input, _repeated_nodes_codec);
+            break;
+          }
+        }
+      }
+    }
+
+    #region Nested types
+    /// <summary>Container for nested types declared in the Scene message type.</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static partial class Types {
+      public sealed partial class Extensions : pb::IMessage<Extensions> {
+        private static readonly pb::MessageParser<Extensions> _parser = new pb::MessageParser<Extensions>(() => new Extensions());
+        private pb::UnknownFieldSet _unknownFields;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pb::MessageParser<Extensions> Parser { get { return _parser; } }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pbr::MessageDescriptor Descriptor {
+          get { return global::VrmProtobuf.Scene.Descriptor.NestedTypes[0]; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        pbr::MessageDescriptor pb::IMessage.Descriptor {
+          get { return Descriptor; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extensions() {
+          OnConstruction();
+        }
+
+        partial void OnConstruction();
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extensions(Extensions other) : this() {
+          _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extensions Clone() {
+          return new Extensions(this);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override bool Equals(object other) {
+          return Equals(other as Extensions);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public bool Equals(Extensions other) {
+          if (ReferenceEquals(other, null)) {
+            return false;
+          }
+          if (ReferenceEquals(other, this)) {
+            return true;
+          }
+          return Equals(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override int GetHashCode() {
+          int hash = 1;
+          if (_unknownFields != null) {
+            hash ^= _unknownFields.GetHashCode();
+          }
+          return hash;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override string ToString() {
+          return pb::JsonFormatter.ToDiagnosticString(this);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void WriteTo(pb::CodedOutputStream output) {
+          if (_unknownFields != null) {
+            _unknownFields.WriteTo(output);
+          }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public int CalculateSize() {
+          int size = 0;
+          if (_unknownFields != null) {
+            size += _unknownFields.CalculateSize();
+          }
+          return size;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(Extensions other) {
+          if (other == null) {
+            return;
+          }
+          _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(pb::CodedInputStream input) {
+          uint tag;
+          while ((tag = input.ReadTag()) != 0) {
+            switch(tag) {
+              default:
+                _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+                break;
+            }
+          }
+        }
+
+      }
+
+      public sealed partial class Extras : pb::IMessage<Extras> {
+        private static readonly pb::MessageParser<Extras> _parser = new pb::MessageParser<Extras>(() => new Extras());
+        private pb::UnknownFieldSet _unknownFields;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pb::MessageParser<Extras> Parser { get { return _parser; } }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pbr::MessageDescriptor Descriptor {
+          get { return global::VrmProtobuf.Scene.Descriptor.NestedTypes[1]; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        pbr::MessageDescriptor pb::IMessage.Descriptor {
+          get { return Descriptor; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extras() {
+          OnConstruction();
+        }
+
+        partial void OnConstruction();
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extras(Extras other) : this() {
+          _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extras Clone() {
+          return new Extras(this);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override bool Equals(object other) {
+          return Equals(other as Extras);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public bool Equals(Extras other) {
+          if (ReferenceEquals(other, null)) {
+            return false;
+          }
+          if (ReferenceEquals(other, this)) {
+            return true;
+          }
+          return Equals(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override int GetHashCode() {
+          int hash = 1;
+          if (_unknownFields != null) {
+            hash ^= _unknownFields.GetHashCode();
+          }
+          return hash;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override string ToString() {
+          return pb::JsonFormatter.ToDiagnosticString(this);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void WriteTo(pb::CodedOutputStream output) {
+          if (_unknownFields != null) {
+            _unknownFields.WriteTo(output);
+          }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public int CalculateSize() {
+          int size = 0;
+          if (_unknownFields != null) {
+            size += _unknownFields.CalculateSize();
+          }
+          return size;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(Extras other) {
+          if (other == null) {
+            return;
+          }
+          _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(pb::CodedInputStream input) {
+          uint tag;
+          while ((tag = input.ReadTag()) != 0) {
+            switch(tag) {
+              default:
+                _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+                break;
+            }
+          }
+        }
+
+      }
+
+    }
+    #endregion
+
+  }
+
+  public sealed partial class Skin : pb::IMessage<Skin> {
+    private static readonly pb::MessageParser<Skin> _parser = new pb::MessageParser<Skin>(() => new Skin());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<Skin> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::VrmProtobuf.GlTFReflection.Descriptor.MessageTypes[26]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public Skin() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public Skin(Skin other) : this() {
+      extensions_ = other.extensions_ != null ? other.extensions_.Clone() : null;
+      extras_ = other.extras_ != null ? other.extras_.Clone() : null;
+      name_ = other.name_;
+      InverseBindMatrices = other.InverseBindMatrices;
+      Skeleton = other.Skeleton;
+      joints_ = other.joints_.Clone();
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public Skin Clone() {
+      return new Skin(this);
+    }
+
+    /// <summary>Field number for the "extensions" field.</summary>
+    public const int ExtensionsFieldNumber = 1;
+    private global::VrmProtobuf.Skin.Types.Extensions extensions_;
+    /// <summary>
+    /// Dictionary object with extension-specific objects.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::VrmProtobuf.Skin.Types.Extensions Extensions {
+      get { return extensions_; }
+      set {
+        extensions_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "extras" field.</summary>
+    public const int ExtrasFieldNumber = 2;
+    private global::VrmProtobuf.Skin.Types.Extras extras_;
+    /// <summary>
+    /// Application-specific data.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::VrmProtobuf.Skin.Types.Extras Extras {
+      get { return extras_; }
+      set {
+        extras_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "name" field.</summary>
+    public const int NameFieldNumber = 3;
+    private string name_ = "";
+    /// <summary>
+    /// The user-defined name of this object.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Name {
+      get { return name_; }
+      set {
+        name_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "inverseBindMatrices" field.</summary>
+    public const int InverseBindMatricesFieldNumber = 4;
+    private static readonly pb::FieldCodec<int?> _single_inverseBindMatrices_codec = pb::FieldCodec.ForStructWrapper<int>(34);
+    private int? inverseBindMatrices_;
+    /// <summary>
+    /// The index of the accessor containing the floating-point 4x4 inverse-bind matrices.  The default is that each matrix is a 4x4 identity matrix, which implies that inverse-bind matrices were pre-applied.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int? InverseBindMatrices {
+      get { return inverseBindMatrices_; }
+      set {
+        inverseBindMatrices_ = value;
+      }
+    }
+
+
+    /// <summary>Field number for the "skeleton" field.</summary>
+    public const int SkeletonFieldNumber = 5;
+    private static readonly pb::FieldCodec<int?> _single_skeleton_codec = pb::FieldCodec.ForStructWrapper<int>(42);
+    private int? skeleton_;
+    /// <summary>
+    /// The index of the node used as a skeleton root.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int? Skeleton {
+      get { return skeleton_; }
+      set {
+        skeleton_ = value;
+      }
+    }
+
+
+    /// <summary>Field number for the "joints" field.</summary>
+    public const int JointsFieldNumber = 6;
+    private static readonly pb::FieldCodec<int> _repeated_joints_codec
+        = pb::FieldCodec.ForInt32(50);
+    private readonly pbc::RepeatedField<int> joints_ = new pbc::RepeatedField<int>();
+    /// <summary>
+    /// Indices of skeleton nodes, used as joints in this skin.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::RepeatedField<int> Joints {
+      get { return joints_; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as Skin);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(Skin other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (!object.Equals(Extensions, other.Extensions)) return false;
+      if (!object.Equals(Extras, other.Extras)) return false;
+      if (Name != other.Name) return false;
+      if (InverseBindMatrices != other.InverseBindMatrices) return false;
+      if (Skeleton != other.Skeleton) return false;
+      if(!joints_.Equals(other.joints_)) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (extensions_ != null) hash ^= Extensions.GetHashCode();
+      if (extras_ != null) hash ^= Extras.GetHashCode();
+      if (Name.Length != 0) hash ^= Name.GetHashCode();
+      if (inverseBindMatrices_ != null) hash ^= InverseBindMatrices.GetHashCode();
+      if (skeleton_ != null) hash ^= Skeleton.GetHashCode();
+      hash ^= joints_.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (extensions_ != null) {
+        output.WriteRawTag(10);
+        output.WriteMessage(Extensions);
+      }
+      if (extras_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(Extras);
+      }
+      if (Name.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(Name);
+      }
+      if (inverseBindMatrices_ != null) {
+        _single_inverseBindMatrices_codec.WriteTagAndValue(output, InverseBindMatrices);
+      }
+      if (skeleton_ != null) {
+        _single_skeleton_codec.WriteTagAndValue(output, Skeleton);
+      }
+      joints_.WriteTo(output, _repeated_joints_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (extensions_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Extensions);
+      }
+      if (extras_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Extras);
+      }
+      if (Name.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Name);
+      }
+      if (inverseBindMatrices_ != null) {
+        size += _single_inverseBindMatrices_codec.CalculateSizeWithTag(InverseBindMatrices);
+      }
+      if (skeleton_ != null) {
+        size += _single_skeleton_codec.CalculateSizeWithTag(Skeleton);
+      }
+      size += joints_.CalculateSize(_repeated_joints_codec);
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(Skin other) {
+      if (other == null) {
+        return;
+      }
+      if (other.extensions_ != null) {
+        if (extensions_ == null) {
+          Extensions = new global::VrmProtobuf.Skin.Types.Extensions();
+        }
+        Extensions.MergeFrom(other.Extensions);
+      }
+      if (other.extras_ != null) {
+        if (extras_ == null) {
+          Extras = new global::VrmProtobuf.Skin.Types.Extras();
+        }
+        Extras.MergeFrom(other.Extras);
+      }
+      if (other.Name.Length != 0) {
+        Name = other.Name;
+      }
+      if (other.inverseBindMatrices_ != null) {
+        if (inverseBindMatrices_ == null || other.InverseBindMatrices != 0) {
+          InverseBindMatrices = other.InverseBindMatrices;
+        }
+      }
+      if (other.skeleton_ != null) {
+        if (skeleton_ == null || other.Skeleton != 0) {
+          Skeleton = other.Skeleton;
+        }
+      }
+      joints_.Add(other.joints_);
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            if (extensions_ == null) {
+              Extensions = new global::VrmProtobuf.Skin.Types.Extensions();
+            }
+            input.ReadMessage(Extensions);
+            break;
+          }
+          case 18: {
+            if (extras_ == null) {
+              Extras = new global::VrmProtobuf.Skin.Types.Extras();
+            }
+            input.ReadMessage(Extras);
+            break;
+          }
+          case 26: {
+            Name = input.ReadString();
+            break;
+          }
+          case 34: {
+            int? value = _single_inverseBindMatrices_codec.Read(input);
+            if (inverseBindMatrices_ == null || value != 0) {
+              InverseBindMatrices = value;
+            }
+            break;
+          }
+          case 42: {
+            int? value = _single_skeleton_codec.Read(input);
+            if (skeleton_ == null || value != 0) {
+              Skeleton = value;
+            }
+            break;
+          }
+          case 50:
+          case 48: {
+            joints_.AddEntriesFrom(input, _repeated_joints_codec);
+            break;
+          }
+        }
+      }
+    }
+
+    #region Nested types
+    /// <summary>Container for nested types declared in the Skin message type.</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static partial class Types {
+      public sealed partial class Extensions : pb::IMessage<Extensions> {
+        private static readonly pb::MessageParser<Extensions> _parser = new pb::MessageParser<Extensions>(() => new Extensions());
+        private pb::UnknownFieldSet _unknownFields;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pb::MessageParser<Extensions> Parser { get { return _parser; } }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pbr::MessageDescriptor Descriptor {
+          get { return global::VrmProtobuf.Skin.Descriptor.NestedTypes[0]; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        pbr::MessageDescriptor pb::IMessage.Descriptor {
+          get { return Descriptor; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extensions() {
+          OnConstruction();
+        }
+
+        partial void OnConstruction();
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extensions(Extensions other) : this() {
+          _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extensions Clone() {
+          return new Extensions(this);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override bool Equals(object other) {
+          return Equals(other as Extensions);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public bool Equals(Extensions other) {
+          if (ReferenceEquals(other, null)) {
+            return false;
+          }
+          if (ReferenceEquals(other, this)) {
+            return true;
+          }
+          return Equals(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override int GetHashCode() {
+          int hash = 1;
+          if (_unknownFields != null) {
+            hash ^= _unknownFields.GetHashCode();
+          }
+          return hash;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override string ToString() {
+          return pb::JsonFormatter.ToDiagnosticString(this);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void WriteTo(pb::CodedOutputStream output) {
+          if (_unknownFields != null) {
+            _unknownFields.WriteTo(output);
+          }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public int CalculateSize() {
+          int size = 0;
+          if (_unknownFields != null) {
+            size += _unknownFields.CalculateSize();
+          }
+          return size;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(Extensions other) {
+          if (other == null) {
+            return;
+          }
+          _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(pb::CodedInputStream input) {
+          uint tag;
+          while ((tag = input.ReadTag()) != 0) {
+            switch(tag) {
+              default:
+                _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+                break;
+            }
+          }
+        }
+
+      }
+
+      public sealed partial class Extras : pb::IMessage<Extras> {
+        private static readonly pb::MessageParser<Extras> _parser = new pb::MessageParser<Extras>(() => new Extras());
+        private pb::UnknownFieldSet _unknownFields;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pb::MessageParser<Extras> Parser { get { return _parser; } }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pbr::MessageDescriptor Descriptor {
+          get { return global::VrmProtobuf.Skin.Descriptor.NestedTypes[1]; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        pbr::MessageDescriptor pb::IMessage.Descriptor {
+          get { return Descriptor; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extras() {
+          OnConstruction();
+        }
+
+        partial void OnConstruction();
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extras(Extras other) : this() {
+          _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extras Clone() {
+          return new Extras(this);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override bool Equals(object other) {
+          return Equals(other as Extras);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public bool Equals(Extras other) {
+          if (ReferenceEquals(other, null)) {
+            return false;
+          }
+          if (ReferenceEquals(other, this)) {
+            return true;
+          }
+          return Equals(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override int GetHashCode() {
+          int hash = 1;
+          if (_unknownFields != null) {
+            hash ^= _unknownFields.GetHashCode();
+          }
+          return hash;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override string ToString() {
+          return pb::JsonFormatter.ToDiagnosticString(this);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void WriteTo(pb::CodedOutputStream output) {
+          if (_unknownFields != null) {
+            _unknownFields.WriteTo(output);
+          }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public int CalculateSize() {
+          int size = 0;
+          if (_unknownFields != null) {
+            size += _unknownFields.CalculateSize();
+          }
+          return size;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(Extras other) {
+          if (other == null) {
+            return;
+          }
+          _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(pb::CodedInputStream input) {
+          uint tag;
+          while ((tag = input.ReadTag()) != 0) {
+            switch(tag) {
+              default:
+                _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+                break;
+            }
+          }
+        }
+
+      }
+
+    }
+    #endregion
+
+  }
+
+  public sealed partial class Texture : pb::IMessage<Texture> {
+    private static readonly pb::MessageParser<Texture> _parser = new pb::MessageParser<Texture>(() => new Texture());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<Texture> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::VrmProtobuf.GlTFReflection.Descriptor.MessageTypes[27]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public Texture() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public Texture(Texture other) : this() {
+      extensions_ = other.extensions_ != null ? other.extensions_.Clone() : null;
+      extras_ = other.extras_ != null ? other.extras_.Clone() : null;
+      name_ = other.name_;
+      Sampler = other.Sampler;
+      Source = other.Source;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public Texture Clone() {
+      return new Texture(this);
+    }
+
+    /// <summary>Field number for the "extensions" field.</summary>
+    public const int ExtensionsFieldNumber = 1;
+    private global::VrmProtobuf.Texture.Types.Extensions extensions_;
+    /// <summary>
+    /// Dictionary object with extension-specific objects.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::VrmProtobuf.Texture.Types.Extensions Extensions {
+      get { return extensions_; }
+      set {
+        extensions_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "extras" field.</summary>
+    public const int ExtrasFieldNumber = 2;
+    private global::VrmProtobuf.Texture.Types.Extras extras_;
+    /// <summary>
+    /// Application-specific data.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::VrmProtobuf.Texture.Types.Extras Extras {
+      get { return extras_; }
+      set {
+        extras_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "name" field.</summary>
+    public const int NameFieldNumber = 3;
+    private string name_ = "";
+    /// <summary>
+    /// The user-defined name of this object.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Name {
+      get { return name_; }
+      set {
+        name_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "sampler" field.</summary>
+    public const int SamplerFieldNumber = 4;
+    private static readonly pb::FieldCodec<int?> _single_sampler_codec = pb::FieldCodec.ForStructWrapper<int>(34);
+    private int? sampler_;
+    /// <summary>
+    /// The index of the sampler used by this texture. When undefined, a sampler with repeat wrapping and auto filtering should be used.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int? Sampler {
+      get { return sampler_; }
+      set {
+        sampler_ = value;
+      }
+    }
+
+
+    /// <summary>Field number for the "source" field.</summary>
+    public const int SourceFieldNumber = 5;
+    private static readonly pb::FieldCodec<int?> _single_source_codec = pb::FieldCodec.ForStructWrapper<int>(42);
+    private int? source_;
+    /// <summary>
+    /// The index of the image used by this texture. When undefined, it is expected that an extension or other mechanism will supply an alternate texture source, otherwise behavior is undefined.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int? Source {
+      get { return source_; }
+      set {
+        source_ = value;
+      }
+    }
+
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as Texture);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(Texture other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (!object.Equals(Extensions, other.Extensions)) return false;
+      if (!object.Equals(Extras, other.Extras)) return false;
+      if (Name != other.Name) return false;
+      if (Sampler != other.Sampler) return false;
+      if (Source != other.Source) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (extensions_ != null) hash ^= Extensions.GetHashCode();
+      if (extras_ != null) hash ^= Extras.GetHashCode();
+      if (Name.Length != 0) hash ^= Name.GetHashCode();
+      if (sampler_ != null) hash ^= Sampler.GetHashCode();
+      if (source_ != null) hash ^= Source.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (extensions_ != null) {
+        output.WriteRawTag(10);
+        output.WriteMessage(Extensions);
+      }
+      if (extras_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(Extras);
+      }
+      if (Name.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(Name);
+      }
+      if (sampler_ != null) {
+        _single_sampler_codec.WriteTagAndValue(output, Sampler);
+      }
+      if (source_ != null) {
+        _single_source_codec.WriteTagAndValue(output, Source);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (extensions_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Extensions);
+      }
+      if (extras_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Extras);
+      }
+      if (Name.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Name);
+      }
+      if (sampler_ != null) {
+        size += _single_sampler_codec.CalculateSizeWithTag(Sampler);
+      }
+      if (source_ != null) {
+        size += _single_source_codec.CalculateSizeWithTag(Source);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(Texture other) {
+      if (other == null) {
+        return;
+      }
+      if (other.extensions_ != null) {
+        if (extensions_ == null) {
+          Extensions = new global::VrmProtobuf.Texture.Types.Extensions();
+        }
+        Extensions.MergeFrom(other.Extensions);
+      }
+      if (other.extras_ != null) {
+        if (extras_ == null) {
+          Extras = new global::VrmProtobuf.Texture.Types.Extras();
+        }
+        Extras.MergeFrom(other.Extras);
+      }
+      if (other.Name.Length != 0) {
+        Name = other.Name;
+      }
+      if (other.sampler_ != null) {
+        if (sampler_ == null || other.Sampler != 0) {
+          Sampler = other.Sampler;
+        }
+      }
+      if (other.source_ != null) {
+        if (source_ == null || other.Source != 0) {
+          Source = other.Source;
+        }
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            if (extensions_ == null) {
+              Extensions = new global::VrmProtobuf.Texture.Types.Extensions();
+            }
+            input.ReadMessage(Extensions);
+            break;
+          }
+          case 18: {
+            if (extras_ == null) {
+              Extras = new global::VrmProtobuf.Texture.Types.Extras();
+            }
+            input.ReadMessage(Extras);
+            break;
+          }
+          case 26: {
+            Name = input.ReadString();
+            break;
+          }
+          case 34: {
+            int? value = _single_sampler_codec.Read(input);
+            if (sampler_ == null || value != 0) {
+              Sampler = value;
+            }
+            break;
+          }
+          case 42: {
+            int? value = _single_source_codec.Read(input);
+            if (source_ == null || value != 0) {
+              Source = value;
+            }
+            break;
+          }
+        }
+      }
+    }
+
+    #region Nested types
+    /// <summary>Container for nested types declared in the Texture message type.</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static partial class Types {
+      public sealed partial class Extensions : pb::IMessage<Extensions> {
+        private static readonly pb::MessageParser<Extensions> _parser = new pb::MessageParser<Extensions>(() => new Extensions());
+        private pb::UnknownFieldSet _unknownFields;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pb::MessageParser<Extensions> Parser { get { return _parser; } }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pbr::MessageDescriptor Descriptor {
+          get { return global::VrmProtobuf.Texture.Descriptor.NestedTypes[0]; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        pbr::MessageDescriptor pb::IMessage.Descriptor {
+          get { return Descriptor; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extensions() {
+          OnConstruction();
+        }
+
+        partial void OnConstruction();
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extensions(Extensions other) : this() {
+          _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extensions Clone() {
+          return new Extensions(this);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override bool Equals(object other) {
+          return Equals(other as Extensions);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public bool Equals(Extensions other) {
+          if (ReferenceEquals(other, null)) {
+            return false;
+          }
+          if (ReferenceEquals(other, this)) {
+            return true;
+          }
+          return Equals(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override int GetHashCode() {
+          int hash = 1;
+          if (_unknownFields != null) {
+            hash ^= _unknownFields.GetHashCode();
+          }
+          return hash;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override string ToString() {
+          return pb::JsonFormatter.ToDiagnosticString(this);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void WriteTo(pb::CodedOutputStream output) {
+          if (_unknownFields != null) {
+            _unknownFields.WriteTo(output);
+          }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public int CalculateSize() {
+          int size = 0;
+          if (_unknownFields != null) {
+            size += _unknownFields.CalculateSize();
+          }
+          return size;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(Extensions other) {
+          if (other == null) {
+            return;
+          }
+          _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(pb::CodedInputStream input) {
+          uint tag;
+          while ((tag = input.ReadTag()) != 0) {
+            switch(tag) {
+              default:
+                _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+                break;
+            }
+          }
+        }
+
+      }
+
+      public sealed partial class Extras : pb::IMessage<Extras> {
+        private static readonly pb::MessageParser<Extras> _parser = new pb::MessageParser<Extras>(() => new Extras());
+        private pb::UnknownFieldSet _unknownFields;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pb::MessageParser<Extras> Parser { get { return _parser; } }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pbr::MessageDescriptor Descriptor {
+          get { return global::VrmProtobuf.Texture.Descriptor.NestedTypes[1]; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        pbr::MessageDescriptor pb::IMessage.Descriptor {
+          get { return Descriptor; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extras() {
+          OnConstruction();
+        }
+
+        partial void OnConstruction();
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extras(Extras other) : this() {
+          _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extras Clone() {
+          return new Extras(this);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override bool Equals(object other) {
+          return Equals(other as Extras);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public bool Equals(Extras other) {
+          if (ReferenceEquals(other, null)) {
+            return false;
+          }
+          if (ReferenceEquals(other, this)) {
+            return true;
+          }
+          return Equals(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override int GetHashCode() {
+          int hash = 1;
+          if (_unknownFields != null) {
+            hash ^= _unknownFields.GetHashCode();
+          }
+          return hash;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override string ToString() {
+          return pb::JsonFormatter.ToDiagnosticString(this);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void WriteTo(pb::CodedOutputStream output) {
+          if (_unknownFields != null) {
+            _unknownFields.WriteTo(output);
+          }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public int CalculateSize() {
+          int size = 0;
+          if (_unknownFields != null) {
+            size += _unknownFields.CalculateSize();
+          }
+          return size;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(Extras other) {
+          if (other == null) {
+            return;
+          }
+          _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(pb::CodedInputStream input) {
+          uint tag;
+          while ((tag = input.ReadTag()) != 0) {
+            switch(tag) {
+              default:
+                _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+                break;
+            }
+          }
+        }
+
+      }
+
+    }
+    #endregion
+
+  }
+
+  public sealed partial class glTF : pb::IMessage<glTF> {
+    private static readonly pb::MessageParser<glTF> _parser = new pb::MessageParser<glTF>(() => new glTF());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<glTF> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::VrmProtobuf.GlTFReflection.Descriptor.MessageTypes[28]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public glTF() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public glTF(glTF other) : this() {
+      extensions_ = other.extensions_ != null ? other.extensions_.Clone() : null;
+      extras_ = other.extras_ != null ? other.extras_.Clone() : null;
+      extensionsUsed_ = other.extensionsUsed_.Clone();
+      extensionsRequired_ = other.extensionsRequired_.Clone();
+      accessors_ = other.accessors_.Clone();
+      animations_ = other.animations_.Clone();
+      asset_ = other.asset_ != null ? other.asset_.Clone() : null;
+      buffers_ = other.buffers_.Clone();
+      bufferViews_ = other.bufferViews_.Clone();
+      cameras_ = other.cameras_.Clone();
+      images_ = other.images_.Clone();
+      materials_ = other.materials_.Clone();
+      meshes_ = other.meshes_.Clone();
+      nodes_ = other.nodes_.Clone();
+      samplers_ = other.samplers_.Clone();
+      Scene = other.Scene;
+      scenes_ = other.scenes_.Clone();
+      skins_ = other.skins_.Clone();
+      textures_ = other.textures_.Clone();
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public glTF Clone() {
+      return new glTF(this);
+    }
+
+    /// <summary>Field number for the "extensions" field.</summary>
+    public const int ExtensionsFieldNumber = 1;
+    private global::VrmProtobuf.glTF.Types.Extensions extensions_;
+    /// <summary>
+    /// Dictionary object with extension-specific objects.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::VrmProtobuf.glTF.Types.Extensions Extensions {
+      get { return extensions_; }
+      set {
+        extensions_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "extras" field.</summary>
+    public const int ExtrasFieldNumber = 2;
+    private global::VrmProtobuf.glTF.Types.Extras extras_;
+    /// <summary>
+    /// Application-specific data.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::VrmProtobuf.glTF.Types.Extras Extras {
+      get { return extras_; }
+      set {
+        extras_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "extensionsUsed" field.</summary>
+    public const int ExtensionsUsedFieldNumber = 3;
+    private static readonly pb::FieldCodec<string> _repeated_extensionsUsed_codec
+        = pb::FieldCodec.ForString(26);
+    private readonly pbc::RepeatedField<string> extensionsUsed_ = new pbc::RepeatedField<string>();
+    /// <summary>
+    /// Names of glTF extensions used somewhere in this asset.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::RepeatedField<string> ExtensionsUsed {
+      get { return extensionsUsed_; }
+    }
+
+    /// <summary>Field number for the "extensionsRequired" field.</summary>
+    public const int ExtensionsRequiredFieldNumber = 4;
+    private static readonly pb::FieldCodec<string> _repeated_extensionsRequired_codec
+        = pb::FieldCodec.ForString(34);
+    private readonly pbc::RepeatedField<string> extensionsRequired_ = new pbc::RepeatedField<string>();
+    /// <summary>
+    /// Names of glTF extensions required to properly load this asset.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::RepeatedField<string> ExtensionsRequired {
+      get { return extensionsRequired_; }
+    }
+
+    /// <summary>Field number for the "accessors" field.</summary>
+    public const int AccessorsFieldNumber = 5;
+    private static readonly pb::FieldCodec<global::VrmProtobuf.Accessor> _repeated_accessors_codec
+        = pb::FieldCodec.ForMessage(42, global::VrmProtobuf.Accessor.Parser);
+    private readonly pbc::RepeatedField<global::VrmProtobuf.Accessor> accessors_ = new pbc::RepeatedField<global::VrmProtobuf.Accessor>();
+    /// <summary>
+    /// An array of accessors.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::RepeatedField<global::VrmProtobuf.Accessor> Accessors {
+      get { return accessors_; }
+    }
+
+    /// <summary>Field number for the "animations" field.</summary>
+    public const int AnimationsFieldNumber = 6;
+    private static readonly pb::FieldCodec<global::VrmProtobuf.Animation> _repeated_animations_codec
+        = pb::FieldCodec.ForMessage(50, global::VrmProtobuf.Animation.Parser);
+    private readonly pbc::RepeatedField<global::VrmProtobuf.Animation> animations_ = new pbc::RepeatedField<global::VrmProtobuf.Animation>();
+    /// <summary>
+    /// An array of keyframe animations.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::RepeatedField<global::VrmProtobuf.Animation> Animations {
+      get { return animations_; }
+    }
+
+    /// <summary>Field number for the "asset" field.</summary>
+    public const int AssetFieldNumber = 7;
+    private global::VrmProtobuf.Asset asset_;
+    /// <summary>
+    /// Metadata about the glTF asset.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::VrmProtobuf.Asset Asset {
+      get { return asset_; }
+      set {
+        asset_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "buffers" field.</summary>
+    public const int BuffersFieldNumber = 8;
+    private static readonly pb::FieldCodec<global::VrmProtobuf.Buffer> _repeated_buffers_codec
+        = pb::FieldCodec.ForMessage(66, global::VrmProtobuf.Buffer.Parser);
+    private readonly pbc::RepeatedField<global::VrmProtobuf.Buffer> buffers_ = new pbc::RepeatedField<global::VrmProtobuf.Buffer>();
+    /// <summary>
+    /// An array of buffers.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::RepeatedField<global::VrmProtobuf.Buffer> Buffers {
+      get { return buffers_; }
+    }
+
+    /// <summary>Field number for the "bufferViews" field.</summary>
+    public const int BufferViewsFieldNumber = 9;
+    private static readonly pb::FieldCodec<global::VrmProtobuf.BufferView> _repeated_bufferViews_codec
+        = pb::FieldCodec.ForMessage(74, global::VrmProtobuf.BufferView.Parser);
+    private readonly pbc::RepeatedField<global::VrmProtobuf.BufferView> bufferViews_ = new pbc::RepeatedField<global::VrmProtobuf.BufferView>();
+    /// <summary>
+    /// An array of bufferViews.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::RepeatedField<global::VrmProtobuf.BufferView> BufferViews {
+      get { return bufferViews_; }
+    }
+
+    /// <summary>Field number for the "cameras" field.</summary>
+    public const int CamerasFieldNumber = 10;
+    private static readonly pb::FieldCodec<global::VrmProtobuf.Camera> _repeated_cameras_codec
+        = pb::FieldCodec.ForMessage(82, global::VrmProtobuf.Camera.Parser);
+    private readonly pbc::RepeatedField<global::VrmProtobuf.Camera> cameras_ = new pbc::RepeatedField<global::VrmProtobuf.Camera>();
+    /// <summary>
+    /// An array of cameras.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::RepeatedField<global::VrmProtobuf.Camera> Cameras {
+      get { return cameras_; }
+    }
+
+    /// <summary>Field number for the "images" field.</summary>
+    public const int ImagesFieldNumber = 11;
+    private static readonly pb::FieldCodec<global::VrmProtobuf.Image> _repeated_images_codec
+        = pb::FieldCodec.ForMessage(90, global::VrmProtobuf.Image.Parser);
+    private readonly pbc::RepeatedField<global::VrmProtobuf.Image> images_ = new pbc::RepeatedField<global::VrmProtobuf.Image>();
+    /// <summary>
+    /// An array of images.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::RepeatedField<global::VrmProtobuf.Image> Images {
+      get { return images_; }
+    }
+
+    /// <summary>Field number for the "materials" field.</summary>
+    public const int MaterialsFieldNumber = 12;
+    private static readonly pb::FieldCodec<global::VrmProtobuf.Material> _repeated_materials_codec
+        = pb::FieldCodec.ForMessage(98, global::VrmProtobuf.Material.Parser);
+    private readonly pbc::RepeatedField<global::VrmProtobuf.Material> materials_ = new pbc::RepeatedField<global::VrmProtobuf.Material>();
+    /// <summary>
+    /// An array of materials.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::RepeatedField<global::VrmProtobuf.Material> Materials {
+      get { return materials_; }
+    }
+
+    /// <summary>Field number for the "meshes" field.</summary>
+    public const int MeshesFieldNumber = 13;
+    private static readonly pb::FieldCodec<global::VrmProtobuf.Mesh> _repeated_meshes_codec
+        = pb::FieldCodec.ForMessage(106, global::VrmProtobuf.Mesh.Parser);
+    private readonly pbc::RepeatedField<global::VrmProtobuf.Mesh> meshes_ = new pbc::RepeatedField<global::VrmProtobuf.Mesh>();
+    /// <summary>
+    /// An array of meshes.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::RepeatedField<global::VrmProtobuf.Mesh> Meshes {
+      get { return meshes_; }
+    }
+
+    /// <summary>Field number for the "nodes" field.</summary>
+    public const int NodesFieldNumber = 14;
+    private static readonly pb::FieldCodec<global::VrmProtobuf.Node> _repeated_nodes_codec
+        = pb::FieldCodec.ForMessage(114, global::VrmProtobuf.Node.Parser);
+    private readonly pbc::RepeatedField<global::VrmProtobuf.Node> nodes_ = new pbc::RepeatedField<global::VrmProtobuf.Node>();
+    /// <summary>
+    /// An array of nodes.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::RepeatedField<global::VrmProtobuf.Node> Nodes {
+      get { return nodes_; }
+    }
+
+    /// <summary>Field number for the "samplers" field.</summary>
+    public const int SamplersFieldNumber = 15;
+    private static readonly pb::FieldCodec<global::VrmProtobuf.Sampler> _repeated_samplers_codec
+        = pb::FieldCodec.ForMessage(122, global::VrmProtobuf.Sampler.Parser);
+    private readonly pbc::RepeatedField<global::VrmProtobuf.Sampler> samplers_ = new pbc::RepeatedField<global::VrmProtobuf.Sampler>();
+    /// <summary>
+    /// An array of samplers.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::RepeatedField<global::VrmProtobuf.Sampler> Samplers {
+      get { return samplers_; }
+    }
+
+    /// <summary>Field number for the "scene" field.</summary>
+    public const int SceneFieldNumber = 16;
+    private static readonly pb::FieldCodec<int?> _single_scene_codec = pb::FieldCodec.ForStructWrapper<int>(130);
+    private int? scene_;
+    /// <summary>
+    /// The index of the default scene.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int? Scene {
+      get { return scene_; }
+      set {
+        scene_ = value;
+      }
+    }
+
+
+    /// <summary>Field number for the "scenes" field.</summary>
+    public const int ScenesFieldNumber = 17;
+    private static readonly pb::FieldCodec<global::VrmProtobuf.Scene> _repeated_scenes_codec
+        = pb::FieldCodec.ForMessage(138, global::VrmProtobuf.Scene.Parser);
+    private readonly pbc::RepeatedField<global::VrmProtobuf.Scene> scenes_ = new pbc::RepeatedField<global::VrmProtobuf.Scene>();
+    /// <summary>
+    /// An array of scenes.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::RepeatedField<global::VrmProtobuf.Scene> Scenes {
+      get { return scenes_; }
+    }
+
+    /// <summary>Field number for the "skins" field.</summary>
+    public const int SkinsFieldNumber = 18;
+    private static readonly pb::FieldCodec<global::VrmProtobuf.Skin> _repeated_skins_codec
+        = pb::FieldCodec.ForMessage(146, global::VrmProtobuf.Skin.Parser);
+    private readonly pbc::RepeatedField<global::VrmProtobuf.Skin> skins_ = new pbc::RepeatedField<global::VrmProtobuf.Skin>();
+    /// <summary>
+    /// An array of skins.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::RepeatedField<global::VrmProtobuf.Skin> Skins {
+      get { return skins_; }
+    }
+
+    /// <summary>Field number for the "textures" field.</summary>
+    public const int TexturesFieldNumber = 19;
+    private static readonly pb::FieldCodec<global::VrmProtobuf.Texture> _repeated_textures_codec
+        = pb::FieldCodec.ForMessage(154, global::VrmProtobuf.Texture.Parser);
+    private readonly pbc::RepeatedField<global::VrmProtobuf.Texture> textures_ = new pbc::RepeatedField<global::VrmProtobuf.Texture>();
+    /// <summary>
+    /// An array of textures.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::RepeatedField<global::VrmProtobuf.Texture> Textures {
+      get { return textures_; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as glTF);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(glTF other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (!object.Equals(Extensions, other.Extensions)) return false;
+      if (!object.Equals(Extras, other.Extras)) return false;
+      if(!extensionsUsed_.Equals(other.extensionsUsed_)) return false;
+      if(!extensionsRequired_.Equals(other.extensionsRequired_)) return false;
+      if(!accessors_.Equals(other.accessors_)) return false;
+      if(!animations_.Equals(other.animations_)) return false;
+      if (!object.Equals(Asset, other.Asset)) return false;
+      if(!buffers_.Equals(other.buffers_)) return false;
+      if(!bufferViews_.Equals(other.bufferViews_)) return false;
+      if(!cameras_.Equals(other.cameras_)) return false;
+      if(!images_.Equals(other.images_)) return false;
+      if(!materials_.Equals(other.materials_)) return false;
+      if(!meshes_.Equals(other.meshes_)) return false;
+      if(!nodes_.Equals(other.nodes_)) return false;
+      if(!samplers_.Equals(other.samplers_)) return false;
+      if (Scene != other.Scene) return false;
+      if(!scenes_.Equals(other.scenes_)) return false;
+      if(!skins_.Equals(other.skins_)) return false;
+      if(!textures_.Equals(other.textures_)) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (extensions_ != null) hash ^= Extensions.GetHashCode();
+      if (extras_ != null) hash ^= Extras.GetHashCode();
+      hash ^= extensionsUsed_.GetHashCode();
+      hash ^= extensionsRequired_.GetHashCode();
+      hash ^= accessors_.GetHashCode();
+      hash ^= animations_.GetHashCode();
+      if (asset_ != null) hash ^= Asset.GetHashCode();
+      hash ^= buffers_.GetHashCode();
+      hash ^= bufferViews_.GetHashCode();
+      hash ^= cameras_.GetHashCode();
+      hash ^= images_.GetHashCode();
+      hash ^= materials_.GetHashCode();
+      hash ^= meshes_.GetHashCode();
+      hash ^= nodes_.GetHashCode();
+      hash ^= samplers_.GetHashCode();
+      if (scene_ != null) hash ^= Scene.GetHashCode();
+      hash ^= scenes_.GetHashCode();
+      hash ^= skins_.GetHashCode();
+      hash ^= textures_.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (extensions_ != null) {
+        output.WriteRawTag(10);
+        output.WriteMessage(Extensions);
+      }
+      if (extras_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(Extras);
+      }
+      extensionsUsed_.WriteTo(output, _repeated_extensionsUsed_codec);
+      extensionsRequired_.WriteTo(output, _repeated_extensionsRequired_codec);
+      accessors_.WriteTo(output, _repeated_accessors_codec);
+      animations_.WriteTo(output, _repeated_animations_codec);
+      if (asset_ != null) {
+        output.WriteRawTag(58);
+        output.WriteMessage(Asset);
+      }
+      buffers_.WriteTo(output, _repeated_buffers_codec);
+      bufferViews_.WriteTo(output, _repeated_bufferViews_codec);
+      cameras_.WriteTo(output, _repeated_cameras_codec);
+      images_.WriteTo(output, _repeated_images_codec);
+      materials_.WriteTo(output, _repeated_materials_codec);
+      meshes_.WriteTo(output, _repeated_meshes_codec);
+      nodes_.WriteTo(output, _repeated_nodes_codec);
+      samplers_.WriteTo(output, _repeated_samplers_codec);
+      if (scene_ != null) {
+        _single_scene_codec.WriteTagAndValue(output, Scene);
+      }
+      scenes_.WriteTo(output, _repeated_scenes_codec);
+      skins_.WriteTo(output, _repeated_skins_codec);
+      textures_.WriteTo(output, _repeated_textures_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (extensions_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Extensions);
+      }
+      if (extras_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Extras);
+      }
+      size += extensionsUsed_.CalculateSize(_repeated_extensionsUsed_codec);
+      size += extensionsRequired_.CalculateSize(_repeated_extensionsRequired_codec);
+      size += accessors_.CalculateSize(_repeated_accessors_codec);
+      size += animations_.CalculateSize(_repeated_animations_codec);
+      if (asset_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Asset);
+      }
+      size += buffers_.CalculateSize(_repeated_buffers_codec);
+      size += bufferViews_.CalculateSize(_repeated_bufferViews_codec);
+      size += cameras_.CalculateSize(_repeated_cameras_codec);
+      size += images_.CalculateSize(_repeated_images_codec);
+      size += materials_.CalculateSize(_repeated_materials_codec);
+      size += meshes_.CalculateSize(_repeated_meshes_codec);
+      size += nodes_.CalculateSize(_repeated_nodes_codec);
+      size += samplers_.CalculateSize(_repeated_samplers_codec);
+      if (scene_ != null) {
+        size += _single_scene_codec.CalculateSizeWithTag(Scene);
+      }
+      size += scenes_.CalculateSize(_repeated_scenes_codec);
+      size += skins_.CalculateSize(_repeated_skins_codec);
+      size += textures_.CalculateSize(_repeated_textures_codec);
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(glTF other) {
+      if (other == null) {
+        return;
+      }
+      if (other.extensions_ != null) {
+        if (extensions_ == null) {
+          Extensions = new global::VrmProtobuf.glTF.Types.Extensions();
+        }
+        Extensions.MergeFrom(other.Extensions);
+      }
+      if (other.extras_ != null) {
+        if (extras_ == null) {
+          Extras = new global::VrmProtobuf.glTF.Types.Extras();
+        }
+        Extras.MergeFrom(other.Extras);
+      }
+      extensionsUsed_.Add(other.extensionsUsed_);
+      extensionsRequired_.Add(other.extensionsRequired_);
+      accessors_.Add(other.accessors_);
+      animations_.Add(other.animations_);
+      if (other.asset_ != null) {
+        if (asset_ == null) {
+          Asset = new global::VrmProtobuf.Asset();
+        }
+        Asset.MergeFrom(other.Asset);
+      }
+      buffers_.Add(other.buffers_);
+      bufferViews_.Add(other.bufferViews_);
+      cameras_.Add(other.cameras_);
+      images_.Add(other.images_);
+      materials_.Add(other.materials_);
+      meshes_.Add(other.meshes_);
+      nodes_.Add(other.nodes_);
+      samplers_.Add(other.samplers_);
+      if (other.scene_ != null) {
+        if (scene_ == null || other.Scene != 0) {
+          Scene = other.Scene;
+        }
+      }
+      scenes_.Add(other.scenes_);
+      skins_.Add(other.skins_);
+      textures_.Add(other.textures_);
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            if (extensions_ == null) {
+              Extensions = new global::VrmProtobuf.glTF.Types.Extensions();
+            }
+            input.ReadMessage(Extensions);
+            break;
+          }
+          case 18: {
+            if (extras_ == null) {
+              Extras = new global::VrmProtobuf.glTF.Types.Extras();
+            }
+            input.ReadMessage(Extras);
+            break;
+          }
+          case 26: {
+            extensionsUsed_.AddEntriesFrom(input, _repeated_extensionsUsed_codec);
+            break;
+          }
+          case 34: {
+            extensionsRequired_.AddEntriesFrom(input, _repeated_extensionsRequired_codec);
+            break;
+          }
+          case 42: {
+            accessors_.AddEntriesFrom(input, _repeated_accessors_codec);
+            break;
+          }
+          case 50: {
+            animations_.AddEntriesFrom(input, _repeated_animations_codec);
+            break;
+          }
+          case 58: {
+            if (asset_ == null) {
+              Asset = new global::VrmProtobuf.Asset();
+            }
+            input.ReadMessage(Asset);
+            break;
+          }
+          case 66: {
+            buffers_.AddEntriesFrom(input, _repeated_buffers_codec);
+            break;
+          }
+          case 74: {
+            bufferViews_.AddEntriesFrom(input, _repeated_bufferViews_codec);
+            break;
+          }
+          case 82: {
+            cameras_.AddEntriesFrom(input, _repeated_cameras_codec);
+            break;
+          }
+          case 90: {
+            images_.AddEntriesFrom(input, _repeated_images_codec);
+            break;
+          }
+          case 98: {
+            materials_.AddEntriesFrom(input, _repeated_materials_codec);
+            break;
+          }
+          case 106: {
+            meshes_.AddEntriesFrom(input, _repeated_meshes_codec);
+            break;
+          }
+          case 114: {
+            nodes_.AddEntriesFrom(input, _repeated_nodes_codec);
+            break;
+          }
+          case 122: {
+            samplers_.AddEntriesFrom(input, _repeated_samplers_codec);
+            break;
+          }
+          case 130: {
+            int? value = _single_scene_codec.Read(input);
+            if (scene_ == null || value != 0) {
+              Scene = value;
+            }
+            break;
+          }
+          case 138: {
+            scenes_.AddEntriesFrom(input, _repeated_scenes_codec);
+            break;
+          }
+          case 146: {
+            skins_.AddEntriesFrom(input, _repeated_skins_codec);
+            break;
+          }
+          case 154: {
+            textures_.AddEntriesFrom(input, _repeated_textures_codec);
+            break;
+          }
+        }
+      }
+    }
+
+    #region Nested types
+    /// <summary>Container for nested types declared in the glTF message type.</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static partial class Types {
+      public sealed partial class Extensions : pb::IMessage<Extensions> {
+        private static readonly pb::MessageParser<Extensions> _parser = new pb::MessageParser<Extensions>(() => new Extensions());
+        private pb::UnknownFieldSet _unknownFields;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pb::MessageParser<Extensions> Parser { get { return _parser; } }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pbr::MessageDescriptor Descriptor {
+          get { return global::VrmProtobuf.glTF.Descriptor.NestedTypes[0]; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        pbr::MessageDescriptor pb::IMessage.Descriptor {
+          get { return Descriptor; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extensions() {
+          OnConstruction();
+        }
+
+        partial void OnConstruction();
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extensions(Extensions other) : this() {
+          vRMCVrm_ = other.vRMCVrm_ != null ? other.vRMCVrm_.Clone() : null;
+          vRMCSpringBone_ = other.vRMCSpringBone_ != null ? other.vRMCSpringBone_.Clone() : null;
+          vRMCConstraint_ = other.vRMCConstraint_ != null ? other.vRMCConstraint_.Clone() : null;
+          _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extensions Clone() {
+          return new Extensions(this);
+        }
+
+        /// <summary>Field number for the "VRMC_vrm" field.</summary>
+        public const int VRMCVrmFieldNumber = 1;
+        private global::VrmProtobuf.VRMCVrm vRMCVrm_;
         /// <summary>
-        /// KHR_texture_transform
+        /// 
         /// </summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public global::VrmProtobuf.KHRTextureTransformExtension KHRTextureTransform {
-          get { return kHRTextureTransform_; }
+        public global::VrmProtobuf.VRMCVrm VRMCVrm {
+          get { return vRMCVrm_; }
           set {
-            kHRTextureTransform_ = value;
+            vRMCVrm_ = value;
+          }
+        }
+
+        /// <summary>Field number for the "VRMC_springBone" field.</summary>
+        public const int VRMCSpringBoneFieldNumber = 2;
+        private global::VrmProtobuf.VRMCSpringBone vRMCSpringBone_;
+        /// <summary>
+        /// SpringBone makes objects such as costumes and hair swaying
+        /// </summary>
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public global::VrmProtobuf.VRMCSpringBone VRMCSpringBone {
+          get { return vRMCSpringBone_; }
+          set {
+            vRMCSpringBone_ = value;
+          }
+        }
+
+        /// <summary>Field number for the "VRMC_constraint" field.</summary>
+        public const int VRMCConstraintFieldNumber = 3;
+        private global::VrmProtobuf.VRMCConstraint vRMCConstraint_;
+        /// <summary>
+        /// Specification undecided in draft state
+        /// </summary>
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public global::VrmProtobuf.VRMCConstraint VRMCConstraint {
+          get { return vRMCConstraint_; }
+          set {
+            vRMCConstraint_ = value;
           }
         }
 
@@ -7300,14 +16412,18 @@ namespace VrmProtobuf {
           if (ReferenceEquals(other, this)) {
             return true;
           }
-          if (!object.Equals(KHRTextureTransform, other.KHRTextureTransform)) return false;
+          if (!object.Equals(VRMCVrm, other.VRMCVrm)) return false;
+          if (!object.Equals(VRMCSpringBone, other.VRMCSpringBone)) return false;
+          if (!object.Equals(VRMCConstraint, other.VRMCConstraint)) return false;
           return Equals(_unknownFields, other._unknownFields);
         }
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public override int GetHashCode() {
           int hash = 1;
-          if (kHRTextureTransform_ != null) hash ^= KHRTextureTransform.GetHashCode();
+          if (vRMCVrm_ != null) hash ^= VRMCVrm.GetHashCode();
+          if (vRMCSpringBone_ != null) hash ^= VRMCSpringBone.GetHashCode();
+          if (vRMCConstraint_ != null) hash ^= VRMCConstraint.GetHashCode();
           if (_unknownFields != null) {
             hash ^= _unknownFields.GetHashCode();
           }
@@ -7321,9 +16437,17 @@ namespace VrmProtobuf {
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public void WriteTo(pb::CodedOutputStream output) {
-          if (kHRTextureTransform_ != null) {
+          if (vRMCVrm_ != null) {
             output.WriteRawTag(10);
-            output.WriteMessage(KHRTextureTransform);
+            output.WriteMessage(VRMCVrm);
+          }
+          if (vRMCSpringBone_ != null) {
+            output.WriteRawTag(18);
+            output.WriteMessage(VRMCSpringBone);
+          }
+          if (vRMCConstraint_ != null) {
+            output.WriteRawTag(26);
+            output.WriteMessage(VRMCConstraint);
           }
           if (_unknownFields != null) {
             _unknownFields.WriteTo(output);
@@ -7333,8 +16457,14 @@ namespace VrmProtobuf {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public int CalculateSize() {
           int size = 0;
-          if (kHRTextureTransform_ != null) {
-            size += 1 + pb::CodedOutputStream.ComputeMessageSize(KHRTextureTransform);
+          if (vRMCVrm_ != null) {
+            size += 1 + pb::CodedOutputStream.ComputeMessageSize(VRMCVrm);
+          }
+          if (vRMCSpringBone_ != null) {
+            size += 1 + pb::CodedOutputStream.ComputeMessageSize(VRMCSpringBone);
+          }
+          if (vRMCConstraint_ != null) {
+            size += 1 + pb::CodedOutputStream.ComputeMessageSize(VRMCConstraint);
           }
           if (_unknownFields != null) {
             size += _unknownFields.CalculateSize();
@@ -7347,11 +16477,23 @@ namespace VrmProtobuf {
           if (other == null) {
             return;
           }
-          if (other.kHRTextureTransform_ != null) {
-            if (kHRTextureTransform_ == null) {
-              KHRTextureTransform = new global::VrmProtobuf.KHRTextureTransformExtension();
+          if (other.vRMCVrm_ != null) {
+            if (vRMCVrm_ == null) {
+              VRMCVrm = new global::VrmProtobuf.VRMCVrm();
             }
-            KHRTextureTransform.MergeFrom(other.KHRTextureTransform);
+            VRMCVrm.MergeFrom(other.VRMCVrm);
+          }
+          if (other.vRMCSpringBone_ != null) {
+            if (vRMCSpringBone_ == null) {
+              VRMCSpringBone = new global::VrmProtobuf.VRMCSpringBone();
+            }
+            VRMCSpringBone.MergeFrom(other.VRMCSpringBone);
+          }
+          if (other.vRMCConstraint_ != null) {
+            if (vRMCConstraint_ == null) {
+              VRMCConstraint = new global::VrmProtobuf.VRMCConstraint();
+            }
+            VRMCConstraint.MergeFrom(other.VRMCConstraint);
           }
           _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
         }
@@ -7365,10 +16507,24 @@ namespace VrmProtobuf {
                 _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
                 break;
               case 10: {
-                if (kHRTextureTransform_ == null) {
-                  KHRTextureTransform = new global::VrmProtobuf.KHRTextureTransformExtension();
+                if (vRMCVrm_ == null) {
+                  VRMCVrm = new global::VrmProtobuf.VRMCVrm();
                 }
-                input.ReadMessage(KHRTextureTransform);
+                input.ReadMessage(VRMCVrm);
+                break;
+              }
+              case 18: {
+                if (vRMCSpringBone_ == null) {
+                  VRMCSpringBone = new global::VrmProtobuf.VRMCSpringBone();
+                }
+                input.ReadMessage(VRMCSpringBone);
+                break;
+              }
+              case 26: {
+                if (vRMCConstraint_ == null) {
+                  VRMCConstraint = new global::VrmProtobuf.VRMCConstraint();
+                }
+                input.ReadMessage(VRMCConstraint);
                 break;
               }
             }
@@ -7377,493 +16533,109 @@ namespace VrmProtobuf {
 
       }
 
+      public sealed partial class Extras : pb::IMessage<Extras> {
+        private static readonly pb::MessageParser<Extras> _parser = new pb::MessageParser<Extras>(() => new Extras());
+        private pb::UnknownFieldSet _unknownFields;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pb::MessageParser<Extras> Parser { get { return _parser; } }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pbr::MessageDescriptor Descriptor {
+          get { return global::VrmProtobuf.glTF.Descriptor.NestedTypes[1]; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        pbr::MessageDescriptor pb::IMessage.Descriptor {
+          get { return Descriptor; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extras() {
+          OnConstruction();
+        }
+
+        partial void OnConstruction();
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extras(Extras other) : this() {
+          _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Extras Clone() {
+          return new Extras(this);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override bool Equals(object other) {
+          return Equals(other as Extras);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public bool Equals(Extras other) {
+          if (ReferenceEquals(other, null)) {
+            return false;
+          }
+          if (ReferenceEquals(other, this)) {
+            return true;
+          }
+          return Equals(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override int GetHashCode() {
+          int hash = 1;
+          if (_unknownFields != null) {
+            hash ^= _unknownFields.GetHashCode();
+          }
+          return hash;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override string ToString() {
+          return pb::JsonFormatter.ToDiagnosticString(this);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void WriteTo(pb::CodedOutputStream output) {
+          if (_unknownFields != null) {
+            _unknownFields.WriteTo(output);
+          }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public int CalculateSize() {
+          int size = 0;
+          if (_unknownFields != null) {
+            size += _unknownFields.CalculateSize();
+          }
+          return size;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(Extras other) {
+          if (other == null) {
+            return;
+          }
+          _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(pb::CodedInputStream input) {
+          uint tag;
+          while ((tag = input.ReadTag()) != 0) {
+            switch(tag) {
+              default:
+                _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+                break;
+            }
+          }
+        }
+
+      }
+
     }
     #endregion
-
-  }
-
-  /// <summary>
-  /// https://github.com/KhronosGroup/glTF/blob/master/extensions/2.0/Khronos/KHR_texture_transform/schema/KHR_texture_transform.textureInfo.schema.json
-  /// </summary>
-  public sealed partial class KHRTextureTransformExtension : pb::IMessage<KHRTextureTransformExtension> {
-    private static readonly pb::MessageParser<KHRTextureTransformExtension> _parser = new pb::MessageParser<KHRTextureTransformExtension>(() => new KHRTextureTransformExtension());
-    private pb::UnknownFieldSet _unknownFields;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<KHRTextureTransformExtension> Parser { get { return _parser; } }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pbr::MessageDescriptor Descriptor {
-      get { return global::VrmProtobuf.GlTFReflection.Descriptor.MessageTypes[26]; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    pbr::MessageDescriptor pb::IMessage.Descriptor {
-      get { return Descriptor; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public KHRTextureTransformExtension() {
-      OnConstruction();
-    }
-
-    partial void OnConstruction();
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public KHRTextureTransformExtension(KHRTextureTransformExtension other) : this() {
-      offset_ = other.offset_.Clone();
-      Rotation = other.Rotation;
-      scale_ = other.scale_.Clone();
-      TexCoord = other.TexCoord;
-      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public KHRTextureTransformExtension Clone() {
-      return new KHRTextureTransformExtension(this);
-    }
-
-    /// <summary>Field number for the "offset" field.</summary>
-    public const int OffsetFieldNumber = 1;
-    private static readonly pb::FieldCodec<float> _repeated_offset_codec
-        = pb::FieldCodec.ForFloat(10);
-    private readonly pbc::RepeatedField<float> offset_ = new pbc::RepeatedField<float>();
-    /// <summary>
-    /// float[2]
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::RepeatedField<float> Offset {
-      get { return offset_; }
-    }
-
-    /// <summary>Field number for the "rotation" field.</summary>
-    public const int RotationFieldNumber = 2;
-    private static readonly pb::FieldCodec<float?> _single_rotation_codec = pb::FieldCodec.ForStructWrapper<float>(18);
-    private float? rotation_;
-    /// <summary>
-    /// Rotate the UVs by this many radians counter-clockwise around the origin
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public float? Rotation {
-      get { return rotation_; }
-      set {
-        rotation_ = value;
-      }
-    }
-
-
-    /// <summary>Field number for the "scale" field.</summary>
-    public const int ScaleFieldNumber = 3;
-    private static readonly pb::FieldCodec<float> _repeated_scale_codec
-        = pb::FieldCodec.ForFloat(26);
-    private readonly pbc::RepeatedField<float> scale_ = new pbc::RepeatedField<float>();
-    /// <summary>
-    /// float[2]
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::RepeatedField<float> Scale {
-      get { return scale_; }
-    }
-
-    /// <summary>Field number for the "texCoord" field.</summary>
-    public const int TexCoordFieldNumber = 4;
-    private static readonly pb::FieldCodec<int?> _single_texCoord_codec = pb::FieldCodec.ForStructWrapper<int>(34);
-    private int? texCoord_;
-    /// <summary>
-    /// Overrides the textureInfo texCoord value if supplied, and if this extension
-    /// is supported.
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int? TexCoord {
-      get { return texCoord_; }
-      set {
-        texCoord_ = value;
-      }
-    }
-
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override bool Equals(object other) {
-      return Equals(other as KHRTextureTransformExtension);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(KHRTextureTransformExtension other) {
-      if (ReferenceEquals(other, null)) {
-        return false;
-      }
-      if (ReferenceEquals(other, this)) {
-        return true;
-      }
-      if(!offset_.Equals(other.offset_)) return false;
-      if (!pbc::ProtobufEqualityComparers.BitwiseNullableSingleEqualityComparer.Equals(Rotation, other.Rotation)) return false;
-      if(!scale_.Equals(other.scale_)) return false;
-      if (TexCoord != other.TexCoord) return false;
-      return Equals(_unknownFields, other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override int GetHashCode() {
-      int hash = 1;
-      hash ^= offset_.GetHashCode();
-      if (rotation_ != null) hash ^= pbc::ProtobufEqualityComparers.BitwiseNullableSingleEqualityComparer.GetHashCode(Rotation);
-      hash ^= scale_.GetHashCode();
-      if (texCoord_ != null) hash ^= TexCoord.GetHashCode();
-      if (_unknownFields != null) {
-        hash ^= _unknownFields.GetHashCode();
-      }
-      return hash;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override string ToString() {
-      return pb::JsonFormatter.ToDiagnosticString(this);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void WriteTo(pb::CodedOutputStream output) {
-      offset_.WriteTo(output, _repeated_offset_codec);
-      if (rotation_ != null) {
-        _single_rotation_codec.WriteTagAndValue(output, Rotation);
-      }
-      scale_.WriteTo(output, _repeated_scale_codec);
-      if (texCoord_ != null) {
-        _single_texCoord_codec.WriteTagAndValue(output, TexCoord);
-      }
-      if (_unknownFields != null) {
-        _unknownFields.WriteTo(output);
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int CalculateSize() {
-      int size = 0;
-      size += offset_.CalculateSize(_repeated_offset_codec);
-      if (rotation_ != null) {
-        size += _single_rotation_codec.CalculateSizeWithTag(Rotation);
-      }
-      size += scale_.CalculateSize(_repeated_scale_codec);
-      if (texCoord_ != null) {
-        size += _single_texCoord_codec.CalculateSizeWithTag(TexCoord);
-      }
-      if (_unknownFields != null) {
-        size += _unknownFields.CalculateSize();
-      }
-      return size;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(KHRTextureTransformExtension other) {
-      if (other == null) {
-        return;
-      }
-      offset_.Add(other.offset_);
-      if (other.rotation_ != null) {
-        if (rotation_ == null || other.Rotation != 0F) {
-          Rotation = other.Rotation;
-        }
-      }
-      scale_.Add(other.scale_);
-      if (other.texCoord_ != null) {
-        if (texCoord_ == null || other.TexCoord != 0) {
-          TexCoord = other.TexCoord;
-        }
-      }
-      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(pb::CodedInputStream input) {
-      uint tag;
-      while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
-          default:
-            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
-            break;
-          case 10:
-          case 13: {
-            offset_.AddEntriesFrom(input, _repeated_offset_codec);
-            break;
-          }
-          case 18: {
-            float? value = _single_rotation_codec.Read(input);
-            if (rotation_ == null || value != 0F) {
-              Rotation = value;
-            }
-            break;
-          }
-          case 26:
-          case 29: {
-            scale_.AddEntriesFrom(input, _repeated_scale_codec);
-            break;
-          }
-          case 34: {
-            int? value = _single_texCoord_codec.Read(input);
-            if (texCoord_ == null || value != 0) {
-              TexCoord = value;
-            }
-            break;
-          }
-        }
-      }
-    }
-
-  }
-
-  /// <summary>
-  /// https://github.com/KhronosGroup/glTF/blob/master/extensions/2.0/Khronos/KHR_materials_pbrSpecularGlossiness/schema/glTF.KHR_materials_pbrSpecularGlossiness.schema.json
-  /// </summary>
-  public sealed partial class KHRMaterialsPbrSpecularGlossinessExtension : pb::IMessage<KHRMaterialsPbrSpecularGlossinessExtension> {
-    private static readonly pb::MessageParser<KHRMaterialsPbrSpecularGlossinessExtension> _parser = new pb::MessageParser<KHRMaterialsPbrSpecularGlossinessExtension>(() => new KHRMaterialsPbrSpecularGlossinessExtension());
-    private pb::UnknownFieldSet _unknownFields;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<KHRMaterialsPbrSpecularGlossinessExtension> Parser { get { return _parser; } }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pbr::MessageDescriptor Descriptor {
-      get { return global::VrmProtobuf.GlTFReflection.Descriptor.MessageTypes[27]; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    pbr::MessageDescriptor pb::IMessage.Descriptor {
-      get { return Descriptor; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public KHRMaterialsPbrSpecularGlossinessExtension() {
-      OnConstruction();
-    }
-
-    partial void OnConstruction();
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public KHRMaterialsPbrSpecularGlossinessExtension(KHRMaterialsPbrSpecularGlossinessExtension other) : this() {
-      diffuseFactor_ = other.diffuseFactor_.Clone();
-      diffuseTexture_ = other.diffuseTexture_ != null ? other.diffuseTexture_.Clone() : null;
-      specularFactor_ = other.specularFactor_.Clone();
-      GlossinessFactor = other.GlossinessFactor;
-      specularGlossinessTexture_ = other.specularGlossinessTexture_ != null ? other.specularGlossinessTexture_.Clone() : null;
-      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public KHRMaterialsPbrSpecularGlossinessExtension Clone() {
-      return new KHRMaterialsPbrSpecularGlossinessExtension(this);
-    }
-
-    /// <summary>Field number for the "diffuseFactor" field.</summary>
-    public const int DiffuseFactorFieldNumber = 1;
-    private static readonly pb::FieldCodec<float> _repeated_diffuseFactor_codec
-        = pb::FieldCodec.ForFloat(10);
-    private readonly pbc::RepeatedField<float> diffuseFactor_ = new pbc::RepeatedField<float>();
-    /// <summary>
-    /// float[4], default[1.0,1.0,1.0,1.0]
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::RepeatedField<float> DiffuseFactor {
-      get { return diffuseFactor_; }
-    }
-
-    /// <summary>Field number for the "diffuseTexture" field.</summary>
-    public const int DiffuseTextureFieldNumber = 2;
-    private global::VrmProtobuf.TextureInfo diffuseTexture_;
-    /// <summary>
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::VrmProtobuf.TextureInfo DiffuseTexture {
-      get { return diffuseTexture_; }
-      set {
-        diffuseTexture_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "specularFactor" field.</summary>
-    public const int SpecularFactorFieldNumber = 3;
-    private static readonly pb::FieldCodec<float> _repeated_specularFactor_codec
-        = pb::FieldCodec.ForFloat(26);
-    private readonly pbc::RepeatedField<float> specularFactor_ = new pbc::RepeatedField<float>();
-    /// <summary>
-    /// float[3], default[1.0,1.0,1.0]
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::RepeatedField<float> SpecularFactor {
-      get { return specularFactor_; }
-    }
-
-    /// <summary>Field number for the "glossinessFactor" field.</summary>
-    public const int GlossinessFactorFieldNumber = 4;
-    private static readonly pb::FieldCodec<float?> _single_glossinessFactor_codec = pb::FieldCodec.ForStructWrapper<float>(34);
-    private float? glossinessFactor_;
-    /// <summary>
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public float? GlossinessFactor {
-      get { return glossinessFactor_; }
-      set {
-        glossinessFactor_ = value;
-      }
-    }
-
-
-    /// <summary>Field number for the "specularGlossinessTexture" field.</summary>
-    public const int SpecularGlossinessTextureFieldNumber = 5;
-    private global::VrmProtobuf.TextureInfo specularGlossinessTexture_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::VrmProtobuf.TextureInfo SpecularGlossinessTexture {
-      get { return specularGlossinessTexture_; }
-      set {
-        specularGlossinessTexture_ = value;
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override bool Equals(object other) {
-      return Equals(other as KHRMaterialsPbrSpecularGlossinessExtension);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(KHRMaterialsPbrSpecularGlossinessExtension other) {
-      if (ReferenceEquals(other, null)) {
-        return false;
-      }
-      if (ReferenceEquals(other, this)) {
-        return true;
-      }
-      if(!diffuseFactor_.Equals(other.diffuseFactor_)) return false;
-      if (!object.Equals(DiffuseTexture, other.DiffuseTexture)) return false;
-      if(!specularFactor_.Equals(other.specularFactor_)) return false;
-      if (!pbc::ProtobufEqualityComparers.BitwiseNullableSingleEqualityComparer.Equals(GlossinessFactor, other.GlossinessFactor)) return false;
-      if (!object.Equals(SpecularGlossinessTexture, other.SpecularGlossinessTexture)) return false;
-      return Equals(_unknownFields, other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override int GetHashCode() {
-      int hash = 1;
-      hash ^= diffuseFactor_.GetHashCode();
-      if (diffuseTexture_ != null) hash ^= DiffuseTexture.GetHashCode();
-      hash ^= specularFactor_.GetHashCode();
-      if (glossinessFactor_ != null) hash ^= pbc::ProtobufEqualityComparers.BitwiseNullableSingleEqualityComparer.GetHashCode(GlossinessFactor);
-      if (specularGlossinessTexture_ != null) hash ^= SpecularGlossinessTexture.GetHashCode();
-      if (_unknownFields != null) {
-        hash ^= _unknownFields.GetHashCode();
-      }
-      return hash;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override string ToString() {
-      return pb::JsonFormatter.ToDiagnosticString(this);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void WriteTo(pb::CodedOutputStream output) {
-      diffuseFactor_.WriteTo(output, _repeated_diffuseFactor_codec);
-      if (diffuseTexture_ != null) {
-        output.WriteRawTag(18);
-        output.WriteMessage(DiffuseTexture);
-      }
-      specularFactor_.WriteTo(output, _repeated_specularFactor_codec);
-      if (glossinessFactor_ != null) {
-        _single_glossinessFactor_codec.WriteTagAndValue(output, GlossinessFactor);
-      }
-      if (specularGlossinessTexture_ != null) {
-        output.WriteRawTag(42);
-        output.WriteMessage(SpecularGlossinessTexture);
-      }
-      if (_unknownFields != null) {
-        _unknownFields.WriteTo(output);
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int CalculateSize() {
-      int size = 0;
-      size += diffuseFactor_.CalculateSize(_repeated_diffuseFactor_codec);
-      if (diffuseTexture_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(DiffuseTexture);
-      }
-      size += specularFactor_.CalculateSize(_repeated_specularFactor_codec);
-      if (glossinessFactor_ != null) {
-        size += _single_glossinessFactor_codec.CalculateSizeWithTag(GlossinessFactor);
-      }
-      if (specularGlossinessTexture_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(SpecularGlossinessTexture);
-      }
-      if (_unknownFields != null) {
-        size += _unknownFields.CalculateSize();
-      }
-      return size;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(KHRMaterialsPbrSpecularGlossinessExtension other) {
-      if (other == null) {
-        return;
-      }
-      diffuseFactor_.Add(other.diffuseFactor_);
-      if (other.diffuseTexture_ != null) {
-        if (diffuseTexture_ == null) {
-          DiffuseTexture = new global::VrmProtobuf.TextureInfo();
-        }
-        DiffuseTexture.MergeFrom(other.DiffuseTexture);
-      }
-      specularFactor_.Add(other.specularFactor_);
-      if (other.glossinessFactor_ != null) {
-        if (glossinessFactor_ == null || other.GlossinessFactor != 0F) {
-          GlossinessFactor = other.GlossinessFactor;
-        }
-      }
-      if (other.specularGlossinessTexture_ != null) {
-        if (specularGlossinessTexture_ == null) {
-          SpecularGlossinessTexture = new global::VrmProtobuf.TextureInfo();
-        }
-        SpecularGlossinessTexture.MergeFrom(other.SpecularGlossinessTexture);
-      }
-      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(pb::CodedInputStream input) {
-      uint tag;
-      while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
-          default:
-            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
-            break;
-          case 10:
-          case 13: {
-            diffuseFactor_.AddEntriesFrom(input, _repeated_diffuseFactor_codec);
-            break;
-          }
-          case 18: {
-            if (diffuseTexture_ == null) {
-              DiffuseTexture = new global::VrmProtobuf.TextureInfo();
-            }
-            input.ReadMessage(DiffuseTexture);
-            break;
-          }
-          case 26:
-          case 29: {
-            specularFactor_.AddEntriesFrom(input, _repeated_specularFactor_codec);
-            break;
-          }
-          case 34: {
-            float? value = _single_glossinessFactor_codec.Read(input);
-            if (glossinessFactor_ == null || value != 0F) {
-              GlossinessFactor = value;
-            }
-            break;
-          }
-          case 42: {
-            if (specularGlossinessTexture_ == null) {
-              SpecularGlossinessTexture = new global::VrmProtobuf.TextureInfo();
-            }
-            input.ReadMessage(SpecularGlossinessTexture);
-            break;
-          }
-        }
-      }
-    }
 
   }
 

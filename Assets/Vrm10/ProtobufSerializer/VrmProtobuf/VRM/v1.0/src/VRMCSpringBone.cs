@@ -25,35 +25,533 @@ namespace VrmProtobuf {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChVWUk1DX3NwcmluZ0JvbmUucHJvdG8SC1ZybVByb3RvYnVmGh5nb29nbGUv",
-            "cHJvdG9idWYvd3JhcHBlcnMucHJvdG8i8wQKDlZSTUNTcHJpbmdCb25lEjkK",
-            "CmJvbmVHcm91cHMYASADKAsyJS5Wcm1Qcm90b2J1Zi5WUk1DU3ByaW5nQm9u",
-            "ZS5Cb25lR3JvdXASQQoOY29sbGlkZXJHcm91cHMYAiADKAsyKS5Wcm1Qcm90",
-            "b2J1Zi5WUk1DU3ByaW5nQm9uZS5Db2xsaWRlckdyb3VwGtABCglCb25lR3Jv",
-            "dXASDAoEbmFtZRgBIAEoCRIRCglzdGlmZm5lc3MYAiABKAISFAoMZ3Jhdml0",
-            "eVBvd2VyGAMgASgCEhIKCmdyYXZpdHlEaXIYBCADKAISEQoJZHJhZ0ZvcmNl",
-            "GAUgASgCEisKBmNlbnRlchgGIAEoCzIbLmdvb2dsZS5wcm90b2J1Zi5JbnQz",
-            "MlZhbHVlEhEKCWhpdFJhZGl1cxgHIAEoAhINCgVib25lcxgIIAMoBRIWCg5j",
-            "b2xsaWRlckdyb3VwcxgJIAMoBRqPAgoNQ29sbGlkZXJHcm91cBIMCgRub2Rl",
-            "GAEgASgFEkUKCWNvbGxpZGVycxgCIAMoCzIyLlZybVByb3RvYnVmLlZSTUNT",
-            "cHJpbmdCb25lLkNvbGxpZGVyR3JvdXAuQ29sbGlkZXIafwoIQ29sbGlkZXIS",
-            "RQoEdHlwZRgBIAEoDjI3LlZybVByb3RvYnVmLlZSTUNTcHJpbmdCb25lLkNv",
-            "bGxpZGVyR3JvdXAuQ29sbGlkZXJUeXBlcxIOCgZvZmZzZXQYAiADKAISDgoG",
-            "cmFkaXVzGAMgASgCEgwKBHRhaWwYBCADKAIiKAoNQ29sbGlkZXJUeXBlcxIK",
-            "CgZzcGhlcmUQABILCgdjYXBzdWxlEAFiBnByb3RvMw=="));
+            "cHJvdG9idWYvd3JhcHBlcnMucHJvdG8itgEKDVNwcmluZ1NldHRpbmcSLgoJ",
+            "c3RpZmZuZXNzGAEgASgLMhsuZ29vZ2xlLnByb3RvYnVmLkZsb2F0VmFsdWUS",
+            "MQoMZ3Jhdml0eVBvd2VyGAIgASgLMhsuZ29vZ2xlLnByb3RvYnVmLkZsb2F0",
+            "VmFsdWUSEgoKZ3Jhdml0eURpchgDIAMoAhIuCglkcmFnRm9yY2UYBCABKAsy",
+            "Gy5nb29nbGUucHJvdG9idWYuRmxvYXRWYWx1ZSK4AQoGU3ByaW5nEgwKBG5h",
+            "bWUYASABKAkSLAoHc2V0dGluZxgCIAEoCzIbLmdvb2dsZS5wcm90b2J1Zi5J",
+            "bnQzMlZhbHVlEi8KCnNwcmluZ1Jvb3QYAyABKAsyGy5nb29nbGUucHJvdG9i",
+            "dWYuSW50MzJWYWx1ZRIuCgloaXRSYWRpdXMYBCABKAsyGy5nb29nbGUucHJv",
+            "dG9idWYuRmxvYXRWYWx1ZRIRCgljb2xsaWRlcnMYBSADKAUiZAoOVlJNQ1Nw",
+            "cmluZ0JvbmUSLAoIc2V0dGluZ3MYASADKAsyGi5Wcm1Qcm90b2J1Zi5TcHJp",
+            "bmdTZXR0aW5nEiQKB3NwcmluZ3MYAiADKAsyEy5Wcm1Qcm90b2J1Zi5TcHJp",
+            "bmdiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Google.Protobuf.WellKnownTypes.WrappersReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.VRMCSpringBone), global::VrmProtobuf.VRMCSpringBone.Parser, new[]{ "BoneGroups", "ColliderGroups" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.VRMCSpringBone.Types.BoneGroup), global::VrmProtobuf.VRMCSpringBone.Types.BoneGroup.Parser, new[]{ "Name", "Stiffness", "GravityPower", "GravityDir", "DragForce", "Center", "HitRadius", "Bones", "ColliderGroups" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.VRMCSpringBone.Types.ColliderGroup), global::VrmProtobuf.VRMCSpringBone.Types.ColliderGroup.Parser, new[]{ "Node", "Colliders" }, null, new[]{ typeof(global::VrmProtobuf.VRMCSpringBone.Types.ColliderGroup.Types.ColliderTypes) }, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.VRMCSpringBone.Types.ColliderGroup.Types.Collider), global::VrmProtobuf.VRMCSpringBone.Types.ColliderGroup.Types.Collider.Parser, new[]{ "Type", "Offset", "Radius", "Tail" }, null, null, null, null)})})
+            new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.SpringSetting), global::VrmProtobuf.SpringSetting.Parser, new[]{ "Stiffness", "GravityPower", "GravityDir", "DragForce" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.Spring), global::VrmProtobuf.Spring.Parser, new[]{ "Name", "Setting", "SpringRoot", "HitRadius", "Colliders" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.VRMCSpringBone), global::VrmProtobuf.VRMCSpringBone.Parser, new[]{ "Settings", "Springs" }, null, null, null, null)
           }));
     }
     #endregion
 
   }
   #region Messages
-  /// <summary>
-  /// SpringBone makes objects such as costumes and hair swaying
-  /// </summary>
+  public sealed partial class SpringSetting : pb::IMessage<SpringSetting> {
+    private static readonly pb::MessageParser<SpringSetting> _parser = new pb::MessageParser<SpringSetting>(() => new SpringSetting());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<SpringSetting> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::VrmProtobuf.VRMCSpringBoneReflection.Descriptor.MessageTypes[0]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public SpringSetting() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public SpringSetting(SpringSetting other) : this() {
+      Stiffness = other.Stiffness;
+      GravityPower = other.GravityPower;
+      gravityDir_ = other.gravityDir_.Clone();
+      DragForce = other.DragForce;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public SpringSetting Clone() {
+      return new SpringSetting(this);
+    }
+
+    /// <summary>Field number for the "stiffness" field.</summary>
+    public const int StiffnessFieldNumber = 1;
+    private static readonly pb::FieldCodec<float?> _single_stiffness_codec = pb::FieldCodec.ForStructWrapper<float>(10);
+    private float? stiffness_;
+    /// <summary>
+    /// The force to return to the initial pose
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public float? Stiffness {
+      get { return stiffness_; }
+      set {
+        stiffness_ = value;
+      }
+    }
+
+
+    /// <summary>Field number for the "gravityPower" field.</summary>
+    public const int GravityPowerFieldNumber = 2;
+    private static readonly pb::FieldCodec<float?> _single_gravityPower_codec = pb::FieldCodec.ForStructWrapper<float>(18);
+    private float? gravityPower_;
+    /// <summary>
+    /// Gravitational acceleration
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public float? GravityPower {
+      get { return gravityPower_; }
+      set {
+        gravityPower_ = value;
+      }
+    }
+
+
+    /// <summary>Field number for the "gravityDir" field.</summary>
+    public const int GravityDirFieldNumber = 3;
+    private static readonly pb::FieldCodec<float> _repeated_gravityDir_codec
+        = pb::FieldCodec.ForFloat(26);
+    private readonly pbc::RepeatedField<float> gravityDir_ = new pbc::RepeatedField<float>();
+    /// <summary>
+    /// The direction of gravity. A gravity other than downward direction also works.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::RepeatedField<float> GravityDir {
+      get { return gravityDir_; }
+    }
+
+    /// <summary>Field number for the "dragForce" field.</summary>
+    public const int DragForceFieldNumber = 4;
+    private static readonly pb::FieldCodec<float?> _single_dragForce_codec = pb::FieldCodec.ForStructWrapper<float>(34);
+    private float? dragForce_;
+    /// <summary>
+    /// Air resistance. Deceleration force
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public float? DragForce {
+      get { return dragForce_; }
+      set {
+        dragForce_ = value;
+      }
+    }
+
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as SpringSetting);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(SpringSetting other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (!pbc::ProtobufEqualityComparers.BitwiseNullableSingleEqualityComparer.Equals(Stiffness, other.Stiffness)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseNullableSingleEqualityComparer.Equals(GravityPower, other.GravityPower)) return false;
+      if(!gravityDir_.Equals(other.gravityDir_)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseNullableSingleEqualityComparer.Equals(DragForce, other.DragForce)) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (stiffness_ != null) hash ^= pbc::ProtobufEqualityComparers.BitwiseNullableSingleEqualityComparer.GetHashCode(Stiffness);
+      if (gravityPower_ != null) hash ^= pbc::ProtobufEqualityComparers.BitwiseNullableSingleEqualityComparer.GetHashCode(GravityPower);
+      hash ^= gravityDir_.GetHashCode();
+      if (dragForce_ != null) hash ^= pbc::ProtobufEqualityComparers.BitwiseNullableSingleEqualityComparer.GetHashCode(DragForce);
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (stiffness_ != null) {
+        _single_stiffness_codec.WriteTagAndValue(output, Stiffness);
+      }
+      if (gravityPower_ != null) {
+        _single_gravityPower_codec.WriteTagAndValue(output, GravityPower);
+      }
+      gravityDir_.WriteTo(output, _repeated_gravityDir_codec);
+      if (dragForce_ != null) {
+        _single_dragForce_codec.WriteTagAndValue(output, DragForce);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (stiffness_ != null) {
+        size += _single_stiffness_codec.CalculateSizeWithTag(Stiffness);
+      }
+      if (gravityPower_ != null) {
+        size += _single_gravityPower_codec.CalculateSizeWithTag(GravityPower);
+      }
+      size += gravityDir_.CalculateSize(_repeated_gravityDir_codec);
+      if (dragForce_ != null) {
+        size += _single_dragForce_codec.CalculateSizeWithTag(DragForce);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(SpringSetting other) {
+      if (other == null) {
+        return;
+      }
+      if (other.stiffness_ != null) {
+        if (stiffness_ == null || other.Stiffness != 0F) {
+          Stiffness = other.Stiffness;
+        }
+      }
+      if (other.gravityPower_ != null) {
+        if (gravityPower_ == null || other.GravityPower != 0F) {
+          GravityPower = other.GravityPower;
+        }
+      }
+      gravityDir_.Add(other.gravityDir_);
+      if (other.dragForce_ != null) {
+        if (dragForce_ == null || other.DragForce != 0F) {
+          DragForce = other.DragForce;
+        }
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            float? value = _single_stiffness_codec.Read(input);
+            if (stiffness_ == null || value != 0F) {
+              Stiffness = value;
+            }
+            break;
+          }
+          case 18: {
+            float? value = _single_gravityPower_codec.Read(input);
+            if (gravityPower_ == null || value != 0F) {
+              GravityPower = value;
+            }
+            break;
+          }
+          case 26:
+          case 29: {
+            gravityDir_.AddEntriesFrom(input, _repeated_gravityDir_codec);
+            break;
+          }
+          case 34: {
+            float? value = _single_dragForce_codec.Read(input);
+            if (dragForce_ == null || value != 0F) {
+              DragForce = value;
+            }
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public sealed partial class Spring : pb::IMessage<Spring> {
+    private static readonly pb::MessageParser<Spring> _parser = new pb::MessageParser<Spring>(() => new Spring());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<Spring> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::VrmProtobuf.VRMCSpringBoneReflection.Descriptor.MessageTypes[1]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public Spring() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public Spring(Spring other) : this() {
+      name_ = other.name_;
+      Setting = other.Setting;
+      SpringRoot = other.SpringRoot;
+      HitRadius = other.HitRadius;
+      colliders_ = other.colliders_.Clone();
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public Spring Clone() {
+      return new Spring(this);
+    }
+
+    /// <summary>Field number for the "name" field.</summary>
+    public const int NameFieldNumber = 1;
+    private string name_ = "";
+    /// <summary>
+    /// Name of the Spring
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Name {
+      get { return name_; }
+      set {
+        name_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "setting" field.</summary>
+    public const int SettingFieldNumber = 2;
+    private static readonly pb::FieldCodec<int?> _single_setting_codec = pb::FieldCodec.ForStructWrapper<int>(18);
+    private int? setting_;
+    /// <summary>
+    /// The index of spring settings
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int? Setting {
+      get { return setting_; }
+      set {
+        setting_ = value;
+      }
+    }
+
+
+    /// <summary>Field number for the "springRoot" field.</summary>
+    public const int SpringRootFieldNumber = 3;
+    private static readonly pb::FieldCodec<int?> _single_springRoot_codec = pb::FieldCodec.ForStructWrapper<int>(26);
+    private int? springRoot_;
+    /// <summary>
+    /// The node index of spring root
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int? SpringRoot {
+      get { return springRoot_; }
+      set {
+        springRoot_ = value;
+      }
+    }
+
+
+    /// <summary>Field number for the "hitRadius" field.</summary>
+    public const int HitRadiusFieldNumber = 4;
+    private static readonly pb::FieldCodec<float?> _single_hitRadius_codec = pb::FieldCodec.ForStructWrapper<float>(34);
+    private float? hitRadius_;
+    /// <summary>
+    /// The radius of spring sphere
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public float? HitRadius {
+      get { return hitRadius_; }
+      set {
+        hitRadius_ = value;
+      }
+    }
+
+
+    /// <summary>Field number for the "colliders" field.</summary>
+    public const int CollidersFieldNumber = 5;
+    private static readonly pb::FieldCodec<int> _repeated_colliders_codec
+        = pb::FieldCodec.ForInt32(42);
+    private readonly pbc::RepeatedField<int> colliders_ = new pbc::RepeatedField<int>();
+    /// <summary>
+    /// Colliders that detect collision with nodes start from springRoot
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::RepeatedField<int> Colliders {
+      get { return colliders_; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as Spring);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(Spring other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (Name != other.Name) return false;
+      if (Setting != other.Setting) return false;
+      if (SpringRoot != other.SpringRoot) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseNullableSingleEqualityComparer.Equals(HitRadius, other.HitRadius)) return false;
+      if(!colliders_.Equals(other.colliders_)) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (Name.Length != 0) hash ^= Name.GetHashCode();
+      if (setting_ != null) hash ^= Setting.GetHashCode();
+      if (springRoot_ != null) hash ^= SpringRoot.GetHashCode();
+      if (hitRadius_ != null) hash ^= pbc::ProtobufEqualityComparers.BitwiseNullableSingleEqualityComparer.GetHashCode(HitRadius);
+      hash ^= colliders_.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (Name.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Name);
+      }
+      if (setting_ != null) {
+        _single_setting_codec.WriteTagAndValue(output, Setting);
+      }
+      if (springRoot_ != null) {
+        _single_springRoot_codec.WriteTagAndValue(output, SpringRoot);
+      }
+      if (hitRadius_ != null) {
+        _single_hitRadius_codec.WriteTagAndValue(output, HitRadius);
+      }
+      colliders_.WriteTo(output, _repeated_colliders_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (Name.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Name);
+      }
+      if (setting_ != null) {
+        size += _single_setting_codec.CalculateSizeWithTag(Setting);
+      }
+      if (springRoot_ != null) {
+        size += _single_springRoot_codec.CalculateSizeWithTag(SpringRoot);
+      }
+      if (hitRadius_ != null) {
+        size += _single_hitRadius_codec.CalculateSizeWithTag(HitRadius);
+      }
+      size += colliders_.CalculateSize(_repeated_colliders_codec);
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(Spring other) {
+      if (other == null) {
+        return;
+      }
+      if (other.Name.Length != 0) {
+        Name = other.Name;
+      }
+      if (other.setting_ != null) {
+        if (setting_ == null || other.Setting != 0) {
+          Setting = other.Setting;
+        }
+      }
+      if (other.springRoot_ != null) {
+        if (springRoot_ == null || other.SpringRoot != 0) {
+          SpringRoot = other.SpringRoot;
+        }
+      }
+      if (other.hitRadius_ != null) {
+        if (hitRadius_ == null || other.HitRadius != 0F) {
+          HitRadius = other.HitRadius;
+        }
+      }
+      colliders_.Add(other.colliders_);
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            Name = input.ReadString();
+            break;
+          }
+          case 18: {
+            int? value = _single_setting_codec.Read(input);
+            if (setting_ == null || value != 0) {
+              Setting = value;
+            }
+            break;
+          }
+          case 26: {
+            int? value = _single_springRoot_codec.Read(input);
+            if (springRoot_ == null || value != 0) {
+              SpringRoot = value;
+            }
+            break;
+          }
+          case 34: {
+            float? value = _single_hitRadius_codec.Read(input);
+            if (hitRadius_ == null || value != 0F) {
+              HitRadius = value;
+            }
+            break;
+          }
+          case 42:
+          case 40: {
+            colliders_.AddEntriesFrom(input, _repeated_colliders_codec);
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
   public sealed partial class VRMCSpringBone : pb::IMessage<VRMCSpringBone> {
     private static readonly pb::MessageParser<VRMCSpringBone> _parser = new pb::MessageParser<VRMCSpringBone>(() => new VRMCSpringBone());
     private pb::UnknownFieldSet _unknownFields;
@@ -62,7 +560,7 @@ namespace VrmProtobuf {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::VrmProtobuf.VRMCSpringBoneReflection.Descriptor.MessageTypes[0]; }
+      get { return global::VrmProtobuf.VRMCSpringBoneReflection.Descriptor.MessageTypes[2]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -79,8 +577,8 @@ namespace VrmProtobuf {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public VRMCSpringBone(VRMCSpringBone other) : this() {
-      boneGroups_ = other.boneGroups_.Clone();
-      colliderGroups_ = other.colliderGroups_.Clone();
+      settings_ = other.settings_.Clone();
+      springs_ = other.springs_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -89,24 +587,30 @@ namespace VrmProtobuf {
       return new VRMCSpringBone(this);
     }
 
-    /// <summary>Field number for the "boneGroups" field.</summary>
-    public const int BoneGroupsFieldNumber = 1;
-    private static readonly pb::FieldCodec<global::VrmProtobuf.VRMCSpringBone.Types.BoneGroup> _repeated_boneGroups_codec
-        = pb::FieldCodec.ForMessage(10, global::VrmProtobuf.VRMCSpringBone.Types.BoneGroup.Parser);
-    private readonly pbc::RepeatedField<global::VrmProtobuf.VRMCSpringBone.Types.BoneGroup> boneGroups_ = new pbc::RepeatedField<global::VrmProtobuf.VRMCSpringBone.Types.BoneGroup>();
+    /// <summary>Field number for the "settings" field.</summary>
+    public const int SettingsFieldNumber = 1;
+    private static readonly pb::FieldCodec<global::VrmProtobuf.SpringSetting> _repeated_settings_codec
+        = pb::FieldCodec.ForMessage(10, global::VrmProtobuf.SpringSetting.Parser);
+    private readonly pbc::RepeatedField<global::VrmProtobuf.SpringSetting> settings_ = new pbc::RepeatedField<global::VrmProtobuf.SpringSetting>();
+    /// <summary>
+    /// An array of settings.
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::RepeatedField<global::VrmProtobuf.VRMCSpringBone.Types.BoneGroup> BoneGroups {
-      get { return boneGroups_; }
+    public pbc::RepeatedField<global::VrmProtobuf.SpringSetting> Settings {
+      get { return settings_; }
     }
 
-    /// <summary>Field number for the "colliderGroups" field.</summary>
-    public const int ColliderGroupsFieldNumber = 2;
-    private static readonly pb::FieldCodec<global::VrmProtobuf.VRMCSpringBone.Types.ColliderGroup> _repeated_colliderGroups_codec
-        = pb::FieldCodec.ForMessage(18, global::VrmProtobuf.VRMCSpringBone.Types.ColliderGroup.Parser);
-    private readonly pbc::RepeatedField<global::VrmProtobuf.VRMCSpringBone.Types.ColliderGroup> colliderGroups_ = new pbc::RepeatedField<global::VrmProtobuf.VRMCSpringBone.Types.ColliderGroup>();
+    /// <summary>Field number for the "springs" field.</summary>
+    public const int SpringsFieldNumber = 2;
+    private static readonly pb::FieldCodec<global::VrmProtobuf.Spring> _repeated_springs_codec
+        = pb::FieldCodec.ForMessage(18, global::VrmProtobuf.Spring.Parser);
+    private readonly pbc::RepeatedField<global::VrmProtobuf.Spring> springs_ = new pbc::RepeatedField<global::VrmProtobuf.Spring>();
+    /// <summary>
+    /// An array of springs.
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::RepeatedField<global::VrmProtobuf.VRMCSpringBone.Types.ColliderGroup> ColliderGroups {
-      get { return colliderGroups_; }
+    public pbc::RepeatedField<global::VrmProtobuf.Spring> Springs {
+      get { return springs_; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -122,16 +626,16 @@ namespace VrmProtobuf {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if(!boneGroups_.Equals(other.boneGroups_)) return false;
-      if(!colliderGroups_.Equals(other.colliderGroups_)) return false;
+      if(!settings_.Equals(other.settings_)) return false;
+      if(!springs_.Equals(other.springs_)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
-      hash ^= boneGroups_.GetHashCode();
-      hash ^= colliderGroups_.GetHashCode();
+      hash ^= settings_.GetHashCode();
+      hash ^= springs_.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -145,8 +649,8 @@ namespace VrmProtobuf {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
-      boneGroups_.WriteTo(output, _repeated_boneGroups_codec);
-      colliderGroups_.WriteTo(output, _repeated_colliderGroups_codec);
+      settings_.WriteTo(output, _repeated_settings_codec);
+      springs_.WriteTo(output, _repeated_springs_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -155,8 +659,8 @@ namespace VrmProtobuf {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
-      size += boneGroups_.CalculateSize(_repeated_boneGroups_codec);
-      size += colliderGroups_.CalculateSize(_repeated_colliderGroups_codec);
+      size += settings_.CalculateSize(_repeated_settings_codec);
+      size += springs_.CalculateSize(_repeated_springs_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -168,8 +672,8 @@ namespace VrmProtobuf {
       if (other == null) {
         return;
       }
-      boneGroups_.Add(other.boneGroups_);
-      colliderGroups_.Add(other.colliderGroups_);
+      settings_.Add(other.settings_);
+      springs_.Add(other.springs_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -182,771 +686,16 @@ namespace VrmProtobuf {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 10: {
-            boneGroups_.AddEntriesFrom(input, _repeated_boneGroups_codec);
+            settings_.AddEntriesFrom(input, _repeated_settings_codec);
             break;
           }
           case 18: {
-            colliderGroups_.AddEntriesFrom(input, _repeated_colliderGroups_codec);
+            springs_.AddEntriesFrom(input, _repeated_springs_codec);
             break;
           }
         }
       }
     }
-
-    #region Nested types
-    /// <summary>Container for nested types declared in the VRMCSpringBone message type.</summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static partial class Types {
-      /// <summary>
-      /// Bone group swaying with SpringBone.
-      /// "required": [ "stiffness", "gravityPower", "dragForce", "hitRadius"]
-      /// </summary>
-      public sealed partial class BoneGroup : pb::IMessage<BoneGroup> {
-        private static readonly pb::MessageParser<BoneGroup> _parser = new pb::MessageParser<BoneGroup>(() => new BoneGroup());
-        private pb::UnknownFieldSet _unknownFields;
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public static pb::MessageParser<BoneGroup> Parser { get { return _parser; } }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public static pbr::MessageDescriptor Descriptor {
-          get { return global::VrmProtobuf.VRMCSpringBone.Descriptor.NestedTypes[0]; }
-        }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        pbr::MessageDescriptor pb::IMessage.Descriptor {
-          get { return Descriptor; }
-        }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public BoneGroup() {
-          OnConstruction();
-        }
-
-        partial void OnConstruction();
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public BoneGroup(BoneGroup other) : this() {
-          name_ = other.name_;
-          stiffness_ = other.stiffness_;
-          gravityPower_ = other.gravityPower_;
-          gravityDir_ = other.gravityDir_.Clone();
-          dragForce_ = other.dragForce_;
-          Center = other.Center;
-          hitRadius_ = other.hitRadius_;
-          bones_ = other.bones_.Clone();
-          colliderGroups_ = other.colliderGroups_.Clone();
-          _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
-        }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public BoneGroup Clone() {
-          return new BoneGroup(this);
-        }
-
-        /// <summary>Field number for the "name" field.</summary>
-        public const int NameFieldNumber = 1;
-        private string name_ = "";
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public string Name {
-          get { return name_; }
-          set {
-            name_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-          }
-        }
-
-        /// <summary>Field number for the "stiffness" field.</summary>
-        public const int StiffnessFieldNumber = 2;
-        private float stiffness_;
-        /// <summary>
-        /// The force to return to the initial pose
-        /// </summary>
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public float Stiffness {
-          get { return stiffness_; }
-          set {
-            stiffness_ = value;
-          }
-        }
-
-        /// <summary>Field number for the "gravityPower" field.</summary>
-        public const int GravityPowerFieldNumber = 3;
-        private float gravityPower_;
-        /// <summary>
-        /// Gravitational acceleration
-        /// </summary>
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public float GravityPower {
-          get { return gravityPower_; }
-          set {
-            gravityPower_ = value;
-          }
-        }
-
-        /// <summary>Field number for the "gravityDir" field.</summary>
-        public const int GravityDirFieldNumber = 4;
-        private static readonly pb::FieldCodec<float> _repeated_gravityDir_codec
-            = pb::FieldCodec.ForFloat(34);
-        private readonly pbc::RepeatedField<float> gravityDir_ = new pbc::RepeatedField<float>();
-        /// <summary>
-        /// The direction of gravity. A gravity other than downward direction also works.
-        /// </summary>
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public pbc::RepeatedField<float> GravityDir {
-          get { return gravityDir_; }
-        }
-
-        /// <summary>Field number for the "dragForce" field.</summary>
-        public const int DragForceFieldNumber = 5;
-        private float dragForce_;
-        /// <summary>
-        /// Air resistance. Deceleration force
-        /// </summary>
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public float DragForce {
-          get { return dragForce_; }
-          set {
-            dragForce_ = value;
-          }
-        }
-
-        /// <summary>Field number for the "center" field.</summary>
-        public const int CenterFieldNumber = 6;
-        private static readonly pb::FieldCodec<int?> _single_center_codec = pb::FieldCodec.ForStructWrapper<int>(50);
-        private int? center_;
-        /// <summary>
-        /// The index of the node to be the local coordinate
-        /// </summary>
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public int? Center {
-          get { return center_; }
-          set {
-            center_ = value;
-          }
-        }
-
-
-        /// <summary>Field number for the "hitRadius" field.</summary>
-        public const int HitRadiusFieldNumber = 7;
-        private float hitRadius_;
-        /// <summary>
-        /// The radius of the sphere used for the collision detection with colliders
-        /// </summary>
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public float HitRadius {
-          get { return hitRadius_; }
-          set {
-            hitRadius_ = value;
-          }
-        }
-
-        /// <summary>Field number for the "bones" field.</summary>
-        public const int BonesFieldNumber = 8;
-        private static readonly pb::FieldCodec<int> _repeated_bones_codec
-            = pb::FieldCodec.ForInt32(66);
-        private readonly pbc::RepeatedField<int> bones_ = new pbc::RepeatedField<int>();
-        /// <summary>
-        /// The node index array to set SpringBone
-        /// </summary>
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public pbc::RepeatedField<int> Bones {
-          get { return bones_; }
-        }
-
-        /// <summary>Field number for the "colliderGroups" field.</summary>
-        public const int ColliderGroupsFieldNumber = 9;
-        private static readonly pb::FieldCodec<int> _repeated_colliderGroups_codec
-            = pb::FieldCodec.ForInt32(74);
-        private readonly pbc::RepeatedField<int> colliderGroups_ = new pbc::RepeatedField<int>();
-        /// <summary>
-        /// Process collision detection. colliderGroup index
-        /// </summary>
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public pbc::RepeatedField<int> ColliderGroups {
-          get { return colliderGroups_; }
-        }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public override bool Equals(object other) {
-          return Equals(other as BoneGroup);
-        }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public bool Equals(BoneGroup other) {
-          if (ReferenceEquals(other, null)) {
-            return false;
-          }
-          if (ReferenceEquals(other, this)) {
-            return true;
-          }
-          if (Name != other.Name) return false;
-          if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(Stiffness, other.Stiffness)) return false;
-          if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(GravityPower, other.GravityPower)) return false;
-          if(!gravityDir_.Equals(other.gravityDir_)) return false;
-          if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(DragForce, other.DragForce)) return false;
-          if (Center != other.Center) return false;
-          if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(HitRadius, other.HitRadius)) return false;
-          if(!bones_.Equals(other.bones_)) return false;
-          if(!colliderGroups_.Equals(other.colliderGroups_)) return false;
-          return Equals(_unknownFields, other._unknownFields);
-        }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public override int GetHashCode() {
-          int hash = 1;
-          if (Name.Length != 0) hash ^= Name.GetHashCode();
-          if (Stiffness != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(Stiffness);
-          if (GravityPower != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(GravityPower);
-          hash ^= gravityDir_.GetHashCode();
-          if (DragForce != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(DragForce);
-          if (center_ != null) hash ^= Center.GetHashCode();
-          if (HitRadius != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(HitRadius);
-          hash ^= bones_.GetHashCode();
-          hash ^= colliderGroups_.GetHashCode();
-          if (_unknownFields != null) {
-            hash ^= _unknownFields.GetHashCode();
-          }
-          return hash;
-        }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public override string ToString() {
-          return pb::JsonFormatter.ToDiagnosticString(this);
-        }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public void WriteTo(pb::CodedOutputStream output) {
-          if (Name.Length != 0) {
-            output.WriteRawTag(10);
-            output.WriteString(Name);
-          }
-          if (Stiffness != 0F) {
-            output.WriteRawTag(21);
-            output.WriteFloat(Stiffness);
-          }
-          if (GravityPower != 0F) {
-            output.WriteRawTag(29);
-            output.WriteFloat(GravityPower);
-          }
-          gravityDir_.WriteTo(output, _repeated_gravityDir_codec);
-          if (DragForce != 0F) {
-            output.WriteRawTag(45);
-            output.WriteFloat(DragForce);
-          }
-          if (center_ != null) {
-            _single_center_codec.WriteTagAndValue(output, Center);
-          }
-          if (HitRadius != 0F) {
-            output.WriteRawTag(61);
-            output.WriteFloat(HitRadius);
-          }
-          bones_.WriteTo(output, _repeated_bones_codec);
-          colliderGroups_.WriteTo(output, _repeated_colliderGroups_codec);
-          if (_unknownFields != null) {
-            _unknownFields.WriteTo(output);
-          }
-        }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public int CalculateSize() {
-          int size = 0;
-          if (Name.Length != 0) {
-            size += 1 + pb::CodedOutputStream.ComputeStringSize(Name);
-          }
-          if (Stiffness != 0F) {
-            size += 1 + 4;
-          }
-          if (GravityPower != 0F) {
-            size += 1 + 4;
-          }
-          size += gravityDir_.CalculateSize(_repeated_gravityDir_codec);
-          if (DragForce != 0F) {
-            size += 1 + 4;
-          }
-          if (center_ != null) {
-            size += _single_center_codec.CalculateSizeWithTag(Center);
-          }
-          if (HitRadius != 0F) {
-            size += 1 + 4;
-          }
-          size += bones_.CalculateSize(_repeated_bones_codec);
-          size += colliderGroups_.CalculateSize(_repeated_colliderGroups_codec);
-          if (_unknownFields != null) {
-            size += _unknownFields.CalculateSize();
-          }
-          return size;
-        }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public void MergeFrom(BoneGroup other) {
-          if (other == null) {
-            return;
-          }
-          if (other.Name.Length != 0) {
-            Name = other.Name;
-          }
-          if (other.Stiffness != 0F) {
-            Stiffness = other.Stiffness;
-          }
-          if (other.GravityPower != 0F) {
-            GravityPower = other.GravityPower;
-          }
-          gravityDir_.Add(other.gravityDir_);
-          if (other.DragForce != 0F) {
-            DragForce = other.DragForce;
-          }
-          if (other.center_ != null) {
-            if (center_ == null || other.Center != 0) {
-              Center = other.Center;
-            }
-          }
-          if (other.HitRadius != 0F) {
-            HitRadius = other.HitRadius;
-          }
-          bones_.Add(other.bones_);
-          colliderGroups_.Add(other.colliderGroups_);
-          _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
-        }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public void MergeFrom(pb::CodedInputStream input) {
-          uint tag;
-          while ((tag = input.ReadTag()) != 0) {
-            switch(tag) {
-              default:
-                _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
-                break;
-              case 10: {
-                Name = input.ReadString();
-                break;
-              }
-              case 21: {
-                Stiffness = input.ReadFloat();
-                break;
-              }
-              case 29: {
-                GravityPower = input.ReadFloat();
-                break;
-              }
-              case 34:
-              case 37: {
-                gravityDir_.AddEntriesFrom(input, _repeated_gravityDir_codec);
-                break;
-              }
-              case 45: {
-                DragForce = input.ReadFloat();
-                break;
-              }
-              case 50: {
-                int? value = _single_center_codec.Read(input);
-                if (center_ == null || value != 0) {
-                  Center = value;
-                }
-                break;
-              }
-              case 61: {
-                HitRadius = input.ReadFloat();
-                break;
-              }
-              case 66:
-              case 64: {
-                bones_.AddEntriesFrom(input, _repeated_bones_codec);
-                break;
-              }
-              case 74:
-              case 72: {
-                colliderGroups_.AddEntriesFrom(input, _repeated_colliderGroups_codec);
-                break;
-              }
-            }
-          }
-        }
-
-      }
-
-      /// <summary>
-      /// Collider group for collisions with swaying objects.
-      /// "required": ["node"]
-      /// </summary>
-      public sealed partial class ColliderGroup : pb::IMessage<ColliderGroup> {
-        private static readonly pb::MessageParser<ColliderGroup> _parser = new pb::MessageParser<ColliderGroup>(() => new ColliderGroup());
-        private pb::UnknownFieldSet _unknownFields;
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public static pb::MessageParser<ColliderGroup> Parser { get { return _parser; } }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public static pbr::MessageDescriptor Descriptor {
-          get { return global::VrmProtobuf.VRMCSpringBone.Descriptor.NestedTypes[1]; }
-        }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        pbr::MessageDescriptor pb::IMessage.Descriptor {
-          get { return Descriptor; }
-        }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public ColliderGroup() {
-          OnConstruction();
-        }
-
-        partial void OnConstruction();
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public ColliderGroup(ColliderGroup other) : this() {
-          node_ = other.node_;
-          colliders_ = other.colliders_.Clone();
-          _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
-        }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public ColliderGroup Clone() {
-          return new ColliderGroup(this);
-        }
-
-        /// <summary>Field number for the "node" field.</summary>
-        public const int NodeFieldNumber = 1;
-        private int node_;
-        /// <summary>
-        /// The node of the collider group for setting up collision detection
-        /// </summary>
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public int Node {
-          get { return node_; }
-          set {
-            node_ = value;
-          }
-        }
-
-        /// <summary>Field number for the "colliders" field.</summary>
-        public const int CollidersFieldNumber = 2;
-        private static readonly pb::FieldCodec<global::VrmProtobuf.VRMCSpringBone.Types.ColliderGroup.Types.Collider> _repeated_colliders_codec
-            = pb::FieldCodec.ForMessage(18, global::VrmProtobuf.VRMCSpringBone.Types.ColliderGroup.Types.Collider.Parser);
-        private readonly pbc::RepeatedField<global::VrmProtobuf.VRMCSpringBone.Types.ColliderGroup.Types.Collider> colliders_ = new pbc::RepeatedField<global::VrmProtobuf.VRMCSpringBone.Types.ColliderGroup.Types.Collider>();
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public pbc::RepeatedField<global::VrmProtobuf.VRMCSpringBone.Types.ColliderGroup.Types.Collider> Colliders {
-          get { return colliders_; }
-        }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public override bool Equals(object other) {
-          return Equals(other as ColliderGroup);
-        }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public bool Equals(ColliderGroup other) {
-          if (ReferenceEquals(other, null)) {
-            return false;
-          }
-          if (ReferenceEquals(other, this)) {
-            return true;
-          }
-          if (Node != other.Node) return false;
-          if(!colliders_.Equals(other.colliders_)) return false;
-          return Equals(_unknownFields, other._unknownFields);
-        }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public override int GetHashCode() {
-          int hash = 1;
-          if (Node != 0) hash ^= Node.GetHashCode();
-          hash ^= colliders_.GetHashCode();
-          if (_unknownFields != null) {
-            hash ^= _unknownFields.GetHashCode();
-          }
-          return hash;
-        }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public override string ToString() {
-          return pb::JsonFormatter.ToDiagnosticString(this);
-        }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public void WriteTo(pb::CodedOutputStream output) {
-          if (Node != 0) {
-            output.WriteRawTag(8);
-            output.WriteInt32(Node);
-          }
-          colliders_.WriteTo(output, _repeated_colliders_codec);
-          if (_unknownFields != null) {
-            _unknownFields.WriteTo(output);
-          }
-        }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public int CalculateSize() {
-          int size = 0;
-          if (Node != 0) {
-            size += 1 + pb::CodedOutputStream.ComputeInt32Size(Node);
-          }
-          size += colliders_.CalculateSize(_repeated_colliders_codec);
-          if (_unknownFields != null) {
-            size += _unknownFields.CalculateSize();
-          }
-          return size;
-        }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public void MergeFrom(ColliderGroup other) {
-          if (other == null) {
-            return;
-          }
-          if (other.Node != 0) {
-            Node = other.Node;
-          }
-          colliders_.Add(other.colliders_);
-          _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
-        }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public void MergeFrom(pb::CodedInputStream input) {
-          uint tag;
-          while ((tag = input.ReadTag()) != 0) {
-            switch(tag) {
-              default:
-                _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
-                break;
-              case 8: {
-                Node = input.ReadInt32();
-                break;
-              }
-              case 18: {
-                colliders_.AddEntriesFrom(input, _repeated_colliders_codec);
-                break;
-              }
-            }
-          }
-        }
-
-        #region Nested types
-        /// <summary>Container for nested types declared in the ColliderGroup message type.</summary>
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public static partial class Types {
-          /// <summary>
-          /// collider shape type
-          /// </summary>
-          public enum ColliderTypes {
-            [pbr::OriginalName("sphere")] Sphere = 0,
-            [pbr::OriginalName("capsule")] Capsule = 1,
-          }
-
-          /// <summary>
-          /// "required": [ "type", "radius" ]
-          /// </summary>
-          public sealed partial class Collider : pb::IMessage<Collider> {
-            private static readonly pb::MessageParser<Collider> _parser = new pb::MessageParser<Collider>(() => new Collider());
-            private pb::UnknownFieldSet _unknownFields;
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-            public static pb::MessageParser<Collider> Parser { get { return _parser; } }
-
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-            public static pbr::MessageDescriptor Descriptor {
-              get { return global::VrmProtobuf.VRMCSpringBone.Types.ColliderGroup.Descriptor.NestedTypes[0]; }
-            }
-
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-            pbr::MessageDescriptor pb::IMessage.Descriptor {
-              get { return Descriptor; }
-            }
-
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-            public Collider() {
-              OnConstruction();
-            }
-
-            partial void OnConstruction();
-
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-            public Collider(Collider other) : this() {
-              type_ = other.type_;
-              offset_ = other.offset_.Clone();
-              radius_ = other.radius_;
-              tail_ = other.tail_.Clone();
-              _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
-            }
-
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-            public Collider Clone() {
-              return new Collider(this);
-            }
-
-            /// <summary>Field number for the "type" field.</summary>
-            public const int TypeFieldNumber = 1;
-            private global::VrmProtobuf.VRMCSpringBone.Types.ColliderGroup.Types.ColliderTypes type_ = global::VrmProtobuf.VRMCSpringBone.Types.ColliderGroup.Types.ColliderTypes.Sphere;
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-            public global::VrmProtobuf.VRMCSpringBone.Types.ColliderGroup.Types.ColliderTypes Type {
-              get { return type_; }
-              set {
-                type_ = value;
-              }
-            }
-
-            /// <summary>Field number for the "offset" field.</summary>
-            public const int OffsetFieldNumber = 2;
-            private static readonly pb::FieldCodec<float> _repeated_offset_codec
-                = pb::FieldCodec.ForFloat(18);
-            private readonly pbc::RepeatedField<float> offset_ = new pbc::RepeatedField<float>();
-            /// <summary>
-            /// The local coordinate from the node of the collider group
-            /// </summary>
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-            public pbc::RepeatedField<float> Offset {
-              get { return offset_; }
-            }
-
-            /// <summary>Field number for the "radius" field.</summary>
-            public const int RadiusFieldNumber = 3;
-            private float radius_;
-            /// <summary>
-            /// The radius of the collider
-            /// </summary>
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-            public float Radius {
-              get { return radius_; }
-              set {
-                radius_ = value;
-              }
-            }
-
-            /// <summary>Field number for the "tail" field.</summary>
-            public const int TailFieldNumber = 4;
-            private static readonly pb::FieldCodec<float> _repeated_tail_codec
-                = pb::FieldCodec.ForFloat(34);
-            private readonly pbc::RepeatedField<float> tail_ = new pbc::RepeatedField<float>();
-            /// <summary>
-            /// The local coordinate from the node of the collider group. for capsule tail
-            /// </summary>
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-            public pbc::RepeatedField<float> Tail {
-              get { return tail_; }
-            }
-
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-            public override bool Equals(object other) {
-              return Equals(other as Collider);
-            }
-
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-            public bool Equals(Collider other) {
-              if (ReferenceEquals(other, null)) {
-                return false;
-              }
-              if (ReferenceEquals(other, this)) {
-                return true;
-              }
-              if (Type != other.Type) return false;
-              if(!offset_.Equals(other.offset_)) return false;
-              if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(Radius, other.Radius)) return false;
-              if(!tail_.Equals(other.tail_)) return false;
-              return Equals(_unknownFields, other._unknownFields);
-            }
-
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-            public override int GetHashCode() {
-              int hash = 1;
-              if (Type != global::VrmProtobuf.VRMCSpringBone.Types.ColliderGroup.Types.ColliderTypes.Sphere) hash ^= Type.GetHashCode();
-              hash ^= offset_.GetHashCode();
-              if (Radius != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(Radius);
-              hash ^= tail_.GetHashCode();
-              if (_unknownFields != null) {
-                hash ^= _unknownFields.GetHashCode();
-              }
-              return hash;
-            }
-
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-            public override string ToString() {
-              return pb::JsonFormatter.ToDiagnosticString(this);
-            }
-
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-            public void WriteTo(pb::CodedOutputStream output) {
-              if (Type != global::VrmProtobuf.VRMCSpringBone.Types.ColliderGroup.Types.ColliderTypes.Sphere) {
-                output.WriteRawTag(8);
-                output.WriteEnum((int) Type);
-              }
-              offset_.WriteTo(output, _repeated_offset_codec);
-              if (Radius != 0F) {
-                output.WriteRawTag(29);
-                output.WriteFloat(Radius);
-              }
-              tail_.WriteTo(output, _repeated_tail_codec);
-              if (_unknownFields != null) {
-                _unknownFields.WriteTo(output);
-              }
-            }
-
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-            public int CalculateSize() {
-              int size = 0;
-              if (Type != global::VrmProtobuf.VRMCSpringBone.Types.ColliderGroup.Types.ColliderTypes.Sphere) {
-                size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Type);
-              }
-              size += offset_.CalculateSize(_repeated_offset_codec);
-              if (Radius != 0F) {
-                size += 1 + 4;
-              }
-              size += tail_.CalculateSize(_repeated_tail_codec);
-              if (_unknownFields != null) {
-                size += _unknownFields.CalculateSize();
-              }
-              return size;
-            }
-
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-            public void MergeFrom(Collider other) {
-              if (other == null) {
-                return;
-              }
-              if (other.Type != global::VrmProtobuf.VRMCSpringBone.Types.ColliderGroup.Types.ColliderTypes.Sphere) {
-                Type = other.Type;
-              }
-              offset_.Add(other.offset_);
-              if (other.Radius != 0F) {
-                Radius = other.Radius;
-              }
-              tail_.Add(other.tail_);
-              _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
-            }
-
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-            public void MergeFrom(pb::CodedInputStream input) {
-              uint tag;
-              while ((tag = input.ReadTag()) != 0) {
-                switch(tag) {
-                  default:
-                    _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
-                    break;
-                  case 8: {
-                    Type = (global::VrmProtobuf.VRMCSpringBone.Types.ColliderGroup.Types.ColliderTypes) input.ReadEnum();
-                    break;
-                  }
-                  case 18:
-                  case 21: {
-                    offset_.AddEntriesFrom(input, _repeated_offset_codec);
-                    break;
-                  }
-                  case 29: {
-                    Radius = input.ReadFloat();
-                    break;
-                  }
-                  case 34:
-                  case 37: {
-                    tail_.AddEntriesFrom(input, _repeated_tail_codec);
-                    break;
-                  }
-                }
-              }
-            }
-
-          }
-
-        }
-        #endregion
-
-      }
-
-    }
-    #endregion
 
   }
 

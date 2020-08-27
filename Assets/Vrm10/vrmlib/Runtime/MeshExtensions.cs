@@ -44,52 +44,27 @@ namespace VrmLib
                 var factor = 1.0f / sum;
 
                 {
-                    if (w.X > 0)
-                    {
-                        var index = jointIndexMap[j.Joint0];
-                        j.Joint0 = (ushort)(index >= 0 ? index : 0);
-                        w.X *= factor;
-                    }
-                    else
-                    {
-                        j.Joint0 = 0;
-                    }
+                    var index = jointIndexMap[j.Joint0];
+                    j.Joint0 = (ushort)(index >= 0 ? index : 0);
+                    w.X *= factor;
                 }
+
                 {
-                    if (w.Y > 0)
-                    {
-                        var index = jointIndexMap[j.Joint1];
-                        j.Joint1 = (ushort)(index >= 0 ? index : 0);
-                        w.X *= factor;
-                    }
-                    else
-                    {
-                        j.Joint1 = 0;
-                    }
+                    var index = jointIndexMap[j.Joint1];
+                    j.Joint1 = (ushort)(index >= 0 ? index : 0);
+                    w.X *= factor;
                 }
+
                 {
-                    if (w.Z > 0)
-                    {
-                        var index = jointIndexMap[j.Joint2];
-                        j.Joint2 = (ushort)(index >= 0 ? index : 0);
-                        w.X *= factor;
-                    }
-                    else
-                    {
-                        j.Joint2 = 0;
-                    }
+                    var index = jointIndexMap[j.Joint2];
+                    j.Joint2 = (ushort)(index >= 0 ? index : 0);
+                    w.X *= factor;
                 }
+
                 {
-                    if (w.W > 0)
-                    {
-                        var index = jointIndexMap[j.Joint3];
-                        j.Joint3 = (ushort)(index >= 0 ? index : 0);
-                        w.X *= factor;
-                    }
-                    else
-                    {
-                        j.Joint3 = 0;
-                    }
+                    var index = jointIndexMap[j.Joint3];
+                    j.Joint3 = (ushort)(index >= 0 ? index : 0);
+                    w.X *= factor;
                 }
             }
         }

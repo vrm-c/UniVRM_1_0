@@ -38,7 +38,7 @@ namespace Vrm10
             return new Image(x.Name,
                 x.MimeType,
                 usage,
-                memory.Slice(view.ByteOffset.GetValueOrDefault(), view.ByteLength));
+                memory.Slice(view.ByteOffset.GetValueOrDefault(), view.ByteLength.Value));
         }
 
         static VrmProtobuf.Image GetTexture(Vrm10Storage storage, int index)

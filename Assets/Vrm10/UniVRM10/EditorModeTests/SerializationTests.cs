@@ -42,14 +42,14 @@ namespace Vrm10
                 var data = new VrmProtobuf.Material
                 {
                     Name = "Alicia_body",
-                    PbrMetallicRoughness = new VrmProtobuf.MaterialPbrMetallicRoughness
+                    PbrMetallicRoughness = new VrmProtobuf.MaterialPBRMetallicRoughness
                     {
                         // BaseColorFactor = new[] { 1, 1, 1, 1 },
                         // BaseColorTexture= { }, 
                         MetallicFactor = 0,
                         RoughnessFactor = 0.9f
                     },
-                    AlphaMode = "OPAQUE",
+                    AlphaMode = VrmProtobuf.Material.Types.alphaModeType.Opaque,
                     AlphaCutoff = 0.5f,
                     Extensions = new VrmProtobuf.Material.Types.Extensions
                     {

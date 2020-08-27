@@ -11,6 +11,28 @@ namespace Vrm10
         // for debug
         static readonly Vector4 Nan = new Vector4(float.NaN, float.NaN, float.NaN, float.NaN);
 
+        static RenderMode GetRenderMode(VrmProtobuf.Material.Types.alphaModeType alphaMode, bool isTransparentWithZWrite)
+        {
+            switch (alphaMode)
+            {
+                case VrmProtobuf.Material.Types.alphaModeType.Opaque: return RenderMode.Opaque;
+                case VrmProtobuf.Material.Types.alphaModeType.Mask: return RenderMode.Cutout;
+                case VrmProtobuf.Material.Types.alphaModeType.Blend:
+                    {
+                        if (isTransparentWithZWrite)
+                        {
+                            return RenderMode.TransparentWithZWrite;
+                        }
+                        else
+                        {
+                            return RenderMode.Transparent;
+                        }
+                    }
+            }
+
+            throw new NotImplementedException();
+        }
+
         public static MToonMaterial MToonFromGltf(VrmProtobuf.Material material, List<Texture> textures)
         {
             var mtoon = new MToonMaterial(material.Name);
@@ -24,43 +46,43 @@ namespace Vrm10
                 },
                 Color = new ColorDefinition
                 {
-                    LitColor = extension.LitFactor.ToLinearColor(Nan),
-                    LitMultiplyTexture = extension.LitMultiplyTexture.GetTexture(textures),
+                    LitColor = material.PbrMetallicRoughness.BaseColorFactor.ToLinearColor(Nan),
+                    LitMultiplyTexture = material.PbrMetallicRoughness.BaseColorTexture.Index.GetTexture(textures),
                     ShadeColor = extension.ShadeFactor.ToLinearColor(Nan),
                     ShadeMultiplyTexture = extension.ShadeMultiplyTexture.GetTexture(textures),
-                    CutoutThresholdValue = extension.CutoutThresholdFactor,
+                    CutoutThresholdValue = material.AlphaCutoff.Value,
                 },
                 Outline = new OutlineDefinition
                 {
                     OutlineColorMode = (OutlineColorMode)extension.OutlineColorMode,
                     OutlineColor = extension.OutlineFactor.ToLinearColor(Nan),
-                    OutlineLightingMixValue = extension.OutlineLightingMixFactor,
-                    OutlineScaledMaxDistanceValue = extension.OutlineScaledMaxDistanceFactor,
+                    OutlineLightingMixValue = extension.OutlineLightingMixFactor.Value,
+                    OutlineScaledMaxDistanceValue = extension.OutlineScaledMaxDistanceFactor.Value,
                     OutlineWidthMode = (OutlineWidthMode)extension.OutlineWidthMode,
-                    OutlineWidthValue = extension.OutlineWidthFactor,
+                    OutlineWidthValue = extension.OutlineWidthFactor.Value,
                     OutlineWidthMultiplyTexture = extension.OutlineWidthMultiplyTexture.GetTexture(textures),
                 },
                 Emission = new EmissionDefinition
                 {
-                    EmissionColor = extension.EmissionFactor.ToLinearColor(Nan),
-                    EmissionMultiplyTexture = extension.EmissionMultiplyTexture.GetTexture(textures),
+                    EmissionColor = material.EmissiveFactor.ToLinearColor(Nan),
+                    EmissionMultiplyTexture = material.EmissiveTexture.Index.GetTexture(textures),
                 },
                 Lighting = new LightingDefinition
                 {
                     LightingInfluence = new LightingInfluenceDefinition
                     {
-                        GiIntensityValue = extension.GiIntensityFactor,
-                        LightColorAttenuationValue = extension.LightColorAttenuationFactor,
+                        GiIntensityValue = extension.GiIntensityFactor.Value,
+                        LightColorAttenuationValue = extension.LightColorAttenuationFactor.Value,
                     },
                     LitAndShadeMixing = new LitAndShadeMixingDefinition
                     {
-                        ShadingShiftValue = extension.ShadingShiftFactor,
-                        ShadingToonyValue = extension.ShadingToonyFactor,
+                        ShadingShiftValue = extension.ShadingShiftFactor.Value,
+                        ShadingToonyValue = extension.ShadingToonyFactor.Value,
                     },
                     Normal = new NormalDefinition
                     {
-                        NormalScaleValue = extension.NormalScaleFactor,
-                        NormalTexture = extension.NormalTexture.GetTexture(textures),
+                        NormalScaleValue = material.NormalTexture.Scale.Value,
+                        NormalTexture = material.NormalTexture.Index.GetTexture(textures),
                     },
                 },
                 MatCap = new MatCapDefinition
@@ -69,30 +91,43 @@ namespace Vrm10
                 },
                 Rendering = new RenderingDefinition
                 {
-                    CullMode = (CullMode)extension.CullMode,
-                    RenderMode = (RenderMode)extension.RenderMode,
-                    RenderQueueOffsetNumber = extension.RenderQueueOffsetNumber,
+                    CullMode = material.DoubleSided.Value ? CullMode.Off : CullMode.Back,
+                    RenderMode = GetRenderMode(material.AlphaMode, extension.TransparentWithZWrite.Value),
+                    RenderQueueOffsetNumber = extension.RenderQueueOffsetNumber.Value,
                 },
                 Rim = new RimDefinition
                 {
                     RimColor = extension.RimFactor.ToLinearColor(Nan),
                     RimMultiplyTexture = extension.RimMultiplyTexture.GetTexture(textures),
-                    RimLiftValue = extension.RimLiftFactor,
-                    RimFresnelPowerValue = extension.RimFresnelPowerFactor,
-                    RimLightingMixValue = extension.RimLightingMixFactor,
+                    RimLiftValue = extension.RimLiftFactor.Value,
+                    RimFresnelPowerValue = extension.RimFresnelPowerFactor.Value,
+                    RimLightingMixValue = extension.RimLightingMixFactor.Value,
                 },
                 TextureOption = new TextureUvCoordsDefinition
                 {
                     UvAnimationMaskTexture = extension.UvAnimationMaskTexture.GetTexture(textures),
-                    UvAnimationRotationSpeedValue = extension.UvAnimationRotationSpeedFactor,
-                    UvAnimationScrollXSpeedValue = extension.UvAnimationScrollXSpeedFactor,
-                    UvAnimationScrollYSpeedValue = extension.UvAnimationScrollYSpeedFactor,
-                    MainTextureLeftBottomOriginOffset = extension.MainTextureLeftBottomOriginOffset.ToVector2(),
-                    MainTextureLeftBottomOriginScale = extension.MainTextureLeftBottomOriginScale.ToVector2(),
+                    UvAnimationRotationSpeedValue = extension.UvAnimationRotationSpeedFactor.Value,
+                    UvAnimationScrollXSpeedValue = extension.UvAnimationScrollXSpeedFactor.Value,
+                    UvAnimationScrollYSpeedValue = extension.UvAnimationScrollYSpeedFactor.Value,
+                    MainTextureLeftBottomOriginOffset = material.PbrMetallicRoughness.BaseColorTexture.Extensions.KHRTextureTransform.Offset.ToVector2(),
+                    MainTextureLeftBottomOriginScale = material.PbrMetallicRoughness.BaseColorTexture.Extensions.KHRTextureTransform.Scale.ToVector2(),
                 },
             };
 
             return mtoon;
+        }
+
+        static (VrmProtobuf.Material.Types.alphaModeType, bool) GetRenderMode(RenderMode mode)
+        {
+            switch (mode)
+            {
+                case RenderMode.Opaque: return (VrmProtobuf.Material.Types.alphaModeType.Opaque, false);
+                case RenderMode.Cutout: return (VrmProtobuf.Material.Types.alphaModeType.Mask, false);
+                case RenderMode.Transparent: return (VrmProtobuf.Material.Types.alphaModeType.Blend, false);
+                case RenderMode.TransparentWithZWrite: return (VrmProtobuf.Material.Types.alphaModeType.Blend, true);
+            }
+
+            throw new NotImplementedException();
         }
 
         public static VrmProtobuf.Material MToonToGltf(this MToonMaterial mtoon, List<Texture> textures)
@@ -106,11 +141,11 @@ namespace Vrm10
             material.Extensions.VRMCMaterialsMtoon = dst;
 
             // Color
-            dst.LitFactor.Assign(mtoon.Definition.Color.LitColor);
-            dst.LitMultiplyTexture = mtoon.Definition.Color.LitMultiplyTexture.ToIndex(textures);
+            material.PbrMetallicRoughness.BaseColorFactor.Assign(mtoon.Definition.Color.LitColor);
+            material.PbrMetallicRoughness.BaseColorTexture.Index = mtoon.Definition.Color.LitMultiplyTexture.ToIndex(textures);
             dst.ShadeFactor.Assign(mtoon.Definition.Color.ShadeColor);
             dst.ShadeMultiplyTexture = mtoon.Definition.Color.ShadeMultiplyTexture.ToIndex(textures);
-            dst.CutoutThresholdFactor = mtoon.Definition.Color.CutoutThresholdValue;
+            material.AlphaCutoff = mtoon.Definition.Color.CutoutThresholdValue;
 
             // Outline
             dst.OutlineColorMode = (VrmProtobuf.VRMC_materials_mtoon.Types.OutlineColorMode)mtoon.Definition.Outline.OutlineColorMode;
@@ -122,8 +157,8 @@ namespace Vrm10
             dst.OutlineWidthMultiplyTexture = mtoon.Definition.Outline.OutlineWidthMultiplyTexture.ToIndex(textures);
 
             // Emission
-            dst.EmissionFactor.Assign(mtoon.Definition.Emission.EmissionColor);
-            dst.EmissionMultiplyTexture = mtoon.Definition.Emission.EmissionMultiplyTexture.ToIndex(textures);
+            material.EmissiveFactor.Assign(mtoon.Definition.Emission.EmissionColor);
+            material.EmissiveTexture.Index = mtoon.Definition.Emission.EmissionMultiplyTexture.ToIndex(textures);
             if (mtoon.Definition.Emission.EmissionMultiplyTexture != null)
             {
                 material.EmissiveTexture = new VrmProtobuf.TextureInfo
@@ -137,8 +172,8 @@ namespace Vrm10
             dst.LightColorAttenuationFactor = mtoon.Definition.Lighting.LightingInfluence.LightColorAttenuationValue;
             dst.ShadingShiftFactor = mtoon.Definition.Lighting.LitAndShadeMixing.ShadingShiftValue;
             dst.ShadingToonyFactor = mtoon.Definition.Lighting.LitAndShadeMixing.ShadingToonyValue;
-            dst.NormalScaleFactor = mtoon.Definition.Lighting.Normal.NormalScaleValue;
-            dst.NormalTexture = mtoon.Definition.Lighting.Normal.NormalTexture.ToIndex(textures);
+            material.NormalTexture.Scale = mtoon.Definition.Lighting.Normal.NormalScaleValue;
+            material.NormalTexture.Index = mtoon.Definition.Lighting.Normal.NormalTexture.ToIndex(textures);
             if (mtoon.Definition.Lighting.Normal.NormalTexture != null)
             {
                 material.NormalTexture = new VrmProtobuf.MaterialNormalTextureInfo
@@ -151,7 +186,6 @@ namespace Vrm10
             dst.AdditiveTexture = mtoon.Definition.MatCap.AdditiveTexture.ToIndex(textures);
 
             // rendering
-            dst.CullMode = (VrmProtobuf.VRMC_materials_mtoon.Types.CullMode)mtoon.Definition.Rendering.CullMode;
             switch (mtoon.Definition.Rendering.CullMode)
             {
                 case CullMode.Back:
@@ -170,7 +204,7 @@ namespace Vrm10
                 default:
                     throw new NotImplementedException();
             }
-            dst.RenderMode = (VrmProtobuf.VRMC_materials_mtoon.Types.RenderMode)mtoon.Definition.Rendering.RenderMode;
+            (material.AlphaMode, dst.TransparentWithZWrite) = GetRenderMode(mtoon.Definition.Rendering.RenderMode);
             dst.RenderQueueOffsetNumber = mtoon.Definition.Rendering.RenderQueueOffsetNumber;
 
             // rim
@@ -185,8 +219,8 @@ namespace Vrm10
             dst.UvAnimationRotationSpeedFactor = mtoon.Definition.TextureOption.UvAnimationRotationSpeedValue;
             dst.UvAnimationScrollXSpeedFactor = mtoon.Definition.TextureOption.UvAnimationScrollXSpeedValue;
             dst.UvAnimationScrollYSpeedFactor = mtoon.Definition.TextureOption.UvAnimationScrollYSpeedValue;
-            dst.MainTextureLeftBottomOriginOffset.Assign(mtoon.Definition.TextureOption.MainTextureLeftBottomOriginOffset);
-            dst.MainTextureLeftBottomOriginScale.Assign(mtoon.Definition.TextureOption.MainTextureLeftBottomOriginScale);
+            material.PbrMetallicRoughness.BaseColorTexture.Extensions.KHRTextureTransform.Offset.Assign(mtoon.Definition.TextureOption.MainTextureLeftBottomOriginOffset);
+            material.PbrMetallicRoughness.BaseColorTexture.Extensions.KHRTextureTransform.Scale.Assign(mtoon.Definition.TextureOption.MainTextureLeftBottomOriginScale);
 
             return material;
         }

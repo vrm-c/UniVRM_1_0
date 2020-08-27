@@ -24,17 +24,159 @@ namespace VrmProtobuf {
     static VRMCVrmReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "Cg5WUk1DX3ZybS5wcm90bxILVnJtUHJvdG9idWYaCm1ldGEucHJvdG8aDmh1",
-            "bWFub2lkLnByb3RvGhFmaXJzdFBlcnNvbi5wcm90bxoMbG9va0F0LnByb3Rv",
-            "GhBibGVuZFNoYXBlLnByb3RvIukBCgdWUk1DVnJtEhMKC3NwZWNWZXJzaW9u",
+            "Cg5WUk1DX3ZybS5wcm90bxILVnJtUHJvdG9idWYaHmdvb2dsZS9wcm90b2J1",
+            "Zi93cmFwcGVycy5wcm90byK4CAoETWV0YRIMCgRuYW1lGAEgASgJEg8KB3Zl",
+            "cnNpb24YAiABKAkSDwoHYXV0aG9ycxgDIAMoCRISCgpjb3B5cmlnaHRzGAQg",
+            "ASgJEhoKEmNvbnRhY3RJbmZvcm1hdGlvbhgFIAEoCRIRCglyZWZlcmVuY2UY",
+            "BiABKAkSMwoOdGh1bWJuYWlsSW1hZ2UYByABKAsyGy5nb29nbGUucHJvdG9i",
+            "dWYuSW50MzJWYWx1ZRJAChBhdmF0YXJQZXJtaXNzaW9uGAggASgOMiYuVnJt",
+            "UHJvdG9idWYuTWV0YS5BdmF0YXJQZXJtaXNzaW9uVHlwZRIwCgx2aW9sZW50",
+            "VXNhZ2UYCSABKAsyGi5nb29nbGUucHJvdG9idWYuQm9vbFZhbHVlEi8KC3Nl",
+            "eHVhbFVzYWdlGAogASgLMhouZ29vZ2xlLnByb3RvYnVmLkJvb2xWYWx1ZRIt",
+            "CglnYW1lVXNhZ2UYCyABKAsyGi5nb29nbGUucHJvdG9idWYuQm9vbFZhbHVl",
+            "Ej4KD2NvbW1lcmNpYWxVc2FnZRgMIAEoDjIlLlZybVByb3RvYnVmLk1ldGEu",
+            "Q29tbWVyY2lhbFVzYWdlVHlwZRI9Chlwb2xpdGljYWxPclJlbGlnaW91c1Vz",
+            "YWdlGA0gASgLMhouZ29vZ2xlLnByb3RvYnVmLkJvb2xWYWx1ZRIaChJvdGhl",
+            "clBlcm1pc3Npb25VcmwYDiABKAkSPAoOY3JlZGl0Tm90YXRpb24YDyABKA4y",
+            "JC5Wcm1Qcm90b2J1Zi5NZXRhLkNyZWRpdE5vdGF0aW9uVHlwZRI3ChNhbGxv",
+            "d1JlZGlzdHJpYnV0aW9uGBAgASgLMhouZ29vZ2xlLnByb3RvYnVmLkJvb2xW",
+            "YWx1ZRIsCgZtb2RpZnkYESABKA4yHC5Wcm1Qcm90b2J1Zi5NZXRhLk1vZGlm",
+            "eVR5cGUSFwoPb3RoZXJMaWNlbnNlVXJsGBIgASgJIlIKFEF2YXRhclBlcm1p",
+            "c3Npb25UeXBlEg4KCk9ubHlBdXRob3IQABIcChhFeHBsaWNpdGx5TGljZW5z",
+            "ZWRQZXJzb24QARIMCghFdmVyeW9uZRACIoMBChNDb21tZXJjaWFsVXNhZ2VU",
+            "eXBlEiIKHlBlcnNvbmFsTm9uQ29tbWVyY2lhbE5vblByb2ZpdBAAEh8KG1Bl",
+            "cnNvbmFsTm9uQ29tbWVyY2lhbFByb2ZpdBABEhYKElBlcnNvbmFsQ29tbWVy",
+            "Y2lhbBACEg8KC0NvcnBvcmF0aW9uEAMiQgoSQ3JlZGl0Tm90YXRpb25UeXBl",
+            "EgwKCFJlcXVpcmVkEAASDwoLVW5uZWNlc3NhcnkQARINCglBYmFuZG9uZWQQ",
+            "AiI9CgpNb2RpZnlUeXBlEg4KClByb2hpYml0ZWQQABINCglJbmhlcml0ZWQQ",
+            "ARIQCgxOb3RJbmhlcml0ZWQQAiI2CglIdW1hbkJvbmUSKQoEbm9kZRgBIAEo",
+            "CzIbLmdvb2dsZS5wcm90b2J1Zi5JbnQzMlZhbHVlIuMUCgpIdW1hbkJvbmVz",
+            "EiQKBGhpcHMYASABKAsyFi5Wcm1Qcm90b2J1Zi5IdW1hbkJvbmUSJQoFc3Bp",
+            "bmUYAiABKAsyFi5Wcm1Qcm90b2J1Zi5IdW1hbkJvbmUSJQoFY2hlc3QYAyAB",
+            "KAsyFi5Wcm1Qcm90b2J1Zi5IdW1hbkJvbmUSKgoKdXBwZXJDaGVzdBgEIAEo",
+            "CzIWLlZybVByb3RvYnVmLkh1bWFuQm9uZRIkCgRuZWNrGAUgASgLMhYuVnJt",
+            "UHJvdG9idWYuSHVtYW5Cb25lEiQKBGhlYWQYBiABKAsyFi5Wcm1Qcm90b2J1",
+            "Zi5IdW1hbkJvbmUSJwoHbGVmdEV5ZRgHIAEoCzIWLlZybVByb3RvYnVmLkh1",
+            "bWFuQm9uZRIoCghyaWdodEV5ZRgIIAEoCzIWLlZybVByb3RvYnVmLkh1bWFu",
+            "Qm9uZRIjCgNqYXcYCSABKAsyFi5Wcm1Qcm90b2J1Zi5IdW1hbkJvbmUSLAoM",
+            "bGVmdFVwcGVyTGVnGAogASgLMhYuVnJtUHJvdG9idWYuSHVtYW5Cb25lEiwK",
+            "DGxlZnRMb3dlckxlZxgLIAEoCzIWLlZybVByb3RvYnVmLkh1bWFuQm9uZRIo",
+            "CghsZWZ0Rm9vdBgMIAEoCzIWLlZybVByb3RvYnVmLkh1bWFuQm9uZRIoCghs",
+            "ZWZ0VG9lcxgNIAEoCzIWLlZybVByb3RvYnVmLkh1bWFuQm9uZRItCg1yaWdo",
+            "dFVwcGVyTGVnGA4gASgLMhYuVnJtUHJvdG9idWYuSHVtYW5Cb25lEi0KDXJp",
+            "Z2h0TG93ZXJMZWcYDyABKAsyFi5Wcm1Qcm90b2J1Zi5IdW1hbkJvbmUSKQoJ",
+            "cmlnaHRGb290GBAgASgLMhYuVnJtUHJvdG9idWYuSHVtYW5Cb25lEikKCXJp",
+            "Z2h0VG9lcxgRIAEoCzIWLlZybVByb3RvYnVmLkh1bWFuQm9uZRIsCgxsZWZ0",
+            "U2hvdWxkZXIYEiABKAsyFi5Wcm1Qcm90b2J1Zi5IdW1hbkJvbmUSLAoMbGVm",
+            "dFVwcGVyQXJtGBMgASgLMhYuVnJtUHJvdG9idWYuSHVtYW5Cb25lEiwKDGxl",
+            "ZnRMb3dlckFybRgUIAEoCzIWLlZybVByb3RvYnVmLkh1bWFuQm9uZRIoCghs",
+            "ZWZ0SGFuZBgVIAEoCzIWLlZybVByb3RvYnVmLkh1bWFuQm9uZRItCg1yaWdo",
+            "dFNob3VsZGVyGBYgASgLMhYuVnJtUHJvdG9idWYuSHVtYW5Cb25lEi0KDXJp",
+            "Z2h0VXBwZXJBcm0YFyABKAsyFi5Wcm1Qcm90b2J1Zi5IdW1hbkJvbmUSLQoN",
+            "cmlnaHRMb3dlckFybRgYIAEoCzIWLlZybVByb3RvYnVmLkh1bWFuQm9uZRIp",
+            "CglyaWdodEhhbmQYGSABKAsyFi5Wcm1Qcm90b2J1Zi5IdW1hbkJvbmUSMQoR",
+            "bGVmdFRodW1iUHJveGltYWwYGiABKAsyFi5Wcm1Qcm90b2J1Zi5IdW1hbkJv",
+            "bmUSNQoVbGVmdFRodW1iSW50ZXJtZWRpYXRlGBsgASgLMhYuVnJtUHJvdG9i",
+            "dWYuSHVtYW5Cb25lEi8KD2xlZnRUaHVtYkRpc3RhbBgcIAEoCzIWLlZybVBy",
+            "b3RvYnVmLkh1bWFuQm9uZRIxChFsZWZ0SW5kZXhQcm94aW1hbBgdIAEoCzIW",
+            "LlZybVByb3RvYnVmLkh1bWFuQm9uZRI1ChVsZWZ0SW5kZXhJbnRlcm1lZGlh",
+            "dGUYHiABKAsyFi5Wcm1Qcm90b2J1Zi5IdW1hbkJvbmUSLwoPbGVmdEluZGV4",
+            "RGlzdGFsGB8gASgLMhYuVnJtUHJvdG9idWYuSHVtYW5Cb25lEjIKEmxlZnRN",
+            "aWRkbGVQcm94aW1hbBggIAEoCzIWLlZybVByb3RvYnVmLkh1bWFuQm9uZRI2",
+            "ChZsZWZ0TWlkZGxlSW50ZXJtZWRpYXRlGCEgASgLMhYuVnJtUHJvdG9idWYu",
+            "SHVtYW5Cb25lEjAKEGxlZnRNaWRkbGVEaXN0YWwYIiABKAsyFi5Wcm1Qcm90",
+            "b2J1Zi5IdW1hbkJvbmUSMAoQbGVmdFJpbmdQcm94aW1hbBgjIAEoCzIWLlZy",
+            "bVByb3RvYnVmLkh1bWFuQm9uZRI0ChRsZWZ0UmluZ0ludGVybWVkaWF0ZRgk",
+            "IAEoCzIWLlZybVByb3RvYnVmLkh1bWFuQm9uZRIuCg5sZWZ0UmluZ0Rpc3Rh",
+            "bBglIAEoCzIWLlZybVByb3RvYnVmLkh1bWFuQm9uZRIyChJsZWZ0TGl0dGxl",
+            "UHJveGltYWwYJiABKAsyFi5Wcm1Qcm90b2J1Zi5IdW1hbkJvbmUSNgoWbGVm",
+            "dExpdHRsZUludGVybWVkaWF0ZRgnIAEoCzIWLlZybVByb3RvYnVmLkh1bWFu",
+            "Qm9uZRIwChBsZWZ0TGl0dGxlRGlzdGFsGCggASgLMhYuVnJtUHJvdG9idWYu",
+            "SHVtYW5Cb25lEjIKEnJpZ2h0VGh1bWJQcm94aW1hbBgpIAEoCzIWLlZybVBy",
+            "b3RvYnVmLkh1bWFuQm9uZRI2ChZyaWdodFRodW1iSW50ZXJtZWRpYXRlGCog",
+            "ASgLMhYuVnJtUHJvdG9idWYuSHVtYW5Cb25lEjAKEHJpZ2h0VGh1bWJEaXN0",
+            "YWwYKyABKAsyFi5Wcm1Qcm90b2J1Zi5IdW1hbkJvbmUSMgoScmlnaHRJbmRl",
+            "eFByb3hpbWFsGCwgASgLMhYuVnJtUHJvdG9idWYuSHVtYW5Cb25lEjYKFnJp",
+            "Z2h0SW5kZXhJbnRlcm1lZGlhdGUYLSABKAsyFi5Wcm1Qcm90b2J1Zi5IdW1h",
+            "bkJvbmUSMAoQcmlnaHRJbmRleERpc3RhbBguIAEoCzIWLlZybVByb3RvYnVm",
+            "Lkh1bWFuQm9uZRIzChNyaWdodE1pZGRsZVByb3hpbWFsGC8gASgLMhYuVnJt",
+            "UHJvdG9idWYuSHVtYW5Cb25lEjcKF3JpZ2h0TWlkZGxlSW50ZXJtZWRpYXRl",
+            "GDAgASgLMhYuVnJtUHJvdG9idWYuSHVtYW5Cb25lEjEKEXJpZ2h0TWlkZGxl",
+            "RGlzdGFsGDEgASgLMhYuVnJtUHJvdG9idWYuSHVtYW5Cb25lEjEKEXJpZ2h0",
+            "UmluZ1Byb3hpbWFsGDIgASgLMhYuVnJtUHJvdG9idWYuSHVtYW5Cb25lEjUK",
+            "FXJpZ2h0UmluZ0ludGVybWVkaWF0ZRgzIAEoCzIWLlZybVByb3RvYnVmLkh1",
+            "bWFuQm9uZRIvCg9yaWdodFJpbmdEaXN0YWwYNCABKAsyFi5Wcm1Qcm90b2J1",
+            "Zi5IdW1hbkJvbmUSMwoTcmlnaHRMaXR0bGVQcm94aW1hbBg1IAEoCzIWLlZy",
+            "bVByb3RvYnVmLkh1bWFuQm9uZRI3ChdyaWdodExpdHRsZUludGVybWVkaWF0",
+            "ZRg2IAEoCzIWLlZybVByb3RvYnVmLkh1bWFuQm9uZRIxChFyaWdodExpdHRs",
+            "ZURpc3RhbBg3IAEoCzIWLlZybVByb3RvYnVmLkh1bWFuQm9uZSI3CghIdW1h",
+            "bm9pZBIrCgpodW1hbkJvbmVzGAEgASgLMhcuVnJtUHJvdG9idWYuSHVtYW5C",
+            "b25lcyLSAQoOTWVzaEFubm90YXRpb24SKQoEbm9kZRgBIAEoCzIbLmdvb2ds",
+            "ZS5wcm90b2J1Zi5JbnQzMlZhbHVlEkQKD2ZpcnN0UGVyc29uVHlwZRgCIAEo",
+            "DjIrLlZybVByb3RvYnVmLk1lc2hBbm5vdGF0aW9uLkZpcnN0UGVyc29uVHlw",
+            "ZSJPCg9GaXJzdFBlcnNvblR5cGUSCAoEYXV0bxAAEggKBGJvdGgQARITCg90",
+            "aGlyZFBlcnNvbk9ubHkQAhITCg9maXJzdFBlcnNvbk9ubHkQAyJDCgtGaXJz",
+            "dFBlcnNvbhI0Cg9tZXNoQW5ub3RhdGlvbnMYASADKAsyGy5Wcm1Qcm90b2J1",
+            "Zi5NZXNoQW5ub3RhdGlvbiJ2Cg5Mb29rQXRSYW5nZU1hcBIyCg1pbnB1dE1h",
+            "eFZhbHVlGAEgASgLMhsuZ29vZ2xlLnByb3RvYnVmLkZsb2F0VmFsdWUSMAoL",
+            "b3V0cHV0U2NhbGUYAiABKAsyGy5nb29nbGUucHJvdG9idWYuRmxvYXRWYWx1",
+            "ZSLoAgoGTG9va0F0EhoKEm9mZnNldEZyb21IZWFkQm9uZRgBIAMoAhIyCgps",
+            "b29rQXRUeXBlGAIgASgOMh4uVnJtUHJvdG9idWYuTG9va0F0Lkxvb2tBdFR5",
+            "cGUSOgoVbG9va0F0SG9yaXpvbnRhbElubmVyGAMgASgLMhsuVnJtUHJvdG9i",
+            "dWYuTG9va0F0UmFuZ2VNYXASOgoVbG9va0F0SG9yaXpvbnRhbE91dGVyGAQg",
+            "ASgLMhsuVnJtUHJvdG9idWYuTG9va0F0UmFuZ2VNYXASNwoSbG9va0F0VmVy",
+            "dGljYWxEb3duGAUgASgLMhsuVnJtUHJvdG9idWYuTG9va0F0UmFuZ2VNYXAS",
+            "NQoQbG9va0F0VmVydGljYWxVcBgGIAEoCzIbLlZybVByb3RvYnVmLkxvb2tB",
+            "dFJhbmdlTWFwIiYKCkxvb2tBdFR5cGUSCAoEYm9uZRAAEg4KCmJsZW5kU2hh",
+            "cGUQASKUAQoOQmxlbmRTaGFwZUJpbmQSKQoEbm9kZRgBIAEoCzIbLmdvb2ds",
+            "ZS5wcm90b2J1Zi5JbnQzMlZhbHVlEioKBWluZGV4GAIgASgLMhsuZ29vZ2xl",
+            "LnByb3RvYnVmLkludDMyVmFsdWUSKwoGd2VpZ2h0GAMgASgLMhsuZ29vZ2xl",
+            "LnByb3RvYnVmLkZsb2F0VmFsdWUi8gEKDU1hdGVyaWFsVmFsdWUSLQoIbWF0",
+            "ZXJpYWwYASABKAsyGy5nb29nbGUucHJvdG9idWYuSW50MzJWYWx1ZRI6CgR0",
+            "eXBlGAIgASgOMiwuVnJtUHJvdG9idWYuTWF0ZXJpYWxWYWx1ZS5NYXRlcmlh",
+            "bFZhbHVlVHlwZRITCgt0YXJnZXRWYWx1ZRgDIAMoAiJhChFNYXRlcmlhbFZh",
+            "bHVlVHlwZRIJCgVjb2xvchAAEhEKDWVtaXNzaW9uQ29sb3IQARIOCgpzaGFk",
+            "ZUNvbG9yEAISDAoIcmltQ29sb3IQAxIQCgxvdXRsaW5lQ29sb3IQBCJgCg5N",
+            "YXRlcmlhbFVWQmluZBItCghtYXRlcmlhbBgBIAEoCzIbLmdvb2dsZS5wcm90",
+            "b2J1Zi5JbnQzMlZhbHVlEg8KB3NjYWxpbmcYAiADKAISDgoGb2Zmc2V0GAMg",
+            "AygCIpYFCg9CbGVuZFNoYXBlR3JvdXASDAoEbmFtZRgBIAEoCRI9CgZwcmVz",
+            "ZXQYAiABKA4yLS5Wcm1Qcm90b2J1Zi5CbGVuZFNoYXBlR3JvdXAuQmxlbmRT",
+            "aGFwZVByZXNldBIqCgViaW5kcxgDIAMoCzIbLlZybVByb3RvYnVmLkJsZW5k",
+            "U2hhcGVCaW5kEjIKDm1hdGVyaWFsVmFsdWVzGAQgAygLMhouVnJtUHJvdG9i",
+            "dWYuTWF0ZXJpYWxWYWx1ZRI0Cg9tYXRlcmlhbFVWQmluZHMYBSADKAsyGy5W",
+            "cm1Qcm90b2J1Zi5NYXRlcmlhbFVWQmluZBIsCghpc0JpbmFyeRgGIAEoCzIa",
+            "Lmdvb2dsZS5wcm90b2J1Zi5Cb29sVmFsdWUSLwoLaWdub3JlQmxpbmsYByAB",
+            "KAsyGi5nb29nbGUucHJvdG9idWYuQm9vbFZhbHVlEjAKDGlnbm9yZUxvb2tB",
+            "dBgIIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5Cb29sVmFsdWUSLwoLaWdub3Jl",
+            "TW91dGgYCSABKAsyGi5nb29nbGUucHJvdG9idWYuQm9vbFZhbHVlIt0BChBC",
+            "bGVuZFNoYXBlUHJlc2V0EgoKBmN1c3RvbRAAEgYKAmFhEAESBgoCaWgQAhIG",
+            "CgJvdRADEgYKAmVlEAQSBgoCb2gQBRIJCgVibGluaxAGEgcKA2pveRAHEgkK",
+            "BWFuZ3J5EAgSCgoGc29ycm93EAkSBwoDZnVuEAoSCgoGbG9va1VwEAsSDAoI",
+            "bG9va0Rvd24QDBIMCghsb29rTGVmdBANEg0KCWxvb2tSaWdodBAOEg0KCWJs",
+            "aW5rTGVmdBAPEg4KCmJsaW5rUmlnaHQQEBILCgduZXV0cmFsEBEiRAoKQmxl",
+            "bmRTaGFwZRI2ChBibGVuZFNoYXBlR3JvdXBzGAEgAygLMhwuVnJtUHJvdG9i",
+            "dWYuQmxlbmRTaGFwZUdyb3VwIukBCgdWUk1DVnJtEhMKC3NwZWNWZXJzaW9u",
             "GAEgASgJEh8KBG1ldGEYAiABKAsyES5Wcm1Qcm90b2J1Zi5NZXRhEicKCGh1",
             "bWFub2lkGAMgASgLMhUuVnJtUHJvdG9idWYuSHVtYW5vaWQSLQoLZmlyc3RQ",
             "ZXJzb24YBCABKAsyGC5Wcm1Qcm90b2J1Zi5GaXJzdFBlcnNvbhIjCgZsb29r",
             "QXQYBSABKAsyEy5Wcm1Qcm90b2J1Zi5Mb29rQXQSKwoKYmxlbmRTaGFwZRgG",
             "IAEoCzIXLlZybVByb3RvYnVmLkJsZW5kU2hhcGViBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::VrmProtobuf.MetaReflection.Descriptor, global::VrmProtobuf.HumanoidReflection.Descriptor, global::VrmProtobuf.FirstPersonReflection.Descriptor, global::VrmProtobuf.LookAtReflection.Descriptor, global::VrmProtobuf.BlendShapeReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::Google.Protobuf.WellKnownTypes.WrappersReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
+            new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.Meta), global::VrmProtobuf.Meta.Parser, new[]{ "Name", "Version", "Authors", "Copyrights", "ContactInformation", "Reference", "ThumbnailImage", "AvatarPermission", "ViolentUsage", "SexualUsage", "GameUsage", "CommercialUsage", "PoliticalOrReligiousUsage", "OtherPermissionUrl", "CreditNotation", "AllowRedistribution", "Modify", "OtherLicenseUrl" }, null, new[]{ typeof(global::VrmProtobuf.Meta.Types.AvatarPermissionType), typeof(global::VrmProtobuf.Meta.Types.CommercialUsageType), typeof(global::VrmProtobuf.Meta.Types.CreditNotationType), typeof(global::VrmProtobuf.Meta.Types.ModifyType) }, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.HumanBone), global::VrmProtobuf.HumanBone.Parser, new[]{ "Node" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.HumanBones), global::VrmProtobuf.HumanBones.Parser, new[]{ "Hips", "Spine", "Chest", "UpperChest", "Neck", "Head", "LeftEye", "RightEye", "Jaw", "LeftUpperLeg", "LeftLowerLeg", "LeftFoot", "LeftToes", "RightUpperLeg", "RightLowerLeg", "RightFoot", "RightToes", "LeftShoulder", "LeftUpperArm", "LeftLowerArm", "LeftHand", "RightShoulder", "RightUpperArm", "RightLowerArm", "RightHand", "LeftThumbProximal", "LeftThumbIntermediate", "LeftThumbDistal", "LeftIndexProximal", "LeftIndexIntermediate", "LeftIndexDistal", "LeftMiddleProximal", "LeftMiddleIntermediate", "LeftMiddleDistal", "LeftRingProximal", "LeftRingIntermediate", "LeftRingDistal", "LeftLittleProximal", "LeftLittleIntermediate", "LeftLittleDistal", "RightThumbProximal", "RightThumbIntermediate", "RightThumbDistal", "RightIndexProximal", "RightIndexIntermediate", "RightIndexDistal", "RightMiddleProximal", "RightMiddleIntermediate", "RightMiddleDistal", "RightRingProximal", "RightRingIntermediate", "RightRingDistal", "RightLittleProximal", "RightLittleIntermediate", "RightLittleDistal" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.Humanoid), global::VrmProtobuf.Humanoid.Parser, new[]{ "HumanBones" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.MeshAnnotation), global::VrmProtobuf.MeshAnnotation.Parser, new[]{ "Node", "FirstPersonType" }, null, new[]{ typeof(global::VrmProtobuf.MeshAnnotation.Types.FirstPersonType) }, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.FirstPerson), global::VrmProtobuf.FirstPerson.Parser, new[]{ "MeshAnnotations" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.LookAtRangeMap), global::VrmProtobuf.LookAtRangeMap.Parser, new[]{ "InputMaxValue", "OutputScale" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.LookAt), global::VrmProtobuf.LookAt.Parser, new[]{ "OffsetFromHeadBone", "LookAtType", "LookAtHorizontalInner", "LookAtHorizontalOuter", "LookAtVerticalDown", "LookAtVerticalUp" }, null, new[]{ typeof(global::VrmProtobuf.LookAt.Types.LookAtType) }, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.BlendShapeBind), global::VrmProtobuf.BlendShapeBind.Parser, new[]{ "Node", "Index", "Weight" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.MaterialValue), global::VrmProtobuf.MaterialValue.Parser, new[]{ "Material", "Type", "TargetValue" }, null, new[]{ typeof(global::VrmProtobuf.MaterialValue.Types.MaterialValueType) }, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.MaterialUVBind), global::VrmProtobuf.MaterialUVBind.Parser, new[]{ "Material", "Scaling", "Offset" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.BlendShapeGroup), global::VrmProtobuf.BlendShapeGroup.Parser, new[]{ "Name", "Preset", "Binds", "MaterialValues", "MaterialUVBinds", "IsBinary", "IgnoreBlink", "IgnoreLookAt", "IgnoreMouth" }, null, new[]{ typeof(global::VrmProtobuf.BlendShapeGroup.Types.BlendShapePreset) }, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.BlendShape), global::VrmProtobuf.BlendShape.Parser, new[]{ "BlendShapeGroups" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.VRMCVrm), global::VrmProtobuf.VRMCVrm.Parser, new[]{ "SpecVersion", "Meta", "Humanoid", "FirstPerson", "LookAt", "BlendShape" }, null, null, null, null)
           }));
     }
@@ -42,6 +184,5073 @@ namespace VrmProtobuf {
 
   }
   #region Messages
+  public sealed partial class Meta : pb::IMessage<Meta> {
+    private static readonly pb::MessageParser<Meta> _parser = new pb::MessageParser<Meta>(() => new Meta());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<Meta> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::VrmProtobuf.VRMCVrmReflection.Descriptor.MessageTypes[0]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public Meta() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public Meta(Meta other) : this() {
+      name_ = other.name_;
+      version_ = other.version_;
+      authors_ = other.authors_.Clone();
+      copyrights_ = other.copyrights_;
+      contactInformation_ = other.contactInformation_;
+      reference_ = other.reference_;
+      ThumbnailImage = other.ThumbnailImage;
+      avatarPermission_ = other.avatarPermission_;
+      ViolentUsage = other.ViolentUsage;
+      SexualUsage = other.SexualUsage;
+      GameUsage = other.GameUsage;
+      commercialUsage_ = other.commercialUsage_;
+      PoliticalOrReligiousUsage = other.PoliticalOrReligiousUsage;
+      otherPermissionUrl_ = other.otherPermissionUrl_;
+      creditNotation_ = other.creditNotation_;
+      AllowRedistribution = other.AllowRedistribution;
+      modify_ = other.modify_;
+      otherLicenseUrl_ = other.otherLicenseUrl_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public Meta Clone() {
+      return new Meta(this);
+    }
+
+    /// <summary>Field number for the "name" field.</summary>
+    public const int NameFieldNumber = 1;
+    private string name_ = "";
+    /// <summary>
+    /// Describe the name of the avatar model
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Name {
+      get { return name_; }
+      set {
+        name_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "version" field.</summary>
+    public const int VersionFieldNumber = 2;
+    private string version_ = "";
+    /// <summary>
+    /// Describe the version that creates the model
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Version {
+      get { return version_; }
+      set {
+        version_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "authors" field.</summary>
+    public const int AuthorsFieldNumber = 3;
+    private static readonly pb::FieldCodec<string> _repeated_authors_codec
+        = pb::FieldCodec.ForString(26);
+    private readonly pbc::RepeatedField<string> authors_ = new pbc::RepeatedField<string>();
+    /// <summary>
+    /// Describe the name of the author of the model
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::RepeatedField<string> Authors {
+      get { return authors_; }
+    }
+
+    /// <summary>Field number for the "copyrights" field.</summary>
+    public const int CopyrightsFieldNumber = 4;
+    private string copyrights_ = "";
+    /// <summary>
+    /// 
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Copyrights {
+      get { return copyrights_; }
+      set {
+        copyrights_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "contactInformation" field.</summary>
+    public const int ContactInformationFieldNumber = 5;
+    private string contactInformation_ = "";
+    /// <summary>
+    /// Describe the contact information of the author
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string ContactInformation {
+      get { return contactInformation_; }
+      set {
+        contactInformation_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "reference" field.</summary>
+    public const int ReferenceFieldNumber = 6;
+    private string reference_ = "";
+    /// <summary>
+    /// Describe original / related works of the avatar  ( URL )  ,  if any
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Reference {
+      get { return reference_; }
+      set {
+        reference_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "thumbnailImage" field.</summary>
+    public const int ThumbnailImageFieldNumber = 7;
+    private static readonly pb::FieldCodec<int?> _single_thumbnailImage_codec = pb::FieldCodec.ForStructWrapper<int>(58);
+    private int? thumbnailImage_;
+    /// <summary>
+    /// The index to access the thumbnail image of the avatar model in gltf.images. The texture resolution of 1024x1024 is recommended. It must be square. This is for the application to use as an icon.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int? ThumbnailImage {
+      get { return thumbnailImage_; }
+      set {
+        thumbnailImage_ = value;
+      }
+    }
+
+
+    /// <summary>Field number for the "avatarPermission" field.</summary>
+    public const int AvatarPermissionFieldNumber = 8;
+    private global::VrmProtobuf.Meta.Types.AvatarPermissionType avatarPermission_ = global::VrmProtobuf.Meta.Types.AvatarPermissionType.OnlyAuthor;
+    /// <summary>
+    /// A person who can perform with this avatars
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::VrmProtobuf.Meta.Types.AvatarPermissionType AvatarPermission {
+      get { return avatarPermission_; }
+      set {
+        avatarPermission_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "violentUsage" field.</summary>
+    public const int ViolentUsageFieldNumber = 9;
+    private static readonly pb::FieldCodec<bool?> _single_violentUsage_codec = pb::FieldCodec.ForStructWrapper<bool>(74);
+    private bool? violentUsage_;
+    /// <summary>
+    /// Perform violent acts with this avatar
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool? ViolentUsage {
+      get { return violentUsage_; }
+      set {
+        violentUsage_ = value;
+      }
+    }
+
+
+    /// <summary>Field number for the "sexualUsage" field.</summary>
+    public const int SexualUsageFieldNumber = 10;
+    private static readonly pb::FieldCodec<bool?> _single_sexualUsage_codec = pb::FieldCodec.ForStructWrapper<bool>(82);
+    private bool? sexualUsage_;
+    /// <summary>
+    /// Perform sexual acts with this avatar
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool? SexualUsage {
+      get { return sexualUsage_; }
+      set {
+        sexualUsage_ = value;
+      }
+    }
+
+
+    /// <summary>Field number for the "gameUsage" field.</summary>
+    public const int GameUsageFieldNumber = 11;
+    private static readonly pb::FieldCodec<bool?> _single_gameUsage_codec = pb::FieldCodec.ForStructWrapper<bool>(90);
+    private bool? gameUsage_;
+    /// <summary>
+    /// 
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool? GameUsage {
+      get { return gameUsage_; }
+      set {
+        gameUsage_ = value;
+      }
+    }
+
+
+    /// <summary>Field number for the "commercialUsage" field.</summary>
+    public const int CommercialUsageFieldNumber = 12;
+    private global::VrmProtobuf.Meta.Types.CommercialUsageType commercialUsage_ = global::VrmProtobuf.Meta.Types.CommercialUsageType.PersonalNonCommercialNonProfit;
+    /// <summary>
+    /// Commercial use
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::VrmProtobuf.Meta.Types.CommercialUsageType CommercialUsage {
+      get { return commercialUsage_; }
+      set {
+        commercialUsage_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "politicalOrReligiousUsage" field.</summary>
+    public const int PoliticalOrReligiousUsageFieldNumber = 13;
+    private static readonly pb::FieldCodec<bool?> _single_politicalOrReligiousUsage_codec = pb::FieldCodec.ForStructWrapper<bool>(106);
+    private bool? politicalOrReligiousUsage_;
+    /// <summary>
+    /// 
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool? PoliticalOrReligiousUsage {
+      get { return politicalOrReligiousUsage_; }
+      set {
+        politicalOrReligiousUsage_ = value;
+      }
+    }
+
+
+    /// <summary>Field number for the "otherPermissionUrl" field.</summary>
+    public const int OtherPermissionUrlFieldNumber = 14;
+    private string otherPermissionUrl_ = "";
+    /// <summary>
+    /// Describe the URL links of license with regard to other permissions
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string OtherPermissionUrl {
+      get { return otherPermissionUrl_; }
+      set {
+        otherPermissionUrl_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "creditNotation" field.</summary>
+    public const int CreditNotationFieldNumber = 15;
+    private global::VrmProtobuf.Meta.Types.CreditNotationType creditNotation_ = global::VrmProtobuf.Meta.Types.CreditNotationType.Required;
+    /// <summary>
+    /// 
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::VrmProtobuf.Meta.Types.CreditNotationType CreditNotation {
+      get { return creditNotation_; }
+      set {
+        creditNotation_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "allowRedistribution" field.</summary>
+    public const int AllowRedistributionFieldNumber = 16;
+    private static readonly pb::FieldCodec<bool?> _single_allowRedistribution_codec = pb::FieldCodec.ForStructWrapper<bool>(130);
+    private bool? allowRedistribution_;
+    /// <summary>
+    /// 
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool? AllowRedistribution {
+      get { return allowRedistribution_; }
+      set {
+        allowRedistribution_ = value;
+      }
+    }
+
+
+    /// <summary>Field number for the "modify" field.</summary>
+    public const int ModifyFieldNumber = 17;
+    private global::VrmProtobuf.Meta.Types.ModifyType modify_ = global::VrmProtobuf.Meta.Types.ModifyType.Prohibited;
+    /// <summary>
+    /// 
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::VrmProtobuf.Meta.Types.ModifyType Modify {
+      get { return modify_; }
+      set {
+        modify_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "otherLicenseUrl" field.</summary>
+    public const int OtherLicenseUrlFieldNumber = 18;
+    private string otherLicenseUrl_ = "";
+    /// <summary>
+    /// Describe the URL links of other license
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string OtherLicenseUrl {
+      get { return otherLicenseUrl_; }
+      set {
+        otherLicenseUrl_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as Meta);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(Meta other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (Name != other.Name) return false;
+      if (Version != other.Version) return false;
+      if(!authors_.Equals(other.authors_)) return false;
+      if (Copyrights != other.Copyrights) return false;
+      if (ContactInformation != other.ContactInformation) return false;
+      if (Reference != other.Reference) return false;
+      if (ThumbnailImage != other.ThumbnailImage) return false;
+      if (AvatarPermission != other.AvatarPermission) return false;
+      if (ViolentUsage != other.ViolentUsage) return false;
+      if (SexualUsage != other.SexualUsage) return false;
+      if (GameUsage != other.GameUsage) return false;
+      if (CommercialUsage != other.CommercialUsage) return false;
+      if (PoliticalOrReligiousUsage != other.PoliticalOrReligiousUsage) return false;
+      if (OtherPermissionUrl != other.OtherPermissionUrl) return false;
+      if (CreditNotation != other.CreditNotation) return false;
+      if (AllowRedistribution != other.AllowRedistribution) return false;
+      if (Modify != other.Modify) return false;
+      if (OtherLicenseUrl != other.OtherLicenseUrl) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (Name.Length != 0) hash ^= Name.GetHashCode();
+      if (Version.Length != 0) hash ^= Version.GetHashCode();
+      hash ^= authors_.GetHashCode();
+      if (Copyrights.Length != 0) hash ^= Copyrights.GetHashCode();
+      if (ContactInformation.Length != 0) hash ^= ContactInformation.GetHashCode();
+      if (Reference.Length != 0) hash ^= Reference.GetHashCode();
+      if (thumbnailImage_ != null) hash ^= ThumbnailImage.GetHashCode();
+      if (AvatarPermission != global::VrmProtobuf.Meta.Types.AvatarPermissionType.OnlyAuthor) hash ^= AvatarPermission.GetHashCode();
+      if (violentUsage_ != null) hash ^= ViolentUsage.GetHashCode();
+      if (sexualUsage_ != null) hash ^= SexualUsage.GetHashCode();
+      if (gameUsage_ != null) hash ^= GameUsage.GetHashCode();
+      if (CommercialUsage != global::VrmProtobuf.Meta.Types.CommercialUsageType.PersonalNonCommercialNonProfit) hash ^= CommercialUsage.GetHashCode();
+      if (politicalOrReligiousUsage_ != null) hash ^= PoliticalOrReligiousUsage.GetHashCode();
+      if (OtherPermissionUrl.Length != 0) hash ^= OtherPermissionUrl.GetHashCode();
+      if (CreditNotation != global::VrmProtobuf.Meta.Types.CreditNotationType.Required) hash ^= CreditNotation.GetHashCode();
+      if (allowRedistribution_ != null) hash ^= AllowRedistribution.GetHashCode();
+      if (Modify != global::VrmProtobuf.Meta.Types.ModifyType.Prohibited) hash ^= Modify.GetHashCode();
+      if (OtherLicenseUrl.Length != 0) hash ^= OtherLicenseUrl.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (Name.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Name);
+      }
+      if (Version.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(Version);
+      }
+      authors_.WriteTo(output, _repeated_authors_codec);
+      if (Copyrights.Length != 0) {
+        output.WriteRawTag(34);
+        output.WriteString(Copyrights);
+      }
+      if (ContactInformation.Length != 0) {
+        output.WriteRawTag(42);
+        output.WriteString(ContactInformation);
+      }
+      if (Reference.Length != 0) {
+        output.WriteRawTag(50);
+        output.WriteString(Reference);
+      }
+      if (thumbnailImage_ != null) {
+        _single_thumbnailImage_codec.WriteTagAndValue(output, ThumbnailImage);
+      }
+      if (AvatarPermission != global::VrmProtobuf.Meta.Types.AvatarPermissionType.OnlyAuthor) {
+        output.WriteRawTag(64);
+        output.WriteEnum((int) AvatarPermission);
+      }
+      if (violentUsage_ != null) {
+        _single_violentUsage_codec.WriteTagAndValue(output, ViolentUsage);
+      }
+      if (sexualUsage_ != null) {
+        _single_sexualUsage_codec.WriteTagAndValue(output, SexualUsage);
+      }
+      if (gameUsage_ != null) {
+        _single_gameUsage_codec.WriteTagAndValue(output, GameUsage);
+      }
+      if (CommercialUsage != global::VrmProtobuf.Meta.Types.CommercialUsageType.PersonalNonCommercialNonProfit) {
+        output.WriteRawTag(96);
+        output.WriteEnum((int) CommercialUsage);
+      }
+      if (politicalOrReligiousUsage_ != null) {
+        _single_politicalOrReligiousUsage_codec.WriteTagAndValue(output, PoliticalOrReligiousUsage);
+      }
+      if (OtherPermissionUrl.Length != 0) {
+        output.WriteRawTag(114);
+        output.WriteString(OtherPermissionUrl);
+      }
+      if (CreditNotation != global::VrmProtobuf.Meta.Types.CreditNotationType.Required) {
+        output.WriteRawTag(120);
+        output.WriteEnum((int) CreditNotation);
+      }
+      if (allowRedistribution_ != null) {
+        _single_allowRedistribution_codec.WriteTagAndValue(output, AllowRedistribution);
+      }
+      if (Modify != global::VrmProtobuf.Meta.Types.ModifyType.Prohibited) {
+        output.WriteRawTag(136, 1);
+        output.WriteEnum((int) Modify);
+      }
+      if (OtherLicenseUrl.Length != 0) {
+        output.WriteRawTag(146, 1);
+        output.WriteString(OtherLicenseUrl);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (Name.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Name);
+      }
+      if (Version.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Version);
+      }
+      size += authors_.CalculateSize(_repeated_authors_codec);
+      if (Copyrights.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Copyrights);
+      }
+      if (ContactInformation.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(ContactInformation);
+      }
+      if (Reference.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Reference);
+      }
+      if (thumbnailImage_ != null) {
+        size += _single_thumbnailImage_codec.CalculateSizeWithTag(ThumbnailImage);
+      }
+      if (AvatarPermission != global::VrmProtobuf.Meta.Types.AvatarPermissionType.OnlyAuthor) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) AvatarPermission);
+      }
+      if (violentUsage_ != null) {
+        size += _single_violentUsage_codec.CalculateSizeWithTag(ViolentUsage);
+      }
+      if (sexualUsage_ != null) {
+        size += _single_sexualUsage_codec.CalculateSizeWithTag(SexualUsage);
+      }
+      if (gameUsage_ != null) {
+        size += _single_gameUsage_codec.CalculateSizeWithTag(GameUsage);
+      }
+      if (CommercialUsage != global::VrmProtobuf.Meta.Types.CommercialUsageType.PersonalNonCommercialNonProfit) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) CommercialUsage);
+      }
+      if (politicalOrReligiousUsage_ != null) {
+        size += _single_politicalOrReligiousUsage_codec.CalculateSizeWithTag(PoliticalOrReligiousUsage);
+      }
+      if (OtherPermissionUrl.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(OtherPermissionUrl);
+      }
+      if (CreditNotation != global::VrmProtobuf.Meta.Types.CreditNotationType.Required) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) CreditNotation);
+      }
+      if (allowRedistribution_ != null) {
+        size += _single_allowRedistribution_codec.CalculateSizeWithTag(AllowRedistribution);
+      }
+      if (Modify != global::VrmProtobuf.Meta.Types.ModifyType.Prohibited) {
+        size += 2 + pb::CodedOutputStream.ComputeEnumSize((int) Modify);
+      }
+      if (OtherLicenseUrl.Length != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeStringSize(OtherLicenseUrl);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(Meta other) {
+      if (other == null) {
+        return;
+      }
+      if (other.Name.Length != 0) {
+        Name = other.Name;
+      }
+      if (other.Version.Length != 0) {
+        Version = other.Version;
+      }
+      authors_.Add(other.authors_);
+      if (other.Copyrights.Length != 0) {
+        Copyrights = other.Copyrights;
+      }
+      if (other.ContactInformation.Length != 0) {
+        ContactInformation = other.ContactInformation;
+      }
+      if (other.Reference.Length != 0) {
+        Reference = other.Reference;
+      }
+      if (other.thumbnailImage_ != null) {
+        if (thumbnailImage_ == null || other.ThumbnailImage != 0) {
+          ThumbnailImage = other.ThumbnailImage;
+        }
+      }
+      if (other.AvatarPermission != global::VrmProtobuf.Meta.Types.AvatarPermissionType.OnlyAuthor) {
+        AvatarPermission = other.AvatarPermission;
+      }
+      if (other.violentUsage_ != null) {
+        if (violentUsage_ == null || other.ViolentUsage != false) {
+          ViolentUsage = other.ViolentUsage;
+        }
+      }
+      if (other.sexualUsage_ != null) {
+        if (sexualUsage_ == null || other.SexualUsage != false) {
+          SexualUsage = other.SexualUsage;
+        }
+      }
+      if (other.gameUsage_ != null) {
+        if (gameUsage_ == null || other.GameUsage != false) {
+          GameUsage = other.GameUsage;
+        }
+      }
+      if (other.CommercialUsage != global::VrmProtobuf.Meta.Types.CommercialUsageType.PersonalNonCommercialNonProfit) {
+        CommercialUsage = other.CommercialUsage;
+      }
+      if (other.politicalOrReligiousUsage_ != null) {
+        if (politicalOrReligiousUsage_ == null || other.PoliticalOrReligiousUsage != false) {
+          PoliticalOrReligiousUsage = other.PoliticalOrReligiousUsage;
+        }
+      }
+      if (other.OtherPermissionUrl.Length != 0) {
+        OtherPermissionUrl = other.OtherPermissionUrl;
+      }
+      if (other.CreditNotation != global::VrmProtobuf.Meta.Types.CreditNotationType.Required) {
+        CreditNotation = other.CreditNotation;
+      }
+      if (other.allowRedistribution_ != null) {
+        if (allowRedistribution_ == null || other.AllowRedistribution != false) {
+          AllowRedistribution = other.AllowRedistribution;
+        }
+      }
+      if (other.Modify != global::VrmProtobuf.Meta.Types.ModifyType.Prohibited) {
+        Modify = other.Modify;
+      }
+      if (other.OtherLicenseUrl.Length != 0) {
+        OtherLicenseUrl = other.OtherLicenseUrl;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            Name = input.ReadString();
+            break;
+          }
+          case 18: {
+            Version = input.ReadString();
+            break;
+          }
+          case 26: {
+            authors_.AddEntriesFrom(input, _repeated_authors_codec);
+            break;
+          }
+          case 34: {
+            Copyrights = input.ReadString();
+            break;
+          }
+          case 42: {
+            ContactInformation = input.ReadString();
+            break;
+          }
+          case 50: {
+            Reference = input.ReadString();
+            break;
+          }
+          case 58: {
+            int? value = _single_thumbnailImage_codec.Read(input);
+            if (thumbnailImage_ == null || value != 0) {
+              ThumbnailImage = value;
+            }
+            break;
+          }
+          case 64: {
+            AvatarPermission = (global::VrmProtobuf.Meta.Types.AvatarPermissionType) input.ReadEnum();
+            break;
+          }
+          case 74: {
+            bool? value = _single_violentUsage_codec.Read(input);
+            if (violentUsage_ == null || value != false) {
+              ViolentUsage = value;
+            }
+            break;
+          }
+          case 82: {
+            bool? value = _single_sexualUsage_codec.Read(input);
+            if (sexualUsage_ == null || value != false) {
+              SexualUsage = value;
+            }
+            break;
+          }
+          case 90: {
+            bool? value = _single_gameUsage_codec.Read(input);
+            if (gameUsage_ == null || value != false) {
+              GameUsage = value;
+            }
+            break;
+          }
+          case 96: {
+            CommercialUsage = (global::VrmProtobuf.Meta.Types.CommercialUsageType) input.ReadEnum();
+            break;
+          }
+          case 106: {
+            bool? value = _single_politicalOrReligiousUsage_codec.Read(input);
+            if (politicalOrReligiousUsage_ == null || value != false) {
+              PoliticalOrReligiousUsage = value;
+            }
+            break;
+          }
+          case 114: {
+            OtherPermissionUrl = input.ReadString();
+            break;
+          }
+          case 120: {
+            CreditNotation = (global::VrmProtobuf.Meta.Types.CreditNotationType) input.ReadEnum();
+            break;
+          }
+          case 130: {
+            bool? value = _single_allowRedistribution_codec.Read(input);
+            if (allowRedistribution_ == null || value != false) {
+              AllowRedistribution = value;
+            }
+            break;
+          }
+          case 136: {
+            Modify = (global::VrmProtobuf.Meta.Types.ModifyType) input.ReadEnum();
+            break;
+          }
+          case 146: {
+            OtherLicenseUrl = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+
+    #region Nested types
+    /// <summary>Container for nested types declared in the Meta message type.</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static partial class Types {
+      public enum AvatarPermissionType {
+        [pbr::OriginalName("OnlyAuthor")] OnlyAuthor = 0,
+        [pbr::OriginalName("ExplicitlyLicensedPerson")] ExplicitlyLicensedPerson = 1,
+        [pbr::OriginalName("Everyone")] Everyone = 2,
+      }
+
+      public enum CommercialUsageType {
+        [pbr::OriginalName("PersonalNonCommercialNonProfit")] PersonalNonCommercialNonProfit = 0,
+        [pbr::OriginalName("PersonalNonCommercialProfit")] PersonalNonCommercialProfit = 1,
+        [pbr::OriginalName("PersonalCommercial")] PersonalCommercial = 2,
+        [pbr::OriginalName("Corporation")] Corporation = 3,
+      }
+
+      public enum CreditNotationType {
+        [pbr::OriginalName("Required")] Required = 0,
+        [pbr::OriginalName("Unnecessary")] Unnecessary = 1,
+        [pbr::OriginalName("Abandoned")] Abandoned = 2,
+      }
+
+      public enum ModifyType {
+        [pbr::OriginalName("Prohibited")] Prohibited = 0,
+        [pbr::OriginalName("Inherited")] Inherited = 1,
+        [pbr::OriginalName("NotInherited")] NotInherited = 2,
+      }
+
+    }
+    #endregion
+
+  }
+
+  public sealed partial class HumanBone : pb::IMessage<HumanBone> {
+    private static readonly pb::MessageParser<HumanBone> _parser = new pb::MessageParser<HumanBone>(() => new HumanBone());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<HumanBone> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::VrmProtobuf.VRMCVrmReflection.Descriptor.MessageTypes[1]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public HumanBone() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public HumanBone(HumanBone other) : this() {
+      Node = other.Node;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public HumanBone Clone() {
+      return new HumanBone(this);
+    }
+
+    /// <summary>Field number for the "node" field.</summary>
+    public const int NodeFieldNumber = 1;
+    private static readonly pb::FieldCodec<int?> _single_node_codec = pb::FieldCodec.ForStructWrapper<int>(10);
+    private int? node_;
+    /// <summary>
+    /// Represents a single glTF node tied to this humanBone.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int? Node {
+      get { return node_; }
+      set {
+        node_ = value;
+      }
+    }
+
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as HumanBone);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(HumanBone other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (Node != other.Node) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (node_ != null) hash ^= Node.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (node_ != null) {
+        _single_node_codec.WriteTagAndValue(output, Node);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (node_ != null) {
+        size += _single_node_codec.CalculateSizeWithTag(Node);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(HumanBone other) {
+      if (other == null) {
+        return;
+      }
+      if (other.node_ != null) {
+        if (node_ == null || other.Node != 0) {
+          Node = other.Node;
+        }
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            int? value = _single_node_codec.Read(input);
+            if (node_ == null || value != 0) {
+              Node = value;
+            }
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public sealed partial class HumanBones : pb::IMessage<HumanBones> {
+    private static readonly pb::MessageParser<HumanBones> _parser = new pb::MessageParser<HumanBones>(() => new HumanBones());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<HumanBones> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::VrmProtobuf.VRMCVrmReflection.Descriptor.MessageTypes[2]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public HumanBones() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public HumanBones(HumanBones other) : this() {
+      hips_ = other.hips_ != null ? other.hips_.Clone() : null;
+      spine_ = other.spine_ != null ? other.spine_.Clone() : null;
+      chest_ = other.chest_ != null ? other.chest_.Clone() : null;
+      upperChest_ = other.upperChest_ != null ? other.upperChest_.Clone() : null;
+      neck_ = other.neck_ != null ? other.neck_.Clone() : null;
+      head_ = other.head_ != null ? other.head_.Clone() : null;
+      leftEye_ = other.leftEye_ != null ? other.leftEye_.Clone() : null;
+      rightEye_ = other.rightEye_ != null ? other.rightEye_.Clone() : null;
+      jaw_ = other.jaw_ != null ? other.jaw_.Clone() : null;
+      leftUpperLeg_ = other.leftUpperLeg_ != null ? other.leftUpperLeg_.Clone() : null;
+      leftLowerLeg_ = other.leftLowerLeg_ != null ? other.leftLowerLeg_.Clone() : null;
+      leftFoot_ = other.leftFoot_ != null ? other.leftFoot_.Clone() : null;
+      leftToes_ = other.leftToes_ != null ? other.leftToes_.Clone() : null;
+      rightUpperLeg_ = other.rightUpperLeg_ != null ? other.rightUpperLeg_.Clone() : null;
+      rightLowerLeg_ = other.rightLowerLeg_ != null ? other.rightLowerLeg_.Clone() : null;
+      rightFoot_ = other.rightFoot_ != null ? other.rightFoot_.Clone() : null;
+      rightToes_ = other.rightToes_ != null ? other.rightToes_.Clone() : null;
+      leftShoulder_ = other.leftShoulder_ != null ? other.leftShoulder_.Clone() : null;
+      leftUpperArm_ = other.leftUpperArm_ != null ? other.leftUpperArm_.Clone() : null;
+      leftLowerArm_ = other.leftLowerArm_ != null ? other.leftLowerArm_.Clone() : null;
+      leftHand_ = other.leftHand_ != null ? other.leftHand_.Clone() : null;
+      rightShoulder_ = other.rightShoulder_ != null ? other.rightShoulder_.Clone() : null;
+      rightUpperArm_ = other.rightUpperArm_ != null ? other.rightUpperArm_.Clone() : null;
+      rightLowerArm_ = other.rightLowerArm_ != null ? other.rightLowerArm_.Clone() : null;
+      rightHand_ = other.rightHand_ != null ? other.rightHand_.Clone() : null;
+      leftThumbProximal_ = other.leftThumbProximal_ != null ? other.leftThumbProximal_.Clone() : null;
+      leftThumbIntermediate_ = other.leftThumbIntermediate_ != null ? other.leftThumbIntermediate_.Clone() : null;
+      leftThumbDistal_ = other.leftThumbDistal_ != null ? other.leftThumbDistal_.Clone() : null;
+      leftIndexProximal_ = other.leftIndexProximal_ != null ? other.leftIndexProximal_.Clone() : null;
+      leftIndexIntermediate_ = other.leftIndexIntermediate_ != null ? other.leftIndexIntermediate_.Clone() : null;
+      leftIndexDistal_ = other.leftIndexDistal_ != null ? other.leftIndexDistal_.Clone() : null;
+      leftMiddleProximal_ = other.leftMiddleProximal_ != null ? other.leftMiddleProximal_.Clone() : null;
+      leftMiddleIntermediate_ = other.leftMiddleIntermediate_ != null ? other.leftMiddleIntermediate_.Clone() : null;
+      leftMiddleDistal_ = other.leftMiddleDistal_ != null ? other.leftMiddleDistal_.Clone() : null;
+      leftRingProximal_ = other.leftRingProximal_ != null ? other.leftRingProximal_.Clone() : null;
+      leftRingIntermediate_ = other.leftRingIntermediate_ != null ? other.leftRingIntermediate_.Clone() : null;
+      leftRingDistal_ = other.leftRingDistal_ != null ? other.leftRingDistal_.Clone() : null;
+      leftLittleProximal_ = other.leftLittleProximal_ != null ? other.leftLittleProximal_.Clone() : null;
+      leftLittleIntermediate_ = other.leftLittleIntermediate_ != null ? other.leftLittleIntermediate_.Clone() : null;
+      leftLittleDistal_ = other.leftLittleDistal_ != null ? other.leftLittleDistal_.Clone() : null;
+      rightThumbProximal_ = other.rightThumbProximal_ != null ? other.rightThumbProximal_.Clone() : null;
+      rightThumbIntermediate_ = other.rightThumbIntermediate_ != null ? other.rightThumbIntermediate_.Clone() : null;
+      rightThumbDistal_ = other.rightThumbDistal_ != null ? other.rightThumbDistal_.Clone() : null;
+      rightIndexProximal_ = other.rightIndexProximal_ != null ? other.rightIndexProximal_.Clone() : null;
+      rightIndexIntermediate_ = other.rightIndexIntermediate_ != null ? other.rightIndexIntermediate_.Clone() : null;
+      rightIndexDistal_ = other.rightIndexDistal_ != null ? other.rightIndexDistal_.Clone() : null;
+      rightMiddleProximal_ = other.rightMiddleProximal_ != null ? other.rightMiddleProximal_.Clone() : null;
+      rightMiddleIntermediate_ = other.rightMiddleIntermediate_ != null ? other.rightMiddleIntermediate_.Clone() : null;
+      rightMiddleDistal_ = other.rightMiddleDistal_ != null ? other.rightMiddleDistal_.Clone() : null;
+      rightRingProximal_ = other.rightRingProximal_ != null ? other.rightRingProximal_.Clone() : null;
+      rightRingIntermediate_ = other.rightRingIntermediate_ != null ? other.rightRingIntermediate_.Clone() : null;
+      rightRingDistal_ = other.rightRingDistal_ != null ? other.rightRingDistal_.Clone() : null;
+      rightLittleProximal_ = other.rightLittleProximal_ != null ? other.rightLittleProximal_.Clone() : null;
+      rightLittleIntermediate_ = other.rightLittleIntermediate_ != null ? other.rightLittleIntermediate_.Clone() : null;
+      rightLittleDistal_ = other.rightLittleDistal_ != null ? other.rightLittleDistal_.Clone() : null;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public HumanBones Clone() {
+      return new HumanBones(this);
+    }
+
+    /// <summary>Field number for the "hips" field.</summary>
+    public const int HipsFieldNumber = 1;
+    private global::VrmProtobuf.HumanBone hips_;
+    /// <summary>
+    /// Represents a single bone of a Humanoid.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::VrmProtobuf.HumanBone Hips {
+      get { return hips_; }
+      set {
+        hips_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "spine" field.</summary>
+    public const int SpineFieldNumber = 2;
+    private global::VrmProtobuf.HumanBone spine_;
+    /// <summary>
+    /// Represents a single bone of a Humanoid.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::VrmProtobuf.HumanBone Spine {
+      get { return spine_; }
+      set {
+        spine_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "chest" field.</summary>
+    public const int ChestFieldNumber = 3;
+    private global::VrmProtobuf.HumanBone chest_;
+    /// <summary>
+    /// Represents a single bone of a Humanoid.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::VrmProtobuf.HumanBone Chest {
+      get { return chest_; }
+      set {
+        chest_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "upperChest" field.</summary>
+    public const int UpperChestFieldNumber = 4;
+    private global::VrmProtobuf.HumanBone upperChest_;
+    /// <summary>
+    /// Represents a single bone of a Humanoid.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::VrmProtobuf.HumanBone UpperChest {
+      get { return upperChest_; }
+      set {
+        upperChest_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "neck" field.</summary>
+    public const int NeckFieldNumber = 5;
+    private global::VrmProtobuf.HumanBone neck_;
+    /// <summary>
+    /// Represents a single bone of a Humanoid.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::VrmProtobuf.HumanBone Neck {
+      get { return neck_; }
+      set {
+        neck_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "head" field.</summary>
+    public const int HeadFieldNumber = 6;
+    private global::VrmProtobuf.HumanBone head_;
+    /// <summary>
+    /// Represents a single bone of a Humanoid.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::VrmProtobuf.HumanBone Head {
+      get { return head_; }
+      set {
+        head_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "leftEye" field.</summary>
+    public const int LeftEyeFieldNumber = 7;
+    private global::VrmProtobuf.HumanBone leftEye_;
+    /// <summary>
+    /// Represents a single bone of a Humanoid.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::VrmProtobuf.HumanBone LeftEye {
+      get { return leftEye_; }
+      set {
+        leftEye_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "rightEye" field.</summary>
+    public const int RightEyeFieldNumber = 8;
+    private global::VrmProtobuf.HumanBone rightEye_;
+    /// <summary>
+    /// Represents a single bone of a Humanoid.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::VrmProtobuf.HumanBone RightEye {
+      get { return rightEye_; }
+      set {
+        rightEye_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "jaw" field.</summary>
+    public const int JawFieldNumber = 9;
+    private global::VrmProtobuf.HumanBone jaw_;
+    /// <summary>
+    /// Represents a single bone of a Humanoid.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::VrmProtobuf.HumanBone Jaw {
+      get { return jaw_; }
+      set {
+        jaw_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "leftUpperLeg" field.</summary>
+    public const int LeftUpperLegFieldNumber = 10;
+    private global::VrmProtobuf.HumanBone leftUpperLeg_;
+    /// <summary>
+    /// Represents a single bone of a Humanoid.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::VrmProtobuf.HumanBone LeftUpperLeg {
+      get { return leftUpperLeg_; }
+      set {
+        leftUpperLeg_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "leftLowerLeg" field.</summary>
+    public const int LeftLowerLegFieldNumber = 11;
+    private global::VrmProtobuf.HumanBone leftLowerLeg_;
+    /// <summary>
+    /// Represents a single bone of a Humanoid.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::VrmProtobuf.HumanBone LeftLowerLeg {
+      get { return leftLowerLeg_; }
+      set {
+        leftLowerLeg_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "leftFoot" field.</summary>
+    public const int LeftFootFieldNumber = 12;
+    private global::VrmProtobuf.HumanBone leftFoot_;
+    /// <summary>
+    /// Represents a single bone of a Humanoid.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::VrmProtobuf.HumanBone LeftFoot {
+      get { return leftFoot_; }
+      set {
+        leftFoot_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "leftToes" field.</summary>
+    public const int LeftToesFieldNumber = 13;
+    private global::VrmProtobuf.HumanBone leftToes_;
+    /// <summary>
+    /// Represents a single bone of a Humanoid.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::VrmProtobuf.HumanBone LeftToes {
+      get { return leftToes_; }
+      set {
+        leftToes_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "rightUpperLeg" field.</summary>
+    public const int RightUpperLegFieldNumber = 14;
+    private global::VrmProtobuf.HumanBone rightUpperLeg_;
+    /// <summary>
+    /// Represents a single bone of a Humanoid.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::VrmProtobuf.HumanBone RightUpperLeg {
+      get { return rightUpperLeg_; }
+      set {
+        rightUpperLeg_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "rightLowerLeg" field.</summary>
+    public const int RightLowerLegFieldNumber = 15;
+    private global::VrmProtobuf.HumanBone rightLowerLeg_;
+    /// <summary>
+    /// Represents a single bone of a Humanoid.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::VrmProtobuf.HumanBone RightLowerLeg {
+      get { return rightLowerLeg_; }
+      set {
+        rightLowerLeg_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "rightFoot" field.</summary>
+    public const int RightFootFieldNumber = 16;
+    private global::VrmProtobuf.HumanBone rightFoot_;
+    /// <summary>
+    /// Represents a single bone of a Humanoid.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::VrmProtobuf.HumanBone RightFoot {
+      get { return rightFoot_; }
+      set {
+        rightFoot_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "rightToes" field.</summary>
+    public const int RightToesFieldNumber = 17;
+    private global::VrmProtobuf.HumanBone rightToes_;
+    /// <summary>
+    /// Represents a single bone of a Humanoid.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::VrmProtobuf.HumanBone RightToes {
+      get { return rightToes_; }
+      set {
+        rightToes_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "leftShoulder" field.</summary>
+    public const int LeftShoulderFieldNumber = 18;
+    private global::VrmProtobuf.HumanBone leftShoulder_;
+    /// <summary>
+    /// Represents a single bone of a Humanoid.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::VrmProtobuf.HumanBone LeftShoulder {
+      get { return leftShoulder_; }
+      set {
+        leftShoulder_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "leftUpperArm" field.</summary>
+    public const int LeftUpperArmFieldNumber = 19;
+    private global::VrmProtobuf.HumanBone leftUpperArm_;
+    /// <summary>
+    /// Represents a single bone of a Humanoid.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::VrmProtobuf.HumanBone LeftUpperArm {
+      get { return leftUpperArm_; }
+      set {
+        leftUpperArm_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "leftLowerArm" field.</summary>
+    public const int LeftLowerArmFieldNumber = 20;
+    private global::VrmProtobuf.HumanBone leftLowerArm_;
+    /// <summary>
+    /// Represents a single bone of a Humanoid.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::VrmProtobuf.HumanBone LeftLowerArm {
+      get { return leftLowerArm_; }
+      set {
+        leftLowerArm_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "leftHand" field.</summary>
+    public const int LeftHandFieldNumber = 21;
+    private global::VrmProtobuf.HumanBone leftHand_;
+    /// <summary>
+    /// Represents a single bone of a Humanoid.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::VrmProtobuf.HumanBone LeftHand {
+      get { return leftHand_; }
+      set {
+        leftHand_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "rightShoulder" field.</summary>
+    public const int RightShoulderFieldNumber = 22;
+    private global::VrmProtobuf.HumanBone rightShoulder_;
+    /// <summary>
+    /// Represents a single bone of a Humanoid.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::VrmProtobuf.HumanBone RightShoulder {
+      get { return rightShoulder_; }
+      set {
+        rightShoulder_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "rightUpperArm" field.</summary>
+    public const int RightUpperArmFieldNumber = 23;
+    private global::VrmProtobuf.HumanBone rightUpperArm_;
+    /// <summary>
+    /// Represents a single bone of a Humanoid.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::VrmProtobuf.HumanBone RightUpperArm {
+      get { return rightUpperArm_; }
+      set {
+        rightUpperArm_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "rightLowerArm" field.</summary>
+    public const int RightLowerArmFieldNumber = 24;
+    private global::VrmProtobuf.HumanBone rightLowerArm_;
+    /// <summary>
+    /// Represents a single bone of a Humanoid.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::VrmProtobuf.HumanBone RightLowerArm {
+      get { return rightLowerArm_; }
+      set {
+        rightLowerArm_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "rightHand" field.</summary>
+    public const int RightHandFieldNumber = 25;
+    private global::VrmProtobuf.HumanBone rightHand_;
+    /// <summary>
+    /// Represents a single bone of a Humanoid.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::VrmProtobuf.HumanBone RightHand {
+      get { return rightHand_; }
+      set {
+        rightHand_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "leftThumbProximal" field.</summary>
+    public const int LeftThumbProximalFieldNumber = 26;
+    private global::VrmProtobuf.HumanBone leftThumbProximal_;
+    /// <summary>
+    /// Represents a single bone of a Humanoid.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::VrmProtobuf.HumanBone LeftThumbProximal {
+      get { return leftThumbProximal_; }
+      set {
+        leftThumbProximal_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "leftThumbIntermediate" field.</summary>
+    public const int LeftThumbIntermediateFieldNumber = 27;
+    private global::VrmProtobuf.HumanBone leftThumbIntermediate_;
+    /// <summary>
+    /// Represents a single bone of a Humanoid.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::VrmProtobuf.HumanBone LeftThumbIntermediate {
+      get { return leftThumbIntermediate_; }
+      set {
+        leftThumbIntermediate_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "leftThumbDistal" field.</summary>
+    public const int LeftThumbDistalFieldNumber = 28;
+    private global::VrmProtobuf.HumanBone leftThumbDistal_;
+    /// <summary>
+    /// Represents a single bone of a Humanoid.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::VrmProtobuf.HumanBone LeftThumbDistal {
+      get { return leftThumbDistal_; }
+      set {
+        leftThumbDistal_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "leftIndexProximal" field.</summary>
+    public const int LeftIndexProximalFieldNumber = 29;
+    private global::VrmProtobuf.HumanBone leftIndexProximal_;
+    /// <summary>
+    /// Represents a single bone of a Humanoid.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::VrmProtobuf.HumanBone LeftIndexProximal {
+      get { return leftIndexProximal_; }
+      set {
+        leftIndexProximal_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "leftIndexIntermediate" field.</summary>
+    public const int LeftIndexIntermediateFieldNumber = 30;
+    private global::VrmProtobuf.HumanBone leftIndexIntermediate_;
+    /// <summary>
+    /// Represents a single bone of a Humanoid.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::VrmProtobuf.HumanBone LeftIndexIntermediate {
+      get { return leftIndexIntermediate_; }
+      set {
+        leftIndexIntermediate_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "leftIndexDistal" field.</summary>
+    public const int LeftIndexDistalFieldNumber = 31;
+    private global::VrmProtobuf.HumanBone leftIndexDistal_;
+    /// <summary>
+    /// Represents a single bone of a Humanoid.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::VrmProtobuf.HumanBone LeftIndexDistal {
+      get { return leftIndexDistal_; }
+      set {
+        leftIndexDistal_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "leftMiddleProximal" field.</summary>
+    public const int LeftMiddleProximalFieldNumber = 32;
+    private global::VrmProtobuf.HumanBone leftMiddleProximal_;
+    /// <summary>
+    /// Represents a single bone of a Humanoid.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::VrmProtobuf.HumanBone LeftMiddleProximal {
+      get { return leftMiddleProximal_; }
+      set {
+        leftMiddleProximal_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "leftMiddleIntermediate" field.</summary>
+    public const int LeftMiddleIntermediateFieldNumber = 33;
+    private global::VrmProtobuf.HumanBone leftMiddleIntermediate_;
+    /// <summary>
+    /// Represents a single bone of a Humanoid.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::VrmProtobuf.HumanBone LeftMiddleIntermediate {
+      get { return leftMiddleIntermediate_; }
+      set {
+        leftMiddleIntermediate_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "leftMiddleDistal" field.</summary>
+    public const int LeftMiddleDistalFieldNumber = 34;
+    private global::VrmProtobuf.HumanBone leftMiddleDistal_;
+    /// <summary>
+    /// Represents a single bone of a Humanoid.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::VrmProtobuf.HumanBone LeftMiddleDistal {
+      get { return leftMiddleDistal_; }
+      set {
+        leftMiddleDistal_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "leftRingProximal" field.</summary>
+    public const int LeftRingProximalFieldNumber = 35;
+    private global::VrmProtobuf.HumanBone leftRingProximal_;
+    /// <summary>
+    /// Represents a single bone of a Humanoid.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::VrmProtobuf.HumanBone LeftRingProximal {
+      get { return leftRingProximal_; }
+      set {
+        leftRingProximal_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "leftRingIntermediate" field.</summary>
+    public const int LeftRingIntermediateFieldNumber = 36;
+    private global::VrmProtobuf.HumanBone leftRingIntermediate_;
+    /// <summary>
+    /// Represents a single bone of a Humanoid.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::VrmProtobuf.HumanBone LeftRingIntermediate {
+      get { return leftRingIntermediate_; }
+      set {
+        leftRingIntermediate_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "leftRingDistal" field.</summary>
+    public const int LeftRingDistalFieldNumber = 37;
+    private global::VrmProtobuf.HumanBone leftRingDistal_;
+    /// <summary>
+    /// Represents a single bone of a Humanoid.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::VrmProtobuf.HumanBone LeftRingDistal {
+      get { return leftRingDistal_; }
+      set {
+        leftRingDistal_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "leftLittleProximal" field.</summary>
+    public const int LeftLittleProximalFieldNumber = 38;
+    private global::VrmProtobuf.HumanBone leftLittleProximal_;
+    /// <summary>
+    /// Represents a single bone of a Humanoid.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::VrmProtobuf.HumanBone LeftLittleProximal {
+      get { return leftLittleProximal_; }
+      set {
+        leftLittleProximal_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "leftLittleIntermediate" field.</summary>
+    public const int LeftLittleIntermediateFieldNumber = 39;
+    private global::VrmProtobuf.HumanBone leftLittleIntermediate_;
+    /// <summary>
+    /// Represents a single bone of a Humanoid.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::VrmProtobuf.HumanBone LeftLittleIntermediate {
+      get { return leftLittleIntermediate_; }
+      set {
+        leftLittleIntermediate_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "leftLittleDistal" field.</summary>
+    public const int LeftLittleDistalFieldNumber = 40;
+    private global::VrmProtobuf.HumanBone leftLittleDistal_;
+    /// <summary>
+    /// Represents a single bone of a Humanoid.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::VrmProtobuf.HumanBone LeftLittleDistal {
+      get { return leftLittleDistal_; }
+      set {
+        leftLittleDistal_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "rightThumbProximal" field.</summary>
+    public const int RightThumbProximalFieldNumber = 41;
+    private global::VrmProtobuf.HumanBone rightThumbProximal_;
+    /// <summary>
+    /// Represents a single bone of a Humanoid.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::VrmProtobuf.HumanBone RightThumbProximal {
+      get { return rightThumbProximal_; }
+      set {
+        rightThumbProximal_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "rightThumbIntermediate" field.</summary>
+    public const int RightThumbIntermediateFieldNumber = 42;
+    private global::VrmProtobuf.HumanBone rightThumbIntermediate_;
+    /// <summary>
+    /// Represents a single bone of a Humanoid.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::VrmProtobuf.HumanBone RightThumbIntermediate {
+      get { return rightThumbIntermediate_; }
+      set {
+        rightThumbIntermediate_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "rightThumbDistal" field.</summary>
+    public const int RightThumbDistalFieldNumber = 43;
+    private global::VrmProtobuf.HumanBone rightThumbDistal_;
+    /// <summary>
+    /// Represents a single bone of a Humanoid.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::VrmProtobuf.HumanBone RightThumbDistal {
+      get { return rightThumbDistal_; }
+      set {
+        rightThumbDistal_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "rightIndexProximal" field.</summary>
+    public const int RightIndexProximalFieldNumber = 44;
+    private global::VrmProtobuf.HumanBone rightIndexProximal_;
+    /// <summary>
+    /// Represents a single bone of a Humanoid.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::VrmProtobuf.HumanBone RightIndexProximal {
+      get { return rightIndexProximal_; }
+      set {
+        rightIndexProximal_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "rightIndexIntermediate" field.</summary>
+    public const int RightIndexIntermediateFieldNumber = 45;
+    private global::VrmProtobuf.HumanBone rightIndexIntermediate_;
+    /// <summary>
+    /// Represents a single bone of a Humanoid.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::VrmProtobuf.HumanBone RightIndexIntermediate {
+      get { return rightIndexIntermediate_; }
+      set {
+        rightIndexIntermediate_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "rightIndexDistal" field.</summary>
+    public const int RightIndexDistalFieldNumber = 46;
+    private global::VrmProtobuf.HumanBone rightIndexDistal_;
+    /// <summary>
+    /// Represents a single bone of a Humanoid.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::VrmProtobuf.HumanBone RightIndexDistal {
+      get { return rightIndexDistal_; }
+      set {
+        rightIndexDistal_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "rightMiddleProximal" field.</summary>
+    public const int RightMiddleProximalFieldNumber = 47;
+    private global::VrmProtobuf.HumanBone rightMiddleProximal_;
+    /// <summary>
+    /// Represents a single bone of a Humanoid.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::VrmProtobuf.HumanBone RightMiddleProximal {
+      get { return rightMiddleProximal_; }
+      set {
+        rightMiddleProximal_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "rightMiddleIntermediate" field.</summary>
+    public const int RightMiddleIntermediateFieldNumber = 48;
+    private global::VrmProtobuf.HumanBone rightMiddleIntermediate_;
+    /// <summary>
+    /// Represents a single bone of a Humanoid.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::VrmProtobuf.HumanBone RightMiddleIntermediate {
+      get { return rightMiddleIntermediate_; }
+      set {
+        rightMiddleIntermediate_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "rightMiddleDistal" field.</summary>
+    public const int RightMiddleDistalFieldNumber = 49;
+    private global::VrmProtobuf.HumanBone rightMiddleDistal_;
+    /// <summary>
+    /// Represents a single bone of a Humanoid.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::VrmProtobuf.HumanBone RightMiddleDistal {
+      get { return rightMiddleDistal_; }
+      set {
+        rightMiddleDistal_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "rightRingProximal" field.</summary>
+    public const int RightRingProximalFieldNumber = 50;
+    private global::VrmProtobuf.HumanBone rightRingProximal_;
+    /// <summary>
+    /// Represents a single bone of a Humanoid.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::VrmProtobuf.HumanBone RightRingProximal {
+      get { return rightRingProximal_; }
+      set {
+        rightRingProximal_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "rightRingIntermediate" field.</summary>
+    public const int RightRingIntermediateFieldNumber = 51;
+    private global::VrmProtobuf.HumanBone rightRingIntermediate_;
+    /// <summary>
+    /// Represents a single bone of a Humanoid.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::VrmProtobuf.HumanBone RightRingIntermediate {
+      get { return rightRingIntermediate_; }
+      set {
+        rightRingIntermediate_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "rightRingDistal" field.</summary>
+    public const int RightRingDistalFieldNumber = 52;
+    private global::VrmProtobuf.HumanBone rightRingDistal_;
+    /// <summary>
+    /// Represents a single bone of a Humanoid.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::VrmProtobuf.HumanBone RightRingDistal {
+      get { return rightRingDistal_; }
+      set {
+        rightRingDistal_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "rightLittleProximal" field.</summary>
+    public const int RightLittleProximalFieldNumber = 53;
+    private global::VrmProtobuf.HumanBone rightLittleProximal_;
+    /// <summary>
+    /// Represents a single bone of a Humanoid.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::VrmProtobuf.HumanBone RightLittleProximal {
+      get { return rightLittleProximal_; }
+      set {
+        rightLittleProximal_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "rightLittleIntermediate" field.</summary>
+    public const int RightLittleIntermediateFieldNumber = 54;
+    private global::VrmProtobuf.HumanBone rightLittleIntermediate_;
+    /// <summary>
+    /// Represents a single bone of a Humanoid.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::VrmProtobuf.HumanBone RightLittleIntermediate {
+      get { return rightLittleIntermediate_; }
+      set {
+        rightLittleIntermediate_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "rightLittleDistal" field.</summary>
+    public const int RightLittleDistalFieldNumber = 55;
+    private global::VrmProtobuf.HumanBone rightLittleDistal_;
+    /// <summary>
+    /// Represents a single bone of a Humanoid.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::VrmProtobuf.HumanBone RightLittleDistal {
+      get { return rightLittleDistal_; }
+      set {
+        rightLittleDistal_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as HumanBones);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(HumanBones other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (!object.Equals(Hips, other.Hips)) return false;
+      if (!object.Equals(Spine, other.Spine)) return false;
+      if (!object.Equals(Chest, other.Chest)) return false;
+      if (!object.Equals(UpperChest, other.UpperChest)) return false;
+      if (!object.Equals(Neck, other.Neck)) return false;
+      if (!object.Equals(Head, other.Head)) return false;
+      if (!object.Equals(LeftEye, other.LeftEye)) return false;
+      if (!object.Equals(RightEye, other.RightEye)) return false;
+      if (!object.Equals(Jaw, other.Jaw)) return false;
+      if (!object.Equals(LeftUpperLeg, other.LeftUpperLeg)) return false;
+      if (!object.Equals(LeftLowerLeg, other.LeftLowerLeg)) return false;
+      if (!object.Equals(LeftFoot, other.LeftFoot)) return false;
+      if (!object.Equals(LeftToes, other.LeftToes)) return false;
+      if (!object.Equals(RightUpperLeg, other.RightUpperLeg)) return false;
+      if (!object.Equals(RightLowerLeg, other.RightLowerLeg)) return false;
+      if (!object.Equals(RightFoot, other.RightFoot)) return false;
+      if (!object.Equals(RightToes, other.RightToes)) return false;
+      if (!object.Equals(LeftShoulder, other.LeftShoulder)) return false;
+      if (!object.Equals(LeftUpperArm, other.LeftUpperArm)) return false;
+      if (!object.Equals(LeftLowerArm, other.LeftLowerArm)) return false;
+      if (!object.Equals(LeftHand, other.LeftHand)) return false;
+      if (!object.Equals(RightShoulder, other.RightShoulder)) return false;
+      if (!object.Equals(RightUpperArm, other.RightUpperArm)) return false;
+      if (!object.Equals(RightLowerArm, other.RightLowerArm)) return false;
+      if (!object.Equals(RightHand, other.RightHand)) return false;
+      if (!object.Equals(LeftThumbProximal, other.LeftThumbProximal)) return false;
+      if (!object.Equals(LeftThumbIntermediate, other.LeftThumbIntermediate)) return false;
+      if (!object.Equals(LeftThumbDistal, other.LeftThumbDistal)) return false;
+      if (!object.Equals(LeftIndexProximal, other.LeftIndexProximal)) return false;
+      if (!object.Equals(LeftIndexIntermediate, other.LeftIndexIntermediate)) return false;
+      if (!object.Equals(LeftIndexDistal, other.LeftIndexDistal)) return false;
+      if (!object.Equals(LeftMiddleProximal, other.LeftMiddleProximal)) return false;
+      if (!object.Equals(LeftMiddleIntermediate, other.LeftMiddleIntermediate)) return false;
+      if (!object.Equals(LeftMiddleDistal, other.LeftMiddleDistal)) return false;
+      if (!object.Equals(LeftRingProximal, other.LeftRingProximal)) return false;
+      if (!object.Equals(LeftRingIntermediate, other.LeftRingIntermediate)) return false;
+      if (!object.Equals(LeftRingDistal, other.LeftRingDistal)) return false;
+      if (!object.Equals(LeftLittleProximal, other.LeftLittleProximal)) return false;
+      if (!object.Equals(LeftLittleIntermediate, other.LeftLittleIntermediate)) return false;
+      if (!object.Equals(LeftLittleDistal, other.LeftLittleDistal)) return false;
+      if (!object.Equals(RightThumbProximal, other.RightThumbProximal)) return false;
+      if (!object.Equals(RightThumbIntermediate, other.RightThumbIntermediate)) return false;
+      if (!object.Equals(RightThumbDistal, other.RightThumbDistal)) return false;
+      if (!object.Equals(RightIndexProximal, other.RightIndexProximal)) return false;
+      if (!object.Equals(RightIndexIntermediate, other.RightIndexIntermediate)) return false;
+      if (!object.Equals(RightIndexDistal, other.RightIndexDistal)) return false;
+      if (!object.Equals(RightMiddleProximal, other.RightMiddleProximal)) return false;
+      if (!object.Equals(RightMiddleIntermediate, other.RightMiddleIntermediate)) return false;
+      if (!object.Equals(RightMiddleDistal, other.RightMiddleDistal)) return false;
+      if (!object.Equals(RightRingProximal, other.RightRingProximal)) return false;
+      if (!object.Equals(RightRingIntermediate, other.RightRingIntermediate)) return false;
+      if (!object.Equals(RightRingDistal, other.RightRingDistal)) return false;
+      if (!object.Equals(RightLittleProximal, other.RightLittleProximal)) return false;
+      if (!object.Equals(RightLittleIntermediate, other.RightLittleIntermediate)) return false;
+      if (!object.Equals(RightLittleDistal, other.RightLittleDistal)) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (hips_ != null) hash ^= Hips.GetHashCode();
+      if (spine_ != null) hash ^= Spine.GetHashCode();
+      if (chest_ != null) hash ^= Chest.GetHashCode();
+      if (upperChest_ != null) hash ^= UpperChest.GetHashCode();
+      if (neck_ != null) hash ^= Neck.GetHashCode();
+      if (head_ != null) hash ^= Head.GetHashCode();
+      if (leftEye_ != null) hash ^= LeftEye.GetHashCode();
+      if (rightEye_ != null) hash ^= RightEye.GetHashCode();
+      if (jaw_ != null) hash ^= Jaw.GetHashCode();
+      if (leftUpperLeg_ != null) hash ^= LeftUpperLeg.GetHashCode();
+      if (leftLowerLeg_ != null) hash ^= LeftLowerLeg.GetHashCode();
+      if (leftFoot_ != null) hash ^= LeftFoot.GetHashCode();
+      if (leftToes_ != null) hash ^= LeftToes.GetHashCode();
+      if (rightUpperLeg_ != null) hash ^= RightUpperLeg.GetHashCode();
+      if (rightLowerLeg_ != null) hash ^= RightLowerLeg.GetHashCode();
+      if (rightFoot_ != null) hash ^= RightFoot.GetHashCode();
+      if (rightToes_ != null) hash ^= RightToes.GetHashCode();
+      if (leftShoulder_ != null) hash ^= LeftShoulder.GetHashCode();
+      if (leftUpperArm_ != null) hash ^= LeftUpperArm.GetHashCode();
+      if (leftLowerArm_ != null) hash ^= LeftLowerArm.GetHashCode();
+      if (leftHand_ != null) hash ^= LeftHand.GetHashCode();
+      if (rightShoulder_ != null) hash ^= RightShoulder.GetHashCode();
+      if (rightUpperArm_ != null) hash ^= RightUpperArm.GetHashCode();
+      if (rightLowerArm_ != null) hash ^= RightLowerArm.GetHashCode();
+      if (rightHand_ != null) hash ^= RightHand.GetHashCode();
+      if (leftThumbProximal_ != null) hash ^= LeftThumbProximal.GetHashCode();
+      if (leftThumbIntermediate_ != null) hash ^= LeftThumbIntermediate.GetHashCode();
+      if (leftThumbDistal_ != null) hash ^= LeftThumbDistal.GetHashCode();
+      if (leftIndexProximal_ != null) hash ^= LeftIndexProximal.GetHashCode();
+      if (leftIndexIntermediate_ != null) hash ^= LeftIndexIntermediate.GetHashCode();
+      if (leftIndexDistal_ != null) hash ^= LeftIndexDistal.GetHashCode();
+      if (leftMiddleProximal_ != null) hash ^= LeftMiddleProximal.GetHashCode();
+      if (leftMiddleIntermediate_ != null) hash ^= LeftMiddleIntermediate.GetHashCode();
+      if (leftMiddleDistal_ != null) hash ^= LeftMiddleDistal.GetHashCode();
+      if (leftRingProximal_ != null) hash ^= LeftRingProximal.GetHashCode();
+      if (leftRingIntermediate_ != null) hash ^= LeftRingIntermediate.GetHashCode();
+      if (leftRingDistal_ != null) hash ^= LeftRingDistal.GetHashCode();
+      if (leftLittleProximal_ != null) hash ^= LeftLittleProximal.GetHashCode();
+      if (leftLittleIntermediate_ != null) hash ^= LeftLittleIntermediate.GetHashCode();
+      if (leftLittleDistal_ != null) hash ^= LeftLittleDistal.GetHashCode();
+      if (rightThumbProximal_ != null) hash ^= RightThumbProximal.GetHashCode();
+      if (rightThumbIntermediate_ != null) hash ^= RightThumbIntermediate.GetHashCode();
+      if (rightThumbDistal_ != null) hash ^= RightThumbDistal.GetHashCode();
+      if (rightIndexProximal_ != null) hash ^= RightIndexProximal.GetHashCode();
+      if (rightIndexIntermediate_ != null) hash ^= RightIndexIntermediate.GetHashCode();
+      if (rightIndexDistal_ != null) hash ^= RightIndexDistal.GetHashCode();
+      if (rightMiddleProximal_ != null) hash ^= RightMiddleProximal.GetHashCode();
+      if (rightMiddleIntermediate_ != null) hash ^= RightMiddleIntermediate.GetHashCode();
+      if (rightMiddleDistal_ != null) hash ^= RightMiddleDistal.GetHashCode();
+      if (rightRingProximal_ != null) hash ^= RightRingProximal.GetHashCode();
+      if (rightRingIntermediate_ != null) hash ^= RightRingIntermediate.GetHashCode();
+      if (rightRingDistal_ != null) hash ^= RightRingDistal.GetHashCode();
+      if (rightLittleProximal_ != null) hash ^= RightLittleProximal.GetHashCode();
+      if (rightLittleIntermediate_ != null) hash ^= RightLittleIntermediate.GetHashCode();
+      if (rightLittleDistal_ != null) hash ^= RightLittleDistal.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (hips_ != null) {
+        output.WriteRawTag(10);
+        output.WriteMessage(Hips);
+      }
+      if (spine_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(Spine);
+      }
+      if (chest_ != null) {
+        output.WriteRawTag(26);
+        output.WriteMessage(Chest);
+      }
+      if (upperChest_ != null) {
+        output.WriteRawTag(34);
+        output.WriteMessage(UpperChest);
+      }
+      if (neck_ != null) {
+        output.WriteRawTag(42);
+        output.WriteMessage(Neck);
+      }
+      if (head_ != null) {
+        output.WriteRawTag(50);
+        output.WriteMessage(Head);
+      }
+      if (leftEye_ != null) {
+        output.WriteRawTag(58);
+        output.WriteMessage(LeftEye);
+      }
+      if (rightEye_ != null) {
+        output.WriteRawTag(66);
+        output.WriteMessage(RightEye);
+      }
+      if (jaw_ != null) {
+        output.WriteRawTag(74);
+        output.WriteMessage(Jaw);
+      }
+      if (leftUpperLeg_ != null) {
+        output.WriteRawTag(82);
+        output.WriteMessage(LeftUpperLeg);
+      }
+      if (leftLowerLeg_ != null) {
+        output.WriteRawTag(90);
+        output.WriteMessage(LeftLowerLeg);
+      }
+      if (leftFoot_ != null) {
+        output.WriteRawTag(98);
+        output.WriteMessage(LeftFoot);
+      }
+      if (leftToes_ != null) {
+        output.WriteRawTag(106);
+        output.WriteMessage(LeftToes);
+      }
+      if (rightUpperLeg_ != null) {
+        output.WriteRawTag(114);
+        output.WriteMessage(RightUpperLeg);
+      }
+      if (rightLowerLeg_ != null) {
+        output.WriteRawTag(122);
+        output.WriteMessage(RightLowerLeg);
+      }
+      if (rightFoot_ != null) {
+        output.WriteRawTag(130, 1);
+        output.WriteMessage(RightFoot);
+      }
+      if (rightToes_ != null) {
+        output.WriteRawTag(138, 1);
+        output.WriteMessage(RightToes);
+      }
+      if (leftShoulder_ != null) {
+        output.WriteRawTag(146, 1);
+        output.WriteMessage(LeftShoulder);
+      }
+      if (leftUpperArm_ != null) {
+        output.WriteRawTag(154, 1);
+        output.WriteMessage(LeftUpperArm);
+      }
+      if (leftLowerArm_ != null) {
+        output.WriteRawTag(162, 1);
+        output.WriteMessage(LeftLowerArm);
+      }
+      if (leftHand_ != null) {
+        output.WriteRawTag(170, 1);
+        output.WriteMessage(LeftHand);
+      }
+      if (rightShoulder_ != null) {
+        output.WriteRawTag(178, 1);
+        output.WriteMessage(RightShoulder);
+      }
+      if (rightUpperArm_ != null) {
+        output.WriteRawTag(186, 1);
+        output.WriteMessage(RightUpperArm);
+      }
+      if (rightLowerArm_ != null) {
+        output.WriteRawTag(194, 1);
+        output.WriteMessage(RightLowerArm);
+      }
+      if (rightHand_ != null) {
+        output.WriteRawTag(202, 1);
+        output.WriteMessage(RightHand);
+      }
+      if (leftThumbProximal_ != null) {
+        output.WriteRawTag(210, 1);
+        output.WriteMessage(LeftThumbProximal);
+      }
+      if (leftThumbIntermediate_ != null) {
+        output.WriteRawTag(218, 1);
+        output.WriteMessage(LeftThumbIntermediate);
+      }
+      if (leftThumbDistal_ != null) {
+        output.WriteRawTag(226, 1);
+        output.WriteMessage(LeftThumbDistal);
+      }
+      if (leftIndexProximal_ != null) {
+        output.WriteRawTag(234, 1);
+        output.WriteMessage(LeftIndexProximal);
+      }
+      if (leftIndexIntermediate_ != null) {
+        output.WriteRawTag(242, 1);
+        output.WriteMessage(LeftIndexIntermediate);
+      }
+      if (leftIndexDistal_ != null) {
+        output.WriteRawTag(250, 1);
+        output.WriteMessage(LeftIndexDistal);
+      }
+      if (leftMiddleProximal_ != null) {
+        output.WriteRawTag(130, 2);
+        output.WriteMessage(LeftMiddleProximal);
+      }
+      if (leftMiddleIntermediate_ != null) {
+        output.WriteRawTag(138, 2);
+        output.WriteMessage(LeftMiddleIntermediate);
+      }
+      if (leftMiddleDistal_ != null) {
+        output.WriteRawTag(146, 2);
+        output.WriteMessage(LeftMiddleDistal);
+      }
+      if (leftRingProximal_ != null) {
+        output.WriteRawTag(154, 2);
+        output.WriteMessage(LeftRingProximal);
+      }
+      if (leftRingIntermediate_ != null) {
+        output.WriteRawTag(162, 2);
+        output.WriteMessage(LeftRingIntermediate);
+      }
+      if (leftRingDistal_ != null) {
+        output.WriteRawTag(170, 2);
+        output.WriteMessage(LeftRingDistal);
+      }
+      if (leftLittleProximal_ != null) {
+        output.WriteRawTag(178, 2);
+        output.WriteMessage(LeftLittleProximal);
+      }
+      if (leftLittleIntermediate_ != null) {
+        output.WriteRawTag(186, 2);
+        output.WriteMessage(LeftLittleIntermediate);
+      }
+      if (leftLittleDistal_ != null) {
+        output.WriteRawTag(194, 2);
+        output.WriteMessage(LeftLittleDistal);
+      }
+      if (rightThumbProximal_ != null) {
+        output.WriteRawTag(202, 2);
+        output.WriteMessage(RightThumbProximal);
+      }
+      if (rightThumbIntermediate_ != null) {
+        output.WriteRawTag(210, 2);
+        output.WriteMessage(RightThumbIntermediate);
+      }
+      if (rightThumbDistal_ != null) {
+        output.WriteRawTag(218, 2);
+        output.WriteMessage(RightThumbDistal);
+      }
+      if (rightIndexProximal_ != null) {
+        output.WriteRawTag(226, 2);
+        output.WriteMessage(RightIndexProximal);
+      }
+      if (rightIndexIntermediate_ != null) {
+        output.WriteRawTag(234, 2);
+        output.WriteMessage(RightIndexIntermediate);
+      }
+      if (rightIndexDistal_ != null) {
+        output.WriteRawTag(242, 2);
+        output.WriteMessage(RightIndexDistal);
+      }
+      if (rightMiddleProximal_ != null) {
+        output.WriteRawTag(250, 2);
+        output.WriteMessage(RightMiddleProximal);
+      }
+      if (rightMiddleIntermediate_ != null) {
+        output.WriteRawTag(130, 3);
+        output.WriteMessage(RightMiddleIntermediate);
+      }
+      if (rightMiddleDistal_ != null) {
+        output.WriteRawTag(138, 3);
+        output.WriteMessage(RightMiddleDistal);
+      }
+      if (rightRingProximal_ != null) {
+        output.WriteRawTag(146, 3);
+        output.WriteMessage(RightRingProximal);
+      }
+      if (rightRingIntermediate_ != null) {
+        output.WriteRawTag(154, 3);
+        output.WriteMessage(RightRingIntermediate);
+      }
+      if (rightRingDistal_ != null) {
+        output.WriteRawTag(162, 3);
+        output.WriteMessage(RightRingDistal);
+      }
+      if (rightLittleProximal_ != null) {
+        output.WriteRawTag(170, 3);
+        output.WriteMessage(RightLittleProximal);
+      }
+      if (rightLittleIntermediate_ != null) {
+        output.WriteRawTag(178, 3);
+        output.WriteMessage(RightLittleIntermediate);
+      }
+      if (rightLittleDistal_ != null) {
+        output.WriteRawTag(186, 3);
+        output.WriteMessage(RightLittleDistal);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (hips_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Hips);
+      }
+      if (spine_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Spine);
+      }
+      if (chest_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Chest);
+      }
+      if (upperChest_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(UpperChest);
+      }
+      if (neck_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Neck);
+      }
+      if (head_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Head);
+      }
+      if (leftEye_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(LeftEye);
+      }
+      if (rightEye_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(RightEye);
+      }
+      if (jaw_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Jaw);
+      }
+      if (leftUpperLeg_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(LeftUpperLeg);
+      }
+      if (leftLowerLeg_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(LeftLowerLeg);
+      }
+      if (leftFoot_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(LeftFoot);
+      }
+      if (leftToes_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(LeftToes);
+      }
+      if (rightUpperLeg_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(RightUpperLeg);
+      }
+      if (rightLowerLeg_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(RightLowerLeg);
+      }
+      if (rightFoot_ != null) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(RightFoot);
+      }
+      if (rightToes_ != null) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(RightToes);
+      }
+      if (leftShoulder_ != null) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(LeftShoulder);
+      }
+      if (leftUpperArm_ != null) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(LeftUpperArm);
+      }
+      if (leftLowerArm_ != null) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(LeftLowerArm);
+      }
+      if (leftHand_ != null) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(LeftHand);
+      }
+      if (rightShoulder_ != null) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(RightShoulder);
+      }
+      if (rightUpperArm_ != null) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(RightUpperArm);
+      }
+      if (rightLowerArm_ != null) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(RightLowerArm);
+      }
+      if (rightHand_ != null) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(RightHand);
+      }
+      if (leftThumbProximal_ != null) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(LeftThumbProximal);
+      }
+      if (leftThumbIntermediate_ != null) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(LeftThumbIntermediate);
+      }
+      if (leftThumbDistal_ != null) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(LeftThumbDistal);
+      }
+      if (leftIndexProximal_ != null) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(LeftIndexProximal);
+      }
+      if (leftIndexIntermediate_ != null) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(LeftIndexIntermediate);
+      }
+      if (leftIndexDistal_ != null) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(LeftIndexDistal);
+      }
+      if (leftMiddleProximal_ != null) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(LeftMiddleProximal);
+      }
+      if (leftMiddleIntermediate_ != null) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(LeftMiddleIntermediate);
+      }
+      if (leftMiddleDistal_ != null) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(LeftMiddleDistal);
+      }
+      if (leftRingProximal_ != null) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(LeftRingProximal);
+      }
+      if (leftRingIntermediate_ != null) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(LeftRingIntermediate);
+      }
+      if (leftRingDistal_ != null) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(LeftRingDistal);
+      }
+      if (leftLittleProximal_ != null) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(LeftLittleProximal);
+      }
+      if (leftLittleIntermediate_ != null) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(LeftLittleIntermediate);
+      }
+      if (leftLittleDistal_ != null) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(LeftLittleDistal);
+      }
+      if (rightThumbProximal_ != null) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(RightThumbProximal);
+      }
+      if (rightThumbIntermediate_ != null) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(RightThumbIntermediate);
+      }
+      if (rightThumbDistal_ != null) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(RightThumbDistal);
+      }
+      if (rightIndexProximal_ != null) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(RightIndexProximal);
+      }
+      if (rightIndexIntermediate_ != null) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(RightIndexIntermediate);
+      }
+      if (rightIndexDistal_ != null) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(RightIndexDistal);
+      }
+      if (rightMiddleProximal_ != null) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(RightMiddleProximal);
+      }
+      if (rightMiddleIntermediate_ != null) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(RightMiddleIntermediate);
+      }
+      if (rightMiddleDistal_ != null) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(RightMiddleDistal);
+      }
+      if (rightRingProximal_ != null) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(RightRingProximal);
+      }
+      if (rightRingIntermediate_ != null) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(RightRingIntermediate);
+      }
+      if (rightRingDistal_ != null) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(RightRingDistal);
+      }
+      if (rightLittleProximal_ != null) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(RightLittleProximal);
+      }
+      if (rightLittleIntermediate_ != null) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(RightLittleIntermediate);
+      }
+      if (rightLittleDistal_ != null) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(RightLittleDistal);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(HumanBones other) {
+      if (other == null) {
+        return;
+      }
+      if (other.hips_ != null) {
+        if (hips_ == null) {
+          Hips = new global::VrmProtobuf.HumanBone();
+        }
+        Hips.MergeFrom(other.Hips);
+      }
+      if (other.spine_ != null) {
+        if (spine_ == null) {
+          Spine = new global::VrmProtobuf.HumanBone();
+        }
+        Spine.MergeFrom(other.Spine);
+      }
+      if (other.chest_ != null) {
+        if (chest_ == null) {
+          Chest = new global::VrmProtobuf.HumanBone();
+        }
+        Chest.MergeFrom(other.Chest);
+      }
+      if (other.upperChest_ != null) {
+        if (upperChest_ == null) {
+          UpperChest = new global::VrmProtobuf.HumanBone();
+        }
+        UpperChest.MergeFrom(other.UpperChest);
+      }
+      if (other.neck_ != null) {
+        if (neck_ == null) {
+          Neck = new global::VrmProtobuf.HumanBone();
+        }
+        Neck.MergeFrom(other.Neck);
+      }
+      if (other.head_ != null) {
+        if (head_ == null) {
+          Head = new global::VrmProtobuf.HumanBone();
+        }
+        Head.MergeFrom(other.Head);
+      }
+      if (other.leftEye_ != null) {
+        if (leftEye_ == null) {
+          LeftEye = new global::VrmProtobuf.HumanBone();
+        }
+        LeftEye.MergeFrom(other.LeftEye);
+      }
+      if (other.rightEye_ != null) {
+        if (rightEye_ == null) {
+          RightEye = new global::VrmProtobuf.HumanBone();
+        }
+        RightEye.MergeFrom(other.RightEye);
+      }
+      if (other.jaw_ != null) {
+        if (jaw_ == null) {
+          Jaw = new global::VrmProtobuf.HumanBone();
+        }
+        Jaw.MergeFrom(other.Jaw);
+      }
+      if (other.leftUpperLeg_ != null) {
+        if (leftUpperLeg_ == null) {
+          LeftUpperLeg = new global::VrmProtobuf.HumanBone();
+        }
+        LeftUpperLeg.MergeFrom(other.LeftUpperLeg);
+      }
+      if (other.leftLowerLeg_ != null) {
+        if (leftLowerLeg_ == null) {
+          LeftLowerLeg = new global::VrmProtobuf.HumanBone();
+        }
+        LeftLowerLeg.MergeFrom(other.LeftLowerLeg);
+      }
+      if (other.leftFoot_ != null) {
+        if (leftFoot_ == null) {
+          LeftFoot = new global::VrmProtobuf.HumanBone();
+        }
+        LeftFoot.MergeFrom(other.LeftFoot);
+      }
+      if (other.leftToes_ != null) {
+        if (leftToes_ == null) {
+          LeftToes = new global::VrmProtobuf.HumanBone();
+        }
+        LeftToes.MergeFrom(other.LeftToes);
+      }
+      if (other.rightUpperLeg_ != null) {
+        if (rightUpperLeg_ == null) {
+          RightUpperLeg = new global::VrmProtobuf.HumanBone();
+        }
+        RightUpperLeg.MergeFrom(other.RightUpperLeg);
+      }
+      if (other.rightLowerLeg_ != null) {
+        if (rightLowerLeg_ == null) {
+          RightLowerLeg = new global::VrmProtobuf.HumanBone();
+        }
+        RightLowerLeg.MergeFrom(other.RightLowerLeg);
+      }
+      if (other.rightFoot_ != null) {
+        if (rightFoot_ == null) {
+          RightFoot = new global::VrmProtobuf.HumanBone();
+        }
+        RightFoot.MergeFrom(other.RightFoot);
+      }
+      if (other.rightToes_ != null) {
+        if (rightToes_ == null) {
+          RightToes = new global::VrmProtobuf.HumanBone();
+        }
+        RightToes.MergeFrom(other.RightToes);
+      }
+      if (other.leftShoulder_ != null) {
+        if (leftShoulder_ == null) {
+          LeftShoulder = new global::VrmProtobuf.HumanBone();
+        }
+        LeftShoulder.MergeFrom(other.LeftShoulder);
+      }
+      if (other.leftUpperArm_ != null) {
+        if (leftUpperArm_ == null) {
+          LeftUpperArm = new global::VrmProtobuf.HumanBone();
+        }
+        LeftUpperArm.MergeFrom(other.LeftUpperArm);
+      }
+      if (other.leftLowerArm_ != null) {
+        if (leftLowerArm_ == null) {
+          LeftLowerArm = new global::VrmProtobuf.HumanBone();
+        }
+        LeftLowerArm.MergeFrom(other.LeftLowerArm);
+      }
+      if (other.leftHand_ != null) {
+        if (leftHand_ == null) {
+          LeftHand = new global::VrmProtobuf.HumanBone();
+        }
+        LeftHand.MergeFrom(other.LeftHand);
+      }
+      if (other.rightShoulder_ != null) {
+        if (rightShoulder_ == null) {
+          RightShoulder = new global::VrmProtobuf.HumanBone();
+        }
+        RightShoulder.MergeFrom(other.RightShoulder);
+      }
+      if (other.rightUpperArm_ != null) {
+        if (rightUpperArm_ == null) {
+          RightUpperArm = new global::VrmProtobuf.HumanBone();
+        }
+        RightUpperArm.MergeFrom(other.RightUpperArm);
+      }
+      if (other.rightLowerArm_ != null) {
+        if (rightLowerArm_ == null) {
+          RightLowerArm = new global::VrmProtobuf.HumanBone();
+        }
+        RightLowerArm.MergeFrom(other.RightLowerArm);
+      }
+      if (other.rightHand_ != null) {
+        if (rightHand_ == null) {
+          RightHand = new global::VrmProtobuf.HumanBone();
+        }
+        RightHand.MergeFrom(other.RightHand);
+      }
+      if (other.leftThumbProximal_ != null) {
+        if (leftThumbProximal_ == null) {
+          LeftThumbProximal = new global::VrmProtobuf.HumanBone();
+        }
+        LeftThumbProximal.MergeFrom(other.LeftThumbProximal);
+      }
+      if (other.leftThumbIntermediate_ != null) {
+        if (leftThumbIntermediate_ == null) {
+          LeftThumbIntermediate = new global::VrmProtobuf.HumanBone();
+        }
+        LeftThumbIntermediate.MergeFrom(other.LeftThumbIntermediate);
+      }
+      if (other.leftThumbDistal_ != null) {
+        if (leftThumbDistal_ == null) {
+          LeftThumbDistal = new global::VrmProtobuf.HumanBone();
+        }
+        LeftThumbDistal.MergeFrom(other.LeftThumbDistal);
+      }
+      if (other.leftIndexProximal_ != null) {
+        if (leftIndexProximal_ == null) {
+          LeftIndexProximal = new global::VrmProtobuf.HumanBone();
+        }
+        LeftIndexProximal.MergeFrom(other.LeftIndexProximal);
+      }
+      if (other.leftIndexIntermediate_ != null) {
+        if (leftIndexIntermediate_ == null) {
+          LeftIndexIntermediate = new global::VrmProtobuf.HumanBone();
+        }
+        LeftIndexIntermediate.MergeFrom(other.LeftIndexIntermediate);
+      }
+      if (other.leftIndexDistal_ != null) {
+        if (leftIndexDistal_ == null) {
+          LeftIndexDistal = new global::VrmProtobuf.HumanBone();
+        }
+        LeftIndexDistal.MergeFrom(other.LeftIndexDistal);
+      }
+      if (other.leftMiddleProximal_ != null) {
+        if (leftMiddleProximal_ == null) {
+          LeftMiddleProximal = new global::VrmProtobuf.HumanBone();
+        }
+        LeftMiddleProximal.MergeFrom(other.LeftMiddleProximal);
+      }
+      if (other.leftMiddleIntermediate_ != null) {
+        if (leftMiddleIntermediate_ == null) {
+          LeftMiddleIntermediate = new global::VrmProtobuf.HumanBone();
+        }
+        LeftMiddleIntermediate.MergeFrom(other.LeftMiddleIntermediate);
+      }
+      if (other.leftMiddleDistal_ != null) {
+        if (leftMiddleDistal_ == null) {
+          LeftMiddleDistal = new global::VrmProtobuf.HumanBone();
+        }
+        LeftMiddleDistal.MergeFrom(other.LeftMiddleDistal);
+      }
+      if (other.leftRingProximal_ != null) {
+        if (leftRingProximal_ == null) {
+          LeftRingProximal = new global::VrmProtobuf.HumanBone();
+        }
+        LeftRingProximal.MergeFrom(other.LeftRingProximal);
+      }
+      if (other.leftRingIntermediate_ != null) {
+        if (leftRingIntermediate_ == null) {
+          LeftRingIntermediate = new global::VrmProtobuf.HumanBone();
+        }
+        LeftRingIntermediate.MergeFrom(other.LeftRingIntermediate);
+      }
+      if (other.leftRingDistal_ != null) {
+        if (leftRingDistal_ == null) {
+          LeftRingDistal = new global::VrmProtobuf.HumanBone();
+        }
+        LeftRingDistal.MergeFrom(other.LeftRingDistal);
+      }
+      if (other.leftLittleProximal_ != null) {
+        if (leftLittleProximal_ == null) {
+          LeftLittleProximal = new global::VrmProtobuf.HumanBone();
+        }
+        LeftLittleProximal.MergeFrom(other.LeftLittleProximal);
+      }
+      if (other.leftLittleIntermediate_ != null) {
+        if (leftLittleIntermediate_ == null) {
+          LeftLittleIntermediate = new global::VrmProtobuf.HumanBone();
+        }
+        LeftLittleIntermediate.MergeFrom(other.LeftLittleIntermediate);
+      }
+      if (other.leftLittleDistal_ != null) {
+        if (leftLittleDistal_ == null) {
+          LeftLittleDistal = new global::VrmProtobuf.HumanBone();
+        }
+        LeftLittleDistal.MergeFrom(other.LeftLittleDistal);
+      }
+      if (other.rightThumbProximal_ != null) {
+        if (rightThumbProximal_ == null) {
+          RightThumbProximal = new global::VrmProtobuf.HumanBone();
+        }
+        RightThumbProximal.MergeFrom(other.RightThumbProximal);
+      }
+      if (other.rightThumbIntermediate_ != null) {
+        if (rightThumbIntermediate_ == null) {
+          RightThumbIntermediate = new global::VrmProtobuf.HumanBone();
+        }
+        RightThumbIntermediate.MergeFrom(other.RightThumbIntermediate);
+      }
+      if (other.rightThumbDistal_ != null) {
+        if (rightThumbDistal_ == null) {
+          RightThumbDistal = new global::VrmProtobuf.HumanBone();
+        }
+        RightThumbDistal.MergeFrom(other.RightThumbDistal);
+      }
+      if (other.rightIndexProximal_ != null) {
+        if (rightIndexProximal_ == null) {
+          RightIndexProximal = new global::VrmProtobuf.HumanBone();
+        }
+        RightIndexProximal.MergeFrom(other.RightIndexProximal);
+      }
+      if (other.rightIndexIntermediate_ != null) {
+        if (rightIndexIntermediate_ == null) {
+          RightIndexIntermediate = new global::VrmProtobuf.HumanBone();
+        }
+        RightIndexIntermediate.MergeFrom(other.RightIndexIntermediate);
+      }
+      if (other.rightIndexDistal_ != null) {
+        if (rightIndexDistal_ == null) {
+          RightIndexDistal = new global::VrmProtobuf.HumanBone();
+        }
+        RightIndexDistal.MergeFrom(other.RightIndexDistal);
+      }
+      if (other.rightMiddleProximal_ != null) {
+        if (rightMiddleProximal_ == null) {
+          RightMiddleProximal = new global::VrmProtobuf.HumanBone();
+        }
+        RightMiddleProximal.MergeFrom(other.RightMiddleProximal);
+      }
+      if (other.rightMiddleIntermediate_ != null) {
+        if (rightMiddleIntermediate_ == null) {
+          RightMiddleIntermediate = new global::VrmProtobuf.HumanBone();
+        }
+        RightMiddleIntermediate.MergeFrom(other.RightMiddleIntermediate);
+      }
+      if (other.rightMiddleDistal_ != null) {
+        if (rightMiddleDistal_ == null) {
+          RightMiddleDistal = new global::VrmProtobuf.HumanBone();
+        }
+        RightMiddleDistal.MergeFrom(other.RightMiddleDistal);
+      }
+      if (other.rightRingProximal_ != null) {
+        if (rightRingProximal_ == null) {
+          RightRingProximal = new global::VrmProtobuf.HumanBone();
+        }
+        RightRingProximal.MergeFrom(other.RightRingProximal);
+      }
+      if (other.rightRingIntermediate_ != null) {
+        if (rightRingIntermediate_ == null) {
+          RightRingIntermediate = new global::VrmProtobuf.HumanBone();
+        }
+        RightRingIntermediate.MergeFrom(other.RightRingIntermediate);
+      }
+      if (other.rightRingDistal_ != null) {
+        if (rightRingDistal_ == null) {
+          RightRingDistal = new global::VrmProtobuf.HumanBone();
+        }
+        RightRingDistal.MergeFrom(other.RightRingDistal);
+      }
+      if (other.rightLittleProximal_ != null) {
+        if (rightLittleProximal_ == null) {
+          RightLittleProximal = new global::VrmProtobuf.HumanBone();
+        }
+        RightLittleProximal.MergeFrom(other.RightLittleProximal);
+      }
+      if (other.rightLittleIntermediate_ != null) {
+        if (rightLittleIntermediate_ == null) {
+          RightLittleIntermediate = new global::VrmProtobuf.HumanBone();
+        }
+        RightLittleIntermediate.MergeFrom(other.RightLittleIntermediate);
+      }
+      if (other.rightLittleDistal_ != null) {
+        if (rightLittleDistal_ == null) {
+          RightLittleDistal = new global::VrmProtobuf.HumanBone();
+        }
+        RightLittleDistal.MergeFrom(other.RightLittleDistal);
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            if (hips_ == null) {
+              Hips = new global::VrmProtobuf.HumanBone();
+            }
+            input.ReadMessage(Hips);
+            break;
+          }
+          case 18: {
+            if (spine_ == null) {
+              Spine = new global::VrmProtobuf.HumanBone();
+            }
+            input.ReadMessage(Spine);
+            break;
+          }
+          case 26: {
+            if (chest_ == null) {
+              Chest = new global::VrmProtobuf.HumanBone();
+            }
+            input.ReadMessage(Chest);
+            break;
+          }
+          case 34: {
+            if (upperChest_ == null) {
+              UpperChest = new global::VrmProtobuf.HumanBone();
+            }
+            input.ReadMessage(UpperChest);
+            break;
+          }
+          case 42: {
+            if (neck_ == null) {
+              Neck = new global::VrmProtobuf.HumanBone();
+            }
+            input.ReadMessage(Neck);
+            break;
+          }
+          case 50: {
+            if (head_ == null) {
+              Head = new global::VrmProtobuf.HumanBone();
+            }
+            input.ReadMessage(Head);
+            break;
+          }
+          case 58: {
+            if (leftEye_ == null) {
+              LeftEye = new global::VrmProtobuf.HumanBone();
+            }
+            input.ReadMessage(LeftEye);
+            break;
+          }
+          case 66: {
+            if (rightEye_ == null) {
+              RightEye = new global::VrmProtobuf.HumanBone();
+            }
+            input.ReadMessage(RightEye);
+            break;
+          }
+          case 74: {
+            if (jaw_ == null) {
+              Jaw = new global::VrmProtobuf.HumanBone();
+            }
+            input.ReadMessage(Jaw);
+            break;
+          }
+          case 82: {
+            if (leftUpperLeg_ == null) {
+              LeftUpperLeg = new global::VrmProtobuf.HumanBone();
+            }
+            input.ReadMessage(LeftUpperLeg);
+            break;
+          }
+          case 90: {
+            if (leftLowerLeg_ == null) {
+              LeftLowerLeg = new global::VrmProtobuf.HumanBone();
+            }
+            input.ReadMessage(LeftLowerLeg);
+            break;
+          }
+          case 98: {
+            if (leftFoot_ == null) {
+              LeftFoot = new global::VrmProtobuf.HumanBone();
+            }
+            input.ReadMessage(LeftFoot);
+            break;
+          }
+          case 106: {
+            if (leftToes_ == null) {
+              LeftToes = new global::VrmProtobuf.HumanBone();
+            }
+            input.ReadMessage(LeftToes);
+            break;
+          }
+          case 114: {
+            if (rightUpperLeg_ == null) {
+              RightUpperLeg = new global::VrmProtobuf.HumanBone();
+            }
+            input.ReadMessage(RightUpperLeg);
+            break;
+          }
+          case 122: {
+            if (rightLowerLeg_ == null) {
+              RightLowerLeg = new global::VrmProtobuf.HumanBone();
+            }
+            input.ReadMessage(RightLowerLeg);
+            break;
+          }
+          case 130: {
+            if (rightFoot_ == null) {
+              RightFoot = new global::VrmProtobuf.HumanBone();
+            }
+            input.ReadMessage(RightFoot);
+            break;
+          }
+          case 138: {
+            if (rightToes_ == null) {
+              RightToes = new global::VrmProtobuf.HumanBone();
+            }
+            input.ReadMessage(RightToes);
+            break;
+          }
+          case 146: {
+            if (leftShoulder_ == null) {
+              LeftShoulder = new global::VrmProtobuf.HumanBone();
+            }
+            input.ReadMessage(LeftShoulder);
+            break;
+          }
+          case 154: {
+            if (leftUpperArm_ == null) {
+              LeftUpperArm = new global::VrmProtobuf.HumanBone();
+            }
+            input.ReadMessage(LeftUpperArm);
+            break;
+          }
+          case 162: {
+            if (leftLowerArm_ == null) {
+              LeftLowerArm = new global::VrmProtobuf.HumanBone();
+            }
+            input.ReadMessage(LeftLowerArm);
+            break;
+          }
+          case 170: {
+            if (leftHand_ == null) {
+              LeftHand = new global::VrmProtobuf.HumanBone();
+            }
+            input.ReadMessage(LeftHand);
+            break;
+          }
+          case 178: {
+            if (rightShoulder_ == null) {
+              RightShoulder = new global::VrmProtobuf.HumanBone();
+            }
+            input.ReadMessage(RightShoulder);
+            break;
+          }
+          case 186: {
+            if (rightUpperArm_ == null) {
+              RightUpperArm = new global::VrmProtobuf.HumanBone();
+            }
+            input.ReadMessage(RightUpperArm);
+            break;
+          }
+          case 194: {
+            if (rightLowerArm_ == null) {
+              RightLowerArm = new global::VrmProtobuf.HumanBone();
+            }
+            input.ReadMessage(RightLowerArm);
+            break;
+          }
+          case 202: {
+            if (rightHand_ == null) {
+              RightHand = new global::VrmProtobuf.HumanBone();
+            }
+            input.ReadMessage(RightHand);
+            break;
+          }
+          case 210: {
+            if (leftThumbProximal_ == null) {
+              LeftThumbProximal = new global::VrmProtobuf.HumanBone();
+            }
+            input.ReadMessage(LeftThumbProximal);
+            break;
+          }
+          case 218: {
+            if (leftThumbIntermediate_ == null) {
+              LeftThumbIntermediate = new global::VrmProtobuf.HumanBone();
+            }
+            input.ReadMessage(LeftThumbIntermediate);
+            break;
+          }
+          case 226: {
+            if (leftThumbDistal_ == null) {
+              LeftThumbDistal = new global::VrmProtobuf.HumanBone();
+            }
+            input.ReadMessage(LeftThumbDistal);
+            break;
+          }
+          case 234: {
+            if (leftIndexProximal_ == null) {
+              LeftIndexProximal = new global::VrmProtobuf.HumanBone();
+            }
+            input.ReadMessage(LeftIndexProximal);
+            break;
+          }
+          case 242: {
+            if (leftIndexIntermediate_ == null) {
+              LeftIndexIntermediate = new global::VrmProtobuf.HumanBone();
+            }
+            input.ReadMessage(LeftIndexIntermediate);
+            break;
+          }
+          case 250: {
+            if (leftIndexDistal_ == null) {
+              LeftIndexDistal = new global::VrmProtobuf.HumanBone();
+            }
+            input.ReadMessage(LeftIndexDistal);
+            break;
+          }
+          case 258: {
+            if (leftMiddleProximal_ == null) {
+              LeftMiddleProximal = new global::VrmProtobuf.HumanBone();
+            }
+            input.ReadMessage(LeftMiddleProximal);
+            break;
+          }
+          case 266: {
+            if (leftMiddleIntermediate_ == null) {
+              LeftMiddleIntermediate = new global::VrmProtobuf.HumanBone();
+            }
+            input.ReadMessage(LeftMiddleIntermediate);
+            break;
+          }
+          case 274: {
+            if (leftMiddleDistal_ == null) {
+              LeftMiddleDistal = new global::VrmProtobuf.HumanBone();
+            }
+            input.ReadMessage(LeftMiddleDistal);
+            break;
+          }
+          case 282: {
+            if (leftRingProximal_ == null) {
+              LeftRingProximal = new global::VrmProtobuf.HumanBone();
+            }
+            input.ReadMessage(LeftRingProximal);
+            break;
+          }
+          case 290: {
+            if (leftRingIntermediate_ == null) {
+              LeftRingIntermediate = new global::VrmProtobuf.HumanBone();
+            }
+            input.ReadMessage(LeftRingIntermediate);
+            break;
+          }
+          case 298: {
+            if (leftRingDistal_ == null) {
+              LeftRingDistal = new global::VrmProtobuf.HumanBone();
+            }
+            input.ReadMessage(LeftRingDistal);
+            break;
+          }
+          case 306: {
+            if (leftLittleProximal_ == null) {
+              LeftLittleProximal = new global::VrmProtobuf.HumanBone();
+            }
+            input.ReadMessage(LeftLittleProximal);
+            break;
+          }
+          case 314: {
+            if (leftLittleIntermediate_ == null) {
+              LeftLittleIntermediate = new global::VrmProtobuf.HumanBone();
+            }
+            input.ReadMessage(LeftLittleIntermediate);
+            break;
+          }
+          case 322: {
+            if (leftLittleDistal_ == null) {
+              LeftLittleDistal = new global::VrmProtobuf.HumanBone();
+            }
+            input.ReadMessage(LeftLittleDistal);
+            break;
+          }
+          case 330: {
+            if (rightThumbProximal_ == null) {
+              RightThumbProximal = new global::VrmProtobuf.HumanBone();
+            }
+            input.ReadMessage(RightThumbProximal);
+            break;
+          }
+          case 338: {
+            if (rightThumbIntermediate_ == null) {
+              RightThumbIntermediate = new global::VrmProtobuf.HumanBone();
+            }
+            input.ReadMessage(RightThumbIntermediate);
+            break;
+          }
+          case 346: {
+            if (rightThumbDistal_ == null) {
+              RightThumbDistal = new global::VrmProtobuf.HumanBone();
+            }
+            input.ReadMessage(RightThumbDistal);
+            break;
+          }
+          case 354: {
+            if (rightIndexProximal_ == null) {
+              RightIndexProximal = new global::VrmProtobuf.HumanBone();
+            }
+            input.ReadMessage(RightIndexProximal);
+            break;
+          }
+          case 362: {
+            if (rightIndexIntermediate_ == null) {
+              RightIndexIntermediate = new global::VrmProtobuf.HumanBone();
+            }
+            input.ReadMessage(RightIndexIntermediate);
+            break;
+          }
+          case 370: {
+            if (rightIndexDistal_ == null) {
+              RightIndexDistal = new global::VrmProtobuf.HumanBone();
+            }
+            input.ReadMessage(RightIndexDistal);
+            break;
+          }
+          case 378: {
+            if (rightMiddleProximal_ == null) {
+              RightMiddleProximal = new global::VrmProtobuf.HumanBone();
+            }
+            input.ReadMessage(RightMiddleProximal);
+            break;
+          }
+          case 386: {
+            if (rightMiddleIntermediate_ == null) {
+              RightMiddleIntermediate = new global::VrmProtobuf.HumanBone();
+            }
+            input.ReadMessage(RightMiddleIntermediate);
+            break;
+          }
+          case 394: {
+            if (rightMiddleDistal_ == null) {
+              RightMiddleDistal = new global::VrmProtobuf.HumanBone();
+            }
+            input.ReadMessage(RightMiddleDistal);
+            break;
+          }
+          case 402: {
+            if (rightRingProximal_ == null) {
+              RightRingProximal = new global::VrmProtobuf.HumanBone();
+            }
+            input.ReadMessage(RightRingProximal);
+            break;
+          }
+          case 410: {
+            if (rightRingIntermediate_ == null) {
+              RightRingIntermediate = new global::VrmProtobuf.HumanBone();
+            }
+            input.ReadMessage(RightRingIntermediate);
+            break;
+          }
+          case 418: {
+            if (rightRingDistal_ == null) {
+              RightRingDistal = new global::VrmProtobuf.HumanBone();
+            }
+            input.ReadMessage(RightRingDistal);
+            break;
+          }
+          case 426: {
+            if (rightLittleProximal_ == null) {
+              RightLittleProximal = new global::VrmProtobuf.HumanBone();
+            }
+            input.ReadMessage(RightLittleProximal);
+            break;
+          }
+          case 434: {
+            if (rightLittleIntermediate_ == null) {
+              RightLittleIntermediate = new global::VrmProtobuf.HumanBone();
+            }
+            input.ReadMessage(RightLittleIntermediate);
+            break;
+          }
+          case 442: {
+            if (rightLittleDistal_ == null) {
+              RightLittleDistal = new global::VrmProtobuf.HumanBone();
+            }
+            input.ReadMessage(RightLittleDistal);
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public sealed partial class Humanoid : pb::IMessage<Humanoid> {
+    private static readonly pb::MessageParser<Humanoid> _parser = new pb::MessageParser<Humanoid>(() => new Humanoid());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<Humanoid> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::VrmProtobuf.VRMCVrmReflection.Descriptor.MessageTypes[3]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public Humanoid() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public Humanoid(Humanoid other) : this() {
+      humanBones_ = other.humanBones_ != null ? other.humanBones_.Clone() : null;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public Humanoid Clone() {
+      return new Humanoid(this);
+    }
+
+    /// <summary>Field number for the "humanBones" field.</summary>
+    public const int HumanBonesFieldNumber = 1;
+    private global::VrmProtobuf.HumanBones humanBones_;
+    /// <summary>
+    /// Represents a set of humanBones of a humanoid.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::VrmProtobuf.HumanBones HumanBones {
+      get { return humanBones_; }
+      set {
+        humanBones_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as Humanoid);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(Humanoid other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (!object.Equals(HumanBones, other.HumanBones)) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (humanBones_ != null) hash ^= HumanBones.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (humanBones_ != null) {
+        output.WriteRawTag(10);
+        output.WriteMessage(HumanBones);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (humanBones_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(HumanBones);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(Humanoid other) {
+      if (other == null) {
+        return;
+      }
+      if (other.humanBones_ != null) {
+        if (humanBones_ == null) {
+          HumanBones = new global::VrmProtobuf.HumanBones();
+        }
+        HumanBones.MergeFrom(other.HumanBones);
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            if (humanBones_ == null) {
+              HumanBones = new global::VrmProtobuf.HumanBones();
+            }
+            input.ReadMessage(HumanBones);
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public sealed partial class MeshAnnotation : pb::IMessage<MeshAnnotation> {
+    private static readonly pb::MessageParser<MeshAnnotation> _parser = new pb::MessageParser<MeshAnnotation>(() => new MeshAnnotation());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<MeshAnnotation> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::VrmProtobuf.VRMCVrmReflection.Descriptor.MessageTypes[4]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public MeshAnnotation() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public MeshAnnotation(MeshAnnotation other) : this() {
+      Node = other.Node;
+      firstPersonType_ = other.firstPersonType_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public MeshAnnotation Clone() {
+      return new MeshAnnotation(this);
+    }
+
+    /// <summary>Field number for the "node" field.</summary>
+    public const int NodeFieldNumber = 1;
+    private static readonly pb::FieldCodec<int?> _single_node_codec = pb::FieldCodec.ForStructWrapper<int>(10);
+    private int? node_;
+    /// <summary>
+    /// The index of the node that attached to target mesh.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int? Node {
+      get { return node_; }
+      set {
+        node_ = value;
+      }
+    }
+
+
+    /// <summary>Field number for the "firstPersonType" field.</summary>
+    public const int FirstPersonTypeFieldNumber = 2;
+    private global::VrmProtobuf.MeshAnnotation.Types.FirstPersonType firstPersonType_ = global::VrmProtobuf.MeshAnnotation.Types.FirstPersonType.Auto;
+    /// <summary>
+    /// How the camera interprets the mesh.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::VrmProtobuf.MeshAnnotation.Types.FirstPersonType FirstPersonType {
+      get { return firstPersonType_; }
+      set {
+        firstPersonType_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as MeshAnnotation);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(MeshAnnotation other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (Node != other.Node) return false;
+      if (FirstPersonType != other.FirstPersonType) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (node_ != null) hash ^= Node.GetHashCode();
+      if (FirstPersonType != global::VrmProtobuf.MeshAnnotation.Types.FirstPersonType.Auto) hash ^= FirstPersonType.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (node_ != null) {
+        _single_node_codec.WriteTagAndValue(output, Node);
+      }
+      if (FirstPersonType != global::VrmProtobuf.MeshAnnotation.Types.FirstPersonType.Auto) {
+        output.WriteRawTag(16);
+        output.WriteEnum((int) FirstPersonType);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (node_ != null) {
+        size += _single_node_codec.CalculateSizeWithTag(Node);
+      }
+      if (FirstPersonType != global::VrmProtobuf.MeshAnnotation.Types.FirstPersonType.Auto) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) FirstPersonType);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(MeshAnnotation other) {
+      if (other == null) {
+        return;
+      }
+      if (other.node_ != null) {
+        if (node_ == null || other.Node != 0) {
+          Node = other.Node;
+        }
+      }
+      if (other.FirstPersonType != global::VrmProtobuf.MeshAnnotation.Types.FirstPersonType.Auto) {
+        FirstPersonType = other.FirstPersonType;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            int? value = _single_node_codec.Read(input);
+            if (node_ == null || value != 0) {
+              Node = value;
+            }
+            break;
+          }
+          case 16: {
+            FirstPersonType = (global::VrmProtobuf.MeshAnnotation.Types.FirstPersonType) input.ReadEnum();
+            break;
+          }
+        }
+      }
+    }
+
+    #region Nested types
+    /// <summary>Container for nested types declared in the MeshAnnotation message type.</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static partial class Types {
+      public enum FirstPersonType {
+        [pbr::OriginalName("auto")] Auto = 0,
+        [pbr::OriginalName("both")] Both = 1,
+        [pbr::OriginalName("thirdPersonOnly")] ThirdPersonOnly = 2,
+        [pbr::OriginalName("firstPersonOnly")] FirstPersonOnly = 3,
+      }
+
+    }
+    #endregion
+
+  }
+
+  public sealed partial class FirstPerson : pb::IMessage<FirstPerson> {
+    private static readonly pb::MessageParser<FirstPerson> _parser = new pb::MessageParser<FirstPerson>(() => new FirstPerson());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<FirstPerson> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::VrmProtobuf.VRMCVrmReflection.Descriptor.MessageTypes[5]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public FirstPerson() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public FirstPerson(FirstPerson other) : this() {
+      meshAnnotations_ = other.meshAnnotations_.Clone();
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public FirstPerson Clone() {
+      return new FirstPerson(this);
+    }
+
+    /// <summary>Field number for the "meshAnnotations" field.</summary>
+    public const int MeshAnnotationsFieldNumber = 1;
+    private static readonly pb::FieldCodec<global::VrmProtobuf.MeshAnnotation> _repeated_meshAnnotations_codec
+        = pb::FieldCodec.ForMessage(10, global::VrmProtobuf.MeshAnnotation.Parser);
+    private readonly pbc::RepeatedField<global::VrmProtobuf.MeshAnnotation> meshAnnotations_ = new pbc::RepeatedField<global::VrmProtobuf.MeshAnnotation>();
+    /// <summary>
+    /// Mesh rendering annotation for cameras. 'required' :   [  'mesh' ,  'firstPersonType'  ]
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::RepeatedField<global::VrmProtobuf.MeshAnnotation> MeshAnnotations {
+      get { return meshAnnotations_; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as FirstPerson);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(FirstPerson other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if(!meshAnnotations_.Equals(other.meshAnnotations_)) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      hash ^= meshAnnotations_.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      meshAnnotations_.WriteTo(output, _repeated_meshAnnotations_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      size += meshAnnotations_.CalculateSize(_repeated_meshAnnotations_codec);
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(FirstPerson other) {
+      if (other == null) {
+        return;
+      }
+      meshAnnotations_.Add(other.meshAnnotations_);
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            meshAnnotations_.AddEntriesFrom(input, _repeated_meshAnnotations_codec);
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public sealed partial class LookAtRangeMap : pb::IMessage<LookAtRangeMap> {
+    private static readonly pb::MessageParser<LookAtRangeMap> _parser = new pb::MessageParser<LookAtRangeMap>(() => new LookAtRangeMap());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<LookAtRangeMap> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::VrmProtobuf.VRMCVrmReflection.Descriptor.MessageTypes[6]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public LookAtRangeMap() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public LookAtRangeMap(LookAtRangeMap other) : this() {
+      InputMaxValue = other.InputMaxValue;
+      OutputScale = other.OutputScale;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public LookAtRangeMap Clone() {
+      return new LookAtRangeMap(this);
+    }
+
+    /// <summary>Field number for the "inputMaxValue" field.</summary>
+    public const int InputMaxValueFieldNumber = 1;
+    private static readonly pb::FieldCodec<float?> _single_inputMaxValue_codec = pb::FieldCodec.ForStructWrapper<float>(10);
+    private float? inputMaxValue_;
+    /// <summary>
+    /// Yaw and pitch angles  ( degrees )  between the head bone forward vector and the eye gaze LookAt vector
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public float? InputMaxValue {
+      get { return inputMaxValue_; }
+      set {
+        inputMaxValue_ = value;
+      }
+    }
+
+
+    /// <summary>Field number for the "outputScale" field.</summary>
+    public const int OutputScaleFieldNumber = 2;
+    private static readonly pb::FieldCodec<float?> _single_outputScale_codec = pb::FieldCodec.ForStructWrapper<float>(18);
+    private float? outputScale_;
+    /// <summary>
+    /// Degree for LookAtType.bone ,  Weight for LookAtType.blendShape
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public float? OutputScale {
+      get { return outputScale_; }
+      set {
+        outputScale_ = value;
+      }
+    }
+
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as LookAtRangeMap);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(LookAtRangeMap other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (!pbc::ProtobufEqualityComparers.BitwiseNullableSingleEqualityComparer.Equals(InputMaxValue, other.InputMaxValue)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseNullableSingleEqualityComparer.Equals(OutputScale, other.OutputScale)) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (inputMaxValue_ != null) hash ^= pbc::ProtobufEqualityComparers.BitwiseNullableSingleEqualityComparer.GetHashCode(InputMaxValue);
+      if (outputScale_ != null) hash ^= pbc::ProtobufEqualityComparers.BitwiseNullableSingleEqualityComparer.GetHashCode(OutputScale);
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (inputMaxValue_ != null) {
+        _single_inputMaxValue_codec.WriteTagAndValue(output, InputMaxValue);
+      }
+      if (outputScale_ != null) {
+        _single_outputScale_codec.WriteTagAndValue(output, OutputScale);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (inputMaxValue_ != null) {
+        size += _single_inputMaxValue_codec.CalculateSizeWithTag(InputMaxValue);
+      }
+      if (outputScale_ != null) {
+        size += _single_outputScale_codec.CalculateSizeWithTag(OutputScale);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(LookAtRangeMap other) {
+      if (other == null) {
+        return;
+      }
+      if (other.inputMaxValue_ != null) {
+        if (inputMaxValue_ == null || other.InputMaxValue != 0F) {
+          InputMaxValue = other.InputMaxValue;
+        }
+      }
+      if (other.outputScale_ != null) {
+        if (outputScale_ == null || other.OutputScale != 0F) {
+          OutputScale = other.OutputScale;
+        }
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            float? value = _single_inputMaxValue_codec.Read(input);
+            if (inputMaxValue_ == null || value != 0F) {
+              InputMaxValue = value;
+            }
+            break;
+          }
+          case 18: {
+            float? value = _single_outputScale_codec.Read(input);
+            if (outputScale_ == null || value != 0F) {
+              OutputScale = value;
+            }
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public sealed partial class LookAt : pb::IMessage<LookAt> {
+    private static readonly pb::MessageParser<LookAt> _parser = new pb::MessageParser<LookAt>(() => new LookAt());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<LookAt> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::VrmProtobuf.VRMCVrmReflection.Descriptor.MessageTypes[7]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public LookAt() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public LookAt(LookAt other) : this() {
+      offsetFromHeadBone_ = other.offsetFromHeadBone_.Clone();
+      lookAtType_ = other.lookAtType_;
+      lookAtHorizontalInner_ = other.lookAtHorizontalInner_ != null ? other.lookAtHorizontalInner_.Clone() : null;
+      lookAtHorizontalOuter_ = other.lookAtHorizontalOuter_ != null ? other.lookAtHorizontalOuter_.Clone() : null;
+      lookAtVerticalDown_ = other.lookAtVerticalDown_ != null ? other.lookAtVerticalDown_.Clone() : null;
+      lookAtVerticalUp_ = other.lookAtVerticalUp_ != null ? other.lookAtVerticalUp_.Clone() : null;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public LookAt Clone() {
+      return new LookAt(this);
+    }
+
+    /// <summary>Field number for the "offsetFromHeadBone" field.</summary>
+    public const int OffsetFromHeadBoneFieldNumber = 1;
+    private static readonly pb::FieldCodec<float> _repeated_offsetFromHeadBone_codec
+        = pb::FieldCodec.ForFloat(10);
+    private readonly pbc::RepeatedField<float> offsetFromHeadBone_ = new pbc::RepeatedField<float>();
+    /// <summary>
+    /// The origin of LookAt. Position offset from the head bone
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::RepeatedField<float> OffsetFromHeadBone {
+      get { return offsetFromHeadBone_; }
+    }
+
+    /// <summary>Field number for the "lookAtType" field.</summary>
+    public const int LookAtTypeFieldNumber = 2;
+    private global::VrmProtobuf.LookAt.Types.LookAtType lookAtType_ = global::VrmProtobuf.LookAt.Types.LookAtType.Bone;
+    /// <summary>
+    /// 
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::VrmProtobuf.LookAt.Types.LookAtType LookAtType {
+      get { return lookAtType_; }
+      set {
+        lookAtType_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "lookAtHorizontalInner" field.</summary>
+    public const int LookAtHorizontalInnerFieldNumber = 3;
+    private global::VrmProtobuf.LookAtRangeMap lookAtHorizontalInner_;
+    /// <summary>
+    /// Horizontal inward movement. The left eye moves right. The right eye moves left.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::VrmProtobuf.LookAtRangeMap LookAtHorizontalInner {
+      get { return lookAtHorizontalInner_; }
+      set {
+        lookAtHorizontalInner_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "lookAtHorizontalOuter" field.</summary>
+    public const int LookAtHorizontalOuterFieldNumber = 4;
+    private global::VrmProtobuf.LookAtRangeMap lookAtHorizontalOuter_;
+    /// <summary>
+    /// Horizontal outward movement. The left eye moves left. The right eye moves right.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::VrmProtobuf.LookAtRangeMap LookAtHorizontalOuter {
+      get { return lookAtHorizontalOuter_; }
+      set {
+        lookAtHorizontalOuter_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "lookAtVerticalDown" field.</summary>
+    public const int LookAtVerticalDownFieldNumber = 5;
+    private global::VrmProtobuf.LookAtRangeMap lookAtVerticalDown_;
+    /// <summary>
+    /// Vertical downward movement. Both eyes move upwards
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::VrmProtobuf.LookAtRangeMap LookAtVerticalDown {
+      get { return lookAtVerticalDown_; }
+      set {
+        lookAtVerticalDown_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "lookAtVerticalUp" field.</summary>
+    public const int LookAtVerticalUpFieldNumber = 6;
+    private global::VrmProtobuf.LookAtRangeMap lookAtVerticalUp_;
+    /// <summary>
+    /// Vertical upward movement. Both eyes move downwards
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::VrmProtobuf.LookAtRangeMap LookAtVerticalUp {
+      get { return lookAtVerticalUp_; }
+      set {
+        lookAtVerticalUp_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as LookAt);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(LookAt other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if(!offsetFromHeadBone_.Equals(other.offsetFromHeadBone_)) return false;
+      if (LookAtType != other.LookAtType) return false;
+      if (!object.Equals(LookAtHorizontalInner, other.LookAtHorizontalInner)) return false;
+      if (!object.Equals(LookAtHorizontalOuter, other.LookAtHorizontalOuter)) return false;
+      if (!object.Equals(LookAtVerticalDown, other.LookAtVerticalDown)) return false;
+      if (!object.Equals(LookAtVerticalUp, other.LookAtVerticalUp)) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      hash ^= offsetFromHeadBone_.GetHashCode();
+      if (LookAtType != global::VrmProtobuf.LookAt.Types.LookAtType.Bone) hash ^= LookAtType.GetHashCode();
+      if (lookAtHorizontalInner_ != null) hash ^= LookAtHorizontalInner.GetHashCode();
+      if (lookAtHorizontalOuter_ != null) hash ^= LookAtHorizontalOuter.GetHashCode();
+      if (lookAtVerticalDown_ != null) hash ^= LookAtVerticalDown.GetHashCode();
+      if (lookAtVerticalUp_ != null) hash ^= LookAtVerticalUp.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      offsetFromHeadBone_.WriteTo(output, _repeated_offsetFromHeadBone_codec);
+      if (LookAtType != global::VrmProtobuf.LookAt.Types.LookAtType.Bone) {
+        output.WriteRawTag(16);
+        output.WriteEnum((int) LookAtType);
+      }
+      if (lookAtHorizontalInner_ != null) {
+        output.WriteRawTag(26);
+        output.WriteMessage(LookAtHorizontalInner);
+      }
+      if (lookAtHorizontalOuter_ != null) {
+        output.WriteRawTag(34);
+        output.WriteMessage(LookAtHorizontalOuter);
+      }
+      if (lookAtVerticalDown_ != null) {
+        output.WriteRawTag(42);
+        output.WriteMessage(LookAtVerticalDown);
+      }
+      if (lookAtVerticalUp_ != null) {
+        output.WriteRawTag(50);
+        output.WriteMessage(LookAtVerticalUp);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      size += offsetFromHeadBone_.CalculateSize(_repeated_offsetFromHeadBone_codec);
+      if (LookAtType != global::VrmProtobuf.LookAt.Types.LookAtType.Bone) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) LookAtType);
+      }
+      if (lookAtHorizontalInner_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(LookAtHorizontalInner);
+      }
+      if (lookAtHorizontalOuter_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(LookAtHorizontalOuter);
+      }
+      if (lookAtVerticalDown_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(LookAtVerticalDown);
+      }
+      if (lookAtVerticalUp_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(LookAtVerticalUp);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(LookAt other) {
+      if (other == null) {
+        return;
+      }
+      offsetFromHeadBone_.Add(other.offsetFromHeadBone_);
+      if (other.LookAtType != global::VrmProtobuf.LookAt.Types.LookAtType.Bone) {
+        LookAtType = other.LookAtType;
+      }
+      if (other.lookAtHorizontalInner_ != null) {
+        if (lookAtHorizontalInner_ == null) {
+          LookAtHorizontalInner = new global::VrmProtobuf.LookAtRangeMap();
+        }
+        LookAtHorizontalInner.MergeFrom(other.LookAtHorizontalInner);
+      }
+      if (other.lookAtHorizontalOuter_ != null) {
+        if (lookAtHorizontalOuter_ == null) {
+          LookAtHorizontalOuter = new global::VrmProtobuf.LookAtRangeMap();
+        }
+        LookAtHorizontalOuter.MergeFrom(other.LookAtHorizontalOuter);
+      }
+      if (other.lookAtVerticalDown_ != null) {
+        if (lookAtVerticalDown_ == null) {
+          LookAtVerticalDown = new global::VrmProtobuf.LookAtRangeMap();
+        }
+        LookAtVerticalDown.MergeFrom(other.LookAtVerticalDown);
+      }
+      if (other.lookAtVerticalUp_ != null) {
+        if (lookAtVerticalUp_ == null) {
+          LookAtVerticalUp = new global::VrmProtobuf.LookAtRangeMap();
+        }
+        LookAtVerticalUp.MergeFrom(other.LookAtVerticalUp);
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10:
+          case 13: {
+            offsetFromHeadBone_.AddEntriesFrom(input, _repeated_offsetFromHeadBone_codec);
+            break;
+          }
+          case 16: {
+            LookAtType = (global::VrmProtobuf.LookAt.Types.LookAtType) input.ReadEnum();
+            break;
+          }
+          case 26: {
+            if (lookAtHorizontalInner_ == null) {
+              LookAtHorizontalInner = new global::VrmProtobuf.LookAtRangeMap();
+            }
+            input.ReadMessage(LookAtHorizontalInner);
+            break;
+          }
+          case 34: {
+            if (lookAtHorizontalOuter_ == null) {
+              LookAtHorizontalOuter = new global::VrmProtobuf.LookAtRangeMap();
+            }
+            input.ReadMessage(LookAtHorizontalOuter);
+            break;
+          }
+          case 42: {
+            if (lookAtVerticalDown_ == null) {
+              LookAtVerticalDown = new global::VrmProtobuf.LookAtRangeMap();
+            }
+            input.ReadMessage(LookAtVerticalDown);
+            break;
+          }
+          case 50: {
+            if (lookAtVerticalUp_ == null) {
+              LookAtVerticalUp = new global::VrmProtobuf.LookAtRangeMap();
+            }
+            input.ReadMessage(LookAtVerticalUp);
+            break;
+          }
+        }
+      }
+    }
+
+    #region Nested types
+    /// <summary>Container for nested types declared in the LookAt message type.</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static partial class Types {
+      public enum LookAtType {
+        [pbr::OriginalName("bone")] Bone = 0,
+        [pbr::OriginalName("blendShape")] BlendShape = 1,
+      }
+
+    }
+    #endregion
+
+  }
+
+  public sealed partial class BlendShapeBind : pb::IMessage<BlendShapeBind> {
+    private static readonly pb::MessageParser<BlendShapeBind> _parser = new pb::MessageParser<BlendShapeBind>(() => new BlendShapeBind());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<BlendShapeBind> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::VrmProtobuf.VRMCVrmReflection.Descriptor.MessageTypes[8]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public BlendShapeBind() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public BlendShapeBind(BlendShapeBind other) : this() {
+      Node = other.Node;
+      Index = other.Index;
+      Weight = other.Weight;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public BlendShapeBind Clone() {
+      return new BlendShapeBind(this);
+    }
+
+    /// <summary>Field number for the "node" field.</summary>
+    public const int NodeFieldNumber = 1;
+    private static readonly pb::FieldCodec<int?> _single_node_codec = pb::FieldCodec.ForStructWrapper<int>(10);
+    private int? node_;
+    /// <summary>
+    /// The index of the node that attached to target mesh.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int? Node {
+      get { return node_; }
+      set {
+        node_ = value;
+      }
+    }
+
+
+    /// <summary>Field number for the "index" field.</summary>
+    public const int IndexFieldNumber = 2;
+    private static readonly pb::FieldCodec<int?> _single_index_codec = pb::FieldCodec.ForStructWrapper<int>(18);
+    private int? index_;
+    /// <summary>
+    /// The index of the morph target in the mesh.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int? Index {
+      get { return index_; }
+      set {
+        index_ = value;
+      }
+    }
+
+
+    /// <summary>Field number for the "weight" field.</summary>
+    public const int WeightFieldNumber = 3;
+    private static readonly pb::FieldCodec<float?> _single_weight_codec = pb::FieldCodec.ForStructWrapper<float>(26);
+    private float? weight_;
+    /// <summary>
+    /// The weight value of target morph target.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public float? Weight {
+      get { return weight_; }
+      set {
+        weight_ = value;
+      }
+    }
+
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as BlendShapeBind);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(BlendShapeBind other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (Node != other.Node) return false;
+      if (Index != other.Index) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseNullableSingleEqualityComparer.Equals(Weight, other.Weight)) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (node_ != null) hash ^= Node.GetHashCode();
+      if (index_ != null) hash ^= Index.GetHashCode();
+      if (weight_ != null) hash ^= pbc::ProtobufEqualityComparers.BitwiseNullableSingleEqualityComparer.GetHashCode(Weight);
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (node_ != null) {
+        _single_node_codec.WriteTagAndValue(output, Node);
+      }
+      if (index_ != null) {
+        _single_index_codec.WriteTagAndValue(output, Index);
+      }
+      if (weight_ != null) {
+        _single_weight_codec.WriteTagAndValue(output, Weight);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (node_ != null) {
+        size += _single_node_codec.CalculateSizeWithTag(Node);
+      }
+      if (index_ != null) {
+        size += _single_index_codec.CalculateSizeWithTag(Index);
+      }
+      if (weight_ != null) {
+        size += _single_weight_codec.CalculateSizeWithTag(Weight);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(BlendShapeBind other) {
+      if (other == null) {
+        return;
+      }
+      if (other.node_ != null) {
+        if (node_ == null || other.Node != 0) {
+          Node = other.Node;
+        }
+      }
+      if (other.index_ != null) {
+        if (index_ == null || other.Index != 0) {
+          Index = other.Index;
+        }
+      }
+      if (other.weight_ != null) {
+        if (weight_ == null || other.Weight != 0F) {
+          Weight = other.Weight;
+        }
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            int? value = _single_node_codec.Read(input);
+            if (node_ == null || value != 0) {
+              Node = value;
+            }
+            break;
+          }
+          case 18: {
+            int? value = _single_index_codec.Read(input);
+            if (index_ == null || value != 0) {
+              Index = value;
+            }
+            break;
+          }
+          case 26: {
+            float? value = _single_weight_codec.Read(input);
+            if (weight_ == null || value != 0F) {
+              Weight = value;
+            }
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public sealed partial class MaterialValue : pb::IMessage<MaterialValue> {
+    private static readonly pb::MessageParser<MaterialValue> _parser = new pb::MessageParser<MaterialValue>(() => new MaterialValue());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<MaterialValue> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::VrmProtobuf.VRMCVrmReflection.Descriptor.MessageTypes[9]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public MaterialValue() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public MaterialValue(MaterialValue other) : this() {
+      Material = other.Material;
+      type_ = other.type_;
+      targetValue_ = other.targetValue_.Clone();
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public MaterialValue Clone() {
+      return new MaterialValue(this);
+    }
+
+    /// <summary>Field number for the "material" field.</summary>
+    public const int MaterialFieldNumber = 1;
+    private static readonly pb::FieldCodec<int?> _single_material_codec = pb::FieldCodec.ForStructWrapper<int>(10);
+    private int? material_;
+    /// <summary>
+    /// 
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int? Material {
+      get { return material_; }
+      set {
+        material_ = value;
+      }
+    }
+
+
+    /// <summary>Field number for the "type" field.</summary>
+    public const int TypeFieldNumber = 2;
+    private global::VrmProtobuf.MaterialValue.Types.MaterialValueType type_ = global::VrmProtobuf.MaterialValue.Types.MaterialValueType.Color;
+    /// <summary>
+    /// 
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::VrmProtobuf.MaterialValue.Types.MaterialValueType Type {
+      get { return type_; }
+      set {
+        type_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "targetValue" field.</summary>
+    public const int TargetValueFieldNumber = 3;
+    private static readonly pb::FieldCodec<float> _repeated_targetValue_codec
+        = pb::FieldCodec.ForFloat(26);
+    private readonly pbc::RepeatedField<float> targetValue_ = new pbc::RepeatedField<float>();
+    /// <summary>
+    /// 
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::RepeatedField<float> TargetValue {
+      get { return targetValue_; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as MaterialValue);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(MaterialValue other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (Material != other.Material) return false;
+      if (Type != other.Type) return false;
+      if(!targetValue_.Equals(other.targetValue_)) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (material_ != null) hash ^= Material.GetHashCode();
+      if (Type != global::VrmProtobuf.MaterialValue.Types.MaterialValueType.Color) hash ^= Type.GetHashCode();
+      hash ^= targetValue_.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (material_ != null) {
+        _single_material_codec.WriteTagAndValue(output, Material);
+      }
+      if (Type != global::VrmProtobuf.MaterialValue.Types.MaterialValueType.Color) {
+        output.WriteRawTag(16);
+        output.WriteEnum((int) Type);
+      }
+      targetValue_.WriteTo(output, _repeated_targetValue_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (material_ != null) {
+        size += _single_material_codec.CalculateSizeWithTag(Material);
+      }
+      if (Type != global::VrmProtobuf.MaterialValue.Types.MaterialValueType.Color) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Type);
+      }
+      size += targetValue_.CalculateSize(_repeated_targetValue_codec);
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(MaterialValue other) {
+      if (other == null) {
+        return;
+      }
+      if (other.material_ != null) {
+        if (material_ == null || other.Material != 0) {
+          Material = other.Material;
+        }
+      }
+      if (other.Type != global::VrmProtobuf.MaterialValue.Types.MaterialValueType.Color) {
+        Type = other.Type;
+      }
+      targetValue_.Add(other.targetValue_);
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            int? value = _single_material_codec.Read(input);
+            if (material_ == null || value != 0) {
+              Material = value;
+            }
+            break;
+          }
+          case 16: {
+            Type = (global::VrmProtobuf.MaterialValue.Types.MaterialValueType) input.ReadEnum();
+            break;
+          }
+          case 26:
+          case 29: {
+            targetValue_.AddEntriesFrom(input, _repeated_targetValue_codec);
+            break;
+          }
+        }
+      }
+    }
+
+    #region Nested types
+    /// <summary>Container for nested types declared in the MaterialValue message type.</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static partial class Types {
+      public enum MaterialValueType {
+        [pbr::OriginalName("color")] Color = 0,
+        [pbr::OriginalName("emissionColor")] EmissionColor = 1,
+        [pbr::OriginalName("shadeColor")] ShadeColor = 2,
+        [pbr::OriginalName("rimColor")] RimColor = 3,
+        [pbr::OriginalName("outlineColor")] OutlineColor = 4,
+      }
+
+    }
+    #endregion
+
+  }
+
+  public sealed partial class MaterialUVBind : pb::IMessage<MaterialUVBind> {
+    private static readonly pb::MessageParser<MaterialUVBind> _parser = new pb::MessageParser<MaterialUVBind>(() => new MaterialUVBind());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<MaterialUVBind> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::VrmProtobuf.VRMCVrmReflection.Descriptor.MessageTypes[10]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public MaterialUVBind() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public MaterialUVBind(MaterialUVBind other) : this() {
+      Material = other.Material;
+      scaling_ = other.scaling_.Clone();
+      offset_ = other.offset_.Clone();
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public MaterialUVBind Clone() {
+      return new MaterialUVBind(this);
+    }
+
+    /// <summary>Field number for the "material" field.</summary>
+    public const int MaterialFieldNumber = 1;
+    private static readonly pb::FieldCodec<int?> _single_material_codec = pb::FieldCodec.ForStructWrapper<int>(10);
+    private int? material_;
+    /// <summary>
+    /// 
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int? Material {
+      get { return material_; }
+      set {
+        material_ = value;
+      }
+    }
+
+
+    /// <summary>Field number for the "scaling" field.</summary>
+    public const int ScalingFieldNumber = 2;
+    private static readonly pb::FieldCodec<float> _repeated_scaling_codec
+        = pb::FieldCodec.ForFloat(18);
+    private readonly pbc::RepeatedField<float> scaling_ = new pbc::RepeatedField<float>();
+    /// <summary>
+    /// uv scaling for TEXCOORD_0
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::RepeatedField<float> Scaling {
+      get { return scaling_; }
+    }
+
+    /// <summary>Field number for the "offset" field.</summary>
+    public const int OffsetFieldNumber = 3;
+    private static readonly pb::FieldCodec<float> _repeated_offset_codec
+        = pb::FieldCodec.ForFloat(26);
+    private readonly pbc::RepeatedField<float> offset_ = new pbc::RepeatedField<float>();
+    /// <summary>
+    /// uv offset for TEXCOORD_0
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::RepeatedField<float> Offset {
+      get { return offset_; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as MaterialUVBind);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(MaterialUVBind other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (Material != other.Material) return false;
+      if(!scaling_.Equals(other.scaling_)) return false;
+      if(!offset_.Equals(other.offset_)) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (material_ != null) hash ^= Material.GetHashCode();
+      hash ^= scaling_.GetHashCode();
+      hash ^= offset_.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (material_ != null) {
+        _single_material_codec.WriteTagAndValue(output, Material);
+      }
+      scaling_.WriteTo(output, _repeated_scaling_codec);
+      offset_.WriteTo(output, _repeated_offset_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (material_ != null) {
+        size += _single_material_codec.CalculateSizeWithTag(Material);
+      }
+      size += scaling_.CalculateSize(_repeated_scaling_codec);
+      size += offset_.CalculateSize(_repeated_offset_codec);
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(MaterialUVBind other) {
+      if (other == null) {
+        return;
+      }
+      if (other.material_ != null) {
+        if (material_ == null || other.Material != 0) {
+          Material = other.Material;
+        }
+      }
+      scaling_.Add(other.scaling_);
+      offset_.Add(other.offset_);
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            int? value = _single_material_codec.Read(input);
+            if (material_ == null || value != 0) {
+              Material = value;
+            }
+            break;
+          }
+          case 18:
+          case 21: {
+            scaling_.AddEntriesFrom(input, _repeated_scaling_codec);
+            break;
+          }
+          case 26:
+          case 29: {
+            offset_.AddEntriesFrom(input, _repeated_offset_codec);
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public sealed partial class BlendShapeGroup : pb::IMessage<BlendShapeGroup> {
+    private static readonly pb::MessageParser<BlendShapeGroup> _parser = new pb::MessageParser<BlendShapeGroup>(() => new BlendShapeGroup());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<BlendShapeGroup> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::VrmProtobuf.VRMCVrmReflection.Descriptor.MessageTypes[11]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public BlendShapeGroup() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public BlendShapeGroup(BlendShapeGroup other) : this() {
+      name_ = other.name_;
+      preset_ = other.preset_;
+      binds_ = other.binds_.Clone();
+      materialValues_ = other.materialValues_.Clone();
+      materialUVBinds_ = other.materialUVBinds_.Clone();
+      IsBinary = other.IsBinary;
+      IgnoreBlink = other.IgnoreBlink;
+      IgnoreLookAt = other.IgnoreLookAt;
+      IgnoreMouth = other.IgnoreMouth;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public BlendShapeGroup Clone() {
+      return new BlendShapeGroup(this);
+    }
+
+    /// <summary>Field number for the "name" field.</summary>
+    public const int NameFieldNumber = 1;
+    private string name_ = "";
+    /// <summary>
+    /// 
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Name {
+      get { return name_; }
+      set {
+        name_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "preset" field.</summary>
+    public const int PresetFieldNumber = 2;
+    private global::VrmProtobuf.BlendShapeGroup.Types.BlendShapePreset preset_ = global::VrmProtobuf.BlendShapeGroup.Types.BlendShapePreset.Custom;
+    /// <summary>
+    /// Functions of BlendShapeGroup
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::VrmProtobuf.BlendShapeGroup.Types.BlendShapePreset Preset {
+      get { return preset_; }
+      set {
+        preset_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "binds" field.</summary>
+    public const int BindsFieldNumber = 3;
+    private static readonly pb::FieldCodec<global::VrmProtobuf.BlendShapeBind> _repeated_binds_codec
+        = pb::FieldCodec.ForMessage(26, global::VrmProtobuf.BlendShapeBind.Parser);
+    private readonly pbc::RepeatedField<global::VrmProtobuf.BlendShapeBind> binds_ = new pbc::RepeatedField<global::VrmProtobuf.BlendShapeBind>();
+    /// <summary>
+    /// Specify a morph target. 'required' :   [  'mesh' ,  'index' ,  'weight'  ]
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::RepeatedField<global::VrmProtobuf.BlendShapeBind> Binds {
+      get { return binds_; }
+    }
+
+    /// <summary>Field number for the "materialValues" field.</summary>
+    public const int MaterialValuesFieldNumber = 4;
+    private static readonly pb::FieldCodec<global::VrmProtobuf.MaterialValue> _repeated_materialValues_codec
+        = pb::FieldCodec.ForMessage(34, global::VrmProtobuf.MaterialValue.Parser);
+    private readonly pbc::RepeatedField<global::VrmProtobuf.MaterialValue> materialValues_ = new pbc::RepeatedField<global::VrmProtobuf.MaterialValue>();
+    /// <summary>
+    /// Material animation references. 'required' :   [  'material' ,  'type' ,  'targetValue'  ]
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::RepeatedField<global::VrmProtobuf.MaterialValue> MaterialValues {
+      get { return materialValues_; }
+    }
+
+    /// <summary>Field number for the "materialUVBinds" field.</summary>
+    public const int MaterialUVBindsFieldNumber = 5;
+    private static readonly pb::FieldCodec<global::VrmProtobuf.MaterialUVBind> _repeated_materialUVBinds_codec
+        = pb::FieldCodec.ForMessage(42, global::VrmProtobuf.MaterialUVBind.Parser);
+    private readonly pbc::RepeatedField<global::VrmProtobuf.MaterialUVBind> materialUVBinds_ = new pbc::RepeatedField<global::VrmProtobuf.MaterialUVBind>();
+    /// <summary>
+    /// Texture uv animation references
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::RepeatedField<global::VrmProtobuf.MaterialUVBind> MaterialUVBinds {
+      get { return materialUVBinds_; }
+    }
+
+    /// <summary>Field number for the "isBinary" field.</summary>
+    public const int IsBinaryFieldNumber = 6;
+    private static readonly pb::FieldCodec<bool?> _single_isBinary_codec = pb::FieldCodec.ForStructWrapper<bool>(50);
+    private bool? isBinary_;
+    /// <summary>
+    /// Interpret non-zero values as 1
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool? IsBinary {
+      get { return isBinary_; }
+      set {
+        isBinary_ = value;
+      }
+    }
+
+
+    /// <summary>Field number for the "ignoreBlink" field.</summary>
+    public const int IgnoreBlinkFieldNumber = 7;
+    private static readonly pb::FieldCodec<bool?> _single_ignoreBlink_codec = pb::FieldCodec.ForStructWrapper<bool>(58);
+    private bool? ignoreBlink_;
+    /// <summary>
+    /// Disable Blink when this BlendShapeGroup is enabled
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool? IgnoreBlink {
+      get { return ignoreBlink_; }
+      set {
+        ignoreBlink_ = value;
+      }
+    }
+
+
+    /// <summary>Field number for the "ignoreLookAt" field.</summary>
+    public const int IgnoreLookAtFieldNumber = 8;
+    private static readonly pb::FieldCodec<bool?> _single_ignoreLookAt_codec = pb::FieldCodec.ForStructWrapper<bool>(66);
+    private bool? ignoreLookAt_;
+    /// <summary>
+    /// Disable LookAt when this BlendShapeGroup is enabled
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool? IgnoreLookAt {
+      get { return ignoreLookAt_; }
+      set {
+        ignoreLookAt_ = value;
+      }
+    }
+
+
+    /// <summary>Field number for the "ignoreMouth" field.</summary>
+    public const int IgnoreMouthFieldNumber = 9;
+    private static readonly pb::FieldCodec<bool?> _single_ignoreMouth_codec = pb::FieldCodec.ForStructWrapper<bool>(74);
+    private bool? ignoreMouth_;
+    /// <summary>
+    /// Disable Mouth when this BlendShapeGroup is enabled
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool? IgnoreMouth {
+      get { return ignoreMouth_; }
+      set {
+        ignoreMouth_ = value;
+      }
+    }
+
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as BlendShapeGroup);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(BlendShapeGroup other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (Name != other.Name) return false;
+      if (Preset != other.Preset) return false;
+      if(!binds_.Equals(other.binds_)) return false;
+      if(!materialValues_.Equals(other.materialValues_)) return false;
+      if(!materialUVBinds_.Equals(other.materialUVBinds_)) return false;
+      if (IsBinary != other.IsBinary) return false;
+      if (IgnoreBlink != other.IgnoreBlink) return false;
+      if (IgnoreLookAt != other.IgnoreLookAt) return false;
+      if (IgnoreMouth != other.IgnoreMouth) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (Name.Length != 0) hash ^= Name.GetHashCode();
+      if (Preset != global::VrmProtobuf.BlendShapeGroup.Types.BlendShapePreset.Custom) hash ^= Preset.GetHashCode();
+      hash ^= binds_.GetHashCode();
+      hash ^= materialValues_.GetHashCode();
+      hash ^= materialUVBinds_.GetHashCode();
+      if (isBinary_ != null) hash ^= IsBinary.GetHashCode();
+      if (ignoreBlink_ != null) hash ^= IgnoreBlink.GetHashCode();
+      if (ignoreLookAt_ != null) hash ^= IgnoreLookAt.GetHashCode();
+      if (ignoreMouth_ != null) hash ^= IgnoreMouth.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (Name.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Name);
+      }
+      if (Preset != global::VrmProtobuf.BlendShapeGroup.Types.BlendShapePreset.Custom) {
+        output.WriteRawTag(16);
+        output.WriteEnum((int) Preset);
+      }
+      binds_.WriteTo(output, _repeated_binds_codec);
+      materialValues_.WriteTo(output, _repeated_materialValues_codec);
+      materialUVBinds_.WriteTo(output, _repeated_materialUVBinds_codec);
+      if (isBinary_ != null) {
+        _single_isBinary_codec.WriteTagAndValue(output, IsBinary);
+      }
+      if (ignoreBlink_ != null) {
+        _single_ignoreBlink_codec.WriteTagAndValue(output, IgnoreBlink);
+      }
+      if (ignoreLookAt_ != null) {
+        _single_ignoreLookAt_codec.WriteTagAndValue(output, IgnoreLookAt);
+      }
+      if (ignoreMouth_ != null) {
+        _single_ignoreMouth_codec.WriteTagAndValue(output, IgnoreMouth);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (Name.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Name);
+      }
+      if (Preset != global::VrmProtobuf.BlendShapeGroup.Types.BlendShapePreset.Custom) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Preset);
+      }
+      size += binds_.CalculateSize(_repeated_binds_codec);
+      size += materialValues_.CalculateSize(_repeated_materialValues_codec);
+      size += materialUVBinds_.CalculateSize(_repeated_materialUVBinds_codec);
+      if (isBinary_ != null) {
+        size += _single_isBinary_codec.CalculateSizeWithTag(IsBinary);
+      }
+      if (ignoreBlink_ != null) {
+        size += _single_ignoreBlink_codec.CalculateSizeWithTag(IgnoreBlink);
+      }
+      if (ignoreLookAt_ != null) {
+        size += _single_ignoreLookAt_codec.CalculateSizeWithTag(IgnoreLookAt);
+      }
+      if (ignoreMouth_ != null) {
+        size += _single_ignoreMouth_codec.CalculateSizeWithTag(IgnoreMouth);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(BlendShapeGroup other) {
+      if (other == null) {
+        return;
+      }
+      if (other.Name.Length != 0) {
+        Name = other.Name;
+      }
+      if (other.Preset != global::VrmProtobuf.BlendShapeGroup.Types.BlendShapePreset.Custom) {
+        Preset = other.Preset;
+      }
+      binds_.Add(other.binds_);
+      materialValues_.Add(other.materialValues_);
+      materialUVBinds_.Add(other.materialUVBinds_);
+      if (other.isBinary_ != null) {
+        if (isBinary_ == null || other.IsBinary != false) {
+          IsBinary = other.IsBinary;
+        }
+      }
+      if (other.ignoreBlink_ != null) {
+        if (ignoreBlink_ == null || other.IgnoreBlink != false) {
+          IgnoreBlink = other.IgnoreBlink;
+        }
+      }
+      if (other.ignoreLookAt_ != null) {
+        if (ignoreLookAt_ == null || other.IgnoreLookAt != false) {
+          IgnoreLookAt = other.IgnoreLookAt;
+        }
+      }
+      if (other.ignoreMouth_ != null) {
+        if (ignoreMouth_ == null || other.IgnoreMouth != false) {
+          IgnoreMouth = other.IgnoreMouth;
+        }
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            Name = input.ReadString();
+            break;
+          }
+          case 16: {
+            Preset = (global::VrmProtobuf.BlendShapeGroup.Types.BlendShapePreset) input.ReadEnum();
+            break;
+          }
+          case 26: {
+            binds_.AddEntriesFrom(input, _repeated_binds_codec);
+            break;
+          }
+          case 34: {
+            materialValues_.AddEntriesFrom(input, _repeated_materialValues_codec);
+            break;
+          }
+          case 42: {
+            materialUVBinds_.AddEntriesFrom(input, _repeated_materialUVBinds_codec);
+            break;
+          }
+          case 50: {
+            bool? value = _single_isBinary_codec.Read(input);
+            if (isBinary_ == null || value != false) {
+              IsBinary = value;
+            }
+            break;
+          }
+          case 58: {
+            bool? value = _single_ignoreBlink_codec.Read(input);
+            if (ignoreBlink_ == null || value != false) {
+              IgnoreBlink = value;
+            }
+            break;
+          }
+          case 66: {
+            bool? value = _single_ignoreLookAt_codec.Read(input);
+            if (ignoreLookAt_ == null || value != false) {
+              IgnoreLookAt = value;
+            }
+            break;
+          }
+          case 74: {
+            bool? value = _single_ignoreMouth_codec.Read(input);
+            if (ignoreMouth_ == null || value != false) {
+              IgnoreMouth = value;
+            }
+            break;
+          }
+        }
+      }
+    }
+
+    #region Nested types
+    /// <summary>Container for nested types declared in the BlendShapeGroup message type.</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static partial class Types {
+      public enum BlendShapePreset {
+        [pbr::OriginalName("custom")] Custom = 0,
+        [pbr::OriginalName("aa")] Aa = 1,
+        [pbr::OriginalName("ih")] Ih = 2,
+        [pbr::OriginalName("ou")] Ou = 3,
+        [pbr::OriginalName("ee")] Ee = 4,
+        [pbr::OriginalName("oh")] Oh = 5,
+        [pbr::OriginalName("blink")] Blink = 6,
+        [pbr::OriginalName("joy")] Joy = 7,
+        [pbr::OriginalName("angry")] Angry = 8,
+        [pbr::OriginalName("sorrow")] Sorrow = 9,
+        [pbr::OriginalName("fun")] Fun = 10,
+        [pbr::OriginalName("lookUp")] LookUp = 11,
+        [pbr::OriginalName("lookDown")] LookDown = 12,
+        [pbr::OriginalName("lookLeft")] LookLeft = 13,
+        [pbr::OriginalName("lookRight")] LookRight = 14,
+        [pbr::OriginalName("blinkLeft")] BlinkLeft = 15,
+        [pbr::OriginalName("blinkRight")] BlinkRight = 16,
+        [pbr::OriginalName("neutral")] Neutral = 17,
+      }
+
+    }
+    #endregion
+
+  }
+
+  public sealed partial class BlendShape : pb::IMessage<BlendShape> {
+    private static readonly pb::MessageParser<BlendShape> _parser = new pb::MessageParser<BlendShape>(() => new BlendShape());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<BlendShape> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::VrmProtobuf.VRMCVrmReflection.Descriptor.MessageTypes[12]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public BlendShape() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public BlendShape(BlendShape other) : this() {
+      blendShapeGroups_ = other.blendShapeGroups_.Clone();
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public BlendShape Clone() {
+      return new BlendShape(this);
+    }
+
+    /// <summary>Field number for the "blendShapeGroups" field.</summary>
+    public const int BlendShapeGroupsFieldNumber = 1;
+    private static readonly pb::FieldCodec<global::VrmProtobuf.BlendShapeGroup> _repeated_blendShapeGroups_codec
+        = pb::FieldCodec.ForMessage(10, global::VrmProtobuf.BlendShapeGroup.Parser);
+    private readonly pbc::RepeatedField<global::VrmProtobuf.BlendShapeGroup> blendShapeGroups_ = new pbc::RepeatedField<global::VrmProtobuf.BlendShapeGroup>();
+    /// <summary>
+    /// 
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::RepeatedField<global::VrmProtobuf.BlendShapeGroup> BlendShapeGroups {
+      get { return blendShapeGroups_; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as BlendShape);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(BlendShape other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if(!blendShapeGroups_.Equals(other.blendShapeGroups_)) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      hash ^= blendShapeGroups_.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      blendShapeGroups_.WriteTo(output, _repeated_blendShapeGroups_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      size += blendShapeGroups_.CalculateSize(_repeated_blendShapeGroups_codec);
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(BlendShape other) {
+      if (other == null) {
+        return;
+      }
+      blendShapeGroups_.Add(other.blendShapeGroups_);
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            blendShapeGroups_.AddEntriesFrom(input, _repeated_blendShapeGroups_codec);
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
   public sealed partial class VRMCVrm : pb::IMessage<VRMCVrm> {
     private static readonly pb::MessageParser<VRMCVrm> _parser = new pb::MessageParser<VRMCVrm>(() => new VRMCVrm());
     private pb::UnknownFieldSet _unknownFields;
@@ -50,7 +5259,7 @@ namespace VrmProtobuf {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::VrmProtobuf.VRMCVrmReflection.Descriptor.MessageTypes[0]; }
+      get { return global::VrmProtobuf.VRMCVrmReflection.Descriptor.MessageTypes[13]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -84,6 +5293,9 @@ namespace VrmProtobuf {
     /// <summary>Field number for the "specVersion" field.</summary>
     public const int SpecVersionFieldNumber = 1;
     private string specVersion_ = "";
+    /// <summary>
+    /// 
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string SpecVersion {
       get { return specVersion_; }
@@ -95,6 +5307,9 @@ namespace VrmProtobuf {
     /// <summary>Field number for the "meta" field.</summary>
     public const int MetaFieldNumber = 2;
     private global::VrmProtobuf.Meta meta_;
+    /// <summary>
+    /// 
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::VrmProtobuf.Meta Meta {
       get { return meta_; }
@@ -106,6 +5321,9 @@ namespace VrmProtobuf {
     /// <summary>Field number for the "humanoid" field.</summary>
     public const int HumanoidFieldNumber = 3;
     private global::VrmProtobuf.Humanoid humanoid_;
+    /// <summary>
+    /// Correspondence between nodes and human bones
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::VrmProtobuf.Humanoid Humanoid {
       get { return humanoid_; }
@@ -117,6 +5335,9 @@ namespace VrmProtobuf {
     /// <summary>Field number for the "firstPerson" field.</summary>
     public const int FirstPersonFieldNumber = 4;
     private global::VrmProtobuf.FirstPerson firstPerson_;
+    /// <summary>
+    /// First-person perspective settings
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::VrmProtobuf.FirstPerson FirstPerson {
       get { return firstPerson_; }
@@ -128,6 +5349,9 @@ namespace VrmProtobuf {
     /// <summary>Field number for the "lookAt" field.</summary>
     public const int LookAtFieldNumber = 5;
     private global::VrmProtobuf.LookAt lookAt_;
+    /// <summary>
+    /// Eye gaze control
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::VrmProtobuf.LookAt LookAt {
       get { return lookAt_; }
@@ -139,6 +5363,9 @@ namespace VrmProtobuf {
     /// <summary>Field number for the "blendShape" field.</summary>
     public const int BlendShapeFieldNumber = 6;
     private global::VrmProtobuf.BlendShape blendShape_;
+    /// <summary>
+    /// Create animation  ( morph target &amp; material color &amp; texture offset )
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::VrmProtobuf.BlendShape BlendShape {
       get { return blendShape_; }
