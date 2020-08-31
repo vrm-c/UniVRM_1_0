@@ -21,15 +21,15 @@ namespace Vrm10
 
             foreach (var y in x.Binds)
             {
-                var node = nodes[y.Node];
-                var blendShapeName = node.Mesh.MorphTargets[y.Index].Name;
-                var blendShapeBind = new BlendShapeBindValue(node, blendShapeName, y.Weight);
+                var node = nodes[y.Node.Value];
+                var blendShapeName = node.Mesh.MorphTargets[y.Index.Value].Name;
+                var blendShapeBind = new BlendShapeBindValue(node, blendShapeName, y.Weight.Value);
                 expression.BlendShapeValues.Add(blendShapeBind);
             }
 
             foreach (var y in x.MaterialValues)
             {
-                var material = materials[y.Material];
+                var material = materials[y.Material.Value];
                 Vector4 target = default;
                 if (y.TargetValue.Count > 0) target.X = y.TargetValue[0];
                 if (y.TargetValue.Count > 1) target.Y = y.TargetValue[1];
@@ -41,7 +41,7 @@ namespace Vrm10
 
             foreach (var y in x.MaterialUVBinds)
             {
-                var material = materials[y.Material];
+                var material = materials[y.Material.Value];
                 var scaling = Vector2.One;
                 if (y.Scaling.Count > 0) scaling.X = y.Scaling[0];
                 if (y.Scaling.Count > 1) scaling.Y = y.Scaling[1];
@@ -66,7 +66,7 @@ namespace Vrm10
             return manager;
         }
 
-        public static VrmProtobuf.BlendShapeGroup.Types.BlendShapeBind ToGltf(this BlendShapeBindValue self, List<VrmLib.Node> nodes)
+        public static VrmProtobuf.BlendShapeBind ToGltf(this BlendShapeBindValue self, List<VrmLib.Node> nodes)
         {
             var name = self.Name;
             var value = self.Value;
@@ -76,7 +76,7 @@ namespace Vrm10
                 throw new IndexOutOfRangeException(string.Format("MorphTargetName {0} is not found", name));
             }
 
-            return new VrmProtobuf.BlendShapeGroup.Types.BlendShapeBind
+            return new VrmProtobuf.BlendShapeBind
             {
                 Node = nodes.IndexOfThrow(self.Node),
                 Index = self.Node.Mesh.MorphTargets.FindIndex(x => x.Name == name),
@@ -84,12 +84,12 @@ namespace Vrm10
             };
         }
 
-        public static VrmProtobuf.BlendShapeGroup.Types.MaterialValue ToGltf(this MaterialBindValue self, List<VrmLib.Material> materials)
+        public static VrmProtobuf.MaterialValue ToGltf(this MaterialBindValue self, List<VrmLib.Material> materials)
         {
-            var m = new VrmProtobuf.BlendShapeGroup.Types.MaterialValue
+            var m = new VrmProtobuf.MaterialValue
             {
                 Material = materials.IndexOfThrow(self.Material),
-                Type = EnumUtil.Cast<VrmProtobuf.BlendShapeGroup.Types.MaterialValueType>(self.BindType),
+                Type = EnumUtil.Cast<VrmProtobuf.MaterialValue.Types.MaterialValueType>(self.BindType),
             };
             var kv = self.Property;
             m.TargetValue.Add(kv.Value.X);
@@ -99,9 +99,9 @@ namespace Vrm10
             return m;
         }
 
-        public static VrmProtobuf.BlendShapeGroup.Types.MaterialUVBind ToGltf(this UVScaleOffsetValue self, List<VrmLib.Material> materials)
+        public static VrmProtobuf.MaterialUVBind ToGltf(this UVScaleOffsetValue self, List<VrmLib.Material> materials)
         {
-            var m = new VrmProtobuf.BlendShapeGroup.Types.MaterialUVBind
+            var m = new VrmProtobuf.MaterialUVBind
             {
                 Material = materials.IndexOfThrow(self.Material),
             };

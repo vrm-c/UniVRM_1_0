@@ -7,14 +7,14 @@ namespace Vrm10
 {
     public static class FirstPersonAdapter
     {
-        public static VrmLib.FirstPersonMeshType FromGltf(this VrmProtobuf.FirstPerson.Types.MeshAnnotation.Types.FirstPersonType src)
+        public static VrmLib.FirstPersonMeshType FromGltf(this VrmProtobuf.MeshAnnotation.Types.FirstPersonType src)
         {
             switch (src)
             {
-                case VrmProtobuf.FirstPerson.Types.MeshAnnotation.Types.FirstPersonType.Auto: return FirstPersonMeshType.Auto;
-                case VrmProtobuf.FirstPerson.Types.MeshAnnotation.Types.FirstPersonType.Both: return FirstPersonMeshType.Both;
-                case VrmProtobuf.FirstPerson.Types.MeshAnnotation.Types.FirstPersonType.FirstPersonOnly: return FirstPersonMeshType.FirstPersonOnly;
-                case VrmProtobuf.FirstPerson.Types.MeshAnnotation.Types.FirstPersonType.ThirdPersonOnly: return FirstPersonMeshType.ThirdPersonOnly;
+                case VrmProtobuf.MeshAnnotation.Types.FirstPersonType.Auto: return FirstPersonMeshType.Auto;
+                case VrmProtobuf.MeshAnnotation.Types.FirstPersonType.Both: return FirstPersonMeshType.Both;
+                case VrmProtobuf.MeshAnnotation.Types.FirstPersonType.FirstPersonOnly: return FirstPersonMeshType.FirstPersonOnly;
+                case VrmProtobuf.MeshAnnotation.Types.FirstPersonType.ThirdPersonOnly: return FirstPersonMeshType.ThirdPersonOnly;
             }
 
             throw new NotImplementedException();
@@ -25,7 +25,7 @@ namespace Vrm10
             var self = new FirstPerson();
             // self.m_offset = fp.FirstPersonBoneOffset.ToVector3();
             self.Annotations.AddRange(fp.MeshAnnotations
-                .Select(x => new FirstPersonMeshAnnotation(nodes[x.Node], x.FirstPersonType.FromGltf())));
+                .Select(x => new FirstPersonMeshAnnotation(nodes[x.Node.Value], x.FirstPersonType.FromGltf())));
             return self;
         }
         public static VrmProtobuf.FirstPerson ToGltf(this FirstPerson self, List<Node> nodes)
@@ -42,10 +42,10 @@ namespace Vrm10
 
             foreach (var x in self.Annotations)
             {
-                firstPerson.MeshAnnotations.Add(new VrmProtobuf.FirstPerson.Types.MeshAnnotation
+                firstPerson.MeshAnnotations.Add(new VrmProtobuf.MeshAnnotation
                 {
                     Node = nodes.IndexOfThrow(x.Node),
-                    FirstPersonType = (VrmProtobuf.FirstPerson.Types.MeshAnnotation.Types.FirstPersonType)x.FirstPersonFlag,
+                    FirstPersonType = EnumUtil.Cast<VrmProtobuf.MeshAnnotation.Types.FirstPersonType>(x.FirstPersonFlag),
                 });
             }
             return firstPerson;

@@ -25,50 +25,47 @@ namespace VrmProtobuf {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChpWUk1DX21hdGVyaWFsc19tdG9vbi5wcm90bxILVnJtUHJvdG9idWYaHmdv",
-            "b2dsZS9wcm90b2J1Zi93cmFwcGVycy5wcm90byLMDQoUVlJNQ19tYXRlcmlh",
-            "bHNfbXRvb24SDwoHdmVyc2lvbhgCIAEoCRJACgpyZW5kZXJNb2RlGAMgASgO",
-            "MiwuVnJtUHJvdG9idWYuVlJNQ19tYXRlcmlhbHNfbXRvb24uUmVuZGVyTW9k",
-            "ZRI8CghjdWxsTW9kZRgEIAEoDjIqLlZybVByb3RvYnVmLlZSTUNfbWF0ZXJp",
-            "YWxzX210b29uLkN1bGxNb2RlEh8KF3JlbmRlclF1ZXVlT2Zmc2V0TnVtYmVy",
-            "GAUgASgFEhEKCWxpdEZhY3RvchgGIAMoAhI3ChJsaXRNdWx0aXBseVRleHR1",
-            "cmUYByABKAsyGy5nb29nbGUucHJvdG9idWYuSW50MzJWYWx1ZRITCgtzaGFk",
-            "ZUZhY3RvchgIIAMoAhI5ChRzaGFkZU11bHRpcGx5VGV4dHVyZRgJIAEoCzIb",
-            "Lmdvb2dsZS5wcm90b2J1Zi5JbnQzMlZhbHVlEh0KFWN1dG91dFRocmVzaG9s",
-            "ZEZhY3RvchgKIAEoAhIaChJzaGFkaW5nU2hpZnRGYWN0b3IYCyABKAISGgoS",
-            "c2hhZGluZ1Rvb255RmFjdG9yGAwgASgCEiMKG2xpZ2h0Q29sb3JBdHRlbnVh",
-            "dGlvbkZhY3RvchgSIAEoAhIZChFnaUludGVuc2l0eUZhY3RvchgTIAEoAhIy",
-            "Cg1ub3JtYWxUZXh0dXJlGBQgASgLMhsuZ29vZ2xlLnByb3RvYnVmLkludDMy",
-            "VmFsdWUSGQoRbm9ybWFsU2NhbGVGYWN0b3IYFSABKAISFgoOZW1pc3Npb25G",
-            "YWN0b3IYFiADKAISPAoXZW1pc3Npb25NdWx0aXBseVRleHR1cmUYFyABKAsy",
-            "Gy5nb29nbGUucHJvdG9idWYuSW50MzJWYWx1ZRI0Cg9hZGRpdGl2ZVRleHR1",
-            "cmUYGCABKAsyGy5nb29nbGUucHJvdG9idWYuSW50MzJWYWx1ZRIRCglyaW1G",
-            "YWN0b3IYGSADKAISNwoScmltTXVsdGlwbHlUZXh0dXJlGBogASgLMhsuZ29v",
-            "Z2xlLnByb3RvYnVmLkludDMyVmFsdWUSHAoUcmltTGlnaHRpbmdNaXhGYWN0",
-            "b3IYGyABKAISHQoVcmltRnJlc25lbFBvd2VyRmFjdG9yGBwgASgCEhUKDXJp",
-            "bUxpZnRGYWN0b3IYHSABKAISTAoQb3V0bGluZVdpZHRoTW9kZRgeIAEoDjIy",
-            "LlZybVByb3RvYnVmLlZSTUNfbWF0ZXJpYWxzX210b29uLk91dGxpbmVXaWR0",
-            "aE1vZGUSGgoSb3V0bGluZVdpZHRoRmFjdG9yGB8gASgCEkAKG291dGxpbmVX",
-            "aWR0aE11bHRpcGx5VGV4dHVyZRggIAEoCzIbLmdvb2dsZS5wcm90b2J1Zi5J",
-            "bnQzMlZhbHVlEiYKHm91dGxpbmVTY2FsZWRNYXhEaXN0YW5jZUZhY3Rvchgh",
-            "IAEoAhJMChBvdXRsaW5lQ29sb3JNb2RlGCIgASgOMjIuVnJtUHJvdG9idWYu",
-            "VlJNQ19tYXRlcmlhbHNfbXRvb24uT3V0bGluZUNvbG9yTW9kZRIVCg1vdXRs",
-            "aW5lRmFjdG9yGCMgAygCEiAKGG91dGxpbmVMaWdodGluZ01peEZhY3Rvchgk",
-            "IAEoAhIoCiBtYWluVGV4dHVyZUxlZnRCb3R0b21PcmlnaW5TY2FsZRglIAMo",
-            "AhIpCiFtYWluVGV4dHVyZUxlZnRCb3R0b21PcmlnaW5PZmZzZXQYJiADKAIS",
-            "OwoWdXZBbmltYXRpb25NYXNrVGV4dHVyZRgnIAEoCzIbLmdvb2dsZS5wcm90",
-            "b2J1Zi5JbnQzMlZhbHVlEiUKHXV2QW5pbWF0aW9uU2Nyb2xsWFNwZWVkRmFj",
-            "dG9yGCggASgCEiUKHXV2QW5pbWF0aW9uU2Nyb2xsWVNwZWVkRmFjdG9yGCkg",
-            "ASgCEiYKHnV2QW5pbWF0aW9uUm90YXRpb25TcGVlZEZhY3RvchgqIAEoAiJQ",
-            "CgpSZW5kZXJNb2RlEgoKBm9wYXF1ZRAAEgoKBmN1dG91dBABEg8KC3RyYW5z",
-            "cGFyZW50EAISGQoVdHJhbnNwYXJlbnRXaXRoWldyaXRlEAMiHQoIQ3VsbE1v",
-            "ZGUSBwoDb2ZmEAASCAoEYmFjaxABIkkKEE91dGxpbmVXaWR0aE1vZGUSCAoE",
-            "bm9uZRAAEhQKEHdvcmxkQ29vcmRpbmF0ZXMQARIVChFzY3JlZW5Db29yZGlu",
-            "YXRlcxACIjUKEE91dGxpbmVDb2xvck1vZGUSDgoKZml4ZWRDb2xvchAAEhEK",
-            "DW1peGVkTGlnaHRpbmcQAWIGcHJvdG8z"));
+            "b2dsZS9wcm90b2J1Zi93cmFwcGVycy5wcm90byLHDAoUVlJNQ19tYXRlcmlh",
+            "bHNfbXRvb24SDwoHdmVyc2lvbhgBIAEoCRI5ChV0cmFuc3BhcmVudFdpdGha",
+            "V3JpdGUYAiABKAsyGi5nb29nbGUucHJvdG9idWYuQm9vbFZhbHVlEjwKF3Jl",
+            "bmRlclF1ZXVlT2Zmc2V0TnVtYmVyGAMgASgLMhsuZ29vZ2xlLnByb3RvYnVm",
+            "LkludDMyVmFsdWUSEwoLc2hhZGVGYWN0b3IYBCADKAISOQoUc2hhZGVNdWx0",
+            "aXBseVRleHR1cmUYBSABKAsyGy5nb29nbGUucHJvdG9idWYuSW50MzJWYWx1",
+            "ZRI3ChJzaGFkaW5nU2hpZnRGYWN0b3IYBiABKAsyGy5nb29nbGUucHJvdG9i",
+            "dWYuRmxvYXRWYWx1ZRI3ChJzaGFkaW5nVG9vbnlGYWN0b3IYByABKAsyGy5n",
+            "b29nbGUucHJvdG9idWYuRmxvYXRWYWx1ZRJAChtsaWdodENvbG9yQXR0ZW51",
+            "YXRpb25GYWN0b3IYCCABKAsyGy5nb29nbGUucHJvdG9idWYuRmxvYXRWYWx1",
+            "ZRI2ChFnaUludGVuc2l0eUZhY3RvchgJIAEoCzIbLmdvb2dsZS5wcm90b2J1",
+            "Zi5GbG9hdFZhbHVlEjQKD2FkZGl0aXZlVGV4dHVyZRgKIAEoCzIbLmdvb2ds",
+            "ZS5wcm90b2J1Zi5JbnQzMlZhbHVlEhEKCXJpbUZhY3RvchgLIAMoAhI3ChJy",
+            "aW1NdWx0aXBseVRleHR1cmUYDCABKAsyGy5nb29nbGUucHJvdG9idWYuSW50",
+            "MzJWYWx1ZRI5ChRyaW1MaWdodGluZ01peEZhY3RvchgNIAEoCzIbLmdvb2ds",
+            "ZS5wcm90b2J1Zi5GbG9hdFZhbHVlEjoKFXJpbUZyZXNuZWxQb3dlckZhY3Rv",
+            "chgOIAEoCzIbLmdvb2dsZS5wcm90b2J1Zi5GbG9hdFZhbHVlEjIKDXJpbUxp",
+            "ZnRGYWN0b3IYDyABKAsyGy5nb29nbGUucHJvdG9idWYuRmxvYXRWYWx1ZRJM",
+            "ChBvdXRsaW5lV2lkdGhNb2RlGBAgASgOMjIuVnJtUHJvdG9idWYuVlJNQ19t",
+            "YXRlcmlhbHNfbXRvb24uT3V0bGluZVdpZHRoTW9kZRI3ChJvdXRsaW5lV2lk",
+            "dGhGYWN0b3IYESABKAsyGy5nb29nbGUucHJvdG9idWYuRmxvYXRWYWx1ZRJA",
+            "ChtvdXRsaW5lV2lkdGhNdWx0aXBseVRleHR1cmUYEiABKAsyGy5nb29nbGUu",
+            "cHJvdG9idWYuSW50MzJWYWx1ZRJDCh5vdXRsaW5lU2NhbGVkTWF4RGlzdGFu",
+            "Y2VGYWN0b3IYEyABKAsyGy5nb29nbGUucHJvdG9idWYuRmxvYXRWYWx1ZRJM",
+            "ChBvdXRsaW5lQ29sb3JNb2RlGBQgASgOMjIuVnJtUHJvdG9idWYuVlJNQ19t",
+            "YXRlcmlhbHNfbXRvb24uT3V0bGluZUNvbG9yTW9kZRIVCg1vdXRsaW5lRmFj",
+            "dG9yGBUgAygCEj0KGG91dGxpbmVMaWdodGluZ01peEZhY3RvchgWIAEoCzIb",
+            "Lmdvb2dsZS5wcm90b2J1Zi5GbG9hdFZhbHVlEjsKFnV2QW5pbWF0aW9uTWFz",
+            "a1RleHR1cmUYFyABKAsyGy5nb29nbGUucHJvdG9idWYuSW50MzJWYWx1ZRJC",
+            "Ch11dkFuaW1hdGlvblNjcm9sbFhTcGVlZEZhY3RvchgYIAEoCzIbLmdvb2ds",
+            "ZS5wcm90b2J1Zi5GbG9hdFZhbHVlEkIKHXV2QW5pbWF0aW9uU2Nyb2xsWVNw",
+            "ZWVkRmFjdG9yGBkgASgLMhsuZ29vZ2xlLnByb3RvYnVmLkZsb2F0VmFsdWUS",
+            "QwoedXZBbmltYXRpb25Sb3RhdGlvblNwZWVkRmFjdG9yGBogASgLMhsuZ29v",
+            "Z2xlLnByb3RvYnVmLkZsb2F0VmFsdWUiSQoQT3V0bGluZVdpZHRoTW9kZRII",
+            "CgRub25lEAASFAoQd29ybGRDb29yZGluYXRlcxABEhUKEXNjcmVlbkNvb3Jk",
+            "aW5hdGVzEAIiNQoQT3V0bGluZUNvbG9yTW9kZRIOCgpmaXhlZENvbG9yEAAS",
+            "EQoNbWl4ZWRMaWdodGluZxABYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Google.Protobuf.WellKnownTypes.WrappersReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.VRMC_materials_mtoon), global::VrmProtobuf.VRMC_materials_mtoon.Parser, new[]{ "Version", "RenderMode", "CullMode", "RenderQueueOffsetNumber", "LitFactor", "LitMultiplyTexture", "ShadeFactor", "ShadeMultiplyTexture", "CutoutThresholdFactor", "ShadingShiftFactor", "ShadingToonyFactor", "LightColorAttenuationFactor", "GiIntensityFactor", "NormalTexture", "NormalScaleFactor", "EmissionFactor", "EmissionMultiplyTexture", "AdditiveTexture", "RimFactor", "RimMultiplyTexture", "RimLightingMixFactor", "RimFresnelPowerFactor", "RimLiftFactor", "OutlineWidthMode", "OutlineWidthFactor", "OutlineWidthMultiplyTexture", "OutlineScaledMaxDistanceFactor", "OutlineColorMode", "OutlineFactor", "OutlineLightingMixFactor", "MainTextureLeftBottomOriginScale", "MainTextureLeftBottomOriginOffset", "UvAnimationMaskTexture", "UvAnimationScrollXSpeedFactor", "UvAnimationScrollYSpeedFactor", "UvAnimationRotationSpeedFactor" }, null, new[]{ typeof(global::VrmProtobuf.VRMC_materials_mtoon.Types.RenderMode), typeof(global::VrmProtobuf.VRMC_materials_mtoon.Types.CullMode), typeof(global::VrmProtobuf.VRMC_materials_mtoon.Types.OutlineWidthMode), typeof(global::VrmProtobuf.VRMC_materials_mtoon.Types.OutlineColorMode) }, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::VrmProtobuf.VRMC_materials_mtoon), global::VrmProtobuf.VRMC_materials_mtoon.Parser, new[]{ "Version", "TransparentWithZWrite", "RenderQueueOffsetNumber", "ShadeFactor", "ShadeMultiplyTexture", "ShadingShiftFactor", "ShadingToonyFactor", "LightColorAttenuationFactor", "GiIntensityFactor", "AdditiveTexture", "RimFactor", "RimMultiplyTexture", "RimLightingMixFactor", "RimFresnelPowerFactor", "RimLiftFactor", "OutlineWidthMode", "OutlineWidthFactor", "OutlineWidthMultiplyTexture", "OutlineScaledMaxDistanceFactor", "OutlineColorMode", "OutlineFactor", "OutlineLightingMixFactor", "UvAnimationMaskTexture", "UvAnimationScrollXSpeedFactor", "UvAnimationScrollYSpeedFactor", "UvAnimationRotationSpeedFactor" }, null, new[]{ typeof(global::VrmProtobuf.VRMC_materials_mtoon.Types.OutlineWidthMode), typeof(global::VrmProtobuf.VRMC_materials_mtoon.Types.OutlineColorMode) }, null, null)
           }));
     }
     #endregion
@@ -101,41 +98,31 @@ namespace VrmProtobuf {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public VRMC_materials_mtoon(VRMC_materials_mtoon other) : this() {
       version_ = other.version_;
-      renderMode_ = other.renderMode_;
-      cullMode_ = other.cullMode_;
-      renderQueueOffsetNumber_ = other.renderQueueOffsetNumber_;
-      litFactor_ = other.litFactor_.Clone();
-      LitMultiplyTexture = other.LitMultiplyTexture;
+      TransparentWithZWrite = other.TransparentWithZWrite;
+      RenderQueueOffsetNumber = other.RenderQueueOffsetNumber;
       shadeFactor_ = other.shadeFactor_.Clone();
       ShadeMultiplyTexture = other.ShadeMultiplyTexture;
-      cutoutThresholdFactor_ = other.cutoutThresholdFactor_;
-      shadingShiftFactor_ = other.shadingShiftFactor_;
-      shadingToonyFactor_ = other.shadingToonyFactor_;
-      lightColorAttenuationFactor_ = other.lightColorAttenuationFactor_;
-      giIntensityFactor_ = other.giIntensityFactor_;
-      NormalTexture = other.NormalTexture;
-      normalScaleFactor_ = other.normalScaleFactor_;
-      emissionFactor_ = other.emissionFactor_.Clone();
-      EmissionMultiplyTexture = other.EmissionMultiplyTexture;
+      ShadingShiftFactor = other.ShadingShiftFactor;
+      ShadingToonyFactor = other.ShadingToonyFactor;
+      LightColorAttenuationFactor = other.LightColorAttenuationFactor;
+      GiIntensityFactor = other.GiIntensityFactor;
       AdditiveTexture = other.AdditiveTexture;
       rimFactor_ = other.rimFactor_.Clone();
       RimMultiplyTexture = other.RimMultiplyTexture;
-      rimLightingMixFactor_ = other.rimLightingMixFactor_;
-      rimFresnelPowerFactor_ = other.rimFresnelPowerFactor_;
-      rimLiftFactor_ = other.rimLiftFactor_;
+      RimLightingMixFactor = other.RimLightingMixFactor;
+      RimFresnelPowerFactor = other.RimFresnelPowerFactor;
+      RimLiftFactor = other.RimLiftFactor;
       outlineWidthMode_ = other.outlineWidthMode_;
-      outlineWidthFactor_ = other.outlineWidthFactor_;
+      OutlineWidthFactor = other.OutlineWidthFactor;
       OutlineWidthMultiplyTexture = other.OutlineWidthMultiplyTexture;
-      outlineScaledMaxDistanceFactor_ = other.outlineScaledMaxDistanceFactor_;
+      OutlineScaledMaxDistanceFactor = other.OutlineScaledMaxDistanceFactor;
       outlineColorMode_ = other.outlineColorMode_;
       outlineFactor_ = other.outlineFactor_.Clone();
-      outlineLightingMixFactor_ = other.outlineLightingMixFactor_;
-      mainTextureLeftBottomOriginScale_ = other.mainTextureLeftBottomOriginScale_.Clone();
-      mainTextureLeftBottomOriginOffset_ = other.mainTextureLeftBottomOriginOffset_.Clone();
+      OutlineLightingMixFactor = other.OutlineLightingMixFactor;
       UvAnimationMaskTexture = other.UvAnimationMaskTexture;
-      uvAnimationScrollXSpeedFactor_ = other.uvAnimationScrollXSpeedFactor_;
-      uvAnimationScrollYSpeedFactor_ = other.uvAnimationScrollYSpeedFactor_;
-      uvAnimationRotationSpeedFactor_ = other.uvAnimationRotationSpeedFactor_;
+      UvAnimationScrollXSpeedFactor = other.UvAnimationScrollXSpeedFactor;
+      UvAnimationScrollYSpeedFactor = other.UvAnimationScrollYSpeedFactor;
+      UvAnimationRotationSpeedFactor = other.UvAnimationRotationSpeedFactor;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -145,7 +132,7 @@ namespace VrmProtobuf {
     }
 
     /// <summary>Field number for the "version" field.</summary>
-    public const int VersionFieldNumber = 2;
+    public const int VersionFieldNumber = 1;
     private string version_ = "";
     /// <summary>
     /// Meta
@@ -158,79 +145,58 @@ namespace VrmProtobuf {
       }
     }
 
-    /// <summary>Field number for the "renderMode" field.</summary>
-    public const int RenderModeFieldNumber = 3;
-    private global::VrmProtobuf.VRMC_materials_mtoon.Types.RenderMode renderMode_ = global::VrmProtobuf.VRMC_materials_mtoon.Types.RenderMode.Opaque;
+    /// <summary>Field number for the "transparentWithZWrite" field.</summary>
+    public const int TransparentWithZWriteFieldNumber = 2;
+    private static readonly pb::FieldCodec<bool?> _single_transparentWithZWrite_codec = pb::FieldCodec.ForStructWrapper<bool>(18);
+    private bool? transparentWithZWrite_;
+    /// <summary>
+    /// enable depth buffer when renderMode is transparent
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::VrmProtobuf.VRMC_materials_mtoon.Types.RenderMode RenderMode {
-      get { return renderMode_; }
+    public bool? TransparentWithZWrite {
+      get { return transparentWithZWrite_; }
       set {
-        renderMode_ = value;
+        transparentWithZWrite_ = value;
       }
     }
 
-    /// <summary>Field number for the "cullMode" field.</summary>
-    public const int CullModeFieldNumber = 4;
-    private global::VrmProtobuf.VRMC_materials_mtoon.Types.CullMode cullMode_ = global::VrmProtobuf.VRMC_materials_mtoon.Types.CullMode.Off;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::VrmProtobuf.VRMC_materials_mtoon.Types.CullMode CullMode {
-      get { return cullMode_; }
-      set {
-        cullMode_ = value;
-      }
-    }
 
     /// <summary>Field number for the "renderQueueOffsetNumber" field.</summary>
-    public const int RenderQueueOffsetNumberFieldNumber = 5;
-    private int renderQueueOffsetNumber_;
+    public const int RenderQueueOffsetNumberFieldNumber = 3;
+    private static readonly pb::FieldCodec<int?> _single_renderQueueOffsetNumber_codec = pb::FieldCodec.ForStructWrapper<int>(26);
+    private int? renderQueueOffsetNumber_;
+    /// <summary>
+    /// 
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int RenderQueueOffsetNumber {
+    public int? RenderQueueOffsetNumber {
       get { return renderQueueOffsetNumber_; }
       set {
         renderQueueOffsetNumber_ = value;
       }
     }
 
-    /// <summary>Field number for the "litFactor" field.</summary>
-    public const int LitFactorFieldNumber = 6;
-    private static readonly pb::FieldCodec<float> _repeated_litFactor_codec
-        = pb::FieldCodec.ForFloat(50);
-    private readonly pbc::RepeatedField<float> litFactor_ = new pbc::RepeatedField<float>();
-    /// <summary>
-    /// Color
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::RepeatedField<float> LitFactor {
-      get { return litFactor_; }
-    }
-
-    /// <summary>Field number for the "litMultiplyTexture" field.</summary>
-    public const int LitMultiplyTextureFieldNumber = 7;
-    private static readonly pb::FieldCodec<int?> _single_litMultiplyTexture_codec = pb::FieldCodec.ForStructWrapper<int>(58);
-    private int? litMultiplyTexture_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int? LitMultiplyTexture {
-      get { return litMultiplyTexture_; }
-      set {
-        litMultiplyTexture_ = value;
-      }
-    }
-
 
     /// <summary>Field number for the "shadeFactor" field.</summary>
-    public const int ShadeFactorFieldNumber = 8;
+    public const int ShadeFactorFieldNumber = 4;
     private static readonly pb::FieldCodec<float> _repeated_shadeFactor_codec
-        = pb::FieldCodec.ForFloat(66);
+        = pb::FieldCodec.ForFloat(34);
     private readonly pbc::RepeatedField<float> shadeFactor_ = new pbc::RepeatedField<float>();
+    /// <summary>
+    /// 
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public pbc::RepeatedField<float> ShadeFactor {
       get { return shadeFactor_; }
     }
 
     /// <summary>Field number for the "shadeMultiplyTexture" field.</summary>
-    public const int ShadeMultiplyTextureFieldNumber = 9;
-    private static readonly pb::FieldCodec<int?> _single_shadeMultiplyTexture_codec = pb::FieldCodec.ForStructWrapper<int>(74);
+    public const int ShadeMultiplyTextureFieldNumber = 5;
+    private static readonly pb::FieldCodec<int?> _single_shadeMultiplyTexture_codec = pb::FieldCodec.ForStructWrapper<int>(42);
     private int? shadeMultiplyTexture_;
+    /// <summary>
+    /// 
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int? ShadeMultiplyTexture {
       get { return shadeMultiplyTexture_; }
@@ -240,120 +206,73 @@ namespace VrmProtobuf {
     }
 
 
-    /// <summary>Field number for the "cutoutThresholdFactor" field.</summary>
-    public const int CutoutThresholdFactorFieldNumber = 10;
-    private float cutoutThresholdFactor_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public float CutoutThresholdFactor {
-      get { return cutoutThresholdFactor_; }
-      set {
-        cutoutThresholdFactor_ = value;
-      }
-    }
-
     /// <summary>Field number for the "shadingShiftFactor" field.</summary>
-    public const int ShadingShiftFactorFieldNumber = 11;
-    private float shadingShiftFactor_;
+    public const int ShadingShiftFactorFieldNumber = 6;
+    private static readonly pb::FieldCodec<float?> _single_shadingShiftFactor_codec = pb::FieldCodec.ForStructWrapper<float>(50);
+    private float? shadingShiftFactor_;
     /// <summary>
     /// Lighting
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public float ShadingShiftFactor {
+    public float? ShadingShiftFactor {
       get { return shadingShiftFactor_; }
       set {
         shadingShiftFactor_ = value;
       }
     }
 
+
     /// <summary>Field number for the "shadingToonyFactor" field.</summary>
-    public const int ShadingToonyFactorFieldNumber = 12;
-    private float shadingToonyFactor_;
+    public const int ShadingToonyFactorFieldNumber = 7;
+    private static readonly pb::FieldCodec<float?> _single_shadingToonyFactor_codec = pb::FieldCodec.ForStructWrapper<float>(58);
+    private float? shadingToonyFactor_;
+    /// <summary>
+    /// 
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public float ShadingToonyFactor {
+    public float? ShadingToonyFactor {
       get { return shadingToonyFactor_; }
       set {
         shadingToonyFactor_ = value;
       }
     }
 
+
     /// <summary>Field number for the "lightColorAttenuationFactor" field.</summary>
-    public const int LightColorAttenuationFactorFieldNumber = 18;
-    private float lightColorAttenuationFactor_;
+    public const int LightColorAttenuationFactorFieldNumber = 8;
+    private static readonly pb::FieldCodec<float?> _single_lightColorAttenuationFactor_codec = pb::FieldCodec.ForStructWrapper<float>(66);
+    private float? lightColorAttenuationFactor_;
+    /// <summary>
+    /// 
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public float LightColorAttenuationFactor {
+    public float? LightColorAttenuationFactor {
       get { return lightColorAttenuationFactor_; }
       set {
         lightColorAttenuationFactor_ = value;
       }
     }
 
+
     /// <summary>Field number for the "giIntensityFactor" field.</summary>
-    public const int GiIntensityFactorFieldNumber = 19;
-    private float giIntensityFactor_;
+    public const int GiIntensityFactorFieldNumber = 9;
+    private static readonly pb::FieldCodec<float?> _single_giIntensityFactor_codec = pb::FieldCodec.ForStructWrapper<float>(74);
+    private float? giIntensityFactor_;
+    /// <summary>
+    /// 
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public float GiIntensityFactor {
+    public float? GiIntensityFactor {
       get { return giIntensityFactor_; }
       set {
         giIntensityFactor_ = value;
       }
     }
 
-    /// <summary>Field number for the "normalTexture" field.</summary>
-    public const int NormalTextureFieldNumber = 20;
-    private static readonly pb::FieldCodec<int?> _single_normalTexture_codec = pb::FieldCodec.ForStructWrapper<int>(162);
-    private int? normalTexture_;
-    /// <summary>
-    /// Normal
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int? NormalTexture {
-      get { return normalTexture_; }
-      set {
-        normalTexture_ = value;
-      }
-    }
-
-
-    /// <summary>Field number for the "normalScaleFactor" field.</summary>
-    public const int NormalScaleFactorFieldNumber = 21;
-    private float normalScaleFactor_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public float NormalScaleFactor {
-      get { return normalScaleFactor_; }
-      set {
-        normalScaleFactor_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "emissionFactor" field.</summary>
-    public const int EmissionFactorFieldNumber = 22;
-    private static readonly pb::FieldCodec<float> _repeated_emissionFactor_codec
-        = pb::FieldCodec.ForFloat(178);
-    private readonly pbc::RepeatedField<float> emissionFactor_ = new pbc::RepeatedField<float>();
-    /// <summary>
-    /// Emission
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::RepeatedField<float> EmissionFactor {
-      get { return emissionFactor_; }
-    }
-
-    /// <summary>Field number for the "emissionMultiplyTexture" field.</summary>
-    public const int EmissionMultiplyTextureFieldNumber = 23;
-    private static readonly pb::FieldCodec<int?> _single_emissionMultiplyTexture_codec = pb::FieldCodec.ForStructWrapper<int>(186);
-    private int? emissionMultiplyTexture_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int? EmissionMultiplyTexture {
-      get { return emissionMultiplyTexture_; }
-      set {
-        emissionMultiplyTexture_ = value;
-      }
-    }
-
 
     /// <summary>Field number for the "additiveTexture" field.</summary>
-    public const int AdditiveTextureFieldNumber = 24;
-    private static readonly pb::FieldCodec<int?> _single_additiveTexture_codec = pb::FieldCodec.ForStructWrapper<int>(194);
+    public const int AdditiveTextureFieldNumber = 10;
+    private static readonly pb::FieldCodec<int?> _single_additiveTexture_codec = pb::FieldCodec.ForStructWrapper<int>(82);
     private int? additiveTexture_;
     /// <summary>
     /// MatCap
@@ -368,9 +287,9 @@ namespace VrmProtobuf {
 
 
     /// <summary>Field number for the "rimFactor" field.</summary>
-    public const int RimFactorFieldNumber = 25;
+    public const int RimFactorFieldNumber = 11;
     private static readonly pb::FieldCodec<float> _repeated_rimFactor_codec
-        = pb::FieldCodec.ForFloat(202);
+        = pb::FieldCodec.ForFloat(90);
     private readonly pbc::RepeatedField<float> rimFactor_ = new pbc::RepeatedField<float>();
     /// <summary>
     /// Rim
@@ -381,9 +300,12 @@ namespace VrmProtobuf {
     }
 
     /// <summary>Field number for the "rimMultiplyTexture" field.</summary>
-    public const int RimMultiplyTextureFieldNumber = 26;
-    private static readonly pb::FieldCodec<int?> _single_rimMultiplyTexture_codec = pb::FieldCodec.ForStructWrapper<int>(210);
+    public const int RimMultiplyTextureFieldNumber = 12;
+    private static readonly pb::FieldCodec<int?> _single_rimMultiplyTexture_codec = pb::FieldCodec.ForStructWrapper<int>(98);
     private int? rimMultiplyTexture_;
+    /// <summary>
+    /// 
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int? RimMultiplyTexture {
       get { return rimMultiplyTexture_; }
@@ -394,41 +316,59 @@ namespace VrmProtobuf {
 
 
     /// <summary>Field number for the "rimLightingMixFactor" field.</summary>
-    public const int RimLightingMixFactorFieldNumber = 27;
-    private float rimLightingMixFactor_;
+    public const int RimLightingMixFactorFieldNumber = 13;
+    private static readonly pb::FieldCodec<float?> _single_rimLightingMixFactor_codec = pb::FieldCodec.ForStructWrapper<float>(106);
+    private float? rimLightingMixFactor_;
+    /// <summary>
+    /// 
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public float RimLightingMixFactor {
+    public float? RimLightingMixFactor {
       get { return rimLightingMixFactor_; }
       set {
         rimLightingMixFactor_ = value;
       }
     }
 
+
     /// <summary>Field number for the "rimFresnelPowerFactor" field.</summary>
-    public const int RimFresnelPowerFactorFieldNumber = 28;
-    private float rimFresnelPowerFactor_;
+    public const int RimFresnelPowerFactorFieldNumber = 14;
+    private static readonly pb::FieldCodec<float?> _single_rimFresnelPowerFactor_codec = pb::FieldCodec.ForStructWrapper<float>(114);
+    private float? rimFresnelPowerFactor_;
+    /// <summary>
+    /// 
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public float RimFresnelPowerFactor {
+    public float? RimFresnelPowerFactor {
       get { return rimFresnelPowerFactor_; }
       set {
         rimFresnelPowerFactor_ = value;
       }
     }
 
+
     /// <summary>Field number for the "rimLiftFactor" field.</summary>
-    public const int RimLiftFactorFieldNumber = 29;
-    private float rimLiftFactor_;
+    public const int RimLiftFactorFieldNumber = 15;
+    private static readonly pb::FieldCodec<float?> _single_rimLiftFactor_codec = pb::FieldCodec.ForStructWrapper<float>(122);
+    private float? rimLiftFactor_;
+    /// <summary>
+    /// 
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public float RimLiftFactor {
+    public float? RimLiftFactor {
       get { return rimLiftFactor_; }
       set {
         rimLiftFactor_ = value;
       }
     }
 
+
     /// <summary>Field number for the "outlineWidthMode" field.</summary>
-    public const int OutlineWidthModeFieldNumber = 30;
+    public const int OutlineWidthModeFieldNumber = 16;
     private global::VrmProtobuf.VRMC_materials_mtoon.Types.OutlineWidthMode outlineWidthMode_ = global::VrmProtobuf.VRMC_materials_mtoon.Types.OutlineWidthMode.None;
+    /// <summary>
+    /// Outline
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::VrmProtobuf.VRMC_materials_mtoon.Types.OutlineWidthMode OutlineWidthMode {
       get { return outlineWidthMode_; }
@@ -438,20 +378,28 @@ namespace VrmProtobuf {
     }
 
     /// <summary>Field number for the "outlineWidthFactor" field.</summary>
-    public const int OutlineWidthFactorFieldNumber = 31;
-    private float outlineWidthFactor_;
+    public const int OutlineWidthFactorFieldNumber = 17;
+    private static readonly pb::FieldCodec<float?> _single_outlineWidthFactor_codec = pb::FieldCodec.ForStructWrapper<float>(138);
+    private float? outlineWidthFactor_;
+    /// <summary>
+    /// 
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public float OutlineWidthFactor {
+    public float? OutlineWidthFactor {
       get { return outlineWidthFactor_; }
       set {
         outlineWidthFactor_ = value;
       }
     }
 
+
     /// <summary>Field number for the "outlineWidthMultiplyTexture" field.</summary>
-    public const int OutlineWidthMultiplyTextureFieldNumber = 32;
-    private static readonly pb::FieldCodec<int?> _single_outlineWidthMultiplyTexture_codec = pb::FieldCodec.ForStructWrapper<int>(258);
+    public const int OutlineWidthMultiplyTextureFieldNumber = 18;
+    private static readonly pb::FieldCodec<int?> _single_outlineWidthMultiplyTexture_codec = pb::FieldCodec.ForStructWrapper<int>(146);
     private int? outlineWidthMultiplyTexture_;
+    /// <summary>
+    /// 
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int? OutlineWidthMultiplyTexture {
       get { return outlineWidthMultiplyTexture_; }
@@ -462,19 +410,27 @@ namespace VrmProtobuf {
 
 
     /// <summary>Field number for the "outlineScaledMaxDistanceFactor" field.</summary>
-    public const int OutlineScaledMaxDistanceFactorFieldNumber = 33;
-    private float outlineScaledMaxDistanceFactor_;
+    public const int OutlineScaledMaxDistanceFactorFieldNumber = 19;
+    private static readonly pb::FieldCodec<float?> _single_outlineScaledMaxDistanceFactor_codec = pb::FieldCodec.ForStructWrapper<float>(154);
+    private float? outlineScaledMaxDistanceFactor_;
+    /// <summary>
+    /// 
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public float OutlineScaledMaxDistanceFactor {
+    public float? OutlineScaledMaxDistanceFactor {
       get { return outlineScaledMaxDistanceFactor_; }
       set {
         outlineScaledMaxDistanceFactor_ = value;
       }
     }
 
+
     /// <summary>Field number for the "outlineColorMode" field.</summary>
-    public const int OutlineColorModeFieldNumber = 34;
+    public const int OutlineColorModeFieldNumber = 20;
     private global::VrmProtobuf.VRMC_materials_mtoon.Types.OutlineColorMode outlineColorMode_ = global::VrmProtobuf.VRMC_materials_mtoon.Types.OutlineColorMode.FixedColor;
+    /// <summary>
+    /// 
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::VrmProtobuf.VRMC_materials_mtoon.Types.OutlineColorMode OutlineColorMode {
       get { return outlineColorMode_; }
@@ -484,53 +440,41 @@ namespace VrmProtobuf {
     }
 
     /// <summary>Field number for the "outlineFactor" field.</summary>
-    public const int OutlineFactorFieldNumber = 35;
+    public const int OutlineFactorFieldNumber = 21;
     private static readonly pb::FieldCodec<float> _repeated_outlineFactor_codec
-        = pb::FieldCodec.ForFloat(282);
+        = pb::FieldCodec.ForFloat(170);
     private readonly pbc::RepeatedField<float> outlineFactor_ = new pbc::RepeatedField<float>();
+    /// <summary>
+    /// 
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public pbc::RepeatedField<float> OutlineFactor {
       get { return outlineFactor_; }
     }
 
     /// <summary>Field number for the "outlineLightingMixFactor" field.</summary>
-    public const int OutlineLightingMixFactorFieldNumber = 36;
-    private float outlineLightingMixFactor_;
+    public const int OutlineLightingMixFactorFieldNumber = 22;
+    private static readonly pb::FieldCodec<float?> _single_outlineLightingMixFactor_codec = pb::FieldCodec.ForStructWrapper<float>(178);
+    private float? outlineLightingMixFactor_;
+    /// <summary>
+    /// 
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public float OutlineLightingMixFactor {
+    public float? OutlineLightingMixFactor {
       get { return outlineLightingMixFactor_; }
       set {
         outlineLightingMixFactor_ = value;
       }
     }
 
-    /// <summary>Field number for the "mainTextureLeftBottomOriginScale" field.</summary>
-    public const int MainTextureLeftBottomOriginScaleFieldNumber = 37;
-    private static readonly pb::FieldCodec<float> _repeated_mainTextureLeftBottomOriginScale_codec
-        = pb::FieldCodec.ForFloat(298);
-    private readonly pbc::RepeatedField<float> mainTextureLeftBottomOriginScale_ = new pbc::RepeatedField<float>();
-    /// <summary>
-    /// TextureUvCoords
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::RepeatedField<float> MainTextureLeftBottomOriginScale {
-      get { return mainTextureLeftBottomOriginScale_; }
-    }
-
-    /// <summary>Field number for the "mainTextureLeftBottomOriginOffset" field.</summary>
-    public const int MainTextureLeftBottomOriginOffsetFieldNumber = 38;
-    private static readonly pb::FieldCodec<float> _repeated_mainTextureLeftBottomOriginOffset_codec
-        = pb::FieldCodec.ForFloat(306);
-    private readonly pbc::RepeatedField<float> mainTextureLeftBottomOriginOffset_ = new pbc::RepeatedField<float>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::RepeatedField<float> MainTextureLeftBottomOriginOffset {
-      get { return mainTextureLeftBottomOriginOffset_; }
-    }
 
     /// <summary>Field number for the "uvAnimationMaskTexture" field.</summary>
-    public const int UvAnimationMaskTextureFieldNumber = 39;
-    private static readonly pb::FieldCodec<int?> _single_uvAnimationMaskTexture_codec = pb::FieldCodec.ForStructWrapper<int>(314);
+    public const int UvAnimationMaskTextureFieldNumber = 23;
+    private static readonly pb::FieldCodec<int?> _single_uvAnimationMaskTexture_codec = pb::FieldCodec.ForStructWrapper<int>(186);
     private int? uvAnimationMaskTexture_;
+    /// <summary>
+    /// 
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int? UvAnimationMaskTexture {
       get { return uvAnimationMaskTexture_; }
@@ -541,37 +485,52 @@ namespace VrmProtobuf {
 
 
     /// <summary>Field number for the "uvAnimationScrollXSpeedFactor" field.</summary>
-    public const int UvAnimationScrollXSpeedFactorFieldNumber = 40;
-    private float uvAnimationScrollXSpeedFactor_;
+    public const int UvAnimationScrollXSpeedFactorFieldNumber = 24;
+    private static readonly pb::FieldCodec<float?> _single_uvAnimationScrollXSpeedFactor_codec = pb::FieldCodec.ForStructWrapper<float>(194);
+    private float? uvAnimationScrollXSpeedFactor_;
+    /// <summary>
+    /// 
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public float UvAnimationScrollXSpeedFactor {
+    public float? UvAnimationScrollXSpeedFactor {
       get { return uvAnimationScrollXSpeedFactor_; }
       set {
         uvAnimationScrollXSpeedFactor_ = value;
       }
     }
 
+
     /// <summary>Field number for the "uvAnimationScrollYSpeedFactor" field.</summary>
-    public const int UvAnimationScrollYSpeedFactorFieldNumber = 41;
-    private float uvAnimationScrollYSpeedFactor_;
+    public const int UvAnimationScrollYSpeedFactorFieldNumber = 25;
+    private static readonly pb::FieldCodec<float?> _single_uvAnimationScrollYSpeedFactor_codec = pb::FieldCodec.ForStructWrapper<float>(202);
+    private float? uvAnimationScrollYSpeedFactor_;
+    /// <summary>
+    /// 
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public float UvAnimationScrollYSpeedFactor {
+    public float? UvAnimationScrollYSpeedFactor {
       get { return uvAnimationScrollYSpeedFactor_; }
       set {
         uvAnimationScrollYSpeedFactor_ = value;
       }
     }
 
+
     /// <summary>Field number for the "uvAnimationRotationSpeedFactor" field.</summary>
-    public const int UvAnimationRotationSpeedFactorFieldNumber = 42;
-    private float uvAnimationRotationSpeedFactor_;
+    public const int UvAnimationRotationSpeedFactorFieldNumber = 26;
+    private static readonly pb::FieldCodec<float?> _single_uvAnimationRotationSpeedFactor_codec = pb::FieldCodec.ForStructWrapper<float>(210);
+    private float? uvAnimationRotationSpeedFactor_;
+    /// <summary>
+    /// 
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public float UvAnimationRotationSpeedFactor {
+    public float? UvAnimationRotationSpeedFactor {
       get { return uvAnimationRotationSpeedFactor_; }
       set {
         uvAnimationRotationSpeedFactor_ = value;
       }
     }
+
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
@@ -587,41 +546,31 @@ namespace VrmProtobuf {
         return true;
       }
       if (Version != other.Version) return false;
-      if (RenderMode != other.RenderMode) return false;
-      if (CullMode != other.CullMode) return false;
+      if (TransparentWithZWrite != other.TransparentWithZWrite) return false;
       if (RenderQueueOffsetNumber != other.RenderQueueOffsetNumber) return false;
-      if(!litFactor_.Equals(other.litFactor_)) return false;
-      if (LitMultiplyTexture != other.LitMultiplyTexture) return false;
       if(!shadeFactor_.Equals(other.shadeFactor_)) return false;
       if (ShadeMultiplyTexture != other.ShadeMultiplyTexture) return false;
-      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(CutoutThresholdFactor, other.CutoutThresholdFactor)) return false;
-      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(ShadingShiftFactor, other.ShadingShiftFactor)) return false;
-      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(ShadingToonyFactor, other.ShadingToonyFactor)) return false;
-      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(LightColorAttenuationFactor, other.LightColorAttenuationFactor)) return false;
-      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(GiIntensityFactor, other.GiIntensityFactor)) return false;
-      if (NormalTexture != other.NormalTexture) return false;
-      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(NormalScaleFactor, other.NormalScaleFactor)) return false;
-      if(!emissionFactor_.Equals(other.emissionFactor_)) return false;
-      if (EmissionMultiplyTexture != other.EmissionMultiplyTexture) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseNullableSingleEqualityComparer.Equals(ShadingShiftFactor, other.ShadingShiftFactor)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseNullableSingleEqualityComparer.Equals(ShadingToonyFactor, other.ShadingToonyFactor)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseNullableSingleEqualityComparer.Equals(LightColorAttenuationFactor, other.LightColorAttenuationFactor)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseNullableSingleEqualityComparer.Equals(GiIntensityFactor, other.GiIntensityFactor)) return false;
       if (AdditiveTexture != other.AdditiveTexture) return false;
       if(!rimFactor_.Equals(other.rimFactor_)) return false;
       if (RimMultiplyTexture != other.RimMultiplyTexture) return false;
-      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(RimLightingMixFactor, other.RimLightingMixFactor)) return false;
-      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(RimFresnelPowerFactor, other.RimFresnelPowerFactor)) return false;
-      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(RimLiftFactor, other.RimLiftFactor)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseNullableSingleEqualityComparer.Equals(RimLightingMixFactor, other.RimLightingMixFactor)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseNullableSingleEqualityComparer.Equals(RimFresnelPowerFactor, other.RimFresnelPowerFactor)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseNullableSingleEqualityComparer.Equals(RimLiftFactor, other.RimLiftFactor)) return false;
       if (OutlineWidthMode != other.OutlineWidthMode) return false;
-      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(OutlineWidthFactor, other.OutlineWidthFactor)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseNullableSingleEqualityComparer.Equals(OutlineWidthFactor, other.OutlineWidthFactor)) return false;
       if (OutlineWidthMultiplyTexture != other.OutlineWidthMultiplyTexture) return false;
-      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(OutlineScaledMaxDistanceFactor, other.OutlineScaledMaxDistanceFactor)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseNullableSingleEqualityComparer.Equals(OutlineScaledMaxDistanceFactor, other.OutlineScaledMaxDistanceFactor)) return false;
       if (OutlineColorMode != other.OutlineColorMode) return false;
       if(!outlineFactor_.Equals(other.outlineFactor_)) return false;
-      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(OutlineLightingMixFactor, other.OutlineLightingMixFactor)) return false;
-      if(!mainTextureLeftBottomOriginScale_.Equals(other.mainTextureLeftBottomOriginScale_)) return false;
-      if(!mainTextureLeftBottomOriginOffset_.Equals(other.mainTextureLeftBottomOriginOffset_)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseNullableSingleEqualityComparer.Equals(OutlineLightingMixFactor, other.OutlineLightingMixFactor)) return false;
       if (UvAnimationMaskTexture != other.UvAnimationMaskTexture) return false;
-      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(UvAnimationScrollXSpeedFactor, other.UvAnimationScrollXSpeedFactor)) return false;
-      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(UvAnimationScrollYSpeedFactor, other.UvAnimationScrollYSpeedFactor)) return false;
-      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(UvAnimationRotationSpeedFactor, other.UvAnimationRotationSpeedFactor)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseNullableSingleEqualityComparer.Equals(UvAnimationScrollXSpeedFactor, other.UvAnimationScrollXSpeedFactor)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseNullableSingleEqualityComparer.Equals(UvAnimationScrollYSpeedFactor, other.UvAnimationScrollYSpeedFactor)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseNullableSingleEqualityComparer.Equals(UvAnimationRotationSpeedFactor, other.UvAnimationRotationSpeedFactor)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -629,41 +578,31 @@ namespace VrmProtobuf {
     public override int GetHashCode() {
       int hash = 1;
       if (Version.Length != 0) hash ^= Version.GetHashCode();
-      if (RenderMode != global::VrmProtobuf.VRMC_materials_mtoon.Types.RenderMode.Opaque) hash ^= RenderMode.GetHashCode();
-      if (CullMode != global::VrmProtobuf.VRMC_materials_mtoon.Types.CullMode.Off) hash ^= CullMode.GetHashCode();
-      if (RenderQueueOffsetNumber != 0) hash ^= RenderQueueOffsetNumber.GetHashCode();
-      hash ^= litFactor_.GetHashCode();
-      if (litMultiplyTexture_ != null) hash ^= LitMultiplyTexture.GetHashCode();
+      if (transparentWithZWrite_ != null) hash ^= TransparentWithZWrite.GetHashCode();
+      if (renderQueueOffsetNumber_ != null) hash ^= RenderQueueOffsetNumber.GetHashCode();
       hash ^= shadeFactor_.GetHashCode();
       if (shadeMultiplyTexture_ != null) hash ^= ShadeMultiplyTexture.GetHashCode();
-      if (CutoutThresholdFactor != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(CutoutThresholdFactor);
-      if (ShadingShiftFactor != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(ShadingShiftFactor);
-      if (ShadingToonyFactor != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(ShadingToonyFactor);
-      if (LightColorAttenuationFactor != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(LightColorAttenuationFactor);
-      if (GiIntensityFactor != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(GiIntensityFactor);
-      if (normalTexture_ != null) hash ^= NormalTexture.GetHashCode();
-      if (NormalScaleFactor != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(NormalScaleFactor);
-      hash ^= emissionFactor_.GetHashCode();
-      if (emissionMultiplyTexture_ != null) hash ^= EmissionMultiplyTexture.GetHashCode();
+      if (shadingShiftFactor_ != null) hash ^= pbc::ProtobufEqualityComparers.BitwiseNullableSingleEqualityComparer.GetHashCode(ShadingShiftFactor);
+      if (shadingToonyFactor_ != null) hash ^= pbc::ProtobufEqualityComparers.BitwiseNullableSingleEqualityComparer.GetHashCode(ShadingToonyFactor);
+      if (lightColorAttenuationFactor_ != null) hash ^= pbc::ProtobufEqualityComparers.BitwiseNullableSingleEqualityComparer.GetHashCode(LightColorAttenuationFactor);
+      if (giIntensityFactor_ != null) hash ^= pbc::ProtobufEqualityComparers.BitwiseNullableSingleEqualityComparer.GetHashCode(GiIntensityFactor);
       if (additiveTexture_ != null) hash ^= AdditiveTexture.GetHashCode();
       hash ^= rimFactor_.GetHashCode();
       if (rimMultiplyTexture_ != null) hash ^= RimMultiplyTexture.GetHashCode();
-      if (RimLightingMixFactor != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(RimLightingMixFactor);
-      if (RimFresnelPowerFactor != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(RimFresnelPowerFactor);
-      if (RimLiftFactor != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(RimLiftFactor);
+      if (rimLightingMixFactor_ != null) hash ^= pbc::ProtobufEqualityComparers.BitwiseNullableSingleEqualityComparer.GetHashCode(RimLightingMixFactor);
+      if (rimFresnelPowerFactor_ != null) hash ^= pbc::ProtobufEqualityComparers.BitwiseNullableSingleEqualityComparer.GetHashCode(RimFresnelPowerFactor);
+      if (rimLiftFactor_ != null) hash ^= pbc::ProtobufEqualityComparers.BitwiseNullableSingleEqualityComparer.GetHashCode(RimLiftFactor);
       if (OutlineWidthMode != global::VrmProtobuf.VRMC_materials_mtoon.Types.OutlineWidthMode.None) hash ^= OutlineWidthMode.GetHashCode();
-      if (OutlineWidthFactor != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(OutlineWidthFactor);
+      if (outlineWidthFactor_ != null) hash ^= pbc::ProtobufEqualityComparers.BitwiseNullableSingleEqualityComparer.GetHashCode(OutlineWidthFactor);
       if (outlineWidthMultiplyTexture_ != null) hash ^= OutlineWidthMultiplyTexture.GetHashCode();
-      if (OutlineScaledMaxDistanceFactor != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(OutlineScaledMaxDistanceFactor);
+      if (outlineScaledMaxDistanceFactor_ != null) hash ^= pbc::ProtobufEqualityComparers.BitwiseNullableSingleEqualityComparer.GetHashCode(OutlineScaledMaxDistanceFactor);
       if (OutlineColorMode != global::VrmProtobuf.VRMC_materials_mtoon.Types.OutlineColorMode.FixedColor) hash ^= OutlineColorMode.GetHashCode();
       hash ^= outlineFactor_.GetHashCode();
-      if (OutlineLightingMixFactor != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(OutlineLightingMixFactor);
-      hash ^= mainTextureLeftBottomOriginScale_.GetHashCode();
-      hash ^= mainTextureLeftBottomOriginOffset_.GetHashCode();
+      if (outlineLightingMixFactor_ != null) hash ^= pbc::ProtobufEqualityComparers.BitwiseNullableSingleEqualityComparer.GetHashCode(OutlineLightingMixFactor);
       if (uvAnimationMaskTexture_ != null) hash ^= UvAnimationMaskTexture.GetHashCode();
-      if (UvAnimationScrollXSpeedFactor != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(UvAnimationScrollXSpeedFactor);
-      if (UvAnimationScrollYSpeedFactor != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(UvAnimationScrollYSpeedFactor);
-      if (UvAnimationRotationSpeedFactor != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(UvAnimationRotationSpeedFactor);
+      if (uvAnimationScrollXSpeedFactor_ != null) hash ^= pbc::ProtobufEqualityComparers.BitwiseNullableSingleEqualityComparer.GetHashCode(UvAnimationScrollXSpeedFactor);
+      if (uvAnimationScrollYSpeedFactor_ != null) hash ^= pbc::ProtobufEqualityComparers.BitwiseNullableSingleEqualityComparer.GetHashCode(UvAnimationScrollYSpeedFactor);
+      if (uvAnimationRotationSpeedFactor_ != null) hash ^= pbc::ProtobufEqualityComparers.BitwiseNullableSingleEqualityComparer.GetHashCode(UvAnimationRotationSpeedFactor);
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -678,59 +617,30 @@ namespace VrmProtobuf {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
       if (Version.Length != 0) {
-        output.WriteRawTag(18);
+        output.WriteRawTag(10);
         output.WriteString(Version);
       }
-      if (RenderMode != global::VrmProtobuf.VRMC_materials_mtoon.Types.RenderMode.Opaque) {
-        output.WriteRawTag(24);
-        output.WriteEnum((int) RenderMode);
+      if (transparentWithZWrite_ != null) {
+        _single_transparentWithZWrite_codec.WriteTagAndValue(output, TransparentWithZWrite);
       }
-      if (CullMode != global::VrmProtobuf.VRMC_materials_mtoon.Types.CullMode.Off) {
-        output.WriteRawTag(32);
-        output.WriteEnum((int) CullMode);
-      }
-      if (RenderQueueOffsetNumber != 0) {
-        output.WriteRawTag(40);
-        output.WriteInt32(RenderQueueOffsetNumber);
-      }
-      litFactor_.WriteTo(output, _repeated_litFactor_codec);
-      if (litMultiplyTexture_ != null) {
-        _single_litMultiplyTexture_codec.WriteTagAndValue(output, LitMultiplyTexture);
+      if (renderQueueOffsetNumber_ != null) {
+        _single_renderQueueOffsetNumber_codec.WriteTagAndValue(output, RenderQueueOffsetNumber);
       }
       shadeFactor_.WriteTo(output, _repeated_shadeFactor_codec);
       if (shadeMultiplyTexture_ != null) {
         _single_shadeMultiplyTexture_codec.WriteTagAndValue(output, ShadeMultiplyTexture);
       }
-      if (CutoutThresholdFactor != 0F) {
-        output.WriteRawTag(85);
-        output.WriteFloat(CutoutThresholdFactor);
+      if (shadingShiftFactor_ != null) {
+        _single_shadingShiftFactor_codec.WriteTagAndValue(output, ShadingShiftFactor);
       }
-      if (ShadingShiftFactor != 0F) {
-        output.WriteRawTag(93);
-        output.WriteFloat(ShadingShiftFactor);
+      if (shadingToonyFactor_ != null) {
+        _single_shadingToonyFactor_codec.WriteTagAndValue(output, ShadingToonyFactor);
       }
-      if (ShadingToonyFactor != 0F) {
-        output.WriteRawTag(101);
-        output.WriteFloat(ShadingToonyFactor);
+      if (lightColorAttenuationFactor_ != null) {
+        _single_lightColorAttenuationFactor_codec.WriteTagAndValue(output, LightColorAttenuationFactor);
       }
-      if (LightColorAttenuationFactor != 0F) {
-        output.WriteRawTag(149, 1);
-        output.WriteFloat(LightColorAttenuationFactor);
-      }
-      if (GiIntensityFactor != 0F) {
-        output.WriteRawTag(157, 1);
-        output.WriteFloat(GiIntensityFactor);
-      }
-      if (normalTexture_ != null) {
-        _single_normalTexture_codec.WriteTagAndValue(output, NormalTexture);
-      }
-      if (NormalScaleFactor != 0F) {
-        output.WriteRawTag(173, 1);
-        output.WriteFloat(NormalScaleFactor);
-      }
-      emissionFactor_.WriteTo(output, _repeated_emissionFactor_codec);
-      if (emissionMultiplyTexture_ != null) {
-        _single_emissionMultiplyTexture_codec.WriteTagAndValue(output, EmissionMultiplyTexture);
+      if (giIntensityFactor_ != null) {
+        _single_giIntensityFactor_codec.WriteTagAndValue(output, GiIntensityFactor);
       }
       if (additiveTexture_ != null) {
         _single_additiveTexture_codec.WriteTagAndValue(output, AdditiveTexture);
@@ -739,58 +649,47 @@ namespace VrmProtobuf {
       if (rimMultiplyTexture_ != null) {
         _single_rimMultiplyTexture_codec.WriteTagAndValue(output, RimMultiplyTexture);
       }
-      if (RimLightingMixFactor != 0F) {
-        output.WriteRawTag(221, 1);
-        output.WriteFloat(RimLightingMixFactor);
+      if (rimLightingMixFactor_ != null) {
+        _single_rimLightingMixFactor_codec.WriteTagAndValue(output, RimLightingMixFactor);
       }
-      if (RimFresnelPowerFactor != 0F) {
-        output.WriteRawTag(229, 1);
-        output.WriteFloat(RimFresnelPowerFactor);
+      if (rimFresnelPowerFactor_ != null) {
+        _single_rimFresnelPowerFactor_codec.WriteTagAndValue(output, RimFresnelPowerFactor);
       }
-      if (RimLiftFactor != 0F) {
-        output.WriteRawTag(237, 1);
-        output.WriteFloat(RimLiftFactor);
+      if (rimLiftFactor_ != null) {
+        _single_rimLiftFactor_codec.WriteTagAndValue(output, RimLiftFactor);
       }
       if (OutlineWidthMode != global::VrmProtobuf.VRMC_materials_mtoon.Types.OutlineWidthMode.None) {
-        output.WriteRawTag(240, 1);
+        output.WriteRawTag(128, 1);
         output.WriteEnum((int) OutlineWidthMode);
       }
-      if (OutlineWidthFactor != 0F) {
-        output.WriteRawTag(253, 1);
-        output.WriteFloat(OutlineWidthFactor);
+      if (outlineWidthFactor_ != null) {
+        _single_outlineWidthFactor_codec.WriteTagAndValue(output, OutlineWidthFactor);
       }
       if (outlineWidthMultiplyTexture_ != null) {
         _single_outlineWidthMultiplyTexture_codec.WriteTagAndValue(output, OutlineWidthMultiplyTexture);
       }
-      if (OutlineScaledMaxDistanceFactor != 0F) {
-        output.WriteRawTag(141, 2);
-        output.WriteFloat(OutlineScaledMaxDistanceFactor);
+      if (outlineScaledMaxDistanceFactor_ != null) {
+        _single_outlineScaledMaxDistanceFactor_codec.WriteTagAndValue(output, OutlineScaledMaxDistanceFactor);
       }
       if (OutlineColorMode != global::VrmProtobuf.VRMC_materials_mtoon.Types.OutlineColorMode.FixedColor) {
-        output.WriteRawTag(144, 2);
+        output.WriteRawTag(160, 1);
         output.WriteEnum((int) OutlineColorMode);
       }
       outlineFactor_.WriteTo(output, _repeated_outlineFactor_codec);
-      if (OutlineLightingMixFactor != 0F) {
-        output.WriteRawTag(165, 2);
-        output.WriteFloat(OutlineLightingMixFactor);
+      if (outlineLightingMixFactor_ != null) {
+        _single_outlineLightingMixFactor_codec.WriteTagAndValue(output, OutlineLightingMixFactor);
       }
-      mainTextureLeftBottomOriginScale_.WriteTo(output, _repeated_mainTextureLeftBottomOriginScale_codec);
-      mainTextureLeftBottomOriginOffset_.WriteTo(output, _repeated_mainTextureLeftBottomOriginOffset_codec);
       if (uvAnimationMaskTexture_ != null) {
         _single_uvAnimationMaskTexture_codec.WriteTagAndValue(output, UvAnimationMaskTexture);
       }
-      if (UvAnimationScrollXSpeedFactor != 0F) {
-        output.WriteRawTag(197, 2);
-        output.WriteFloat(UvAnimationScrollXSpeedFactor);
+      if (uvAnimationScrollXSpeedFactor_ != null) {
+        _single_uvAnimationScrollXSpeedFactor_codec.WriteTagAndValue(output, UvAnimationScrollXSpeedFactor);
       }
-      if (UvAnimationScrollYSpeedFactor != 0F) {
-        output.WriteRawTag(205, 2);
-        output.WriteFloat(UvAnimationScrollYSpeedFactor);
+      if (uvAnimationScrollYSpeedFactor_ != null) {
+        _single_uvAnimationScrollYSpeedFactor_codec.WriteTagAndValue(output, UvAnimationScrollYSpeedFactor);
       }
-      if (UvAnimationRotationSpeedFactor != 0F) {
-        output.WriteRawTag(213, 2);
-        output.WriteFloat(UvAnimationRotationSpeedFactor);
+      if (uvAnimationRotationSpeedFactor_ != null) {
+        _single_uvAnimationRotationSpeedFactor_codec.WriteTagAndValue(output, UvAnimationRotationSpeedFactor);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -803,47 +702,27 @@ namespace VrmProtobuf {
       if (Version.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Version);
       }
-      if (RenderMode != global::VrmProtobuf.VRMC_materials_mtoon.Types.RenderMode.Opaque) {
-        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) RenderMode);
+      if (transparentWithZWrite_ != null) {
+        size += _single_transparentWithZWrite_codec.CalculateSizeWithTag(TransparentWithZWrite);
       }
-      if (CullMode != global::VrmProtobuf.VRMC_materials_mtoon.Types.CullMode.Off) {
-        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) CullMode);
-      }
-      if (RenderQueueOffsetNumber != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(RenderQueueOffsetNumber);
-      }
-      size += litFactor_.CalculateSize(_repeated_litFactor_codec);
-      if (litMultiplyTexture_ != null) {
-        size += _single_litMultiplyTexture_codec.CalculateSizeWithTag(LitMultiplyTexture);
+      if (renderQueueOffsetNumber_ != null) {
+        size += _single_renderQueueOffsetNumber_codec.CalculateSizeWithTag(RenderQueueOffsetNumber);
       }
       size += shadeFactor_.CalculateSize(_repeated_shadeFactor_codec);
       if (shadeMultiplyTexture_ != null) {
         size += _single_shadeMultiplyTexture_codec.CalculateSizeWithTag(ShadeMultiplyTexture);
       }
-      if (CutoutThresholdFactor != 0F) {
-        size += 1 + 4;
+      if (shadingShiftFactor_ != null) {
+        size += _single_shadingShiftFactor_codec.CalculateSizeWithTag(ShadingShiftFactor);
       }
-      if (ShadingShiftFactor != 0F) {
-        size += 1 + 4;
+      if (shadingToonyFactor_ != null) {
+        size += _single_shadingToonyFactor_codec.CalculateSizeWithTag(ShadingToonyFactor);
       }
-      if (ShadingToonyFactor != 0F) {
-        size += 1 + 4;
+      if (lightColorAttenuationFactor_ != null) {
+        size += _single_lightColorAttenuationFactor_codec.CalculateSizeWithTag(LightColorAttenuationFactor);
       }
-      if (LightColorAttenuationFactor != 0F) {
-        size += 2 + 4;
-      }
-      if (GiIntensityFactor != 0F) {
-        size += 2 + 4;
-      }
-      if (normalTexture_ != null) {
-        size += _single_normalTexture_codec.CalculateSizeWithTag(NormalTexture);
-      }
-      if (NormalScaleFactor != 0F) {
-        size += 2 + 4;
-      }
-      size += emissionFactor_.CalculateSize(_repeated_emissionFactor_codec);
-      if (emissionMultiplyTexture_ != null) {
-        size += _single_emissionMultiplyTexture_codec.CalculateSizeWithTag(EmissionMultiplyTexture);
+      if (giIntensityFactor_ != null) {
+        size += _single_giIntensityFactor_codec.CalculateSizeWithTag(GiIntensityFactor);
       }
       if (additiveTexture_ != null) {
         size += _single_additiveTexture_codec.CalculateSizeWithTag(AdditiveTexture);
@@ -852,47 +731,45 @@ namespace VrmProtobuf {
       if (rimMultiplyTexture_ != null) {
         size += _single_rimMultiplyTexture_codec.CalculateSizeWithTag(RimMultiplyTexture);
       }
-      if (RimLightingMixFactor != 0F) {
-        size += 2 + 4;
+      if (rimLightingMixFactor_ != null) {
+        size += _single_rimLightingMixFactor_codec.CalculateSizeWithTag(RimLightingMixFactor);
       }
-      if (RimFresnelPowerFactor != 0F) {
-        size += 2 + 4;
+      if (rimFresnelPowerFactor_ != null) {
+        size += _single_rimFresnelPowerFactor_codec.CalculateSizeWithTag(RimFresnelPowerFactor);
       }
-      if (RimLiftFactor != 0F) {
-        size += 2 + 4;
+      if (rimLiftFactor_ != null) {
+        size += _single_rimLiftFactor_codec.CalculateSizeWithTag(RimLiftFactor);
       }
       if (OutlineWidthMode != global::VrmProtobuf.VRMC_materials_mtoon.Types.OutlineWidthMode.None) {
         size += 2 + pb::CodedOutputStream.ComputeEnumSize((int) OutlineWidthMode);
       }
-      if (OutlineWidthFactor != 0F) {
-        size += 2 + 4;
+      if (outlineWidthFactor_ != null) {
+        size += _single_outlineWidthFactor_codec.CalculateSizeWithTag(OutlineWidthFactor);
       }
       if (outlineWidthMultiplyTexture_ != null) {
         size += _single_outlineWidthMultiplyTexture_codec.CalculateSizeWithTag(OutlineWidthMultiplyTexture);
       }
-      if (OutlineScaledMaxDistanceFactor != 0F) {
-        size += 2 + 4;
+      if (outlineScaledMaxDistanceFactor_ != null) {
+        size += _single_outlineScaledMaxDistanceFactor_codec.CalculateSizeWithTag(OutlineScaledMaxDistanceFactor);
       }
       if (OutlineColorMode != global::VrmProtobuf.VRMC_materials_mtoon.Types.OutlineColorMode.FixedColor) {
         size += 2 + pb::CodedOutputStream.ComputeEnumSize((int) OutlineColorMode);
       }
       size += outlineFactor_.CalculateSize(_repeated_outlineFactor_codec);
-      if (OutlineLightingMixFactor != 0F) {
-        size += 2 + 4;
+      if (outlineLightingMixFactor_ != null) {
+        size += _single_outlineLightingMixFactor_codec.CalculateSizeWithTag(OutlineLightingMixFactor);
       }
-      size += mainTextureLeftBottomOriginScale_.CalculateSize(_repeated_mainTextureLeftBottomOriginScale_codec);
-      size += mainTextureLeftBottomOriginOffset_.CalculateSize(_repeated_mainTextureLeftBottomOriginOffset_codec);
       if (uvAnimationMaskTexture_ != null) {
         size += _single_uvAnimationMaskTexture_codec.CalculateSizeWithTag(UvAnimationMaskTexture);
       }
-      if (UvAnimationScrollXSpeedFactor != 0F) {
-        size += 2 + 4;
+      if (uvAnimationScrollXSpeedFactor_ != null) {
+        size += _single_uvAnimationScrollXSpeedFactor_codec.CalculateSizeWithTag(UvAnimationScrollXSpeedFactor);
       }
-      if (UvAnimationScrollYSpeedFactor != 0F) {
-        size += 2 + 4;
+      if (uvAnimationScrollYSpeedFactor_ != null) {
+        size += _single_uvAnimationScrollYSpeedFactor_codec.CalculateSizeWithTag(UvAnimationScrollYSpeedFactor);
       }
-      if (UvAnimationRotationSpeedFactor != 0F) {
-        size += 2 + 4;
+      if (uvAnimationRotationSpeedFactor_ != null) {
+        size += _single_uvAnimationRotationSpeedFactor_codec.CalculateSizeWithTag(UvAnimationRotationSpeedFactor);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -908,19 +785,14 @@ namespace VrmProtobuf {
       if (other.Version.Length != 0) {
         Version = other.Version;
       }
-      if (other.RenderMode != global::VrmProtobuf.VRMC_materials_mtoon.Types.RenderMode.Opaque) {
-        RenderMode = other.RenderMode;
+      if (other.transparentWithZWrite_ != null) {
+        if (transparentWithZWrite_ == null || other.TransparentWithZWrite != false) {
+          TransparentWithZWrite = other.TransparentWithZWrite;
+        }
       }
-      if (other.CullMode != global::VrmProtobuf.VRMC_materials_mtoon.Types.CullMode.Off) {
-        CullMode = other.CullMode;
-      }
-      if (other.RenderQueueOffsetNumber != 0) {
-        RenderQueueOffsetNumber = other.RenderQueueOffsetNumber;
-      }
-      litFactor_.Add(other.litFactor_);
-      if (other.litMultiplyTexture_ != null) {
-        if (litMultiplyTexture_ == null || other.LitMultiplyTexture != 0) {
-          LitMultiplyTexture = other.LitMultiplyTexture;
+      if (other.renderQueueOffsetNumber_ != null) {
+        if (renderQueueOffsetNumber_ == null || other.RenderQueueOffsetNumber != 0) {
+          RenderQueueOffsetNumber = other.RenderQueueOffsetNumber;
         }
       }
       shadeFactor_.Add(other.shadeFactor_);
@@ -929,33 +801,24 @@ namespace VrmProtobuf {
           ShadeMultiplyTexture = other.ShadeMultiplyTexture;
         }
       }
-      if (other.CutoutThresholdFactor != 0F) {
-        CutoutThresholdFactor = other.CutoutThresholdFactor;
-      }
-      if (other.ShadingShiftFactor != 0F) {
-        ShadingShiftFactor = other.ShadingShiftFactor;
-      }
-      if (other.ShadingToonyFactor != 0F) {
-        ShadingToonyFactor = other.ShadingToonyFactor;
-      }
-      if (other.LightColorAttenuationFactor != 0F) {
-        LightColorAttenuationFactor = other.LightColorAttenuationFactor;
-      }
-      if (other.GiIntensityFactor != 0F) {
-        GiIntensityFactor = other.GiIntensityFactor;
-      }
-      if (other.normalTexture_ != null) {
-        if (normalTexture_ == null || other.NormalTexture != 0) {
-          NormalTexture = other.NormalTexture;
+      if (other.shadingShiftFactor_ != null) {
+        if (shadingShiftFactor_ == null || other.ShadingShiftFactor != 0F) {
+          ShadingShiftFactor = other.ShadingShiftFactor;
         }
       }
-      if (other.NormalScaleFactor != 0F) {
-        NormalScaleFactor = other.NormalScaleFactor;
+      if (other.shadingToonyFactor_ != null) {
+        if (shadingToonyFactor_ == null || other.ShadingToonyFactor != 0F) {
+          ShadingToonyFactor = other.ShadingToonyFactor;
+        }
       }
-      emissionFactor_.Add(other.emissionFactor_);
-      if (other.emissionMultiplyTexture_ != null) {
-        if (emissionMultiplyTexture_ == null || other.EmissionMultiplyTexture != 0) {
-          EmissionMultiplyTexture = other.EmissionMultiplyTexture;
+      if (other.lightColorAttenuationFactor_ != null) {
+        if (lightColorAttenuationFactor_ == null || other.LightColorAttenuationFactor != 0F) {
+          LightColorAttenuationFactor = other.LightColorAttenuationFactor;
+        }
+      }
+      if (other.giIntensityFactor_ != null) {
+        if (giIntensityFactor_ == null || other.GiIntensityFactor != 0F) {
+          GiIntensityFactor = other.GiIntensityFactor;
         }
       }
       if (other.additiveTexture_ != null) {
@@ -969,51 +832,67 @@ namespace VrmProtobuf {
           RimMultiplyTexture = other.RimMultiplyTexture;
         }
       }
-      if (other.RimLightingMixFactor != 0F) {
-        RimLightingMixFactor = other.RimLightingMixFactor;
+      if (other.rimLightingMixFactor_ != null) {
+        if (rimLightingMixFactor_ == null || other.RimLightingMixFactor != 0F) {
+          RimLightingMixFactor = other.RimLightingMixFactor;
+        }
       }
-      if (other.RimFresnelPowerFactor != 0F) {
-        RimFresnelPowerFactor = other.RimFresnelPowerFactor;
+      if (other.rimFresnelPowerFactor_ != null) {
+        if (rimFresnelPowerFactor_ == null || other.RimFresnelPowerFactor != 0F) {
+          RimFresnelPowerFactor = other.RimFresnelPowerFactor;
+        }
       }
-      if (other.RimLiftFactor != 0F) {
-        RimLiftFactor = other.RimLiftFactor;
+      if (other.rimLiftFactor_ != null) {
+        if (rimLiftFactor_ == null || other.RimLiftFactor != 0F) {
+          RimLiftFactor = other.RimLiftFactor;
+        }
       }
       if (other.OutlineWidthMode != global::VrmProtobuf.VRMC_materials_mtoon.Types.OutlineWidthMode.None) {
         OutlineWidthMode = other.OutlineWidthMode;
       }
-      if (other.OutlineWidthFactor != 0F) {
-        OutlineWidthFactor = other.OutlineWidthFactor;
+      if (other.outlineWidthFactor_ != null) {
+        if (outlineWidthFactor_ == null || other.OutlineWidthFactor != 0F) {
+          OutlineWidthFactor = other.OutlineWidthFactor;
+        }
       }
       if (other.outlineWidthMultiplyTexture_ != null) {
         if (outlineWidthMultiplyTexture_ == null || other.OutlineWidthMultiplyTexture != 0) {
           OutlineWidthMultiplyTexture = other.OutlineWidthMultiplyTexture;
         }
       }
-      if (other.OutlineScaledMaxDistanceFactor != 0F) {
-        OutlineScaledMaxDistanceFactor = other.OutlineScaledMaxDistanceFactor;
+      if (other.outlineScaledMaxDistanceFactor_ != null) {
+        if (outlineScaledMaxDistanceFactor_ == null || other.OutlineScaledMaxDistanceFactor != 0F) {
+          OutlineScaledMaxDistanceFactor = other.OutlineScaledMaxDistanceFactor;
+        }
       }
       if (other.OutlineColorMode != global::VrmProtobuf.VRMC_materials_mtoon.Types.OutlineColorMode.FixedColor) {
         OutlineColorMode = other.OutlineColorMode;
       }
       outlineFactor_.Add(other.outlineFactor_);
-      if (other.OutlineLightingMixFactor != 0F) {
-        OutlineLightingMixFactor = other.OutlineLightingMixFactor;
+      if (other.outlineLightingMixFactor_ != null) {
+        if (outlineLightingMixFactor_ == null || other.OutlineLightingMixFactor != 0F) {
+          OutlineLightingMixFactor = other.OutlineLightingMixFactor;
+        }
       }
-      mainTextureLeftBottomOriginScale_.Add(other.mainTextureLeftBottomOriginScale_);
-      mainTextureLeftBottomOriginOffset_.Add(other.mainTextureLeftBottomOriginOffset_);
       if (other.uvAnimationMaskTexture_ != null) {
         if (uvAnimationMaskTexture_ == null || other.UvAnimationMaskTexture != 0) {
           UvAnimationMaskTexture = other.UvAnimationMaskTexture;
         }
       }
-      if (other.UvAnimationScrollXSpeedFactor != 0F) {
-        UvAnimationScrollXSpeedFactor = other.UvAnimationScrollXSpeedFactor;
+      if (other.uvAnimationScrollXSpeedFactor_ != null) {
+        if (uvAnimationScrollXSpeedFactor_ == null || other.UvAnimationScrollXSpeedFactor != 0F) {
+          UvAnimationScrollXSpeedFactor = other.UvAnimationScrollXSpeedFactor;
+        }
       }
-      if (other.UvAnimationScrollYSpeedFactor != 0F) {
-        UvAnimationScrollYSpeedFactor = other.UvAnimationScrollYSpeedFactor;
+      if (other.uvAnimationScrollYSpeedFactor_ != null) {
+        if (uvAnimationScrollYSpeedFactor_ == null || other.UvAnimationScrollYSpeedFactor != 0F) {
+          UvAnimationScrollYSpeedFactor = other.UvAnimationScrollYSpeedFactor;
+        }
       }
-      if (other.UvAnimationRotationSpeedFactor != 0F) {
-        UvAnimationRotationSpeedFactor = other.UvAnimationRotationSpeedFactor;
+      if (other.uvAnimationRotationSpeedFactor_ != null) {
+        if (uvAnimationRotationSpeedFactor_ == null || other.UvAnimationRotationSpeedFactor != 0F) {
+          UvAnimationRotationSpeedFactor = other.UvAnimationRotationSpeedFactor;
+        }
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -1026,179 +905,171 @@ namespace VrmProtobuf {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 18: {
+          case 10: {
             Version = input.ReadString();
             break;
           }
-          case 24: {
-            RenderMode = (global::VrmProtobuf.VRMC_materials_mtoon.Types.RenderMode) input.ReadEnum();
-            break;
-          }
-          case 32: {
-            CullMode = (global::VrmProtobuf.VRMC_materials_mtoon.Types.CullMode) input.ReadEnum();
-            break;
-          }
-          case 40: {
-            RenderQueueOffsetNumber = input.ReadInt32();
-            break;
-          }
-          case 50:
-          case 53: {
-            litFactor_.AddEntriesFrom(input, _repeated_litFactor_codec);
-            break;
-          }
-          case 58: {
-            int? value = _single_litMultiplyTexture_codec.Read(input);
-            if (litMultiplyTexture_ == null || value != 0) {
-              LitMultiplyTexture = value;
+          case 18: {
+            bool? value = _single_transparentWithZWrite_codec.Read(input);
+            if (transparentWithZWrite_ == null || value != false) {
+              TransparentWithZWrite = value;
             }
             break;
           }
-          case 66:
-          case 69: {
+          case 26: {
+            int? value = _single_renderQueueOffsetNumber_codec.Read(input);
+            if (renderQueueOffsetNumber_ == null || value != 0) {
+              RenderQueueOffsetNumber = value;
+            }
+            break;
+          }
+          case 34:
+          case 37: {
             shadeFactor_.AddEntriesFrom(input, _repeated_shadeFactor_codec);
             break;
           }
-          case 74: {
+          case 42: {
             int? value = _single_shadeMultiplyTexture_codec.Read(input);
             if (shadeMultiplyTexture_ == null || value != 0) {
               ShadeMultiplyTexture = value;
             }
             break;
           }
-          case 85: {
-            CutoutThresholdFactor = input.ReadFloat();
-            break;
-          }
-          case 93: {
-            ShadingShiftFactor = input.ReadFloat();
-            break;
-          }
-          case 101: {
-            ShadingToonyFactor = input.ReadFloat();
-            break;
-          }
-          case 149: {
-            LightColorAttenuationFactor = input.ReadFloat();
-            break;
-          }
-          case 157: {
-            GiIntensityFactor = input.ReadFloat();
-            break;
-          }
-          case 162: {
-            int? value = _single_normalTexture_codec.Read(input);
-            if (normalTexture_ == null || value != 0) {
-              NormalTexture = value;
+          case 50: {
+            float? value = _single_shadingShiftFactor_codec.Read(input);
+            if (shadingShiftFactor_ == null || value != 0F) {
+              ShadingShiftFactor = value;
             }
             break;
           }
-          case 173: {
-            NormalScaleFactor = input.ReadFloat();
-            break;
-          }
-          case 178:
-          case 181: {
-            emissionFactor_.AddEntriesFrom(input, _repeated_emissionFactor_codec);
-            break;
-          }
-          case 186: {
-            int? value = _single_emissionMultiplyTexture_codec.Read(input);
-            if (emissionMultiplyTexture_ == null || value != 0) {
-              EmissionMultiplyTexture = value;
+          case 58: {
+            float? value = _single_shadingToonyFactor_codec.Read(input);
+            if (shadingToonyFactor_ == null || value != 0F) {
+              ShadingToonyFactor = value;
             }
             break;
           }
-          case 194: {
+          case 66: {
+            float? value = _single_lightColorAttenuationFactor_codec.Read(input);
+            if (lightColorAttenuationFactor_ == null || value != 0F) {
+              LightColorAttenuationFactor = value;
+            }
+            break;
+          }
+          case 74: {
+            float? value = _single_giIntensityFactor_codec.Read(input);
+            if (giIntensityFactor_ == null || value != 0F) {
+              GiIntensityFactor = value;
+            }
+            break;
+          }
+          case 82: {
             int? value = _single_additiveTexture_codec.Read(input);
             if (additiveTexture_ == null || value != 0) {
               AdditiveTexture = value;
             }
             break;
           }
-          case 202:
-          case 205: {
+          case 90:
+          case 93: {
             rimFactor_.AddEntriesFrom(input, _repeated_rimFactor_codec);
             break;
           }
-          case 210: {
+          case 98: {
             int? value = _single_rimMultiplyTexture_codec.Read(input);
             if (rimMultiplyTexture_ == null || value != 0) {
               RimMultiplyTexture = value;
             }
             break;
           }
-          case 221: {
-            RimLightingMixFactor = input.ReadFloat();
+          case 106: {
+            float? value = _single_rimLightingMixFactor_codec.Read(input);
+            if (rimLightingMixFactor_ == null || value != 0F) {
+              RimLightingMixFactor = value;
+            }
             break;
           }
-          case 229: {
-            RimFresnelPowerFactor = input.ReadFloat();
+          case 114: {
+            float? value = _single_rimFresnelPowerFactor_codec.Read(input);
+            if (rimFresnelPowerFactor_ == null || value != 0F) {
+              RimFresnelPowerFactor = value;
+            }
             break;
           }
-          case 237: {
-            RimLiftFactor = input.ReadFloat();
+          case 122: {
+            float? value = _single_rimLiftFactor_codec.Read(input);
+            if (rimLiftFactor_ == null || value != 0F) {
+              RimLiftFactor = value;
+            }
             break;
           }
-          case 240: {
+          case 128: {
             OutlineWidthMode = (global::VrmProtobuf.VRMC_materials_mtoon.Types.OutlineWidthMode) input.ReadEnum();
             break;
           }
-          case 253: {
-            OutlineWidthFactor = input.ReadFloat();
+          case 138: {
+            float? value = _single_outlineWidthFactor_codec.Read(input);
+            if (outlineWidthFactor_ == null || value != 0F) {
+              OutlineWidthFactor = value;
+            }
             break;
           }
-          case 258: {
+          case 146: {
             int? value = _single_outlineWidthMultiplyTexture_codec.Read(input);
             if (outlineWidthMultiplyTexture_ == null || value != 0) {
               OutlineWidthMultiplyTexture = value;
             }
             break;
           }
-          case 269: {
-            OutlineScaledMaxDistanceFactor = input.ReadFloat();
+          case 154: {
+            float? value = _single_outlineScaledMaxDistanceFactor_codec.Read(input);
+            if (outlineScaledMaxDistanceFactor_ == null || value != 0F) {
+              OutlineScaledMaxDistanceFactor = value;
+            }
             break;
           }
-          case 272: {
+          case 160: {
             OutlineColorMode = (global::VrmProtobuf.VRMC_materials_mtoon.Types.OutlineColorMode) input.ReadEnum();
             break;
           }
-          case 282:
-          case 285: {
+          case 170:
+          case 173: {
             outlineFactor_.AddEntriesFrom(input, _repeated_outlineFactor_codec);
             break;
           }
-          case 293: {
-            OutlineLightingMixFactor = input.ReadFloat();
+          case 178: {
+            float? value = _single_outlineLightingMixFactor_codec.Read(input);
+            if (outlineLightingMixFactor_ == null || value != 0F) {
+              OutlineLightingMixFactor = value;
+            }
             break;
           }
-          case 298:
-          case 301: {
-            mainTextureLeftBottomOriginScale_.AddEntriesFrom(input, _repeated_mainTextureLeftBottomOriginScale_codec);
-            break;
-          }
-          case 306:
-          case 309: {
-            mainTextureLeftBottomOriginOffset_.AddEntriesFrom(input, _repeated_mainTextureLeftBottomOriginOffset_codec);
-            break;
-          }
-          case 314: {
+          case 186: {
             int? value = _single_uvAnimationMaskTexture_codec.Read(input);
             if (uvAnimationMaskTexture_ == null || value != 0) {
               UvAnimationMaskTexture = value;
             }
             break;
           }
-          case 325: {
-            UvAnimationScrollXSpeedFactor = input.ReadFloat();
+          case 194: {
+            float? value = _single_uvAnimationScrollXSpeedFactor_codec.Read(input);
+            if (uvAnimationScrollXSpeedFactor_ == null || value != 0F) {
+              UvAnimationScrollXSpeedFactor = value;
+            }
             break;
           }
-          case 333: {
-            UvAnimationScrollYSpeedFactor = input.ReadFloat();
+          case 202: {
+            float? value = _single_uvAnimationScrollYSpeedFactor_codec.Read(input);
+            if (uvAnimationScrollYSpeedFactor_ == null || value != 0F) {
+              UvAnimationScrollYSpeedFactor = value;
+            }
             break;
           }
-          case 341: {
-            UvAnimationRotationSpeedFactor = input.ReadFloat();
+          case 210: {
+            float? value = _single_uvAnimationRotationSpeedFactor_codec.Read(input);
+            if (uvAnimationRotationSpeedFactor_ == null || value != 0F) {
+              UvAnimationRotationSpeedFactor = value;
+            }
             break;
           }
         }
@@ -1209,24 +1080,6 @@ namespace VrmProtobuf {
     /// <summary>Container for nested types declared in the VRMC_materials_mtoon message type.</summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static partial class Types {
-      /// <summary>
-      /// Rendering
-      /// </summary>
-      public enum RenderMode {
-        [pbr::OriginalName("opaque")] Opaque = 0,
-        [pbr::OriginalName("cutout")] Cutout = 1,
-        [pbr::OriginalName("transparent")] Transparent = 2,
-        [pbr::OriginalName("transparentWithZWrite")] TransparentWithZwrite = 3,
-      }
-
-      public enum CullMode {
-        [pbr::OriginalName("off")] Off = 0,
-        [pbr::OriginalName("back")] Back = 1,
-      }
-
-      /// <summary>
-      /// Outline
-      /// </summary>
       public enum OutlineWidthMode {
         [pbr::OriginalName("none")] None = 0,
         [pbr::OriginalName("worldCoordinates")] WorldCoordinates = 1,

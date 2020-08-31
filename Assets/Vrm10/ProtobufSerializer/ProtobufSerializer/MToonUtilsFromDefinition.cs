@@ -20,134 +20,134 @@ namespace Vrm10
             }
         }
 
-        public static void SetMToonParametersToMaterial(Material material, MToonDefinition parameters, List<Texture> textures)
-        {
-            var mtoon = material.Extensions.VRMCMaterialsMtoon;
+        // public static void SetMToonParametersToMaterial(Material material, MToonDefinition parameters, List<Texture> textures)
+        // {
+        //     var mtoon = material.Extensions.VRMCMaterialsMtoon;
 
-            {
-                var meta = parameters.Meta;
-                mtoon.Version = meta.VersionNumber.ToString();
-            }
-            // TODO:
-            // {
-            //     var rendering = parameters.Rendering;
-            //     ValidateBlendMode(material, rendering.RenderMode, isChangedByUser: true);
-            //     ValidateCullMode(material, rendering.CullMode);
-            //     ValidateRenderQueue(material, offset: rendering.RenderQueueOffsetNumber);
-            // }
-            {
-                var color = parameters.Color;
+        //     {
+        //         var meta = parameters.Meta;
+        //         mtoon.Version = meta.VersionNumber.ToString();
+        //     }
+        //     // TODO:
+        //     // {
+        //     //     var rendering = parameters.Rendering;
+        //     //     ValidateBlendMode(material, rendering.RenderMode, isChangedByUser: true);
+        //     //     ValidateCullMode(material, rendering.CullMode);
+        //     //     ValidateRenderQueue(material, offset: rendering.RenderQueueOffsetNumber);
+        //     // }
+        //     {
+        //         var color = parameters.Color;
 
-                // SetColor(material, MToonUtils.PropColor, color.LitColor);
-                color.LitColor.ToProtobuf(mtoon.LitFactor.Add, true);
+        //         // SetColor(material, MToonUtils.PropColor, color.LitColor);
+        //         color.LitColor.ToProtobuf(mtoon.LitFactor.Add, true);
 
-                // SetTexture(material, MToonUtils.PropMainTex, color.LitMultiplyTexture, textures);
-                mtoon.LitMultiplyTexture = textures.IndexOfNullable(color.LitMultiplyTexture.Texture);
+        //         // SetTexture(material, MToonUtils.PropMainTex, color.LitMultiplyTexture, textures);
+        //         mtoon.LitMultiplyTexture = textures.IndexOfNullable(color.LitMultiplyTexture.Texture);
 
-                // SetColor(material, MToonUtils.PropShadeColor, color.ShadeColor);
-                color.ShadeColor.ToProtobuf(mtoon.ShadeFactor.Add, false);
+        //         // SetColor(material, MToonUtils.PropShadeColor, color.ShadeColor);
+        //         color.ShadeColor.ToProtobuf(mtoon.ShadeFactor.Add, false);
 
-                // SetTexture(material, MToonUtils.PropShadeTexture, color.ShadeMultiplyTexture, textures);
-                mtoon.ShadeMultiplyTexture = textures.IndexOfNullable(color.ShadeMultiplyTexture.Texture);
+        //         // SetTexture(material, MToonUtils.PropShadeTexture, color.ShadeMultiplyTexture, textures);
+        //         mtoon.ShadeMultiplyTexture = textures.IndexOfNullable(color.ShadeMultiplyTexture.Texture);
 
-                // SetValue(material, MToonUtils.PropCutoff, color.CutoutThresholdValue);
-                mtoon.CutoutThresholdFactor = color.CutoutThresholdValue;
-            }
-            {
-                var lighting = parameters.Lighting;
-                {
-                    var prop = lighting.LitAndShadeMixing;
-                    // SetValue(material, MToonUtils.PropShadeShift, prop.ShadingShiftValue);
-                    mtoon.ShadingShiftFactor = prop.ShadingShiftValue;
+        //         // SetValue(material, MToonUtils.PropCutoff, color.CutoutThresholdValue);
+        //         mtoon.CutoutThresholdFactor = color.CutoutThresholdValue;
+        //     }
+        //     {
+        //         var lighting = parameters.Lighting;
+        //         {
+        //             var prop = lighting.LitAndShadeMixing;
+        //             // SetValue(material, MToonUtils.PropShadeShift, prop.ShadingShiftValue);
+        //             mtoon.ShadingShiftFactor = prop.ShadingShiftValue;
 
-                    // SetValue(material, MToonUtils.PropShadeToony, prop.ShadingToonyValue);
-                    mtoon.ShadingToonyFactor = prop.ShadingToonyValue;
-                }
-                {
-                    var prop = lighting.LightingInfluence;
-                    // SetValue(material, MToonUtils.PropLightColorAttenuation, prop.LightColorAttenuationValue);
-                    mtoon.LightColorAttenuationFactor = prop.LightColorAttenuationValue;
+        //             // SetValue(material, MToonUtils.PropShadeToony, prop.ShadingToonyValue);
+        //             mtoon.ShadingToonyFactor = prop.ShadingToonyValue;
+        //         }
+        //         {
+        //             var prop = lighting.LightingInfluence;
+        //             // SetValue(material, MToonUtils.PropLightColorAttenuation, prop.LightColorAttenuationValue);
+        //             mtoon.LightColorAttenuationFactor = prop.LightColorAttenuationValue;
 
-                    // SetValue(material, MToonUtils.PropIndirectLightIntensity, prop.GiIntensityValue);
-                    mtoon.GiIntensityFactor = prop.GiIntensityValue;
-                }
-                {
-                    var prop = lighting.Normal;
-                    // SetTexture(material, MToonUtils.PropBumpMap, prop.NormalTexture, textures);
-                    mtoon.NormalTexture = textures.IndexOfNullable(prop.NormalTexture.Texture);
+        //             // SetValue(material, MToonUtils.PropIndirectLightIntensity, prop.GiIntensityValue);
+        //             mtoon.GiIntensityFactor = prop.GiIntensityValue;
+        //         }
+        //         {
+        //             var prop = lighting.Normal;
+        //             // SetTexture(material, MToonUtils.PropBumpMap, prop.NormalTexture, textures);
+        //             mtoon.NormalTexture = textures.IndexOfNullable(prop.NormalTexture.Texture);
 
-                    // SetValue(material, MToonUtils.PropBumpScale, prop.NormalScaleValue);
-                    mtoon.NormalScaleFactor = prop.NormalScaleValue;
-                }
-            }
-            {
-                var emission = parameters.Emission;
-                // SetColor(material, MToonUtils.PropEmissionColor, emission.EmissionColor);
-                emission.EmissionColor.ToProtobuf(mtoon.EmissionFactor.Add, false);
+        //             // SetValue(material, MToonUtils.PropBumpScale, prop.NormalScaleValue);
+        //             mtoon.NormalScaleFactor = prop.NormalScaleValue;
+        //         }
+        //     }
+        //     {
+        //         var emission = parameters.Emission;
+        //         // SetColor(material, MToonUtils.PropEmissionColor, emission.EmissionColor);
+        //         emission.EmissionColor.ToProtobuf(mtoon.EmissionFactor.Add, false);
 
-                // SetTexture(material, MToonUtils.PropEmissionMap, emission.EmissionMultiplyTexture, textures);
-                mtoon.EmissionMultiplyTexture = textures.IndexOfNullable(emission.EmissionMultiplyTexture.Texture);
-            }
-            {
-                var matcap = parameters.MatCap;
-                // SetTexture(material, MToonUtils.PropSphereAdd, matcap.AdditiveTexture, textures);
-                mtoon.AdditiveTexture = textures.IndexOfNullable(matcap.AdditiveTexture.Texture);
-            }
-            {
-                var rim = parameters.Rim;
-                // SetColor(material, MToonUtils.PropRimColor, rim.RimColor);
-                rim.RimColor.ToProtobuf(mtoon.RimFactor.Add, false);
+        //         // SetTexture(material, MToonUtils.PropEmissionMap, emission.EmissionMultiplyTexture, textures);
+        //         mtoon.EmissionMultiplyTexture = textures.IndexOfNullable(emission.EmissionMultiplyTexture.Texture);
+        //     }
+        //     {
+        //         var matcap = parameters.MatCap;
+        //         // SetTexture(material, MToonUtils.PropSphereAdd, matcap.AdditiveTexture, textures);
+        //         mtoon.AdditiveTexture = textures.IndexOfNullable(matcap.AdditiveTexture.Texture);
+        //     }
+        //     {
+        //         var rim = parameters.Rim;
+        //         // SetColor(material, MToonUtils.PropRimColor, rim.RimColor);
+        //         rim.RimColor.ToProtobuf(mtoon.RimFactor.Add, false);
 
-                // SetTexture(material, MToonUtils.PropRimTexture, rim.RimMultiplyTexture, textures);
-                mtoon.RimMultiplyTexture = textures.IndexOfNullable(rim.RimMultiplyTexture.Texture);
+        //         // SetTexture(material, MToonUtils.PropRimTexture, rim.RimMultiplyTexture, textures);
+        //         mtoon.RimMultiplyTexture = textures.IndexOfNullable(rim.RimMultiplyTexture.Texture);
 
-                // SetValue(material, MToonUtils.PropRimLightingMix, rim.RimLightingMixValue);
-                mtoon.RimLightingMixFactor = rim.RimLightingMixValue;
+        //         // SetValue(material, MToonUtils.PropRimLightingMix, rim.RimLightingMixValue);
+        //         mtoon.RimLightingMixFactor = rim.RimLightingMixValue;
 
-                // SetValue(material, MToonUtils.PropRimFresnelPower, rim.RimFresnelPowerValue);
-                mtoon.RimFresnelPowerFactor = rim.RimFresnelPowerValue;
+        //         // SetValue(material, MToonUtils.PropRimFresnelPower, rim.RimFresnelPowerValue);
+        //         mtoon.RimFresnelPowerFactor = rim.RimFresnelPowerValue;
 
-                // SetValue(material, MToonUtils.PropRimLift, rim.RimLiftValue);
-                mtoon.RimLiftFactor = rim.RimLiftValue;
-            }
-            {
-                var outline = parameters.Outline;
-                // SetValue(material, MToonUtils.PropOutlineWidth, outline.OutlineWidthValue);
-                mtoon.OutlineWidthFactor = outline.OutlineWidthValue;
+        //         // SetValue(material, MToonUtils.PropRimLift, rim.RimLiftValue);
+        //         mtoon.RimLiftFactor = rim.RimLiftValue;
+        //     }
+        //     {
+        //         var outline = parameters.Outline;
+        //         // SetValue(material, MToonUtils.PropOutlineWidth, outline.OutlineWidthValue);
+        //         mtoon.OutlineWidthFactor = outline.OutlineWidthValue;
 
-                // SetTexture(material, MToonUtils.PropOutlineWidthTexture, outline.OutlineWidthMultiplyTexture, textures);
-                mtoon.OutlineWidthMultiplyTexture = textures.IndexOfNullable(outline.OutlineWidthMultiplyTexture.Texture);
+        //         // SetTexture(material, MToonUtils.PropOutlineWidthTexture, outline.OutlineWidthMultiplyTexture, textures);
+        //         mtoon.OutlineWidthMultiplyTexture = textures.IndexOfNullable(outline.OutlineWidthMultiplyTexture.Texture);
 
-                // SetValue(material, MToonUtils.PropOutlineScaledMaxDistance, outline.OutlineScaledMaxDistanceValue);
-                mtoon.OutlineScaledMaxDistanceFactor = outline.OutlineScaledMaxDistanceValue;
+        //         // SetValue(material, MToonUtils.PropOutlineScaledMaxDistance, outline.OutlineScaledMaxDistanceValue);
+        //         mtoon.OutlineScaledMaxDistanceFactor = outline.OutlineScaledMaxDistanceValue;
 
-                // SetColor(material, MToonUtils.PropOutlineColor, outline.OutlineColor);
-                outline.OutlineColor.ToProtobuf(mtoon.OutlineFactor.Add, false);
+        //         // SetColor(material, MToonUtils.PropOutlineColor, outline.OutlineColor);
+        //         outline.OutlineColor.ToProtobuf(mtoon.OutlineFactor.Add, false);
 
-                // SetValue(material, MToonUtils.PropOutlineLightingMix, outline.OutlineLightingMixValue);
-                mtoon.OutlineLightingMixFactor = outline.OutlineLightingMixValue;
+        //         // SetValue(material, MToonUtils.PropOutlineLightingMix, outline.OutlineLightingMixValue);
+        //         mtoon.OutlineLightingMixFactor = outline.OutlineLightingMixValue;
 
-                // ValidateOutlineMode(material, outline.OutlineWidthMode, outline.OutlineColorMode);
-            }
-            {
-                var textureOptions = parameters.TextureOption;
-                // TODO:
-                // material.SetTextureScale(MToonUtils.PropMainTex, textureOptions.MainTextureLeftBottomOriginScale);
-                // material.SetTextureOffset(MToonUtils.PropMainTex, textureOptions.MainTextureLeftBottomOriginOffset);
+        //         // ValidateOutlineMode(material, outline.OutlineWidthMode, outline.OutlineColorMode);
+        //     }
+        //     {
+        //         var textureOptions = parameters.TextureOption;
+        //         // TODO:
+        //         // material.SetTextureScale(MToonUtils.PropMainTex, textureOptions.MainTextureLeftBottomOriginScale);
+        //         // material.SetTextureOffset(MToonUtils.PropMainTex, textureOptions.MainTextureLeftBottomOriginOffset);
 
-                // material.SetTexture(MToonUtils.PropUvAnimMaskTexture, textureOptions.UvAnimationMaskTexture, textures);
-                mtoon.UvAnimationMaskTexture = textures.IndexOfNullable(textureOptions.UvAnimationMaskTexture.Texture);
+        //         // material.SetTexture(MToonUtils.PropUvAnimMaskTexture, textureOptions.UvAnimationMaskTexture, textures);
+        //         mtoon.UvAnimationMaskTexture = textures.IndexOfNullable(textureOptions.UvAnimationMaskTexture.Texture);
 
-                // material.SetFloat(MToonUtils.PropUvAnimScrollX, textureOptions.UvAnimationScrollXSpeedValue);
-                mtoon.UvAnimationScrollXSpeedFactor = textureOptions.UvAnimationScrollXSpeedValue;
+        //         // material.SetFloat(MToonUtils.PropUvAnimScrollX, textureOptions.UvAnimationScrollXSpeedValue);
+        //         mtoon.UvAnimationScrollXSpeedFactor = textureOptions.UvAnimationScrollXSpeedValue;
 
-                // material.SetFloat(MToonUtils.PropUvAnimScrollY, textureOptions.UvAnimationScrollYSpeedValue);
-                mtoon.UvAnimationScrollYSpeedFactor = textureOptions.UvAnimationScrollYSpeedValue;
+        //         // material.SetFloat(MToonUtils.PropUvAnimScrollY, textureOptions.UvAnimationScrollYSpeedValue);
+        //         mtoon.UvAnimationScrollYSpeedFactor = textureOptions.UvAnimationScrollYSpeedValue;
 
-                // material.SetFloat(MToonUtils.PropUvAnimRotation, textureOptions.UvAnimationRotationSpeedValue);
-                mtoon.UvAnimationRotationSpeedFactor = textureOptions.UvAnimationRotationSpeedValue;
-            }
-        }
+        //         // material.SetFloat(MToonUtils.PropUvAnimRotation, textureOptions.UvAnimationRotationSpeedValue);
+        //         mtoon.UvAnimationRotationSpeedFactor = textureOptions.UvAnimationRotationSpeedValue;
+        //     }
+        // }
 
         // /// <summary>
         // /// Validate properties and Set hidden properties, keywords.

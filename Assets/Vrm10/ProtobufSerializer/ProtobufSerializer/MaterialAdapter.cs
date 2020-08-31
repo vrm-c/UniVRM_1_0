@@ -42,7 +42,7 @@ namespace Vrm10
                 self.BaseColorTexture = new TextureInfo(textures[index]);
             }
 
-            self.AlphaMode = EnumUtil.Parse<VrmLib.AlphaModeType>(material.AlphaMode);
+            self.AlphaMode = EnumUtil.Cast<VrmLib.AlphaModeType>(material.AlphaMode);
             self.AlphaCutoff = material.AlphaCutoff.HasValue
                 ? material.AlphaCutoff.Value
                 : 0.5f // gltf default
@@ -129,11 +129,11 @@ namespace Vrm10
             var material = new VrmProtobuf.Material
             {
                 Name = src.Name,
-                PbrMetallicRoughness = new VrmProtobuf.MaterialPbrMetallicRoughness
+                PbrMetallicRoughness = new VrmProtobuf.MaterialPBRMetallicRoughness
                 {
 
                 },
-                AlphaMode = src.AlphaMode.ToString(),
+                AlphaMode = EnumUtil.Cast<VrmProtobuf.Material.Types.alphaModeType>(src.AlphaMode),
                 AlphaCutoff = src.AlphaCutoff,
                 DoubleSided = src.DoubleSided,
             };
@@ -204,7 +204,8 @@ namespace Vrm10
             material.EmissiveFactor.Add(pbr.EmissiveFactor.Z);
 
             // AlphaMode
-            material.AlphaMode = ((pbr.AlphaMode == AlphaModeType.BLEND_ZWRITE)?AlphaModeType.BLEND: pbr.AlphaMode).ToString();
+            var alphaMode = (pbr.AlphaMode == AlphaModeType.BLEND_ZWRITE)?AlphaModeType.BLEND: pbr.AlphaMode;
+            material.AlphaMode = EnumUtil.Cast<VrmProtobuf.Material.Types.alphaModeType>(alphaMode);
 
             // AlphaCutoff
             material.AlphaCutoff = pbr.AlphaCutoff;
@@ -220,7 +221,7 @@ namespace Vrm10
             var material = unlit.ToGltf(textures);
             material.Extensions = new VrmProtobuf.Material.Types.Extensions
             {
-                KHRMaterialsUnlit = new VrmProtobuf.KHR_materials_unlit(),
+                KHRMaterialsUnlit = new VrmProtobuf.Material.Types.KHR_materials_unlitglTFextension(),
             };
             material.PbrMetallicRoughness.RoughnessFactor = 0.9f;
             material.PbrMetallicRoughness.MetallicFactor = 0.0f;

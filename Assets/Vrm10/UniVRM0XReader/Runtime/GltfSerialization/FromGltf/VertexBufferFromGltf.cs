@@ -25,7 +25,6 @@ namespace GltfSerializationAdapter
             CreateBufferAccessorAndAdd(storage, attributes.COLOR_0, b, VertexBuffer.ColorKey);
             CreateBufferAccessorAndAdd(storage, attributes.JOINTS_0, b, VertexBuffer.JointKey);
             CreateBufferAccessorAndAdd(storage, attributes.WEIGHTS_0, b, VertexBuffer.WeightKey);
-            b.ValidateLength();
             return b;
         }
 
@@ -35,7 +34,6 @@ namespace GltfSerializationAdapter
             CreateBufferAccessorAndAdd(storage, target.POSITION, b, VertexBuffer.PositionKey);
             CreateBufferAccessorAndAdd(storage, target.NORMAL, b, VertexBuffer.NormalKey);
             CreateBufferAccessorAndAdd(storage, target.TANGENT, b, VertexBuffer.TangentKey);
-            b.ValidateLength();
             return b;
         }
     }

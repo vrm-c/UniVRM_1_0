@@ -9,13 +9,13 @@ namespace Vrm10
         {
             return new AvatarPermission
             {
-                AvatarUsage = (AvatarUsageType)self.AvatarPermission,
-                IsAllowedViolentUsage = self.ViolentUsage,
-                IsAllowedSexualUsage = self.SexualUsage,
-                CommercialUsage = (CommercialUsageType)self.CommercialUsage,
+                AvatarUsage = EnumUtil.Cast<AvatarUsageType>(self.AvatarPermission),
+                IsAllowedViolentUsage = self.ViolentUsage.Value,
+                IsAllowedSexualUsage = self.SexualUsage.Value,
+                CommercialUsage = EnumUtil.Cast<CommercialUsageType>(self.CommercialUsage),
                 OtherPermissionUrl = self.OtherPermissionUrl,
-                IsAllowedGameUsage = self.GameUsage,
-                IsAllowedPoliticalOrReligiousUsage = self.PoliticalOrReligiousUsage,
+                IsAllowedGameUsage = self.GameUsage.Value,
+                IsAllowedPoliticalOrReligiousUsage = self.PoliticalOrReligiousUsage.Value,
             };
         }
 
@@ -24,7 +24,7 @@ namespace Vrm10
             return new RedistributionLicense
             {
                 CreditNotation = (CreditNotationType)self.CreditNotation,
-                IsAllowRedistribution = self.AllowRedistribution,
+                IsAllowRedistribution = self.AllowRedistribution.Value,
                 ModificationLicense = (ModificationLicenseType)self.Modify,
                 OtherLicenseUrl = self.OtherLicenseUrl,
             };

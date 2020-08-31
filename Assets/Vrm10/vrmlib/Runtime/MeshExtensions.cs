@@ -44,52 +44,27 @@ namespace VrmLib
                 var factor = 1.0f / sum;
 
                 {
-                    if (w.X > 0)
-                    {
-                        var index = jointIndexMap[j.Joint0];
-                        j.Joint0 = (ushort)(index >= 0 ? index : 0);
-                        w.X *= factor;
-                    }
-                    else
-                    {
-                        j.Joint0 = 0;
-                    }
+                    var index = jointIndexMap[j.Joint0];
+                    j.Joint0 = (ushort)(index >= 0 ? index : 0);
+                    w.X *= factor;
                 }
+
                 {
-                    if (w.Y > 0)
-                    {
-                        var index = jointIndexMap[j.Joint1];
-                        j.Joint1 = (ushort)(index >= 0 ? index : 0);
-                        w.X *= factor;
-                    }
-                    else
-                    {
-                        j.Joint1 = 0;
-                    }
+                    var index = jointIndexMap[j.Joint1];
+                    j.Joint1 = (ushort)(index >= 0 ? index : 0);
+                    w.X *= factor;
                 }
+
                 {
-                    if (w.Z > 0)
-                    {
-                        var index = jointIndexMap[j.Joint2];
-                        j.Joint2 = (ushort)(index >= 0 ? index : 0);
-                        w.X *= factor;
-                    }
-                    else
-                    {
-                        j.Joint2 = 0;
-                    }
+                    var index = jointIndexMap[j.Joint2];
+                    j.Joint2 = (ushort)(index >= 0 ? index : 0);
+                    w.X *= factor;
                 }
+
                 {
-                    if (w.W > 0)
-                    {
-                        var index = jointIndexMap[j.Joint3];
-                        j.Joint3 = (ushort)(index >= 0 ? index : 0);
-                        w.X *= factor;
-                    }
-                    else
-                    {
-                        j.Joint3 = 0;
-                    }
+                    var index = jointIndexMap[j.Joint3];
+                    j.Joint3 = (ushort)(index >= 0 ? index : 0);
+                    w.X *= factor;
                 }
             }
         }
@@ -292,7 +267,9 @@ namespace VrmLib
         {
             public static float PositionThreshold = float.Epsilon;
 
-            public static float UVThreshold = 0.001f;
+            public static float NormalAngleThreshold = 90.0f;
+
+            public static float UVThreshold = 0.0001f;
 
             /// <summary>
             /// 他の頂点の統合先となって、残るフラグ
@@ -353,10 +330,18 @@ namespace VrmLib
             public bool Equals(Vertex other)
             {
                 if (Vector3.Distance(this.Position, other.Position) > PositionThreshold) return false;
+                
+                if (this.Normal.HasValue && other.Normal.HasValue)
+                {
+                    var v = this.Normal.Value;
+                    var u = other.Normal.Value;
+                    var angle = (Math.Acos(Vector3.Dot(v, u) / (v.Length() * u.Length()))) * (180 / Math.PI);
+                    if (angle > NormalAngleThreshold) return false;
+                }
 
                 if ((this.UV.HasValue && other.UV.HasValue) && Vector2.Distance(this.UV.Value, other.UV.Value) > UVThreshold) return false;
 
-                if ((this.Joints.HasValue && this.Joints.HasValue) && this.Joints.Value.Equals(other.UV.Value)) return false;
+                if ((this.Joints.HasValue && other.Joints.HasValue) && !(this.Joints.Value.Equals(other.Joints.Value))) return false;
 
                 return true;
             }
@@ -534,8 +519,12 @@ namespace VrmLib
             if (weights != null) mesh.VertexBuffer.Weights.Assign(newWeights.AsSpan());
             if (UVs != null) mesh.VertexBuffer.TexCoords.Assign(newUVs.AsSpan());
             if (colors != null) mesh.VertexBuffer.Colors.Assign(newColors.AsSpan());
+            mesh.VertexBuffer.RemoveTangent();
+            mesh.VertexBuffer.ValidateLength();
 
+            //
             // merge morph vertex buffer
+            //
             Span<Vector3> morphPositions = null;
             Span<Vector3> morphNormals = null;
             Span<Vector2> morphUVs = null;
@@ -558,6 +547,8 @@ namespace VrmLib
                 if (morphPositions != null) morph.VertexBuffer.Positions.Assign(newPositions.AsSpan());
                 if (morphNormals != null) morph.VertexBuffer.Normals.Assign(newNormals.AsSpan());
                 if (morphUVs != null) morph.VertexBuffer.Normals.Assign(newUVs.AsSpan());
+                morph.VertexBuffer.RemoveTangent();
+                morph.VertexBuffer.ValidateLength(morph.Name);
             }
 
             return $"({before} => {resizedLength})";
