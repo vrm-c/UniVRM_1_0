@@ -9,6 +9,15 @@ VRM-1.0 draft の Unity 実装になります。
 
 [開発Wiki](https://github.com/vrm-c/UniVRM_1_0/wiki)
 
+## UPM
+
+* 20200902 パッケージ名変更( `com.vrmc.univrm` => `com.vrmc.univrm1` )
+
+```json
+"com.vrmc.vrmshaders": "https://github.com/vrm-c/UniVRM.git?path=/Assets/VRMShaders#v0.56.0",
+"com.vrmc.univrm": "https://github.com/vrm-c/UniVRM_1_0.git?path=/Assets/Vrm10#__TAGNAME__", // __TAGNAME__ を適宜置き換え
+```
+
 ## 依存ライブラリ
 
 VrmLibがバイト列操作で `System.Memory` や `System.Span` に依存(`.NETStandard-2.1`から標準ライブラリに入る)
