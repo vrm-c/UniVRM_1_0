@@ -15,6 +15,7 @@ VRM-1.0 draft の Unity 実装になります。
 
 ```json
 "com.vrmc.vrmshaders": "https://github.com/vrm-c/UniVRM.git?path=/Assets/VRMShaders#v0.56.0",
+"com.vrmc.meshutility": "https://github.com/vrm-c/UniVRM.git?path=/Assets/MeshUtility#v0.59.0",
 "com.vrmc.univrm": "https://github.com/vrm-c/UniVRM_1_0.git?path=/Assets/Vrm10#__TAGNAME__", // __TAGNAME__ を適宜置き換え
 ```
 

@@ -7,7 +7,8 @@
     "com.unity.textmeshpro": "2.0.1",
     "com.unity.timeline": "1.2.10",
     "com.unity.ugui": "1.0.0",
-    "com.vrmc.vrmshaders": "https://github.com/vrm-c/UniVRM.git?path=/Assets/VRMShaders",
+    "com.vrmc.meshutility": "https://github.com/vrm-c/UniVRM.git?path=/Assets/MeshUtility#v0.59.0",
+    "com.vrmc.vrmshaders": "https://github.com/vrm-c/UniVRM.git?path=/Assets/VRMShaders#v0.56.0",
     "com.unity.modules.ai": "1.0.0",
     "com.unity.modules.androidjni": "1.0.0",
     "com.unity.modules.animation": "1.0.0",
@@ -41,9 +42,13 @@
     "com.unity.modules.xr": "1.0.0"
   },
   "lock": {
+    "com.vrmc.meshutility": {
+      "revision": "v0.59.0",
+      "hash": "873aec208c663c10dd825e9b006fec6809cfe6ca"
+    },
     "com.vrmc.vrmshaders": {
-      "revision": "HEAD",
-      "hash": "0e6d93f276caa844a45534b937121469f824e7d1"
+      "revision": "v0.56.0",
+      "hash": "41b32b9987bc6c16ea932b0bbd099d0e34134270"
     }
   }
 }
