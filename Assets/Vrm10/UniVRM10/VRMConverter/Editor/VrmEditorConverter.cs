@@ -216,18 +216,18 @@ namespace UniVRM10
                 return false;
             }
 
-            var humanoid = root.GetComponent<Humanoid>();
+            var humanoid = root.GetComponent<MeshUtility.Humanoid>();
             if (humanoid != null)
             {
                 var isError = false;
-                // foreach (var validation in humanoid.Validate())
-                // {
-                //     if (validation.IsError)
-                //     {
-                //         isError = true;
-                //     }
-                //     m_validation.Push(validation.Message);
-                // }
+                foreach (var validation in humanoid.Validate())
+                {
+                    if (validation.IsError)
+                    {
+                        isError = true;
+                    }
+                    m_validation.Push(validation.Message);
+                }
                 if (isError)
                 {
                     return false;
