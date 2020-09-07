@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
+using MeshUtility;
 using UnityEngine;
 
 namespace UniVRM10
@@ -237,10 +238,10 @@ namespace UniVRM10
 
             // humanoid
             {
-                var humanoid = root.GetComponent<VrmHumanoid>();
+                var humanoid = root.GetComponent<Humanoid>();
                 if (humanoid is null)
                 {
-                    humanoid = root.AddComponent<VrmHumanoid>();
+                    humanoid = root.AddComponent<Humanoid>();
                     humanoid.AssignBonesFromAnimator();
                 }
 

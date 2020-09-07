@@ -216,7 +216,7 @@ namespace UniVRM10
                 return false;
             }
 
-            var humanoid = root.GetComponent<VrmHumanoid>();
+            var humanoid = root.GetComponent<MeshUtility.Humanoid>();
             if (humanoid != null)
             {
                 var isError = false;

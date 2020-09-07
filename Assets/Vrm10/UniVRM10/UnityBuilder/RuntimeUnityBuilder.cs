@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using MeshUtility;
 using UnityEngine;
 
 namespace UniVRM10
@@ -94,8 +95,8 @@ namespace UniVRM10
                 modelAsset.Renderers.Add(renderer);
             }
 
-            var humanoid = modelAsset.Root.AddComponent<VrmHumanoid>();
-            humanoid.AssignBones(map.Nodes.Select(x => (x.Key.HumanoidBone.GetValueOrDefault(), x.Value.transform)));
+            var humanoid = modelAsset.Root.AddComponent<Humanoid>();
+            humanoid.AssignBones(map.Nodes.Select(x => (x.Key.HumanoidBone.GetValueOrDefault().ToUnity(), x.Value.transform)));
             modelAsset.HumanoidAvatar = humanoid.CreateAvatar();
             modelAsset.HumanoidAvatar.name = "VRM";
 
@@ -103,6 +104,15 @@ namespace UniVRM10
             animator.avatar = modelAsset.HumanoidAvatar;
 
             return modelAsset;
+        }
+
+        public static HumanBodyBones ToUnity(this VrmLib.HumanoidBones bone)
+        {
+            if (bone == VrmLib.HumanoidBones.unknown)
+            {
+                return HumanBodyBones.LastBone;
+            }
+            return VrmLib.EnumUtil.Cast<HumanBodyBones>(bone);
         }
 
         private static RenderTextureReadWrite GetRenderTextureReadWrite(VrmLib.Texture.ColorSpaceTypes type)

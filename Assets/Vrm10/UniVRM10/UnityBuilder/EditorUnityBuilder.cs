@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEngine;
 using System.Linq;
+using MeshUtility;
 
 namespace UniVRM10
 {
@@ -39,8 +40,8 @@ namespace UniVRM10
             if (model.Vrm != null)
             {
                 // humanoid
-                var humanoid = modelAsset.Root.AddComponent<VrmHumanoid>();
-                humanoid.AssignBones(modelAsset.Map.Nodes.Select(x => (x.Key.HumanoidBone.GetValueOrDefault(), x.Value.transform)));
+                var humanoid = modelAsset.Root.AddComponent<Humanoid>();
+                humanoid.AssignBones(modelAsset.Map.Nodes.Select(x => (x.Key.HumanoidBone.GetValueOrDefault().ToUnity(), x.Value.transform)));
                 modelAsset.HumanoidAvatar = humanoid.CreateAvatar();
                 modelAsset.HumanoidAvatar.name = "VRM";
 
