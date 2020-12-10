@@ -1,3 +1,21 @@
+# UniVRM に引っ越し
+
+既存のUniVRMとコードを共有したいので、
+
+`https://github.com/vrm-c/UniVRM`
+
+に同居することにしました。
+
+`https://github.com/vrm-c/UniVRM_1_0/commit/3138de1fd98550b9879bc96857e95d468e46f537` を移植しました。
+
+* https://github.com/vrm-c/UniVRM/issues?q=is%3Aissue+is%3Aopen+label%3A1.0
+
+UPMパッケージは変更になります。
+
+* https://github.com/vrm-c/UniVRM/milestone/23
+
+でお知らせ予定です。
+
 # UniVRM-1.0 draft
 
 VRM-1.0 draft の Unity 実装になります。
