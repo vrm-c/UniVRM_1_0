@@ -12,9 +12,7 @@
 
 UPMパッケージは変更になります。
 
-* https://github.com/vrm-c/UniVRM/milestone/23
-
-でお知らせ予定です。
+* https://github.com/vrm-c/UniVRM/releases/tag/v0.64.0
 
 # UniVRM-1.0 draft
 
