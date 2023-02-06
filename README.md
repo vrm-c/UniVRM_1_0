@@ -1,3 +1,11 @@
+# DEPRECATED
+This repository was trial implementation of vrm-1.0.
+Go to https://github.com/vrm-c/UniVRM
+
+
+----
+
+
 # UniVRM に引っ越し
 
 既存のUniVRMとコードを共有したいので、
@@ -24,16 +32,6 @@ VRM-1.0 draft の Unity 実装になります。
 * 推奨ColorSpaceSetting: `Linear`
 
 [開発Wiki](https://github.com/vrm-c/UniVRM_1_0/wiki)
-
-## UPM
-
-* 20200902 パッケージ名変更( `com.vrmc.univrm` => `com.vrmc.univrm1` )
-
-```json
-"com.vrmc.vrmshaders": "https://github.com/vrm-c/UniVRM.git?path=/Assets/VRMShaders#v0.56.0",
-"com.vrmc.meshutility": "https://github.com/vrm-c/UniVRM.git?path=/Assets/MeshUtility#v0.59.0",
-"com.vrmc.univrm": "https://github.com/vrm-c/UniVRM_1_0.git?path=/Assets/Vrm10#__TAGNAME__", // __TAGNAME__ を適宜置き換え
-```
 
 ## 依存ライブラリ
 
